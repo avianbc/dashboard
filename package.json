@@ -1,0 +1,20 @@
+{
+  "name": "strength-training-dashboard",
+  "version": "0.0.1",
+  "description": "A data-driven visualization of strength training progress",
+  "scripts": {
+    "start": "http-server -p 8000 -o dashboard.html",
+    "extract": "python extract_data.py",
+    "build": "python extract_data.py && npm start"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "keywords": [
+    "strength-training",
+    "dashboard",
+    "visualization"
+  ],
+  "author": "Brad Carey",
+  "license": "MIT"
+}

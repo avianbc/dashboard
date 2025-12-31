@@ -1,2 +1,14 @@
 
 .claude/settings.local.json
+
+# Node
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Generated files
+training_data.json
+MyApp.db

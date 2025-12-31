@@ -36,7 +36,23 @@ This dashboard transforms your MyApp.db strength training data into a comprehens
 
 ## Usage
 
-### Step 1: Extract Data
+### Quick Start
+
+```bash
+# Install dependencies (first time only)
+npm install
+
+# Extract data and start server
+npm run build
+
+# Or run separately:
+npm run extract   # Regenerate data from MyApp.db
+npm start         # Start server and open dashboard
+```
+
+### Manual Steps (Alternative)
+
+#### Step 1: Extract Data
 
 Run the Python script to generate the JSON data file:
 
@@ -61,15 +77,10 @@ Summary:
   - Unique Exercises: 43
 ```
 
-### Step 2: Start Server & View Dashboard
+#### Step 2: Start Server & View Dashboard
 
-Start a local web server and open the dashboard:
-
-**Option A (Windows):** Double-click `start_dashboard.bat`
-
-**Option B (Any OS):**
 ```bash
-python serve.py
+npm start
 ```
 
 This will:
@@ -77,11 +88,11 @@ This will:
 - Automatically open dashboard.html in your browser
 - Press Ctrl+C to stop the server when done
 
-### Step 3: Update Data (Optional)
+#### Step 3: Update Data (Optional)
 
 Whenever you add new workouts to MyApp.db:
 
-1. Run `python extract_data.py` again
+1. Run `npm run extract` (or `python extract_data.py`)
 2. Refresh the dashboard in your browser
 
 ## Dashboard Sections
