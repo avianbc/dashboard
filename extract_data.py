@@ -6,12 +6,16 @@ for the dashboard visualization.
 
 import sqlite3
 import json
-from datetime import datetime, timedelta
-from collections import defaultdict
+from datetime import datetime
 import sys
 
 DB_PATH = 'MyApp.db'
 OUTPUT_PATH = 'training_data.json'
+
+# Big 3 exercise name variations
+SQUAT_NAMES = ['Squat', 'Back Squat', 'Front Squat', 'Squats']
+BENCH_NAMES = ['Bench Press', 'Bench', 'Flat Bench Press']
+DEADLIFT_NAMES = ['Deadlift', 'Conventional Deadlift', 'Deadlifts']
 
 def connect_db():
     """Connect to the SQLite database."""
@@ -28,12 +32,6 @@ def ms_to_date(ms):
     if ms is None:
         return None
     return datetime.fromtimestamp(ms / 1000).strftime('%Y-%m-%d')
-
-def ms_to_datetime(ms):
-    """Convert milliseconds timestamp to datetime object."""
-    if ms is None:
-        return None
-    return datetime.fromtimestamp(ms / 1000)
 
 def get_summary_stats(conn):
     """Calculate summary statistics."""
@@ -294,17 +292,10 @@ def calculate_e1rm(weight, reps):
 def get_big_three_e1rm(conn):
     """Get estimated 1RM data for Big 3 lifts from every workout."""
     cursor = conn.cursor()
-
-    # Map exercise name variations
-    squat_names = ['Squat', 'Back Squat', 'Front Squat', 'Squats']
-    bench_names = ['Bench Press', 'Bench', 'Flat Bench Press']
-    deadlift_names = ['Deadlift', 'Conventional Deadlift', 'Deadlifts']
-
     big_three_e1rm = {}
 
-    for canonical_name, name_list in [('squat', squat_names), ('bench', bench_names), ('deadlift', deadlift_names)]:
+    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES), ('deadlift', DEADLIFT_NAMES)]:
         # Get all sets for this exercise
-        placeholders = ','.join('?' * len(name_list))
         cursor.execute(f"""
             SELECT
                 date(h.date/1000, 'unixepoch') as workout_date,
@@ -363,17 +354,10 @@ def get_big_three_e1rm(conn):
 def get_big_three_volume(conn):
     """Get volume time series for Big 3 lifts (daily aggregation)."""
     cursor = conn.cursor()
-
-    # Map exercise name variations
-    squat_names = ['Squat', 'Back Squat', 'Front Squat', 'Squats']
-    bench_names = ['Bench Press', 'Bench', 'Flat Bench Press']
-    deadlift_names = ['Deadlift', 'Conventional Deadlift', 'Deadlifts']
-
     big_three_volume = {}
 
-    for canonical_name, name_list in [('squat', squat_names), ('bench', bench_names), ('deadlift', deadlift_names)]:
+    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES), ('deadlift', DEADLIFT_NAMES)]:
         # Get daily volume for this exercise
-        placeholders = ','.join('?' * len(name_list))
         cursor.execute(f"""
             SELECT
                 date(h.date/1000, 'unixepoch') as workout_date,
@@ -409,22 +393,17 @@ def get_big_three_volume(conn):
 
     return big_three_volume
 
-def get_big_three(conn, exercise_progress):
+def get_big_three(exercise_progress):
     """Extract Big 3 lifts (Squat, Bench Press, Deadlift) with detailed progress."""
     big_three = {}
 
-    # Map common variations to canonical names
-    squat_names = ['Squat', 'Back Squat', 'Front Squat', 'Squats']
-    bench_names = ['Bench Press', 'Bench', 'Flat Bench Press']
-    deadlift_names = ['Deadlift', 'Conventional Deadlift', 'Deadlifts']
-
     for exercise_name, data in exercise_progress.items():
         canonical_name = None
-        if any(name.lower() == exercise_name.lower() for name in squat_names):
+        if any(name.lower() == exercise_name.lower() for name in SQUAT_NAMES):
             canonical_name = 'squat'
-        elif any(name.lower() == exercise_name.lower() for name in bench_names):
+        elif any(name.lower() == exercise_name.lower() for name in BENCH_NAMES):
             canonical_name = 'bench'
-        elif any(name.lower() == exercise_name.lower() for name in deadlift_names):
+        elif any(name.lower() == exercise_name.lower() for name in DEADLIFT_NAMES):
             canonical_name = 'deadlift'
 
         if canonical_name:
@@ -608,7 +587,7 @@ def main():
     exercise_progress = get_exercise_progress(conn)
 
     print("Extracting Big 3 lifts...")
-    big_three = get_big_three(conn, exercise_progress)
+    big_three = get_big_three(exercise_progress)
 
     print("Calculating Big 3 estimated 1RM progression...")
     big_three_e1rm = get_big_three_e1rm(conn)

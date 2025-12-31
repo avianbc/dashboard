@@ -161,30 +161,6 @@
             display: none;
         }
 
-        .exercise-list {
-            list-style: none;
-        }
-
-        .exercise-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #1a1a1a;
-        }
-
-        .exercise-item:last-child {
-            border-bottom: none;
-        }
-
-        .exercise-name {
-            font-weight: 600;
-        }
-
-        .exercise-volume {
-            font-family: 'Courier New', monospace;
-            color: #888;
-        }
-
         .notable-workout {
             background: #111;
             padding: 1rem;
@@ -1280,8 +1256,6 @@
             });
         }
 
-        // Removed renderProgressChart - now using Chart.js for Big 3
-
         function renderExerciseVolumeChart() {
             const { exerciseProgress } = trainingData;
             const container = document.getElementById('exerciseVolumeChart');
@@ -1393,10 +1367,6 @@
                 rect.setAttribute('height', barHeight);
                 // Use reduced opacity for days with < 10 workouts
                 rect.setAttribute('fill', d.count < 10 ? '#4a9eff66' : '#4a9eff');
-                rect.setAttribute('class', 'day-bar');
-                rect.setAttribute('data-day', d.day);
-                rect.setAttribute('data-count', d.count);
-                rect.setAttribute('data-volume', Math.round(d.volume));
 
                 // Add hover effect
                 rect.addEventListener('mouseenter', (e) => {

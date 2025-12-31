@@ -28,7 +28,6 @@ This dashboard transforms your MyApp.db strength training data into a comprehens
 
 - `MyApp.db` - Your SQLite database (read-only)
 - `extract_data.py` - Python script to extract and process data
-- `serve.py` - Simple web server to view the dashboard
 - `training_data.json` - Generated JSON data file
 - `dashboard.html` - Interactive dashboard
 - `README.md` - This file
@@ -235,7 +234,7 @@ This happens when opening `dashboard.html` directly from the filesystem (file://
 
 **Solution:** Use the local web server
 ```bash
-python serve.py
+npm start
 ```
 
 ### Dashboard shows "Error loading data"
