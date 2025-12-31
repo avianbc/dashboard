@@ -332,6 +332,10 @@ def get_big_three_e1rm(conn):
             weight_kg = row['weightkg'] or 0
             reps = row['reps']
 
+            # Skip sets with more than 10 reps (e1RM formula less accurate)
+            if reps > 10:
+                continue
+
             e1rm_lbs = calculate_e1rm(weight_lbs, reps)
             e1rm_kg = calculate_e1rm(weight_kg, reps)
 

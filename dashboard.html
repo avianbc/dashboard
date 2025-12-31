@@ -1092,6 +1092,9 @@
                     const totalGain = currentE1RM - startE1RM;
                     const gainPercent = ((totalGain / startE1RM) * 100).toFixed(0);
 
+                    // Count actual PRs
+                    const prCount = hasPRs ? data.prs.length : 0;
+
                     stats.innerHTML = `
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Starting e1RM</div>
@@ -1112,6 +1115,11 @@
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Total Gain</div>
                             <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">+${totalGain} ${currentUnit}</div>
                             <div style="color: #51cf66; font-size: 0.75rem; margin-top: 0.25rem;">+${gainPercent}%</div>
+                        </div>
+                        <div>
+                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">PRs Set</div>
+                            <div style="color: #ffd700; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${prCount}</div>
+                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">across all rep ranges</div>
                         </div>
                     `;
                 }
@@ -1164,6 +1172,28 @@
                         fill: true
                     }
                 ));
+            }
+
+            // Add actual PR markers (rep-specific PRs, not estimated)
+            if (prs && prs.length > 0) {
+                const prData = prs.map(pr => ({
+                    x: pr.date,
+                    y: getVolume(pr.weightLbs, pr.weightKg),
+                    reps: pr.reps,
+                    isPR: true
+                }));
+
+                datasets.push({
+                    label: 'Actual PRs',
+                    data: prData,
+                    type: 'scatter',
+                    backgroundColor: '#ffd700',
+                    borderColor: '#ffd700',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    pointStyle: 'star',
+                    showLine: false
+                });
             }
 
             // Plate milestones for reference lines (in lbs, convert if kg)
@@ -1220,10 +1250,13 @@
                             },
                             label: function(context) {
                                 const value = context.parsed.y;
+                                if (context.raw.isPR) {
+                                    return `🏆 PR: ${value} ${currentUnit} × ${context.raw.reps} reps`;
+                                }
                                 return `Estimated 1RM: ${value} ${currentUnit}`;
                             },
                             afterLabel: function(context) {
-                                if (context.raw.actualWeight) {
+                                if (context.raw.actualWeight && !context.raw.isPR) {
                                     return `From: ${context.raw.actualWeight} ${currentUnit} × ${context.raw.reps} reps`;
                                 }
                                 return '';
