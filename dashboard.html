@@ -1656,6 +1656,7 @@
 
         const benchmarks = relativeStrength.benchmarks || {};
         const totalMultiple = relativeStrength.totalMultiple || {};
+        const wilks = relativeStrength.wilks || {};
 
         // Get body weight info
         const currentBW = bodyWeight?.current;
@@ -1675,6 +1676,20 @@
 
         let html = `<h3>💪 Relative Strength</h3>`;
 
+        // Determine Wilks level
+        const wilksBenchmarks = wilks.benchmarks || {};
+        let wilksLevel = 'Beginner';
+        let wilksColor = '#888';
+        if (wilks.best >= (wilksBenchmarks.worldClass || 500)) {
+          wilksLevel = 'World Class'; wilksColor = '#ffd700';
+        } else if (wilks.best >= (wilksBenchmarks.elite || 450)) {
+          wilksLevel = 'Elite'; wilksColor = '#ffd700';
+        } else if (wilks.best >= (wilksBenchmarks.advanced || 400)) {
+          wilksLevel = 'Advanced'; wilksColor = '#51cf66';
+        } else if (wilks.best >= (wilksBenchmarks.intermediate || 300)) {
+          wilksLevel = 'Intermediate'; wilksColor = '#4a9eff';
+        }
+
         // Vitals and combined total using stat cards
         html += `
           <div class="summary-stats" style="margin: 1.5rem 0;">
@@ -1683,12 +1698,12 @@
               <div class="stat-label">S+B+D Total<span class="stat-sublabel">body weight</span></div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">${bwDisplay}</div>
-              <div class="stat-label">Body Weight<span class="stat-sublabel">${currentUnit}</span></div>
+              <div class="stat-number" style="color: ${wilksColor};">${wilks.best || '—'}</div>
+              <div class="stat-label">Wilks Score<span class="stat-sublabel">${wilksLevel}</span></div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">6'0"</div>
-              <div class="stat-label">Height<span class="stat-sublabel">183 cm</span></div>
+              <div class="stat-number">${bwDisplay}</div>
+              <div class="stat-label">Body Weight<span class="stat-sublabel">${currentUnit}</span></div>
             </div>
             <div class="stat-card">
               <div class="stat-number">${bmi}</div>

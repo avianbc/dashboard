@@ -33977,6 +33977,20 @@
         "advanced": 1.0,
         "elite": 1.25
       }
+    },
+    "wilks": {
+      "best": 348.46,
+      "current": 325.14,
+      "totalKg": 517.5,
+      "bodyWeightKg": 81.8,
+      "currentBodyWeightKg": 93.0,
+      "benchmarks": {
+        "beginner": 200,
+        "intermediate": 300,
+        "advanced": 400,
+        "elite": 450,
+        "worldClass": 500
+      }
     }
   }
 }

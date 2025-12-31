@@ -368,6 +368,38 @@ def calculate_e1rm(weight, reps):
     # Epley formula: weight × (1 + reps/30)
     return weight * (1 + reps / 30)
 
+def calculate_wilks(total_kg, bodyweight_kg, is_male=True):
+    """Calculate Wilks score for powerlifting total.
+
+    Uses the Wilks formula to normalize a powerlifting total based on body weight.
+    This allows comparison between lifters of different weights.
+    """
+    if total_kg <= 0 or bodyweight_kg <= 0:
+        return 0
+
+    x = bodyweight_kg
+
+    # Wilks coefficients (male)
+    if is_male:
+        a = -216.0475144
+        b = 16.2606339
+        c = -0.002388645
+        d = -0.00113732
+        e = 7.01863e-06
+        f = -1.291e-08
+    else:
+        # Female coefficients
+        a = 594.31747775582
+        b = -27.23842536447
+        c = 0.82112226871
+        d = -0.00930733913
+        e = 4.731582e-05
+        f = -9.054e-08
+
+    coeff = 500 / (a + b*x + c*x**2 + d*x**3 + e*x**4 + f*x**5)
+
+    return round(total_kg * coeff, 2)
+
 def get_big_three_e1rm(conn):
     """Get estimated 1RM data for Big 3 lifts from every workout."""
     cursor = conn.cursor()
@@ -1328,6 +1360,51 @@ def get_relative_strength(conn):
         'ohp': {'beginner': 0.5, 'intermediate': 0.75, 'advanced': 1.0, 'elite': 1.25}
     }
 
+    # Calculate Wilks scores
+    # Get best e1RM for each lift to calculate best Wilks
+    cursor.execute("""
+        SELECT bw.weightkg as body_weight_kg
+        FROM body_weight bw
+        ORDER BY bw.date DESC
+        LIMIT 1
+    """)
+    current_bw_row = cursor.fetchone()
+    current_bw_kg = current_bw_row['body_weight_kg'] if current_bw_row else 0
+
+    # Calculate current Wilks using current body weight and best e1RMs
+    squat_best = relative_strength.get('squat', {}).get('best', {})
+    bench_best = relative_strength.get('bench', {}).get('best', {})
+    deadlift_best = relative_strength.get('deadlift', {}).get('best', {})
+
+    # Get best lifts in kg for Wilks calculation
+    squat_kg = squat_best.get('liftKg', 0) or 0
+    bench_kg = bench_best.get('liftKg', 0) or 0
+    deadlift_kg = deadlift_best.get('liftKg', 0) or 0
+
+    best_total_kg = squat_kg + bench_kg + deadlift_kg
+
+    # Use body weight from best lift dates if available, otherwise current
+    best_bw_kg = squat_best.get('bodyWeightKg') or bench_best.get('bodyWeightKg') or deadlift_best.get('bodyWeightKg') or current_bw_kg
+
+    best_wilks = calculate_wilks(best_total_kg, best_bw_kg)
+    current_wilks = calculate_wilks(best_total_kg, current_bw_kg) if current_bw_kg > 0 else 0
+
+    relative_strength['wilks'] = {
+        'best': best_wilks,
+        'current': current_wilks,
+        'totalKg': round(best_total_kg, 1),
+        'bodyWeightKg': round(best_bw_kg, 1),
+        'currentBodyWeightKg': round(current_bw_kg, 1),
+        # Wilks benchmarks for context
+        'benchmarks': {
+            'beginner': 200,
+            'intermediate': 300,
+            'advanced': 400,
+            'elite': 450,
+            'worldClass': 500
+        }
+    }
+
     return relative_strength
 
 def main():
@@ -1437,6 +1514,8 @@ def main():
     if relative_strength.get('totalMultiple'):
         tm = relative_strength['totalMultiple']
         print(f"  - Best BW Multiples: S:{tm['squat']}× B:{tm['bench']}× D:{tm['deadlift']}× (Total: {tm['best']}×)")
+    if relative_strength.get('wilks'):
+        print(f"  - Best Wilks Score: {relative_strength['wilks']['best']}")
 
     conn.close()
 
