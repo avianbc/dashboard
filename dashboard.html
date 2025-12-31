@@ -1,531 +1,542 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Strength Training Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            line-height: 1.6;
-        }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #0a0a0a;
+        color: #e0e0e0;
+        line-height: 1.6;
+      }
 
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      header {
+        text-align: center;
+        padding: 4rem 0 2rem;
+        position: relative;
+      }
+
+      h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+      }
+
+      .tagline {
+        font-size: 1.125rem;
+        color: #888;
+        margin-bottom: 2rem;
+      }
+
+      .unit-toggle {
+        position: absolute;
+        top: 2rem;
+        right: 0;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        color: #e0e0e0;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+      }
+
+      .unit-toggle:hover {
+        background: #222;
+        border-color: #555;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        background: #0a0a0a;
+        border-bottom: 1px solid #1a1a1a;
+        padding: 1rem 0;
+        z-index: 100;
+        margin-bottom: 2rem;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: color 0.2s;
+      }
+
+      nav a:hover {
+        color: #4a9eff;
+      }
+
+      nav a.active {
+        color: #e0e0e0;
+      }
+
+      section {
+        margin: 4rem 0;
+        padding: 2rem 0;
+        border-top: 1px solid #1a1a1a;
+      }
+
+      section:first-of-type {
+        border-top: none;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: #fff;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 2rem 0 1rem;
+        color: #fff;
+      }
+
+      .foreword {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #aaa;
+      }
+
+      .summary-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .stat-card {
+        text-align: center;
+        padding: 1.5rem;
+        background: #111;
+        border-radius: 8px;
+        border: 1px solid #1a1a1a;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.875rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .chart-container {
+        margin: 2rem 0;
+        background: #111;
+        padding: 2rem;
+        border-radius: 8px;
+        border: 1px solid #1a1a1a;
+      }
+
+      svg {
+        width: 100%;
+        height: auto;
+      }
+
+      .heatmap-cell {
+        cursor: pointer;
+      }
+
+      .heatmap-cell:hover {
+        stroke: #fff;
+        stroke-width: 2;
+      }
+
+      .tooltip {
+        position: absolute;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+        pointer-events: none;
+        z-index: 1000;
+        display: none;
+      }
+
+      .notable-workout {
+        background: #111;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 4px;
+        border-left: 3px solid #4a9eff;
+      }
+
+      .notable-date {
+        font-weight: 600;
+        color: #4a9eff;
+      }
+
+      .milestone {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #1a1a1a;
+      }
+
+      .milestone-date {
+        min-width: 100px;
+        color: #888;
+      }
+
+      .milestone-text {
+        color: #e0e0e0;
+      }
+
+      .program-card {
+        background: #111;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border-radius: 4px;
+        border-left: 3px solid #888;
+      }
+
+      .program-name {
+        font-weight: 600;
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .program-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 0.5rem;
+        color: #888;
+        font-size: 0.875rem;
+      }
+
+      .view-toggle {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        justify-content: center;
+      }
+
+      .view-toggle button {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        color: #888;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+      }
+
+      .view-toggle button:hover {
+        border-color: #555;
+        color: #e0e0e0;
+      }
+
+      .view-toggle button.active {
+        background: #4a9eff;
+        border-color: #4a9eff;
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            text-align: center;
-            padding: 4rem 0 2rem;
-            position: relative;
+          padding: 1rem;
         }
 
         h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
-
-        .tagline {
-            font-size: 1.125rem;
-            color: #888;
-            margin-bottom: 2rem;
+          font-size: 2rem;
         }
 
         .unit-toggle {
-            position: absolute;
-            top: 2rem;
-            right: 0;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            color: #e0e0e0;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.875rem;
-            transition: all 0.2s;
-        }
-
-        .unit-toggle:hover {
-            background: #222;
-            border-color: #555;
-        }
-
-        nav {
-            position: sticky;
-            top: 0;
-            background: #0a0a0a;
-            border-bottom: 1px solid #1a1a1a;
-            padding: 1rem 0;
-            z-index: 100;
-            margin-bottom: 2rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #888;
-            text-decoration: none;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: #4a9eff;
-        }
-
-        nav a.active {
-            color: #e0e0e0;
-        }
-
-        section {
-            margin: 4rem 0;
-            padding: 2rem 0;
-            border-top: 1px solid #1a1a1a;
-        }
-
-        section:first-of-type {
-            border-top: none;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: #fff;
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 2rem 0 1rem;
-            color: #fff;
-        }
-
-        .foreword {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #aaa;
+          position: static;
+          display: block;
+          margin: 1rem auto 0;
+          max-width: 150px;
         }
 
         .summary-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 1.5rem;
-            background: #111;
-            border-radius: 8px;
-            border: 1px solid #1a1a1a;
+          grid-template-columns: 1fr;
         }
 
         .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
+          font-size: 2rem;
         }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .chart-container {
-            margin: 2rem 0;
-            background: #111;
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid #1a1a1a;
-        }
-
-        svg {
-            width: 100%;
-            height: auto;
-        }
-
-        .heatmap-cell {
-            cursor: pointer;
-        }
-
-        .heatmap-cell:hover {
-            stroke: #fff;
-            stroke-width: 2;
-        }
-
-        .tooltip {
-            position: absolute;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            pointer-events: none;
-            z-index: 1000;
-            display: none;
-        }
-
-        .notable-workout {
-            background: #111;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-radius: 4px;
-            border-left: 3px solid #4a9eff;
-        }
-
-        .notable-date {
-            font-weight: 600;
-            color: #4a9eff;
-        }
-
-        .milestone {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #1a1a1a;
-        }
-
-        .milestone-date {
-            min-width: 100px;
-            color: #888;
-        }
-
-        .milestone-text {
-            color: #e0e0e0;
-        }
-
-        .program-card {
-            background: #111;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-            border-left: 3px solid #888;
-        }
-
-        .program-name {
-            font-weight: 600;
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .program-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 0.5rem;
-            color: #888;
-            font-size: 0.875rem;
-        }
-
-        .view-toggle {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            justify-content: center;
-        }
-
-        .view-toggle button {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            color: #888;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.875rem;
-            transition: all 0.2s;
-        }
-
-        .view-toggle button:hover {
-            border-color: #555;
-            color: #e0e0e0;
-        }
-
-        .view-toggle button.active {
-            background: #4a9eff;
-            border-color: #4a9eff;
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .unit-toggle {
-                position: static;
-                display: block;
-                margin: 1rem auto 0;
-                max-width: 150px;
-            }
-
-            .summary-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>NO DAYS OFF</h1>
-            <p class="tagline">A data-driven look at my strength training journey</p>
-            <button class="unit-toggle" id="unitToggle">lbs / kg</button>
-        </header>
+      <header>
+        <h1>NO DAYS OFF</h1>
+        <p class="tagline">
+          A data-driven look at my strength training journey
+        </p>
+        <button class="unit-toggle" id="unitToggle">lbs / kg</button>
+      </header>
 
-        <nav>
-            <ul>
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#volume-over-time">Volume</a></li>
-                <li><a href="#calendar">Calendar</a></li>
-                <li><a href="#big-three">Big 3</a></li>
-                <li><a href="#prs-clubs">PRs & Clubs</a></li>
-                <li><a href="#exercises">Exercises</a></li>
-                <li><a href="#milestones">Milestones</a></li>
-                <li><a href="#workout-patterns">Patterns</a></li>
-                <li><a href="#programs">Programs</a></li>
-                <li><a href="#notable">Notable</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><a href="#summary">Summary</a></li>
+          <li><a href="#volume-over-time">Volume</a></li>
+          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#big-three">Big 3</a></li>
+          <li><a href="#prs-clubs">PRs & Clubs</a></li>
+          <li><a href="#exercises">Exercises</a></li>
+          <li><a href="#milestones">Milestones</a></li>
+          <li><a href="#workout-patterns">Patterns</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#notable">Notable</a></li>
+        </ul>
+      </nav>
 
-        <section>
-            <div class="foreword">
-                <p>
-                    This dashboard chronicles my strength training journey from January 2019 onwards.
-                    Every rep, every set, every workout—tracked, analyzed, and visualized.
-                    The data tells the story of consistency, progression, and the relentless pursuit of strength.
-                </p>
-            </div>
-        </section>
+      <section>
+        <div class="foreword">
+          <p>
+            This dashboard chronicles my strength training journey from January
+            2019 onwards. Every rep, every set, every workout—tracked, analyzed,
+            and visualized. The data tells the story of consistency,
+            progression, and the relentless pursuit of strength.
+          </p>
+        </div>
+      </section>
 
-        <section id="summary">
-            <h2>Summary</h2>
-            <div class="summary-stats" id="summaryStats">
-                <!-- Generated dynamically -->
-            </div>
-        </section>
+      <section id="summary">
+        <h2>Summary</h2>
+        <div class="summary-stats" id="summaryStats">
+          <!-- Generated dynamically -->
+        </div>
+      </section>
 
-        <section id="volume-over-time">
-            <h2>Volume Over Time</h2>
-            <div class="chart-container">
-                <div class="view-toggle">
-                    <button data-view="weekly">Weekly</button>
-                    <button data-view="monthly" class="active">Monthly</button>
-                    <button data-view="yearly">Yearly</button>
-                    <button data-view="cumulative">Cumulative</button>
-                </div>
-                <canvas id="annualVolumeChart" style="max-height: 400px;"></canvas>
-            </div>
-        </section>
+      <section id="volume-over-time">
+        <h2>Volume Over Time</h2>
+        <div class="chart-container">
+          <div class="view-toggle">
+            <button data-view="weekly">Weekly</button>
+            <button data-view="monthly" class="active">Monthly</button>
+            <button data-view="yearly">Yearly</button>
+            <button data-view="cumulative">Cumulative</button>
+          </div>
+          <canvas id="annualVolumeChart" style="max-height: 400px"></canvas>
+        </div>
+      </section>
 
-        <section id="calendar">
-            <h2>Workout Calendar</h2>
-            <div class="chart-container">
-                <div id="workoutHeatmap"></div>
-            </div>
-        </section>
+      <section id="calendar">
+        <h2>Workout Calendar</h2>
+        <div class="chart-container">
+          <div id="workoutHeatmap"></div>
+        </div>
+      </section>
 
-        <section id="big-three">
-            <h2>Big 3 + OHP</h2>
-            <div id="bigThreeCharts">
-                <!-- Generated dynamically -->
-            </div>
-        </section>
+      <section id="big-three">
+        <h2>Big 3 + OHP</h2>
+        <div id="bigThreeCharts">
+          <!-- Generated dynamically -->
+        </div>
+      </section>
 
-        <section id="exercises">
-            <h2>Exercises by Volume</h2>
-            <div class="chart-container">
-                <div id="exerciseVolumeChart"></div>
-            </div>
-        </section>
+      <section id="exercises">
+        <h2>Exercises by Volume</h2>
+        <div class="chart-container">
+          <div id="exerciseVolumeChart"></div>
+        </div>
+      </section>
 
-        <section id="prs-clubs">
-            <h2>PRs & Clubs</h2>
-            <div id="prsClubsContent">
-                <!-- Generated dynamically -->
-            </div>
-        </section>
+      <section id="prs-clubs">
+        <h2>PRs & Clubs</h2>
+        <div id="prsClubsContent">
+          <!-- Generated dynamically -->
+        </div>
+      </section>
 
-        <section id="milestones">
-            <h2>Milestones</h2>
-            <div id="milestonesList">
-                <!-- Generated dynamically -->
-            </div>
-        </section>
+      <section id="milestones">
+        <h2>Milestones</h2>
+        <div id="milestonesList">
+          <!-- Generated dynamically -->
+        </div>
+      </section>
 
-        <section id="workout-patterns">
-            <h2>Workout Patterns</h2>
-            <h3>Volume by Day of Week</h3>
-            <div class="chart-container">
-                <div id="dayOfWeekChart"></div>
-            </div>
-        </section>
+      <section id="workout-patterns">
+        <h2>Workout Patterns</h2>
+        <h3>Volume by Day of Week</h3>
+        <div class="chart-container">
+          <div id="dayOfWeekChart"></div>
+        </div>
+      </section>
 
-        <section id="programs">
-            <h2>Training Programs</h2>
-            <div id="programsList">
-                <!-- Generated dynamically -->
-            </div>
-        </section>
+      <section id="programs">
+        <h2>Training Programs</h2>
+        <div id="programsList">
+          <!-- Generated dynamically -->
+        </div>
+      </section>
 
-        <section id="notable">
-            <h2>Notable Workouts</h2>
-            <div id="notableWorkoutsList">
-                <!-- Generated dynamically -->
-            </div>
-        </section>
-
+      <section id="notable">
+        <h2>Notable Workouts</h2>
+        <div id="notableWorkoutsList">
+          <!-- Generated dynamically -->
+        </div>
+      </section>
     </div>
 
     <div class="tooltip" id="tooltip"></div>
 
     <script>
-        // Global state
-        let trainingData = null;
-        let currentUnit = localStorage.getItem('weightUnit') || 'lbs';
-        let volumeView = localStorage.getItem('volumeView') || 'monthly';
+      // Global state
+      let trainingData = null;
+      let currentUnit = localStorage.getItem("weightUnit") || "lbs";
+      let volumeView = localStorage.getItem("volumeView") || "monthly";
 
-        // Load data and initialize dashboard
-        async function init() {
-            try {
-                const response = await fetch(`training_data.json?v=${Date.now()}`);
-                trainingData = await response.json();
-                renderDashboard();
-                setupUnitToggle();
-                setupViewToggle();
-            } catch (error) {
-                console.error('Error loading training data:', error);
-                document.querySelector('.container').innerHTML = `
+      // Load data and initialize dashboard
+      async function init() {
+        try {
+          const response = await fetch(`training_data.json?v=${Date.now()}`);
+          trainingData = await response.json();
+          renderDashboard();
+          setupUnitToggle();
+          setupViewToggle();
+        } catch (error) {
+          console.error("Error loading training data:", error);
+          document.querySelector(".container").innerHTML = `
                     <section style="text-align: center; padding: 4rem 2rem;">
                         <h2 style="color: #ff6b6b; margin-bottom: 1rem;">Unable to Load Data</h2>
                     </section>
                 `;
-            }
+        }
+      }
+
+      function setupUnitToggle() {
+        const toggleButton = document.getElementById("unitToggle");
+        updateToggleButton();
+
+        toggleButton.addEventListener("click", () => {
+          currentUnit = currentUnit === "lbs" ? "kg" : "lbs";
+          localStorage.setItem("weightUnit", currentUnit);
+          updateToggleButton();
+          renderDashboard();
+        });
+      }
+
+      function updateToggleButton() {
+        const toggleButton = document.getElementById("unitToggle");
+        toggleButton.textContent =
+          currentUnit === "lbs" ? "switch to kg" : "switch to lbs";
+      }
+
+      function setupViewToggle() {
+        const buttons = document.querySelectorAll(".view-toggle button");
+
+        // Update active state
+        function updateActiveButton() {
+          buttons.forEach((btn) => {
+            btn.classList.toggle("active", btn.dataset.view === volumeView);
+          });
         }
 
-        function setupUnitToggle() {
-            const toggleButton = document.getElementById('unitToggle');
-            updateToggleButton();
+        updateActiveButton();
 
-            toggleButton.addEventListener('click', () => {
-                currentUnit = currentUnit === 'lbs' ? 'kg' : 'lbs';
-                localStorage.setItem('weightUnit', currentUnit);
-                updateToggleButton();
-                renderDashboard();
-            });
-        }
-
-        function updateToggleButton() {
-            const toggleButton = document.getElementById('unitToggle');
-            toggleButton.textContent = currentUnit === 'lbs' ? 'switch to kg' : 'switch to lbs';
-        }
-
-        function setupViewToggle() {
-            const buttons = document.querySelectorAll('.view-toggle button');
-
-            // Update active state
-            function updateActiveButton() {
-                buttons.forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.view === volumeView);
-                });
-            }
-
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            volumeView = button.dataset.view;
+            localStorage.setItem("volumeView", volumeView);
             updateActiveButton();
-
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    volumeView = button.dataset.view;
-                    localStorage.setItem('volumeView', volumeView);
-                    updateActiveButton();
-                    renderAnnualVolumeChart();
-                });
-            });
-        }
-
-        function getVolume(volumeLbs, volumeKg) {
-            return currentUnit === 'lbs' ? volumeLbs : volumeKg;
-        }
-
-        function formatVolume(volumeLbs, volumeKg) {
-            const volume = getVolume(volumeLbs, volumeKg);
-            return `${volume.toLocaleString()} ${currentUnit}`;
-        }
-
-        function isoWeekToDate(weekString) {
-            // Convert YYYY-Www format to date of Monday of that week
-            const parts = weekString.match(/^(\d{4})-W(\d{2})$/);
-            if (!parts) return weekString;
-
-            const year = parseInt(parts[1]);
-            const week = parseInt(parts[2]);
-
-            // January 4th is always in week 1 (ISO 8601)
-            const jan4 = new Date(year, 0, 4);
-            const monday = new Date(jan4);
-            monday.setDate(jan4.getDate() - (jan4.getDay() || 7) + 1);
-            monday.setDate(monday.getDate() + (week - 1) * 7);
-
-            return monday.toISOString().split('T')[0];
-        }
-
-        function renderDashboard() {
-            renderSummaryStats();
             renderAnnualVolumeChart();
-            renderWorkoutHeatmap();
-            renderBigThree();
-            renderExerciseVolumeChart();
-            renderPRsAndClubs();
-            renderDayOfWeekChart();
-            renderPrograms();
-            renderNotableWorkouts();
-            renderMilestones();
-        }
+          });
+        });
+      }
 
-        function renderSummaryStats() {
-            const { summary } = trainingData;
-            const statsContainer = document.getElementById('summaryStats');
+      function getVolume(volumeLbs, volumeKg) {
+        return currentUnit === "lbs" ? volumeLbs : volumeKg;
+      }
 
-            const totalVolume = getVolume(summary.totalVolumeLbs, summary.totalVolumeKg);
-            const avgVolume = getVolume(summary.avgVolumePerWorkoutLbs, summary.avgVolumePerWorkoutKg);
-            const years = calculateYears(summary.firstWorkout, summary.lastWorkout);
+      function formatVolume(volumeLbs, volumeKg) {
+        const volume = getVolume(volumeLbs, volumeKg);
+        return `${volume.toLocaleString()} ${currentUnit}`;
+      }
 
-            statsContainer.innerHTML = `
+      function isoWeekToDate(weekString) {
+        // Convert YYYY-Www format to date of Monday of that week
+        const parts = weekString.match(/^(\d{4})-W(\d{2})$/);
+        if (!parts) return weekString;
+
+        const year = parseInt(parts[1]);
+        const week = parseInt(parts[2]);
+
+        // January 4th is always in week 1 (ISO 8601)
+        const jan4 = new Date(year, 0, 4);
+        const monday = new Date(jan4);
+        monday.setDate(jan4.getDate() - (jan4.getDay() || 7) + 1);
+        monday.setDate(monday.getDate() + (week - 1) * 7);
+
+        return monday.toISOString().split("T")[0];
+      }
+
+      function renderDashboard() {
+        renderSummaryStats();
+        renderAnnualVolumeChart();
+        renderWorkoutHeatmap();
+        renderBigThree();
+        renderExerciseVolumeChart();
+        renderPRsAndClubs();
+        renderDayOfWeekChart();
+        renderPrograms();
+        renderNotableWorkouts();
+        renderMilestones();
+      }
+
+      function renderSummaryStats() {
+        const { summary } = trainingData;
+        const statsContainer = document.getElementById("summaryStats");
+
+        const totalVolume = getVolume(
+          summary.totalVolumeLbs,
+          summary.totalVolumeKg,
+        );
+        const avgVolume = getVolume(
+          summary.avgVolumePerWorkoutLbs,
+          summary.avgVolumePerWorkoutKg,
+        );
+        const years = calculateYears(summary.firstWorkout, summary.lastWorkout);
+
+        statsContainer.innerHTML = `
                 <div class="stat-card">
                     <div class="stat-number">${summary.totalWorkouts}</div>
                     <div class="stat-label">Total Workouts</div>
@@ -559,619 +570,726 @@
                     <div class="stat-label">Years Training</div>
                 </div>
             `;
+      }
+
+      function calculateYears(startDate, endDate) {
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        const years = (end - start) / (1000 * 60 * 60 * 24 * 365.25);
+        return years.toFixed(1);
+      }
+
+      let annualVolumeChartInstance = null;
+      let bigThreeChartInstances = {};
+
+      // Shared Chart.js Configuration
+      const CHART_COLORS = {
+        grid: "#1a1a1a",
+        text: "#888",
+        textBright: "#e0e0e0",
+        tooltipBg: "#1a1a1a",
+        tooltipBorder: "#333",
+      };
+
+      const CHART_DEFAULTS = {
+        borderWidth: 2.5,
+        pointRadius: 0,
+        pointHoverRadius: 6,
+        pointHoverBorderWidth: 2,
+        tension: 0.4,
+        hitRadius: 10,
+      };
+
+      function getBaseChartOptions(overrides = {}) {
+        return {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              display: false,
+              position: "top",
+              labels: {
+                color: CHART_COLORS.textBright,
+                padding: 15,
+                font: { size: 12 },
+                usePointStyle: true,
+                pointStyle: "line",
+              },
+              ...(overrides.legend || {}),
+            },
+            tooltip: {
+              backgroundColor: CHART_COLORS.tooltipBg,
+              titleColor: CHART_COLORS.textBright,
+              bodyColor: CHART_COLORS.textBright,
+              borderColor: CHART_COLORS.tooltipBorder,
+              borderWidth: 1,
+              titleFont: { size: 13, weight: "600" },
+              bodyFont: { size: 12 },
+              padding: 12,
+              displayColors: false,
+              ...(overrides.tooltip || {}),
+            },
+            ...(overrides.plugins || {}),
+          },
+          scales: {
+            x: {
+              grid: { color: CHART_COLORS.grid },
+              ticks: {
+                color: CHART_COLORS.text,
+                font: { size: 11 },
+                maxRotation: 45,
+              },
+              ...(overrides.x || {}),
+            },
+            y: {
+              beginAtZero: false,
+              grid: { color: CHART_COLORS.grid },
+              ticks: {
+                color: CHART_COLORS.text,
+                font: { size: 11 },
+              },
+              ...(overrides.y || {}),
+            },
+          },
+        };
+      }
+
+      function createLineDataset(label, data, color, overrides = {}) {
+        return {
+          label,
+          data,
+          borderColor: color,
+          backgroundColor: color + "20",
+          borderWidth: CHART_DEFAULTS.borderWidth,
+          pointRadius: CHART_DEFAULTS.pointRadius,
+          pointHoverRadius: CHART_DEFAULTS.pointHoverRadius,
+          pointHoverBorderWidth: CHART_DEFAULTS.pointHoverBorderWidth,
+          pointBackgroundColor: color,
+          pointBorderColor: "#fff",
+          hitRadius: CHART_DEFAULTS.hitRadius,
+          tension: CHART_DEFAULTS.tension,
+          fill: false,
+          ...overrides,
+        };
+      }
+
+      function renderAnnualVolumeChart() {
+        const { volumeTimeSeries, bigThreeVolume } = trainingData;
+
+        // Helper function to aggregate Big 3 volume data
+        function aggregateBigThreeVolume(lift) {
+          if (
+            !bigThreeVolume ||
+            !bigThreeVolume[lift] ||
+            !bigThreeVolume[lift].dailyVolume
+          ) {
+            return [];
+          }
+
+          const dailyData = bigThreeVolume[lift].dailyVolume;
+
+          if (volumeView === "cumulative") {
+            let cumulativeTotal = 0;
+            return dailyData.map((d) => {
+              cumulativeTotal += getVolume(d.volumeLbs, d.volumeKg);
+              return { x: d.date, y: cumulativeTotal };
+            });
+          } else if (volumeView === "weekly") {
+            const weeklyData = {};
+            dailyData.forEach((d) => {
+              const date = new Date(d.date);
+              const weekStart = new Date(date);
+              weekStart.setDate(date.getDate() - date.getDay());
+              const weekKey = weekStart.toISOString().split("T")[0];
+              if (!weeklyData[weekKey]) {
+                weeklyData[weekKey] = { volumeLbs: 0, volumeKg: 0 };
+              }
+              weeklyData[weekKey].volumeLbs += d.volumeLbs;
+              weeklyData[weekKey].volumeKg += d.volumeKg;
+            });
+            return Object.entries(weeklyData).map(([date, vol]) => ({
+              x: date,
+              y: getVolume(vol.volumeLbs, vol.volumeKg),
+            }));
+          } else if (volumeView === "monthly") {
+            const monthlyData = {};
+            dailyData.forEach((d) => {
+              const monthKey = d.date.substring(0, 7);
+              if (!monthlyData[monthKey]) {
+                monthlyData[monthKey] = { volumeLbs: 0, volumeKg: 0 };
+              }
+              monthlyData[monthKey].volumeLbs += d.volumeLbs;
+              monthlyData[monthKey].volumeKg += d.volumeKg;
+            });
+            return Object.entries(monthlyData).map(([month, vol]) => ({
+              x: month + "-01",
+              y: getVolume(vol.volumeLbs, vol.volumeKg),
+            }));
+          } else if (volumeView === "yearly") {
+            const yearlyData = {};
+            dailyData.forEach((d) => {
+              const year = d.date.substring(0, 4);
+              if (!yearlyData[year]) {
+                yearlyData[year] = { volumeLbs: 0, volumeKg: 0 };
+              }
+              yearlyData[year].volumeLbs += d.volumeLbs;
+              yearlyData[year].volumeKg += d.volumeKg;
+            });
+            return Object.entries(yearlyData).map(([year, vol]) => ({
+              x: year,
+              y: getVolume(vol.volumeLbs, vol.volumeKg),
+            }));
+          }
+          return [];
         }
 
-        function calculateYears(startDate, endDate) {
-            const start = new Date(startDate);
-            const end = new Date(endDate);
-            const years = (end - start) / (1000 * 60 * 60 * 24 * 365.25);
-            return years.toFixed(1);
-        }
+        // Select data based on view mode
+        let data, chartData, label, timeUnit, displayFormat;
 
-        let annualVolumeChartInstance = null;
-        let bigThreeChartInstances = {};
-
-        // Shared Chart.js Configuration
-        const CHART_COLORS = {
-            grid: '#1a1a1a',
-            text: '#888',
-            textBright: '#e0e0e0',
-            tooltipBg: '#1a1a1a',
-            tooltipBorder: '#333'
-        };
-
-        const CHART_DEFAULTS = {
-            borderWidth: 2.5,
-            pointRadius: 0,
-            pointHoverRadius: 6,
-            pointHoverBorderWidth: 2,
-            tension: 0.4,
-            hitRadius: 10
-        };
-
-        function getBaseChartOptions(overrides = {}) {
+        if (volumeView === "cumulative") {
+          // Calculate cumulative volume from daily data
+          data = volumeTimeSeries.daily;
+          let cumulativeTotal = 0;
+          chartData = data.map((d) => {
+            cumulativeTotal += getVolume(d.volumeLbs, d.volumeKg);
             return {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: false,
-                        position: 'top',
-                        labels: {
-                            color: CHART_COLORS.textBright,
-                            padding: 15,
-                            font: { size: 12 },
-                            usePointStyle: true,
-                            pointStyle: 'line'
-                        },
-                        ...(overrides.legend || {})
-                    },
-                    tooltip: {
-                        backgroundColor: CHART_COLORS.tooltipBg,
-                        titleColor: CHART_COLORS.textBright,
-                        bodyColor: CHART_COLORS.textBright,
-                        borderColor: CHART_COLORS.tooltipBorder,
-                        borderWidth: 1,
-                        titleFont: { size: 13, weight: '600' },
-                        bodyFont: { size: 12 },
-                        padding: 12,
-                        displayColors: false,
-                        ...(overrides.tooltip || {})
-                    },
-                    ...(overrides.plugins || {})
+              x: d.date,
+              y: cumulativeTotal,
+            };
+          });
+          label = `Total Volume (${currentUnit})`;
+          timeUnit = "month";
+          displayFormat = { month: "MMM yyyy" };
+        } else if (volumeView === "weekly") {
+          data = volumeTimeSeries.weekly;
+          chartData = data.map((d) => ({
+            x: isoWeekToDate(d.week),
+            y: getVolume(d.volumeLbs, d.volumeKg),
+          }));
+          label = `Total Volume (${currentUnit})`;
+          timeUnit = "month";
+          displayFormat = { month: "MMM yyyy" };
+        } else if (volumeView === "yearly") {
+          data = volumeTimeSeries.yearly;
+          chartData = data.map((d) => ({
+            x: d.year.toString(),
+            y: getVolume(d.volumeLbs, d.volumeKg),
+          }));
+          label = `Total Volume (${currentUnit})`;
+          timeUnit = "year";
+          displayFormat = { year: "yyyy" };
+        } else {
+          // monthly (default)
+          data = volumeTimeSeries.monthly;
+          chartData = data.map((d) => ({
+            x: d.month + "-01",
+            y: getVolume(d.volumeLbs, d.volumeKg),
+          }));
+          label = `Total Volume (${currentUnit})`;
+          timeUnit = "month";
+          displayFormat = { month: "MMM yyyy" };
+        }
+
+        if (data.length === 0) return;
+
+        const canvas = document.getElementById("annualVolumeChart");
+        const ctx = canvas.getContext("2d");
+
+        // Destroy existing chart if it exists
+        if (annualVolumeChartInstance) {
+          annualVolumeChartInstance.destroy();
+        }
+
+        // Adjust visual settings based on view
+        const isCumulative = volumeView === "cumulative";
+        const isYearly = volumeView === "yearly";
+
+        // Build datasets array with total volume + Big 3
+        const datasets = [
+          createLineDataset(label, chartData, "#888", {
+            pointRadius: isYearly ? 6 : 0,
+            pointHoverRadius: isYearly ? 8 : 6,
+            fill: true,
+            backgroundColor: "#88888833",
+          }),
+        ];
+
+        // Add Big 3 datasets
+        const bigThreeConfig = [
+          { lift: "squat", name: "Squat", color: "#4a9eff" },
+          { lift: "bench", name: "Bench Press", color: "#ff6b6b" },
+          { lift: "deadlift", name: "Deadlift", color: "#51cf66" },
+          { lift: "ohp", name: "Overhead Press", color: "#ffd93d" },
+        ];
+
+        bigThreeConfig.forEach((config) => {
+          const liftData = aggregateBigThreeVolume(config.lift);
+          if (liftData.length > 0) {
+            datasets.push(
+              createLineDataset(config.name, liftData, config.color, {
+                pointRadius: isYearly ? 4 : 0,
+                pointHoverRadius: isYearly ? 6 : 4,
+              }),
+            );
+          }
+        });
+
+        annualVolumeChartInstance = new Chart(ctx, {
+          type: "line",
+          data: { datasets },
+          options: getBaseChartOptions({
+            legend: { display: true },
+            tooltip: {
+              callbacks: {
+                title: function (context) {
+                  if (volumeView === "yearly") {
+                    return context[0].label;
+                  }
+                  const date = new Date(context[0].parsed.x);
+                  if (volumeView === "weekly") {
+                    return date.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    });
+                  }
+                  return date.toLocaleDateString("en-US", {
+                    month: "long",
+                    year: "numeric",
+                  });
                 },
-                scales: {
-                    x: {
-                        grid: { color: CHART_COLORS.grid },
-                        ticks: {
-                            color: CHART_COLORS.text,
-                            font: { size: 11 },
-                            maxRotation: 45
-                        },
-                        ...(overrides.x || {})
-                    },
-                    y: {
-                        beginAtZero: false,
-                        grid: { color: CHART_COLORS.grid },
-                        ticks: {
-                            color: CHART_COLORS.text,
-                            font: { size: 11 }
-                        },
-                        ...(overrides.y || {})
-                    }
-                }
-            };
+                label: function (context) {
+                  const volume = context.parsed.y;
+                  const datasetLabel = context.dataset.label;
+                  if (isCumulative) {
+                    return `${datasetLabel}: ${(volume / 1000000).toFixed(2)}M ${currentUnit}`;
+                  }
+                  return `${datasetLabel}: ${(volume / 1000).toFixed(1)}K ${currentUnit}`;
+                },
+              },
+            },
+            x: {
+              type: isYearly ? "category" : "time",
+              time: !isYearly
+                ? {
+                    unit: timeUnit,
+                    displayFormats: displayFormat,
+                  }
+                : undefined,
+            },
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function (value) {
+                  if (isCumulative && value >= 1000000) {
+                    return (value / 1000000).toFixed(1) + "M";
+                  }
+                  return (value / 1000).toFixed(0) + "K";
+                },
+              },
+            },
+          }),
+        });
+      }
+
+      function renderWorkoutHeatmap() {
+        const { workoutCalendar } = trainingData;
+        const container = document.getElementById("workoutHeatmap");
+
+        // Get date range
+        const dates = Object.keys(workoutCalendar).sort();
+        if (dates.length === 0) return;
+
+        const startDate = new Date(dates[0]);
+        const endDate = new Date(dates[dates.length - 1]);
+
+        // Group dates by year
+        const yearRanges = {};
+        for (
+          let year = startDate.getFullYear();
+          year <= endDate.getFullYear();
+          year++
+        ) {
+          const yearStart = new Date(year, 0, 1);
+          const yearEnd = new Date(year, 11, 31);
+          yearRanges[year] = {
+            start: year === startDate.getFullYear() ? startDate : yearStart,
+            end: year === endDate.getFullYear() ? endDate : yearEnd,
+          };
         }
 
-        function createLineDataset(label, data, color, overrides = {}) {
-            return {
-                label,
-                data,
-                borderColor: color,
-                backgroundColor: color + '20',
-                borderWidth: CHART_DEFAULTS.borderWidth,
-                pointRadius: CHART_DEFAULTS.pointRadius,
-                pointHoverRadius: CHART_DEFAULTS.pointHoverRadius,
-                pointHoverBorderWidth: CHART_DEFAULTS.pointHoverBorderWidth,
-                pointBackgroundColor: color,
-                pointBorderColor: '#fff',
-                hitRadius: CHART_DEFAULTS.hitRadius,
-                tension: CHART_DEFAULTS.tension,
-                fill: false,
-                ...overrides
-            };
+        // Calculate dimensions
+        const cellSize = 12;
+        const cellPadding = 2;
+        const leftMargin = 60;
+        const topMargin = 20;
+        const rowHeight = (cellSize + cellPadding) * 7 + 50; // Extra space for year header
+        const yearGap = 25;
+        const width = leftMargin + (cellSize + cellPadding) * 53 + 20; // Max 53 weeks per year
+        const years = Object.keys(yearRanges).length;
+        const height = topMargin + (rowHeight + yearGap) * years + 60; // Extra space for legend
+
+        // Calculate volume percentiles for color scaling
+        const volumes = dates.map((d) =>
+          getVolume(workoutCalendar[d].volumeLbs, workoutCalendar[d].volumeKg),
+        );
+        const sortedVolumes = [...volumes]
+          .filter((v) => v > 0)
+          .sort((a, b) => a - b);
+        const getColorLevel = (volume) => {
+          if (volume === 0) return 0;
+          const percentile =
+            sortedVolumes.indexOf(sortedVolumes.find((v) => v >= volume)) /
+            sortedVolumes.length;
+          if (percentile < 0.2) return 1;
+          if (percentile < 0.4) return 2;
+          if (percentile < 0.6) return 3;
+          if (percentile < 0.8) return 4;
+          return 5;
+        };
+
+        const colors = [
+          "#161616",
+          "#0e4429",
+          "#006d32",
+          "#26a641",
+          "#39d353",
+          "#39d353",
+        ];
+        const monthNames = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+
+        const svg = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg",
+        );
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+        // Calculate workout counts per year
+        const yearWorkoutCounts = {};
+        Object.keys(workoutCalendar).forEach((dateStr) => {
+          const year = dateStr.substring(0, 4);
+          yearWorkoutCounts[year] =
+            (yearWorkoutCounts[year] || 0) + workoutCalendar[dateStr].count;
+        });
+
+        // Render each year as a separate row
+        let rowIndex = 0;
+        for (const [year, range] of Object.entries(yearRanges)) {
+          const rowY = topMargin + rowIndex * (rowHeight + yearGap);
+
+          // Year header with workout count
+          const yearLabel = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          yearLabel.setAttribute("x", leftMargin);
+          yearLabel.setAttribute("y", rowY + 15);
+          yearLabel.setAttribute("fill", "#e0e0e0");
+          yearLabel.setAttribute("font-size", "14");
+          yearLabel.setAttribute("font-weight", "600");
+          yearLabel.textContent = year;
+          svg.appendChild(yearLabel);
+
+          // Workout count for the year
+          const workoutCount = yearWorkoutCounts[year] || 0;
+          const countLabel = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          countLabel.setAttribute("x", leftMargin + 40);
+          countLabel.setAttribute("y", rowY + 15);
+          countLabel.setAttribute("fill", "#666");
+          countLabel.setAttribute("font-size", "12");
+          countLabel.textContent = `${workoutCount} workouts`;
+          svg.appendChild(countLabel);
+
+          // Separator line (except for first year)
+          if (rowIndex > 0) {
+            const line = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "line",
+            );
+            line.setAttribute("x1", leftMargin);
+            line.setAttribute("y1", rowY - yearGap / 2);
+            line.setAttribute("x2", width - 20);
+            line.setAttribute("y2", rowY - yearGap / 2);
+            line.setAttribute("stroke", "#1a1a1a");
+            line.setAttribute("stroke-width", "1");
+            svg.appendChild(line);
+          }
+
+          // Weekday labels for this row
+          const days = ["S", "M", "T", "W", "T", "F", "S"]; // Abbreviated
+          days.forEach((day, i) => {
+            const label = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "text",
+            );
+            label.setAttribute("x", 48);
+            label.setAttribute("y", rowY + 42 + i * (cellSize + cellPadding));
+            label.setAttribute("text-anchor", "end");
+            label.setAttribute("fill", "#888");
+            label.setAttribute("font-size", "10");
+            label.textContent = day;
+            svg.appendChild(label);
+          });
+
+          // Start from the Sunday before Jan 1st
+          const yearStart = new Date(parseInt(year), 0, 1);
+          const adjustedStart = new Date(yearStart);
+          adjustedStart.setDate(
+            adjustedStart.getDate() - adjustedStart.getDay(),
+          );
+
+          const yearEnd = new Date(parseInt(year), 11, 31);
+          const currentDate = new Date(adjustedStart);
+          let weekIndex = 0;
+          let lastMonth = -1;
+
+          while (currentDate <= yearEnd) {
+            const dateStr = currentDate.toISOString().split("T")[0];
+            const dayOfWeek = currentDate.getDay();
+            const month = currentDate.getMonth();
+            const dateYear = currentDate.getFullYear();
+
+            const x = leftMargin + weekIndex * (cellSize + cellPadding);
+            const y = rowY + 35 + dayOfWeek * (cellSize + cellPadding);
+
+            // Only draw cells for dates within the year and data range
+            if (currentDate >= range.start && currentDate <= range.end) {
+              const data = workoutCalendar[dateStr];
+              const volume = data
+                ? getVolume(data.volumeLbs, data.volumeKg)
+                : 0;
+              const colorLevel = getColorLevel(volume);
+
+              const rect = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+              );
+              rect.setAttribute("x", x);
+              rect.setAttribute("y", y);
+              rect.setAttribute("width", cellSize);
+              rect.setAttribute("height", cellSize);
+              rect.setAttribute("fill", colors[colorLevel]);
+              rect.setAttribute("class", "heatmap-cell");
+              rect.setAttribute("data-date", dateStr);
+              rect.setAttribute("data-volume", volume.toFixed(0));
+              rect.setAttribute("data-workouts", data ? data.count : 0);
+
+              rect.addEventListener("mouseenter", (e) =>
+                showTooltip(e, dateStr, volume, data ? data.count : 0),
+              );
+              rect.addEventListener("mouseleave", hideTooltip);
+
+              svg.appendChild(rect);
+            }
+
+            // Add month labels (only on Sundays, when month changes, and for current year)
+            if (
+              dayOfWeek === 0 &&
+              month !== lastMonth &&
+              dateYear === parseInt(year)
+            ) {
+              const monthLabel = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+              );
+              monthLabel.setAttribute("x", x);
+              monthLabel.setAttribute("y", rowY + 27);
+              monthLabel.setAttribute("fill", "#aaa");
+              monthLabel.setAttribute("font-size", "10");
+              monthLabel.setAttribute("font-weight", "600");
+              monthLabel.textContent = monthNames[month];
+              svg.appendChild(monthLabel);
+              lastMonth = month;
+            }
+
+            if (dayOfWeek === 6) weekIndex++;
+            currentDate.setDate(currentDate.getDate() + 1);
+          }
+
+          rowIndex++;
         }
 
-        function renderAnnualVolumeChart() {
-            const { volumeTimeSeries, bigThreeVolume } = trainingData;
+        // Add color legend at the bottom
+        const legendY = height - 40;
+        const legendX = width - 200;
 
-            // Helper function to aggregate Big 3 volume data
-            function aggregateBigThreeVolume(lift) {
-                if (!bigThreeVolume || !bigThreeVolume[lift] || !bigThreeVolume[lift].dailyVolume) {
-                    return [];
-                }
+        const legendLabel = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "text",
+        );
+        legendLabel.setAttribute("x", legendX - 40);
+        legendLabel.setAttribute("y", legendY + 10);
+        legendLabel.setAttribute("fill", "#888");
+        legendLabel.setAttribute("font-size", "10");
+        legendLabel.textContent = "Less";
+        svg.appendChild(legendLabel);
 
-                const dailyData = bigThreeVolume[lift].dailyVolume;
-
-                if (volumeView === 'cumulative') {
-                    let cumulativeTotal = 0;
-                    return dailyData.map(d => {
-                        cumulativeTotal += getVolume(d.volumeLbs, d.volumeKg);
-                        return { x: d.date, y: cumulativeTotal };
-                    });
-                } else if (volumeView === 'weekly') {
-                    const weeklyData = {};
-                    dailyData.forEach(d => {
-                        const date = new Date(d.date);
-                        const weekStart = new Date(date);
-                        weekStart.setDate(date.getDate() - date.getDay());
-                        const weekKey = weekStart.toISOString().split('T')[0];
-                        if (!weeklyData[weekKey]) {
-                            weeklyData[weekKey] = { volumeLbs: 0, volumeKg: 0 };
-                        }
-                        weeklyData[weekKey].volumeLbs += d.volumeLbs;
-                        weeklyData[weekKey].volumeKg += d.volumeKg;
-                    });
-                    return Object.entries(weeklyData).map(([date, vol]) => ({
-                        x: date,
-                        y: getVolume(vol.volumeLbs, vol.volumeKg)
-                    }));
-                } else if (volumeView === 'monthly') {
-                    const monthlyData = {};
-                    dailyData.forEach(d => {
-                        const monthKey = d.date.substring(0, 7);
-                        if (!monthlyData[monthKey]) {
-                            monthlyData[monthKey] = { volumeLbs: 0, volumeKg: 0 };
-                        }
-                        monthlyData[monthKey].volumeLbs += d.volumeLbs;
-                        monthlyData[monthKey].volumeKg += d.volumeKg;
-                    });
-                    return Object.entries(monthlyData).map(([month, vol]) => ({
-                        x: month + '-01',
-                        y: getVolume(vol.volumeLbs, vol.volumeKg)
-                    }));
-                } else if (volumeView === 'yearly') {
-                    const yearlyData = {};
-                    dailyData.forEach(d => {
-                        const year = d.date.substring(0, 4);
-                        if (!yearlyData[year]) {
-                            yearlyData[year] = { volumeLbs: 0, volumeKg: 0 };
-                        }
-                        yearlyData[year].volumeLbs += d.volumeLbs;
-                        yearlyData[year].volumeKg += d.volumeKg;
-                    });
-                    return Object.entries(yearlyData).map(([year, vol]) => ({
-                        x: year,
-                        y: getVolume(vol.volumeLbs, vol.volumeKg)
-                    }));
-                }
-                return [];
-            }
-
-            // Select data based on view mode
-            let data, chartData, label, timeUnit, displayFormat;
-
-            if (volumeView === 'cumulative') {
-                // Calculate cumulative volume from daily data
-                data = volumeTimeSeries.daily;
-                let cumulativeTotal = 0;
-                chartData = data.map(d => {
-                    cumulativeTotal += getVolume(d.volumeLbs, d.volumeKg);
-                    return {
-                        x: d.date,
-                        y: cumulativeTotal
-                    };
-                });
-                label = `Total Volume (${currentUnit})`;
-                timeUnit = 'month';
-                displayFormat = { month: 'MMM yyyy' };
-            } else if (volumeView === 'weekly') {
-                data = volumeTimeSeries.weekly;
-                chartData = data.map(d => ({
-                    x: isoWeekToDate(d.week),
-                    y: getVolume(d.volumeLbs, d.volumeKg)
-                }));
-                label = `Total Volume (${currentUnit})`;
-                timeUnit = 'month';
-                displayFormat = { month: 'MMM yyyy' };
-            } else if (volumeView === 'yearly') {
-                data = volumeTimeSeries.yearly;
-                chartData = data.map(d => ({
-                    x: d.year.toString(),
-                    y: getVolume(d.volumeLbs, d.volumeKg)
-                }));
-                label = `Total Volume (${currentUnit})`;
-                timeUnit = 'year';
-                displayFormat = { year: 'yyyy' };
-            } else { // monthly (default)
-                data = volumeTimeSeries.monthly;
-                chartData = data.map(d => ({
-                    x: d.month + '-01',
-                    y: getVolume(d.volumeLbs, d.volumeKg)
-                }));
-                label = `Total Volume (${currentUnit})`;
-                timeUnit = 'month';
-                displayFormat = { month: 'MMM yyyy' };
-            }
-
-            if (data.length === 0) return;
-
-            const canvas = document.getElementById('annualVolumeChart');
-            const ctx = canvas.getContext('2d');
-
-            // Destroy existing chart if it exists
-            if (annualVolumeChartInstance) {
-                annualVolumeChartInstance.destroy();
-            }
-
-            // Adjust visual settings based on view
-            const isCumulative = volumeView === 'cumulative';
-            const isYearly = volumeView === 'yearly';
-
-            // Build datasets array with total volume + Big 3
-            const datasets = [
-                createLineDataset(
-                    label,
-                    chartData,
-                    '#888',
-                    {
-                        pointRadius: isYearly ? 6 : 0,
-                        pointHoverRadius: isYearly ? 8 : 6,
-                        fill: true,
-                        backgroundColor: '#88888833'
-                    }
-                )
-            ];
-
-            // Add Big 3 datasets
-            const bigThreeConfig = [
-                { lift: 'squat', name: 'Squat', color: '#4a9eff' },
-                { lift: 'bench', name: 'Bench Press', color: '#ff6b6b' },
-                { lift: 'deadlift', name: 'Deadlift', color: '#51cf66' },
-                { lift: 'ohp', name: 'Overhead Press', color: '#ffd93d' }
-            ];
-
-            bigThreeConfig.forEach(config => {
-                const liftData = aggregateBigThreeVolume(config.lift);
-                if (liftData.length > 0) {
-                    datasets.push(createLineDataset(
-                        config.name,
-                        liftData,
-                        config.color,
-                        {
-                            pointRadius: isYearly ? 4 : 0,
-                            pointHoverRadius: isYearly ? 6 : 4
-                        }
-                    ));
-                }
-            });
-
-            annualVolumeChartInstance = new Chart(ctx, {
-                type: 'line',
-                data: { datasets },
-                options: getBaseChartOptions({
-                    legend: { display: true },
-                    tooltip: {
-                        callbacks: {
-                            title: function(context) {
-                                if (volumeView === 'yearly') {
-                                    return context[0].label;
-                                }
-                                const date = new Date(context[0].parsed.x);
-                                if (volumeView === 'weekly') {
-                                    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                                }
-                                return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-                            },
-                            label: function(context) {
-                                const volume = context.parsed.y;
-                                const datasetLabel = context.dataset.label;
-                                if (isCumulative) {
-                                    return `${datasetLabel}: ${(volume / 1000000).toFixed(2)}M ${currentUnit}`;
-                                }
-                                return `${datasetLabel}: ${(volume / 1000).toFixed(1)}K ${currentUnit}`;
-                            }
-                        }
-                    },
-                    x: {
-                        type: isYearly ? 'category' : 'time',
-                        time: !isYearly ? {
-                            unit: timeUnit,
-                            displayFormats: displayFormat
-                        } : undefined
-                    },
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: function(value) {
-                                if (isCumulative && value >= 1000000) {
-                                    return (value / 1000000).toFixed(1) + 'M';
-                                }
-                                return (value / 1000).toFixed(0) + 'K';
-                            }
-                        }
-                    }
-                })
-            });
+        // Legend boxes
+        for (let i = 0; i < 5; i++) {
+          const rect = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "rect",
+          );
+          rect.setAttribute("x", legendX + i * 16);
+          rect.setAttribute("y", legendY);
+          rect.setAttribute("width", cellSize);
+          rect.setAttribute("height", cellSize);
+          rect.setAttribute("fill", colors[i + 1]);
+          rect.setAttribute("stroke", "#1a1a1a");
+          rect.setAttribute("stroke-width", "1");
+          svg.appendChild(rect);
         }
 
-        function renderWorkoutHeatmap() {
-            const { workoutCalendar } = trainingData;
-            const container = document.getElementById('workoutHeatmap');
+        const legendLabel2 = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "text",
+        );
+        legendLabel2.setAttribute("x", legendX + 85);
+        legendLabel2.setAttribute("y", legendY + 10);
+        legendLabel2.setAttribute("fill", "#888");
+        legendLabel2.setAttribute("font-size", "10");
+        legendLabel2.textContent = "More";
+        svg.appendChild(legendLabel2);
 
-            // Get date range
-            const dates = Object.keys(workoutCalendar).sort();
-            if (dates.length === 0) return;
+        container.innerHTML = "";
+        container.appendChild(svg);
+      }
 
-            const startDate = new Date(dates[0]);
-            const endDate = new Date(dates[dates.length - 1]);
-
-            // Group dates by year
-            const yearRanges = {};
-            for (let year = startDate.getFullYear(); year <= endDate.getFullYear(); year++) {
-                const yearStart = new Date(year, 0, 1);
-                const yearEnd = new Date(year, 11, 31);
-                yearRanges[year] = {
-                    start: year === startDate.getFullYear() ? startDate : yearStart,
-                    end: year === endDate.getFullYear() ? endDate : yearEnd
-                };
-            }
-
-            // Calculate dimensions
-            const cellSize = 12;
-            const cellPadding = 2;
-            const leftMargin = 60;
-            const topMargin = 20;
-            const rowHeight = (cellSize + cellPadding) * 7 + 50; // Extra space for year header
-            const yearGap = 25;
-            const width = leftMargin + (cellSize + cellPadding) * 53 + 20; // Max 53 weeks per year
-            const years = Object.keys(yearRanges).length;
-            const height = topMargin + (rowHeight + yearGap) * years + 60; // Extra space for legend
-
-            // Calculate volume percentiles for color scaling
-            const volumes = dates.map(d => getVolume(workoutCalendar[d].volumeLbs, workoutCalendar[d].volumeKg));
-            const sortedVolumes = [...volumes].filter(v => v > 0).sort((a, b) => a - b);
-            const getColorLevel = (volume) => {
-                if (volume === 0) return 0;
-                const percentile = sortedVolumes.indexOf(sortedVolumes.find(v => v >= volume)) / sortedVolumes.length;
-                if (percentile < 0.2) return 1;
-                if (percentile < 0.4) return 2;
-                if (percentile < 0.6) return 3;
-                if (percentile < 0.8) return 4;
-                return 5;
-            };
-
-            const colors = ['#161616', '#0e4429', '#006d32', '#26a641', '#39d353', '#39d353'];
-            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-
-            // Calculate workout counts per year
-            const yearWorkoutCounts = {};
-            Object.keys(workoutCalendar).forEach(dateStr => {
-                const year = dateStr.substring(0, 4);
-                yearWorkoutCounts[year] = (yearWorkoutCounts[year] || 0) + workoutCalendar[dateStr].count;
-            });
-
-            // Render each year as a separate row
-            let rowIndex = 0;
-            for (const [year, range] of Object.entries(yearRanges)) {
-                const rowY = topMargin + rowIndex * (rowHeight + yearGap);
-
-                // Year header with workout count
-                const yearLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                yearLabel.setAttribute('x', leftMargin);
-                yearLabel.setAttribute('y', rowY + 15);
-                yearLabel.setAttribute('fill', '#e0e0e0');
-                yearLabel.setAttribute('font-size', '14');
-                yearLabel.setAttribute('font-weight', '600');
-                yearLabel.textContent = year;
-                svg.appendChild(yearLabel);
-
-                // Workout count for the year
-                const workoutCount = yearWorkoutCounts[year] || 0;
-                const countLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                countLabel.setAttribute('x', leftMargin + 40);
-                countLabel.setAttribute('y', rowY + 15);
-                countLabel.setAttribute('fill', '#666');
-                countLabel.setAttribute('font-size', '12');
-                countLabel.textContent = `${workoutCount} workouts`;
-                svg.appendChild(countLabel);
-
-                // Separator line (except for first year)
-                if (rowIndex > 0) {
-                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                    line.setAttribute('x1', leftMargin);
-                    line.setAttribute('y1', rowY - yearGap / 2);
-                    line.setAttribute('x2', width - 20);
-                    line.setAttribute('y2', rowY - yearGap / 2);
-                    line.setAttribute('stroke', '#1a1a1a');
-                    line.setAttribute('stroke-width', '1');
-                    svg.appendChild(line);
-                }
-
-                // Weekday labels for this row
-                const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S']; // Abbreviated
-                days.forEach((day, i) => {
-                    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                    label.setAttribute('x', 48);
-                    label.setAttribute('y', rowY + 42 + i * (cellSize + cellPadding));
-                    label.setAttribute('text-anchor', 'end');
-                    label.setAttribute('fill', '#888');
-                    label.setAttribute('font-size', '10');
-                    label.textContent = day;
-                    svg.appendChild(label);
-                });
-
-                // Start from the Sunday before Jan 1st
-                const yearStart = new Date(parseInt(year), 0, 1);
-                const adjustedStart = new Date(yearStart);
-                adjustedStart.setDate(adjustedStart.getDate() - adjustedStart.getDay());
-
-                const yearEnd = new Date(parseInt(year), 11, 31);
-                const currentDate = new Date(adjustedStart);
-                let weekIndex = 0;
-                let lastMonth = -1;
-
-                while (currentDate <= yearEnd) {
-                    const dateStr = currentDate.toISOString().split('T')[0];
-                    const dayOfWeek = currentDate.getDay();
-                    const month = currentDate.getMonth();
-                    const dateYear = currentDate.getFullYear();
-
-                    const x = leftMargin + weekIndex * (cellSize + cellPadding);
-                    const y = rowY + 35 + dayOfWeek * (cellSize + cellPadding);
-
-                    // Only draw cells for dates within the year and data range
-                    if (currentDate >= range.start && currentDate <= range.end) {
-                        const data = workoutCalendar[dateStr];
-                        const volume = data ? getVolume(data.volumeLbs, data.volumeKg) : 0;
-                        const colorLevel = getColorLevel(volume);
-
-                        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                        rect.setAttribute('x', x);
-                        rect.setAttribute('y', y);
-                        rect.setAttribute('width', cellSize);
-                        rect.setAttribute('height', cellSize);
-                        rect.setAttribute('fill', colors[colorLevel]);
-                        rect.setAttribute('class', 'heatmap-cell');
-                        rect.setAttribute('data-date', dateStr);
-                        rect.setAttribute('data-volume', volume.toFixed(0));
-                        rect.setAttribute('data-workouts', data ? data.count : 0);
-
-                        rect.addEventListener('mouseenter', (e) => showTooltip(e, dateStr, volume, data ? data.count : 0));
-                        rect.addEventListener('mouseleave', hideTooltip);
-
-                        svg.appendChild(rect);
-                    }
-
-                    // Add month labels (only on Sundays, when month changes, and for current year)
-                    if (dayOfWeek === 0 && month !== lastMonth && dateYear === parseInt(year)) {
-                        const monthLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                        monthLabel.setAttribute('x', x);
-                        monthLabel.setAttribute('y', rowY + 27);
-                        monthLabel.setAttribute('fill', '#aaa');
-                        monthLabel.setAttribute('font-size', '10');
-                        monthLabel.setAttribute('font-weight', '600');
-                        monthLabel.textContent = monthNames[month];
-                        svg.appendChild(monthLabel);
-                        lastMonth = month;
-                    }
-
-                    if (dayOfWeek === 6) weekIndex++;
-                    currentDate.setDate(currentDate.getDate() + 1);
-                }
-
-                rowIndex++;
-            }
-
-            // Add color legend at the bottom
-            const legendY = height - 40;
-            const legendX = width - 200;
-
-            const legendLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            legendLabel.setAttribute('x', legendX - 40);
-            legendLabel.setAttribute('y', legendY + 10);
-            legendLabel.setAttribute('fill', '#888');
-            legendLabel.setAttribute('font-size', '10');
-            legendLabel.textContent = 'Less';
-            svg.appendChild(legendLabel);
-
-            // Legend boxes
-            for (let i = 0; i < 5; i++) {
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                rect.setAttribute('x', legendX + i * 16);
-                rect.setAttribute('y', legendY);
-                rect.setAttribute('width', cellSize);
-                rect.setAttribute('height', cellSize);
-                rect.setAttribute('fill', colors[i + 1]);
-                rect.setAttribute('stroke', '#1a1a1a');
-                rect.setAttribute('stroke-width', '1');
-                svg.appendChild(rect);
-            }
-
-            const legendLabel2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            legendLabel2.setAttribute('x', legendX + 85);
-            legendLabel2.setAttribute('y', legendY + 10);
-            legendLabel2.setAttribute('fill', '#888');
-            legendLabel2.setAttribute('font-size', '10');
-            legendLabel2.textContent = 'More';
-            svg.appendChild(legendLabel2);
-
-            container.innerHTML = '';
-            container.appendChild(svg);
-        }
-
-        function showTooltip(e, date, volume, workouts) {
-            const tooltip = document.getElementById('tooltip');
-            tooltip.style.display = 'block';
-            tooltip.innerHTML = `
+      function showTooltip(e, date, volume, workouts) {
+        const tooltip = document.getElementById("tooltip");
+        tooltip.style.display = "block";
+        tooltip.innerHTML = `
                 <strong>${date}</strong><br>
                 Workouts: ${workouts}<br>
                 Volume: ${volume.toLocaleString()} ${currentUnit}
             `;
-            tooltip.style.left = (e.pageX + 10) + 'px';
-            tooltip.style.top = (e.pageY + 10) + 'px';
+        tooltip.style.left = e.pageX + 10 + "px";
+        tooltip.style.top = e.pageY + 10 + "px";
+      }
+
+      function hideTooltip() {
+        document.getElementById("tooltip").style.display = "none";
+      }
+
+      function renderBigThree() {
+        const { bigThree, bigThreeE1RM } = trainingData;
+        const container = document.getElementById("bigThreeCharts");
+        container.innerHTML = "";
+
+        if (
+          (!bigThree || Object.keys(bigThree).length === 0) &&
+          (!bigThreeE1RM || Object.keys(bigThreeE1RM).length === 0)
+        ) {
+          container.innerHTML =
+            '<p style="color: #888;">No Big 3 data available</p>';
+          return;
         }
 
-        function hideTooltip() {
-            document.getElementById('tooltip').style.display = 'none';
-        }
+        const order = ["squat", "bench", "deadlift", "ohp"];
+        const names = {
+          squat: "Squat",
+          bench: "Bench Press",
+          deadlift: "Deadlift",
+          ohp: "Overhead Press",
+        };
+        const colors = {
+          squat: "#4a9eff",
+          bench: "#ff6b6b",
+          deadlift: "#51cf66",
+          ohp: "#ffd93d",
+        };
 
-        function renderBigThree() {
-            const { bigThree, bigThreeE1RM } = trainingData;
-            const container = document.getElementById('bigThreeCharts');
-            container.innerHTML = '';
+        order.forEach((lift) => {
+          const hasE1RM =
+            bigThreeE1RM &&
+            bigThreeE1RM[lift] &&
+            bigThreeE1RM[lift].e1rmHistory &&
+            bigThreeE1RM[lift].e1rmHistory.length > 0;
+          const hasPRs =
+            bigThree &&
+            bigThree[lift] &&
+            bigThree[lift].prs &&
+            bigThree[lift].prs.length > 0;
 
-            if ((!bigThree || Object.keys(bigThree).length === 0) && (!bigThreeE1RM || Object.keys(bigThreeE1RM).length === 0)) {
-                container.innerHTML = '<p style="color: #888;">No Big 3 data available</p>';
-                return;
-            }
+          if (!hasE1RM && !hasPRs) return;
 
-            const order = ['squat', 'bench', 'deadlift', 'ohp'];
-            const names = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift', ohp: 'Overhead Press' };
-            const colors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66', ohp: '#ffd93d' };
+          const data = bigThree && bigThree[lift] ? bigThree[lift] : {};
+          const e1rmData =
+            bigThreeE1RM && bigThreeE1RM[lift] ? bigThreeE1RM[lift] : {};
 
-            order.forEach(lift => {
-                const hasE1RM = bigThreeE1RM && bigThreeE1RM[lift] && bigThreeE1RM[lift].e1rmHistory && bigThreeE1RM[lift].e1rmHistory.length > 0;
-                const hasPRs = bigThree && bigThree[lift] && bigThree[lift].prs && bigThree[lift].prs.length > 0;
+          const chartDiv = document.createElement("div");
+          chartDiv.className = "chart-container";
 
-                if (!hasE1RM && !hasPRs) return;
+          const title = document.createElement("h3");
+          title.textContent = names[lift];
+          title.style.marginTop = "0";
+          title.style.marginBottom = "1rem";
+          chartDiv.appendChild(title);
 
-                const data = bigThree && bigThree[lift] ? bigThree[lift] : {};
-                const e1rmData = bigThreeE1RM && bigThreeE1RM[lift] ? bigThreeE1RM[lift] : {};
+          // Show key stats
+          const stats = document.createElement("div");
+          stats.style.marginBottom = "1.5rem";
+          stats.style.display = "flex";
+          stats.style.gap = "2rem";
+          stats.style.flexWrap = "wrap";
+          stats.style.fontSize = "0.95rem";
+          stats.style.justifyContent = "center";
 
-                const chartDiv = document.createElement('div');
-                chartDiv.className = 'chart-container';
+          if (hasE1RM) {
+            const history = e1rmData.e1rmHistory;
+            const latest = history[history.length - 1];
+            const peak = history.reduce((max, point) =>
+              getVolume(point.e1rmLbs, point.e1rmKg) >
+              getVolume(max.e1rmLbs, max.e1rmKg)
+                ? point
+                : max,
+            );
+            const first = history[0];
 
-                const title = document.createElement('h3');
-                title.textContent = names[lift];
-                title.style.marginTop = '0';
-                title.style.marginBottom = '1rem';
-                chartDiv.appendChild(title);
+            const currentE1RM = Math.round(
+              getVolume(latest.e1rmLbs, latest.e1rmKg),
+            );
+            const peakE1RM = Math.round(getVolume(peak.e1rmLbs, peak.e1rmKg));
+            const startE1RM = Math.round(
+              getVolume(first.e1rmLbs, first.e1rmKg),
+            );
+            const totalGain = currentE1RM - startE1RM;
+            const gainPercent = ((totalGain / startE1RM) * 100).toFixed(0);
 
-                // Show key stats
-                const stats = document.createElement('div');
-                stats.style.marginBottom = '1.5rem';
-                stats.style.display = 'flex';
-                stats.style.gap = '2rem';
-                stats.style.flexWrap = 'wrap';
-                stats.style.fontSize = '0.95rem';
-                stats.style.justifyContent = 'center';
+            // Count actual PRs
+            const prCount = hasPRs ? data.prs.length : 0;
 
-                if (hasE1RM) {
-                    const history = e1rmData.e1rmHistory;
-                    const latest = history[history.length - 1];
-                    const peak = history.reduce((max, point) =>
-                        getVolume(point.e1rmLbs, point.e1rmKg) > getVolume(max.e1rmLbs, max.e1rmKg) ? point : max
-                    );
-                    const first = history[0];
-
-                    const currentE1RM = Math.round(getVolume(latest.e1rmLbs, latest.e1rmKg));
-                    const peakE1RM = Math.round(getVolume(peak.e1rmLbs, peak.e1rmKg));
-                    const startE1RM = Math.round(getVolume(first.e1rmLbs, first.e1rmKg));
-                    const totalGain = currentE1RM - startE1RM;
-                    const gainPercent = ((totalGain / startE1RM) * 100).toFixed(0);
-
-                    // Count actual PRs
-                    const prCount = hasPRs ? data.prs.length : 0;
-
-                    stats.innerHTML = `
+            stats.innerHTML = `
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Starting e1RM</div>
                             <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700;">${startE1RM} ${currentUnit}</div>
-                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(first.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
+                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(first.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</div>
                         </div>
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current e1RM</div>
                             <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700;">${currentE1RM} ${currentUnit}</div>
-                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(latest.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
+                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(latest.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</div>
                         </div>
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Peak e1RM</div>
                             <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700;">${peakE1RM} ${currentUnit}</div>
-                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(peak.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
+                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(peak.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</div>
                         </div>
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Total Gain</div>
@@ -1184,274 +1302,350 @@
                             <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">across all rep ranges</div>
                         </div>
                     `;
-                }
-                chartDiv.appendChild(stats);
+          }
+          chartDiv.appendChild(stats);
 
-                // Create canvas for Chart.js
-                const canvas = document.createElement('canvas');
-                canvas.id = `${lift}Chart`;
-                canvas.style.maxHeight = '350px';
-                chartDiv.appendChild(canvas);
+          // Create canvas for Chart.js
+          const canvas = document.createElement("canvas");
+          canvas.id = `${lift}Chart`;
+          canvas.style.maxHeight = "350px";
+          chartDiv.appendChild(canvas);
 
-                container.appendChild(chartDiv);
+          container.appendChild(chartDiv);
 
-                // Render chart after DOM update
-                setTimeout(() => renderBigThreeChart(lift, data.prs || [], e1rmData.e1rmHistory || [], colors[lift]), 0);
-            });
+          // Render chart after DOM update
+          setTimeout(
+            () =>
+              renderBigThreeChart(
+                lift,
+                data.prs || [],
+                e1rmData.e1rmHistory || [],
+                colors[lift],
+              ),
+            0,
+          );
+        });
 
-            if (container.children.length === 0) {
-                container.innerHTML = '<p style="color: #888;">No Big 3 data available</p>';
-            }
+        if (container.children.length === 0) {
+          container.innerHTML =
+            '<p style="color: #888;">No Big 3 data available</p>';
+        }
+      }
+
+      function renderBigThreeChart(lift, prs, e1rmHistory, color) {
+        const canvas = document.getElementById(`${lift}Chart`);
+        if (!canvas) return;
+
+        // Destroy existing chart if it exists
+        if (bigThreeChartInstances[lift]) {
+          bigThreeChartInstances[lift].destroy();
         }
 
-        function renderBigThreeChart(lift, prs, e1rmHistory, color) {
-            const canvas = document.getElementById(`${lift}Chart`);
-            if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        const datasets = [];
 
-            // Destroy existing chart if it exists
-            if (bigThreeChartInstances[lift]) {
-                bigThreeChartInstances[lift].destroy();
-            }
+        // Show e1RM progression
+        if (e1rmHistory && e1rmHistory.length > 0) {
+          const e1rmData = e1rmHistory.map((point) => ({
+            x: point.date,
+            y: getVolume(point.e1rmLbs, point.e1rmKg),
+            actualWeight: getVolume(
+              point.actualWeightLbs,
+              point.actualWeightKg,
+            ),
+            reps: point.reps,
+          }));
 
-            const ctx = canvas.getContext('2d');
-            const datasets = [];
-
-            // Show e1RM progression
-            if (e1rmHistory && e1rmHistory.length > 0) {
-                const e1rmData = e1rmHistory.map(point => ({
-                    x: point.date,
-                    y: getVolume(point.e1rmLbs, point.e1rmKg),
-                    actualWeight: getVolume(point.actualWeightLbs, point.actualWeightKg),
-                    reps: point.reps
-                }));
-
-                datasets.push(createLineDataset(
-                    'Estimated 1RM',
-                    e1rmData,
-                    color,
-                    {
-                        backgroundColor: color + '15',
-                        fill: true
-                    }
-                ));
-            }
-
-            // Add actual PR markers (rep-specific PRs, not estimated)
-            if (prs && prs.length > 0) {
-                const prData = prs.map(pr => ({
-                    x: pr.date,
-                    y: getVolume(pr.weightLbs, pr.weightKg),
-                    reps: pr.reps,
-                    isPR: true
-                }));
-
-                datasets.push({
-                    label: 'Actual PRs',
-                    data: prData,
-                    type: 'scatter',
-                    backgroundColor: '#ffd700',
-                    borderColor: '#ffd700',
-                    pointRadius: 6,
-                    pointHoverRadius: 8,
-                    pointStyle: 'star',
-                    showLine: false
-                });
-            }
-
-            // Plate milestones for reference lines (in lbs, convert if kg)
-            const plateMilestonesLbs = [135, 225, 315, 405, 495];
-            const plateMilestonesKg = [60, 100, 140, 180, 220];
-            const plateMilestones = currentUnit === 'lbs' ? plateMilestonesLbs : plateMilestonesKg;
-            const plateLabels = currentUnit === 'lbs'
-                ? ['1 plate', '2 plates', '3 plates', '4 plates', '5 plates']
-                : ['60kg', '100kg', '140kg', '180kg', '220kg'];
-
-            // Get y-axis range from data to filter relevant milestones
-            const yValues = e1rmHistory.map(p => getVolume(p.e1rmLbs, p.e1rmKg));
-            const minY = Math.min(...yValues);
-            const maxY = Math.max(...yValues);
-            const yPadding = (maxY - minY) * 0.1;
-
-            // Create annotation lines for plate milestones within data range
-            const annotations = {};
-            plateMilestones.forEach((weight, i) => {
-                if (weight >= minY - yPadding && weight <= maxY + yPadding) {
-                    annotations[`plate${i}`] = {
-                        type: 'line',
-                        yMin: weight,
-                        yMax: weight,
-                        borderColor: '#ffffff22',
-                        borderWidth: 1,
-                        borderDash: [5, 5],
-                        label: {
-                            display: true,
-                            content: plateLabels[i],
-                            position: 'end',
-                            backgroundColor: 'transparent',
-                            color: '#666',
-                            font: { size: 10 }
-                        }
-                    };
-                }
-            });
-
-            bigThreeChartInstances[lift] = new Chart(ctx, {
-                type: 'line',
-                data: { datasets },
-                options: getBaseChartOptions({
-                    plugins: {
-                        annotation: {
-                            annotations: annotations
-                        }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            title: function(context) {
-                                const date = new Date(context[0].parsed.x);
-                                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                            },
-                            label: function(context) {
-                                const value = context.parsed.y;
-                                if (context.raw.isPR) {
-                                    return `🏆 PR: ${value} ${currentUnit} × ${context.raw.reps} reps`;
-                                }
-                                return `Estimated 1RM: ${value} ${currentUnit}`;
-                            },
-                            afterLabel: function(context) {
-                                if (context.raw.actualWeight && !context.raw.isPR) {
-                                    return `From: ${context.raw.actualWeight} ${currentUnit} × ${context.raw.reps} reps`;
-                                }
-                                return '';
-                            }
-                        }
-                    },
-                    x: {
-                        type: 'time',
-                        time: {
-                            unit: 'month',
-                            displayFormats: { month: 'MMM yyyy' }
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            callback: function(value) {
-                                return value + ' ' + currentUnit;
-                            }
-                        }
-                    }
-                })
-            });
+          datasets.push(
+            createLineDataset("Estimated 1RM", e1rmData, color, {
+              backgroundColor: color + "15",
+              fill: true,
+            }),
+          );
         }
 
-        function renderExerciseVolumeChart() {
-            const { exerciseProgress } = trainingData;
-            const container = document.getElementById('exerciseVolumeChart');
+        // Add actual PR markers (rep-specific PRs, not estimated)
+        if (prs && prs.length > 0) {
+          const prData = prs.map((pr) => ({
+            x: pr.date,
+            y: getVolume(pr.weightLbs, pr.weightKg),
+            reps: pr.reps,
+            isPR: true,
+          }));
 
-            // Sort exercises by volume and take top 15
-            const exercises = Object.entries(exerciseProgress)
-                .map(([name, data]) => ({
-                    name,
-                    volume: getVolume(data.totalVolumeLbs, data.totalVolumeKg)
-                }))
-                .sort((a, b) => b.volume - a.volume)
-                .slice(0, 15);
-
-            if (exercises.length === 0) return;
-
-            const width = container.offsetWidth;
-            const height = exercises.length * 35 + 60;
-            const padding = { top: 20, right: 100, bottom: 40, left: 200 };
-
-            const maxVolume = Math.max(...exercises.map(e => e.volume));
-
-            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-
-            exercises.forEach((exercise, i) => {
-                const y = padding.top + i * 35;
-                const barWidth = ((exercise.volume / maxVolume) * (width - padding.left - padding.right));
-
-                // Bar
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                rect.setAttribute('x', padding.left);
-                rect.setAttribute('y', y);
-                rect.setAttribute('width', barWidth);
-                rect.setAttribute('height', 25);
-                rect.setAttribute('fill', '#4a9eff');
-                svg.appendChild(rect);
-
-                // Exercise name
-                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                label.setAttribute('x', padding.left - 10);
-                label.setAttribute('y', y + 17);
-                label.setAttribute('text-anchor', 'end');
-                label.setAttribute('fill', '#e0e0e0');
-                label.setAttribute('font-size', '12');
-                label.textContent = exercise.name;
-                svg.appendChild(label);
-
-                // Volume label
-                const volumeLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                volumeLabel.setAttribute('x', padding.left + barWidth + 10);
-                volumeLabel.setAttribute('y', y + 17);
-                volumeLabel.setAttribute('fill', '#888');
-                volumeLabel.setAttribute('font-size', '12');
-                volumeLabel.textContent = `${Math.round(exercise.volume / 1000)}K`;
-                svg.appendChild(volumeLabel);
-            });
-
-            container.innerHTML = '';
-            container.appendChild(svg);
+          datasets.push({
+            label: "Actual PRs",
+            data: prData,
+            type: "scatter",
+            backgroundColor: "#ffd700",
+            borderColor: "#ffd700",
+            pointRadius: 6,
+            pointHoverRadius: 8,
+            pointStyle: "star",
+            showLine: false,
+          });
         }
 
-        function renderPRsAndClubs() {
-            const { powerliftingTotals, plateMilestones, allTimePRs } = trainingData;
-            const container = document.getElementById('prsClubsContent');
+        // Plate milestones for reference lines (in lbs, convert if kg)
+        const plateMilestonesLbs = [135, 225, 315, 405, 495];
+        const plateMilestonesKg = [60, 100, 140, 180, 220];
+        const plateMilestones =
+          currentUnit === "lbs" ? plateMilestonesLbs : plateMilestonesKg;
+        const plateLabels =
+          currentUnit === "lbs"
+            ? ["1 plate", "2 plates", "3 plates", "4 plates", "5 plates"]
+            : ["60kg", "100kg", "140kg", "180kg", "220kg"];
 
-            if (!powerliftingTotals && !plateMilestones && !allTimePRs) {
-                container.innerHTML = '<p style="color: #888;">No PR data available</p>';
-                return;
-            }
+        // Get y-axis range from data to filter relevant milestones
+        const yValues = e1rmHistory.map((p) => getVolume(p.e1rmLbs, p.e1rmKg));
+        const minY = Math.min(...yValues);
+        const maxY = Math.max(...yValues);
+        const yPadding = (maxY - minY) * 0.1;
 
-            let html = '';
+        // Create annotation lines for plate milestones within data range
+        const annotations = {};
+        plateMilestones.forEach((weight, i) => {
+          if (weight >= minY - yPadding && weight <= maxY + yPadding) {
+            annotations[`plate${i}`] = {
+              type: "line",
+              yMin: weight,
+              yMax: weight,
+              borderColor: "#ffffff22",
+              borderWidth: 1,
+              borderDash: [5, 5],
+              label: {
+                display: true,
+                content: plateLabels[i],
+                position: "end",
+                backgroundColor: "transparent",
+                color: "#666",
+                font: { size: 10 },
+              },
+            };
+          }
+        });
 
-            // 1000 lb Club Section
-            if (powerliftingTotals && powerliftingTotals.current) {
-                const current = powerliftingTotals.current;
-                const peak = powerliftingTotals.peak;
-                const clubs = powerliftingTotals.clubMilestones || {};
+        bigThreeChartInstances[lift] = new Chart(ctx, {
+          type: "line",
+          data: { datasets },
+          options: getBaseChartOptions({
+            plugins: {
+              annotation: {
+                annotations: annotations,
+              },
+            },
+            tooltip: {
+              callbacks: {
+                title: function (context) {
+                  const date = new Date(context[0].parsed.x);
+                  return date.toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  });
+                },
+                label: function (context) {
+                  const value = context.parsed.y;
+                  if (context.raw.isPR) {
+                    return `🏆 PR: ${value} ${currentUnit} × ${context.raw.reps} reps`;
+                  }
+                  return `Estimated 1RM: ${value} ${currentUnit}`;
+                },
+                afterLabel: function (context) {
+                  if (context.raw.actualWeight && !context.raw.isPR) {
+                    return `From: ${context.raw.actualWeight} ${currentUnit} × ${context.raw.reps} reps`;
+                  }
+                  return "";
+                },
+              },
+            },
+            x: {
+              type: "time",
+              time: {
+                unit: "month",
+                displayFormats: { month: "MMM yyyy" },
+              },
+            },
+            y: {
+              ticks: {
+                callback: function (value) {
+                  return value + " " + currentUnit;
+                },
+              },
+            },
+          }),
+        });
+      }
 
-                const totalValue = currentUnit === 'lbs' ? current.totalLbs : current.totalKg;
-                const peakValue = peak ? (currentUnit === 'lbs' ? peak.totalLbs : peak.totalKg) : totalValue;
-                const squatValue = currentUnit === 'lbs' ? current.squatE1rm : Math.round(current.squatE1rm * 0.453592);
-                const benchValue = currentUnit === 'lbs' ? current.benchE1rm : Math.round(current.benchE1rm * 0.453592);
-                const deadliftValue = currentUnit === 'lbs' ? current.deadliftE1rm : Math.round(current.deadliftE1rm * 0.453592);
+      function renderExerciseVolumeChart() {
+        const { exerciseProgress } = trainingData;
+        const container = document.getElementById("exerciseVolumeChart");
 
-                // Determine club status
-                const clubThresholds = [
-                    { threshold: 1500, name: '1500 lb Club', color: '#ffd700', emoji: '👑' },
-                    { threshold: 1200, name: '1200 lb Club', color: '#c0c0c0', emoji: '💪' },
-                    { threshold: 1000, name: '1000 lb Club', color: '#cd7f32', emoji: '🏆' },
-                    { threshold: 750, name: '750 lb Club', color: '#4a9eff', emoji: '💎' },
-                    { threshold: 500, name: '500 lb Club', color: '#51cf66', emoji: '⭐' }
-                ];
+        // Sort exercises by volume and take top 15
+        const exercises = Object.entries(exerciseProgress)
+          .map(([name, data]) => ({
+            name,
+            volume: getVolume(data.totalVolumeLbs, data.totalVolumeKg),
+          }))
+          .sort((a, b) => b.volume - a.volume)
+          .slice(0, 15);
 
-                const achievedClub = clubThresholds.find(c => current.totalLbs >= c.threshold);
-                const nextClub = clubThresholds.slice().reverse().find(c => current.totalLbs < c.threshold);
+        if (exercises.length === 0) return;
 
-                html += `<div class="chart-container">`;
-                html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                    ${achievedClub ? achievedClub.emoji : '🎯'} Powerlifting Total (S+B+D)
+        const width = container.offsetWidth;
+        const height = exercises.length * 35 + 60;
+        const padding = { top: 20, right: 100, bottom: 40, left: 200 };
+
+        const maxVolume = Math.max(...exercises.map((e) => e.volume));
+
+        const svg = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg",
+        );
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+        exercises.forEach((exercise, i) => {
+          const y = padding.top + i * 35;
+          const barWidth =
+            (exercise.volume / maxVolume) *
+            (width - padding.left - padding.right);
+
+          // Bar
+          const rect = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "rect",
+          );
+          rect.setAttribute("x", padding.left);
+          rect.setAttribute("y", y);
+          rect.setAttribute("width", barWidth);
+          rect.setAttribute("height", 25);
+          rect.setAttribute("fill", "#4a9eff");
+          svg.appendChild(rect);
+
+          // Exercise name
+          const label = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          label.setAttribute("x", padding.left - 10);
+          label.setAttribute("y", y + 17);
+          label.setAttribute("text-anchor", "end");
+          label.setAttribute("fill", "#e0e0e0");
+          label.setAttribute("font-size", "12");
+          label.textContent = exercise.name;
+          svg.appendChild(label);
+
+          // Volume label
+          const volumeLabel = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          volumeLabel.setAttribute("x", padding.left + barWidth + 10);
+          volumeLabel.setAttribute("y", y + 17);
+          volumeLabel.setAttribute("fill", "#888");
+          volumeLabel.setAttribute("font-size", "12");
+          volumeLabel.textContent = `${Math.round(exercise.volume / 1000)}K`;
+          svg.appendChild(volumeLabel);
+        });
+
+        container.innerHTML = "";
+        container.appendChild(svg);
+      }
+
+      function renderPRsAndClubs() {
+        const { powerliftingTotals, plateMilestones, allTimePRs } =
+          trainingData;
+        const container = document.getElementById("prsClubsContent");
+
+        if (!powerliftingTotals && !plateMilestones && !allTimePRs) {
+          container.innerHTML =
+            '<p style="color: #888;">No PR data available</p>';
+          return;
+        }
+
+        let html = "";
+
+        // 1000 lb Club Section
+        if (powerliftingTotals && powerliftingTotals.current) {
+          const current = powerliftingTotals.current;
+          const peak = powerliftingTotals.peak;
+          const clubs = powerliftingTotals.clubMilestones || {};
+
+          const totalValue =
+            currentUnit === "lbs" ? current.totalLbs : current.totalKg;
+          const peakValue = peak
+            ? currentUnit === "lbs"
+              ? peak.totalLbs
+              : peak.totalKg
+            : totalValue;
+          const squatValue =
+            currentUnit === "lbs"
+              ? current.squatE1rm
+              : Math.round(current.squatE1rm * 0.453592);
+          const benchValue =
+            currentUnit === "lbs"
+              ? current.benchE1rm
+              : Math.round(current.benchE1rm * 0.453592);
+          const deadliftValue =
+            currentUnit === "lbs"
+              ? current.deadliftE1rm
+              : Math.round(current.deadliftE1rm * 0.453592);
+
+          // Determine club status
+          const clubThresholds = [
+            {
+              threshold: 1500,
+              name: "1500 lb Club",
+              color: "#ffd700",
+              emoji: "👑",
+            },
+            {
+              threshold: 1200,
+              name: "1200 lb Club",
+              color: "#c0c0c0",
+              emoji: "💪",
+            },
+            {
+              threshold: 1000,
+              name: "1000 lb Club",
+              color: "#cd7f32",
+              emoji: "🏆",
+            },
+            {
+              threshold: 750,
+              name: "750 lb Club",
+              color: "#4a9eff",
+              emoji: "💎",
+            },
+            {
+              threshold: 500,
+              name: "500 lb Club",
+              color: "#51cf66",
+              emoji: "⭐",
+            },
+          ];
+
+          const achievedClub = clubThresholds.find(
+            (c) => current.totalLbs >= c.threshold,
+          );
+          const nextClub = clubThresholds
+            .slice()
+            .reverse()
+            .find((c) => current.totalLbs < c.threshold);
+
+          html += `<div class="chart-container">`;
+          html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    ${achievedClub ? achievedClub.emoji : "🎯"} Powerlifting Total (S+B+D)
                 </h3>`;
 
-                // Current total display
-                html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; text-align: center; margin-bottom: 2rem;">`;
+          // Current total display
+          html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; text-align: center; margin-bottom: 2rem;">`;
 
-                html += `
+          html += `
                     <div>
                         <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current Total</div>
-                        <div style="color: ${achievedClub ? achievedClub.color : '#e0e0e0'}; font-size: 2rem; font-weight: 700;">${Math.round(totalValue)} ${currentUnit}</div>
-                        ${achievedClub ? `<div style="color: ${achievedClub.color}; font-size: 0.8rem; margin-top: 0.25rem;">${achievedClub.name}</div>` : ''}
+                        <div style="color: ${achievedClub ? achievedClub.color : "#e0e0e0"}; font-size: 2rem; font-weight: 700;">${Math.round(totalValue)} ${currentUnit}</div>
+                        ${achievedClub ? `<div style="color: ${achievedClub.color}; font-size: 0.8rem; margin-top: 0.25rem;">${achievedClub.name}</div>` : ""}
                     </div>
                     <div>
                         <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Squat e1RM</div>
@@ -1467,11 +1661,12 @@
                     </div>
                 </div>`;
 
-                // Next club progress
-                if (nextClub) {
-                    const remaining = nextClub.threshold - current.totalLbs;
-                    const progressPercent = (current.totalLbs / nextClub.threshold) * 100;
-                    html += `
+          // Next club progress
+          if (nextClub) {
+            const remaining = nextClub.threshold - current.totalLbs;
+            const progressPercent =
+              (current.totalLbs / nextClub.threshold) * 100;
+            html += `
                         <div style="margin-top: 1.5rem;">
                             <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
                                 <span style="color: #888;">Progress to ${nextClub.name}</span>
@@ -1482,16 +1677,20 @@
                             </div>
                         </div>
                     `;
-                }
+          }
 
-                // Club milestones achieved
-                const achievedMilestones = Object.entries(clubs).sort((a, b) => parseInt(b[0]) - parseInt(a[0]));
-                if (achievedMilestones.length > 0) {
-                    html += `<div style="margin-top: 2rem;"><h4 style="margin-bottom: 1rem; color: #888;">Club Milestones Achieved</h4>`;
-                    achievedMilestones.forEach(([threshold, data]) => {
-                        const club = clubThresholds.find(c => c.threshold === parseInt(threshold));
-                        if (club && data) {
-                            html += `
+          // Club milestones achieved
+          const achievedMilestones = Object.entries(clubs).sort(
+            (a, b) => parseInt(b[0]) - parseInt(a[0]),
+          );
+          if (achievedMilestones.length > 0) {
+            html += `<div style="margin-top: 2rem;"><h4 style="margin-bottom: 1rem; color: #888;">Club Milestones Achieved</h4>`;
+            achievedMilestones.forEach(([threshold, data]) => {
+              const club = clubThresholds.find(
+                (c) => c.threshold === parseInt(threshold),
+              );
+              if (club && data) {
+                html += `
                                 <div class="milestone" style="border-left: 3px solid ${club.color}; padding-left: 1rem; margin: 0.5rem 0;">
                                     <div class="milestone-date">${data.date}</div>
                                     <div class="milestone-text">
@@ -1500,232 +1699,302 @@
                                     </div>
                                 </div>
                             `;
-                        }
-                    });
-                    html += `</div>`;
-                }
+              }
+            });
+            html += `</div>`;
+          }
 
-                html += `</div>`;
-            }
+          html += `</div>`;
+        }
 
-            // Plate Milestones Section
-            if (plateMilestones && Object.keys(plateMilestones).length > 0) {
-                const liftNames = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift', ohp: 'Overhead Press' };
-                const liftColors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66', ohp: '#ffd93d' };
-                const plateLabels = { 1: '1 Plate (135)', 2: '2 Plates (225)', 3: '3 Plates (315)', 4: '4 Plates (405)', 5: '5 Plates (495)' };
+        // Plate Milestones Section
+        if (plateMilestones && Object.keys(plateMilestones).length > 0) {
+          const liftNames = {
+            squat: "Squat",
+            bench: "Bench Press",
+            deadlift: "Deadlift",
+            ohp: "Overhead Press",
+          };
+          const liftColors = {
+            squat: "#4a9eff",
+            bench: "#ff6b6b",
+            deadlift: "#51cf66",
+            ohp: "#ffd93d",
+          };
+          const plateLabels = {
+            1: "1 Plate (135)",
+            2: "2 Plates (225)",
+            3: "3 Plates (315)",
+            4: "4 Plates (405)",
+            5: "5 Plates (495)",
+          };
 
-                html += `<div class="chart-container">`;
-                html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏅 Plate Milestones</h3>`;
+          html += `<div class="chart-container">`;
+          html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏅 Plate Milestones</h3>`;
 
-                html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">`;
+          html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">`;
 
-                ['squat', 'bench', 'deadlift', 'ohp'].forEach(lift => {
-                    const liftData = plateMilestones[lift] || {};
-                    const maxPlates = Math.max(...Object.keys(liftData).map(Number), 0);
+          ["squat", "bench", "deadlift", "ohp"].forEach((lift) => {
+            const liftData = plateMilestones[lift] || {};
+            const maxPlates = Math.max(...Object.keys(liftData).map(Number), 0);
 
-                    html += `<div>`;
-                    html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
+            html += `<div>`;
+            html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
 
-                    [1, 2, 3, 4, 5].forEach(plates => {
-                        const achieved = liftData[plates];
-                        const plateWeight = currentUnit === 'lbs' ? plates * 90 + 45 : Math.round((plates * 90 + 45) * 0.453592);
-                        const plateLabel = currentUnit === 'lbs'
-                            ? `${plates} plate${plates > 1 ? 's' : ''} (${plates * 90 + 45})`
-                            : `${plates} plate${plates > 1 ? 's' : ''} (${plateWeight}kg)`;
+            [1, 2, 3, 4, 5].forEach((plates) => {
+              const achieved = liftData[plates];
+              const plateWeight =
+                currentUnit === "lbs"
+                  ? plates * 90 + 45
+                  : Math.round((plates * 90 + 45) * 0.453592);
+              const plateLabel =
+                currentUnit === "lbs"
+                  ? `${plates} plate${plates > 1 ? "s" : ""} (${plates * 90 + 45})`
+                  : `${plates} plate${plates > 1 ? "s" : ""} (${plateWeight}kg)`;
 
-                        if (achieved) {
-                            html += `
+              if (achieved) {
+                html += `
                                 <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a;">
                                     <span style="font-size: 1.25rem;">✅</span>
                                     <span style="flex: 1; color: #e0e0e0;">${plateLabel}</span>
                                     <span style="color: #888; font-size: 0.875rem;">${achieved.date}</span>
                                 </div>
                             `;
-                        } else {
-                            html += `
+              } else {
+                html += `
                                 <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a; opacity: 0.4;">
                                     <span style="font-size: 1.25rem;">⬜</span>
                                     <span style="flex: 1; color: #888;">${plateLabel}</span>
                                     <span style="color: #666; font-size: 0.875rem;">—</span>
                                 </div>
                             `;
-                        }
-                    });
+              }
+            });
 
-                    html += `</div>`;
-                });
+            html += `</div>`;
+          });
 
-                html += `</div></div>`;
-            }
+          html += `</div></div>`;
+        }
 
-            // All-Time PRs Section
-            if (allTimePRs && Object.keys(allTimePRs).length > 0) {
-                const liftNames = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift', ohp: 'Overhead Press' };
-                const liftColors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66', ohp: '#ffd93d' };
+        // All-Time PRs Section
+        if (allTimePRs && Object.keys(allTimePRs).length > 0) {
+          const liftNames = {
+            squat: "Squat",
+            bench: "Bench Press",
+            deadlift: "Deadlift",
+            ohp: "Overhead Press",
+          };
+          const liftColors = {
+            squat: "#4a9eff",
+            bench: "#ff6b6b",
+            deadlift: "#51cf66",
+            ohp: "#ffd93d",
+          };
 
-                html += `<div class="chart-container">`;
-                html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏆 All-Time PRs</h3>`;
+          html += `<div class="chart-container">`;
+          html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏆 All-Time PRs</h3>`;
 
-                html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">`;
+          html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">`;
 
-                ['squat', 'bench', 'deadlift', 'ohp'].forEach(lift => {
-                    const liftData = allTimePRs[lift];
-                    if (!liftData) return;
+          ["squat", "bench", "deadlift", "ohp"].forEach((lift) => {
+            const liftData = allTimePRs[lift];
+            if (!liftData) return;
 
-                    const maxEver = liftData.maxEver;
-                    const bestE1rm = liftData.bestE1rm;
-                    const repPRs = liftData.repPRs || {};
+            const maxEver = liftData.maxEver;
+            const bestE1rm = liftData.bestE1rm;
+            const repPRs = liftData.repPRs || {};
 
-                    html += `<div>`;
-                    html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
+            html += `<div>`;
+            html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
 
-                    // Best e1RM
-                    if (bestE1rm) {
-                        const e1rmValue = currentUnit === 'lbs' ? bestE1rm.e1rmLbs : bestE1rm.e1rmKg;
-                        html += `
+            // Best e1RM
+            if (bestE1rm) {
+              const e1rmValue =
+                currentUnit === "lbs" ? bestE1rm.e1rmLbs : bestE1rm.e1rmKg;
+              html += `
                             <div style="background: #111; border: 1px solid ${liftColors[lift]}44; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center;">
                                 <div style="color: #888; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Best e1RM</div>
                                 <div style="color: ${liftColors[lift]}; font-size: 1.75rem; font-weight: 700;">${Math.round(e1rmValue)} ${currentUnit}</div>
                             </div>
                         `;
-                    }
+            }
 
-                    // Rep PRs table
-                    const sortedReps = Object.keys(repPRs).map(Number).sort((a, b) => a - b);
-                    if (sortedReps.length > 0) {
-                        html += `<div style="font-size: 0.875rem;">`;
-                        sortedReps.forEach(reps => {
-                            const pr = repPRs[reps];
-                            const weight = currentUnit === 'lbs' ? pr.weightLbs : pr.weightKg;
-                            html += `
+            // Rep PRs table
+            const sortedReps = Object.keys(repPRs)
+              .map(Number)
+              .sort((a, b) => a - b);
+            if (sortedReps.length > 0) {
+              html += `<div style="font-size: 0.875rem;">`;
+              sortedReps.forEach((reps) => {
+                const pr = repPRs[reps];
+                const weight =
+                  currentUnit === "lbs" ? pr.weightLbs : pr.weightKg;
+                html += `
                                 <div style="display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px solid #1a1a1a;">
                                     <span style="color: #888;">${reps}RM</span>
                                     <span style="color: #e0e0e0; font-weight: 600;">${Math.round(weight)} ${currentUnit}</span>
                                 </div>
                             `;
-                        });
-                        html += `</div>`;
-                    }
-
-                    html += `</div>`;
-                });
-
-                html += `</div></div>`;
+              });
+              html += `</div>`;
             }
 
-            container.innerHTML = html;
+            html += `</div>`;
+          });
+
+          html += `</div></div>`;
         }
 
-        function renderDayOfWeekChart() {
-            const { workoutsByDayOfWeek } = trainingData;
-            const container = document.getElementById('dayOfWeekChart');
+        container.innerHTML = html;
+      }
 
-            const dayOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-            const data = dayOrder
-                .filter(day => workoutsByDayOfWeek[day])
-                .map(day => ({
-                    day,
-                    volume: getVolume(workoutsByDayOfWeek[day].avgVolumeLbs, workoutsByDayOfWeek[day].avgVolumeKg),
-                    count: workoutsByDayOfWeek[day].count
-                }));
+      function renderDayOfWeekChart() {
+        const { workoutsByDayOfWeek } = trainingData;
+        const container = document.getElementById("dayOfWeekChart");
 
-            if (data.length === 0) return;
+        const dayOrder = [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ];
+        const data = dayOrder
+          .filter((day) => workoutsByDayOfWeek[day])
+          .map((day) => ({
+            day,
+            volume: getVolume(
+              workoutsByDayOfWeek[day].avgVolumeLbs,
+              workoutsByDayOfWeek[day].avgVolumeKg,
+            ),
+            count: workoutsByDayOfWeek[day].count,
+          }));
 
-            const width = container.offsetWidth;
-            const height = 400;
-            const padding = { top: 40, right: 40, bottom: 80, left: 80 };
+        if (data.length === 0) return;
 
-            const maxVolume = Math.max(...data.map(d => d.volume));
-            const barWidth = (width - padding.left - padding.right) / data.length;
+        const width = container.offsetWidth;
+        const height = 400;
+        const padding = { top: 40, right: 40, bottom: 80, left: 80 };
 
-            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        const maxVolume = Math.max(...data.map((d) => d.volume));
+        const barWidth = (width - padding.left - padding.right) / data.length;
 
-            // Grid lines
-            for (let i = 0; i <= 5; i++) {
-                const y = padding.top + (i / 5) * (height - padding.top - padding.bottom);
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', padding.left);
-                line.setAttribute('y1', y);
-                line.setAttribute('x2', width - padding.right);
-                line.setAttribute('y2', y);
-                line.setAttribute('stroke', '#1a1a1a');
-                svg.appendChild(line);
-            }
+        const svg = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg",
+        );
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
 
-            data.forEach((d, i) => {
-                const x = padding.left + i * barWidth;
-                const barHeight = (d.volume / maxVolume) * (height - padding.top - padding.bottom);
-                const y = height - padding.bottom - barHeight;
+        // Grid lines
+        for (let i = 0; i <= 5; i++) {
+          const y =
+            padding.top + (i / 5) * (height - padding.top - padding.bottom);
+          const line = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line",
+          );
+          line.setAttribute("x1", padding.left);
+          line.setAttribute("y1", y);
+          line.setAttribute("x2", width - padding.right);
+          line.setAttribute("y2", y);
+          line.setAttribute("stroke", "#1a1a1a");
+          svg.appendChild(line);
+        }
 
-                // Bar (with reduced opacity if very few workouts)
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                rect.setAttribute('x', x + barWidth * 0.1);
-                rect.setAttribute('y', y);
-                rect.setAttribute('width', barWidth * 0.8);
-                rect.setAttribute('height', barHeight);
-                // Use reduced opacity for days with < 10 workouts
-                rect.setAttribute('fill', d.count < 10 ? '#4a9eff66' : '#4a9eff');
+        data.forEach((d, i) => {
+          const x = padding.left + i * barWidth;
+          const barHeight =
+            (d.volume / maxVolume) * (height - padding.top - padding.bottom);
+          const y = height - padding.bottom - barHeight;
 
-                // Add hover effect
-                rect.addEventListener('mouseenter', (e) => {
-                    const tooltip = document.getElementById('tooltip');
-                    tooltip.style.display = 'block';
-                    tooltip.innerHTML = `
+          // Bar (with reduced opacity if very few workouts)
+          const rect = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "rect",
+          );
+          rect.setAttribute("x", x + barWidth * 0.1);
+          rect.setAttribute("y", y);
+          rect.setAttribute("width", barWidth * 0.8);
+          rect.setAttribute("height", barHeight);
+          // Use reduced opacity for days with < 10 workouts
+          rect.setAttribute("fill", d.count < 10 ? "#4a9eff66" : "#4a9eff");
+
+          // Add hover effect
+          rect.addEventListener("mouseenter", (e) => {
+            const tooltip = document.getElementById("tooltip");
+            tooltip.style.display = "block";
+            tooltip.innerHTML = `
                         <strong>${d.day}</strong><br>
-                        ${d.count} workout${d.count !== 1 ? 's' : ''}<br>
+                        ${d.count} workout${d.count !== 1 ? "s" : ""}<br>
                         Avg volume: ${Math.round(d.volume).toLocaleString()} ${currentUnit}
                     `;
-                    tooltip.style.left = (e.pageX + 10) + 'px';
-                    tooltip.style.top = (e.pageY + 10) + 'px';
-                });
-                rect.addEventListener('mouseleave', hideTooltip);
+            tooltip.style.left = e.pageX + 10 + "px";
+            tooltip.style.top = e.pageY + 10 + "px";
+          });
+          rect.addEventListener("mouseleave", hideTooltip);
 
-                svg.appendChild(rect);
+          svg.appendChild(rect);
 
-                // Workout count label (above bar)
-                const countLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                countLabel.setAttribute('x', x + barWidth / 2);
-                countLabel.setAttribute('y', y - 8);
-                countLabel.setAttribute('text-anchor', 'middle');
-                countLabel.setAttribute('fill', d.count < 10 ? '#666' : '#aaa');
-                countLabel.setAttribute('font-size', '11');
-                countLabel.setAttribute('font-weight', d.count < 10 ? 'normal' : '600');
-                countLabel.textContent = `${d.count}×`;
-                svg.appendChild(countLabel);
+          // Workout count label (above bar)
+          const countLabel = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          countLabel.setAttribute("x", x + barWidth / 2);
+          countLabel.setAttribute("y", y - 8);
+          countLabel.setAttribute("text-anchor", "middle");
+          countLabel.setAttribute("fill", d.count < 10 ? "#666" : "#aaa");
+          countLabel.setAttribute("font-size", "11");
+          countLabel.setAttribute(
+            "font-weight",
+            d.count < 10 ? "normal" : "600",
+          );
+          countLabel.textContent = `${d.count}×`;
+          svg.appendChild(countLabel);
 
-                // Day label
-                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                label.setAttribute('x', x + barWidth / 2);
-                label.setAttribute('y', height - padding.bottom + 20);
-                label.setAttribute('text-anchor', 'middle');
-                label.setAttribute('fill', '#888');
-                label.setAttribute('font-size', '12');
-                label.textContent = d.day.substring(0, 3);
-                svg.appendChild(label);
+          // Day label
+          const label = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          label.setAttribute("x", x + barWidth / 2);
+          label.setAttribute("y", height - padding.bottom + 20);
+          label.setAttribute("text-anchor", "middle");
+          label.setAttribute("fill", "#888");
+          label.setAttribute("font-size", "12");
+          label.textContent = d.day.substring(0, 3);
+          svg.appendChild(label);
 
-                // Add note for low-frequency days
-                if (d.count < 10) {
-                    const noteLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                    noteLabel.setAttribute('x', x + barWidth / 2);
-                    noteLabel.setAttribute('y', height - padding.bottom + 35);
-                    noteLabel.setAttribute('text-anchor', 'middle');
-                    noteLabel.setAttribute('fill', '#666');
-                    noteLabel.setAttribute('font-size', '9');
-                    noteLabel.textContent = '(rare)';
-                    svg.appendChild(noteLabel);
-                }
-            });
+          // Add note for low-frequency days
+          if (d.count < 10) {
+            const noteLabel = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "text",
+            );
+            noteLabel.setAttribute("x", x + barWidth / 2);
+            noteLabel.setAttribute("y", height - padding.bottom + 35);
+            noteLabel.setAttribute("text-anchor", "middle");
+            noteLabel.setAttribute("fill", "#666");
+            noteLabel.setAttribute("font-size", "9");
+            noteLabel.textContent = "(rare)";
+            svg.appendChild(noteLabel);
+          }
+        });
 
-            container.innerHTML = '';
-            container.appendChild(svg);
-        }
+        container.innerHTML = "";
+        container.appendChild(svg);
+      }
 
-        function renderPrograms() {
-            const { programs } = trainingData;
-            const container = document.getElementById('programsList');
+      function renderPrograms() {
+        const { programs } = trainingData;
+        const container = document.getElementById("programsList");
 
-            container.innerHTML = programs.map(program => `
+        container.innerHTML = programs
+          .map(
+            (program) => `
                 <div class="program-card">
                     <div class="program-name">${program.name}</div>
                     <div>${program.startDate} → ${program.endDate}</div>
@@ -1734,14 +2003,18 @@
                         <span>${formatVolume(program.totalVolumeLbs, program.totalVolumeKg)} total volume</span>
                     </div>
                 </div>
-            `).join('');
-        }
+            `,
+          )
+          .join("");
+      }
 
-        function renderNotableWorkouts() {
-            const { notableWorkouts } = trainingData;
-            const container = document.getElementById('notableWorkoutsList');
+      function renderNotableWorkouts() {
+        const { notableWorkouts } = trainingData;
+        const container = document.getElementById("notableWorkoutsList");
 
-            container.innerHTML = notableWorkouts.map(workout => `
+        container.innerHTML = notableWorkouts
+          .map(
+            (workout) => `
                 <div class="notable-workout">
                     <div class="notable-date">${workout.date}</div>
                     <div>${workout.reason}</div>
@@ -1749,54 +2022,70 @@
                         ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
                     </div>
                 </div>
-            `).join('');
+            `,
+          )
+          .join("");
+      }
+
+      function renderMilestones() {
+        const { milestones, summary } = trainingData;
+        const container = document.getElementById("milestonesList");
+
+        // Calculate upcoming milestones
+        const upcomingMilestones = [];
+        const workoutMilestones = [100, 250, 500, 750, 1000, 1500, 2000];
+        const volumeMilestonesLbs = [
+          1000000, 2500000, 5000000, 7500000, 10000000,
+        ];
+        const volumeMilestonesKg = [500000, 1000000, 2500000, 5000000];
+
+        // Find next workout milestone
+        const nextWorkoutMilestone = workoutMilestones.find(
+          (m) => m > summary.totalWorkouts,
+        );
+        if (nextWorkoutMilestone) {
+          const remaining = nextWorkoutMilestone - summary.totalWorkouts;
+          upcomingMilestones.push({
+            target: `${nextWorkoutMilestone.toLocaleString()} workouts`,
+            remaining: `${remaining} to go`,
+            icon: "🏋️",
+          });
         }
 
-        function renderMilestones() {
-            const { milestones, summary } = trainingData;
-            const container = document.getElementById('milestonesList');
+        // Find next volume milestone
+        const volumeMilestones =
+          currentUnit === "lbs" ? volumeMilestonesLbs : volumeMilestonesKg;
+        const currentVolume = getVolume(
+          summary.totalVolumeLbs,
+          summary.totalVolumeKg,
+        );
+        const nextVolumeMilestone = volumeMilestones.find(
+          (m) => m > currentVolume,
+        );
+        if (nextVolumeMilestone) {
+          const remaining = nextVolumeMilestone - currentVolume;
+          const label =
+            nextVolumeMilestone >= 1000000
+              ? `${(nextVolumeMilestone / 1000000).toFixed(0)}M ${currentUnit}`
+              : `${(nextVolumeMilestone / 1000).toFixed(0)}K ${currentUnit}`;
+          const remainingLabel =
+            remaining >= 1000000
+              ? `${(remaining / 1000000).toFixed(2)}M to go`
+              : `${(remaining / 1000).toFixed(0)}K to go`;
+          upcomingMilestones.push({
+            target: `${label} total volume`,
+            remaining: remainingLabel,
+            icon: "📈",
+          });
+        }
 
-            // Calculate upcoming milestones
-            const upcomingMilestones = [];
-            const workoutMilestones = [100, 250, 500, 750, 1000, 1500, 2000];
-            const volumeMilestonesLbs = [1000000, 2500000, 5000000, 7500000, 10000000];
-            const volumeMilestonesKg = [500000, 1000000, 2500000, 5000000];
-
-            // Find next workout milestone
-            const nextWorkoutMilestone = workoutMilestones.find(m => m > summary.totalWorkouts);
-            if (nextWorkoutMilestone) {
-                const remaining = nextWorkoutMilestone - summary.totalWorkouts;
-                upcomingMilestones.push({
-                    target: `${nextWorkoutMilestone.toLocaleString()} workouts`,
-                    remaining: `${remaining} to go`,
-                    icon: '🏋️'
-                });
-            }
-
-            // Find next volume milestone
-            const volumeMilestones = currentUnit === 'lbs' ? volumeMilestonesLbs : volumeMilestonesKg;
-            const currentVolume = getVolume(summary.totalVolumeLbs, summary.totalVolumeKg);
-            const nextVolumeMilestone = volumeMilestones.find(m => m > currentVolume);
-            if (nextVolumeMilestone) {
-                const remaining = nextVolumeMilestone - currentVolume;
-                const label = nextVolumeMilestone >= 1000000
-                    ? `${(nextVolumeMilestone / 1000000).toFixed(0)}M ${currentUnit}`
-                    : `${(nextVolumeMilestone / 1000).toFixed(0)}K ${currentUnit}`;
-                const remainingLabel = remaining >= 1000000
-                    ? `${(remaining / 1000000).toFixed(2)}M to go`
-                    : `${(remaining / 1000).toFixed(0)}K to go`;
-                upcomingMilestones.push({
-                    target: `${label} total volume`,
-                    remaining: remainingLabel,
-                    icon: '📈'
-                });
-            }
-
-            // Render upcoming milestones first
-            let html = '';
-            if (upcomingMilestones.length > 0) {
-                html += `<h3 style="margin-bottom: 1rem; color: #51cf66;">🎯 Upcoming</h3>`;
-                html += upcomingMilestones.map(m => `
+        // Render upcoming milestones first
+        let html = "";
+        if (upcomingMilestones.length > 0) {
+          html += `<h3 style="margin-bottom: 1rem; color: #51cf66;">🎯 Upcoming</h3>`;
+          html += upcomingMilestones
+            .map(
+              (m) => `
                     <div class="milestone" style="border-left: 3px solid #51cf66; padding-left: 1rem; margin-left: 0.5rem;">
                         <div class="milestone-date" style="color: #51cf66;">${m.icon}</div>
                         <div class="milestone-text">
@@ -1804,48 +2093,55 @@
                             <span style="color: #888; margin-left: 0.5rem;">(${m.remaining})</span>
                         </div>
                     </div>
-                `).join('');
-                html += `<h3 style="margin: 2rem 0 1rem; color: #888;">✅ Achieved</h3>`;
-            }
+                `,
+            )
+            .join("");
+          html += `<h3 style="margin: 2rem 0 1rem; color: #888;">✅ Achieved</h3>`;
+        }
 
-            // Render achieved milestones (most recent first)
-            html += [...milestones].reverse().map(milestone => `
+        // Render achieved milestones (most recent first)
+        html += [...milestones]
+          .reverse()
+          .map(
+            (milestone) => `
                 <div class="milestone">
                     <div class="milestone-date">${milestone.date}</div>
                     <div class="milestone-text">${milestone.milestone}</div>
                 </div>
-            `).join('');
+            `,
+          )
+          .join("");
 
-            container.innerHTML = html;
-        }
+        container.innerHTML = html;
+      }
 
-        // Scroll spy for navigation
-        function updateActiveNav() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('nav a');
+      // Scroll spy for navigation
+      function updateActiveNav() {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll("nav a");
 
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (window.scrollY >= sectionTop - 100) {
+            current = section.getAttribute("id");
+          }
+        });
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      }
 
-        window.addEventListener('scroll', updateActiveNav);
-        window.addEventListener('load', updateActiveNav);
+      window.addEventListener("scroll", updateActiveNav);
+      window.addEventListener("load", updateActiveNav);
 
-        // Initialize on page load
-        init();
+      // Initialize on page load
+      init();
     </script>
-</body>
+  </body>
 </html>
