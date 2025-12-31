@@ -651,8 +651,8 @@ def get_milestones(conn, summary):
     milestones = []
     cumulative_volume = 0
     workout_count = 0
-    volume_milestones = [100000, 250000, 500000, 750000, 1000000, 1500000, 2000000, 2500000]
-    workout_milestones = [100, 250, 500, 750, 1000]
+    volume_milestones = [100000, 250000, 500000, 750000, 1000000, 1500000, 2000000, 2500000, 3000000, 4000000, 5000000, 6000000, 7000000]
+    workout_milestones = [100, 250, 500, 750, 1000, 1250, 1500]
 
     volume_idx = 0
     workout_idx = 0
@@ -795,6 +795,7 @@ def get_powerlifting_totals(conn):
         1200: None,
         1300: None,
         1400: None,
+        1500: None,
     }
 
     for date in all_dates:

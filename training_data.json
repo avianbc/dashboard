@@ -30616,16 +30616,40 @@
       "icon": "\ud83d\udcca"
     },
     {
+      "date": "2021-05-31",
+      "milestone": "3,000,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
+    },
+    {
+      "date": "2022-02-25",
+      "milestone": "4,000,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
+    },
+    {
       "date": "2022-02-25",
       "milestone": "500 workouts completed",
       "type": "workouts",
       "icon": "\ud83c\udfcb\ufe0f"
     },
     {
+      "date": "2023-01-24",
+      "milestone": "5,000,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
+    },
+    {
       "date": "2023-06-12",
       "milestone": "750 workouts completed",
       "type": "workouts",
       "icon": "\ud83c\udfcb\ufe0f"
+    },
+    {
+      "date": "2025-03-14",
+      "milestone": "6,000,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
     }
   ],
   "plateMilestones": {
