@@ -375,15 +375,6 @@
                 document.querySelector('.container').innerHTML = `
                     <section style="text-align: center; padding: 4rem 2rem;">
                         <h2 style="color: #ff6b6b; margin-bottom: 1rem;">Unable to Load Data</h2>
-                        <p style="margin-bottom: 2rem;">The dashboard cannot load training_data.json due to browser CORS restrictions.</p>
-                        <p style="margin-bottom: 1rem;"><strong>Solution 1:</strong> Use a local web server:</p>
-                        <pre style="background: #111; padding: 1rem; border-radius: 4px; display: inline-block; text-align: left; margin-bottom: 2rem;">
-python -m http.server 8000
-# Then open: http://localhost:8000/dashboard.html</pre>
-                        <p style="margin-bottom: 1rem;"><strong>Solution 2:</strong> Run the embed script:</p>
-                        <pre style="background: #111; padding: 1rem; border-radius: 4px; display: inline-block; text-align: left;">
-python embed_data.py
-# Then open the generated dashboard_embedded.html</pre>
                     </section>
                 `;
             }

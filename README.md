@@ -231,7 +231,6 @@ python serve.py
 - Ensure `training_data.json` is in the same directory
 - Check browser console for specific errors
 - Verify JSON file is valid (not corrupted)
-- Try the embedded version instead
 
 ### Unit toggle not working
 - Clear browser cache and localStorage
