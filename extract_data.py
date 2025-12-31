@@ -76,39 +76,6 @@ def get_summary_stats(conn):
     first_workout = ms_to_date(date_range['first'])
     last_workout = ms_to_date(date_range['last'])
 
-    # Calculate streaks
-    cursor.execute("SELECT DISTINCT date(date/1000, 'unixepoch') as workout_date FROM history ORDER BY workout_date")
-    workout_dates = [datetime.strptime(row['workout_date'], '%Y-%m-%d') for row in cursor.fetchall()]
-
-    current_streak = 0
-    longest_streak = 0
-
-    if workout_dates:
-        # Current streak (working backwards from last workout)
-        last_date = workout_dates[-1]
-        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-
-        # Check if we should count today
-        if last_date.date() == today.date() or last_date.date() == (today - timedelta(days=1)).date():
-            streak = 1
-            for i in range(len(workout_dates) - 2, -1, -1):
-                if (workout_dates[i + 1].date() - workout_dates[i].date()).days == 1:
-                    streak += 1
-                else:
-                    break
-            current_streak = streak
-
-        # Longest streak
-        streak = 1
-        max_streak = 1
-        for i in range(1, len(workout_dates)):
-            if (workout_dates[i].date() - workout_dates[i - 1].date()).days == 1:
-                streak += 1
-                max_streak = max(max_streak, streak)
-            else:
-                streak = 1
-        longest_streak = max_streak
-
     return {
         'totalWorkouts': total_workouts,
         'totalSets': total_sets,
@@ -116,9 +83,7 @@ def get_summary_stats(conn):
         'totalVolumeKg': total_volume_kg,
         'totalHours': total_hours,
         'firstWorkout': first_workout,
-        'lastWorkout': last_workout,
-        'currentStreak': current_streak,
-        'longestStreak': longest_streak
+        'lastWorkout': last_workout
     }
 
 def get_volume_time_series(conn):

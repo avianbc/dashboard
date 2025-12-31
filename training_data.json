@@ -6,9 +6,7 @@
     "totalVolumeKg": 3094002.5,
     "totalHours": 734.1,
     "firstWorkout": "2019-01-23",
-    "lastWorkout": "2025-10-24",
-    "currentStreak": 0,
-    "longestStreak": 5
+    "lastWorkout": "2025-10-24"
   },
   "volumeTimeSeries": {
     "daily": [

@@ -474,10 +474,6 @@
             const totalVolume = getVolume(summary.totalVolumeLbs, summary.totalVolumeKg);
             const years = calculateYears(summary.firstWorkout, summary.lastWorkout);
 
-            // Calculate average workouts per week
-            const totalDays = (new Date(summary.lastWorkout) - new Date(summary.firstWorkout)) / (1000 * 60 * 60 * 24);
-            const avgPerWeek = (summary.totalWorkouts / (totalDays / 7)).toFixed(1);
-
             statsContainer.innerHTML = `
                 <div class="stat-card">
                     <div class="stat-number">${summary.totalWorkouts}</div>
@@ -498,18 +494,6 @@
                 <div class="stat-card">
                     <div class="stat-number">${years}</div>
                     <div class="stat-label">Years Training</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${avgPerWeek}×</div>
-                    <div class="stat-label">Avg Per Week</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${summary.currentStreak > 0 ? '🔥 ' : ''}${summary.currentStreak}</div>
-                    <div class="stat-label">Current Streak</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${summary.longestStreak}</div>
-                    <div class="stat-label">Longest Streak</div>
                 </div>
             `;
         }
@@ -1119,7 +1103,7 @@
             const plateMilestonesLbs = [135, 225, 315, 405, 495];
             const plateMilestonesKg = [60, 100, 140, 180, 220];
             const plateMilestones = currentUnit === 'lbs' ? plateMilestonesLbs : plateMilestonesKg;
-            const plateLabels = currentUnit === 'lbs' 
+            const plateLabels = currentUnit === 'lbs'
                 ? ['1 plate', '2 plates', '3 plates', '4 plates', '5 plates']
                 : ['60kg', '100kg', '140kg', '180kg', '220kg'];
 
@@ -1449,8 +1433,8 @@
             const nextVolumeMilestone = volumeMilestones.find(m => m > currentVolume);
             if (nextVolumeMilestone) {
                 const remaining = nextVolumeMilestone - currentVolume;
-                const label = nextVolumeMilestone >= 1000000 
-                    ? `${(nextVolumeMilestone / 1000000).toFixed(0)}M ${currentUnit}` 
+                const label = nextVolumeMilestone >= 1000000
+                    ? `${(nextVolumeMilestone / 1000000).toFixed(0)}M ${currentUnit}`
                     : `${(nextVolumeMilestone / 1000).toFixed(0)}K ${currentUnit}`;
                 const remainingLabel = remaining >= 1000000
                     ? `${(remaining / 1000000).toFixed(2)}M to go`
