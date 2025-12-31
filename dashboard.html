@@ -657,6 +657,10 @@
         <div id="prsClubsContent">
           <!-- Generated dynamically -->
         </div>
+        <div class="chart-container" style="margin-top: 2rem;">
+          <h3>🎯 Bar Travel Distance</h3>
+          <div id="barTravelStats"></div>
+        </div>
       </section>
 
       <section id="patterns">
@@ -680,10 +684,6 @@
         <h3 style="margin-top: 3rem;">Notable Workouts</h3>
         <div id="notableWorkoutsList">
           <!-- Generated dynamically -->
-        </div>
-        <div class="chart-container" style="margin-top: 3rem;">
-          <h3>🎯 Fun Stats: Bar Travel Distance</h3>
-          <div id="barTravelStats"></div>
         </div>
       </section>
     </div>
@@ -809,6 +809,7 @@
 
         // Milestones & Achievements section
         renderPRsAndClubs();
+        renderBarTravel();
 
         // Patterns & Analysis section
         renderDayOfWeekChart();
@@ -817,7 +818,6 @@
         // Training History section
         renderPrograms();
         renderNotableWorkouts();
-        renderBarTravel();
       }
 
       function renderSummaryStats() {
