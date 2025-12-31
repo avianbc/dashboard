@@ -6,6 +6,7 @@
     <title>Strength Training Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -473,10 +474,18 @@
             const totalVolume = getVolume(summary.totalVolumeLbs, summary.totalVolumeKg);
             const years = calculateYears(summary.firstWorkout, summary.lastWorkout);
 
+            // Calculate average workouts per week
+            const totalDays = (new Date(summary.lastWorkout) - new Date(summary.firstWorkout)) / (1000 * 60 * 60 * 24);
+            const avgPerWeek = (summary.totalWorkouts / (totalDays / 7)).toFixed(1);
+
             statsContainer.innerHTML = `
                 <div class="stat-card">
                     <div class="stat-number">${summary.totalWorkouts}</div>
                     <div class="stat-label">Total Workouts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${summary.totalSets.toLocaleString()}</div>
+                    <div class="stat-label">Total Sets</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">${Math.round(totalVolume / 1000)}K</div>
@@ -489,6 +498,14 @@
                 <div class="stat-card">
                     <div class="stat-number">${years}</div>
                     <div class="stat-label">Years Training</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${avgPerWeek}×</div>
+                    <div class="stat-label">Avg Per Week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${summary.currentStreak > 0 ? '🔥 ' : ''}${summary.currentStreak}</div>
+                    <div class="stat-label">Current Streak</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">${summary.longestStreak}</div>
@@ -1098,6 +1115,43 @@
                 });
             }
 
+            // Plate milestones for reference lines (in lbs, convert if kg)
+            const plateMilestonesLbs = [135, 225, 315, 405, 495];
+            const plateMilestonesKg = [60, 100, 140, 180, 220];
+            const plateMilestones = currentUnit === 'lbs' ? plateMilestonesLbs : plateMilestonesKg;
+            const plateLabels = currentUnit === 'lbs' 
+                ? ['1 plate', '2 plates', '3 plates', '4 plates', '5 plates']
+                : ['60kg', '100kg', '140kg', '180kg', '220kg'];
+
+            // Get y-axis range from data to filter relevant milestones
+            const yValues = e1rmHistory.map(p => getVolume(p.e1rmLbs, p.e1rmKg));
+            const minY = Math.min(...yValues);
+            const maxY = Math.max(...yValues);
+            const yPadding = (maxY - minY) * 0.1;
+
+            // Create annotation lines for plate milestones within data range
+            const annotations = {};
+            plateMilestones.forEach((weight, i) => {
+                if (weight >= minY - yPadding && weight <= maxY + yPadding) {
+                    annotations[`plate${i}`] = {
+                        type: 'line',
+                        yMin: weight,
+                        yMax: weight,
+                        borderColor: '#ffffff22',
+                        borderWidth: 1,
+                        borderDash: [5, 5],
+                        label: {
+                            display: true,
+                            content: plateLabels[i],
+                            position: 'end',
+                            backgroundColor: 'transparent',
+                            color: '#666',
+                            font: { size: 10 }
+                        }
+                    };
+                }
+            });
+
             bigThreeChartInstances[lift] = new Chart(ctx, {
                 type: 'line',
                 data: { datasets },
@@ -1107,6 +1161,9 @@
                     plugins: {
                         legend: {
                             display: false
+                        },
+                        annotation: {
+                            annotations: annotations
                         },
                         tooltip: {
                             backgroundColor: '#1a1a1a',
@@ -1366,15 +1423,70 @@
         }
 
         function renderMilestones() {
-            const { milestones } = trainingData;
+            const { milestones, summary } = trainingData;
             const container = document.getElementById('milestonesList');
 
-            container.innerHTML = milestones.map(milestone => `
+            // Calculate upcoming milestones
+            const upcomingMilestones = [];
+            const workoutMilestones = [100, 250, 500, 750, 1000, 1500, 2000];
+            const volumeMilestonesLbs = [1000000, 2500000, 5000000, 7500000, 10000000];
+            const volumeMilestonesKg = [500000, 1000000, 2500000, 5000000];
+
+            // Find next workout milestone
+            const nextWorkoutMilestone = workoutMilestones.find(m => m > summary.totalWorkouts);
+            if (nextWorkoutMilestone) {
+                const remaining = nextWorkoutMilestone - summary.totalWorkouts;
+                upcomingMilestones.push({
+                    target: `${nextWorkoutMilestone.toLocaleString()} workouts`,
+                    remaining: `${remaining} to go`,
+                    icon: '🏋️'
+                });
+            }
+
+            // Find next volume milestone
+            const volumeMilestones = currentUnit === 'lbs' ? volumeMilestonesLbs : volumeMilestonesKg;
+            const currentVolume = getVolume(summary.totalVolumeLbs, summary.totalVolumeKg);
+            const nextVolumeMilestone = volumeMilestones.find(m => m > currentVolume);
+            if (nextVolumeMilestone) {
+                const remaining = nextVolumeMilestone - currentVolume;
+                const label = nextVolumeMilestone >= 1000000 
+                    ? `${(nextVolumeMilestone / 1000000).toFixed(0)}M ${currentUnit}` 
+                    : `${(nextVolumeMilestone / 1000).toFixed(0)}K ${currentUnit}`;
+                const remainingLabel = remaining >= 1000000
+                    ? `${(remaining / 1000000).toFixed(2)}M to go`
+                    : `${(remaining / 1000).toFixed(0)}K to go`;
+                upcomingMilestones.push({
+                    target: `${label} total volume`,
+                    remaining: remainingLabel,
+                    icon: '📈'
+                });
+            }
+
+            // Render upcoming milestones first
+            let html = '';
+            if (upcomingMilestones.length > 0) {
+                html += `<h3 style="margin-bottom: 1rem; color: #51cf66;">🎯 Upcoming</h3>`;
+                html += upcomingMilestones.map(m => `
+                    <div class="milestone" style="border-left: 3px solid #51cf66; padding-left: 1rem; margin-left: 0.5rem;">
+                        <div class="milestone-date" style="color: #51cf66;">${m.icon}</div>
+                        <div class="milestone-text">
+                            <strong>${m.target}</strong>
+                            <span style="color: #888; margin-left: 0.5rem;">(${m.remaining})</span>
+                        </div>
+                    </div>
+                `).join('');
+                html += `<h3 style="margin: 2rem 0 1rem; color: #888;">✅ Achieved</h3>`;
+            }
+
+            // Render achieved milestones (most recent first)
+            html += [...milestones].reverse().map(milestone => `
                 <div class="milestone">
                     <div class="milestone-date">${milestone.date}</div>
                     <div class="milestone-text">${milestone.milestone}</div>
                 </div>
             `).join('');
+
+            container.innerHTML = html;
         }
 
         // Initialize on page load
