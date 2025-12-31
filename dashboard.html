@@ -236,6 +236,35 @@
             font-size: 0.875rem;
         }
 
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+
+        .view-toggle button {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #888;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .view-toggle button:hover {
+            border-color: #555;
+            color: #e0e0e0;
+        }
+
+        .view-toggle button.active {
+            background: #4a9eff;
+            border-color: #4a9eff;
+            color: #fff;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -290,6 +319,12 @@
         <section id="volume-over-time">
             <h2>Volume Over Time</h2>
             <div class="chart-container">
+                <div class="view-toggle">
+                    <button data-view="monthly" class="active">Monthly</button>
+                    <button data-view="weekly">Weekly</button>
+                    <button data-view="yearly">Yearly</button>
+                    <button data-view="cumulative">Cumulative</button>
+                </div>
                 <canvas id="annualVolumeChart" style="max-height: 400px;"></canvas>
             </div>
         </section>
@@ -351,6 +386,7 @@
         // Global state
         let trainingData = null;
         let currentUnit = localStorage.getItem('weightUnit') || 'lbs';
+        let volumeView = localStorage.getItem('volumeView') || 'monthly';
 
         // Load data and initialize dashboard
         async function init() {
@@ -359,6 +395,7 @@
                 trainingData = await response.json();
                 renderDashboard();
                 setupUnitToggle();
+                setupViewToggle();
             } catch (error) {
                 console.error('Error loading training data:', error);
                 document.querySelector('.container').innerHTML = `
@@ -384,6 +421,28 @@
         function updateToggleButton() {
             const toggleButton = document.getElementById('unitToggle');
             toggleButton.textContent = currentUnit === 'lbs' ? 'switch to kg' : 'switch to lbs';
+        }
+
+        function setupViewToggle() {
+            const buttons = document.querySelectorAll('.view-toggle button');
+            
+            // Update active state
+            function updateActiveButton() {
+                buttons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.view === volumeView);
+                });
+            }
+            
+            updateActiveButton();
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    volumeView = button.dataset.view;
+                    localStorage.setItem('volumeView', volumeView);
+                    updateActiveButton();
+                    renderAnnualVolumeChart();
+                });
+            });
         }
 
         function getVolume(volumeLbs, volumeKg) {
@@ -450,7 +509,52 @@
 
         function renderAnnualVolumeChart() {
             const { volumeTimeSeries } = trainingData;
-            const data = volumeTimeSeries.monthly;
+            
+            // Select data based on view mode
+            let data, chartData, label, timeUnit, displayFormat;
+            
+            if (volumeView === 'cumulative') {
+                // Calculate cumulative volume from daily data
+                data = volumeTimeSeries.daily;
+                let cumulativeTotal = 0;
+                chartData = data.map(d => {
+                    cumulativeTotal += getVolume(d.volumeLbs, d.volumeKg);
+                    return {
+                        x: d.date,
+                        y: cumulativeTotal
+                    };
+                });
+                label = `Cumulative Volume (${currentUnit})`;
+                timeUnit = 'month';
+                displayFormat = { month: 'MMM yyyy' };
+            } else if (volumeView === 'weekly') {
+                data = volumeTimeSeries.weekly;
+                chartData = data.map(d => ({
+                    x: d.week + '-1', // Convert YYYY-Www to date
+                    y: getVolume(d.volumeLbs, d.volumeKg)
+                }));
+                label = `Weekly Volume (${currentUnit})`;
+                timeUnit = 'month';
+                displayFormat = { month: 'MMM yyyy' };
+            } else if (volumeView === 'yearly') {
+                data = volumeTimeSeries.yearly;
+                chartData = data.map(d => ({
+                    x: d.year.toString(),
+                    y: getVolume(d.volumeLbs, d.volumeKg)
+                }));
+                label = `Annual Volume (${currentUnit})`;
+                timeUnit = 'year';
+                displayFormat = { year: 'yyyy' };
+            } else { // monthly (default)
+                data = volumeTimeSeries.monthly;
+                chartData = data.map(d => ({
+                    x: d.month + '-01',
+                    y: getVolume(d.volumeLbs, d.volumeKg)
+                }));
+                label = `Monthly Volume (${currentUnit})`;
+                timeUnit = 'month';
+                displayFormat = { month: 'MMM yyyy' };
+            }
 
             if (data.length === 0) return;
 
@@ -462,23 +566,22 @@
                 annualVolumeChartInstance.destroy();
             }
 
-            const chartData = data.map(d => ({
-                x: d.month + '-01', // Convert YYYY-MM to date
-                y: getVolume(d.volumeLbs, d.volumeKg)
-            }));
-
+            // Adjust visual settings based on view
+            const isCumulative = volumeView === 'cumulative';
+            const isYearly = volumeView === 'yearly';
+            
             annualVolumeChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: `Monthly Volume (${currentUnit})`,
+                        label: label,
                         data: chartData,
-                        borderColor: '#4a9eff',
-                        backgroundColor: '#4a9eff33',
-                        borderWidth: 2,
-                        pointRadius: 2,
-                        pointHoverRadius: 5,
-                        tension: 0.3,
+                        borderColor: isCumulative ? '#51cf66' : '#4a9eff',
+                        backgroundColor: isCumulative ? '#51cf6633' : '#4a9eff33',
+                        borderWidth: isCumulative ? 3 : 2,
+                        pointRadius: isYearly ? 6 : 2,
+                        pointHoverRadius: isYearly ? 8 : 5,
+                        tension: isCumulative ? 0.4 : 0.3,
                         fill: true
                     }]
                 },
@@ -498,6 +601,9 @@
                             callbacks: {
                                 label: function(context) {
                                     const volume = context.parsed.y;
+                                    if (isCumulative) {
+                                        return `Total: ${(volume / 1000000).toFixed(2)}M ${currentUnit}`;
+                                    }
                                     return `${(volume / 1000).toFixed(1)}K ${currentUnit}`;
                                 }
                             }
@@ -505,11 +611,11 @@
                     },
                     scales: {
                         x: {
-                            type: 'time',
-                            time: {
-                                unit: 'month',
-                                displayFormats: { month: 'MMM yyyy' }
-                            },
+                            type: isYearly ? 'category' : 'time',
+                            time: !isYearly ? {
+                                unit: timeUnit,
+                                displayFormats: displayFormat
+                            } : undefined,
                             grid: { color: '#1a1a1a' },
                             ticks: { color: '#888', font: { size: 11 }, maxRotation: 45 }
                         },
@@ -520,6 +626,9 @@
                                 color: '#888',
                                 font: { size: 12 },
                                 callback: function(value) {
+                                    if (isCumulative && value >= 1000000) {
+                                        return (value / 1000000).toFixed(1) + 'M';
+                                    }
                                     return (value / 1000).toFixed(0) + 'K';
                                 }
                             }
