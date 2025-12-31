@@ -450,7 +450,7 @@
 
         function renderAnnualVolumeChart() {
             const { volumeTimeSeries } = trainingData;
-            const data = volumeTimeSeries.yearly;
+            const data = volumeTimeSeries.monthly;
 
             if (data.length === 0) return;
 
@@ -463,7 +463,7 @@
             }
 
             const chartData = data.map(d => ({
-                x: d.year.toString(),
+                x: d.month + '-01', // Convert YYYY-MM to date
                 y: getVolume(d.volumeLbs, d.volumeKg)
             }));
 
@@ -471,14 +471,14 @@
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: `Annual Volume (${currentUnit})`,
+                        label: `Monthly Volume (${currentUnit})`,
                         data: chartData,
                         borderColor: '#4a9eff',
                         backgroundColor: '#4a9eff33',
-                        borderWidth: 3,
-                        pointRadius: 6,
-                        pointHoverRadius: 8,
-                        tension: 0.2,
+                        borderWidth: 2,
+                        pointRadius: 2,
+                        pointHoverRadius: 5,
+                        tension: 0.3,
                         fill: true
                     }]
                 },
@@ -505,8 +505,13 @@
                     },
                     scales: {
                         x: {
+                            type: 'time',
+                            time: {
+                                unit: 'month',
+                                displayFormats: { month: 'MMM yyyy' }
+                            },
                             grid: { color: '#1a1a1a' },
-                            ticks: { color: '#888', font: { size: 12 } }
+                            ticks: { color: '#888', font: { size: 11 }, maxRotation: 45 }
                         },
                         y: {
                             beginAtZero: true,
