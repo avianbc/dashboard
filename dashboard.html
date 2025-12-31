@@ -317,6 +317,7 @@
                 <li><a href="#volume-over-time">Volume</a></li>
                 <li><a href="#calendar">Calendar</a></li>
                 <li><a href="#big-three">Big 3</a></li>
+                <li><a href="#prs-clubs">PRs & Clubs</a></li>
                 <li><a href="#exercises">Exercises</a></li>
                 <li><a href="#milestones">Milestones</a></li>
                 <li><a href="#workout-patterns">Patterns</a></li>
@@ -373,6 +374,13 @@
             <h2>Exercises by Volume</h2>
             <div class="chart-container">
                 <div id="exerciseVolumeChart"></div>
+            </div>
+        </section>
+
+        <section id="prs-clubs">
+            <h2>PRs & Clubs</h2>
+            <div id="prsClubsContent">
+                <!-- Generated dynamically -->
             </div>
         </section>
 
@@ -504,6 +512,7 @@
             renderWorkoutHeatmap();
             renderBigThree();
             renderExerciseVolumeChart();
+            renderPRsAndClubs();
             renderDayOfWeekChart();
             renderPrograms();
             renderNotableWorkouts();
@@ -1394,6 +1403,218 @@
 
             container.innerHTML = '';
             container.appendChild(svg);
+        }
+
+        function renderPRsAndClubs() {
+            const { powerliftingTotals, plateMilestones, allTimePRs } = trainingData;
+            const container = document.getElementById('prsClubsContent');
+            
+            if (!powerliftingTotals && !plateMilestones && !allTimePRs) {
+                container.innerHTML = '<p style="color: #888;">No PR data available</p>';
+                return;
+            }
+
+            let html = '';
+            
+            // 1000 lb Club Section
+            if (powerliftingTotals && powerliftingTotals.current) {
+                const current = powerliftingTotals.current;
+                const peak = powerliftingTotals.peak;
+                const clubs = powerliftingTotals.clubMilestones || {};
+                
+                const totalValue = currentUnit === 'lbs' ? current.totalLbs : current.totalKg;
+                const peakValue = peak ? (currentUnit === 'lbs' ? peak.totalLbs : peak.totalKg) : totalValue;
+                const squatValue = currentUnit === 'lbs' ? current.squatE1rm : Math.round(current.squatE1rm * 0.453592);
+                const benchValue = currentUnit === 'lbs' ? current.benchE1rm : Math.round(current.benchE1rm * 0.453592);
+                const deadliftValue = currentUnit === 'lbs' ? current.deadliftE1rm : Math.round(current.deadliftE1rm * 0.453592);
+                
+                // Determine club status
+                const clubThresholds = [
+                    { threshold: 1500, name: '1500 lb Club', color: '#ffd700', emoji: '👑' },
+                    { threshold: 1200, name: '1200 lb Club', color: '#c0c0c0', emoji: '💪' },
+                    { threshold: 1000, name: '1000 lb Club', color: '#cd7f32', emoji: '🏆' },
+                    { threshold: 750, name: '750 lb Club', color: '#4a9eff', emoji: '💎' },
+                    { threshold: 500, name: '500 lb Club', color: '#51cf66', emoji: '⭐' }
+                ];
+                
+                const achievedClub = clubThresholds.find(c => current.totalLbs >= c.threshold);
+                const nextClub = clubThresholds.slice().reverse().find(c => current.totalLbs < c.threshold);
+                
+                html += `<div class="chart-container">`;
+                html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    ${achievedClub ? achievedClub.emoji : '🎯'} Powerlifting Total (S+B+D)
+                </h3>`;
+                
+                // Current total display
+                html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; text-align: center; margin-bottom: 2rem;">`;
+                
+                html += `
+                    <div>
+                        <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current Total</div>
+                        <div style="color: ${achievedClub ? achievedClub.color : '#e0e0e0'}; font-size: 2rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(totalValue)} ${currentUnit}</div>
+                        ${achievedClub ? `<div style="color: ${achievedClub.color}; font-size: 0.8rem; margin-top: 0.25rem;">${achievedClub.name}</div>` : ''}
+                    </div>
+                    <div>
+                        <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Squat e1RM</div>
+                        <div style="color: #4a9eff; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(squatValue)} ${currentUnit}</div>
+                    </div>
+                    <div>
+                        <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Bench e1RM</div>
+                        <div style="color: #ff6b6b; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(benchValue)} ${currentUnit}</div>
+                    </div>
+                    <div>
+                        <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Deadlift e1RM</div>
+                        <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(deadliftValue)} ${currentUnit}</div>
+                    </div>
+                </div>`;
+                
+                // Next club progress
+                if (nextClub) {
+                    const remaining = nextClub.threshold - current.totalLbs;
+                    const progressPercent = (current.totalLbs / nextClub.threshold) * 100;
+                    html += `
+                        <div style="margin-top: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="color: #888;">Progress to ${nextClub.name}</span>
+                                <span style="color: ${nextClub.color}; font-weight: 600;">${Math.round(remaining)} lbs to go</span>
+                            </div>
+                            <div style="background: #1a1a1a; height: 12px; border-radius: 6px; overflow: hidden;">
+                                <div style="background: ${nextClub.color}; height: 100%; width: ${Math.min(progressPercent, 100)}%; border-radius: 6px; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // Club milestones achieved
+                const achievedMilestones = Object.entries(clubs).sort((a, b) => parseInt(b[0]) - parseInt(a[0]));
+                if (achievedMilestones.length > 0) {
+                    html += `<div style="margin-top: 2rem;"><h4 style="margin-bottom: 1rem; color: #888;">Club Milestones Achieved</h4>`;
+                    achievedMilestones.forEach(([threshold, data]) => {
+                        const club = clubThresholds.find(c => c.threshold === parseInt(threshold));
+                        if (club && data) {
+                            html += `
+                                <div class="milestone" style="border-left: 3px solid ${club.color}; padding-left: 1rem; margin: 0.5rem 0;">
+                                    <div class="milestone-date">${data.date}</div>
+                                    <div class="milestone-text">
+                                        <span style="color: ${club.color};">${club.emoji} ${club.name}</span>
+                                        <span style="color: #666; margin-left: 0.5rem;">(S:${Math.round(data.squat)} B:${Math.round(data.bench)} D:${Math.round(data.deadlift)} = ${Math.round(data.totalLbs)} lbs)</span>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    });
+                    html += `</div>`;
+                }
+                
+                html += `</div>`;
+            }
+            
+            // Plate Milestones Section
+            if (plateMilestones && Object.keys(plateMilestones).length > 0) {
+                const liftNames = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift' };
+                const liftColors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66' };
+                const plateLabels = { 1: '1 Plate (135)', 2: '2 Plates (225)', 3: '3 Plates (315)', 4: '4 Plates (405)', 5: '5 Plates (495)' };
+                
+                html += `<div class="chart-container">`;
+                html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏅 Plate Milestones</h3>`;
+                
+                html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">`;
+                
+                ['squat', 'bench', 'deadlift'].forEach(lift => {
+                    const liftData = plateMilestones[lift] || {};
+                    const maxPlates = Math.max(...Object.keys(liftData).map(Number), 0);
+                    
+                    html += `<div>`;
+                    html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
+                    
+                    [1, 2, 3, 4, 5].forEach(plates => {
+                        const achieved = liftData[plates];
+                        const plateWeight = currentUnit === 'lbs' ? plates * 90 + 45 : Math.round((plates * 90 + 45) * 0.453592);
+                        const plateLabel = currentUnit === 'lbs' 
+                            ? `${plates} plate${plates > 1 ? 's' : ''} (${plates * 90 + 45})`
+                            : `${plates} plate${plates > 1 ? 's' : ''} (${plateWeight}kg)`;
+                        
+                        if (achieved) {
+                            html += `
+                                <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a;">
+                                    <span style="font-size: 1.25rem;">✅</span>
+                                    <span style="flex: 1; color: #e0e0e0;">${plateLabel}</span>
+                                    <span style="color: #888; font-size: 0.875rem;">${achieved.date}</span>
+                                </div>
+                            `;
+                        } else {
+                            html += `
+                                <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a; opacity: 0.4;">
+                                    <span style="font-size: 1.25rem;">⬜</span>
+                                    <span style="flex: 1; color: #888;">${plateLabel}</span>
+                                    <span style="color: #666; font-size: 0.875rem;">—</span>
+                                </div>
+                            `;
+                        }
+                    });
+                    
+                    html += `</div>`;
+                });
+                
+                html += `</div></div>`;
+            }
+            
+            // All-Time PRs Section  
+            if (allTimePRs && Object.keys(allTimePRs).length > 0) {
+                const liftNames = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift' };
+                const liftColors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66' };
+                
+                html += `<div class="chart-container">`;
+                html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏆 All-Time PRs</h3>`;
+                
+                html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">`;
+                
+                ['squat', 'bench', 'deadlift'].forEach(lift => {
+                    const liftData = allTimePRs[lift];
+                    if (!liftData) return;
+                    
+                    const maxEver = liftData.maxEver;
+                    const bestE1rm = liftData.bestE1rm;
+                    const repPRs = liftData.repPRs || {};
+                    
+                    html += `<div>`;
+                    html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
+                    
+                    // Best e1RM
+                    if (bestE1rm) {
+                        const e1rmValue = currentUnit === 'lbs' ? bestE1rm.e1rmLbs : bestE1rm.e1rmKg;
+                        html += `
+                            <div style="background: #111; border: 1px solid ${liftColors[lift]}44; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center;">
+                                <div style="color: #888; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Best e1RM</div>
+                                <div style="color: ${liftColors[lift]}; font-size: 1.75rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(e1rmValue)} ${currentUnit}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    // Rep PRs table
+                    const sortedReps = Object.keys(repPRs).map(Number).sort((a, b) => a - b);
+                    if (sortedReps.length > 0) {
+                        html += `<div style="font-size: 0.875rem;">`;
+                        sortedReps.forEach(reps => {
+                            const pr = repPRs[reps];
+                            const weight = currentUnit === 'lbs' ? pr.weightLbs : pr.weightKg;
+                            html += `
+                                <div style="display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px solid #1a1a1a;">
+                                    <span style="color: #888;">${reps}RM</span>
+                                    <span style="color: #e0e0e0; font-family: 'Courier New', monospace;">${Math.round(weight)} ${currentUnit}</span>
+                                </div>
+                            `;
+                        });
+                        html += `</div>`;
+                    }
+                    
+                    html += `</div>`;
+                });
+                
+                html += `</div></div>`;
+            }
+            
+            container.innerHTML = html;
         }
 
         function renderDayOfWeekChart() {

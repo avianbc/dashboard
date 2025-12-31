@@ -573,7 +573,9 @@ def get_milestones(conn, summary):
         while volume_idx < len(volume_milestones) and cumulative_volume >= volume_milestones[volume_idx]:
             milestones.append({
                 'date': row['workout_date'],
-                'milestone': f'{volume_milestones[volume_idx]:,} lbs total volume'
+                'milestone': f'{volume_milestones[volume_idx]:,} lbs total volume',
+                'type': 'volume',
+                'icon': '📊'
             })
             volume_idx += 1
 
@@ -581,7 +583,9 @@ def get_milestones(conn, summary):
         while workout_idx < len(workout_milestones) and workout_count >= workout_milestones[workout_idx]:
             milestones.append({
                 'date': row['workout_date'],
-                'milestone': f'{workout_milestones[workout_idx]} workouts completed'
+                'milestone': f'{workout_milestones[workout_idx]} workouts completed',
+                'type': 'workouts',
+                'icon': '🏋️'
             })
             workout_idx += 1
 
@@ -589,6 +593,222 @@ def get_milestones(conn, summary):
     milestones.sort(key=lambda x: x['date'])
 
     return milestones
+
+def get_plate_milestones(conn):
+    """Calculate when plate milestones were first achieved for Big 3 lifts."""
+    cursor = conn.cursor()
+    
+    # Plate thresholds in lbs
+    plate_thresholds = {
+        1: 135,   # 1 plate per side
+        2: 225,   # 2 plates per side
+        3: 315,   # 3 plates per side
+        4: 405,   # 4 plates per side
+        5: 495,   # 5 plates per side
+    }
+    
+    plate_milestones = {}
+    
+    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES), ('deadlift', DEADLIFT_NAMES)]:
+        # Get all sets ordered by date
+        cursor.execute(f"""
+            SELECT
+                date(h.date/1000, 'unixepoch') as workout_date,
+                MAX(he.weightlb) as max_weight_lbs,
+                MAX(he.weightkg) as max_weight_kg
+            FROM history_exercises he
+            JOIN history h ON he.history_id = h.id
+            JOIN exercises e ON he.exercise_id = e.id
+            WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+            AND he.reps > 0
+            GROUP BY workout_date
+            ORDER BY h.date
+        """, name_list)
+        
+        rows = cursor.fetchall()
+        if not rows:
+            continue
+        
+        achieved = {}
+        for row in rows:
+            max_weight = row['max_weight_lbs'] or 0
+            for plates, threshold in plate_thresholds.items():
+                if plates not in achieved and max_weight >= threshold:
+                    achieved[plates] = {
+                        'date': row['workout_date'],
+                        'weightLbs': threshold,
+                        'weightKg': round(threshold * 0.453592, 1),
+                        'actualWeightLbs': round(max_weight, 2),
+                        'actualWeightKg': round(row['max_weight_kg'] or 0, 2)
+                    }
+        
+        plate_milestones[canonical_name] = achieved
+    
+    return plate_milestones
+
+def get_powerlifting_totals(conn):
+    """Calculate combined S+B+D totals over time for 1000 lb club tracking."""
+    cursor = conn.cursor()
+    
+    # Get all e1RM data for each lift by date
+    lift_e1rms = {}
+    
+    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES), ('deadlift', DEADLIFT_NAMES)]:
+        cursor.execute(f"""
+            SELECT
+                date(h.date/1000, 'unixepoch') as workout_date,
+                he.weightlb,
+                he.weightkg,
+                he.reps
+            FROM history_exercises he
+            JOIN history h ON he.history_id = h.id
+            JOIN exercises e ON he.exercise_id = e.id
+            WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+            AND he.reps > 0 AND he.reps <= 10
+            ORDER BY h.date
+        """, name_list)
+        
+        # Track best e1RM for each workout date
+        workout_e1rms = {}
+        for row in cursor.fetchall():
+            date = row['workout_date']
+            weight_lbs = row['weightlb'] or 0
+            weight_kg = row['weightkg'] or 0
+            reps = row['reps']
+            
+            e1rm_lbs = calculate_e1rm(weight_lbs, reps)
+            e1rm_kg = calculate_e1rm(weight_kg, reps)
+            
+            if date not in workout_e1rms or e1rm_lbs > workout_e1rms[date]['lbs']:
+                workout_e1rms[date] = {'lbs': e1rm_lbs, 'kg': e1rm_kg}
+        
+        lift_e1rms[canonical_name] = workout_e1rms
+    
+    # Get all unique dates and track running max for each lift
+    all_dates = set()
+    for lift_data in lift_e1rms.values():
+        all_dates.update(lift_data.keys())
+    all_dates = sorted(all_dates)
+    
+    # Calculate running total for each date
+    totals_history = []
+    running_max = {'squat': 0, 'bench': 0, 'deadlift': 0}
+    running_max_kg = {'squat': 0, 'bench': 0, 'deadlift': 0}
+    
+    club_milestones = {
+        500: None,
+        750: None,
+        1000: None,
+        1200: None,
+        1500: None,
+    }
+    
+    for date in all_dates:
+        # Update running max for any lift trained on this date
+        for lift in ['squat', 'bench', 'deadlift']:
+            if date in lift_e1rms.get(lift, {}):
+                if lift_e1rms[lift][date]['lbs'] > running_max[lift]:
+                    running_max[lift] = lift_e1rms[lift][date]['lbs']
+                    running_max_kg[lift] = lift_e1rms[lift][date]['kg']
+        
+        total_lbs = sum(running_max.values())
+        total_kg = sum(running_max_kg.values())
+        
+        totals_history.append({
+            'date': date,
+            'totalLbs': round(total_lbs, 2),
+            'totalKg': round(total_kg, 2),
+            'squatE1rm': round(running_max['squat'], 2),
+            'benchE1rm': round(running_max['bench'], 2),
+            'deadliftE1rm': round(running_max['deadlift'], 2)
+        })
+        
+        # Check club milestones
+        for threshold in sorted(club_milestones.keys()):
+            if club_milestones[threshold] is None and total_lbs >= threshold:
+                club_milestones[threshold] = {
+                    'date': date,
+                    'totalLbs': round(total_lbs, 2),
+                    'totalKg': round(total_kg, 2),
+                    'squat': round(running_max['squat'], 2),
+                    'bench': round(running_max['bench'], 2),
+                    'deadlift': round(running_max['deadlift'], 2)
+                }
+    
+    # Get current (latest) total
+    current = totals_history[-1] if totals_history else None
+    peak = max(totals_history, key=lambda x: x['totalLbs']) if totals_history else None
+    
+    return {
+        'history': totals_history,
+        'current': current,
+        'peak': peak,
+        'clubMilestones': {k: v for k, v in club_milestones.items() if v is not None}
+    }
+
+def get_all_time_prs(conn):
+    """Get all-time PR records for Big 3 lifts."""
+    cursor = conn.cursor()
+    
+    all_time_prs = {}
+    
+    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES), ('deadlift', DEADLIFT_NAMES)]:
+        # Get max weight for each rep range
+        cursor.execute(f"""
+            SELECT
+                he.reps,
+                MAX(he.weightlb) as max_weight_lbs,
+                MAX(he.weightkg) as max_weight_kg
+            FROM history_exercises he
+            JOIN exercises e ON he.exercise_id = e.id
+            WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+            AND he.reps > 0 AND he.reps <= 10
+            GROUP BY he.reps
+            ORDER BY he.reps
+        """, name_list)
+        
+        rep_prs = {}
+        for row in cursor.fetchall():
+            reps = row['reps']
+            weight_lbs = row['max_weight_lbs'] or 0
+            weight_kg = row['max_weight_kg'] or 0
+            e1rm_lbs = calculate_e1rm(weight_lbs, reps)
+            e1rm_kg = calculate_e1rm(weight_kg, reps)
+            
+            rep_prs[reps] = {
+                'weightLbs': round(weight_lbs, 2),
+                'weightKg': round(weight_kg, 2),
+                'e1rmLbs': round(e1rm_lbs, 2),
+                'e1rmKg': round(e1rm_kg, 2)
+            }
+        
+        # Get absolute max weight ever lifted (any reps)
+        cursor.execute(f"""
+            SELECT
+                MAX(he.weightlb) as max_weight_lbs,
+                MAX(he.weightkg) as max_weight_kg
+            FROM history_exercises he
+            JOIN exercises e ON he.exercise_id = e.id
+            WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+            AND he.reps > 0
+        """, name_list)
+        
+        max_row = cursor.fetchone()
+        max_ever = {
+            'weightLbs': round(max_row['max_weight_lbs'] or 0, 2),
+            'weightKg': round(max_row['max_weight_kg'] or 0, 2)
+        }
+        
+        # Find best e1RM
+        best_e1rm = max(rep_prs.values(), key=lambda x: x['e1rmLbs']) if rep_prs else None
+        
+        all_time_prs[canonical_name] = {
+            'repPRs': rep_prs,
+            'maxEver': max_ever,
+            'bestE1rm': best_e1rm
+        }
+    
+    return all_time_prs
 
 def main():
     """Main execution function."""
@@ -628,6 +848,15 @@ def main():
     print("Calculating milestones...")
     milestones = get_milestones(conn, summary)
 
+    print("Calculating plate milestones...")
+    plate_milestones = get_plate_milestones(conn)
+
+    print("Calculating powerlifting totals...")
+    powerlifting_totals = get_powerlifting_totals(conn)
+
+    print("Extracting all-time PRs...")
+    all_time_prs = get_all_time_prs(conn)
+
     # Compile all data
     data = {
         'summary': summary,
@@ -640,7 +869,10 @@ def main():
         'programs': programs,
         'workoutsByDayOfWeek': workouts_by_day,
         'notableWorkouts': notable_workouts,
-        'milestones': milestones
+        'milestones': milestones,
+        'plateMilestones': plate_milestones,
+        'powerliftingTotals': powerlifting_totals,
+        'allTimePRs': all_time_prs
     }
 
     print(f"Writing output to {OUTPUT_PATH}...")
@@ -653,7 +885,12 @@ def main():
     print(f"  - Total Volume: {summary['totalVolumeLbs']:,.0f} lbs / {summary['totalVolumeKg']:,.0f} kg")
     print(f"  - Date Range: {summary['firstWorkout']} to {summary['lastWorkout']}")
     print(f"  - Unique Exercises: {len(exercise_progress)}")
-
+    
+    # Print powerlifting total info
+    if powerlifting_totals.get('current'):
+        current = powerlifting_totals['current']
+        print(f"  - Current Total: {current['totalLbs']:.0f} lbs (S:{current['squatE1rm']:.0f} B:{current['benchE1rm']:.0f} D:{current['deadliftE1rm']:.0f})")
+    
     conn.close()
 
 if __name__ == '__main__':

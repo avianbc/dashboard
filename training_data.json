@@ -26774,51 +26774,7000 @@
   "milestones": [
     {
       "date": "2019-02-20",
-      "milestone": "100,000 lbs total volume"
+      "milestone": "100,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
     },
     {
       "date": "2019-03-25",
-      "milestone": "250,000 lbs total volume"
+      "milestone": "250,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
     },
     {
       "date": "2019-05-10",
-      "milestone": "500,000 lbs total volume"
+      "milestone": "500,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
     },
     {
       "date": "2019-07-05",
-      "milestone": "750,000 lbs total volume"
+      "milestone": "750,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
     },
     {
       "date": "2019-08-20",
-      "milestone": "100 workouts completed"
+      "milestone": "100 workouts completed",
+      "type": "workouts",
+      "icon": "\ud83c\udfcb\ufe0f"
     },
     {
       "date": "2019-08-22",
-      "milestone": "1,000,000 lbs total volume"
+      "milestone": "1,000,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
     },
     {
       "date": "2020-01-07",
-      "milestone": "1,500,000 lbs total volume"
+      "milestone": "1,500,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
     },
     {
       "date": "2020-05-19",
-      "milestone": "2,000,000 lbs total volume"
+      "milestone": "2,000,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
     },
     {
       "date": "2020-06-19",
-      "milestone": "250 workouts completed"
+      "milestone": "250 workouts completed",
+      "type": "workouts",
+      "icon": "\ud83c\udfcb\ufe0f"
     },
     {
       "date": "2021-03-18",
-      "milestone": "2,500,000 lbs total volume"
+      "milestone": "2,500,000 lbs total volume",
+      "type": "volume",
+      "icon": "\ud83d\udcca"
     },
     {
       "date": "2022-02-25",
-      "milestone": "500 workouts completed"
+      "milestone": "500 workouts completed",
+      "type": "workouts",
+      "icon": "\ud83c\udfcb\ufe0f"
     },
     {
       "date": "2023-06-12",
-      "milestone": "750 workouts completed"
+      "milestone": "750 workouts completed",
+      "type": "workouts",
+      "icon": "\ud83c\udfcb\ufe0f"
     }
-  ]
+  ],
+  "plateMilestones": {
+    "squat": {
+      "1": {
+        "date": "2019-01-30",
+        "weightLbs": 135,
+        "weightKg": 61.2,
+        "actualWeightLbs": 135.0,
+        "actualWeightKg": 60.0
+      },
+      "2": {
+        "date": "2019-03-18",
+        "weightLbs": 225,
+        "weightKg": 102.1,
+        "actualWeightLbs": 225.0,
+        "actualWeightKg": 102.5
+      },
+      "3": {
+        "date": "2019-07-08",
+        "weightLbs": 315,
+        "weightKg": 142.9,
+        "actualWeightLbs": 320.0,
+        "actualWeightKg": 145.0
+      }
+    },
+    "bench": {
+      "1": {
+        "date": "2019-02-15",
+        "weightLbs": 135,
+        "weightKg": 61.2,
+        "actualWeightLbs": 135.0,
+        "actualWeightKg": 60.0
+      },
+      "2": {
+        "date": "2021-04-16",
+        "weightLbs": 225,
+        "weightKg": 102.1,
+        "actualWeightLbs": 225.0,
+        "actualWeightKg": 102.5
+      }
+    },
+    "deadlift": {
+      "1": {
+        "date": "2019-01-30",
+        "weightLbs": 135,
+        "weightKg": 61.2,
+        "actualWeightLbs": 135.0,
+        "actualWeightKg": 60.0
+      },
+      "2": {
+        "date": "2019-02-22",
+        "weightLbs": 225,
+        "weightKg": 102.1,
+        "actualWeightLbs": 225.0,
+        "actualWeightKg": 102.5
+      },
+      "3": {
+        "date": "2019-04-05",
+        "weightLbs": 315,
+        "weightKg": 142.9,
+        "actualWeightLbs": 315.0,
+        "actualWeightKg": 142.5
+      },
+      "4": {
+        "date": "2019-10-29",
+        "weightLbs": 405,
+        "weightKg": 183.7,
+        "actualWeightLbs": 405.0,
+        "actualWeightKg": 182.5
+      }
+    }
+  },
+  "powerliftingTotals": {
+    "history": [
+      {
+        "date": "2019-01-23",
+        "totalLbs": 128.33,
+        "totalKg": 58.33,
+        "squatE1rm": 52.5,
+        "benchE1rm": 75.83,
+        "deadliftE1rm": 0
+      },
+      {
+        "date": "2019-01-25",
+        "totalLbs": 297.5,
+        "totalKg": 134.17,
+        "squatE1rm": 110.83,
+        "benchE1rm": 75.83,
+        "deadliftE1rm": 110.83
+      },
+      {
+        "date": "2019-01-28",
+        "totalLbs": 355.83,
+        "totalKg": 160.42,
+        "squatE1rm": 122.5,
+        "benchE1rm": 122.5,
+        "deadliftE1rm": 110.83
+      },
+      {
+        "date": "2019-01-30",
+        "totalLbs": 437.5,
+        "totalKg": 195.42,
+        "squatE1rm": 157.5,
+        "benchE1rm": 122.5,
+        "deadliftE1rm": 157.5
+      },
+      {
+        "date": "2019-02-01",
+        "totalLbs": 455.0,
+        "totalKg": 204.17,
+        "squatE1rm": 163.33,
+        "benchE1rm": 134.17,
+        "deadliftE1rm": 157.5
+      },
+      {
+        "date": "2019-02-04",
+        "totalLbs": 466.67,
+        "totalKg": 210.0,
+        "squatE1rm": 163.33,
+        "benchE1rm": 134.17,
+        "deadliftE1rm": 169.17
+      },
+      {
+        "date": "2019-02-06",
+        "totalLbs": 478.33,
+        "totalKg": 215.83,
+        "squatE1rm": 163.33,
+        "benchE1rm": 145.83,
+        "deadliftE1rm": 169.17
+      },
+      {
+        "date": "2019-02-08",
+        "totalLbs": 495.83,
+        "totalKg": 224.58,
+        "squatE1rm": 169.17,
+        "benchE1rm": 145.83,
+        "deadliftE1rm": 180.83
+      },
+      {
+        "date": "2019-02-11",
+        "totalLbs": 507.5,
+        "totalKg": 230.42,
+        "squatE1rm": 175.0,
+        "benchE1rm": 151.67,
+        "deadliftE1rm": 180.83
+      },
+      {
+        "date": "2019-02-13",
+        "totalLbs": 548.33,
+        "totalKg": 250.83,
+        "squatE1rm": 180.83,
+        "benchE1rm": 151.67,
+        "deadliftE1rm": 215.83
+      },
+      {
+        "date": "2019-02-15",
+        "totalLbs": 560.0,
+        "totalKg": 253.75,
+        "squatE1rm": 186.67,
+        "benchE1rm": 157.5,
+        "deadliftE1rm": 215.83
+      },
+      {
+        "date": "2019-02-18",
+        "totalLbs": 577.5,
+        "totalKg": 259.58,
+        "squatE1rm": 192.5,
+        "benchE1rm": 157.5,
+        "deadliftE1rm": 227.5
+      },
+      {
+        "date": "2019-02-20",
+        "totalLbs": 589.17,
+        "totalKg": 265.42,
+        "squatE1rm": 198.33,
+        "benchE1rm": 163.33,
+        "deadliftE1rm": 227.5
+      },
+      {
+        "date": "2019-02-22",
+        "totalLbs": 630.0,
+        "totalKg": 285.83,
+        "squatE1rm": 204.17,
+        "benchE1rm": 163.33,
+        "deadliftE1rm": 262.5
+      },
+      {
+        "date": "2019-02-25",
+        "totalLbs": 635.83,
+        "totalKg": 288.75,
+        "squatE1rm": 210.0,
+        "benchE1rm": 163.33,
+        "deadliftE1rm": 262.5
+      },
+      {
+        "date": "2019-02-27",
+        "totalLbs": 653.33,
+        "totalKg": 297.5,
+        "squatE1rm": 215.83,
+        "benchE1rm": 163.33,
+        "deadliftE1rm": 274.17
+      },
+      {
+        "date": "2019-03-01",
+        "totalLbs": 659.17,
+        "totalKg": 297.5,
+        "squatE1rm": 221.67,
+        "benchE1rm": 163.33,
+        "deadliftE1rm": 274.17
+      },
+      {
+        "date": "2019-03-04",
+        "totalLbs": 676.67,
+        "totalKg": 303.33,
+        "squatE1rm": 227.5,
+        "benchE1rm": 163.33,
+        "deadliftE1rm": 285.83
+      },
+      {
+        "date": "2019-03-06",
+        "totalLbs": 694.17,
+        "totalKg": 312.08,
+        "squatE1rm": 233.33,
+        "benchE1rm": 175.0,
+        "deadliftE1rm": 285.83
+      },
+      {
+        "date": "2019-03-08",
+        "totalLbs": 711.67,
+        "totalKg": 320.83,
+        "squatE1rm": 239.17,
+        "benchE1rm": 175.0,
+        "deadliftE1rm": 297.5
+      },
+      {
+        "date": "2019-03-11",
+        "totalLbs": 729.17,
+        "totalKg": 329.58,
+        "squatE1rm": 245.0,
+        "benchE1rm": 186.67,
+        "deadliftE1rm": 297.5
+      },
+      {
+        "date": "2019-03-13",
+        "totalLbs": 746.67,
+        "totalKg": 338.33,
+        "squatE1rm": 250.83,
+        "benchE1rm": 186.67,
+        "deadliftE1rm": 309.17
+      },
+      {
+        "date": "2019-03-15",
+        "totalLbs": 758.33,
+        "totalKg": 344.17,
+        "squatE1rm": 256.67,
+        "benchE1rm": 192.5,
+        "deadliftE1rm": 309.17
+      },
+      {
+        "date": "2019-03-18",
+        "totalLbs": 775.83,
+        "totalKg": 352.92,
+        "squatE1rm": 262.5,
+        "benchE1rm": 192.5,
+        "deadliftE1rm": 320.83
+      },
+      {
+        "date": "2019-03-20",
+        "totalLbs": 781.67,
+        "totalKg": 355.83,
+        "squatE1rm": 268.33,
+        "benchE1rm": 192.5,
+        "deadliftE1rm": 320.83
+      },
+      {
+        "date": "2019-03-22",
+        "totalLbs": 799.17,
+        "totalKg": 364.58,
+        "squatE1rm": 274.17,
+        "benchE1rm": 192.5,
+        "deadliftE1rm": 332.5
+      },
+      {
+        "date": "2019-03-25",
+        "totalLbs": 810.83,
+        "totalKg": 370.42,
+        "squatE1rm": 280.0,
+        "benchE1rm": 198.33,
+        "deadliftE1rm": 332.5
+      },
+      {
+        "date": "2019-03-27",
+        "totalLbs": 828.33,
+        "totalKg": 376.25,
+        "squatE1rm": 285.83,
+        "benchE1rm": 198.33,
+        "deadliftE1rm": 344.17
+      },
+      {
+        "date": "2019-03-29",
+        "totalLbs": 840.0,
+        "totalKg": 382.08,
+        "squatE1rm": 291.67,
+        "benchE1rm": 204.17,
+        "deadliftE1rm": 344.17
+      },
+      {
+        "date": "2019-04-01",
+        "totalLbs": 857.5,
+        "totalKg": 387.92,
+        "squatE1rm": 297.5,
+        "benchE1rm": 204.17,
+        "deadliftE1rm": 355.83
+      },
+      {
+        "date": "2019-04-03",
+        "totalLbs": 869.17,
+        "totalKg": 393.75,
+        "squatE1rm": 303.33,
+        "benchE1rm": 210.0,
+        "deadliftE1rm": 355.83
+      },
+      {
+        "date": "2019-04-05",
+        "totalLbs": 886.67,
+        "totalKg": 402.5,
+        "squatE1rm": 309.17,
+        "benchE1rm": 210.0,
+        "deadliftE1rm": 367.5
+      },
+      {
+        "date": "2019-04-08",
+        "totalLbs": 898.33,
+        "totalKg": 408.33,
+        "squatE1rm": 315.0,
+        "benchE1rm": 215.83,
+        "deadliftE1rm": 367.5
+      },
+      {
+        "date": "2019-04-10",
+        "totalLbs": 904.17,
+        "totalKg": 411.25,
+        "squatE1rm": 320.83,
+        "benchE1rm": 215.83,
+        "deadliftE1rm": 367.5
+      },
+      {
+        "date": "2019-04-12",
+        "totalLbs": 922.33,
+        "totalKg": 416.25,
+        "squatE1rm": 326.83,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 367.5
+      },
+      {
+        "date": "2019-04-15",
+        "totalLbs": 934.0,
+        "totalKg": 422.08,
+        "squatE1rm": 326.83,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-04-17",
+        "totalLbs": 934.0,
+        "totalKg": 422.08,
+        "squatE1rm": 326.83,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-04-19",
+        "totalLbs": 934.0,
+        "totalKg": 422.08,
+        "squatE1rm": 326.83,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-04-22",
+        "totalLbs": 934.0,
+        "totalKg": 422.08,
+        "squatE1rm": 326.83,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-04-24",
+        "totalLbs": 934.0,
+        "totalKg": 422.08,
+        "squatE1rm": 326.83,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-04-26",
+        "totalLbs": 945.17,
+        "totalKg": 426.83,
+        "squatE1rm": 338.0,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-04-29",
+        "totalLbs": 945.17,
+        "totalKg": 426.83,
+        "squatE1rm": 338.0,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-04-30",
+        "totalLbs": 945.17,
+        "totalKg": 426.83,
+        "squatE1rm": 338.0,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-05-02",
+        "totalLbs": 945.17,
+        "totalKg": 426.83,
+        "squatE1rm": 338.0,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-05-03",
+        "totalLbs": 945.17,
+        "totalKg": 426.83,
+        "squatE1rm": 338.0,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-05-06",
+        "totalLbs": 945.17,
+        "totalKg": 426.83,
+        "squatE1rm": 338.0,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-05-07",
+        "totalLbs": 945.17,
+        "totalKg": 426.83,
+        "squatE1rm": 338.0,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-05-09",
+        "totalLbs": 945.17,
+        "totalKg": 426.83,
+        "squatE1rm": 338.0,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-05-10",
+        "totalLbs": 955.5,
+        "totalKg": 432.42,
+        "squatE1rm": 348.33,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-05-13",
+        "totalLbs": 955.5,
+        "totalKg": 432.42,
+        "squatE1rm": 348.33,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 379.17
+      },
+      {
+        "date": "2019-05-14",
+        "totalLbs": 966.33,
+        "totalKg": 437.33,
+        "squatE1rm": 348.33,
+        "benchE1rm": 228.0,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-05-16",
+        "totalLbs": 978.83,
+        "totalKg": 443.25,
+        "squatE1rm": 348.33,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-05-17",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-05-20",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-05-21",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-05-23",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-05-24",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-05-27",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-05-29",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-05-31",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-06-03",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-06-05",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-06-07",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-06-10",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-06-24",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-06-27",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-06-28",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-07-01",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-07-04",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-07-05",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-07-08",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.0
+      },
+      {
+        "date": "2019-07-11",
+        "totalLbs": 1008.33,
+        "totalKg": 458.08,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.83
+      },
+      {
+        "date": "2019-07-12",
+        "totalLbs": 1008.33,
+        "totalKg": 458.08,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.83
+      },
+      {
+        "date": "2019-07-16",
+        "totalLbs": 1008.33,
+        "totalKg": 458.08,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.83
+      },
+      {
+        "date": "2019-07-18",
+        "totalLbs": 1008.33,
+        "totalKg": 458.08,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.83
+      },
+      {
+        "date": "2019-07-19",
+        "totalLbs": 1008.33,
+        "totalKg": 458.08,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.83
+      },
+      {
+        "date": "2019-07-23",
+        "totalLbs": 1008.33,
+        "totalKg": 458.08,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.83
+      },
+      {
+        "date": "2019-07-25",
+        "totalLbs": 1008.33,
+        "totalKg": 458.08,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.83
+      },
+      {
+        "date": "2019-07-26",
+        "totalLbs": 1008.33,
+        "totalKg": 458.08,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 390.83
+      },
+      {
+        "date": "2019-07-30",
+        "totalLbs": 1019.5,
+        "totalKg": 463.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 402.0
+      },
+      {
+        "date": "2019-08-01",
+        "totalLbs": 1019.5,
+        "totalKg": 463.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 402.0
+      },
+      {
+        "date": "2019-08-02",
+        "totalLbs": 1019.5,
+        "totalKg": 463.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 402.0
+      },
+      {
+        "date": "2019-08-06",
+        "totalLbs": 1019.5,
+        "totalKg": 463.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 402.0
+      },
+      {
+        "date": "2019-08-08",
+        "totalLbs": 1019.5,
+        "totalKg": 463.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 402.0
+      },
+      {
+        "date": "2019-08-09",
+        "totalLbs": 1019.5,
+        "totalKg": 463.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 402.0
+      },
+      {
+        "date": "2019-08-13",
+        "totalLbs": 1019.5,
+        "totalKg": 463.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 402.0
+      },
+      {
+        "date": "2019-08-15",
+        "totalLbs": 1019.5,
+        "totalKg": 463.17,
+        "squatE1rm": 377.0,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 402.0
+      },
+      {
+        "date": "2019-08-16",
+        "totalLbs": 1031.0,
+        "totalKg": 466.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 402.0
+      },
+      {
+        "date": "2019-08-20",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-08-22",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-08-23",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-08-26",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-08-28",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-08-30",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-09-02",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-09-04",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-09-06",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-09-09",
+        "totalLbs": 1054.5,
+        "totalKg": 477.92,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 425.5
+      },
+      {
+        "date": "2019-09-11",
+        "totalLbs": 1073.0,
+        "totalKg": 484.08,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 444.0
+      },
+      {
+        "date": "2019-09-13",
+        "totalLbs": 1073.0,
+        "totalKg": 484.08,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 444.0
+      },
+      {
+        "date": "2019-09-16",
+        "totalLbs": 1073.0,
+        "totalKg": 484.08,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 444.0
+      },
+      {
+        "date": "2019-09-18",
+        "totalLbs": 1091.0,
+        "totalKg": 493.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-09-20",
+        "totalLbs": 1091.0,
+        "totalKg": 493.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-09-23",
+        "totalLbs": 1091.0,
+        "totalKg": 493.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-09-24",
+        "totalLbs": 1091.0,
+        "totalKg": 493.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-09-26",
+        "totalLbs": 1091.0,
+        "totalKg": 493.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-09-27",
+        "totalLbs": 1091.0,
+        "totalKg": 493.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-09-30",
+        "totalLbs": 1091.0,
+        "totalKg": 493.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-10-01",
+        "totalLbs": 1091.0,
+        "totalKg": 493.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-10-03",
+        "totalLbs": 1091.0,
+        "totalKg": 493.67,
+        "squatE1rm": 388.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-10-04",
+        "totalLbs": 1112.0,
+        "totalKg": 503.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-10-07",
+        "totalLbs": 1112.0,
+        "totalKg": 503.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 462.0
+      },
+      {
+        "date": "2019-10-08",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-10",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-11",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-14",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-15",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-17",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-18",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-21",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-22",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-24",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-25",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-28",
+        "totalLbs": 1124.0,
+        "totalKg": 509.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 474.0
+      },
+      {
+        "date": "2019-10-29",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-10-31",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-01",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-04",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-05",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-07",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-08",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-11",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-12",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-14",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-15",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-18",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-19",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-11-21",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-12-02",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-12-04",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-12-06",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-12-09",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-12-11",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2019-12-13",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-07",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-09",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-10",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-14",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-16",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-17",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-21",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-23",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-24",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-28",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-30",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-01-31",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-02-04",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-02-06",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-02-07",
+        "totalLbs": 1136.0,
+        "totalKg": 512.17,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 486.0
+      },
+      {
+        "date": "2020-02-11",
+        "totalLbs": 1145.83,
+        "totalKg": 517.75,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-02-13",
+        "totalLbs": 1145.83,
+        "totalKg": 517.75,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-02-18",
+        "totalLbs": 1145.83,
+        "totalKg": 517.75,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-02-20",
+        "totalLbs": 1145.83,
+        "totalKg": 517.75,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-02-21",
+        "totalLbs": 1145.83,
+        "totalKg": 517.75,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-02-25",
+        "totalLbs": 1145.83,
+        "totalKg": 517.75,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-02-27",
+        "totalLbs": 1145.83,
+        "totalKg": 517.75,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-02-28",
+        "totalLbs": 1145.83,
+        "totalKg": 517.75,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-03",
+        "totalLbs": 1145.83,
+        "totalKg": 517.75,
+        "squatE1rm": 409.5,
+        "benchE1rm": 240.5,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-05",
+        "totalLbs": 1151.33,
+        "totalKg": 520.83,
+        "squatE1rm": 409.5,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-06",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-10",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-12",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-13",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-17",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-19",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-20",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-24",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-26",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-27",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-03-31",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-02",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-03",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-07",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-09",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-10",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-14",
+        "totalLbs": 1161.83,
+        "totalKg": 524.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 246.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-16",
+        "totalLbs": 1167.83,
+        "totalKg": 527.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 252.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-17",
+        "totalLbs": 1167.83,
+        "totalKg": 527.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 252.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-21",
+        "totalLbs": 1167.83,
+        "totalKg": 527.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 252.0,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-23",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-24",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-28",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-04-30",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-01",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-05",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-07",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-08",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-12",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-14",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-15",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-19",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-21",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-22",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-26",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-28",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-05-29",
+        "totalLbs": 1169.17,
+        "totalKg": 526.92,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 495.83
+      },
+      {
+        "date": "2020-06-02",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2020-06-04",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2020-06-05",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2020-06-09",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2020-06-11",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2020-06-12",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2020-06-16",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2020-06-18",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2020-06-19",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2020-06-25",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-04",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-05",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-07",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-08",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-11",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-12",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-13",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-15",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-18",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-19",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-20",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-25",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-26",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-27",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-28",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-01-29",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-02",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-03",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-04",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-05",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-08",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-10",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-11",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-12",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-15",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-16",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-19",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-22",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-23",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-24",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-02-25",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-01",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-02",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-03",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-04",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-05",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-09",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-10",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-11",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-12",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-15",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-18",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-19",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-22",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-23",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-24",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-26",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-29",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-30",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-03-31",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-01",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-05",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-06",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-08",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-09",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-12",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-13",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-15",
+        "totalLbs": 1183.33,
+        "totalKg": 533.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 253.33,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-16",
+        "totalLbs": 1192.5,
+        "totalKg": 539.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 262.5,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-19",
+        "totalLbs": 1192.5,
+        "totalKg": 539.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 262.5,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-20",
+        "totalLbs": 1192.5,
+        "totalKg": 539.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 262.5,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-22",
+        "totalLbs": 1192.5,
+        "totalKg": 539.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 262.5,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-26",
+        "totalLbs": 1192.5,
+        "totalKg": 539.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 262.5,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-27",
+        "totalLbs": 1192.5,
+        "totalKg": 539.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 262.5,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-29",
+        "totalLbs": 1192.5,
+        "totalKg": 539.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 262.5,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-04-30",
+        "totalLbs": 1212.0,
+        "totalKg": 549.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 282.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-03",
+        "totalLbs": 1212.0,
+        "totalKg": 549.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 282.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-04",
+        "totalLbs": 1212.0,
+        "totalKg": 549.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 282.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-06",
+        "totalLbs": 1212.0,
+        "totalKg": 549.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 282.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-07",
+        "totalLbs": 1212.0,
+        "totalKg": 549.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 282.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-10",
+        "totalLbs": 1212.0,
+        "totalKg": 549.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 282.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-11",
+        "totalLbs": 1212.0,
+        "totalKg": 549.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 282.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-13",
+        "totalLbs": 1212.0,
+        "totalKg": 549.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 282.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-14",
+        "totalLbs": 1218.0,
+        "totalKg": 552.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-17",
+        "totalLbs": 1218.0,
+        "totalKg": 552.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-18",
+        "totalLbs": 1218.0,
+        "totalKg": 552.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-20",
+        "totalLbs": 1218.0,
+        "totalKg": 552.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-21",
+        "totalLbs": 1218.0,
+        "totalKg": 552.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-24",
+        "totalLbs": 1218.0,
+        "totalKg": 552.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-25",
+        "totalLbs": 1218.0,
+        "totalKg": 552.0,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 510.0
+      },
+      {
+        "date": "2021-05-27",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-05-28",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-05-31",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-01",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-04",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-07",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-10",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-11",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-14",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-17",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-18",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-21",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-22",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-24",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-25",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-28",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-06-29",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-01",
+        "totalLbs": 1221.33,
+        "totalKg": 554.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 288.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-02",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-12",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-13",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-15",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-16",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-19",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-20",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-22",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-23",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-26",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-27",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-29",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-07-30",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-02",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-03",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-05",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-06",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-09",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-10",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-12",
+        "totalLbs": 1222.33,
+        "totalKg": 552.67,
+        "squatE1rm": 420.0,
+        "benchE1rm": 289.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-13",
+        "totalLbs": 1225.0,
+        "totalKg": 553.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 291.67,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-16",
+        "totalLbs": 1225.0,
+        "totalKg": 553.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 291.67,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-17",
+        "totalLbs": 1225.0,
+        "totalKg": 553.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 291.67,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-19",
+        "totalLbs": 1225.0,
+        "totalKg": 553.58,
+        "squatE1rm": 420.0,
+        "benchE1rm": 291.67,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-20",
+        "totalLbs": 1233.33,
+        "totalKg": 557.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 300.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-23",
+        "totalLbs": 1233.33,
+        "totalKg": 557.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 300.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-24",
+        "totalLbs": 1233.33,
+        "totalKg": 557.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 300.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-27",
+        "totalLbs": 1233.33,
+        "totalKg": 557.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 300.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-30",
+        "totalLbs": 1233.33,
+        "totalKg": 557.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 300.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-08-31",
+        "totalLbs": 1233.33,
+        "totalKg": 557.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 300.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-02",
+        "totalLbs": 1233.33,
+        "totalKg": 557.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 300.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-03",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-06",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-07",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-09",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-10",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-13",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-14",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-16",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-17",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-20",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-21",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-23",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-24",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-27",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-09-28",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-01",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-04",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-05",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-07",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-08",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-11",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-12",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-14",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-15",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-18",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-21",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-25",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-26",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-28",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-10-29",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-01",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-02",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-04",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-08",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-09",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-11",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-12",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-15",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-29",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-11-30",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-02",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-03",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-06",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-07",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-09",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-10",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-13",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-14",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-16",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-17",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-20",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-21",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2021-12-23",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-03",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-04",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-06",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-07",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-10",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-13",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-19",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-24",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-25",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-27",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-28",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-01-31",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-01",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-03",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-07",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-08",
+        "totalLbs": 1241.67,
+        "totalKg": 561.08,
+        "squatE1rm": 420.0,
+        "benchE1rm": 308.33,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-10",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-11",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-14",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-16",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-17",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-18",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-21",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-22",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-24",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-25",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-02-28",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-02",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-03",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-04",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-07",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-08",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-10",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-11",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-14",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-15",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-17",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-21",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-23",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-24",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-28",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-29",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-03-31",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-04",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-05",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-07",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-08",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-11",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-12",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-14",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-15",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-18",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-19",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-21",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-22",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-25",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-28",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-04-29",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-02",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-03",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-05",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-06",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-09",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-10",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-12",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-13",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-17",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-19",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-25",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-05-26",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-01",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-02",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-07",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-09",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-10",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-14",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-16",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-17",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-22",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-23",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-24",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-28",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-06-30",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-07-01",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-07-12",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-07-14",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-07-15",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-07-25",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-07-26",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-07-28",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-07-29",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-01",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-02",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-04",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-05",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-08",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-09",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-11",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-12",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-15",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-16",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-18",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-19",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-22",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-23",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-25",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-26",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-29",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-08-30",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-01",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-02",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-06",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-07",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-09",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-12",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-13",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-15",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-16",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-19",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-20",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-22",
+        "totalLbs": 1242.5,
+        "totalKg": 562.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 309.17,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-23",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-26",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-27",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-09-30",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-03",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-04",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-06",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-07",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-10",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-11",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-13",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-14",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-17",
+        "totalLbs": 1245.33,
+        "totalKg": 565.33,
+        "squatE1rm": 420.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-18",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-20",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-21",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-24",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-25",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-27",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-28",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-10-31",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-01",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-04",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-07",
+        "totalLbs": 1250.33,
+        "totalKg": 569.0,
+        "squatE1rm": 425.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-10",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-11",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-14",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-15",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-17",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-18",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-21",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-25",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-28",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-11-29",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-01",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-02",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-05",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-06",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-08",
+        "totalLbs": 1267.33,
+        "totalKg": 577.5,
+        "squatE1rm": 442.0,
+        "benchE1rm": 312.0,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-12",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-13",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2022-12-19",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-03",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-05",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-06",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-10",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-12",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-13",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-17",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-20",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-23",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-26",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-27",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-30",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-01-31",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-03",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-06",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-10",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-13",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-17",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-23",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-02-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-03-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-03-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-03-10",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-03-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-03-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-03-17",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-06",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-13",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-20",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-27",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-04-28",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-05",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-12",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-19",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-05-30",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-06-01",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-06-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-06-06",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-06-08",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-06-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-06-13",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-06-15",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-06-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-06-20",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-10",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-13",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-17",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-20",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-27",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-28",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-07-31",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-01",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-03",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-08",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-10",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-15",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-17",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-22",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-28",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-29",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-08-31",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-01",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-05",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-08",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-12",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-15",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-19",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-26",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-28",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-09-29",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-03",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-06",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-19",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-20",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-10-27",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-11-01",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2023-11-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-07-22",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-07-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-07-26",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-07-29",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-07-31",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-08-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-08-05",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-08-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-08-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-11-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-11-27",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-11-29",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-06",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-13",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-20",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-23",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-27",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2024-12-30",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-01-01",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-01-03",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-01-13",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-01-15",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-01-17",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-01-27",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-01-29",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-01-31",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-03",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-05",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-10",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-12",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-17",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-19",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-26",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-02-28",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-03",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-05",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-10",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-12",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-17",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-19",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-26",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-03-31",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-23",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-28",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-04-30",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-05-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-05-05",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-05-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-05-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-05-12",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-05-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-05-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-06",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-13",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-20",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-23",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-27",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-06-30",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-15",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-17",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-22",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-28",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-29",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-07-31",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-01",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-05",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-07",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-08",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-12",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-14",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-15",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-19",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-21",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-22",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-26",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-28",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-08-29",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-02",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-04",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-05",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-09",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-11",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-12",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-16",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-18",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-23",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-25",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-09-26",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-10-20",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-10-23",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      },
+      {
+        "date": "2025-10-24",
+        "totalLbs": 1276.17,
+        "totalKg": 580.33,
+        "squatE1rm": 442.0,
+        "benchE1rm": 320.83,
+        "deadliftE1rm": 513.33
+      }
+    ],
+    "current": {
+      "date": "2025-10-24",
+      "totalLbs": 1276.17,
+      "totalKg": 580.33,
+      "squatE1rm": 442.0,
+      "benchE1rm": 320.83,
+      "deadliftE1rm": 513.33
+    },
+    "peak": {
+      "date": "2022-12-09",
+      "totalLbs": 1276.17,
+      "totalKg": 580.33,
+      "squatE1rm": 442.0,
+      "benchE1rm": 320.83,
+      "deadliftE1rm": 513.33
+    },
+    "clubMilestones": {
+      "500": {
+        "date": "2019-02-11",
+        "totalLbs": 507.5,
+        "totalKg": 230.42,
+        "squat": 175.0,
+        "bench": 151.67,
+        "deadlift": 180.83
+      },
+      "750": {
+        "date": "2019-03-15",
+        "totalLbs": 758.33,
+        "totalKg": 344.17,
+        "squat": 256.67,
+        "bench": 192.5,
+        "deadlift": 309.17
+      },
+      "1000": {
+        "date": "2019-05-17",
+        "totalLbs": 1007.5,
+        "totalKg": 457.17,
+        "squat": 377.0,
+        "bench": 240.5,
+        "deadlift": 390.0
+      },
+      "1200": {
+        "date": "2021-04-30",
+        "totalLbs": 1212.0,
+        "totalKg": 549.0,
+        "squat": 420.0,
+        "bench": 282.0,
+        "deadlift": 510.0
+      }
+    }
+  },
+  "allTimePRs": {
+    "squat": {
+      "repPRs": {
+        "1": {
+          "weightLbs": 380.0,
+          "weightKg": 172.5,
+          "e1rmLbs": 380.0,
+          "e1rmKg": 172.5
+        },
+        "2": {
+          "weightLbs": 225.0,
+          "weightKg": 102.5,
+          "e1rmLbs": 240.0,
+          "e1rmKg": 109.33
+        },
+        "3": {
+          "weightLbs": 400.0,
+          "weightKg": 182.5,
+          "e1rmLbs": 440.0,
+          "e1rmKg": 200.75
+        },
+        "4": {
+          "weightLbs": 390.0,
+          "weightKg": 177.5,
+          "e1rmLbs": 442.0,
+          "e1rmKg": 201.17
+        },
+        "5": {
+          "weightLbs": 360.0,
+          "weightKg": 162.5,
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.58
+        },
+        "6": {
+          "weightLbs": 350.0,
+          "weightKg": 157.5,
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.0
+        },
+        "7": {
+          "weightLbs": 330.0,
+          "weightKg": 150.0,
+          "e1rmLbs": 407.0,
+          "e1rmKg": 185.0
+        },
+        "8": {
+          "weightLbs": 310.0,
+          "weightKg": 140.0,
+          "e1rmLbs": 392.67,
+          "e1rmKg": 177.33
+        },
+        "9": {
+          "weightLbs": 315.0,
+          "weightKg": 142.5,
+          "e1rmLbs": 409.5,
+          "e1rmKg": 185.25
+        },
+        "10": {
+          "weightLbs": 255.0,
+          "weightKg": 115.0,
+          "e1rmLbs": 340.0,
+          "e1rmKg": 153.33
+        }
+      },
+      "maxEver": {
+        "weightLbs": 400.0,
+        "weightKg": 182.5
+      },
+      "bestE1rm": {
+        "weightLbs": 390.0,
+        "weightKg": 177.5,
+        "e1rmLbs": 442.0,
+        "e1rmKg": 201.17
+      }
+    },
+    "bench": {
+      "repPRs": {
+        "1": {
+          "weightLbs": 215.0,
+          "weightKg": 97.5,
+          "e1rmLbs": 215.0,
+          "e1rmKg": 97.5
+        },
+        "2": {
+          "weightLbs": 275.0,
+          "weightKg": 125.0,
+          "e1rmLbs": 293.33,
+          "e1rmKg": 133.33
+        },
+        "3": {
+          "weightLbs": 275.0,
+          "weightKg": 125.0,
+          "e1rmLbs": 302.5,
+          "e1rmKg": 137.5
+        },
+        "4": {
+          "weightLbs": 270.0,
+          "weightKg": 122.5,
+          "e1rmLbs": 306.0,
+          "e1rmKg": 138.83
+        },
+        "5": {
+          "weightLbs": 275.0,
+          "weightKg": 125.0,
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83
+        },
+        "6": {
+          "weightLbs": 250.0,
+          "weightKg": 112.5,
+          "e1rmLbs": 300.0,
+          "e1rmKg": 135.0
+        },
+        "7": {
+          "weightLbs": 250.0,
+          "weightKg": 112.5,
+          "e1rmLbs": 308.33,
+          "e1rmKg": 138.75
+        },
+        "8": {
+          "weightLbs": 240.0,
+          "weightKg": 110.0,
+          "e1rmLbs": 304.0,
+          "e1rmKg": 139.33
+        },
+        "9": {
+          "weightLbs": 240.0,
+          "weightKg": 110.0,
+          "e1rmLbs": 312.0,
+          "e1rmKg": 143.0
+        },
+        "10": {
+          "weightLbs": 197.5,
+          "weightKg": 90.0,
+          "e1rmLbs": 263.33,
+          "e1rmKg": 120.0
+        }
+      },
+      "maxEver": {
+        "weightLbs": 275.0,
+        "weightKg": 125.0
+      },
+      "bestE1rm": {
+        "weightLbs": 275.0,
+        "weightKg": 125.0,
+        "e1rmLbs": 320.83,
+        "e1rmKg": 145.83
+      }
+    },
+    "deadlift": {
+      "repPRs": {
+        "1": {
+          "weightLbs": 465.0,
+          "weightKg": 210.0,
+          "e1rmLbs": 465.0,
+          "e1rmKg": 210.0
+        },
+        "2": {
+          "weightLbs": 465.0,
+          "weightKg": 210.0,
+          "e1rmLbs": 496.0,
+          "e1rmKg": 224.0
+        },
+        "3": {
+          "weightLbs": 460.0,
+          "weightKg": 207.5,
+          "e1rmLbs": 506.0,
+          "e1rmKg": 228.25
+        },
+        "4": {
+          "weightLbs": 420.0,
+          "weightKg": 190.0,
+          "e1rmLbs": 476.0,
+          "e1rmKg": 215.33
+        },
+        "5": {
+          "weightLbs": 440.0,
+          "weightKg": 200.0,
+          "e1rmLbs": 513.33,
+          "e1rmKg": 233.33
+        },
+        "6": {
+          "weightLbs": 425.0,
+          "weightKg": 192.5,
+          "e1rmLbs": 510.0,
+          "e1rmKg": 231.0
+        },
+        "7": {
+          "weightLbs": 360.0,
+          "weightKg": 162.5,
+          "e1rmLbs": 444.0,
+          "e1rmKg": 200.42
+        },
+        "8": {
+          "weightLbs": 375.0,
+          "weightKg": 170.0,
+          "e1rmLbs": 475.0,
+          "e1rmKg": 215.33
+        },
+        "9": {
+          "weightLbs": 295.0,
+          "weightKg": 135.0,
+          "e1rmLbs": 383.5,
+          "e1rmKg": 175.5
+        },
+        "10": {
+          "weightLbs": 300.0,
+          "weightKg": 135.0,
+          "e1rmLbs": 400.0,
+          "e1rmKg": 180.0
+        }
+      },
+      "maxEver": {
+        "weightLbs": 465.0,
+        "weightKg": 210.0
+      },
+      "bestE1rm": {
+        "weightLbs": 440.0,
+        "weightKg": 200.0,
+        "e1rmLbs": 513.33,
+        "e1rmKg": 233.33
+      }
+    }
+  }
 }
