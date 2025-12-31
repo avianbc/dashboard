@@ -508,7 +508,70 @@
         let bigThreeChartInstances = {};
 
         function renderAnnualVolumeChart() {
-            const { volumeTimeSeries } = trainingData;
+            const { volumeTimeSeries, bigThreeVolume } = trainingData;
+
+            // Helper function to aggregate Big 3 volume data
+            function aggregateBigThreeVolume(lift) {
+                if (!bigThreeVolume || !bigThreeVolume[lift] || !bigThreeVolume[lift].dailyVolume) {
+                    return [];
+                }
+
+                const dailyData = bigThreeVolume[lift].dailyVolume;
+
+                if (volumeView === 'cumulative') {
+                    let cumulativeTotal = 0;
+                    return dailyData.map(d => {
+                        cumulativeTotal += getVolume(d.volumeLbs, d.volumeKg);
+                        return { x: d.date, y: cumulativeTotal };
+                    });
+                } else if (volumeView === 'weekly') {
+                    const weeklyData = {};
+                    dailyData.forEach(d => {
+                        const date = new Date(d.date);
+                        const weekStart = new Date(date);
+                        weekStart.setDate(date.getDate() - date.getDay());
+                        const weekKey = weekStart.toISOString().split('T')[0];
+                        if (!weeklyData[weekKey]) {
+                            weeklyData[weekKey] = { volumeLbs: 0, volumeKg: 0 };
+                        }
+                        weeklyData[weekKey].volumeLbs += d.volumeLbs;
+                        weeklyData[weekKey].volumeKg += d.volumeKg;
+                    });
+                    return Object.entries(weeklyData).map(([date, vol]) => ({
+                        x: date,
+                        y: getVolume(vol.volumeLbs, vol.volumeKg)
+                    }));
+                } else if (volumeView === 'monthly') {
+                    const monthlyData = {};
+                    dailyData.forEach(d => {
+                        const monthKey = d.date.substring(0, 7);
+                        if (!monthlyData[monthKey]) {
+                            monthlyData[monthKey] = { volumeLbs: 0, volumeKg: 0 };
+                        }
+                        monthlyData[monthKey].volumeLbs += d.volumeLbs;
+                        monthlyData[monthKey].volumeKg += d.volumeKg;
+                    });
+                    return Object.entries(monthlyData).map(([month, vol]) => ({
+                        x: month + '-01',
+                        y: getVolume(vol.volumeLbs, vol.volumeKg)
+                    }));
+                } else if (volumeView === 'yearly') {
+                    const yearlyData = {};
+                    dailyData.forEach(d => {
+                        const year = d.date.substring(0, 4);
+                        if (!yearlyData[year]) {
+                            yearlyData[year] = { volumeLbs: 0, volumeKg: 0 };
+                        }
+                        yearlyData[year].volumeLbs += d.volumeLbs;
+                        yearlyData[year].volumeKg += d.volumeKg;
+                    });
+                    return Object.entries(yearlyData).map(([year, vol]) => ({
+                        x: year,
+                        y: getVolume(vol.volumeLbs, vol.volumeKg)
+                    }));
+                }
+                return [];
+            }
 
             // Select data based on view mode
             let data, chartData, label, timeUnit, displayFormat;
@@ -524,7 +587,7 @@
                         y: cumulativeTotal
                     };
                 });
-                label = `Cumulative Volume (${currentUnit})`;
+                label = `Total Volume (${currentUnit})`;
                 timeUnit = 'month';
                 displayFormat = { month: 'MMM yyyy' };
             } else if (volumeView === 'weekly') {
@@ -533,7 +596,7 @@
                     x: d.week + '-1', // Convert YYYY-Www to date
                     y: getVolume(d.volumeLbs, d.volumeKg)
                 }));
-                label = `Weekly Volume (${currentUnit})`;
+                label = `Total Volume (${currentUnit})`;
                 timeUnit = 'month';
                 displayFormat = { month: 'MMM yyyy' };
             } else if (volumeView === 'yearly') {
@@ -542,7 +605,7 @@
                     x: d.year.toString(),
                     y: getVolume(d.volumeLbs, d.volumeKg)
                 }));
-                label = `Annual Volume (${currentUnit})`;
+                label = `Total Volume (${currentUnit})`;
                 timeUnit = 'year';
                 displayFormat = { year: 'yyyy' };
             } else { // monthly (default)
@@ -551,7 +614,7 @@
                     x: d.month + '-01',
                     y: getVolume(d.volumeLbs, d.volumeKg)
                 }));
-                label = `Monthly Volume (${currentUnit})`;
+                label = `Total Volume (${currentUnit})`;
                 timeUnit = 'month';
                 displayFormat = { month: 'MMM yyyy' };
             }
@@ -570,27 +633,60 @@
             const isCumulative = volumeView === 'cumulative';
             const isYearly = volumeView === 'yearly';
 
+            // Build datasets array with total volume + Big 3
+            const datasets = [{
+                label: label,
+                data: chartData,
+                borderColor: isCumulative ? '#51cf66' : '#888',
+                backgroundColor: isCumulative ? '#51cf6633' : '#88888833',
+                borderWidth: isCumulative ? 3 : 2,
+                pointRadius: isYearly ? 6 : 2,
+                pointHoverRadius: isYearly ? 8 : 5,
+                tension: isCumulative ? 0.4 : 0.3,
+                fill: true
+            }];
+
+            // Add Big 3 datasets
+            const bigThreeConfig = [
+                { lift: 'squat', name: 'Squat', color: '#4a9eff' },
+                { lift: 'bench', name: 'Bench Press', color: '#ff6b6b' },
+                { lift: 'deadlift', name: 'Deadlift', color: '#51cf66' }
+            ];
+
+            bigThreeConfig.forEach(config => {
+                const liftData = aggregateBigThreeVolume(config.lift);
+                if (liftData.length > 0) {
+                    datasets.push({
+                        label: config.name,
+                        data: liftData,
+                        borderColor: config.color,
+                        backgroundColor: config.color + '33',
+                        borderWidth: 2,
+                        pointRadius: isYearly ? 4 : 0,
+                        pointHoverRadius: isYearly ? 6 : 4,
+                        tension: 0.3,
+                        fill: false
+                    });
+                }
+            });
+
             annualVolumeChartInstance = new Chart(ctx, {
                 type: 'line',
-                data: {
-                    datasets: [{
-                        label: label,
-                        data: chartData,
-                        borderColor: isCumulative ? '#51cf66' : '#4a9eff',
-                        backgroundColor: isCumulative ? '#51cf6633' : '#4a9eff33',
-                        borderWidth: isCumulative ? 3 : 2,
-                        pointRadius: isYearly ? 6 : 2,
-                        pointHoverRadius: isYearly ? 8 : 5,
-                        tension: isCumulative ? 0.4 : 0.3,
-                        fill: true
-                    }]
-                },
+                data: { datasets },
                 options: {
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: {
                         legend: {
-                            display: false
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                color: '#e0e0e0',
+                                padding: 15,
+                                font: { size: 12 },
+                                usePointStyle: true,
+                                pointStyle: 'line'
+                            }
                         },
                         tooltip: {
                             backgroundColor: '#1a1a1a',
@@ -612,10 +708,11 @@
                                 },
                                 label: function(context) {
                                     const volume = context.parsed.y;
+                                    const datasetLabel = context.dataset.label;
                                     if (isCumulative) {
-                                        return `Total: ${(volume / 1000000).toFixed(2)}M ${currentUnit}`;
+                                        return `${datasetLabel}: ${(volume / 1000000).toFixed(2)}M ${currentUnit}`;
                                     }
-                                    return `${(volume / 1000).toFixed(1)}K ${currentUnit}`;
+                                    return `${datasetLabel}: ${(volume / 1000).toFixed(1)}K ${currentUnit}`;
                                 }
                             }
                         }
@@ -900,7 +997,7 @@
                 chartDiv.className = 'chart-container';
 
                 const title = document.createElement('h3');
-                title.textContent = `${names[lift]} - Strength Progression`;
+                title.textContent = names[lift];
                 title.style.marginTop = '0';
                 title.style.marginBottom = '1rem';
                 chartDiv.appendChild(title);
@@ -975,7 +1072,7 @@
             const ctx = canvas.getContext('2d');
             const datasets = [];
 
-            // Add estimated 1RM data (main line - shows every workout)
+            // Show e1RM progression
             if (e1rmHistory && e1rmHistory.length > 0) {
                 const e1rmData = e1rmHistory.map(point => ({
                     x: point.date,
@@ -1047,7 +1144,7 @@
                                 displayFormats: { month: 'MMM yyyy' }
                             },
                             grid: { color: '#1a1a1a' },
-                            ticks: { color: '#888', font: { size: 10 } }
+                            ticks: { color: '#888', font: { size: 10 }, maxRotation: 45 }
                         },
                         y: {
                             beginAtZero: false,

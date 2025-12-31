@@ -21820,6 +21820,4773 @@
       ]
     }
   },
+  "bigThreeVolume": {
+    "squat": {
+      "exerciseName": "Squat",
+      "dailyVolume": [
+        {
+          "date": "2019-01-24",
+          "volumeLbs": 1125.0,
+          "volumeKg": 500.0
+        },
+        {
+          "date": "2019-01-26",
+          "volumeLbs": 2375.0,
+          "volumeKg": 1062.5
+        },
+        {
+          "date": "2019-01-29",
+          "volumeLbs": 2625.0,
+          "volumeKg": 1187.5
+        },
+        {
+          "date": "2019-01-31",
+          "volumeLbs": 3375.0,
+          "volumeKg": 1500.0
+        },
+        {
+          "date": "2019-02-02",
+          "volumeLbs": 3500.0,
+          "volumeKg": 1562.5
+        },
+        {
+          "date": "2019-02-05",
+          "volumeLbs": 3375.0,
+          "volumeKg": 1500.0
+        },
+        {
+          "date": "2019-02-07",
+          "volumeLbs": 3500.0,
+          "volumeKg": 1562.5
+        },
+        {
+          "date": "2019-02-09",
+          "volumeLbs": 3625.0,
+          "volumeKg": 1625.0
+        },
+        {
+          "date": "2019-02-12",
+          "volumeLbs": 3750.0,
+          "volumeKg": 1687.5
+        },
+        {
+          "date": "2019-02-14",
+          "volumeLbs": 3875.0,
+          "volumeKg": 1750.0
+        },
+        {
+          "date": "2019-02-16",
+          "volumeLbs": 4000.0,
+          "volumeKg": 1812.5
+        },
+        {
+          "date": "2019-02-19",
+          "volumeLbs": 4125.0,
+          "volumeKg": 1875.0
+        },
+        {
+          "date": "2019-02-21",
+          "volumeLbs": 4250.0,
+          "volumeKg": 1937.5
+        },
+        {
+          "date": "2019-02-23",
+          "volumeLbs": 4375.0,
+          "volumeKg": 2000.0
+        },
+        {
+          "date": "2019-02-26",
+          "volumeLbs": 4500.0,
+          "volumeKg": 2062.5
+        },
+        {
+          "date": "2019-02-28",
+          "volumeLbs": 4625.0,
+          "volumeKg": 2125.0
+        },
+        {
+          "date": "2019-03-02",
+          "volumeLbs": 4750.0,
+          "volumeKg": 2125.0
+        },
+        {
+          "date": "2019-03-05",
+          "volumeLbs": 4875.0,
+          "volumeKg": 2187.5
+        },
+        {
+          "date": "2019-03-07",
+          "volumeLbs": 5000.0,
+          "volumeKg": 2250.0
+        },
+        {
+          "date": "2019-03-09",
+          "volumeLbs": 5125.0,
+          "volumeKg": 2312.5
+        },
+        {
+          "date": "2019-03-12",
+          "volumeLbs": 5250.0,
+          "volumeKg": 2375.0
+        },
+        {
+          "date": "2019-03-14",
+          "volumeLbs": 5375.0,
+          "volumeKg": 2437.5
+        },
+        {
+          "date": "2019-03-16",
+          "volumeLbs": 5500.0,
+          "volumeKg": 2500.0
+        },
+        {
+          "date": "2019-03-19",
+          "volumeLbs": 5625.0,
+          "volumeKg": 2562.5
+        },
+        {
+          "date": "2019-03-21",
+          "volumeLbs": 5750.0,
+          "volumeKg": 2625.0
+        },
+        {
+          "date": "2019-03-23",
+          "volumeLbs": 5875.0,
+          "volumeKg": 2687.5
+        },
+        {
+          "date": "2019-03-26",
+          "volumeLbs": 6000.0,
+          "volumeKg": 2750.0
+        },
+        {
+          "date": "2019-03-28",
+          "volumeLbs": 6125.0,
+          "volumeKg": 2750.0
+        },
+        {
+          "date": "2019-03-30",
+          "volumeLbs": 6250.0,
+          "volumeKg": 2812.5
+        },
+        {
+          "date": "2019-04-02",
+          "volumeLbs": 6375.0,
+          "volumeKg": 2875.0
+        },
+        {
+          "date": "2019-04-04",
+          "volumeLbs": 6500.0,
+          "volumeKg": 2937.5
+        },
+        {
+          "date": "2019-04-06",
+          "volumeLbs": 6625.0,
+          "volumeKg": 3000.0
+        },
+        {
+          "date": "2019-04-09",
+          "volumeLbs": 6750.0,
+          "volumeKg": 3062.5
+        },
+        {
+          "date": "2019-04-11",
+          "volumeLbs": 5775.0,
+          "volumeKg": 2625.0
+        },
+        {
+          "date": "2019-04-12",
+          "volumeLbs": 5645.0,
+          "volumeKg": 2547.5
+        },
+        {
+          "date": "2019-04-13",
+          "volumeLbs": 4125.0,
+          "volumeKg": 1875.0
+        },
+        {
+          "date": "2019-04-17",
+          "volumeLbs": 6645.0,
+          "volumeKg": 2992.5
+        },
+        {
+          "date": "2019-04-22",
+          "volumeLbs": 5970.0,
+          "volumeKg": 2692.5
+        },
+        {
+          "date": "2019-04-26",
+          "volumeLbs": 7085.0,
+          "volumeKg": 3200.0
+        },
+        {
+          "date": "2019-04-30",
+          "volumeLbs": 7500.0,
+          "volumeKg": 3375.0
+        },
+        {
+          "date": "2019-05-03",
+          "volumeLbs": 6695.0,
+          "volumeKg": 3020.0
+        },
+        {
+          "date": "2019-05-07",
+          "volumeLbs": 7500.0,
+          "volumeKg": 3375.0
+        },
+        {
+          "date": "2019-05-10",
+          "volumeLbs": 5785.0,
+          "volumeKg": 2610.0
+        },
+        {
+          "date": "2019-05-14",
+          "volumeLbs": 7500.0,
+          "volumeKg": 3375.0
+        },
+        {
+          "date": "2019-05-17",
+          "volumeLbs": 7420.0,
+          "volumeKg": 3365.0
+        },
+        {
+          "date": "2019-05-21",
+          "volumeLbs": 4500.0,
+          "volumeKg": 2025.0
+        },
+        {
+          "date": "2019-05-24",
+          "volumeLbs": 2725.0,
+          "volumeKg": 1237.5
+        },
+        {
+          "date": "2019-05-29",
+          "volumeLbs": 4900.0,
+          "volumeKg": 2212.5
+        },
+        {
+          "date": "2019-05-31",
+          "volumeLbs": 7680.0,
+          "volumeKg": 3472.5
+        },
+        {
+          "date": "2019-06-03",
+          "volumeLbs": 6650.0,
+          "volumeKg": 3012.5
+        },
+        {
+          "date": "2019-06-05",
+          "volumeLbs": 4975.0,
+          "volumeKg": 2250.0
+        },
+        {
+          "date": "2019-06-07",
+          "volumeLbs": 7835.0,
+          "volumeKg": 3542.5
+        },
+        {
+          "date": "2019-06-10",
+          "volumeLbs": 6775.0,
+          "volumeKg": 3050.0
+        },
+        {
+          "date": "2019-06-24",
+          "volumeLbs": 5350.0,
+          "volumeKg": 2412.5
+        },
+        {
+          "date": "2019-07-01",
+          "volumeLbs": 14510.0,
+          "volumeKg": 6592.5
+        },
+        {
+          "date": "2019-07-08",
+          "volumeLbs": 14560.0,
+          "volumeKg": 6615.0
+        },
+        {
+          "date": "2019-07-19",
+          "volumeLbs": 14575.0,
+          "volumeKg": 6622.5
+        },
+        {
+          "date": "2019-07-26",
+          "volumeLbs": 12505.0,
+          "volumeKg": 5680.0
+        },
+        {
+          "date": "2019-08-02",
+          "volumeLbs": 11800.0,
+          "volumeKg": 5355.0
+        },
+        {
+          "date": "2019-08-09",
+          "volumeLbs": 9650.0,
+          "volumeKg": 4385.0
+        },
+        {
+          "date": "2019-08-16",
+          "volumeLbs": 8500.0,
+          "volumeKg": 3850.0
+        },
+        {
+          "date": "2019-08-23",
+          "volumeLbs": 5155.0,
+          "volumeKg": 2332.5
+        },
+        {
+          "date": "2019-08-26",
+          "volumeLbs": 6775.0,
+          "volumeKg": 3050.0
+        },
+        {
+          "date": "2019-08-30",
+          "volumeLbs": 2075.0,
+          "volumeKg": 925.0
+        },
+        {
+          "date": "2019-09-09",
+          "volumeLbs": 6775.0,
+          "volumeKg": 3050.0
+        },
+        {
+          "date": "2019-09-13",
+          "volumeLbs": 7255.0,
+          "volumeKg": 3277.5
+        },
+        {
+          "date": "2019-09-16",
+          "volumeLbs": 6800.0,
+          "volumeKg": 3062.5
+        },
+        {
+          "date": "2019-09-18",
+          "volumeLbs": 2825.0,
+          "volumeKg": 1262.5
+        },
+        {
+          "date": "2019-09-27",
+          "volumeLbs": 6740.0,
+          "volumeKg": 3055.0
+        },
+        {
+          "date": "2019-10-04",
+          "volumeLbs": 7380.0,
+          "volumeKg": 3335.0
+        },
+        {
+          "date": "2019-10-11",
+          "volumeLbs": 6805.0,
+          "volumeKg": 3082.5
+        },
+        {
+          "date": "2019-10-18",
+          "volumeLbs": 6300.0,
+          "volumeKg": 2847.5
+        },
+        {
+          "date": "2019-10-25",
+          "volumeLbs": 5580.0,
+          "volumeKg": 2517.5
+        },
+        {
+          "date": "2019-11-01",
+          "volumeLbs": 5590.0,
+          "volumeKg": 2520.0
+        },
+        {
+          "date": "2019-11-08",
+          "volumeLbs": 4840.0,
+          "volumeKg": 2192.5
+        },
+        {
+          "date": "2019-11-15",
+          "volumeLbs": 5670.0,
+          "volumeKg": 2562.5
+        },
+        {
+          "date": "2019-12-02",
+          "volumeLbs": 6625.0,
+          "volumeKg": 3000.0
+        },
+        {
+          "date": "2019-12-04",
+          "volumeLbs": 3875.0,
+          "volumeKg": 1750.0
+        },
+        {
+          "date": "2019-12-06",
+          "volumeLbs": 7810.0,
+          "volumeKg": 3530.0
+        },
+        {
+          "date": "2019-12-09",
+          "volumeLbs": 6625.0,
+          "volumeKg": 3000.0
+        },
+        {
+          "date": "2019-12-11",
+          "volumeLbs": 2775.0,
+          "volumeKg": 1250.0
+        },
+        {
+          "date": "2020-01-10",
+          "volumeLbs": 4840.0,
+          "volumeKg": 2192.5
+        },
+        {
+          "date": "2020-01-17",
+          "volumeLbs": 5985.0,
+          "volumeKg": 2705.0
+        },
+        {
+          "date": "2020-01-24",
+          "volumeLbs": 6370.0,
+          "volumeKg": 2872.5
+        },
+        {
+          "date": "2020-01-31",
+          "volumeLbs": 4840.0,
+          "volumeKg": 2192.5
+        },
+        {
+          "date": "2020-02-07",
+          "volumeLbs": 6315.0,
+          "volumeKg": 2855.0
+        },
+        {
+          "date": "2020-02-21",
+          "volumeLbs": 10115.0,
+          "volumeKg": 4605.0
+        },
+        {
+          "date": "2020-02-28",
+          "volumeLbs": 6315.0,
+          "volumeKg": 2855.0
+        },
+        {
+          "date": "2020-03-06",
+          "volumeLbs": 7420.0,
+          "volumeKg": 3345.0
+        },
+        {
+          "date": "2020-03-13",
+          "volumeLbs": 6835.0,
+          "volumeKg": 3087.5
+        },
+        {
+          "date": "2020-03-20",
+          "volumeLbs": 6410.0,
+          "volumeKg": 2895.0
+        },
+        {
+          "date": "2020-03-27",
+          "volumeLbs": 8025.0,
+          "volumeKg": 3627.5
+        },
+        {
+          "date": "2020-04-03",
+          "volumeLbs": 6835.0,
+          "volumeKg": 3087.5
+        },
+        {
+          "date": "2020-04-10",
+          "volumeLbs": 6410.0,
+          "volumeKg": 2895.0
+        },
+        {
+          "date": "2020-04-17",
+          "volumeLbs": 6465.0,
+          "volumeKg": 2920.0
+        },
+        {
+          "date": "2020-04-24",
+          "volumeLbs": 7155.0,
+          "volumeKg": 3232.5
+        },
+        {
+          "date": "2020-05-01",
+          "volumeLbs": 6410.0,
+          "volumeKg": 2895.0
+        },
+        {
+          "date": "2020-05-08",
+          "volumeLbs": 7665.0,
+          "volumeKg": 3465.0
+        },
+        {
+          "date": "2020-05-15",
+          "volumeLbs": 3875.0,
+          "volumeKg": 1750.0
+        },
+        {
+          "date": "2020-05-22",
+          "volumeLbs": 6850.0,
+          "volumeKg": 3095.0
+        },
+        {
+          "date": "2020-05-29",
+          "volumeLbs": 6425.0,
+          "volumeKg": 2902.5
+        },
+        {
+          "date": "2020-06-05",
+          "volumeLbs": 7215.0,
+          "volumeKg": 3260.0
+        },
+        {
+          "date": "2020-06-12",
+          "volumeLbs": 7290.0,
+          "volumeKg": 3300.0
+        },
+        {
+          "date": "2020-06-19",
+          "volumeLbs": 5820.0,
+          "volumeKg": 2622.5
+        },
+        {
+          "date": "2021-01-05",
+          "volumeLbs": 6340.0,
+          "volumeKg": 2877.5
+        },
+        {
+          "date": "2021-01-08",
+          "volumeLbs": 6300.0,
+          "volumeKg": 2832.5
+        },
+        {
+          "date": "2021-01-13",
+          "volumeLbs": 6305.0,
+          "volumeKg": 2842.5
+        },
+        {
+          "date": "2021-01-18",
+          "volumeLbs": 6480.0,
+          "volumeKg": 2930.0
+        },
+        {
+          "date": "2021-01-26",
+          "volumeLbs": 7395.0,
+          "volumeKg": 3350.0
+        },
+        {
+          "date": "2021-01-29",
+          "volumeLbs": 6630.0,
+          "volumeKg": 3005.0
+        },
+        {
+          "date": "2021-02-03",
+          "volumeLbs": 6720.0,
+          "volumeKg": 3050.0
+        },
+        {
+          "date": "2021-02-08",
+          "volumeLbs": 6810.0,
+          "volumeKg": 3095.0
+        },
+        {
+          "date": "2021-02-11",
+          "volumeLbs": 6300.0,
+          "volumeKg": 2832.5
+        },
+        {
+          "date": "2021-02-16",
+          "volumeLbs": 7830.0,
+          "volumeKg": 3530.0
+        },
+        {
+          "date": "2021-02-22",
+          "volumeLbs": 7920.0,
+          "volumeKg": 3575.0
+        },
+        {
+          "date": "2021-02-25",
+          "volumeLbs": 8340.0,
+          "volumeKg": 3770.0
+        },
+        {
+          "date": "2021-03-02",
+          "volumeLbs": 8100.0,
+          "volumeKg": 3665.0
+        },
+        {
+          "date": "2021-03-05",
+          "volumeLbs": 6190.0,
+          "volumeKg": 2800.0
+        },
+        {
+          "date": "2021-03-10",
+          "volumeLbs": 6225.0,
+          "volumeKg": 2832.5
+        },
+        {
+          "date": "2021-03-15",
+          "volumeLbs": 7485.0,
+          "volumeKg": 3365.0
+        },
+        {
+          "date": "2021-03-19",
+          "volumeLbs": 7830.0,
+          "volumeKg": 3530.0
+        },
+        {
+          "date": "2021-03-24",
+          "volumeLbs": 8850.0,
+          "volumeKg": 3995.0
+        },
+        {
+          "date": "2021-03-29",
+          "volumeLbs": 8025.0,
+          "volumeKg": 3627.5
+        },
+        {
+          "date": "2021-04-01",
+          "volumeLbs": 8100.0,
+          "volumeKg": 3665.0
+        },
+        {
+          "date": "2021-04-06",
+          "volumeLbs": 6755.0,
+          "volumeKg": 3055.0
+        },
+        {
+          "date": "2021-04-13",
+          "volumeLbs": 7650.0,
+          "volumeKg": 3460.0
+        },
+        {
+          "date": "2021-04-20",
+          "volumeLbs": 5430.0,
+          "volumeKg": 2447.5
+        },
+        {
+          "date": "2021-04-27",
+          "volumeLbs": 6435.0,
+          "volumeKg": 2905.0
+        },
+        {
+          "date": "2021-05-04",
+          "volumeLbs": 5575.0,
+          "volumeKg": 2520.0
+        },
+        {
+          "date": "2021-05-11",
+          "volumeLbs": 6545.0,
+          "volumeKg": 2960.0
+        },
+        {
+          "date": "2021-05-18",
+          "volumeLbs": 6180.0,
+          "volumeKg": 2792.5
+        },
+        {
+          "date": "2021-05-25",
+          "volumeLbs": 6045.0,
+          "volumeKg": 2732.5
+        },
+        {
+          "date": "2021-06-01",
+          "volumeLbs": 1770.0,
+          "volumeKg": 792.5
+        },
+        {
+          "date": "2021-06-22",
+          "volumeLbs": 8055.0,
+          "volumeKg": 3635.0
+        },
+        {
+          "date": "2021-06-29",
+          "volumeLbs": 5560.0,
+          "volumeKg": 2507.5
+        },
+        {
+          "date": "2021-07-13",
+          "volumeLbs": 6705.0,
+          "volumeKg": 3032.5
+        },
+        {
+          "date": "2021-07-20",
+          "volumeLbs": 5775.0,
+          "volumeKg": 2612.5
+        },
+        {
+          "date": "2021-07-27",
+          "volumeLbs": 6775.0,
+          "volumeKg": 3067.5
+        },
+        {
+          "date": "2021-08-03",
+          "volumeLbs": 6010.0,
+          "volumeKg": 2727.5
+        },
+        {
+          "date": "2021-08-10",
+          "volumeLbs": 1125.0,
+          "volumeKg": 500.0
+        },
+        {
+          "date": "2021-08-17",
+          "volumeLbs": 3945.0,
+          "volumeKg": 1782.5
+        },
+        {
+          "date": "2021-08-24",
+          "volumeLbs": 1770.0,
+          "volumeKg": 792.5
+        },
+        {
+          "date": "2021-08-31",
+          "volumeLbs": 5810.0,
+          "volumeKg": 2617.5
+        },
+        {
+          "date": "2021-09-07",
+          "volumeLbs": 5565.0,
+          "volumeKg": 2510.0
+        },
+        {
+          "date": "2021-09-14",
+          "volumeLbs": 7320.0,
+          "volumeKg": 3305.0
+        },
+        {
+          "date": "2021-09-21",
+          "volumeLbs": 6095.0,
+          "volumeKg": 2755.0
+        },
+        {
+          "date": "2021-09-28",
+          "volumeLbs": 7475.0,
+          "volumeKg": 3380.0
+        },
+        {
+          "date": "2021-10-05",
+          "volumeLbs": 7015.0,
+          "volumeKg": 3172.5
+        },
+        {
+          "date": "2021-10-12",
+          "volumeLbs": 7190.0,
+          "volumeKg": 3252.5
+        },
+        {
+          "date": "2021-10-26",
+          "volumeLbs": 6530.0,
+          "volumeKg": 2952.5
+        },
+        {
+          "date": "2021-11-02",
+          "volumeLbs": 6485.0,
+          "volumeKg": 2930.0
+        },
+        {
+          "date": "2021-11-09",
+          "volumeLbs": 6680.0,
+          "volumeKg": 3020.0
+        },
+        {
+          "date": "2021-11-30",
+          "volumeLbs": 5640.0,
+          "volumeKg": 2552.5
+        },
+        {
+          "date": "2021-12-07",
+          "volumeLbs": 5400.0,
+          "volumeKg": 2440.0
+        },
+        {
+          "date": "2021-12-14",
+          "volumeLbs": 5270.0,
+          "volumeKg": 2375.0
+        },
+        {
+          "date": "2021-12-21",
+          "volumeLbs": 6050.0,
+          "volumeKg": 2740.0
+        },
+        {
+          "date": "2022-01-04",
+          "volumeLbs": 5350.0,
+          "volumeKg": 2420.0
+        },
+        {
+          "date": "2022-01-25",
+          "volumeLbs": 5555.0,
+          "volumeKg": 2515.0
+        },
+        {
+          "date": "2022-02-01",
+          "volumeLbs": 5350.0,
+          "volumeKg": 2420.0
+        },
+        {
+          "date": "2022-02-08",
+          "volumeLbs": 5740.0,
+          "volumeKg": 2587.5
+        },
+        {
+          "date": "2022-02-16",
+          "volumeLbs": 5495.0,
+          "volumeKg": 2480.0
+        },
+        {
+          "date": "2022-02-22",
+          "volumeLbs": 6435.0,
+          "volumeKg": 2905.0
+        },
+        {
+          "date": "2022-03-02",
+          "volumeLbs": 6515.0,
+          "volumeKg": 2945.0
+        },
+        {
+          "date": "2022-03-08",
+          "volumeLbs": 6010.0,
+          "volumeKg": 2722.5
+        },
+        {
+          "date": "2022-03-15",
+          "volumeLbs": 4520.0,
+          "volumeKg": 2040.0
+        },
+        {
+          "date": "2022-03-23",
+          "volumeLbs": 4970.0,
+          "volumeKg": 2240.0
+        },
+        {
+          "date": "2022-03-29",
+          "volumeLbs": 5705.0,
+          "volumeKg": 2577.5
+        },
+        {
+          "date": "2022-04-05",
+          "volumeLbs": 5095.0,
+          "volumeKg": 2302.5
+        },
+        {
+          "date": "2022-04-12",
+          "volumeLbs": 4100.0,
+          "volumeKg": 1850.0
+        },
+        {
+          "date": "2022-04-19",
+          "volumeLbs": 5180.0,
+          "volumeKg": 2337.5
+        },
+        {
+          "date": "2022-04-29",
+          "volumeLbs": 7075.0,
+          "volumeKg": 3195.0
+        },
+        {
+          "date": "2022-05-03",
+          "volumeLbs": 5640.0,
+          "volumeKg": 2545.0
+        },
+        {
+          "date": "2022-05-10",
+          "volumeLbs": 5095.0,
+          "volumeKg": 2302.5
+        },
+        {
+          "date": "2022-05-17",
+          "volumeLbs": 4850.0,
+          "volumeKg": 2187.5
+        },
+        {
+          "date": "2022-05-25",
+          "volumeLbs": 4085.0,
+          "volumeKg": 1850.0
+        },
+        {
+          "date": "2022-06-01",
+          "volumeLbs": 5495.0,
+          "volumeKg": 2480.0
+        },
+        {
+          "date": "2022-06-07",
+          "volumeLbs": 2100.0,
+          "volumeKg": 950.0
+        },
+        {
+          "date": "2022-06-14",
+          "volumeLbs": 5565.0,
+          "volumeKg": 2515.0
+        },
+        {
+          "date": "2022-06-22",
+          "volumeLbs": 4275.0,
+          "volumeKg": 1932.5
+        },
+        {
+          "date": "2022-06-28",
+          "volumeLbs": 5600.0,
+          "volumeKg": 2532.5
+        },
+        {
+          "date": "2022-07-12",
+          "volumeLbs": 5100.0,
+          "volumeKg": 2300.0
+        },
+        {
+          "date": "2022-07-26",
+          "volumeLbs": 4190.0,
+          "volumeKg": 1887.5
+        },
+        {
+          "date": "2022-08-02",
+          "volumeLbs": 5600.0,
+          "volumeKg": 2532.5
+        },
+        {
+          "date": "2022-08-09",
+          "volumeLbs": 5680.0,
+          "volumeKg": 2572.5
+        },
+        {
+          "date": "2022-08-16",
+          "volumeLbs": 6585.0,
+          "volumeKg": 2972.5
+        },
+        {
+          "date": "2022-08-23",
+          "volumeLbs": 6495.0,
+          "volumeKg": 2935.0
+        },
+        {
+          "date": "2022-08-30",
+          "volumeLbs": 6680.0,
+          "volumeKg": 3020.0
+        },
+        {
+          "date": "2022-09-07",
+          "volumeLbs": 5095.0,
+          "volumeKg": 2302.5
+        },
+        {
+          "date": "2022-09-13",
+          "volumeLbs": 4340.0,
+          "volumeKg": 1965.0
+        },
+        {
+          "date": "2022-09-20",
+          "volumeLbs": 5180.0,
+          "volumeKg": 2337.5
+        },
+        {
+          "date": "2022-09-27",
+          "volumeLbs": 5235.0,
+          "volumeKg": 2365.0
+        },
+        {
+          "date": "2022-10-04",
+          "volumeLbs": 5760.0,
+          "volumeKg": 2602.5
+        },
+        {
+          "date": "2022-10-11",
+          "volumeLbs": 5345.0,
+          "volumeKg": 2420.0
+        },
+        {
+          "date": "2022-10-18",
+          "volumeLbs": 5750.0,
+          "volumeKg": 2605.0
+        },
+        {
+          "date": "2022-10-25",
+          "volumeLbs": 5615.0,
+          "volumeKg": 2537.5
+        },
+        {
+          "date": "2022-11-01",
+          "volumeLbs": 1125.0,
+          "volumeKg": 500.0
+        },
+        {
+          "date": "2022-11-10",
+          "volumeLbs": 5945.0,
+          "volumeKg": 2682.5
+        },
+        {
+          "date": "2022-11-15",
+          "volumeLbs": 5640.0,
+          "volumeKg": 2547.5
+        },
+        {
+          "date": "2022-11-29",
+          "volumeLbs": 5505.0,
+          "volumeKg": 2487.5
+        },
+        {
+          "date": "2022-12-06",
+          "volumeLbs": 4445.0,
+          "volumeKg": 2010.0
+        },
+        {
+          "date": "2022-12-13",
+          "volumeLbs": 5325.0,
+          "volumeKg": 2412.5
+        },
+        {
+          "date": "2023-01-03",
+          "volumeLbs": 3110.0,
+          "volumeKg": 1405.0
+        },
+        {
+          "date": "2023-01-10",
+          "volumeLbs": 4610.0,
+          "volumeKg": 2080.0
+        },
+        {
+          "date": "2023-01-17",
+          "volumeLbs": 3830.0,
+          "volumeKg": 1735.0
+        },
+        {
+          "date": "2023-01-24",
+          "volumeLbs": 4010.0,
+          "volumeKg": 1810.0
+        },
+        {
+          "date": "2023-01-31",
+          "volumeLbs": 4010.0,
+          "volumeKg": 1810.0
+        },
+        {
+          "date": "2023-02-07",
+          "volumeLbs": 4700.0,
+          "volumeKg": 2125.0
+        },
+        {
+          "date": "2023-02-16",
+          "volumeLbs": 4700.0,
+          "volumeKg": 2125.0
+        },
+        {
+          "date": "2023-02-23",
+          "volumeLbs": 4700.0,
+          "volumeKg": 2125.0
+        },
+        {
+          "date": "2023-03-07",
+          "volumeLbs": 4900.0,
+          "volumeKg": 2212.5
+        },
+        {
+          "date": "2023-03-14",
+          "volumeLbs": 4740.0,
+          "volumeKg": 2135.0
+        },
+        {
+          "date": "2023-04-04",
+          "volumeLbs": 5855.0,
+          "volumeKg": 2647.5
+        },
+        {
+          "date": "2023-04-11",
+          "volumeLbs": 4380.0,
+          "volumeKg": 1977.5
+        },
+        {
+          "date": "2023-04-18",
+          "volumeLbs": 5200.0,
+          "volumeKg": 2347.5
+        },
+        {
+          "date": "2023-04-25",
+          "volumeLbs": 5350.0,
+          "volumeKg": 2412.5
+        },
+        {
+          "date": "2023-05-02",
+          "volumeLbs": 4365.0,
+          "volumeKg": 1970.0
+        },
+        {
+          "date": "2023-05-09",
+          "volumeLbs": 5300.0,
+          "volumeKg": 2390.0
+        },
+        {
+          "date": "2023-05-16",
+          "volumeLbs": 6080.0,
+          "volumeKg": 2747.5
+        },
+        {
+          "date": "2023-05-30",
+          "volumeLbs": 4530.0,
+          "volumeKg": 2045.0
+        },
+        {
+          "date": "2023-06-06",
+          "volumeLbs": 5275.0,
+          "volumeKg": 2385.0
+        },
+        {
+          "date": "2023-06-13",
+          "volumeLbs": 6195.0,
+          "volumeKg": 2805.0
+        },
+        {
+          "date": "2023-06-20",
+          "volumeLbs": 4605.0,
+          "volumeKg": 2075.0
+        },
+        {
+          "date": "2023-07-11",
+          "volumeLbs": 4505.0,
+          "volumeKg": 2035.0
+        },
+        {
+          "date": "2023-07-18",
+          "volumeLbs": 4650.0,
+          "volumeKg": 2100.0
+        },
+        {
+          "date": "2023-07-25",
+          "volumeLbs": 4810.0,
+          "volumeKg": 2167.5
+        },
+        {
+          "date": "2023-08-01",
+          "volumeLbs": 5300.0,
+          "volumeKg": 2390.0
+        },
+        {
+          "date": "2023-08-08",
+          "volumeLbs": 4895.0,
+          "volumeKg": 2210.0
+        },
+        {
+          "date": "2023-08-15",
+          "volumeLbs": 5095.0,
+          "volumeKg": 2302.5
+        },
+        {
+          "date": "2023-08-22",
+          "volumeLbs": 5150.0,
+          "volumeKg": 2322.5
+        },
+        {
+          "date": "2023-08-29",
+          "volumeLbs": 5180.0,
+          "volumeKg": 2337.5
+        },
+        {
+          "date": "2023-09-05",
+          "volumeLbs": 5715.0,
+          "volumeKg": 2580.0
+        },
+        {
+          "date": "2023-09-12",
+          "volumeLbs": 5275.0,
+          "volumeKg": 2385.0
+        },
+        {
+          "date": "2023-09-19",
+          "volumeLbs": 5345.0,
+          "volumeKg": 2420.0
+        },
+        {
+          "date": "2023-09-26",
+          "volumeLbs": 5375.0,
+          "volumeKg": 2435.0
+        },
+        {
+          "date": "2023-10-03",
+          "volumeLbs": 4670.0,
+          "volumeKg": 2105.0
+        },
+        {
+          "date": "2023-10-18",
+          "volumeLbs": 3180.0,
+          "volumeKg": 1437.5
+        },
+        {
+          "date": "2023-10-25",
+          "volumeLbs": 5000.0,
+          "volumeKg": 2250.0
+        },
+        {
+          "date": "2023-11-02",
+          "volumeLbs": 2310.0,
+          "volumeKg": 1040.0
+        },
+        {
+          "date": "2024-07-22",
+          "volumeLbs": 3150.0,
+          "volumeKg": 1400.0
+        },
+        {
+          "date": "2024-07-26",
+          "volumeLbs": 2625.0,
+          "volumeKg": 1175.0
+        },
+        {
+          "date": "2024-07-29",
+          "volumeLbs": 3450.0,
+          "volumeKg": 1550.0
+        },
+        {
+          "date": "2024-08-02",
+          "volumeLbs": 4325.0,
+          "volumeKg": 1950.0
+        },
+        {
+          "date": "2024-08-05",
+          "volumeLbs": 4525.0,
+          "volumeKg": 2050.0
+        },
+        {
+          "date": "2024-08-09",
+          "volumeLbs": 4725.0,
+          "volumeKg": 2150.0
+        },
+        {
+          "date": "2024-11-25",
+          "volumeLbs": 2115.0,
+          "volumeKg": 950.0
+        },
+        {
+          "date": "2024-11-29",
+          "volumeLbs": 3335.0,
+          "volumeKg": 1507.5
+        },
+        {
+          "date": "2024-12-02",
+          "volumeLbs": 3760.0,
+          "volumeKg": 1690.0
+        },
+        {
+          "date": "2024-12-06",
+          "volumeLbs": 3330.0,
+          "volumeKg": 1505.0
+        },
+        {
+          "date": "2024-12-09",
+          "volumeLbs": 4095.0,
+          "volumeKg": 1850.0
+        },
+        {
+          "date": "2024-12-13",
+          "volumeLbs": 4185.0,
+          "volumeKg": 1895.0
+        },
+        {
+          "date": "2024-12-16",
+          "volumeLbs": 2975.0,
+          "volumeKg": 1350.0
+        },
+        {
+          "date": "2024-12-23",
+          "volumeLbs": 4725.0,
+          "volumeKg": 2127.5
+        },
+        {
+          "date": "2024-12-27",
+          "volumeLbs": 5010.0,
+          "volumeKg": 2260.0
+        },
+        {
+          "date": "2024-12-30",
+          "volumeLbs": 5210.0,
+          "volumeKg": 2352.5
+        },
+        {
+          "date": "2025-01-03",
+          "volumeLbs": 4425.0,
+          "volumeKg": 2000.0
+        },
+        {
+          "date": "2025-01-13",
+          "volumeLbs": 2280.0,
+          "volumeKg": 1025.0
+        },
+        {
+          "date": "2025-01-17",
+          "volumeLbs": 2765.0,
+          "volumeKg": 1240.0
+        },
+        {
+          "date": "2025-01-27",
+          "volumeLbs": 2605.0,
+          "volumeKg": 1180.0
+        },
+        {
+          "date": "2025-01-31",
+          "volumeLbs": 4270.0,
+          "volumeKg": 1945.0
+        },
+        {
+          "date": "2025-02-03",
+          "volumeLbs": 4500.0,
+          "volumeKg": 2037.5
+        },
+        {
+          "date": "2025-02-07",
+          "volumeLbs": 5115.0,
+          "volumeKg": 2322.5
+        },
+        {
+          "date": "2025-02-10",
+          "volumeLbs": 5355.0,
+          "volumeKg": 2435.0
+        },
+        {
+          "date": "2025-02-14",
+          "volumeLbs": 4965.0,
+          "volumeKg": 2260.0
+        },
+        {
+          "date": "2025-02-17",
+          "volumeLbs": 6335.0,
+          "volumeKg": 2845.0
+        },
+        {
+          "date": "2025-02-21",
+          "volumeLbs": 5930.0,
+          "volumeKg": 2667.5
+        },
+        {
+          "date": "2025-02-24",
+          "volumeLbs": 5760.0,
+          "volumeKg": 2595.0
+        },
+        {
+          "date": "2025-02-28",
+          "volumeLbs": 5545.0,
+          "volumeKg": 2497.5
+        },
+        {
+          "date": "2025-03-03",
+          "volumeLbs": 6655.0,
+          "volumeKg": 3005.0
+        },
+        {
+          "date": "2025-03-07",
+          "volumeLbs": 6555.0,
+          "volumeKg": 2960.0
+        },
+        {
+          "date": "2025-03-10",
+          "volumeLbs": 5820.0,
+          "volumeKg": 2630.0
+        },
+        {
+          "date": "2025-03-14",
+          "volumeLbs": 7190.0,
+          "volumeKg": 3252.5
+        },
+        {
+          "date": "2025-03-17",
+          "volumeLbs": 7755.0,
+          "volumeKg": 3522.5
+        },
+        {
+          "date": "2025-03-21",
+          "volumeLbs": 5360.0,
+          "volumeKg": 2425.0
+        },
+        {
+          "date": "2025-03-24",
+          "volumeLbs": 5545.0,
+          "volumeKg": 2497.5
+        },
+        {
+          "date": "2025-03-31",
+          "volumeLbs": 6690.0,
+          "volumeKg": 3050.0
+        },
+        {
+          "date": "2025-04-04",
+          "volumeLbs": 4835.0,
+          "volumeKg": 2177.5
+        },
+        {
+          "date": "2025-04-07",
+          "volumeLbs": 5625.0,
+          "volumeKg": 2547.5
+        },
+        {
+          "date": "2025-04-11",
+          "volumeLbs": 5040.0,
+          "volumeKg": 2285.0
+        },
+        {
+          "date": "2025-04-14",
+          "volumeLbs": 4190.0,
+          "volumeKg": 1885.0
+        },
+        {
+          "date": "2025-04-18",
+          "volumeLbs": 3975.0,
+          "volumeKg": 1787.5
+        },
+        {
+          "date": "2025-04-21",
+          "volumeLbs": 4500.0,
+          "volumeKg": 2035.0
+        },
+        {
+          "date": "2025-04-25",
+          "volumeLbs": 3000.0,
+          "volumeKg": 1355.0
+        },
+        {
+          "date": "2025-04-28",
+          "volumeLbs": 5120.0,
+          "volumeKg": 2317.5
+        },
+        {
+          "date": "2025-05-02",
+          "volumeLbs": 4920.0,
+          "volumeKg": 2217.5
+        },
+        {
+          "date": "2025-05-05",
+          "volumeLbs": 5285.0,
+          "volumeKg": 2402.5
+        },
+        {
+          "date": "2025-05-09",
+          "volumeLbs": 5525.0,
+          "volumeKg": 2512.5
+        },
+        {
+          "date": "2025-05-12",
+          "volumeLbs": 4965.0,
+          "volumeKg": 2235.0
+        },
+        {
+          "date": "2025-05-16",
+          "volumeLbs": 4455.0,
+          "volumeKg": 2005.0
+        },
+        {
+          "date": "2025-06-02",
+          "volumeLbs": 6335.0,
+          "volumeKg": 2845.0
+        },
+        {
+          "date": "2025-06-06",
+          "volumeLbs": 6680.0,
+          "volumeKg": 3005.0
+        },
+        {
+          "date": "2025-06-09",
+          "volumeLbs": 6360.0,
+          "volumeKg": 2870.0
+        },
+        {
+          "date": "2025-06-13",
+          "volumeLbs": 6465.0,
+          "volumeKg": 2915.0
+        },
+        {
+          "date": "2025-06-16",
+          "volumeLbs": 3075.0,
+          "volumeKg": 1377.5
+        },
+        {
+          "date": "2025-06-20",
+          "volumeLbs": 6335.0,
+          "volumeKg": 2845.0
+        },
+        {
+          "date": "2025-06-23",
+          "volumeLbs": 6180.0,
+          "volumeKg": 2780.0
+        },
+        {
+          "date": "2025-06-27",
+          "volumeLbs": 6270.0,
+          "volumeKg": 2825.0
+        },
+        {
+          "date": "2025-06-30",
+          "volumeLbs": 6360.0,
+          "volumeKg": 2870.0
+        },
+        {
+          "date": "2025-07-04",
+          "volumeLbs": 5895.0,
+          "volumeKg": 2660.0
+        },
+        {
+          "date": "2025-07-07",
+          "volumeLbs": 5985.0,
+          "volumeKg": 2705.0
+        },
+        {
+          "date": "2025-07-11",
+          "volumeLbs": 6480.0,
+          "volumeKg": 2930.0
+        },
+        {
+          "date": "2025-07-14",
+          "volumeLbs": 6295.0,
+          "volumeKg": 2865.0
+        },
+        {
+          "date": "2025-07-17",
+          "volumeLbs": 5625.0,
+          "volumeKg": 2575.0
+        },
+        {
+          "date": "2025-07-21",
+          "volumeLbs": 5775.0,
+          "volumeKg": 2590.0
+        },
+        {
+          "date": "2025-07-24",
+          "volumeLbs": 6825.0,
+          "volumeKg": 3055.0
+        },
+        {
+          "date": "2025-07-28",
+          "volumeLbs": 5730.0,
+          "volumeKg": 2580.0
+        },
+        {
+          "date": "2025-07-31",
+          "volumeLbs": 6225.0,
+          "volumeKg": 2800.0
+        },
+        {
+          "date": "2025-08-04",
+          "volumeLbs": 5930.0,
+          "volumeKg": 2680.0
+        },
+        {
+          "date": "2025-08-07",
+          "volumeLbs": 6930.0,
+          "volumeKg": 3130.0
+        },
+        {
+          "date": "2025-08-11",
+          "volumeLbs": 6580.0,
+          "volumeKg": 2985.0
+        },
+        {
+          "date": "2025-08-14",
+          "volumeLbs": 7230.0,
+          "volumeKg": 3280.0
+        },
+        {
+          "date": "2025-08-22",
+          "volumeLbs": 5375.0,
+          "volumeKg": 2445.0
+        },
+        {
+          "date": "2025-08-29",
+          "volumeLbs": 4660.0,
+          "volumeKg": 2095.0
+        },
+        {
+          "date": "2025-09-05",
+          "volumeLbs": 4725.0,
+          "volumeKg": 2132.5
+        },
+        {
+          "date": "2025-09-12",
+          "volumeLbs": 2300.0,
+          "volumeKg": 1037.5
+        },
+        {
+          "date": "2025-09-26",
+          "volumeLbs": 3195.0,
+          "volumeKg": 1440.0
+        },
+        {
+          "date": "2025-10-20",
+          "volumeLbs": 5385.0,
+          "volumeKg": 2447.5
+        }
+      ]
+    },
+    "bench": {
+      "exerciseName": "Bench Press",
+      "dailyVolume": [
+        {
+          "date": "2019-01-24",
+          "volumeLbs": 1625.0,
+          "volumeKg": 750.0
+        },
+        {
+          "date": "2019-01-29",
+          "volumeLbs": 2625.0,
+          "volumeKg": 1187.5
+        },
+        {
+          "date": "2019-02-02",
+          "volumeLbs": 2875.0,
+          "volumeKg": 1312.5
+        },
+        {
+          "date": "2019-02-07",
+          "volumeLbs": 3125.0,
+          "volumeKg": 1437.5
+        },
+        {
+          "date": "2019-02-12",
+          "volumeLbs": 3250.0,
+          "volumeKg": 1500.0
+        },
+        {
+          "date": "2019-02-16",
+          "volumeLbs": 3375.0,
+          "volumeKg": 1500.0
+        },
+        {
+          "date": "2019-02-21",
+          "volumeLbs": 3500.0,
+          "volumeKg": 1562.5
+        },
+        {
+          "date": "2019-02-26",
+          "volumeLbs": 3375.0,
+          "volumeKg": 1500.0
+        },
+        {
+          "date": "2019-03-02",
+          "volumeLbs": 3500.0,
+          "volumeKg": 1562.5
+        },
+        {
+          "date": "2019-03-07",
+          "volumeLbs": 3750.0,
+          "volumeKg": 1687.5
+        },
+        {
+          "date": "2019-03-12",
+          "volumeLbs": 4000.0,
+          "volumeKg": 1812.5
+        },
+        {
+          "date": "2019-03-16",
+          "volumeLbs": 4125.0,
+          "volumeKg": 1875.0
+        },
+        {
+          "date": "2019-03-21",
+          "volumeLbs": 4125.0,
+          "volumeKg": 1875.0
+        },
+        {
+          "date": "2019-03-26",
+          "volumeLbs": 4250.0,
+          "volumeKg": 1937.5
+        },
+        {
+          "date": "2019-03-30",
+          "volumeLbs": 4375.0,
+          "volumeKg": 2000.0
+        },
+        {
+          "date": "2019-04-04",
+          "volumeLbs": 4500.0,
+          "volumeKg": 2062.5
+        },
+        {
+          "date": "2019-04-09",
+          "volumeLbs": 4625.0,
+          "volumeKg": 2125.0
+        },
+        {
+          "date": "2019-04-12",
+          "volumeLbs": 4675.0,
+          "volumeKg": 2092.5
+        },
+        {
+          "date": "2019-04-13",
+          "volumeLbs": 2850.0,
+          "volumeKg": 1275.0
+        },
+        {
+          "date": "2019-04-17",
+          "volumeLbs": 3385.0,
+          "volumeKg": 1532.5
+        },
+        {
+          "date": "2019-04-24",
+          "volumeLbs": 4340.0,
+          "volumeKg": 1957.5
+        },
+        {
+          "date": "2019-04-29",
+          "volumeLbs": 5250.0,
+          "volumeKg": 2375.0
+        },
+        {
+          "date": "2019-05-02",
+          "volumeLbs": 3945.0,
+          "volumeKg": 1780.0
+        },
+        {
+          "date": "2019-05-06",
+          "volumeLbs": 5250.0,
+          "volumeKg": 2375.0
+        },
+        {
+          "date": "2019-05-09",
+          "volumeLbs": 3530.0,
+          "volumeKg": 1595.0
+        },
+        {
+          "date": "2019-05-13",
+          "volumeLbs": 5250.0,
+          "volumeKg": 2375.0
+        },
+        {
+          "date": "2019-05-16",
+          "volumeLbs": 4340.0,
+          "volumeKg": 1952.5
+        },
+        {
+          "date": "2019-05-20",
+          "volumeLbs": 3150.0,
+          "volumeKg": 1425.0
+        },
+        {
+          "date": "2019-05-23",
+          "volumeLbs": 2000.0,
+          "volumeKg": 912.5
+        },
+        {
+          "date": "2019-05-27",
+          "volumeLbs": 5250.0,
+          "volumeKg": 2375.0
+        },
+        {
+          "date": "2019-05-31",
+          "volumeLbs": 4860.0,
+          "volumeKg": 2190.0
+        },
+        {
+          "date": "2019-06-03",
+          "volumeLbs": 4475.0,
+          "volumeKg": 2022.5
+        },
+        {
+          "date": "2019-06-07",
+          "volumeLbs": 5285.0,
+          "volumeKg": 2387.5
+        },
+        {
+          "date": "2019-06-10",
+          "volumeLbs": 4675.0,
+          "volumeKg": 2112.5
+        },
+        {
+          "date": "2019-06-24",
+          "volumeLbs": 3100.0,
+          "volumeKg": 1400.0
+        },
+        {
+          "date": "2019-06-28",
+          "volumeLbs": 8270.0,
+          "volumeKg": 3745.0
+        },
+        {
+          "date": "2019-07-05",
+          "volumeLbs": 8165.0,
+          "volumeKg": 3700.0
+        },
+        {
+          "date": "2019-07-12",
+          "volumeLbs": 8015.0,
+          "volumeKg": 3630.0
+        },
+        {
+          "date": "2019-07-18",
+          "volumeLbs": 7145.0,
+          "volumeKg": 3245.0
+        },
+        {
+          "date": "2019-07-25",
+          "volumeLbs": 8750.0,
+          "volumeKg": 3962.5
+        },
+        {
+          "date": "2019-08-01",
+          "volumeLbs": 8955.0,
+          "volumeKg": 4060.0
+        },
+        {
+          "date": "2019-08-08",
+          "volumeLbs": 9500.0,
+          "volumeKg": 4297.5
+        },
+        {
+          "date": "2019-08-15",
+          "volumeLbs": 6580.0,
+          "volumeKg": 2977.5
+        },
+        {
+          "date": "2019-08-22",
+          "volumeLbs": 9905.0,
+          "volumeKg": 4485.0
+        },
+        {
+          "date": "2019-08-26",
+          "volumeLbs": 4075.0,
+          "volumeKg": 1837.5
+        },
+        {
+          "date": "2019-08-30",
+          "volumeLbs": 4860.0,
+          "volumeKg": 2190.0
+        },
+        {
+          "date": "2019-09-02",
+          "volumeLbs": 4675.0,
+          "volumeKg": 2112.5
+        },
+        {
+          "date": "2019-09-06",
+          "volumeLbs": 5490.0,
+          "volumeKg": 2480.0
+        },
+        {
+          "date": "2019-09-09",
+          "volumeLbs": 4315.0,
+          "volumeKg": 1952.5
+        },
+        {
+          "date": "2019-09-13",
+          "volumeLbs": 5110.0,
+          "volumeKg": 2310.0
+        },
+        {
+          "date": "2019-09-16",
+          "volumeLbs": 4315.0,
+          "volumeKg": 1952.5
+        },
+        {
+          "date": "2019-09-20",
+          "volumeLbs": 5320.0,
+          "volumeKg": 2405.0
+        },
+        {
+          "date": "2019-09-23",
+          "volumeLbs": 5500.0,
+          "volumeKg": 2500.0
+        },
+        {
+          "date": "2019-09-26",
+          "volumeLbs": 3695.0,
+          "volumeKg": 1670.0
+        },
+        {
+          "date": "2019-09-30",
+          "volumeLbs": 5500.0,
+          "volumeKg": 2500.0
+        },
+        {
+          "date": "2019-10-03",
+          "volumeLbs": 3640.0,
+          "volumeKg": 1637.5
+        },
+        {
+          "date": "2019-10-07",
+          "volumeLbs": 5500.0,
+          "volumeKg": 2500.0
+        },
+        {
+          "date": "2019-10-10",
+          "volumeLbs": 3865.0,
+          "volumeKg": 1745.0
+        },
+        {
+          "date": "2019-10-14",
+          "volumeLbs": 5500.0,
+          "volumeKg": 2500.0
+        },
+        {
+          "date": "2019-10-17",
+          "volumeLbs": 4190.0,
+          "volumeKg": 1882.5
+        },
+        {
+          "date": "2019-10-21",
+          "volumeLbs": 5500.0,
+          "volumeKg": 2500.0
+        },
+        {
+          "date": "2019-10-24",
+          "volumeLbs": 3880.0,
+          "volumeKg": 1747.5
+        },
+        {
+          "date": "2019-10-28",
+          "volumeLbs": 5500.0,
+          "volumeKg": 2500.0
+        },
+        {
+          "date": "2019-10-31",
+          "volumeLbs": 4195.0,
+          "volumeKg": 1890.0
+        },
+        {
+          "date": "2019-11-04",
+          "volumeLbs": 5750.0,
+          "volumeKg": 2625.0
+        },
+        {
+          "date": "2019-11-07",
+          "volumeLbs": 4230.0,
+          "volumeKg": 1902.5
+        },
+        {
+          "date": "2019-11-11",
+          "volumeLbs": 5750.0,
+          "volumeKg": 2625.0
+        },
+        {
+          "date": "2019-11-14",
+          "volumeLbs": 3340.0,
+          "volumeKg": 1507.5
+        },
+        {
+          "date": "2019-11-18",
+          "volumeLbs": 5750.0,
+          "volumeKg": 2625.0
+        },
+        {
+          "date": "2019-11-21",
+          "volumeLbs": 3835.0,
+          "volumeKg": 1730.0
+        },
+        {
+          "date": "2019-12-02",
+          "volumeLbs": 4050.0,
+          "volumeKg": 1825.0
+        },
+        {
+          "date": "2019-12-06",
+          "volumeLbs": 4845.0,
+          "volumeKg": 2182.5
+        },
+        {
+          "date": "2019-12-09",
+          "volumeLbs": 4600.0,
+          "volumeKg": 2075.0
+        },
+        {
+          "date": "2019-12-13",
+          "volumeLbs": 5385.0,
+          "volumeKg": 2427.5
+        },
+        {
+          "date": "2020-01-09",
+          "volumeLbs": 3695.0,
+          "volumeKg": 1670.0
+        },
+        {
+          "date": "2020-01-16",
+          "volumeLbs": 3250.0,
+          "volumeKg": 1462.5
+        },
+        {
+          "date": "2020-01-23",
+          "volumeLbs": 3660.0,
+          "volumeKg": 1652.5
+        },
+        {
+          "date": "2020-01-30",
+          "volumeLbs": 4190.0,
+          "volumeKg": 1882.5
+        },
+        {
+          "date": "2020-02-06",
+          "volumeLbs": 3280.0,
+          "volumeKg": 1477.5
+        },
+        {
+          "date": "2020-02-13",
+          "volumeLbs": 3985.0,
+          "volumeKg": 1795.0
+        },
+        {
+          "date": "2020-02-20",
+          "volumeLbs": 9380.0,
+          "volumeKg": 4255.0
+        },
+        {
+          "date": "2020-02-27",
+          "volumeLbs": 8945.0,
+          "volumeKg": 4050.0
+        },
+        {
+          "date": "2020-03-05",
+          "volumeLbs": 9775.0,
+          "volumeKg": 4430.0
+        },
+        {
+          "date": "2020-03-12",
+          "volumeLbs": 9880.0,
+          "volumeKg": 4467.5
+        },
+        {
+          "date": "2020-03-19",
+          "volumeLbs": 9180.0,
+          "volumeKg": 4157.5
+        },
+        {
+          "date": "2020-03-26",
+          "volumeLbs": 9905.0,
+          "volumeKg": 4485.0
+        },
+        {
+          "date": "2020-04-02",
+          "volumeLbs": 10260.0,
+          "volumeKg": 4637.5
+        },
+        {
+          "date": "2020-04-09",
+          "volumeLbs": 9180.0,
+          "volumeKg": 4157.5
+        },
+        {
+          "date": "2020-04-16",
+          "volumeLbs": 10325.0,
+          "volumeKg": 4675.0
+        },
+        {
+          "date": "2020-04-23",
+          "volumeLbs": 7340.0,
+          "volumeKg": 3307.5
+        },
+        {
+          "date": "2020-04-30",
+          "volumeLbs": 6980.0,
+          "volumeKg": 3157.5
+        },
+        {
+          "date": "2020-05-07",
+          "volumeLbs": 7015.0,
+          "volumeKg": 3172.5
+        },
+        {
+          "date": "2020-05-14",
+          "volumeLbs": 2075.0,
+          "volumeKg": 937.5
+        },
+        {
+          "date": "2020-05-21",
+          "volumeLbs": 4255.0,
+          "volumeKg": 1915.0
+        },
+        {
+          "date": "2020-05-28",
+          "volumeLbs": 3750.0,
+          "volumeKg": 1692.5
+        },
+        {
+          "date": "2020-06-04",
+          "volumeLbs": 4280.0,
+          "volumeKg": 1932.5
+        },
+        {
+          "date": "2020-06-11",
+          "volumeLbs": 2795.0,
+          "volumeKg": 1262.5
+        },
+        {
+          "date": "2020-06-18",
+          "volumeLbs": 3580.0,
+          "volumeKg": 1617.5
+        },
+        {
+          "date": "2020-06-25",
+          "volumeLbs": 4320.0,
+          "volumeKg": 1952.5
+        },
+        {
+          "date": "2021-01-04",
+          "volumeLbs": 5690.0,
+          "volumeKg": 2592.5
+        },
+        {
+          "date": "2021-01-07",
+          "volumeLbs": 8110.0,
+          "volumeKg": 3697.5
+        },
+        {
+          "date": "2021-01-12",
+          "volumeLbs": 6310.0,
+          "volumeKg": 2880.0
+        },
+        {
+          "date": "2021-01-15",
+          "volumeLbs": 5635.0,
+          "volumeKg": 2572.5
+        },
+        {
+          "date": "2021-01-20",
+          "volumeLbs": 3615.0,
+          "volumeKg": 1655.0
+        },
+        {
+          "date": "2021-01-25",
+          "volumeLbs": 5200.0,
+          "volumeKg": 2347.5
+        },
+        {
+          "date": "2021-01-28",
+          "volumeLbs": 5935.0,
+          "volumeKg": 2692.5
+        },
+        {
+          "date": "2021-02-02",
+          "volumeLbs": 5275.0,
+          "volumeKg": 2392.5
+        },
+        {
+          "date": "2021-02-05",
+          "volumeLbs": 6415.0,
+          "volumeKg": 2917.5
+        },
+        {
+          "date": "2021-02-10",
+          "volumeLbs": 5440.0,
+          "volumeKg": 2467.5
+        },
+        {
+          "date": "2021-02-15",
+          "volumeLbs": 6980.0,
+          "volumeKg": 3177.5
+        },
+        {
+          "date": "2021-02-19",
+          "volumeLbs": 5515.0,
+          "volumeKg": 2512.5
+        },
+        {
+          "date": "2021-02-24",
+          "volumeLbs": 6805.0,
+          "volumeKg": 3105.0
+        },
+        {
+          "date": "2021-03-01",
+          "volumeLbs": 5655.0,
+          "volumeKg": 2585.0
+        },
+        {
+          "date": "2021-03-04",
+          "volumeLbs": 4990.0,
+          "volumeKg": 2282.5
+        },
+        {
+          "date": "2021-03-09",
+          "volumeLbs": 5755.0,
+          "volumeKg": 2632.5
+        },
+        {
+          "date": "2021-03-12",
+          "volumeLbs": 5790.0,
+          "volumeKg": 2630.0
+        },
+        {
+          "date": "2021-03-18",
+          "volumeLbs": 5890.0,
+          "volumeKg": 2632.5
+        },
+        {
+          "date": "2021-03-23",
+          "volumeLbs": 6060.0,
+          "volumeKg": 2755.0
+        },
+        {
+          "date": "2021-03-26",
+          "volumeLbs": 7000.0,
+          "volumeKg": 3142.5
+        },
+        {
+          "date": "2021-03-31",
+          "volumeLbs": 5690.0,
+          "volumeKg": 2592.5
+        },
+        {
+          "date": "2021-04-05",
+          "volumeLbs": 10295.0,
+          "volumeKg": 4640.0
+        },
+        {
+          "date": "2021-04-09",
+          "volumeLbs": 7060.0,
+          "volumeKg": 3187.5
+        },
+        {
+          "date": "2021-04-12",
+          "volumeLbs": 10740.0,
+          "volumeKg": 4850.0
+        },
+        {
+          "date": "2021-04-16",
+          "volumeLbs": 8280.0,
+          "volumeKg": 3745.0
+        },
+        {
+          "date": "2021-04-19",
+          "volumeLbs": 11145.0,
+          "volumeKg": 5052.5
+        },
+        {
+          "date": "2021-04-26",
+          "volumeLbs": 10825.0,
+          "volumeKg": 4907.5
+        },
+        {
+          "date": "2021-04-30",
+          "volumeLbs": 8055.0,
+          "volumeKg": 3657.5
+        },
+        {
+          "date": "2021-05-03",
+          "volumeLbs": 9825.0,
+          "volumeKg": 4437.5
+        },
+        {
+          "date": "2021-05-07",
+          "volumeLbs": 7545.0,
+          "volumeKg": 3407.5
+        },
+        {
+          "date": "2021-05-10",
+          "volumeLbs": 11310.0,
+          "volumeKg": 5112.5
+        },
+        {
+          "date": "2021-05-14",
+          "volumeLbs": 7725.0,
+          "volumeKg": 3490.0
+        },
+        {
+          "date": "2021-05-17",
+          "volumeLbs": 11345.0,
+          "volumeKg": 5137.5
+        },
+        {
+          "date": "2021-05-21",
+          "volumeLbs": 8195.0,
+          "volumeKg": 3707.5
+        },
+        {
+          "date": "2021-05-24",
+          "volumeLbs": 10340.0,
+          "volumeKg": 4677.5
+        },
+        {
+          "date": "2021-05-28",
+          "volumeLbs": 6000.0,
+          "volumeKg": 2720.0
+        },
+        {
+          "date": "2021-05-31",
+          "volumeLbs": 8920.0,
+          "volumeKg": 4045.0
+        },
+        {
+          "date": "2021-06-04",
+          "volumeLbs": 5970.0,
+          "volumeKg": 2705.0
+        },
+        {
+          "date": "2021-06-07",
+          "volumeLbs": 7720.0,
+          "volumeKg": 3505.0
+        },
+        {
+          "date": "2021-06-11",
+          "volumeLbs": 7525.0,
+          "volumeKg": 3410.0
+        },
+        {
+          "date": "2021-06-14",
+          "volumeLbs": 7720.0,
+          "volumeKg": 3505.0
+        },
+        {
+          "date": "2021-06-18",
+          "volumeLbs": 6525.0,
+          "volumeKg": 2960.0
+        },
+        {
+          "date": "2021-06-21",
+          "volumeLbs": 8920.0,
+          "volumeKg": 4045.0
+        },
+        {
+          "date": "2021-06-25",
+          "volumeLbs": 6525.0,
+          "volumeKg": 2960.0
+        },
+        {
+          "date": "2021-06-28",
+          "volumeLbs": 8920.0,
+          "volumeKg": 4045.0
+        },
+        {
+          "date": "2021-07-02",
+          "volumeLbs": 4520.0,
+          "volumeKg": 2042.5
+        },
+        {
+          "date": "2021-07-12",
+          "volumeLbs": 5650.0,
+          "volumeKg": 2552.5
+        },
+        {
+          "date": "2021-07-16",
+          "volumeLbs": 4885.0,
+          "volumeKg": 2207.5
+        },
+        {
+          "date": "2021-07-19",
+          "volumeLbs": 6545.0,
+          "volumeKg": 2967.5
+        },
+        {
+          "date": "2021-07-23",
+          "volumeLbs": 4685.0,
+          "volumeKg": 2115.0
+        },
+        {
+          "date": "2021-07-26",
+          "volumeLbs": 8795.0,
+          "volumeKg": 3982.5
+        },
+        {
+          "date": "2021-07-30",
+          "volumeLbs": 5715.0,
+          "volumeKg": 2582.5
+        },
+        {
+          "date": "2021-08-02",
+          "volumeLbs": 8795.0,
+          "volumeKg": 3982.5
+        },
+        {
+          "date": "2021-08-06",
+          "volumeLbs": 5295.0,
+          "volumeKg": 2392.5
+        },
+        {
+          "date": "2021-08-09",
+          "volumeLbs": 8795.0,
+          "volumeKg": 3982.5
+        },
+        {
+          "date": "2021-08-13",
+          "volumeLbs": 6505.0,
+          "volumeKg": 2942.5
+        },
+        {
+          "date": "2021-08-16",
+          "volumeLbs": 9245.0,
+          "volumeKg": 4185.0
+        },
+        {
+          "date": "2021-08-20",
+          "volumeLbs": 6355.0,
+          "volumeKg": 2872.5
+        },
+        {
+          "date": "2021-08-23",
+          "volumeLbs": 7595.0,
+          "volumeKg": 3442.5
+        },
+        {
+          "date": "2021-08-27",
+          "volumeLbs": 6530.0,
+          "volumeKg": 2957.5
+        },
+        {
+          "date": "2021-08-30",
+          "volumeLbs": 8885.0,
+          "volumeKg": 4020.0
+        },
+        {
+          "date": "2021-09-03",
+          "volumeLbs": 6335.0,
+          "volumeKg": 2865.0
+        },
+        {
+          "date": "2021-09-06",
+          "volumeLbs": 6070.0,
+          "volumeKg": 2755.0
+        },
+        {
+          "date": "2021-09-10",
+          "volumeLbs": 5385.0,
+          "volumeKg": 2437.5
+        },
+        {
+          "date": "2021-09-13",
+          "volumeLbs": 6545.0,
+          "volumeKg": 2967.5
+        },
+        {
+          "date": "2021-09-17",
+          "volumeLbs": 6080.0,
+          "volumeKg": 2755.0
+        },
+        {
+          "date": "2021-09-20",
+          "volumeLbs": 7840.0,
+          "volumeKg": 3557.5
+        },
+        {
+          "date": "2021-09-24",
+          "volumeLbs": 5530.0,
+          "volumeKg": 2502.5
+        },
+        {
+          "date": "2021-09-27",
+          "volumeLbs": 7965.0,
+          "volumeKg": 3620.0
+        },
+        {
+          "date": "2021-10-01",
+          "volumeLbs": 6260.0,
+          "volumeKg": 2837.5
+        },
+        {
+          "date": "2021-10-04",
+          "volumeLbs": 8340.0,
+          "volumeKg": 3792.5
+        },
+        {
+          "date": "2021-10-08",
+          "volumeLbs": 5525.0,
+          "volumeKg": 2507.5
+        },
+        {
+          "date": "2021-10-11",
+          "volumeLbs": 6790.0,
+          "volumeKg": 3090.0
+        },
+        {
+          "date": "2021-10-15",
+          "volumeLbs": 6045.0,
+          "volumeKg": 2742.5
+        },
+        {
+          "date": "2021-10-18",
+          "volumeLbs": 7445.0,
+          "volumeKg": 3392.5
+        },
+        {
+          "date": "2021-10-21",
+          "volumeLbs": 5165.0,
+          "volumeKg": 2345.0
+        },
+        {
+          "date": "2021-10-25",
+          "volumeLbs": 8185.0,
+          "volumeKg": 3732.5
+        },
+        {
+          "date": "2021-10-28",
+          "volumeLbs": 5460.0,
+          "volumeKg": 2475.0
+        },
+        {
+          "date": "2021-11-01",
+          "volumeLbs": 8185.0,
+          "volumeKg": 3732.5
+        },
+        {
+          "date": "2021-11-04",
+          "volumeLbs": 6510.0,
+          "volumeKg": 2950.0
+        },
+        {
+          "date": "2021-11-08",
+          "volumeLbs": 8020.0,
+          "volumeKg": 3657.5
+        },
+        {
+          "date": "2021-11-11",
+          "volumeLbs": 6870.0,
+          "volumeKg": 3125.0
+        },
+        {
+          "date": "2021-11-15",
+          "volumeLbs": 6445.0,
+          "volumeKg": 2942.5
+        },
+        {
+          "date": "2021-11-29",
+          "volumeLbs": 6040.0,
+          "volumeKg": 2740.0
+        },
+        {
+          "date": "2021-12-02",
+          "volumeLbs": 5290.0,
+          "volumeKg": 2395.0
+        },
+        {
+          "date": "2021-12-06",
+          "volumeLbs": 6200.0,
+          "volumeKg": 2820.0
+        },
+        {
+          "date": "2021-12-10",
+          "volumeLbs": 6290.0,
+          "volumeKg": 2857.5
+        },
+        {
+          "date": "2021-12-13",
+          "volumeLbs": 6290.0,
+          "volumeKg": 2857.5
+        },
+        {
+          "date": "2021-12-17",
+          "volumeLbs": 7300.0,
+          "volumeKg": 3320.0
+        },
+        {
+          "date": "2021-12-20",
+          "volumeLbs": 6420.0,
+          "volumeKg": 2922.5
+        },
+        {
+          "date": "2021-12-23",
+          "volumeLbs": 5840.0,
+          "volumeKg": 2652.5
+        },
+        {
+          "date": "2022-01-03",
+          "volumeLbs": 6445.0,
+          "volumeKg": 2942.5
+        },
+        {
+          "date": "2022-01-06",
+          "volumeLbs": 6180.0,
+          "volumeKg": 2810.0
+        },
+        {
+          "date": "2022-01-10",
+          "volumeLbs": 6445.0,
+          "volumeKg": 2942.5
+        },
+        {
+          "date": "2022-01-13",
+          "volumeLbs": 5820.0,
+          "volumeKg": 2650.0
+        },
+        {
+          "date": "2022-01-19",
+          "volumeLbs": 7570.0,
+          "volumeKg": 3455.0
+        },
+        {
+          "date": "2022-01-24",
+          "volumeLbs": 7415.0,
+          "volumeKg": 3377.5
+        },
+        {
+          "date": "2022-01-27",
+          "volumeLbs": 4700.0,
+          "volumeKg": 2125.0
+        },
+        {
+          "date": "2022-01-31",
+          "volumeLbs": 7530.0,
+          "volumeKg": 3435.0
+        },
+        {
+          "date": "2022-02-03",
+          "volumeLbs": 5130.0,
+          "volumeKg": 2335.0
+        },
+        {
+          "date": "2022-02-07",
+          "volumeLbs": 6405.0,
+          "volumeKg": 2922.5
+        },
+        {
+          "date": "2022-02-10",
+          "volumeLbs": 5135.0,
+          "volumeKg": 2332.5
+        },
+        {
+          "date": "2022-02-14",
+          "volumeLbs": 6480.0,
+          "volumeKg": 2952.5
+        },
+        {
+          "date": "2022-02-17",
+          "volumeLbs": 4680.0,
+          "volumeKg": 2122.5
+        },
+        {
+          "date": "2022-02-21",
+          "volumeLbs": 7530.0,
+          "volumeKg": 3435.0
+        },
+        {
+          "date": "2022-02-24",
+          "volumeLbs": 5130.0,
+          "volumeKg": 2335.0
+        },
+        {
+          "date": "2022-02-28",
+          "volumeLbs": 7530.0,
+          "volumeKg": 3435.0
+        },
+        {
+          "date": "2022-03-03",
+          "volumeLbs": 5505.0,
+          "volumeKg": 2490.0
+        },
+        {
+          "date": "2022-03-07",
+          "volumeLbs": 7530.0,
+          "volumeKg": 3435.0
+        },
+        {
+          "date": "2022-03-10",
+          "volumeLbs": 5210.0,
+          "volumeKg": 2362.5
+        },
+        {
+          "date": "2022-03-14",
+          "volumeLbs": 7530.0,
+          "volumeKg": 3435.0
+        },
+        {
+          "date": "2022-03-17",
+          "volumeLbs": 5355.0,
+          "volumeKg": 2430.0
+        },
+        {
+          "date": "2022-03-21",
+          "volumeLbs": 6405.0,
+          "volumeKg": 2922.5
+        },
+        {
+          "date": "2022-03-24",
+          "volumeLbs": 5395.0,
+          "volumeKg": 2455.0
+        },
+        {
+          "date": "2022-03-28",
+          "volumeLbs": 6405.0,
+          "volumeKg": 2922.5
+        },
+        {
+          "date": "2022-03-31",
+          "volumeLbs": 4065.0,
+          "volumeKg": 1845.0
+        },
+        {
+          "date": "2022-04-04",
+          "volumeLbs": 7530.0,
+          "volumeKg": 3435.0
+        },
+        {
+          "date": "2022-04-07",
+          "volumeLbs": 4605.0,
+          "volumeKg": 2092.5
+        },
+        {
+          "date": "2022-04-11",
+          "volumeLbs": 6405.0,
+          "volumeKg": 2922.5
+        },
+        {
+          "date": "2022-04-14",
+          "volumeLbs": 3315.0,
+          "volumeKg": 1502.5
+        },
+        {
+          "date": "2022-04-18",
+          "volumeLbs": 6405.0,
+          "volumeKg": 2922.5
+        },
+        {
+          "date": "2022-04-21",
+          "volumeLbs": 4945.0,
+          "volumeKg": 2242.5
+        },
+        {
+          "date": "2022-04-25",
+          "volumeLbs": 6345.0,
+          "volumeKg": 2892.5
+        },
+        {
+          "date": "2022-04-28",
+          "volumeLbs": 3915.0,
+          "volumeKg": 1777.5
+        },
+        {
+          "date": "2022-05-02",
+          "volumeLbs": 6345.0,
+          "volumeKg": 2892.5
+        },
+        {
+          "date": "2022-05-05",
+          "volumeLbs": 4710.0,
+          "volumeKg": 2137.5
+        },
+        {
+          "date": "2022-05-09",
+          "volumeLbs": 5485.0,
+          "volumeKg": 2502.5
+        },
+        {
+          "date": "2022-05-12",
+          "volumeLbs": 3405.0,
+          "volumeKg": 1545.0
+        },
+        {
+          "date": "2022-05-19",
+          "volumeLbs": 3875.0,
+          "volumeKg": 1752.5
+        },
+        {
+          "date": "2022-05-26",
+          "volumeLbs": 3195.0,
+          "volumeKg": 1455.0
+        },
+        {
+          "date": "2022-06-02",
+          "volumeLbs": 4010.0,
+          "volumeKg": 1812.5
+        },
+        {
+          "date": "2022-06-09",
+          "volumeLbs": 2400.0,
+          "volumeKg": 1075.0
+        },
+        {
+          "date": "2022-06-16",
+          "volumeLbs": 3860.0,
+          "volumeKg": 1752.5
+        },
+        {
+          "date": "2022-06-23",
+          "volumeLbs": 2760.0,
+          "volumeKg": 1242.5
+        },
+        {
+          "date": "2022-06-30",
+          "volumeLbs": 3290.0,
+          "volumeKg": 1487.5
+        },
+        {
+          "date": "2022-07-14",
+          "volumeLbs": 3925.0,
+          "volumeKg": 1785.0
+        },
+        {
+          "date": "2022-07-25",
+          "volumeLbs": 6925.0,
+          "volumeKg": 3125.0
+        },
+        {
+          "date": "2022-07-29",
+          "volumeLbs": 3875.0,
+          "volumeKg": 1750.0
+        },
+        {
+          "date": "2022-08-01",
+          "volumeLbs": 5925.0,
+          "volumeKg": 2675.0
+        },
+        {
+          "date": "2022-08-05",
+          "volumeLbs": 4370.0,
+          "volumeKg": 1977.5
+        },
+        {
+          "date": "2022-08-08",
+          "volumeLbs": 5925.0,
+          "volumeKg": 2675.0
+        },
+        {
+          "date": "2022-08-12",
+          "volumeLbs": 5445.0,
+          "volumeKg": 2465.0
+        },
+        {
+          "date": "2022-08-15",
+          "volumeLbs": 7425.0,
+          "volumeKg": 3350.0
+        },
+        {
+          "date": "2022-08-19",
+          "volumeLbs": 5850.0,
+          "volumeKg": 2655.0
+        },
+        {
+          "date": "2022-08-22",
+          "volumeLbs": 6950.0,
+          "volumeKg": 3137.5
+        },
+        {
+          "date": "2022-08-26",
+          "volumeLbs": 4610.0,
+          "volumeKg": 2087.5
+        },
+        {
+          "date": "2022-08-29",
+          "volumeLbs": 6950.0,
+          "volumeKg": 3137.5
+        },
+        {
+          "date": "2022-09-02",
+          "volumeLbs": 4370.0,
+          "volumeKg": 1977.5
+        },
+        {
+          "date": "2022-09-06",
+          "volumeLbs": 7425.0,
+          "volumeKg": 3350.0
+        },
+        {
+          "date": "2022-09-09",
+          "volumeLbs": 5090.0,
+          "volumeKg": 2307.5
+        },
+        {
+          "date": "2022-09-12",
+          "volumeLbs": 5925.0,
+          "volumeKg": 2675.0
+        },
+        {
+          "date": "2022-09-16",
+          "volumeLbs": 6165.0,
+          "volumeKg": 2795.0
+        },
+        {
+          "date": "2022-09-19",
+          "volumeLbs": 5850.0,
+          "volumeKg": 2645.0
+        },
+        {
+          "date": "2022-09-23",
+          "volumeLbs": 4640.0,
+          "volumeKg": 2102.5
+        },
+        {
+          "date": "2022-09-26",
+          "volumeLbs": 6875.0,
+          "volumeKg": 3107.5
+        },
+        {
+          "date": "2022-09-30",
+          "volumeLbs": 4775.0,
+          "volumeKg": 2167.5
+        },
+        {
+          "date": "2022-10-03",
+          "volumeLbs": 5850.0,
+          "volumeKg": 2645.0
+        },
+        {
+          "date": "2022-10-07",
+          "volumeLbs": 5715.0,
+          "volumeKg": 2590.0
+        },
+        {
+          "date": "2022-10-10",
+          "volumeLbs": 5925.0,
+          "volumeKg": 2675.0
+        },
+        {
+          "date": "2022-10-14",
+          "volumeLbs": 3605.0,
+          "volumeKg": 1632.5
+        },
+        {
+          "date": "2022-10-17",
+          "volumeLbs": 6875.0,
+          "volumeKg": 3107.5
+        },
+        {
+          "date": "2022-10-21",
+          "volumeLbs": 5205.0,
+          "volumeKg": 2355.0
+        },
+        {
+          "date": "2022-10-24",
+          "volumeLbs": 6445.0,
+          "volumeKg": 2942.5
+        },
+        {
+          "date": "2022-10-28",
+          "volumeLbs": 4685.0,
+          "volumeKg": 2122.5
+        },
+        {
+          "date": "2022-10-31",
+          "volumeLbs": 6605.0,
+          "volumeKg": 2972.5
+        },
+        {
+          "date": "2022-11-04",
+          "volumeLbs": 5250.0,
+          "volumeKg": 2375.0
+        },
+        {
+          "date": "2022-11-07",
+          "volumeLbs": 6605.0,
+          "volumeKg": 2972.5
+        },
+        {
+          "date": "2022-11-11",
+          "volumeLbs": 5125.0,
+          "volumeKg": 2325.0
+        },
+        {
+          "date": "2022-11-14",
+          "volumeLbs": 8345.0,
+          "volumeKg": 3760.0
+        },
+        {
+          "date": "2022-11-18",
+          "volumeLbs": 5125.0,
+          "volumeKg": 2325.0
+        },
+        {
+          "date": "2022-11-21",
+          "volumeLbs": 7145.0,
+          "volumeKg": 3220.0
+        },
+        {
+          "date": "2022-11-25",
+          "volumeLbs": 4975.0,
+          "volumeKg": 2250.0
+        },
+        {
+          "date": "2022-11-28",
+          "volumeLbs": 7780.0,
+          "volumeKg": 3510.0
+        },
+        {
+          "date": "2022-12-02",
+          "volumeLbs": 4975.0,
+          "volumeKg": 2250.0
+        },
+        {
+          "date": "2022-12-05",
+          "volumeLbs": 6605.0,
+          "volumeKg": 2972.5
+        },
+        {
+          "date": "2022-12-09",
+          "volumeLbs": 4575.0,
+          "volumeKg": 2075.0
+        },
+        {
+          "date": "2022-12-12",
+          "volumeLbs": 6605.0,
+          "volumeKg": 2972.5
+        },
+        {
+          "date": "2022-12-16",
+          "volumeLbs": 4025.0,
+          "volumeKg": 1825.0
+        },
+        {
+          "date": "2022-12-19",
+          "volumeLbs": 6575.0,
+          "volumeKg": 2957.5
+        },
+        {
+          "date": "2023-01-02",
+          "volumeLbs": 5840.0,
+          "volumeKg": 2655.0
+        },
+        {
+          "date": "2023-01-06",
+          "volumeLbs": 4025.0,
+          "volumeKg": 1817.5
+        },
+        {
+          "date": "2023-01-09",
+          "volumeLbs": 6315.0,
+          "volumeKg": 2877.5
+        },
+        {
+          "date": "2023-01-13",
+          "volumeLbs": 4085.0,
+          "volumeKg": 1847.5
+        },
+        {
+          "date": "2023-01-16",
+          "volumeLbs": 6390.0,
+          "volumeKg": 2907.5
+        },
+        {
+          "date": "2023-01-20",
+          "volumeLbs": 3595.0,
+          "volumeKg": 1627.5
+        },
+        {
+          "date": "2023-01-23",
+          "volumeLbs": 6315.0,
+          "volumeKg": 2877.5
+        },
+        {
+          "date": "2023-01-27",
+          "volumeLbs": 3875.0,
+          "volumeKg": 1757.5
+        },
+        {
+          "date": "2023-01-30",
+          "volumeLbs": 6315.0,
+          "volumeKg": 2877.5
+        },
+        {
+          "date": "2023-02-03",
+          "volumeLbs": 4625.0,
+          "volumeKg": 2095.0
+        },
+        {
+          "date": "2023-02-06",
+          "volumeLbs": 6315.0,
+          "volumeKg": 2877.5
+        },
+        {
+          "date": "2023-02-10",
+          "volumeLbs": 3875.0,
+          "volumeKg": 1757.5
+        },
+        {
+          "date": "2023-02-13",
+          "volumeLbs": 6315.0,
+          "volumeKg": 2877.5
+        },
+        {
+          "date": "2023-02-17",
+          "volumeLbs": 4625.0,
+          "volumeKg": 2095.0
+        },
+        {
+          "date": "2023-02-21",
+          "volumeLbs": 6315.0,
+          "volumeKg": 2877.5
+        },
+        {
+          "date": "2023-02-24",
+          "volumeLbs": 825.0,
+          "volumeKg": 372.5
+        },
+        {
+          "date": "2023-03-10",
+          "volumeLbs": 3925.0,
+          "volumeKg": 1785.0
+        },
+        {
+          "date": "2023-03-17",
+          "volumeLbs": 3320.0,
+          "volumeKg": 1497.5
+        },
+        {
+          "date": "2023-04-06",
+          "volumeLbs": 3790.0,
+          "volumeKg": 1712.5
+        },
+        {
+          "date": "2023-04-14",
+          "volumeLbs": 2965.0,
+          "volumeKg": 1340.0
+        },
+        {
+          "date": "2023-04-21",
+          "volumeLbs": 3015.0,
+          "volumeKg": 1370.0
+        },
+        {
+          "date": "2023-04-28",
+          "volumeLbs": 3660.0,
+          "volumeKg": 1657.5
+        },
+        {
+          "date": "2023-05-05",
+          "volumeLbs": 3005.0,
+          "volumeKg": 1360.0
+        },
+        {
+          "date": "2023-05-12",
+          "volumeLbs": 3305.0,
+          "volumeKg": 1505.0
+        },
+        {
+          "date": "2023-05-19",
+          "volumeLbs": 3660.0,
+          "volumeKg": 1652.5
+        },
+        {
+          "date": "2023-06-02",
+          "volumeLbs": 3135.0,
+          "volumeKg": 1417.5
+        },
+        {
+          "date": "2023-06-09",
+          "volumeLbs": 3675.0,
+          "volumeKg": 1655.0
+        },
+        {
+          "date": "2023-06-16",
+          "volumeLbs": 3660.0,
+          "volumeKg": 1652.5
+        },
+        {
+          "date": "2023-07-10",
+          "volumeLbs": 5805.0,
+          "volumeKg": 2605.0
+        },
+        {
+          "date": "2023-07-13",
+          "volumeLbs": 3625.0,
+          "volumeKg": 1632.5
+        },
+        {
+          "date": "2023-07-17",
+          "volumeLbs": 5975.0,
+          "volumeKg": 2697.5
+        },
+        {
+          "date": "2023-07-20",
+          "volumeLbs": 4290.0,
+          "volumeKg": 1942.5
+        },
+        {
+          "date": "2023-07-24",
+          "volumeLbs": 6035.0,
+          "volumeKg": 2720.0
+        },
+        {
+          "date": "2023-07-27",
+          "volumeLbs": 3185.0,
+          "volumeKg": 1445.0
+        },
+        {
+          "date": "2023-07-31",
+          "volumeLbs": 6450.0,
+          "volumeKg": 2910.0
+        },
+        {
+          "date": "2023-08-03",
+          "volumeLbs": 4040.0,
+          "volumeKg": 1832.5
+        },
+        {
+          "date": "2023-08-07",
+          "volumeLbs": 5500.0,
+          "volumeKg": 2485.0
+        },
+        {
+          "date": "2023-08-10",
+          "volumeLbs": 5040.0,
+          "volumeKg": 2282.5
+        },
+        {
+          "date": "2023-08-14",
+          "volumeLbs": 5270.0,
+          "volumeKg": 2370.0
+        },
+        {
+          "date": "2023-08-18",
+          "volumeLbs": 5085.0,
+          "volumeKg": 2295.0
+        },
+        {
+          "date": "2023-08-21",
+          "volumeLbs": 5705.0,
+          "volumeKg": 2577.5
+        },
+        {
+          "date": "2023-08-25",
+          "volumeLbs": 5145.0,
+          "volumeKg": 2335.0
+        },
+        {
+          "date": "2023-08-28",
+          "volumeLbs": 5590.0,
+          "volumeKg": 2530.0
+        },
+        {
+          "date": "2023-09-01",
+          "volumeLbs": 4195.0,
+          "volumeKg": 1902.5
+        },
+        {
+          "date": "2023-09-04",
+          "volumeLbs": 7030.0,
+          "volumeKg": 3185.0
+        },
+        {
+          "date": "2023-09-08",
+          "volumeLbs": 4375.0,
+          "volumeKg": 1975.0
+        },
+        {
+          "date": "2023-09-11",
+          "volumeLbs": 6415.0,
+          "volumeKg": 2905.0
+        },
+        {
+          "date": "2023-09-15",
+          "volumeLbs": 4375.0,
+          "volumeKg": 1975.0
+        },
+        {
+          "date": "2023-09-18",
+          "volumeLbs": 5980.0,
+          "volumeKg": 2710.0
+        },
+        {
+          "date": "2023-09-25",
+          "volumeLbs": 3975.0,
+          "volumeKg": 1785.0
+        },
+        {
+          "date": "2023-09-29",
+          "volumeLbs": 4375.0,
+          "volumeKg": 1975.0
+        },
+        {
+          "date": "2023-10-02",
+          "volumeLbs": 5980.0,
+          "volumeKg": 2710.0
+        },
+        {
+          "date": "2023-10-06",
+          "volumeLbs": 3500.0,
+          "volumeKg": 1572.5
+        },
+        {
+          "date": "2023-10-16",
+          "volumeLbs": 6530.0,
+          "volumeKg": 2952.5
+        },
+        {
+          "date": "2023-10-20",
+          "volumeLbs": 3295.0,
+          "volumeKg": 1480.0
+        },
+        {
+          "date": "2023-10-24",
+          "volumeLbs": 5100.0,
+          "volumeKg": 2310.0
+        },
+        {
+          "date": "2023-11-01",
+          "volumeLbs": 3705.0,
+          "volumeKg": 1672.5
+        },
+        {
+          "date": "2024-07-22",
+          "volumeLbs": 2540.0,
+          "volumeKg": 1135.0
+        },
+        {
+          "date": "2024-07-26",
+          "volumeLbs": 3425.0,
+          "volumeKg": 1562.5
+        },
+        {
+          "date": "2024-07-31",
+          "volumeLbs": 3525.0,
+          "volumeKg": 1612.5
+        },
+        {
+          "date": "2024-08-05",
+          "volumeLbs": 3625.0,
+          "volumeKg": 1612.5
+        },
+        {
+          "date": "2024-08-09",
+          "volumeLbs": 3535.0,
+          "volumeKg": 1582.5
+        },
+        {
+          "date": "2024-11-27",
+          "volumeLbs": 2950.0,
+          "volumeKg": 1312.5
+        },
+        {
+          "date": "2024-12-02",
+          "volumeLbs": 3675.0,
+          "volumeKg": 1662.5
+        },
+        {
+          "date": "2024-12-06",
+          "volumeLbs": 3015.0,
+          "volumeKg": 1370.0
+        },
+        {
+          "date": "2024-12-11",
+          "volumeLbs": 3390.0,
+          "volumeKg": 1517.5
+        },
+        {
+          "date": "2024-12-16",
+          "volumeLbs": 3460.0,
+          "volumeKg": 1562.5
+        },
+        {
+          "date": "2024-12-20",
+          "volumeLbs": 3480.0,
+          "volumeKg": 1580.0
+        },
+        {
+          "date": "2024-12-25",
+          "volumeLbs": 3795.0,
+          "volumeKg": 1722.5
+        },
+        {
+          "date": "2024-12-30",
+          "volumeLbs": 3855.0,
+          "volumeKg": 1730.0
+        },
+        {
+          "date": "2025-01-03",
+          "volumeLbs": 3730.0,
+          "volumeKg": 1697.5
+        },
+        {
+          "date": "2025-01-15",
+          "volumeLbs": 3427.5,
+          "volumeKg": 1542.5
+        },
+        {
+          "date": "2025-01-27",
+          "volumeLbs": 3815.0,
+          "volumeKg": 1740.0
+        },
+        {
+          "date": "2025-01-31",
+          "volumeLbs": 4690.0,
+          "volumeKg": 2137.5
+        },
+        {
+          "date": "2025-02-03",
+          "volumeLbs": 4460.0,
+          "volumeKg": 2037.5
+        },
+        {
+          "date": "2025-02-07",
+          "volumeLbs": 4517.5,
+          "volumeKg": 2037.5
+        },
+        {
+          "date": "2025-02-12",
+          "volumeLbs": 4560.0,
+          "volumeKg": 2037.5
+        },
+        {
+          "date": "2025-02-17",
+          "volumeLbs": 4602.5,
+          "volumeKg": 2080.0
+        },
+        {
+          "date": "2025-02-21",
+          "volumeLbs": 4365.0,
+          "volumeKg": 1955.0
+        },
+        {
+          "date": "2025-02-26",
+          "volumeLbs": 4935.0,
+          "volumeKg": 2240.0
+        },
+        {
+          "date": "2025-03-03",
+          "volumeLbs": 4530.0,
+          "volumeKg": 2032.5
+        },
+        {
+          "date": "2025-03-07",
+          "volumeLbs": 4417.5,
+          "volumeKg": 2007.5
+        },
+        {
+          "date": "2025-03-12",
+          "volumeLbs": 4340.0,
+          "volumeKg": 1952.5
+        },
+        {
+          "date": "2025-03-17",
+          "volumeLbs": 4175.0,
+          "volumeKg": 1900.0
+        },
+        {
+          "date": "2025-03-21",
+          "volumeLbs": 4545.0,
+          "volumeKg": 2052.5
+        },
+        {
+          "date": "2025-03-26",
+          "volumeLbs": 4597.5,
+          "volumeKg": 2097.5
+        },
+        {
+          "date": "2025-03-31",
+          "volumeLbs": 1410.0,
+          "volumeKg": 635.0
+        },
+        {
+          "date": "2025-04-04",
+          "volumeLbs": 3975.0,
+          "volumeKg": 1780.0
+        },
+        {
+          "date": "2025-04-09",
+          "volumeLbs": 4342.5,
+          "volumeKg": 1970.0
+        },
+        {
+          "date": "2025-04-14",
+          "volumeLbs": 3185.0,
+          "volumeKg": 1440.0
+        },
+        {
+          "date": "2025-04-18",
+          "volumeLbs": 5390.0,
+          "volumeKg": 2422.5
+        },
+        {
+          "date": "2025-04-21",
+          "volumeLbs": 4460.0,
+          "volumeKg": 2000.0
+        },
+        {
+          "date": "2025-04-25",
+          "volumeLbs": 4460.0,
+          "volumeKg": 2000.0
+        },
+        {
+          "date": "2025-04-28",
+          "volumeLbs": 5070.0,
+          "volumeKg": 2285.0
+        },
+        {
+          "date": "2025-05-02",
+          "volumeLbs": 4105.0,
+          "volumeKg": 1850.0
+        },
+        {
+          "date": "2025-05-05",
+          "volumeLbs": 4325.0,
+          "volumeKg": 1962.5
+        },
+        {
+          "date": "2025-05-09",
+          "volumeLbs": 4325.0,
+          "volumeKg": 1962.5
+        },
+        {
+          "date": "2025-05-12",
+          "volumeLbs": 3935.0,
+          "volumeKg": 1770.0
+        },
+        {
+          "date": "2025-05-16",
+          "volumeLbs": 3515.0,
+          "volumeKg": 1582.5
+        },
+        {
+          "date": "2025-06-02",
+          "volumeLbs": 3930.0,
+          "volumeKg": 1767.5
+        },
+        {
+          "date": "2025-06-06",
+          "volumeLbs": 3930.0,
+          "volumeKg": 1767.5
+        },
+        {
+          "date": "2025-06-11",
+          "volumeLbs": 4922.5,
+          "volumeKg": 2242.5
+        },
+        {
+          "date": "2025-06-16",
+          "volumeLbs": 1995.0,
+          "volumeKg": 897.5
+        },
+        {
+          "date": "2025-06-20",
+          "volumeLbs": 4275.0,
+          "volumeKg": 1910.0
+        },
+        {
+          "date": "2025-06-25",
+          "volumeLbs": 4987.5,
+          "volumeKg": 2255.0
+        },
+        {
+          "date": "2025-06-30",
+          "volumeLbs": 4840.0,
+          "volumeKg": 2167.5
+        },
+        {
+          "date": "2025-07-04",
+          "volumeLbs": 5280.0,
+          "volumeKg": 2392.5
+        },
+        {
+          "date": "2025-07-09",
+          "volumeLbs": 3892.5,
+          "volumeKg": 1767.5
+        },
+        {
+          "date": "2025-07-14",
+          "volumeLbs": 4825.0,
+          "volumeKg": 2212.5
+        },
+        {
+          "date": "2025-07-17",
+          "volumeLbs": 4185.0,
+          "volumeKg": 1900.0
+        },
+        {
+          "date": "2025-07-21",
+          "volumeLbs": 4275.0,
+          "volumeKg": 1900.0
+        },
+        {
+          "date": "2025-07-24",
+          "volumeLbs": 3965.0,
+          "volumeKg": 1805.0
+        },
+        {
+          "date": "2025-07-28",
+          "volumeLbs": 4425.0,
+          "volumeKg": 1975.0
+        },
+        {
+          "date": "2025-07-31",
+          "volumeLbs": 4130.0,
+          "volumeKg": 1880.0
+        },
+        {
+          "date": "2025-08-04",
+          "volumeLbs": 4860.0,
+          "volumeKg": 2177.5
+        },
+        {
+          "date": "2025-08-07",
+          "volumeLbs": 4830.0,
+          "volumeKg": 2207.5
+        },
+        {
+          "date": "2025-08-11",
+          "volumeLbs": 5100.0,
+          "volumeKg": 2297.5
+        },
+        {
+          "date": "2025-08-14",
+          "volumeLbs": 4700.0,
+          "volumeKg": 2150.0
+        },
+        {
+          "date": "2025-08-21",
+          "volumeLbs": 3425.0,
+          "volumeKg": 1550.0
+        },
+        {
+          "date": "2025-08-28",
+          "volumeLbs": 2635.0,
+          "volumeKg": 1200.0
+        },
+        {
+          "date": "2025-09-04",
+          "volumeLbs": 2785.0,
+          "volumeKg": 1255.0
+        },
+        {
+          "date": "2025-09-11",
+          "volumeLbs": 1775.0,
+          "volumeKg": 812.5
+        },
+        {
+          "date": "2025-09-18",
+          "volumeLbs": 3140.0,
+          "volumeKg": 1422.5
+        },
+        {
+          "date": "2025-09-25",
+          "volumeLbs": 2595.0,
+          "volumeKg": 1165.0
+        },
+        {
+          "date": "2025-10-20",
+          "volumeLbs": 5715.0,
+          "volumeKg": 2582.5
+        },
+        {
+          "date": "2025-10-23",
+          "volumeLbs": 4315.0,
+          "volumeKg": 1937.5
+        }
+      ]
+    },
+    "deadlift": {
+      "exerciseName": "Deadlift",
+      "dailyVolume": [
+        {
+          "date": "2019-01-26",
+          "volumeLbs": 475.0,
+          "volumeKg": 212.5
+        },
+        {
+          "date": "2019-01-31",
+          "volumeLbs": 675.0,
+          "volumeKg": 300.0
+        },
+        {
+          "date": "2019-02-05",
+          "volumeLbs": 725.0,
+          "volumeKg": 325.0
+        },
+        {
+          "date": "2019-02-09",
+          "volumeLbs": 775.0,
+          "volumeKg": 350.0
+        },
+        {
+          "date": "2019-02-14",
+          "volumeLbs": 925.0,
+          "volumeKg": 425.0
+        },
+        {
+          "date": "2019-02-19",
+          "volumeLbs": 975.0,
+          "volumeKg": 437.5
+        },
+        {
+          "date": "2019-02-23",
+          "volumeLbs": 1125.0,
+          "volumeKg": 512.5
+        },
+        {
+          "date": "2019-02-28",
+          "volumeLbs": 1175.0,
+          "volumeKg": 537.5
+        },
+        {
+          "date": "2019-03-05",
+          "volumeLbs": 1225.0,
+          "volumeKg": 550.0
+        },
+        {
+          "date": "2019-03-09",
+          "volumeLbs": 1275.0,
+          "volumeKg": 575.0
+        },
+        {
+          "date": "2019-03-14",
+          "volumeLbs": 1325.0,
+          "volumeKg": 600.0
+        },
+        {
+          "date": "2019-03-19",
+          "volumeLbs": 1375.0,
+          "volumeKg": 625.0
+        },
+        {
+          "date": "2019-03-23",
+          "volumeLbs": 1425.0,
+          "volumeKg": 650.0
+        },
+        {
+          "date": "2019-03-28",
+          "volumeLbs": 1475.0,
+          "volumeKg": 675.0
+        },
+        {
+          "date": "2019-04-02",
+          "volumeLbs": 1525.0,
+          "volumeKg": 687.5
+        },
+        {
+          "date": "2019-04-06",
+          "volumeLbs": 1575.0,
+          "volumeKg": 712.5
+        },
+        {
+          "date": "2019-04-11",
+          "volumeLbs": 975.0,
+          "volumeKg": 442.5
+        },
+        {
+          "date": "2019-04-15",
+          "volumeLbs": 2385.0,
+          "volumeKg": 1072.5
+        },
+        {
+          "date": "2019-04-16",
+          "volumeLbs": 1625.0,
+          "volumeKg": 737.5
+        },
+        {
+          "date": "2019-04-19",
+          "volumeLbs": 4500.0,
+          "volumeKg": 2025.0
+        },
+        {
+          "date": "2019-04-24",
+          "volumeLbs": 4325.0,
+          "volumeKg": 1962.5
+        },
+        {
+          "date": "2019-04-30",
+          "volumeLbs": 5635.0,
+          "volumeKg": 2555.0
+        },
+        {
+          "date": "2019-05-03",
+          "volumeLbs": 5400.0,
+          "volumeKg": 2400.0
+        },
+        {
+          "date": "2019-05-07",
+          "volumeLbs": 5250.0,
+          "volumeKg": 2367.5
+        },
+        {
+          "date": "2019-05-10",
+          "volumeLbs": 8500.0,
+          "volumeKg": 3875.0
+        },
+        {
+          "date": "2019-05-14",
+          "volumeLbs": 6995.0,
+          "volumeKg": 3162.5
+        },
+        {
+          "date": "2019-05-17",
+          "volumeLbs": 5100.0,
+          "volumeKg": 2325.0
+        },
+        {
+          "date": "2019-05-21",
+          "volumeLbs": 2975.0,
+          "volumeKg": 1337.5
+        },
+        {
+          "date": "2019-05-24",
+          "volumeLbs": 5100.0,
+          "volumeKg": 2325.0
+        },
+        {
+          "date": "2019-05-29",
+          "volumeLbs": 6245.0,
+          "volumeKg": 2825.0
+        },
+        {
+          "date": "2019-06-05",
+          "volumeLbs": 6050.0,
+          "volumeKg": 2742.5
+        },
+        {
+          "date": "2019-06-27",
+          "volumeLbs": 13225.0,
+          "volumeKg": 6010.0
+        },
+        {
+          "date": "2019-07-04",
+          "volumeLbs": 14240.0,
+          "volumeKg": 6480.0
+        },
+        {
+          "date": "2019-07-11",
+          "volumeLbs": 13870.0,
+          "volumeKg": 6307.5
+        },
+        {
+          "date": "2019-07-16",
+          "volumeLbs": 13225.0,
+          "volumeKg": 6010.0
+        },
+        {
+          "date": "2019-07-23",
+          "volumeLbs": 14555.0,
+          "volumeKg": 6622.5
+        },
+        {
+          "date": "2019-07-30",
+          "volumeLbs": 12455.0,
+          "volumeKg": 5660.0
+        },
+        {
+          "date": "2019-08-06",
+          "volumeLbs": 9900.0,
+          "volumeKg": 4497.5
+        },
+        {
+          "date": "2019-08-13",
+          "volumeLbs": 8045.0,
+          "volumeKg": 3645.0
+        },
+        {
+          "date": "2019-08-20",
+          "volumeLbs": 7665.0,
+          "volumeKg": 3467.5
+        },
+        {
+          "date": "2019-08-28",
+          "volumeLbs": 7800.0,
+          "volumeKg": 3522.5
+        },
+        {
+          "date": "2019-09-04",
+          "volumeLbs": 7950.0,
+          "volumeKg": 3585.0
+        },
+        {
+          "date": "2019-09-11",
+          "volumeLbs": 8820.0,
+          "volumeKg": 3985.0
+        },
+        {
+          "date": "2019-09-18",
+          "volumeLbs": 8700.0,
+          "volumeKg": 3942.5
+        },
+        {
+          "date": "2019-09-24",
+          "volumeLbs": 6985.0,
+          "volumeKg": 3152.5
+        },
+        {
+          "date": "2019-09-27",
+          "volumeLbs": 2100.0,
+          "volumeKg": 950.0
+        },
+        {
+          "date": "2019-10-01",
+          "volumeLbs": 6465.0,
+          "volumeKg": 2927.5
+        },
+        {
+          "date": "2019-10-08",
+          "volumeLbs": 8975.0,
+          "volumeKg": 4057.5
+        },
+        {
+          "date": "2019-10-15",
+          "volumeLbs": 7895.0,
+          "volumeKg": 3570.0
+        },
+        {
+          "date": "2019-10-18",
+          "volumeLbs": 5160.0,
+          "volumeKg": 2340.0
+        },
+        {
+          "date": "2019-10-22",
+          "volumeLbs": 6965.0,
+          "volumeKg": 3152.5
+        },
+        {
+          "date": "2019-10-29",
+          "volumeLbs": 9145.0,
+          "volumeKg": 4127.5
+        },
+        {
+          "date": "2019-11-05",
+          "volumeLbs": 8020.0,
+          "volumeKg": 3632.5
+        },
+        {
+          "date": "2019-11-12",
+          "volumeLbs": 6645.0,
+          "volumeKg": 3002.5
+        },
+        {
+          "date": "2019-11-19",
+          "volumeLbs": 8835.0,
+          "volumeKg": 3992.5
+        },
+        {
+          "date": "2019-12-04",
+          "volumeLbs": 8620.0,
+          "volumeKg": 3907.5
+        },
+        {
+          "date": "2019-12-11",
+          "volumeLbs": 8795.0,
+          "volumeKg": 3970.0
+        },
+        {
+          "date": "2020-01-07",
+          "volumeLbs": 8045.0,
+          "volumeKg": 3645.0
+        },
+        {
+          "date": "2020-01-14",
+          "volumeLbs": 6270.0,
+          "volumeKg": 2832.5
+        },
+        {
+          "date": "2020-01-21",
+          "volumeLbs": 8885.0,
+          "volumeKg": 4017.5
+        },
+        {
+          "date": "2020-01-28",
+          "volumeLbs": 8175.0,
+          "volumeKg": 3710.0
+        },
+        {
+          "date": "2020-02-04",
+          "volumeLbs": 6390.0,
+          "volumeKg": 2885.0
+        },
+        {
+          "date": "2020-02-11",
+          "volumeLbs": 9035.0,
+          "volumeKg": 4092.5
+        },
+        {
+          "date": "2020-02-18",
+          "volumeLbs": 8175.0,
+          "volumeKg": 3710.0
+        },
+        {
+          "date": "2020-02-25",
+          "volumeLbs": 6345.0,
+          "volumeKg": 2870.0
+        },
+        {
+          "date": "2020-03-03",
+          "volumeLbs": 6150.0,
+          "volumeKg": 2785.0
+        },
+        {
+          "date": "2020-03-10",
+          "volumeLbs": 8275.0,
+          "volumeKg": 3760.0
+        },
+        {
+          "date": "2020-03-17",
+          "volumeLbs": 12700.0,
+          "volumeKg": 5755.0
+        },
+        {
+          "date": "2020-03-24",
+          "volumeLbs": 8185.0,
+          "volumeKg": 3707.5
+        },
+        {
+          "date": "2020-03-31",
+          "volumeLbs": 6325.0,
+          "volumeKg": 2872.5
+        },
+        {
+          "date": "2020-04-07",
+          "volumeLbs": 8200.0,
+          "volumeKg": 3705.0
+        },
+        {
+          "date": "2020-04-14",
+          "volumeLbs": 7730.0,
+          "volumeKg": 3502.5
+        },
+        {
+          "date": "2020-04-21",
+          "volumeLbs": 8175.0,
+          "volumeKg": 3710.0
+        },
+        {
+          "date": "2020-04-28",
+          "volumeLbs": 11755.0,
+          "volumeKg": 5327.5
+        },
+        {
+          "date": "2020-05-05",
+          "volumeLbs": 12335.0,
+          "volumeKg": 5602.5
+        },
+        {
+          "date": "2020-05-12",
+          "volumeLbs": 9000.0,
+          "volumeKg": 4087.5
+        },
+        {
+          "date": "2020-05-19",
+          "volumeLbs": 8555.0,
+          "volumeKg": 3882.5
+        },
+        {
+          "date": "2020-05-26",
+          "volumeLbs": 7145.0,
+          "volumeKg": 3235.0
+        },
+        {
+          "date": "2020-06-02",
+          "volumeLbs": 9460.0,
+          "volumeKg": 4285.0
+        },
+        {
+          "date": "2020-06-09",
+          "volumeLbs": 6925.0,
+          "volumeKg": 3145.0
+        },
+        {
+          "date": "2020-06-16",
+          "volumeLbs": 6150.0,
+          "volumeKg": 2780.0
+        },
+        {
+          "date": "2021-01-11",
+          "volumeLbs": 5520.0,
+          "volumeKg": 2495.0
+        },
+        {
+          "date": "2021-01-19",
+          "volumeLbs": 3350.0,
+          "volumeKg": 1507.5
+        },
+        {
+          "date": "2021-01-27",
+          "volumeLbs": 4315.0,
+          "volumeKg": 1952.5
+        },
+        {
+          "date": "2021-02-04",
+          "volumeLbs": 4395.0,
+          "volumeKg": 1985.0
+        },
+        {
+          "date": "2021-02-12",
+          "volumeLbs": 4565.0,
+          "volumeKg": 2057.5
+        },
+        {
+          "date": "2021-02-23",
+          "volumeLbs": 6115.0,
+          "volumeKg": 2757.5
+        },
+        {
+          "date": "2021-03-03",
+          "volumeLbs": 5730.0,
+          "volumeKg": 2587.5
+        },
+        {
+          "date": "2021-03-11",
+          "volumeLbs": 6290.0,
+          "volumeKg": 2845.0
+        },
+        {
+          "date": "2021-03-22",
+          "volumeLbs": 6505.0,
+          "volumeKg": 2945.0
+        },
+        {
+          "date": "2021-03-30",
+          "volumeLbs": 6840.0,
+          "volumeKg": 3092.5
+        },
+        {
+          "date": "2021-04-08",
+          "volumeLbs": 9270.0,
+          "volumeKg": 4200.0
+        },
+        {
+          "date": "2021-04-15",
+          "volumeLbs": 8025.0,
+          "volumeKg": 3630.0
+        },
+        {
+          "date": "2021-04-22",
+          "volumeLbs": 7000.0,
+          "volumeKg": 3155.0
+        },
+        {
+          "date": "2021-04-29",
+          "volumeLbs": 7285.0,
+          "volumeKg": 3285.0
+        },
+        {
+          "date": "2021-05-06",
+          "volumeLbs": 7930.0,
+          "volumeKg": 3585.0
+        },
+        {
+          "date": "2021-05-13",
+          "volumeLbs": 7550.0,
+          "volumeKg": 3417.5
+        },
+        {
+          "date": "2021-05-20",
+          "volumeLbs": 8205.0,
+          "volumeKg": 3717.5
+        },
+        {
+          "date": "2021-05-27",
+          "volumeLbs": 7910.0,
+          "volumeKg": 3577.5
+        },
+        {
+          "date": "2021-06-10",
+          "volumeLbs": 7595.0,
+          "volumeKg": 3432.5
+        },
+        {
+          "date": "2021-06-17",
+          "volumeLbs": 7655.0,
+          "volumeKg": 3462.5
+        },
+        {
+          "date": "2021-06-24",
+          "volumeLbs": 8635.0,
+          "volumeKg": 3905.0
+        },
+        {
+          "date": "2021-07-01",
+          "volumeLbs": 8215.0,
+          "volumeKg": 3717.5
+        },
+        {
+          "date": "2021-07-15",
+          "volumeLbs": 8355.0,
+          "volumeKg": 3792.5
+        },
+        {
+          "date": "2021-07-22",
+          "volumeLbs": 7870.0,
+          "volumeKg": 3560.0
+        },
+        {
+          "date": "2021-07-29",
+          "volumeLbs": 9305.0,
+          "volumeKg": 4215.0
+        },
+        {
+          "date": "2021-08-05",
+          "volumeLbs": 5985.0,
+          "volumeKg": 2707.5
+        },
+        {
+          "date": "2021-08-12",
+          "volumeLbs": 6000.0,
+          "volumeKg": 2715.0
+        },
+        {
+          "date": "2021-08-19",
+          "volumeLbs": 7735.0,
+          "volumeKg": 3500.0
+        },
+        {
+          "date": "2021-09-02",
+          "volumeLbs": 6120.0,
+          "volumeKg": 2775.0
+        },
+        {
+          "date": "2021-09-09",
+          "volumeLbs": 6120.0,
+          "volumeKg": 2775.0
+        },
+        {
+          "date": "2021-09-16",
+          "volumeLbs": 5140.0,
+          "volumeKg": 2330.0
+        },
+        {
+          "date": "2021-09-23",
+          "volumeLbs": 5620.0,
+          "volumeKg": 2537.5
+        },
+        {
+          "date": "2021-10-07",
+          "volumeLbs": 6775.0,
+          "volumeKg": 3062.5
+        },
+        {
+          "date": "2021-10-14",
+          "volumeLbs": 4855.0,
+          "volumeKg": 2192.5
+        },
+        {
+          "date": "2021-10-29",
+          "volumeLbs": 7465.0,
+          "volumeKg": 3377.5
+        },
+        {
+          "date": "2021-11-12",
+          "volumeLbs": 5585.0,
+          "volumeKg": 2520.0
+        },
+        {
+          "date": "2021-12-03",
+          "volumeLbs": 5765.0,
+          "volumeKg": 2602.5
+        },
+        {
+          "date": "2021-12-09",
+          "volumeLbs": 7185.0,
+          "volumeKg": 3247.5
+        },
+        {
+          "date": "2021-12-16",
+          "volumeLbs": 6410.0,
+          "volumeKg": 2902.5
+        },
+        {
+          "date": "2022-01-07",
+          "volumeLbs": 6490.0,
+          "volumeKg": 2935.0
+        },
+        {
+          "date": "2022-01-28",
+          "volumeLbs": 5870.0,
+          "volumeKg": 2652.5
+        },
+        {
+          "date": "2022-02-11",
+          "volumeLbs": 5680.0,
+          "volumeKg": 2560.0
+        },
+        {
+          "date": "2022-02-18",
+          "volumeLbs": 7110.0,
+          "volumeKg": 3210.0
+        },
+        {
+          "date": "2022-02-25",
+          "volumeLbs": 5440.0,
+          "volumeKg": 2465.0
+        },
+        {
+          "date": "2022-03-04",
+          "volumeLbs": 6890.0,
+          "volumeKg": 3120.0
+        },
+        {
+          "date": "2022-03-11",
+          "volumeLbs": 6150.0,
+          "volumeKg": 2777.5
+        },
+        {
+          "date": "2022-04-08",
+          "volumeLbs": 2835.0,
+          "volumeKg": 1280.0
+        },
+        {
+          "date": "2022-04-15",
+          "volumeLbs": 6110.0,
+          "volumeKg": 2770.0
+        },
+        {
+          "date": "2022-04-22",
+          "volumeLbs": 6190.0,
+          "volumeKg": 2810.0
+        },
+        {
+          "date": "2022-05-06",
+          "volumeLbs": 5765.0,
+          "volumeKg": 2602.5
+        },
+        {
+          "date": "2022-05-13",
+          "volumeLbs": 5370.0,
+          "volumeKg": 2435.0
+        },
+        {
+          "date": "2022-06-10",
+          "volumeLbs": 4250.0,
+          "volumeKg": 1912.5
+        },
+        {
+          "date": "2022-06-17",
+          "volumeLbs": 6560.0,
+          "volumeKg": 2962.5
+        },
+        {
+          "date": "2022-06-24",
+          "volumeLbs": 3705.0,
+          "volumeKg": 1670.0
+        },
+        {
+          "date": "2022-07-01",
+          "volumeLbs": 5680.0,
+          "volumeKg": 2560.0
+        },
+        {
+          "date": "2022-07-15",
+          "volumeLbs": 7100.0,
+          "volumeKg": 3210.0
+        },
+        {
+          "date": "2022-07-28",
+          "volumeLbs": 5605.0,
+          "volumeKg": 2530.0
+        },
+        {
+          "date": "2022-08-04",
+          "volumeLbs": 6440.0,
+          "volumeKg": 2902.5
+        },
+        {
+          "date": "2022-08-11",
+          "volumeLbs": 4795.0,
+          "volumeKg": 2160.0
+        },
+        {
+          "date": "2022-08-18",
+          "volumeLbs": 5205.0,
+          "volumeKg": 2345.0
+        },
+        {
+          "date": "2022-08-25",
+          "volumeLbs": 6085.0,
+          "volumeKg": 2742.5
+        },
+        {
+          "date": "2022-09-01",
+          "volumeLbs": 5735.0,
+          "volumeKg": 2587.5
+        },
+        {
+          "date": "2022-09-15",
+          "volumeLbs": 5835.0,
+          "volumeKg": 2637.5
+        },
+        {
+          "date": "2022-09-22",
+          "volumeLbs": 7090.0,
+          "volumeKg": 3212.5
+        },
+        {
+          "date": "2022-10-06",
+          "volumeLbs": 6890.0,
+          "volumeKg": 3120.0
+        },
+        {
+          "date": "2022-10-13",
+          "volumeLbs": 6960.0,
+          "volumeKg": 3155.0
+        },
+        {
+          "date": "2022-10-20",
+          "volumeLbs": 6950.0,
+          "volumeKg": 3142.5
+        },
+        {
+          "date": "2022-10-27",
+          "volumeLbs": 6990.0,
+          "volumeKg": 3170.0
+        },
+        {
+          "date": "2022-11-17",
+          "volumeLbs": 4605.0,
+          "volumeKg": 2077.5
+        },
+        {
+          "date": "2022-12-01",
+          "volumeLbs": 1125.0,
+          "volumeKg": 500.0
+        },
+        {
+          "date": "2022-12-08",
+          "volumeLbs": 5970.0,
+          "volumeKg": 2700.0
+        },
+        {
+          "date": "2023-01-05",
+          "volumeLbs": 4715.0,
+          "volumeKg": 2127.5
+        },
+        {
+          "date": "2023-01-12",
+          "volumeLbs": 2200.0,
+          "volumeKg": 987.5
+        },
+        {
+          "date": "2023-01-26",
+          "volumeLbs": 5485.0,
+          "volumeKg": 2477.5
+        },
+        {
+          "date": "2023-02-02",
+          "volumeLbs": 5215.0,
+          "volumeKg": 2357.5
+        },
+        {
+          "date": "2023-02-09",
+          "volumeLbs": 3655.0,
+          "volumeKg": 1652.5
+        },
+        {
+          "date": "2023-03-09",
+          "volumeLbs": 6080.0,
+          "volumeKg": 2747.5
+        },
+        {
+          "date": "2023-03-16",
+          "volumeLbs": 4530.0,
+          "volumeKg": 2045.0
+        },
+        {
+          "date": "2023-04-13",
+          "volumeLbs": 5220.0,
+          "volumeKg": 2360.0
+        },
+        {
+          "date": "2023-04-20",
+          "volumeLbs": 5485.0,
+          "volumeKg": 2477.5
+        },
+        {
+          "date": "2023-04-27",
+          "volumeLbs": 4685.0,
+          "volumeKg": 2112.5
+        },
+        {
+          "date": "2023-05-04",
+          "volumeLbs": 4770.0,
+          "volumeKg": 2157.5
+        },
+        {
+          "date": "2023-05-11",
+          "volumeLbs": 5585.0,
+          "volumeKg": 2520.0
+        },
+        {
+          "date": "2023-05-18",
+          "volumeLbs": 6460.0,
+          "volumeKg": 2912.5
+        },
+        {
+          "date": "2023-06-01",
+          "volumeLbs": 4770.0,
+          "volumeKg": 2157.5
+        },
+        {
+          "date": "2023-06-08",
+          "volumeLbs": 5585.0,
+          "volumeKg": 2520.0
+        },
+        {
+          "date": "2023-06-15",
+          "volumeLbs": 5300.0,
+          "volumeKg": 2397.5
+        },
+        {
+          "date": "2023-07-14",
+          "volumeLbs": 5795.0,
+          "volumeKg": 2620.0
+        },
+        {
+          "date": "2023-07-21",
+          "volumeLbs": 5610.0,
+          "volumeKg": 2542.5
+        },
+        {
+          "date": "2023-07-28",
+          "volumeLbs": 5940.0,
+          "volumeKg": 2680.0
+        },
+        {
+          "date": "2023-08-04",
+          "volumeLbs": 6890.0,
+          "volumeKg": 3117.5
+        },
+        {
+          "date": "2023-08-11",
+          "volumeLbs": 5985.0,
+          "volumeKg": 2702.5
+        },
+        {
+          "date": "2023-08-17",
+          "volumeLbs": 6085.0,
+          "volumeKg": 2752.5
+        },
+        {
+          "date": "2023-08-24",
+          "volumeLbs": 6155.0,
+          "volumeKg": 2780.0
+        },
+        {
+          "date": "2023-08-31",
+          "volumeLbs": 4905.0,
+          "volumeKg": 2212.5
+        },
+        {
+          "date": "2023-09-07",
+          "volumeLbs": 5715.0,
+          "volumeKg": 2580.0
+        },
+        {
+          "date": "2023-09-14",
+          "volumeLbs": 5640.0,
+          "volumeKg": 2550.0
+        },
+        {
+          "date": "2023-09-21",
+          "volumeLbs": 4715.0,
+          "volumeKg": 2127.5
+        },
+        {
+          "date": "2023-09-28",
+          "volumeLbs": 5540.0,
+          "volumeKg": 2497.5
+        },
+        {
+          "date": "2023-10-19",
+          "volumeLbs": 4665.0,
+          "volumeKg": 2105.0
+        },
+        {
+          "date": "2023-10-27",
+          "volumeLbs": 4390.0,
+          "volumeKg": 1985.0
+        },
+        {
+          "date": "2024-07-24",
+          "volumeLbs": 1125.0,
+          "volumeKg": 500.0
+        },
+        {
+          "date": "2024-07-31",
+          "volumeLbs": 2805.0,
+          "volumeKg": 1250.0
+        },
+        {
+          "date": "2024-08-07",
+          "volumeLbs": 2625.0,
+          "volumeKg": 1175.0
+        },
+        {
+          "date": "2024-11-27",
+          "volumeLbs": 2725.0,
+          "volumeKg": 1225.0
+        },
+        {
+          "date": "2024-12-04",
+          "volumeLbs": 2700.0,
+          "volumeKg": 1217.5
+        },
+        {
+          "date": "2024-12-11",
+          "volumeLbs": 2745.0,
+          "volumeKg": 1245.0
+        },
+        {
+          "date": "2024-12-18",
+          "volumeLbs": 3530.0,
+          "volumeKg": 1600.0
+        },
+        {
+          "date": "2024-12-25",
+          "volumeLbs": 3190.0,
+          "volumeKg": 1440.0
+        },
+        {
+          "date": "2025-01-01",
+          "volumeLbs": 3185.0,
+          "volumeKg": 1437.5
+        },
+        {
+          "date": "2025-01-29",
+          "volumeLbs": 3870.0,
+          "volumeKg": 1742.5
+        },
+        {
+          "date": "2025-02-05",
+          "volumeLbs": 3070.0,
+          "volumeKg": 1380.0
+        },
+        {
+          "date": "2025-02-12",
+          "volumeLbs": 4595.0,
+          "volumeKg": 2075.0
+        },
+        {
+          "date": "2025-02-19",
+          "volumeLbs": 4635.0,
+          "volumeKg": 2092.5
+        },
+        {
+          "date": "2025-02-26",
+          "volumeLbs": 3655.0,
+          "volumeKg": 1655.0
+        },
+        {
+          "date": "2025-03-05",
+          "volumeLbs": 4575.0,
+          "volumeKg": 2060.0
+        },
+        {
+          "date": "2025-03-12",
+          "volumeLbs": 5325.0,
+          "volumeKg": 2415.0
+        },
+        {
+          "date": "2025-03-19",
+          "volumeLbs": 4650.0,
+          "volumeKg": 2105.0
+        },
+        {
+          "date": "2025-03-26",
+          "volumeLbs": 3770.0,
+          "volumeKg": 1710.0
+        },
+        {
+          "date": "2025-04-02",
+          "volumeLbs": 3720.0,
+          "volumeKg": 1685.0
+        },
+        {
+          "date": "2025-04-09",
+          "volumeLbs": 1440.0,
+          "volumeKg": 652.5
+        },
+        {
+          "date": "2025-04-16",
+          "volumeLbs": 6660.0,
+          "volumeKg": 3012.5
+        },
+        {
+          "date": "2025-04-23",
+          "volumeLbs": 7665.0,
+          "volumeKg": 3477.5
+        },
+        {
+          "date": "2025-04-30",
+          "volumeLbs": 5465.0,
+          "volumeKg": 2472.5
+        },
+        {
+          "date": "2025-05-07",
+          "volumeLbs": 6500.0,
+          "volumeKg": 2950.0
+        },
+        {
+          "date": "2025-05-14",
+          "volumeLbs": 6275.0,
+          "volumeKg": 2835.0
+        },
+        {
+          "date": "2025-06-04",
+          "volumeLbs": 5220.0,
+          "volumeKg": 2360.0
+        },
+        {
+          "date": "2025-06-11",
+          "volumeLbs": 4135.0,
+          "volumeKg": 1880.0
+        },
+        {
+          "date": "2025-06-18",
+          "volumeLbs": 3575.0,
+          "volumeKg": 1620.0
+        },
+        {
+          "date": "2025-06-25",
+          "volumeLbs": 1950.0,
+          "volumeKg": 882.5
+        },
+        {
+          "date": "2025-07-02",
+          "volumeLbs": 4045.0,
+          "volumeKg": 1842.5
+        },
+        {
+          "date": "2025-07-09",
+          "volumeLbs": 3600.0,
+          "volumeKg": 1632.5
+        },
+        {
+          "date": "2025-07-15",
+          "volumeLbs": 7200.0,
+          "volumeKg": 3275.0
+        },
+        {
+          "date": "2025-07-18",
+          "volumeLbs": 6505.0,
+          "volumeKg": 2940.0
+        },
+        {
+          "date": "2025-07-22",
+          "volumeLbs": 7725.0,
+          "volumeKg": 3525.0
+        },
+        {
+          "date": "2025-07-25",
+          "volumeLbs": 6450.0,
+          "volumeKg": 2925.0
+        },
+        {
+          "date": "2025-07-29",
+          "volumeLbs": 5575.0,
+          "volumeKg": 2500.0
+        },
+        {
+          "date": "2025-08-01",
+          "volumeLbs": 6375.0,
+          "volumeKg": 2900.0
+        },
+        {
+          "date": "2025-08-05",
+          "volumeLbs": 6555.0,
+          "volumeKg": 2940.0
+        },
+        {
+          "date": "2025-08-08",
+          "volumeLbs": 6870.0,
+          "volumeKg": 3135.0
+        },
+        {
+          "date": "2025-08-12",
+          "volumeLbs": 6795.0,
+          "volumeKg": 3060.0
+        },
+        {
+          "date": "2025-08-15",
+          "volumeLbs": 6775.0,
+          "volumeKg": 3050.0
+        },
+        {
+          "date": "2025-08-19",
+          "volumeLbs": 5305.0,
+          "volumeKg": 2402.5
+        },
+        {
+          "date": "2025-08-26",
+          "volumeLbs": 4935.0,
+          "volumeKg": 2237.5
+        },
+        {
+          "date": "2025-09-02",
+          "volumeLbs": 6585.0,
+          "volumeKg": 2980.0
+        },
+        {
+          "date": "2025-09-09",
+          "volumeLbs": 2375.0,
+          "volumeKg": 1075.0
+        },
+        {
+          "date": "2025-09-16",
+          "volumeLbs": 4875.0,
+          "volumeKg": 2200.0
+        },
+        {
+          "date": "2025-09-23",
+          "volumeLbs": 5415.0,
+          "volumeKg": 2465.0
+        },
+        {
+          "date": "2025-10-24",
+          "volumeLbs": 5400.0,
+          "volumeKg": 2437.5
+        }
+      ]
+    }
+  },
   "programs": [
     {
       "name": "StrongLifts 5x5",

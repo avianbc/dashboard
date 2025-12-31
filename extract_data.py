@@ -391,6 +391,55 @@ def get_big_three_e1rm(conn):
 
     return big_three_e1rm
 
+def get_big_three_volume(conn):
+    """Get volume time series for Big 3 lifts (daily aggregation)."""
+    cursor = conn.cursor()
+
+    # Map exercise name variations
+    squat_names = ['Squat', 'Back Squat', 'Front Squat', 'Squats']
+    bench_names = ['Bench Press', 'Bench', 'Flat Bench Press']
+    deadlift_names = ['Deadlift', 'Conventional Deadlift', 'Deadlifts']
+
+    big_three_volume = {}
+
+    for canonical_name, name_list in [('squat', squat_names), ('bench', bench_names), ('deadlift', deadlift_names)]:
+        # Get daily volume for this exercise
+        placeholders = ','.join('?' * len(name_list))
+        cursor.execute(f"""
+            SELECT
+                date(h.date/1000, 'unixepoch') as workout_date,
+                SUM(he.weightlb * he.reps) as volume_lbs,
+                SUM(he.weightkg * he.reps) as volume_kg,
+                e.exercise_name
+            FROM history_exercises he
+            JOIN history h ON he.history_id = h.id
+            JOIN exercises e ON he.exercise_id = e.id
+            WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+            AND he.reps > 0
+            GROUP BY workout_date
+            ORDER BY workout_date
+        """, name_list)
+
+        rows = cursor.fetchall()
+        if not rows:
+            continue
+
+        daily_volume = []
+        for row in rows:
+            daily_volume.append({
+                'date': row['workout_date'],
+                'volumeLbs': round(row['volume_lbs'] or 0, 2),
+                'volumeKg': round(row['volume_kg'] or 0, 2)
+            })
+
+        if daily_volume:
+            big_three_volume[canonical_name] = {
+                'exerciseName': rows[0]['exercise_name'],
+                'dailyVolume': daily_volume
+            }
+
+    return big_three_volume
+
 def get_big_three(conn, exercise_progress):
     """Extract Big 3 lifts (Squat, Bench Press, Deadlift) with detailed progress."""
     big_three = {}
@@ -595,6 +644,9 @@ def main():
     print("Calculating Big 3 estimated 1RM progression...")
     big_three_e1rm = get_big_three_e1rm(conn)
 
+    print("Extracting Big 3 volume history...")
+    big_three_volume = get_big_three_volume(conn)
+
     print("Getting program history...")
     programs = get_programs(conn)
 
@@ -615,6 +667,7 @@ def main():
         'exerciseProgress': exercise_progress,
         'bigThree': big_three,
         'bigThreeE1RM': big_three_e1rm,
+        'bigThreeVolume': big_three_volume,
         'programs': programs,
         'workoutsByDayOfWeek': workouts_by_day,
         'notableWorkouts': notable_workouts,
