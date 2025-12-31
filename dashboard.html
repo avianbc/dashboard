@@ -150,7 +150,6 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
-            font-family: 'Courier New', monospace;
             color: #fff;
             margin-bottom: 0.5rem;
         }
@@ -218,7 +217,6 @@
 
         .milestone-date {
             min-width: 100px;
-            font-family: 'Courier New', monospace;
             color: #888;
         }
 
@@ -1162,27 +1160,27 @@
                     stats.innerHTML = `
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Starting e1RM</div>
-                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${startE1RM} ${currentUnit}</div>
+                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700;">${startE1RM} ${currentUnit}</div>
                             <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(first.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
                         </div>
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current e1RM</div>
-                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${currentE1RM} ${currentUnit}</div>
+                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700;">${currentE1RM} ${currentUnit}</div>
                             <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(latest.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
                         </div>
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Peak e1RM</div>
-                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${peakE1RM} ${currentUnit}</div>
+                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700;">${peakE1RM} ${currentUnit}</div>
                             <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(peak.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
                         </div>
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Total Gain</div>
-                            <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">+${totalGain} ${currentUnit}</div>
+                            <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700;">+${totalGain} ${currentUnit}</div>
                             <div style="color: #51cf66; font-size: 0.75rem; margin-top: 0.25rem;">+${gainPercent}%</div>
                         </div>
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">PRs Set</div>
-                            <div style="color: #ffd700; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${prCount}</div>
+                            <div style="color: #ffd700; font-size: 1.5rem; font-weight: 700;">${prCount}</div>
                             <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">across all rep ranges</div>
                         </div>
                     `;
@@ -1452,20 +1450,20 @@
                 html += `
                     <div>
                         <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current Total</div>
-                        <div style="color: ${achievedClub ? achievedClub.color : '#e0e0e0'}; font-size: 2rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(totalValue)} ${currentUnit}</div>
+                        <div style="color: ${achievedClub ? achievedClub.color : '#e0e0e0'}; font-size: 2rem; font-weight: 700;">${Math.round(totalValue)} ${currentUnit}</div>
                         ${achievedClub ? `<div style="color: ${achievedClub.color}; font-size: 0.8rem; margin-top: 0.25rem;">${achievedClub.name}</div>` : ''}
                     </div>
                     <div>
                         <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Squat e1RM</div>
-                        <div style="color: #4a9eff; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(squatValue)} ${currentUnit}</div>
+                        <div style="color: #4a9eff; font-size: 1.5rem; font-weight: 700;">${Math.round(squatValue)} ${currentUnit}</div>
                     </div>
                     <div>
                         <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Bench e1RM</div>
-                        <div style="color: #ff6b6b; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(benchValue)} ${currentUnit}</div>
+                        <div style="color: #ff6b6b; font-size: 1.5rem; font-weight: 700;">${Math.round(benchValue)} ${currentUnit}</div>
                     </div>
                     <div>
                         <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Deadlift e1RM</div>
-                        <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(deadliftValue)} ${currentUnit}</div>
+                        <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700;">${Math.round(deadliftValue)} ${currentUnit}</div>
                     </div>
                 </div>`;
 
@@ -1587,7 +1585,7 @@
                         html += `
                             <div style="background: #111; border: 1px solid ${liftColors[lift]}44; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center;">
                                 <div style="color: #888; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Best e1RM</div>
-                                <div style="color: ${liftColors[lift]}; font-size: 1.75rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(e1rmValue)} ${currentUnit}</div>
+                                <div style="color: ${liftColors[lift]}; font-size: 1.75rem; font-weight: 700;">${Math.round(e1rmValue)} ${currentUnit}</div>
                             </div>
                         `;
                     }
@@ -1602,7 +1600,7 @@
                             html += `
                                 <div style="display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px solid #1a1a1a;">
                                     <span style="color: #888;">${reps}RM</span>
-                                    <span style="color: #e0e0e0; font-family: 'Courier New', monospace;">${Math.round(weight)} ${currentUnit}</span>
+                                    <span style="color: #e0e0e0; font-weight: 600;">${Math.round(weight)} ${currentUnit}</span>
                                 </div>
                             `;
                         });
