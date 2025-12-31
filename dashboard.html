@@ -65,6 +65,41 @@
             border-color: #555;
         }
 
+        nav {
+            position: sticky;
+            top: 0;
+            background: #0a0a0a;
+            border-bottom: 1px solid #1a1a1a;
+            padding: 1rem 0;
+            z-index: 100;
+            margin-bottom: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #4a9eff;
+        }
+
+        nav a.active {
+            color: #e0e0e0;
+        }
+
         section {
             margin: 4rem 0;
             padding: 2rem 0;
@@ -275,6 +310,20 @@
             <p class="tagline">A data-driven look at my strength training journey</p>
             <button class="unit-toggle" id="unitToggle">lbs / kg</button>
         </header>
+
+        <nav>
+            <ul>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#volume-over-time">Volume</a></li>
+                <li><a href="#calendar">Calendar</a></li>
+                <li><a href="#big-three">Big 3</a></li>
+                <li><a href="#exercises">Exercises</a></li>
+                <li><a href="#milestones">Milestones</a></li>
+                <li><a href="#workout-patterns">Patterns</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#notable">Notable</a></li>
+            </ul>
+        </nav>
 
         <section>
             <div class="foreword">
@@ -1549,6 +1598,31 @@
 
             container.innerHTML = html;
         }
+
+        // Scroll spy for navigation
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
 
         // Initialize on page load
         init();
