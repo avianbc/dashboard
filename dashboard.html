@@ -1634,58 +1634,56 @@
 
         // Get body weight info
         const currentBW = bodyWeight?.current;
+        const bwLbs = currentBW?.lbs || 0;
+        const bwKg = currentBW?.kg || 0;
         const bwDisplay = currentBW ?
-          (currentUnit === 'lbs' ? `${currentBW.lbs} lbs` : `${currentBW.kg} kg`) : 'N/A';
+          (currentUnit === 'lbs' ? `${bwLbs}` : `${bwKg}`) : '—';
+
+        // Calculate BMI (height = 6'0" = 72 inches = 1.83m)
+        const heightInches = 72;
+        const heightMeters = 1.83;
+        const bmi = bwKg > 0 ? (bwKg / (heightMeters * heightMeters)).toFixed(1) : '—';
 
         // Check for stale data
         const stalePeriods = bodyWeight?.stalePeriods || [];
         const hasStaleData = stalePeriods.length > 0;
 
-        let html = `<h3>💪 Relative Strength (Body Weight Multiples)</h3>`;
+        let html = `<h3>💪 Relative Strength</h3>`;
 
-        // Body weight info with warning about stale data
+        // Vitals and combined total using stat cards
         html += `
-          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-            <div style="background: #111; padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid #333;">
-              <span style="color: #888;">Current BW:</span>
-              <span style="color: #e0e0e0; font-weight: 600; margin-left: 0.5rem;">${bwDisplay}</span>
+          <div class="summary-stats" style="margin: 1.5rem 0;">
+            <div class="stat-card">
+              <div class="stat-number">${totalMultiple.best || 0}×</div>
+              <div class="stat-label">S+B+D Total<span class="stat-sublabel">body weight</span></div>
             </div>
-            ${hasStaleData ? `
-              <div style="background: #332800; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #665200; font-size: 0.875rem;">
-                <span style="color: #ffd93d;">⚠️ Note:</span>
-                <span style="color: #cca300;"> Body weight data was not updated for extended periods (${stalePeriods[0]?.count || 0}+ entries at ${stalePeriods[0]?.weightLbs || 0} lbs)</span>
-              </div>
-            ` : ''}
-          </div>
-        `;
-
-        // Combined total BW multiple
-        html += `
-          <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #333;">
-            <div style="text-align: center; margin-bottom: 1rem;">
-              <div style="color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">Combined S+B+D Multiple</div>
-              <div style="color: #ffd700; font-size: 3rem; font-weight: 700;">${totalMultiple.best || 0}×</div>
-              <div style="color: #666; font-size: 0.875rem;">body weight</div>
+            <div class="stat-card">
+              <div class="stat-number">${bwDisplay}</div>
+              <div class="stat-label">Body Weight<span class="stat-sublabel">${currentUnit}</span></div>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
-              <div>
-                <div style="color: #4a9eff; font-size: 1.5rem; font-weight: 600;">${totalMultiple.squat || 0}×</div>
-                <div style="color: #888; font-size: 0.75rem;">Squat</div>
-              </div>
-              <div>
-                <div style="color: #ff6b6b; font-size: 1.5rem; font-weight: 600;">${totalMultiple.bench || 0}×</div>
-                <div style="color: #888; font-size: 0.75rem;">Bench</div>
-              </div>
-              <div>
-                <div style="color: #51cf66; font-size: 1.5rem; font-weight: 600;">${totalMultiple.deadlift || 0}×</div>
-                <div style="color: #888; font-size: 0.75rem;">Deadlift</div>
-              </div>
+            <div class="stat-card">
+              <div class="stat-number">6'0"</div>
+              <div class="stat-label">Height<span class="stat-sublabel">183 cm</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">${bmi}</div>
+              <div class="stat-label">BMI<span class="stat-sublabel">kg/m²</span></div>
             </div>
           </div>
         `;
 
-        // Individual lift details with benchmarks
-        html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">`;
+        // Stale data warning
+        if (hasStaleData) {
+          html += `
+            <div style="background: #332800; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid #665200; font-size: 0.875rem; margin-bottom: 1.5rem;">
+              <span style="color: #ffd93d;">⚠️ Note:</span>
+              <span style="color: #cca300;"> Body weight data was not updated for extended periods (${stalePeriods[0]?.count || 0}+ entries at ${stalePeriods[0]?.weightLbs || 0} lbs)</span>
+            </div>
+          `;
+        }
+
+        // Individual lift details with benchmarks - 2x2 grid
+        html += `<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">`;
 
         const liftConfigs = [
           { key: 'squat', name: 'Squat', color: '#4a9eff' },
@@ -1719,7 +1717,7 @@
           const currentLift = currentUnit === 'lbs' ? current.liftLbs : current.liftKg;
 
           html += `
-            <div style="background: #111; border-radius: 8px; padding: 1.25rem; border-left: 3px solid ${color};">
+            <div class="stat-card" style="border-left: 3px solid ${color}; text-align: left;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <h4 style="color: ${color}; margin: 0;">${name}</h4>
                 <span style="background: ${levelColor}22; color: ${levelColor}; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">${level}</span>
