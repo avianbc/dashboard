@@ -640,6 +640,10 @@
           <h3>Workout Calendar</h3>
           <div id="workoutHeatmap"></div>
         </div>
+        <div class="chart-container">
+          <h3>🏔️ Bar Travel Distance</h3>
+          <div id="barTravelStats"></div>
+        </div>
       </section>
 
       <section id="big-three">
@@ -795,6 +799,7 @@
         renderVolumeHighlights();
         renderAnnualVolumeChart();
         renderWorkoutHeatmap();
+        renderBarTravel();
         renderBigThree();
         renderWorkoutStructure();
         renderExerciseVolumeChart();
@@ -1490,6 +1495,114 @@
 
       function hideTooltip() {
         document.getElementById("tooltip").style.display = "none";
+      }
+
+      function renderBarTravel() {
+        const { barTravel } = trainingData;
+        const container = document.getElementById("barTravelStats");
+
+        if (!barTravel) {
+          container.innerHTML = '<p style="color: #888;">No bar travel data available</p>';
+          return;
+        }
+
+        const { byLift, total, landmarks } = barTravel;
+        const useMetric = currentUnit === 'kg';
+        
+        // Calculate max distance for bar chart scaling
+        const liftDistances = Object.entries(byLift).map(([lift, data]) => ({
+          lift,
+          distance: useMetric ? data.totalKm : data.totalMiles,
+          reps: data.totalReps,
+          distancePerRep: data.distancePerRepInches,
+        }));
+        const maxDistance = Math.max(...liftDistances.map(d => d.distance));
+
+        // Lift colors matching LIFT_CONFIG
+        const liftColors = {
+          squat: '#4a9eff',
+          bench: '#ff6b6b',
+          deadlift: '#51cf66',
+          ohp: '#ffd93d'
+        };
+        const liftNames = {
+          squat: 'Squat',
+          bench: 'Bench Press',
+          deadlift: 'Deadlift',
+          ohp: 'Overhead Press'
+        };
+
+        // Main stats display
+        const totalDistance = useMetric ? total.km : total.miles;
+        const distanceUnit = useMetric ? 'km' : 'miles';
+        
+        let html = `
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="stat-card">
+              <div class="stat-number stat-number-compact">${totalDistance.toFixed(1)}</div>
+              <div class="stat-label">Total ${distanceUnit} traveled</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number stat-number-compact">${landmarks.everestClimbs.toFixed(1)}×</div>
+              <div class="stat-label">Mt. Everest<span class="stat-sublabel">(29,032 ft / 8,849m)</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number stat-number-compact">${landmarks.empireStateClimbs.toFixed(0)}×</div>
+              <div class="stat-label">Empire State Building<span class="stat-sublabel">(1,454 ft / 443m)</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number stat-number-compact">${landmarks.eiffelTowerClimbs.toFixed(0)}×</div>
+              <div class="stat-label">Eiffel Tower<span class="stat-sublabel">(1,083 ft / 330m)</span></div>
+            </div>
+          </div>
+        `;
+
+        // Bar chart for distance by lift
+        html += '<h4 style="margin-bottom: 1rem; color: #aaa;">Distance by Lift</h4>';
+        html += '<div style="display: flex; flex-direction: column; gap: 0.75rem;">';
+        
+        // Sort by distance descending
+        liftDistances.sort((a, b) => b.distance - a.distance);
+        
+        liftDistances.forEach(({ lift, distance, reps, distancePerRep }) => {
+          const percentage = (distance / maxDistance) * 100;
+          const color = liftColors[lift];
+          const name = liftNames[lift];
+          
+          html += `
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                <span style="color: ${color}; font-weight: 600;">${name}</span>
+                <span style="color: #888; font-size: 0.875rem;">
+                  ${distance.toFixed(2)} ${distanceUnit} 
+                  <span style="color: #666;">(${reps.toLocaleString()} reps × ${distancePerRep}")</span>
+                </span>
+              </div>
+              <div style="background: #1a1a1a; height: 20px; border-radius: 4px; overflow: hidden;">
+                <div style="background: ${color}; height: 100%; width: ${percentage}%; border-radius: 4px; transition: width 0.3s;"></div>
+              </div>
+            </div>
+          `;
+        });
+        
+        html += '</div>';
+
+        // Fun facts section
+        const totalFeet = total.feet;
+        const marathons = totalFeet / (26.2 * 5280);
+        
+        html += `
+          <div style="margin-top: 2rem; padding: 1rem; background: #111; border-radius: 8px; border-left: 3px solid #4a9eff;">
+            <div style="color: #aaa; font-size: 0.875rem; margin-bottom: 0.5rem;">🎯 Fun Perspective</div>
+            <div style="color: #e0e0e0;">
+              If you laid all the bar travel end-to-end, you've moved the barbell 
+              <strong style="color: #ffd700;">${totalDistance.toFixed(1)} ${distanceUnit}</strong>
+              — equivalent to running <strong style="color: #51cf66;">${marathons.toFixed(1)} marathons</strong>!
+            </div>
+          </div>
+        `;
+
+        container.innerHTML = html;
       }
 
       function renderBigThree() {

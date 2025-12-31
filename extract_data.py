@@ -989,6 +989,95 @@ def get_days_since_last_pr(conn):
 
     return days_since
 
+def get_bar_travel_stats(conn):
+    """Calculate bar travel distance statistics for Big 4 lifts."""
+    cursor = conn.cursor()
+    
+    # Bar travel distance per rep in inches (measured by user)
+    # These are full rep distances (down + up for squat/bench, up + down for deadlift/ohp)
+    BAR_TRAVEL_INCHES = {
+        'squat': 47,        # 23.5" down + 23.5" up
+        'bench': 38,        # 19" down + 19" up  
+        'deadlift': 50.3,   # (34" - 8.85") × 2 = 25.15" × 2
+        'ohp': 48,          # 24" up + 24" down
+    }
+    
+    # Landmark heights in inches for fun comparisons
+    LANDMARKS = {
+        'everest': 29032 * 12,      # 29,032 feet = 348,384 inches
+        'empire_state': 1454 * 12,  # 1,454 feet = 17,448 inches
+        'statue_liberty': 305 * 12, # 305 feet = 3,660 inches
+        'eiffel_tower': 1083 * 12,  # 1,083 feet = 12,996 inches
+        'big_ben': 316 * 12,        # 316 feet = 3,792 inches
+    }
+    
+    bar_travel = {}
+    total_distance_inches = 0
+    
+    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES), 
+                                        ('deadlift', DEADLIFT_NAMES), ('ohp', OHP_NAMES)]:
+        # Get total reps for this exercise
+        cursor.execute(f"""
+            SELECT SUM(he.reps) as total_reps
+            FROM history_exercises he
+            JOIN exercises e ON he.exercise_id = e.id
+            WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+            AND he.reps > 0
+        """, name_list)
+        
+        row = cursor.fetchone()
+        total_reps = row['total_reps'] or 0
+        
+        distance_per_rep = BAR_TRAVEL_INCHES.get(canonical_name, 0)
+        total_inches = total_reps * distance_per_rep
+        total_distance_inches += total_inches
+        
+        # Convert to various units
+        total_feet = total_inches / 12
+        total_miles = total_feet / 5280
+        total_meters = total_inches * 0.0254
+        total_km = total_meters / 1000
+        
+        bar_travel[canonical_name] = {
+            'totalReps': total_reps,
+            'distancePerRepInches': distance_per_rep,
+            'totalInches': round(total_inches, 2),
+            'totalFeet': round(total_feet, 2),
+            'totalMiles': round(total_miles, 2),
+            'totalMeters': round(total_meters, 2),
+            'totalKm': round(total_km, 2),
+        }
+    
+    # Calculate totals across all lifts
+    total_feet = total_distance_inches / 12
+    total_miles = total_feet / 5280
+    total_meters = total_distance_inches * 0.0254
+    total_km = total_meters / 1000
+    
+    # Fun landmark comparisons
+    everest_climbs = total_distance_inches / LANDMARKS['everest']
+    empire_state_climbs = total_distance_inches / LANDMARKS['empire_state']
+    eiffel_tower_climbs = total_distance_inches / LANDMARKS['eiffel_tower']
+    statue_liberty_climbs = total_distance_inches / LANDMARKS['statue_liberty']
+    
+    return {
+        'byLift': bar_travel,
+        'total': {
+            'inches': round(total_distance_inches, 2),
+            'feet': round(total_feet, 2),
+            'miles': round(total_miles, 2),
+            'meters': round(total_meters, 2),
+            'km': round(total_km, 2),
+        },
+        'landmarks': {
+            'everestClimbs': round(everest_climbs, 2),
+            'empireStateClimbs': round(empire_state_climbs, 1),
+            'eiffelTowerClimbs': round(eiffel_tower_climbs, 1),
+            'statueOfLibertyClimbs': round(statue_liberty_climbs, 1),
+        },
+        'distancePerRepInches': BAR_TRAVEL_INCHES,
+    }
+
 def main():
     """Main execution function."""
     print("Connecting to database...")
@@ -1036,6 +1125,9 @@ def main():
     print("Calculating days since last PR...")
     days_since_last_pr = get_days_since_last_pr(conn)
 
+    print("Calculating bar travel statistics...")
+    bar_travel_stats = get_bar_travel_stats(conn)
+
     # Compile all data
     data = {
         'summary': summary,
@@ -1055,7 +1147,8 @@ def main():
             'clubMilestones': powerlifting_totals['clubMilestones']
         },
         'allTimePRs': all_time_prs,
-        'daysSinceLastPR': days_since_last_pr
+        'daysSinceLastPR': days_since_last_pr,
+        'barTravel': bar_travel_stats
     }
 
     print(f"Writing output to {OUTPUT_PATH}...")
@@ -1073,6 +1166,10 @@ def main():
     if powerlifting_totals.get('current'):
         current = powerlifting_totals['current']
         print(f"  - Current Total: {current['totalLbs']:.0f} lbs (S:{current['squatE1rm']:.0f} B:{current['benchE1rm']:.0f} D:{current['deadliftE1rm']:.0f})")
+
+    # Print bar travel info
+    if bar_travel_stats:
+        print(f"  - Total Bar Travel: {bar_travel_stats['total']['miles']:.1f} miles ({bar_travel_stats['landmarks']['everestClimbs']:.1f}× Mt. Everest)")
 
     conn.close()
 

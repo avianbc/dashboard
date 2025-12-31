@@ -31088,5 +31088,64 @@
     "bench": 180,
     "deadlift": 120,
     "ohp": 231
+  },
+  "barTravel": {
+    "byLift": {
+      "squat": {
+        "totalReps": 10262,
+        "distancePerRepInches": 47,
+        "totalInches": 482314,
+        "totalFeet": 40192.83,
+        "totalMiles": 7.61,
+        "totalMeters": 12250.78,
+        "totalKm": 12.25
+      },
+      "bench": {
+        "totalReps": 15653,
+        "distancePerRepInches": 38,
+        "totalInches": 594814,
+        "totalFeet": 49567.83,
+        "totalMiles": 9.39,
+        "totalMeters": 15108.28,
+        "totalKm": 15.11
+      },
+      "deadlift": {
+        "totalReps": 6883,
+        "distancePerRepInches": 50.3,
+        "totalInches": 346214.9,
+        "totalFeet": 28851.24,
+        "totalMiles": 5.46,
+        "totalMeters": 8793.86,
+        "totalKm": 8.79
+      },
+      "ohp": {
+        "totalReps": 9083,
+        "distancePerRepInches": 48,
+        "totalInches": 435984,
+        "totalFeet": 36332.0,
+        "totalMiles": 6.88,
+        "totalMeters": 11073.99,
+        "totalKm": 11.07
+      }
+    },
+    "total": {
+      "inches": 1859326.9,
+      "feet": 154943.91,
+      "miles": 29.35,
+      "meters": 47226.9,
+      "km": 47.23
+    },
+    "landmarks": {
+      "everestClimbs": 5.34,
+      "empireStateClimbs": 106.6,
+      "eiffelTowerClimbs": 143.1,
+      "statueOfLibertyClimbs": 508.0
+    },
+    "distancePerRepInches": {
+      "squat": 47,
+      "bench": 38,
+      "deadlift": 50.3,
+      "ohp": 48
+    }
   }
 }
