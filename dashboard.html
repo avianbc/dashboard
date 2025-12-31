@@ -320,8 +320,8 @@
             <h2>Volume Over Time</h2>
             <div class="chart-container">
                 <div class="view-toggle">
-                    <button data-view="monthly" class="active">Monthly</button>
                     <button data-view="weekly">Weekly</button>
+                    <button data-view="monthly" class="active">Monthly</button>
                     <button data-view="yearly">Yearly</button>
                     <button data-view="cumulative">Cumulative</button>
                 </div>
@@ -425,16 +425,16 @@
 
         function setupViewToggle() {
             const buttons = document.querySelectorAll('.view-toggle button');
-            
+
             // Update active state
             function updateActiveButton() {
                 buttons.forEach(btn => {
                     btn.classList.toggle('active', btn.dataset.view === volumeView);
                 });
             }
-            
+
             updateActiveButton();
-            
+
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
                     volumeView = button.dataset.view;
@@ -509,10 +509,10 @@
 
         function renderAnnualVolumeChart() {
             const { volumeTimeSeries } = trainingData;
-            
+
             // Select data based on view mode
             let data, chartData, label, timeUnit, displayFormat;
-            
+
             if (volumeView === 'cumulative') {
                 // Calculate cumulative volume from daily data
                 data = volumeTimeSeries.daily;
@@ -569,7 +569,7 @@
             // Adjust visual settings based on view
             const isCumulative = volumeView === 'cumulative';
             const isYearly = volumeView === 'yearly';
-            
+
             annualVolumeChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -599,6 +599,17 @@
                             borderColor: '#333',
                             borderWidth: 1,
                             callbacks: {
+                                title: function(context) {
+                                    if (volumeView === 'yearly') {
+                                        return context[0].label;
+                                    }
+                                    const date = new Date(context[0].parsed.x);
+                                    if (volumeView === 'weekly') {
+                                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                                    }
+                                    // Monthly and cumulative
+                                    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+                                },
                                 label: function(context) {
                                     const volume = context.parsed.y;
                                     if (isCumulative) {
