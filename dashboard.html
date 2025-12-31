@@ -215,6 +215,25 @@
         margin-top: 0.25rem;
       }
 
+      .stat-number-compact {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        margin-top: 0;
+        margin-bottom: 1rem;
+      }
+
+      .grid-2col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .chart-canvas {
+        max-height: 350px;
+      }
+
       /* Mini stat styles for inline replacement */
       .stat-mini {
         text-align: center;
@@ -837,7 +856,7 @@
 
         container.innerHTML = `
           <div class="stat-card">
-            <div class="stat-number" style="font-size: 2rem;">${summary.bestMonthEver ? (() => { const [y, m] = summary.bestMonthEver.month.split('-'); const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return months[parseInt(m)-1] + ' ' + y; })() : '—'}</div>
+            <div class="stat-number stat-number-compact">${summary.bestMonthEver ? (() => { const [y, m] = summary.bestMonthEver.month.split('-'); const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return months[parseInt(m)-1] + ' ' + y; })() : '—'}</div>
             <div class="stat-label">Best Month <span class="stat-sublabel">${summary.bestMonthEver ? Math.round(getVolume(summary.bestMonthEver.volumeLbs, summary.bestMonthEver.volumeKg) / 1000) + 'K ' + currentUnit : ''}</span></div>
           </div>
           <div class="stat-card">
@@ -1502,8 +1521,7 @@
 
           const title = document.createElement("h3");
           title.textContent = config.name;
-          title.style.marginTop = "0";
-          title.style.marginBottom = "1rem";
+          title.className = "section-title";
           chartDiv.appendChild(title);
 
           // Show key stats
@@ -1573,7 +1591,7 @@
           // Create canvas for Chart.js
           const canvas = document.createElement("canvas");
           canvas.id = `${lift}Chart`;
-          canvas.style.maxHeight = "350px";
+          canvas.className = "chart-canvas";
           chartDiv.appendChild(canvas);
 
           container.appendChild(chartDiv);
@@ -2110,9 +2128,9 @@
         // All-Time PRs Section
         if (allTimePRs && Object.keys(allTimePRs).length > 0) {
           html += `<div class="chart-container">`;
-          html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏆 All-Time PRs</h3>`;
+          html += `<h3 class="section-title">🏆 All-Time PRs</h3>`;
 
-          html += `<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">`;
+          html += `<div class="grid-2col">`;
 
           LIFT_ORDER.forEach((lift) => {
             const config = LIFT_CONFIG[lift];
@@ -2124,7 +2142,7 @@
             const repPRs = liftData.repPRs || {};
 
             html += `<div>`;
-            html += `<h4 style="color: ${config.color}; margin-bottom: 1rem;">${config.name}</h4>`;
+            html += `<h4 class="section-title" style="color: ${config.color};">${config.name}</h4>`;
 
             // Best e1RM
             if (bestE1rm) {
