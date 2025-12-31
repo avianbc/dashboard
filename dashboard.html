@@ -209,6 +209,12 @@
         letter-spacing: 0.05em;
       }
 
+      .stat-sublabel {
+        font-size: 0.75em;
+        display: block;
+        margin-top: 0.25rem;
+      }
+
       /* Mini stat styles for inline replacement */
       .stat-mini {
         text-align: center;
@@ -598,6 +604,9 @@
 
       <section id="volume-calendar">
         <h2>Volume & Calendar</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;" id="volumeHighlights">
+          <!-- Generated dynamically -->
+        </div>
         <div class="chart-container">
           <h3>Volume Over Time</h3>
           <div class="view-toggle">
@@ -630,6 +639,9 @@
 
       <section id="exercises-patterns">
         <h2>Exercise Analysis</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;" id="workoutStructureStats">
+          <!-- Generated dynamically -->
+        </div>
         <div class="chart-container">
           <h3>Exercises by Volume</h3>
           <div id="exerciseVolumeChart"></div>
@@ -761,9 +773,11 @@
 
       function renderDashboard() {
         renderSummaryStats();
+        renderVolumeHighlights();
         renderAnnualVolumeChart();
         renderWorkoutHeatmap();
         renderBigThree();
+        renderWorkoutStructure();
         renderExerciseVolumeChart();
         renderPRsAndClubs();
         renderDayOfWeekChart();
@@ -791,44 +805,16 @@
                     <div class="stat-label">Total Workouts</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">${summary.workoutsPerWeekAvg}</div>
-                    <div class="stat-label">Workouts/Week Avg</div>
-                </div>
-                <div class="stat-card">
                     <div class="stat-number">${summary.totalTons.toLocaleString()}</div>
-                    <div class="stat-label">Total Tons <span style="font-size: 0.6em; display: block; margin-top: 0.25rem;">(${Math.round(totalVolume / 1000)}K ${currentUnit})</span></div>
+                    <div class="stat-label">Total Tons <span class="stat-sublabel">(${Math.round(totalVolume / 1000)}K ${currentUnit})</span></div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">${Math.round(summary.totalReps / 1000)}K</div>
                     <div class="stat-label">Total Reps</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">${Math.round(avgVolume / 1000)}K</div>
-                    <div class="stat-label">Avg Volume/Workout (${currentUnit})</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${summary.avgSetsPerWorkout}</div>
-                    <div class="stat-label">Avg Sets/Workout</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${summary.avgWorkoutDuration}</div>
-                    <div class="stat-label">Avg Duration (min)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${summary.totalHours}</div>
-                    <div class="stat-label">Total Hours</div>
-                </div>
-                <div class="stat-card">
                     <div class="stat-number">${years}</div>
                     <div class="stat-label">Years Training</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" style="font-size: 2rem;">${summary.bestMonthEver ? (() => { const [y, m] = summary.bestMonthEver.month.split('-'); const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return months[parseInt(m)-1] + ' ' + y; })() : '—'}</div>
-                    <div class="stat-label">Best Month <span style="font-size: 0.6em; display: block; margin-top: 0.25rem;">${summary.bestMonthEver ? Math.round(getVolume(summary.bestMonthEver.volumeLbs, summary.bestMonthEver.volumeKg) / 1000) + 'K ' + currentUnit : ''}</span></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${summary.bestYearEver ? summary.bestYearEver.year : '—'}</div>
-                    <div class="stat-label">Best Year <span style="font-size: 0.6em; display: block; margin-top: 0.25rem;">${summary.bestYearEver ? Math.round(getVolume(summary.bestYearEver.volumeLbs, summary.bestYearEver.volumeKg) / 1000) + 'K ' + currentUnit : ''}</span></div>
                 </div>
             `;
       }
@@ -838,6 +824,35 @@
         const end = new Date(endDate);
         const years = (end - start) / (1000 * 60 * 60 * 24 * 365.25);
         return years.toFixed(1);
+      }
+
+      function renderVolumeHighlights() {
+        const { summary } = trainingData;
+        const container = document.getElementById("volumeHighlights");
+
+        const avgVolume = getVolume(
+          summary.avgVolumePerWorkoutLbs,
+          summary.avgVolumePerWorkoutKg,
+        );
+
+        container.innerHTML = `
+          <div class="stat-card">
+            <div class="stat-number" style="font-size: 2rem;">${summary.bestMonthEver ? (() => { const [y, m] = summary.bestMonthEver.month.split('-'); const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return months[parseInt(m)-1] + ' ' + y; })() : '—'}</div>
+            <div class="stat-label">Best Month <span class="stat-sublabel">${summary.bestMonthEver ? Math.round(getVolume(summary.bestMonthEver.volumeLbs, summary.bestMonthEver.volumeKg) / 1000) + 'K ' + currentUnit : ''}</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${summary.bestYearEver ? summary.bestYearEver.year : '—'}</div>
+            <div class="stat-label">Best Year <span class="stat-sublabel">${summary.bestYearEver ? Math.round(getVolume(summary.bestYearEver.volumeLbs, summary.bestYearEver.volumeKg) / 1000) + 'K ' + currentUnit : ''} • ${summary.bestYearEver ? summary.bestYearEver.workouts : ''} workouts</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${summary.workoutsPerWeekAvg}</div>
+            <div class="stat-label">Workouts/Week Avg</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${Math.round(avgVolume / 1000)}K</div>
+            <div class="stat-label">Avg Volume/Workout (${currentUnit})</div>
+          </div>
+        `;
       }
 
       let annualVolumeChartInstance = null;
@@ -1748,6 +1763,26 @@
             },
           }),
         });
+      }
+
+      function renderWorkoutStructure() {
+        const { summary } = trainingData;
+        const container = document.getElementById("workoutStructureStats");
+
+        container.innerHTML = `
+          <div class="stat-card">
+            <div class="stat-number">${summary.avgSetsPerWorkout}</div>
+            <div class="stat-label">Avg Sets/Workout</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${summary.avgWorkoutDuration}</div>
+            <div class="stat-label">Avg Duration (min)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${summary.totalHours}</div>
+            <div class="stat-label">Total Hours</div>
+          </div>
+        `;
       }
 
       function renderExerciseVolumeChart() {
