@@ -823,6 +823,10 @@
                     <div class="stat-label">Years Training</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-number" style="font-size: 2rem;">${summary.bestMonthEver ? (() => { const [y, m] = summary.bestMonthEver.month.split('-'); const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return months[parseInt(m)-1] + ' ' + y; })() : '—'}</div>
+                    <div class="stat-label">Best Month <span style="font-size: 0.6em; display: block; margin-top: 0.25rem;">${summary.bestMonthEver ? Math.round(getVolume(summary.bestMonthEver.volumeLbs, summary.bestMonthEver.volumeKg) / 1000) + 'K ' + currentUnit : ''}</span></div>
+                </div>
+                <div class="stat-card">
                     <div class="stat-number">${summary.bestYearEver ? summary.bestYearEver.year : '—'}</div>
                     <div class="stat-label">Best Year <span style="font-size: 0.6em; display: block; margin-top: 0.25rem;">${summary.bestYearEver ? Math.round(getVolume(summary.bestYearEver.volumeLbs, summary.bestYearEver.volumeKg) / 1000) + 'K ' + currentUnit : ''}</span></div>
                 </div>

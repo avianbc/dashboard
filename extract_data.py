@@ -100,7 +100,7 @@ def get_summary_stats(conn):
 
     # Best month ever
     cursor.execute("""
-        SELECT 
+        SELECT
             strftime('%Y-%m', h.date/1000, 'unixepoch') as month,
             SUM(he.weightlb * he.reps) as volume_lbs,
             SUM(he.weightkg * he.reps) as volume_kg
@@ -122,7 +122,7 @@ def get_summary_stats(conn):
 
     # Best year ever
     cursor.execute("""
-        SELECT 
+        SELECT
             strftime('%Y', h.date/1000, 'unixepoch') as year,
             SUM(he.weightlb * he.reps) as volume_lbs,
             SUM(he.weightkg * he.reps) as volume_kg,
