@@ -874,11 +874,11 @@
         }
 
         function renderBigThree() {
-            const { bigThree } = trainingData;
+            const { bigThree, bigThreeE1RM } = trainingData;
             const container = document.getElementById('bigThreeCharts');
             container.innerHTML = '';
 
-            if (!bigThree || Object.keys(bigThree).length === 0) {
+            if ((!bigThree || Object.keys(bigThree).length === 0) && (!bigThreeE1RM || Object.keys(bigThreeE1RM).length === 0)) {
                 container.innerHTML = '<p style="color: #888;">No Big 3 data available</p>';
                 return;
             }
@@ -888,38 +888,74 @@
             const colors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66' };
 
             order.forEach(lift => {
-                if (bigThree[lift] && bigThree[lift].prs && bigThree[lift].prs.length > 0) {
-                    const data = bigThree[lift];
-                    const chartDiv = document.createElement('div');
-                    chartDiv.className = 'chart-container';
+                const hasE1RM = bigThreeE1RM && bigThreeE1RM[lift] && bigThreeE1RM[lift].e1rmHistory && bigThreeE1RM[lift].e1rmHistory.length > 0;
+                const hasPRs = bigThree && bigThree[lift] && bigThree[lift].prs && bigThree[lift].prs.length > 0;
 
-                    const title = document.createElement('h3');
-                    title.textContent = `${names[lift]} Progress`;
-                    title.style.marginTop = '0';
-                    title.style.marginBottom = '1rem';
-                    chartDiv.appendChild(title);
+                if (!hasE1RM && !hasPRs) return;
 
-                    // Show total volume and PR info
-                    const stats = document.createElement('div');
-                    stats.style.marginBottom = '1rem';
-                    stats.style.color = '#888';
-                    const totalVol = getVolume(data.totalVolumeLbs, data.totalVolumeKg);
-                    const latestPR = data.prs[data.prs.length - 1];
-                    const latestWeight = getVolume(latestPR.weightLbs, latestPR.weightKg);
-                    stats.innerHTML = `Total Volume: ${(totalVol / 1000).toFixed(0)}K ${currentUnit} | Latest PR: ${latestWeight} ${currentUnit} × ${latestPR.reps}`;
-                    chartDiv.appendChild(stats);
+                const data = bigThree && bigThree[lift] ? bigThree[lift] : {};
+                const e1rmData = bigThreeE1RM && bigThreeE1RM[lift] ? bigThreeE1RM[lift] : {};
 
-                    // Create canvas for Chart.js
-                    const canvas = document.createElement('canvas');
-                    canvas.id = `${lift}Chart`;
-                    canvas.style.maxHeight = '300px';
-                    chartDiv.appendChild(canvas);
+                const chartDiv = document.createElement('div');
+                chartDiv.className = 'chart-container';
 
-                    container.appendChild(chartDiv);
+                const title = document.createElement('h3');
+                title.textContent = `${names[lift]} - Strength Progression`;
+                title.style.marginTop = '0';
+                title.style.marginBottom = '1rem';
+                chartDiv.appendChild(title);
 
-                    // Render chart after DOM update
-                    setTimeout(() => renderBigThreeChart(lift, data.prs, colors[lift]), 0);
+                // Show key stats
+                const stats = document.createElement('div');
+                stats.style.marginBottom = '1.5rem';
+                stats.style.display = 'flex';
+                stats.style.gap = '2rem';
+                stats.style.flexWrap = 'wrap';
+                stats.style.fontSize = '0.95rem';
+
+                if (hasE1RM) {
+                    const history = e1rmData.e1rmHistory;
+                    const latest = history[history.length - 1];
+                    const peak = history.reduce((max, point) =>
+                        getVolume(point.e1rmLbs, point.e1rmKg) > getVolume(max.e1rmLbs, max.e1rmKg) ? point : max
+                    );
+                    const first = history[0];
+
+                    const currentE1RM = getVolume(latest.e1rmLbs, latest.e1rmKg);
+                    const peakE1RM = getVolume(peak.e1rmLbs, peak.e1rmKg);
+                    const startE1RM = getVolume(first.e1rmLbs, first.e1rmKg);
+                    const totalGain = currentE1RM - startE1RM;
+                    const gainPercent = ((totalGain / startE1RM) * 100).toFixed(0);
+
+                    stats.innerHTML = `
+                        <div>
+                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current e1RM</div>
+                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${currentE1RM} ${currentUnit}</div>
+                        </div>
+                        <div>
+                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Peak e1RM</div>
+                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${peakE1RM} ${currentUnit}</div>
+                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(peak.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
+                        </div>
+                        <div>
+                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Total Gain</div>
+                            <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">+${totalGain} ${currentUnit}</div>
+                            <div style="color: #51cf66; font-size: 0.75rem; margin-top: 0.25rem;">+${gainPercent}%</div>
+                        </div>
+                    `;
                 }
+                chartDiv.appendChild(stats);
+
+                // Create canvas for Chart.js
+                const canvas = document.createElement('canvas');
+                canvas.id = `${lift}Chart`;
+                canvas.style.maxHeight = '350px';
+                chartDiv.appendChild(canvas);
+
+                container.appendChild(chartDiv);
+
+                // Render chart after DOM update
+                setTimeout(() => renderBigThreeChart(lift, data.prs || [], e1rmData.e1rmHistory || [], colors[lift]), 0);
             });
 
             if (container.children.length === 0) {
@@ -927,7 +963,7 @@
             }
         }
 
-        function renderBigThreeChart(lift, prs, color) {
+        function renderBigThreeChart(lift, prs, e1rmHistory, color) {
             const canvas = document.getElementById(`${lift}Chart`);
             if (!canvas) return;
 
@@ -937,34 +973,33 @@
             }
 
             const ctx = canvas.getContext('2d');
+            const datasets = [];
 
-            // Group PRs by rep range for better visualization
-            const repRanges = {};
-            prs.forEach(pr => {
-                const reps = pr.reps;
-                if (!repRanges[reps]) {
-                    repRanges[reps] = [];
-                }
-                repRanges[reps].push({
-                    x: pr.date,
-                    y: getVolume(pr.weightLbs, pr.weightKg)
-                });
-            });
+            // Add estimated 1RM data (main line - shows every workout)
+            if (e1rmHistory && e1rmHistory.length > 0) {
+                const e1rmData = e1rmHistory.map(point => ({
+                    x: point.date,
+                    y: getVolume(point.e1rmLbs, point.e1rmKg),
+                    actualWeight: getVolume(point.actualWeightLbs, point.actualWeightKg),
+                    reps: point.reps
+                }));
 
-            // Create datasets for each rep range
-            const datasets = Object.entries(repRanges).map(([reps, data], index) => {
-                const hue = 200 + (index * 40); // Vary colors
-                return {
-                    label: `${reps} reps`,
-                    data: data,
+                datasets.push({
+                    label: 'Estimated 1RM',
+                    data: e1rmData,
                     borderColor: color,
-                    backgroundColor: color + '33',
-                    borderWidth: 2,
-                    pointRadius: 4,
+                    backgroundColor: color + '15',
+                    borderWidth: 2.5,
+                    pointRadius: 0,
                     pointHoverRadius: 6,
-                    tension: 0.1
-                };
-            });
+                    pointHoverBorderWidth: 2,
+                    pointBackgroundColor: color,
+                    pointBorderColor: '#fff',
+                    hitRadius: 10,
+                    tension: 0.4,
+                    fill: true
+                });
+            }
 
             bigThreeChartInstances[lift] = new Chart(ctx, {
                 type: 'line',
@@ -974,9 +1009,7 @@
                     maintainAspectRatio: true,
                     plugins: {
                         legend: {
-                            display: true,
-                            position: 'top',
-                            labels: { color: '#888', font: { size: 11 } }
+                            display: false
                         },
                         tooltip: {
                             backgroundColor: '#1a1a1a',
@@ -984,9 +1017,24 @@
                             bodyColor: '#e0e0e0',
                             borderColor: '#333',
                             borderWidth: 1,
+                            titleFont: { size: 13, weight: '600' },
+                            bodyFont: { size: 12 },
+                            padding: 12,
+                            displayColors: false,
                             callbacks: {
+                                title: function(context) {
+                                    const date = new Date(context[0].parsed.x);
+                                    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                                },
                                 label: function(context) {
-                                    return `${context.parsed.y} ${currentUnit} × ${context.dataset.label}`;
+                                    const value = context.parsed.y;
+                                    return `Estimated 1RM: ${value} ${currentUnit}`;
+                                },
+                                afterLabel: function(context) {
+                                    if (context.raw.actualWeight) {
+                                        return `From: ${context.raw.actualWeight} ${currentUnit} × ${context.raw.reps} reps`;
+                                    }
+                                    return '';
                                 }
                             }
                         }

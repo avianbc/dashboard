@@ -14203,6 +14203,7623 @@
       ]
     }
   },
+  "bigThreeE1RM": {
+    "squat": {
+      "exerciseName": "Squat",
+      "e1rmHistory": [
+        {
+          "date": "2019-01-24",
+          "e1rmLbs": 52.5,
+          "e1rmKg": 23.33,
+          "actualWeightLbs": 45.0,
+          "actualWeightKg": 20.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-01-26",
+          "e1rmLbs": 110.83,
+          "e1rmKg": 49.58,
+          "actualWeightLbs": 95.0,
+          "actualWeightKg": 42.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-01-29",
+          "e1rmLbs": 122.5,
+          "e1rmKg": 55.42,
+          "actualWeightLbs": 105.0,
+          "actualWeightKg": 47.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-01-31",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-02",
+          "e1rmLbs": 163.33,
+          "e1rmKg": 72.92,
+          "actualWeightLbs": 140.0,
+          "actualWeightKg": 62.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-05",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-07",
+          "e1rmLbs": 163.33,
+          "e1rmKg": 72.92,
+          "actualWeightLbs": 140.0,
+          "actualWeightKg": 62.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-09",
+          "e1rmLbs": 169.17,
+          "e1rmKg": 75.83,
+          "actualWeightLbs": 145.0,
+          "actualWeightKg": 65.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-12",
+          "e1rmLbs": 175.0,
+          "e1rmKg": 78.75,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-14",
+          "e1rmLbs": 180.83,
+          "e1rmKg": 81.67,
+          "actualWeightLbs": 155.0,
+          "actualWeightKg": 70.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-16",
+          "e1rmLbs": 186.67,
+          "e1rmKg": 84.58,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-19",
+          "e1rmLbs": 192.5,
+          "e1rmKg": 87.5,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-21",
+          "e1rmLbs": 198.33,
+          "e1rmKg": 90.42,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-23",
+          "e1rmLbs": 204.17,
+          "e1rmKg": 93.33,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-26",
+          "e1rmLbs": 210.0,
+          "e1rmKg": 96.25,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-28",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-02",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-05",
+          "e1rmLbs": 227.5,
+          "e1rmKg": 102.08,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-07",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-09",
+          "e1rmLbs": 239.17,
+          "e1rmKg": 107.92,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-12",
+          "e1rmLbs": 245.0,
+          "e1rmKg": 110.83,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-14",
+          "e1rmLbs": 250.83,
+          "e1rmKg": 113.75,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-16",
+          "e1rmLbs": 256.67,
+          "e1rmKg": 116.67,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-19",
+          "e1rmLbs": 262.5,
+          "e1rmKg": 119.58,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-21",
+          "e1rmLbs": 268.33,
+          "e1rmKg": 122.5,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-23",
+          "e1rmLbs": 274.17,
+          "e1rmKg": 125.42,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-26",
+          "e1rmLbs": 280.0,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-28",
+          "e1rmLbs": 285.83,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-30",
+          "e1rmLbs": 291.67,
+          "e1rmKg": 131.25,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-02",
+          "e1rmLbs": 297.5,
+          "e1rmKg": 134.17,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-04",
+          "e1rmLbs": 303.33,
+          "e1rmKg": 137.08,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-06",
+          "e1rmLbs": 309.17,
+          "e1rmKg": 140.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-09",
+          "e1rmLbs": 315.0,
+          "e1rmKg": 142.92,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-11",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-12",
+          "e1rmLbs": 326.83,
+          "e1rmKg": 148.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 7
+        },
+        {
+          "date": "2019-04-13",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-17",
+          "e1rmLbs": 316.67,
+          "e1rmKg": 142.5,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 8
+        },
+        {
+          "date": "2019-04-22",
+          "e1rmLbs": 297.5,
+          "e1rmKg": 134.17,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-26",
+          "e1rmLbs": 338.0,
+          "e1rmKg": 152.75,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 9
+        },
+        {
+          "date": "2019-04-30",
+          "e1rmLbs": 200.0,
+          "e1rmKg": 90.0,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-03",
+          "e1rmLbs": 338.0,
+          "e1rmKg": 152.75,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 9
+        },
+        {
+          "date": "2019-05-07",
+          "e1rmLbs": 200.0,
+          "e1rmKg": 90.0,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-10",
+          "e1rmLbs": 348.33,
+          "e1rmKg": 158.33,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 8
+        },
+        {
+          "date": "2019-05-14",
+          "e1rmLbs": 200.0,
+          "e1rmKg": 90.0,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-17",
+          "e1rmLbs": 377.0,
+          "e1rmKg": 172.25,
+          "actualWeightLbs": 290.0,
+          "actualWeightKg": 132.5,
+          "reps": 9
+        },
+        {
+          "date": "2019-05-21",
+          "e1rmLbs": 200.0,
+          "e1rmKg": 90.0,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-24",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-05-29",
+          "e1rmLbs": 250.83,
+          "e1rmKg": 113.75,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-05-31",
+          "e1rmLbs": 324.5,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-06-03",
+          "e1rmLbs": 344.17,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-06-05",
+          "e1rmLbs": 256.67,
+          "e1rmKg": 116.67,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-06-07",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-06-10",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-06-24",
+          "e1rmLbs": 315.0,
+          "e1rmKg": 142.92,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-07-01",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-07-08",
+          "e1rmLbs": 352.0,
+          "e1rmKg": 159.5,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-07-19",
+          "e1rmLbs": 338.33,
+          "e1rmKg": 154.58,
+          "actualWeightLbs": 290.0,
+          "actualWeightKg": 132.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-07-26",
+          "e1rmLbs": 345.67,
+          "e1rmKg": 155.83,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 4
+        },
+        {
+          "date": "2019-08-02",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-08-09",
+          "e1rmLbs": 344.17,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-08-16",
+          "e1rmLbs": 388.5,
+          "e1rmKg": 175.75,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 7
+        },
+        {
+          "date": "2019-08-23",
+          "e1rmLbs": 324.5,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-08-26",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-08-30",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-09",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-13",
+          "e1rmLbs": 341.0,
+          "e1rmKg": 154.0,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-09-16",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-18",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-27",
+          "e1rmLbs": 363.83,
+          "e1rmKg": 166.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 7
+        },
+        {
+          "date": "2019-10-04",
+          "e1rmLbs": 409.5,
+          "e1rmKg": 185.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 9
+        },
+        {
+          "date": "2019-10-11",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 175.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-10-18",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-10-25",
+          "e1rmLbs": 357.5,
+          "e1rmKg": 162.25,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-11-01",
+          "e1rmLbs": 340.0,
+          "e1rmKg": 155.0,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 1
+        },
+        {
+          "date": "2019-11-08",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-11-15",
+          "e1rmLbs": 368.5,
+          "e1rmKg": 167.75,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-12-02",
+          "e1rmLbs": 344.17,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-12-04",
+          "e1rmLbs": 256.67,
+          "e1rmKg": 116.67,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-12-06",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-12-09",
+          "e1rmLbs": 344.17,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-12-11",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-01-10",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-01-17",
+          "e1rmLbs": 374.0,
+          "e1rmKg": 170.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 4
+        },
+        {
+          "date": "2020-01-24",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 350.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2020-01-31",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-02-07",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 175.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-02-21",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-02-28",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 175.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-03-06",
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.0,
+          "actualWeightLbs": 350.0,
+          "actualWeightKg": 157.5,
+          "reps": 6
+        },
+        {
+          "date": "2020-03-13",
+          "e1rmLbs": 384.0,
+          "e1rmKg": 174.0,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 6
+        },
+        {
+          "date": "2020-03-20",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-03-27",
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.58,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-04-03",
+          "e1rmLbs": 384.0,
+          "e1rmKg": 174.0,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 6
+        },
+        {
+          "date": "2020-04-10",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-04-17",
+          "e1rmLbs": 396.0,
+          "e1rmKg": 178.75,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 3
+        },
+        {
+          "date": "2020-04-24",
+          "e1rmLbs": 394.67,
+          "e1rmKg": 178.83,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 7
+        },
+        {
+          "date": "2020-05-01",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-05-08",
+          "e1rmLbs": 408.0,
+          "e1rmKg": 184.17,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 4
+        },
+        {
+          "date": "2020-05-15",
+          "e1rmLbs": 256.67,
+          "e1rmKg": 116.67,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-05-22",
+          "e1rmLbs": 384.0,
+          "e1rmKg": 174.0,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 6
+        },
+        {
+          "date": "2020-05-29",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-06-05",
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.58,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-06-12",
+          "e1rmLbs": 407.0,
+          "e1rmKg": 185.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 7
+        },
+        {
+          "date": "2020-06-19",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 350.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-01-05",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-08",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-13",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-18",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-26",
+          "e1rmLbs": 354.67,
+          "e1rmKg": 161.5,
+          "actualWeightLbs": 280.0,
+          "actualWeightKg": 127.5,
+          "reps": 8
+        },
+        {
+          "date": "2021-01-29",
+          "e1rmLbs": 332.5,
+          "e1rmKg": 151.67,
+          "actualWeightLbs": 285.0,
+          "actualWeightKg": 130.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-03",
+          "e1rmLbs": 338.33,
+          "e1rmKg": 154.58,
+          "actualWeightLbs": 290.0,
+          "actualWeightKg": 132.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-08",
+          "e1rmLbs": 344.17,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-11",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-16",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-22",
+          "e1rmLbs": 361.67,
+          "e1rmKg": 163.33,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-25",
+          "e1rmLbs": 378.0,
+          "e1rmKg": 171.0,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 6
+        },
+        {
+          "date": "2021-03-02",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-03-05",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-03-10",
+          "e1rmLbs": 344.17,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-03-15",
+          "e1rmLbs": 370.0,
+          "e1rmKg": 166.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 7
+        },
+        {
+          "date": "2021-03-19",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-03-24",
+          "e1rmLbs": 392.67,
+          "e1rmKg": 177.33,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 8
+        },
+        {
+          "date": "2021-03-29",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-01",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-06",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-13",
+          "e1rmLbs": 361.67,
+          "e1rmKg": 163.33,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-20",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-27",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-05-04",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 175.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-05-11",
+          "e1rmLbs": 368.5,
+          "e1rmKg": 167.75,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-05-18",
+          "e1rmLbs": 396.0,
+          "e1rmKg": 178.75,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-05-25",
+          "e1rmLbs": 357.5,
+          "e1rmKg": 162.25,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-06-01",
+          "e1rmLbs": 236.5,
+          "e1rmKg": 107.25,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-06-22",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-06-29",
+          "e1rmLbs": 357.5,
+          "e1rmKg": 162.25,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-07-13",
+          "e1rmLbs": 396.0,
+          "e1rmKg": 178.75,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-07-20",
+          "e1rmLbs": 401.5,
+          "e1rmKg": 181.5,
+          "actualWeightLbs": 365.0,
+          "actualWeightKg": 165.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-07-27",
+          "e1rmLbs": 407.0,
+          "e1rmKg": 184.25,
+          "actualWeightLbs": 370.0,
+          "actualWeightKg": 167.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-08-03",
+          "e1rmLbs": 344.17,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-08-10",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-08-17",
+          "e1rmLbs": 324.5,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-08-24",
+          "e1rmLbs": 236.5,
+          "e1rmKg": 107.25,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-08-31",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 350.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-09-07",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-09-14",
+          "e1rmLbs": 396.0,
+          "e1rmKg": 178.75,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-09-21",
+          "e1rmLbs": 360.0,
+          "e1rmKg": 162.0,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 6
+        },
+        {
+          "date": "2021-09-28",
+          "e1rmLbs": 388.5,
+          "e1rmKg": 175.75,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 7
+        },
+        {
+          "date": "2021-10-05",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 175.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-10-12",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-10-26",
+          "e1rmLbs": 368.5,
+          "e1rmKg": 167.75,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-11-02",
+          "e1rmLbs": 402.0,
+          "e1rmKg": 183.0,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 6
+        },
+        {
+          "date": "2021-11-09",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-11-30",
+          "e1rmLbs": 374.0,
+          "e1rmKg": 170.5,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-12-07",
+          "e1rmLbs": 391.0,
+          "e1rmKg": 178.5,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-12-14",
+          "e1rmLbs": 390.5,
+          "e1rmKg": 176.0,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-12-21",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-01-04",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-01-25",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-02-01",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-02-08",
+          "e1rmLbs": 372.0,
+          "e1rmKg": 168.0,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 6
+        },
+        {
+          "date": "2022-02-16",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-02-22",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-03-02",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-03-08",
+          "e1rmLbs": 396.0,
+          "e1rmKg": 180.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 6
+        },
+        {
+          "date": "2022-03-15",
+          "e1rmLbs": 368.5,
+          "e1rmKg": 167.75,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-03-23",
+          "e1rmLbs": 368.5,
+          "e1rmKg": 167.75,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-03-29",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-04-05",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-04-12",
+          "e1rmLbs": 346.5,
+          "e1rmKg": 156.75,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-04-19",
+          "e1rmLbs": 390.5,
+          "e1rmKg": 176.0,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-04-29",
+          "e1rmLbs": 394.67,
+          "e1rmKg": 178.83,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 7
+        },
+        {
+          "date": "2022-05-03",
+          "e1rmLbs": 390.83,
+          "e1rmKg": 177.92,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-05-10",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-05-17",
+          "e1rmLbs": 326.67,
+          "e1rmKg": 148.75,
+          "actualWeightLbs": 280.0,
+          "actualWeightKg": 127.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-05-25",
+          "e1rmLbs": 344.17,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-06-01",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-06-07",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-06-14",
+          "e1rmLbs": 338.33,
+          "e1rmKg": 154.58,
+          "actualWeightLbs": 290.0,
+          "actualWeightKg": 132.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-06-22",
+          "e1rmLbs": 335.5,
+          "e1rmKg": 151.25,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-06-28",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-07-12",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-07-26",
+          "e1rmLbs": 352.0,
+          "e1rmKg": 159.5,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-08-02",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-08-09",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 175.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-08-16",
+          "e1rmLbs": 390.83,
+          "e1rmKg": 177.92,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-08-23",
+          "e1rmLbs": 390.83,
+          "e1rmKg": 177.92,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-08-30",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-09-07",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-09-13",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 350.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-09-20",
+          "e1rmLbs": 390.5,
+          "e1rmKg": 176.0,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-09-27",
+          "e1rmLbs": 396.0,
+          "e1rmKg": 178.75,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-10-04",
+          "e1rmLbs": 413.67,
+          "e1rmKg": 187.0,
+          "actualWeightLbs": 365.0,
+          "actualWeightKg": 165.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-10-11",
+          "e1rmLbs": 407.0,
+          "e1rmKg": 184.25,
+          "actualWeightLbs": 370.0,
+          "actualWeightKg": 167.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-10-18",
+          "e1rmLbs": 425.0,
+          "e1rmKg": 192.67,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-10-25",
+          "e1rmLbs": 413.67,
+          "e1rmKg": 187.0,
+          "actualWeightLbs": 365.0,
+          "actualWeightKg": 165.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-11-01",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-11-10",
+          "e1rmLbs": 442.0,
+          "e1rmKg": 201.17,
+          "actualWeightLbs": 390.0,
+          "actualWeightKg": 177.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-11-15",
+          "e1rmLbs": 440.0,
+          "e1rmKg": 200.75,
+          "actualWeightLbs": 400.0,
+          "actualWeightKg": 182.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-11-29",
+          "e1rmLbs": 412.5,
+          "e1rmKg": 187.0,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-12-06",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-12-13",
+          "e1rmLbs": 402.5,
+          "e1rmKg": 183.75,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-01-03",
+          "e1rmLbs": 297.0,
+          "e1rmKg": 134.75,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-01-10",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-01-17",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-01-24",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-01-31",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-02-07",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-02-16",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-02-23",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-03-07",
+          "e1rmLbs": 332.5,
+          "e1rmKg": 151.67,
+          "actualWeightLbs": 285.0,
+          "actualWeightKg": 130.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-03-14",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-04-04",
+          "e1rmLbs": 361.67,
+          "e1rmKg": 163.33,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-04-11",
+          "e1rmLbs": 363.0,
+          "e1rmKg": 165.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-04-18",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-04-25",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-05-02",
+          "e1rmLbs": 374.0,
+          "e1rmKg": 170.5,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-05-09",
+          "e1rmLbs": 390.5,
+          "e1rmKg": 176.0,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-05-16",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-05-30",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-06-06",
+          "e1rmLbs": 401.5,
+          "e1rmKg": 181.5,
+          "actualWeightLbs": 365.0,
+          "actualWeightKg": 165.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-06-13",
+          "e1rmLbs": 390.83,
+          "e1rmKg": 177.92,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-06-20",
+          "e1rmLbs": 390.5,
+          "e1rmKg": 176.0,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-07-11",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-07-18",
+          "e1rmLbs": 335.5,
+          "e1rmKg": 151.25,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-07-25",
+          "e1rmLbs": 341.0,
+          "e1rmKg": 154.0,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-08-01",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-08-08",
+          "e1rmLbs": 352.0,
+          "e1rmKg": 159.5,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-08-15",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-08-22",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 350.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-08-29",
+          "e1rmLbs": 390.5,
+          "e1rmKg": 176.0,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-09-05",
+          "e1rmLbs": 408.0,
+          "e1rmKg": 184.17,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-09-12",
+          "e1rmLbs": 401.5,
+          "e1rmKg": 181.5,
+          "actualWeightLbs": 365.0,
+          "actualWeightKg": 165.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-09-19",
+          "e1rmLbs": 407.0,
+          "e1rmKg": 184.25,
+          "actualWeightLbs": 370.0,
+          "actualWeightKg": 167.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-09-26",
+          "e1rmLbs": 412.5,
+          "e1rmKg": 187.0,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-10-03",
+          "e1rmLbs": 380.0,
+          "e1rmKg": 172.5,
+          "actualWeightLbs": 380.0,
+          "actualWeightKg": 172.5,
+          "reps": 1
+        },
+        {
+          "date": "2023-10-18",
+          "e1rmLbs": 324.5,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-10-25",
+          "e1rmLbs": 361.67,
+          "e1rmKg": 163.33,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-11-02",
+          "e1rmLbs": 242.0,
+          "e1rmKg": 110.0,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 3
+        },
+        {
+          "date": "2024-07-22",
+          "e1rmLbs": 180.0,
+          "e1rmKg": 80.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 10
+        },
+        {
+          "date": "2024-07-26",
+          "e1rmLbs": 169.17,
+          "e1rmKg": 75.83,
+          "actualWeightLbs": 145.0,
+          "actualWeightKg": 65.0,
+          "reps": 5
+        },
+        {
+          "date": "2024-07-29",
+          "e1rmLbs": 200.0,
+          "e1rmKg": 90.0,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 10
+        },
+        {
+          "date": "2024-08-02",
+          "e1rmLbs": 213.33,
+          "e1rmKg": 96.67,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 10
+        },
+        {
+          "date": "2024-08-05",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 103.33,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 10
+        },
+        {
+          "date": "2024-08-09",
+          "e1rmLbs": 240.0,
+          "e1rmKg": 110.0,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 10
+        },
+        {
+          "date": "2024-11-25",
+          "e1rmLbs": 192.5,
+          "e1rmKg": 88.0,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 3
+        },
+        {
+          "date": "2024-11-29",
+          "e1rmLbs": 215.33,
+          "e1rmKg": 98.17,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 8
+        },
+        {
+          "date": "2024-12-02",
+          "e1rmLbs": 191.17,
+          "e1rmKg": 86.33,
+          "actualWeightLbs": 155.0,
+          "actualWeightKg": 70.0,
+          "reps": 7
+        },
+        {
+          "date": "2024-12-06",
+          "e1rmLbs": 202.67,
+          "e1rmKg": 91.83,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 8
+        },
+        {
+          "date": "2024-12-09",
+          "e1rmLbs": 209.0,
+          "e1rmKg": 95.0,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 8
+        },
+        {
+          "date": "2024-12-13",
+          "e1rmLbs": 215.33,
+          "e1rmKg": 98.17,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 8
+        },
+        {
+          "date": "2024-12-16",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2024-12-23",
+          "e1rmLbs": 239.17,
+          "e1rmKg": 107.92,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 5
+        },
+        {
+          "date": "2024-12-27",
+          "e1rmLbs": 252.0,
+          "e1rmKg": 114.0,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 6
+        },
+        {
+          "date": "2024-12-30",
+          "e1rmLbs": 279.5,
+          "e1rmKg": 126.75,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 9
+        },
+        {
+          "date": "2025-01-03",
+          "e1rmLbs": 256.67,
+          "e1rmKg": 116.67,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-01-13",
+          "e1rmLbs": 225.5,
+          "e1rmKg": 101.75,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 3
+        },
+        {
+          "date": "2025-01-17",
+          "e1rmLbs": 259.67,
+          "e1rmKg": 117.17,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-01-27",
+          "e1rmLbs": 234.33,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-01-31",
+          "e1rmLbs": 228.17,
+          "e1rmKg": 104.83,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 7
+        },
+        {
+          "date": "2025-02-03",
+          "e1rmLbs": 262.5,
+          "e1rmKg": 119.58,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-02-07",
+          "e1rmLbs": 268.33,
+          "e1rmKg": 122.5,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-02-10",
+          "e1rmLbs": 297.67,
+          "e1rmKg": 136.17,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-02-14",
+          "e1rmLbs": 288.0,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 6
+        },
+        {
+          "date": "2025-02-17",
+          "e1rmLbs": 318.5,
+          "e1rmKg": 143.0,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 9
+        },
+        {
+          "date": "2025-02-21",
+          "e1rmLbs": 308.33,
+          "e1rmKg": 138.75,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-02-24",
+          "e1rmLbs": 306.0,
+          "e1rmKg": 138.0,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 6
+        },
+        {
+          "date": "2025-02-28",
+          "e1rmLbs": 320.67,
+          "e1rmKg": 144.92,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-03-03",
+          "e1rmLbs": 318.0,
+          "e1rmKg": 144.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 6
+        },
+        {
+          "date": "2025-03-07",
+          "e1rmLbs": 342.0,
+          "e1rmKg": 155.17,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-03-10",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-03-14",
+          "e1rmLbs": 345.33,
+          "e1rmKg": 157.25,
+          "actualWeightLbs": 280.0,
+          "actualWeightKg": 127.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-03-17",
+          "e1rmLbs": 361.0,
+          "e1rmKg": 164.67,
+          "actualWeightLbs": 285.0,
+          "actualWeightKg": 130.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-03-21",
+          "e1rmLbs": 338.33,
+          "e1rmKg": 154.58,
+          "actualWeightLbs": 290.0,
+          "actualWeightKg": 132.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-03-24",
+          "e1rmLbs": 320.67,
+          "e1rmKg": 144.92,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-03-31",
+          "e1rmLbs": 304.0,
+          "e1rmKg": 139.33,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-04-04",
+          "e1rmLbs": 285.83,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-04-07",
+          "e1rmLbs": 278.67,
+          "e1rmKg": 126.67,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-04-11",
+          "e1rmLbs": 262.5,
+          "e1rmKg": 119.58,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-04-14",
+          "e1rmLbs": 258.0,
+          "e1rmKg": 117.0,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 6
+        },
+        {
+          "date": "2025-04-18",
+          "e1rmLbs": 250.83,
+          "e1rmKg": 113.75,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-04-21",
+          "e1rmLbs": 300.0,
+          "e1rmKg": 136.67,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-04-25",
+          "e1rmLbs": 270.0,
+          "e1rmKg": 123.0,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 6
+        },
+        {
+          "date": "2025-04-28",
+          "e1rmLbs": 320.0,
+          "e1rmKg": 146.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-05-02",
+          "e1rmLbs": 348.33,
+          "e1rmKg": 158.33,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-05-05",
+          "e1rmLbs": 312.0,
+          "e1rmKg": 143.0,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 9
+        },
+        {
+          "date": "2025-05-09",
+          "e1rmLbs": 320.0,
+          "e1rmKg": 146.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-05-12",
+          "e1rmLbs": 340.0,
+          "e1rmKg": 153.33,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-05-16",
+          "e1rmLbs": 323.0,
+          "e1rmKg": 145.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-02",
+          "e1rmLbs": 318.5,
+          "e1rmKg": 143.0,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 9
+        },
+        {
+          "date": "2025-06-06",
+          "e1rmLbs": 333.33,
+          "e1rmKg": 150.0,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-06-09",
+          "e1rmLbs": 329.33,
+          "e1rmKg": 148.83,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-13",
+          "e1rmLbs": 335.67,
+          "e1rmKg": 152.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-16",
+          "e1rmLbs": 269.5,
+          "e1rmKg": 121.0,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 3
+        },
+        {
+          "date": "2025-06-20",
+          "e1rmLbs": 318.5,
+          "e1rmKg": 143.0,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 9
+        },
+        {
+          "date": "2025-06-23",
+          "e1rmLbs": 316.67,
+          "e1rmKg": 142.5,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-27",
+          "e1rmLbs": 323.0,
+          "e1rmKg": 145.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-30",
+          "e1rmLbs": 329.33,
+          "e1rmKg": 148.83,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-07-04",
+          "e1rmLbs": 335.67,
+          "e1rmKg": 152.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-07-07",
+          "e1rmLbs": 342.0,
+          "e1rmKg": 155.17,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-07-11",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-07-14",
+          "e1rmLbs": 313.33,
+          "e1rmKg": 143.33,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-17",
+          "e1rmLbs": 240.0,
+          "e1rmKg": 110.0,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-21",
+          "e1rmLbs": 318.5,
+          "e1rmKg": 143.0,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 9
+        },
+        {
+          "date": "2025-07-24",
+          "e1rmLbs": 253.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-28",
+          "e1rmLbs": 323.0,
+          "e1rmKg": 145.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-07-31",
+          "e1rmLbs": 266.67,
+          "e1rmKg": 120.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-08-04",
+          "e1rmLbs": 335.67,
+          "e1rmKg": 152.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-08-07",
+          "e1rmLbs": 280.0,
+          "e1rmKg": 126.67,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-08-11",
+          "e1rmLbs": 348.33,
+          "e1rmKg": 158.33,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-08-14",
+          "e1rmLbs": 293.33,
+          "e1rmKg": 133.33,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-08-22",
+          "e1rmLbs": 329.0,
+          "e1rmKg": 150.5,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 12
+        },
+        {
+          "date": "2025-08-29",
+          "e1rmLbs": 333.33,
+          "e1rmKg": 150.0,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-09-05",
+          "e1rmLbs": 329.33,
+          "e1rmKg": 148.83,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-09-12",
+          "e1rmLbs": 192.5,
+          "e1rmKg": 87.5,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-09-26",
+          "e1rmLbs": 297.5,
+          "e1rmKg": 134.17,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-10-20",
+          "e1rmLbs": 308.0,
+          "e1rmKg": 140.25,
+          "actualWeightLbs": 280.0,
+          "actualWeightKg": 127.5,
+          "reps": 3
+        }
+      ]
+    },
+    "bench": {
+      "exerciseName": "Bench Press",
+      "e1rmHistory": [
+        {
+          "date": "2019-01-24",
+          "e1rmLbs": 75.83,
+          "e1rmKg": 35.0,
+          "actualWeightLbs": 65.0,
+          "actualWeightKg": 30.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-01-29",
+          "e1rmLbs": 122.5,
+          "e1rmKg": 55.42,
+          "actualWeightLbs": 105.0,
+          "actualWeightKg": 47.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-02",
+          "e1rmLbs": 134.17,
+          "e1rmKg": 61.25,
+          "actualWeightLbs": 115.0,
+          "actualWeightKg": 52.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-07",
+          "e1rmLbs": 145.83,
+          "e1rmKg": 67.08,
+          "actualWeightLbs": 125.0,
+          "actualWeightKg": 57.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-12",
+          "e1rmLbs": 151.67,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 130.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-16",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-21",
+          "e1rmLbs": 163.33,
+          "e1rmKg": 72.92,
+          "actualWeightLbs": 140.0,
+          "actualWeightKg": 62.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-26",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-02",
+          "e1rmLbs": 163.33,
+          "e1rmKg": 72.92,
+          "actualWeightLbs": 140.0,
+          "actualWeightKg": 62.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-07",
+          "e1rmLbs": 175.0,
+          "e1rmKg": 78.75,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-12",
+          "e1rmLbs": 186.67,
+          "e1rmKg": 84.58,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-16",
+          "e1rmLbs": 192.5,
+          "e1rmKg": 87.5,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-21",
+          "e1rmLbs": 192.5,
+          "e1rmKg": 87.5,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-26",
+          "e1rmLbs": 198.33,
+          "e1rmKg": 90.42,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-30",
+          "e1rmLbs": 204.17,
+          "e1rmKg": 93.33,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-04",
+          "e1rmLbs": 210.0,
+          "e1rmKg": 96.25,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-09",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-12",
+          "e1rmLbs": 228.0,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 6
+        },
+        {
+          "date": "2019-04-13",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-17",
+          "e1rmLbs": 204.17,
+          "e1rmKg": 93.33,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-24",
+          "e1rmLbs": 213.33,
+          "e1rmKg": 96.67,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-04-29",
+          "e1rmLbs": 140.0,
+          "e1rmKg": 63.33,
+          "actualWeightLbs": 105.0,
+          "actualWeightKg": 47.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-02",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 98.67,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 7
+        },
+        {
+          "date": "2019-05-06",
+          "e1rmLbs": 140.0,
+          "e1rmKg": 63.33,
+          "actualWeightLbs": 105.0,
+          "actualWeightKg": 47.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-09",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-05-13",
+          "e1rmLbs": 140.0,
+          "e1rmKg": 63.33,
+          "actualWeightLbs": 105.0,
+          "actualWeightKg": 47.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-16",
+          "e1rmLbs": 240.5,
+          "e1rmKg": 107.92,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 7
+        },
+        {
+          "date": "2019-05-20",
+          "e1rmLbs": 140.0,
+          "e1rmKg": 63.33,
+          "actualWeightLbs": 105.0,
+          "actualWeightKg": 47.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-23",
+          "e1rmLbs": 145.83,
+          "e1rmKg": 67.08,
+          "actualWeightLbs": 125.0,
+          "actualWeightKg": 57.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-05-27",
+          "e1rmLbs": 140.0,
+          "e1rmKg": 63.33,
+          "actualWeightLbs": 105.0,
+          "actualWeightKg": 47.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-31",
+          "e1rmLbs": 220.0,
+          "e1rmKg": 99.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-06-03",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 4
+        },
+        {
+          "date": "2019-06-07",
+          "e1rmLbs": 218.67,
+          "e1rmKg": 98.67,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 2
+        },
+        {
+          "date": "2019-06-10",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-06-24",
+          "e1rmLbs": 198.33,
+          "e1rmKg": 90.42,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-06-28",
+          "e1rmLbs": 186.67,
+          "e1rmKg": 84.58,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-07-05",
+          "e1rmLbs": 192.5,
+          "e1rmKg": 88.0,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-07-12",
+          "e1rmLbs": 209.0,
+          "e1rmKg": 93.5,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-07-18",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-07-25",
+          "e1rmLbs": 214.5,
+          "e1rmKg": 96.25,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-08-01",
+          "e1rmLbs": 218.67,
+          "e1rmKg": 98.67,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 2
+        },
+        {
+          "date": "2019-08-08",
+          "e1rmLbs": 215.33,
+          "e1rmKg": 96.33,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 4
+        },
+        {
+          "date": "2019-08-15",
+          "e1rmLbs": 220.0,
+          "e1rmKg": 99.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-08-22",
+          "e1rmLbs": 238.0,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 4
+        },
+        {
+          "date": "2019-08-26",
+          "e1rmLbs": 227.5,
+          "e1rmKg": 102.08,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-08-30",
+          "e1rmLbs": 220.0,
+          "e1rmKg": 99.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-09-02",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-06",
+          "e1rmLbs": 225.5,
+          "e1rmKg": 101.75,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-09-09",
+          "e1rmLbs": 225.5,
+          "e1rmKg": 101.75,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-09-13",
+          "e1rmLbs": 210.0,
+          "e1rmKg": 96.25,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-16",
+          "e1rmLbs": 225.5,
+          "e1rmKg": 101.75,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-09-20",
+          "e1rmLbs": 224.0,
+          "e1rmKg": 101.33,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 2
+        },
+        {
+          "date": "2019-09-23",
+          "e1rmLbs": 146.67,
+          "e1rmKg": 66.67,
+          "actualWeightLbs": 110.0,
+          "actualWeightKg": 50.0,
+          "reps": 10
+        },
+        {
+          "date": "2019-09-26",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-30",
+          "e1rmLbs": 146.67,
+          "e1rmKg": 66.67,
+          "actualWeightLbs": 110.0,
+          "actualWeightKg": 50.0,
+          "reps": 10
+        },
+        {
+          "date": "2019-10-03",
+          "e1rmLbs": 227.5,
+          "e1rmKg": 102.08,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-10-07",
+          "e1rmLbs": 146.67,
+          "e1rmKg": 66.67,
+          "actualWeightLbs": 110.0,
+          "actualWeightKg": 50.0,
+          "reps": 10
+        },
+        {
+          "date": "2019-10-10",
+          "e1rmLbs": 232.33,
+          "e1rmKg": 104.83,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 4
+        },
+        {
+          "date": "2019-10-14",
+          "e1rmLbs": 146.67,
+          "e1rmKg": 66.67,
+          "actualWeightLbs": 110.0,
+          "actualWeightKg": 50.0,
+          "reps": 10
+        },
+        {
+          "date": "2019-10-17",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-10-21",
+          "e1rmLbs": 146.67,
+          "e1rmKg": 66.67,
+          "actualWeightLbs": 110.0,
+          "actualWeightKg": 50.0,
+          "reps": 10
+        },
+        {
+          "date": "2019-10-24",
+          "e1rmLbs": 240.0,
+          "e1rmKg": 108.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 6
+        },
+        {
+          "date": "2019-10-28",
+          "e1rmLbs": 146.67,
+          "e1rmKg": 66.67,
+          "actualWeightLbs": 110.0,
+          "actualWeightKg": 50.0,
+          "reps": 10
+        },
+        {
+          "date": "2019-10-31",
+          "e1rmLbs": 231.0,
+          "e1rmKg": 104.5,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 3
+        },
+        {
+          "date": "2019-11-04",
+          "e1rmLbs": 153.33,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 115.0,
+          "actualWeightKg": 52.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-11-07",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-11-11",
+          "e1rmLbs": 153.33,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 115.0,
+          "actualWeightKg": 52.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-11-14",
+          "e1rmLbs": 225.5,
+          "e1rmKg": 101.75,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-11-18",
+          "e1rmLbs": 153.33,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 115.0,
+          "actualWeightKg": 52.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-11-21",
+          "e1rmLbs": 215.0,
+          "e1rmKg": 97.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 1
+        },
+        {
+          "date": "2019-12-02",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-12-06",
+          "e1rmLbs": 214.5,
+          "e1rmKg": 96.25,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-12-09",
+          "e1rmLbs": 227.5,
+          "e1rmKg": 102.08,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-12-13",
+          "e1rmLbs": 220.0,
+          "e1rmKg": 99.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 3
+        },
+        {
+          "date": "2020-01-09",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-01-16",
+          "e1rmLbs": 214.5,
+          "e1rmKg": 96.25,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 3
+        },
+        {
+          "date": "2020-01-23",
+          "e1rmLbs": 225.5,
+          "e1rmKg": 101.75,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 3
+        },
+        {
+          "date": "2020-01-30",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-02-06",
+          "e1rmLbs": 220.0,
+          "e1rmKg": 99.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 3
+        },
+        {
+          "date": "2020-02-13",
+          "e1rmLbs": 224.0,
+          "e1rmKg": 101.33,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 2
+        },
+        {
+          "date": "2020-02-20",
+          "e1rmLbs": 222.0,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 6
+        },
+        {
+          "date": "2020-02-27",
+          "e1rmLbs": 221.0,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 4
+        },
+        {
+          "date": "2020-03-05",
+          "e1rmLbs": 246.0,
+          "e1rmKg": 111.0,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 6
+        },
+        {
+          "date": "2020-03-12",
+          "e1rmLbs": 228.0,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 6
+        },
+        {
+          "date": "2020-03-19",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-03-26",
+          "e1rmLbs": 238.0,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 4
+        },
+        {
+          "date": "2020-04-02",
+          "e1rmLbs": 240.67,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 8
+        },
+        {
+          "date": "2020-04-09",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-04-16",
+          "e1rmLbs": 252.0,
+          "e1rmKg": 114.0,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 6
+        },
+        {
+          "date": "2020-04-23",
+          "e1rmLbs": 253.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 10
+        },
+        {
+          "date": "2020-04-30",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-05-07",
+          "e1rmLbs": 231.0,
+          "e1rmKg": 104.5,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 3
+        },
+        {
+          "date": "2020-05-14",
+          "e1rmLbs": 151.67,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 130.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-05-21",
+          "e1rmLbs": 227.5,
+          "e1rmKg": 102.08,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-05-28",
+          "e1rmLbs": 239.17,
+          "e1rmKg": 107.92,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-06-04",
+          "e1rmLbs": 236.5,
+          "e1rmKg": 107.25,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 3
+        },
+        {
+          "date": "2020-06-11",
+          "e1rmLbs": 234.0,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 6
+        },
+        {
+          "date": "2020-06-18",
+          "e1rmLbs": 238.0,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 4
+        },
+        {
+          "date": "2020-06-25",
+          "e1rmLbs": 242.0,
+          "e1rmKg": 110.0,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-01-04",
+          "e1rmLbs": 204.17,
+          "e1rmKg": 93.33,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-07",
+          "e1rmLbs": 245.0,
+          "e1rmKg": 112.0,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 12
+        },
+        {
+          "date": "2021-01-12",
+          "e1rmLbs": 210.0,
+          "e1rmKg": 96.25,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-15",
+          "e1rmLbs": 252.0,
+          "e1rmKg": 115.5,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 12
+        },
+        {
+          "date": "2021-01-20",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-25",
+          "e1rmLbs": 202.67,
+          "e1rmKg": 91.83,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 8
+        },
+        {
+          "date": "2021-01-28",
+          "e1rmLbs": 209.0,
+          "e1rmKg": 95.0,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 8
+        },
+        {
+          "date": "2021-02-02",
+          "e1rmLbs": 209.0,
+          "e1rmKg": 95.0,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 8
+        },
+        {
+          "date": "2021-02-05",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 103.33,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 10
+        },
+        {
+          "date": "2021-02-10",
+          "e1rmLbs": 215.33,
+          "e1rmKg": 98.17,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 8
+        },
+        {
+          "date": "2021-02-15",
+          "e1rmLbs": 204.17,
+          "e1rmKg": 93.33,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-19",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 101.33,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 8
+        },
+        {
+          "date": "2021-02-24",
+          "e1rmLbs": 228.0,
+          "e1rmKg": 104.5,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 8
+        },
+        {
+          "date": "2021-03-01",
+          "e1rmLbs": 228.0,
+          "e1rmKg": 104.5,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 8
+        },
+        {
+          "date": "2021-03-04",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-03-09",
+          "e1rmLbs": 234.33,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 8
+        },
+        {
+          "date": "2021-03-12",
+          "e1rmLbs": 220.0,
+          "e1rmKg": 100.0,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 10
+        },
+        {
+          "date": "2021-03-18",
+          "e1rmLbs": 240.67,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 8
+        },
+        {
+          "date": "2021-03-23",
+          "e1rmLbs": 198.33,
+          "e1rmKg": 90.42,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-03-26",
+          "e1rmLbs": 247.0,
+          "e1rmKg": 110.83,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 8
+        },
+        {
+          "date": "2021-03-31",
+          "e1rmLbs": 204.17,
+          "e1rmKg": 93.33,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-05",
+          "e1rmLbs": 215.33,
+          "e1rmKg": 96.33,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-04-09",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-04-12",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-04-16",
+          "e1rmLbs": 262.5,
+          "e1rmKg": 119.58,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-19",
+          "e1rmLbs": 238.0,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-04-26",
+          "e1rmLbs": 238.0,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-04-30",
+          "e1rmLbs": 282.0,
+          "e1rmKg": 129.0,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 6
+        },
+        {
+          "date": "2021-05-03",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-05-07",
+          "e1rmLbs": 264.0,
+          "e1rmKg": 121.0,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-05-10",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-05-14",
+          "e1rmLbs": 288.0,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 6
+        },
+        {
+          "date": "2021-05-17",
+          "e1rmLbs": 249.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-05-21",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-05-24",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-05-28",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 122.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 2
+        },
+        {
+          "date": "2021-05-31",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-06-04",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 122.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 2
+        },
+        {
+          "date": "2021-06-07",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-06-11",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 122.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 2
+        },
+        {
+          "date": "2021-06-14",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-06-18",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 122.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 2
+        },
+        {
+          "date": "2021-06-21",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-06-25",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 122.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 2
+        },
+        {
+          "date": "2021-06-28",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-07-02",
+          "e1rmLbs": 289.0,
+          "e1rmKg": 130.33,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-07-12",
+          "e1rmLbs": 249.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-07-16",
+          "e1rmLbs": 269.5,
+          "e1rmKg": 121.0,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-07-19",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-07-23",
+          "e1rmLbs": 275.0,
+          "e1rmKg": 123.75,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-07-26",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-07-30",
+          "e1rmLbs": 283.33,
+          "e1rmKg": 127.5,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-08-02",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-08-06",
+          "e1rmLbs": 283.33,
+          "e1rmKg": 127.5,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-08-09",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-08-13",
+          "e1rmLbs": 291.67,
+          "e1rmKg": 131.25,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-08-16",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-08-20",
+          "e1rmLbs": 300.0,
+          "e1rmKg": 135.0,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 6
+        },
+        {
+          "date": "2021-08-23",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-08-27",
+          "e1rmLbs": 275.0,
+          "e1rmKg": 123.75,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-08-30",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-09-03",
+          "e1rmLbs": 308.33,
+          "e1rmKg": 138.75,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 7
+        },
+        {
+          "date": "2021-09-06",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-09-10",
+          "e1rmLbs": 291.67,
+          "e1rmKg": 131.25,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-09-13",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-09-17",
+          "e1rmLbs": 275.0,
+          "e1rmKg": 123.75,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-09-20",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-09-24",
+          "e1rmLbs": 280.5,
+          "e1rmKg": 126.5,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-09-27",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-10-01",
+          "e1rmLbs": 286.0,
+          "e1rmKg": 129.25,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-10-04",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-10-08",
+          "e1rmLbs": 286.0,
+          "e1rmKg": 129.25,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-10-11",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-10-15",
+          "e1rmLbs": 303.33,
+          "e1rmKg": 137.08,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-10-18",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-10-21",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-10-25",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-10-28",
+          "e1rmLbs": 297.0,
+          "e1rmKg": 134.75,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-11-01",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-11-04",
+          "e1rmLbs": 297.0,
+          "e1rmKg": 134.75,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-11-08",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-11-11",
+          "e1rmLbs": 297.0,
+          "e1rmKg": 134.75,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-11-15",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-11-29",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-12-02",
+          "e1rmLbs": 283.33,
+          "e1rmKg": 127.5,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-12-06",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-12-10",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-12-13",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-12-17",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-12-20",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-12-23",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-01-03",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-01-06",
+          "e1rmLbs": 306.0,
+          "e1rmKg": 138.83,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-01-10",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-01-13",
+          "e1rmLbs": 297.0,
+          "e1rmKg": 134.75,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-01-19",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-01-24",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-01-27",
+          "e1rmLbs": 286.0,
+          "e1rmKg": 129.25,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-01-31",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-02-03",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-02-07",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-02-10",
+          "e1rmLbs": 309.17,
+          "e1rmKg": 140.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-02-14",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-02-17",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-02-21",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-02-24",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-02-28",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-03-03",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-03-07",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-03-10",
+          "e1rmLbs": 309.17,
+          "e1rmKg": 140.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-03-14",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-03-17",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-03-21",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-03-24",
+          "e1rmLbs": 300.33,
+          "e1rmKg": 136.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-03-28",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-03-31",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-04-04",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-04-07",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-04-11",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-04-14",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-04-18",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-04-21",
+          "e1rmLbs": 300.33,
+          "e1rmKg": 136.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-04-25",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-04-28",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-05-02",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-05-05",
+          "e1rmLbs": 297.0,
+          "e1rmKg": 134.75,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-05-09",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-05-12",
+          "e1rmLbs": 297.0,
+          "e1rmKg": 134.75,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-05-19",
+          "e1rmLbs": 262.5,
+          "e1rmKg": 119.58,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-05-26",
+          "e1rmLbs": 280.0,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-06-02",
+          "e1rmLbs": 283.33,
+          "e1rmKg": 127.5,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-06-09",
+          "e1rmLbs": 186.67,
+          "e1rmKg": 84.58,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-06-16",
+          "e1rmLbs": 268.33,
+          "e1rmKg": 122.5,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-06-23",
+          "e1rmLbs": 269.5,
+          "e1rmKg": 121.0,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-06-30",
+          "e1rmLbs": 280.5,
+          "e1rmKg": 126.5,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-07-14",
+          "e1rmLbs": 274.17,
+          "e1rmKg": 125.42,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-07-25",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-07-29",
+          "e1rmLbs": 264.0,
+          "e1rmKg": 121.0,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-08-01",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-08-05",
+          "e1rmLbs": 280.0,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-08-08",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-08-12",
+          "e1rmLbs": 280.0,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-08-15",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-08-19",
+          "e1rmLbs": 296.0,
+          "e1rmKg": 135.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 7
+        },
+        {
+          "date": "2022-08-22",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-08-26",
+          "e1rmLbs": 288.0,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 6
+        },
+        {
+          "date": "2022-08-29",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-09-02",
+          "e1rmLbs": 280.0,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-09-06",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-09-09",
+          "e1rmLbs": 304.0,
+          "e1rmKg": 139.33,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 8
+        },
+        {
+          "date": "2022-09-12",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-09-16",
+          "e1rmLbs": 304.0,
+          "e1rmKg": 139.33,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 8
+        },
+        {
+          "date": "2022-09-19",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-09-23",
+          "e1rmLbs": 312.0,
+          "e1rmKg": 143.0,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 9
+        },
+        {
+          "date": "2022-09-26",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-09-30",
+          "e1rmLbs": 296.0,
+          "e1rmKg": 135.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 7
+        },
+        {
+          "date": "2022-10-03",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-10-07",
+          "e1rmLbs": 312.0,
+          "e1rmKg": 143.0,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 9
+        },
+        {
+          "date": "2022-10-10",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-10-14",
+          "e1rmLbs": 280.0,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-10-17",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-10-21",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-10-24",
+          "e1rmLbs": 272.0,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-10-28",
+          "e1rmLbs": 309.17,
+          "e1rmKg": 140.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-10-31",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-11-04",
+          "e1rmLbs": 302.5,
+          "e1rmKg": 137.5,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-11-07",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-11-11",
+          "e1rmLbs": 302.5,
+          "e1rmKg": 137.5,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-11-14",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-11-18",
+          "e1rmLbs": 302.5,
+          "e1rmKg": 137.5,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-11-21",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-11-25",
+          "e1rmLbs": 293.33,
+          "e1rmKg": 133.33,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 2
+        },
+        {
+          "date": "2022-11-28",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-12-02",
+          "e1rmLbs": 293.33,
+          "e1rmKg": 133.33,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 2
+        },
+        {
+          "date": "2022-12-05",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-12-09",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-12-12",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-12-16",
+          "e1rmLbs": 302.5,
+          "e1rmKg": 137.5,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-12-19",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-01-02",
+          "e1rmLbs": 260.67,
+          "e1rmKg": 119.0,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-01-06",
+          "e1rmLbs": 280.5,
+          "e1rmKg": 126.5,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-01-09",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-01-13",
+          "e1rmLbs": 286.0,
+          "e1rmKg": 129.25,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-01-16",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-01-20",
+          "e1rmLbs": 294.67,
+          "e1rmKg": 133.17,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-01-23",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-01-27",
+          "e1rmLbs": 286.0,
+          "e1rmKg": 129.25,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-01-30",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-02-03",
+          "e1rmLbs": 286.0,
+          "e1rmKg": 129.25,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-02-06",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-02-10",
+          "e1rmLbs": 286.0,
+          "e1rmKg": 129.25,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-02-13",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-02-17",
+          "e1rmLbs": 286.0,
+          "e1rmKg": 129.25,
+          "actualWeightLbs": 260.0,
+          "actualWeightKg": 117.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-02-21",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-02-24",
+          "e1rmLbs": 137.5,
+          "e1rmKg": 63.25,
+          "actualWeightLbs": 125.0,
+          "actualWeightKg": 57.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-03-10",
+          "e1rmLbs": 274.17,
+          "e1rmKg": 125.42,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-03-17",
+          "e1rmLbs": 291.67,
+          "e1rmKg": 131.25,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-04-06",
+          "e1rmLbs": 246.0,
+          "e1rmKg": 111.0,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 6
+        },
+        {
+          "date": "2023-04-14",
+          "e1rmLbs": 250.83,
+          "e1rmKg": 113.75,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-04-21",
+          "e1rmLbs": 253.0,
+          "e1rmKg": 115.5,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-04-28",
+          "e1rmLbs": 245.0,
+          "e1rmKg": 110.83,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-05-05",
+          "e1rmLbs": 256.67,
+          "e1rmKg": 116.67,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-05-12",
+          "e1rmLbs": 266.33,
+          "e1rmKg": 121.83,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-05-19",
+          "e1rmLbs": 250.83,
+          "e1rmKg": 113.75,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-06-02",
+          "e1rmLbs": 262.5,
+          "e1rmKg": 119.58,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-06-09",
+          "e1rmLbs": 264.0,
+          "e1rmKg": 121.0,
+          "actualWeightLbs": 240.0,
+          "actualWeightKg": 110.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-06-16",
+          "e1rmLbs": 250.83,
+          "e1rmKg": 113.75,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-07-10",
+          "e1rmLbs": 215.33,
+          "e1rmKg": 96.33,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-07-13",
+          "e1rmLbs": 243.67,
+          "e1rmKg": 110.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-07-17",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-07-20",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-07-24",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-07-27",
+          "e1rmLbs": 255.0,
+          "e1rmKg": 116.17,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-07-31",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-08-03",
+          "e1rmLbs": 262.5,
+          "e1rmKg": 119.58,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-08-07",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-08-10",
+          "e1rmLbs": 262.5,
+          "e1rmKg": 119.58,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-08-14",
+          "e1rmLbs": 215.33,
+          "e1rmKg": 96.33,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-08-18",
+          "e1rmLbs": 258.0,
+          "e1rmKg": 117.0,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 6
+        },
+        {
+          "date": "2023-08-21",
+          "e1rmLbs": 232.33,
+          "e1rmKg": 104.83,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-08-25",
+          "e1rmLbs": 268.33,
+          "e1rmKg": 122.5,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-08-28",
+          "e1rmLbs": 232.33,
+          "e1rmKg": 104.83,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-09-01",
+          "e1rmLbs": 268.33,
+          "e1rmKg": 122.5,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-09-04",
+          "e1rmLbs": 249.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-09-08",
+          "e1rmLbs": 285.83,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-09-11",
+          "e1rmLbs": 249.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-09-15",
+          "e1rmLbs": 285.83,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-09-18",
+          "e1rmLbs": 249.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-09-25",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-09-29",
+          "e1rmLbs": 285.83,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-10-02",
+          "e1rmLbs": 249.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-10-06",
+          "e1rmLbs": 277.67,
+          "e1rmKg": 124.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-10-16",
+          "e1rmLbs": 249.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-10-20",
+          "e1rmLbs": 269.5,
+          "e1rmKg": 121.0,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-10-24",
+          "e1rmLbs": 249.33,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-11-01",
+          "e1rmLbs": 269.5,
+          "e1rmKg": 121.0,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 3
+        },
+        {
+          "date": "2024-07-22",
+          "e1rmLbs": 133.0,
+          "e1rmKg": 59.5,
+          "actualWeightLbs": 95.0,
+          "actualWeightKg": 42.5,
+          "reps": 12
+        },
+        {
+          "date": "2024-07-26",
+          "e1rmLbs": 166.67,
+          "e1rmKg": 76.67,
+          "actualWeightLbs": 125.0,
+          "actualWeightKg": 57.5,
+          "reps": 10
+        },
+        {
+          "date": "2024-07-31",
+          "e1rmLbs": 173.33,
+          "e1rmKg": 80.0,
+          "actualWeightLbs": 130.0,
+          "actualWeightKg": 60.0,
+          "reps": 10
+        },
+        {
+          "date": "2024-08-05",
+          "e1rmLbs": 180.0,
+          "e1rmKg": 80.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 10
+        },
+        {
+          "date": "2024-08-09",
+          "e1rmLbs": 183.67,
+          "e1rmKg": 82.33,
+          "actualWeightLbs": 145.0,
+          "actualWeightKg": 65.0,
+          "reps": 8
+        },
+        {
+          "date": "2024-11-27",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2024-12-02",
+          "e1rmLbs": 183.33,
+          "e1rmKg": 83.33,
+          "actualWeightLbs": 137.5,
+          "actualWeightKg": 62.5,
+          "reps": 10
+        },
+        {
+          "date": "2024-12-06",
+          "e1rmLbs": 180.5,
+          "e1rmKg": 82.33,
+          "actualWeightLbs": 142.5,
+          "actualWeightKg": 65.0,
+          "reps": 8
+        },
+        {
+          "date": "2024-12-11",
+          "e1rmLbs": 178.83,
+          "e1rmKg": 80.17,
+          "actualWeightLbs": 145.0,
+          "actualWeightKg": 65.0,
+          "reps": 7
+        },
+        {
+          "date": "2024-12-16",
+          "e1rmLbs": 191.17,
+          "e1rmKg": 86.33,
+          "actualWeightLbs": 155.0,
+          "actualWeightKg": 70.0,
+          "reps": 7
+        },
+        {
+          "date": "2024-12-20",
+          "e1rmLbs": 198.0,
+          "e1rmKg": 90.0,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 6
+        },
+        {
+          "date": "2024-12-25",
+          "e1rmLbs": 192.5,
+          "e1rmKg": 87.5,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 5
+        },
+        {
+          "date": "2024-12-30",
+          "e1rmLbs": 212.17,
+          "e1rmKg": 95.0,
+          "actualWeightLbs": 167.5,
+          "actualWeightKg": 75.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-01-03",
+          "e1rmLbs": 209.67,
+          "e1rmKg": 95.58,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-01-15",
+          "e1rmLbs": 201.25,
+          "e1rmKg": 90.42,
+          "actualWeightLbs": 172.5,
+          "actualWeightKg": 77.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-01-27",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 98.67,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 7
+        },
+        {
+          "date": "2025-01-31",
+          "e1rmLbs": 216.0,
+          "e1rmKg": 99.0,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 6
+        },
+        {
+          "date": "2025-02-03",
+          "e1rmLbs": 228.17,
+          "e1rmKg": 104.83,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 7
+        },
+        {
+          "date": "2025-02-07",
+          "e1rmLbs": 231.25,
+          "e1rmKg": 104.83,
+          "actualWeightLbs": 187.5,
+          "actualWeightKg": 85.0,
+          "reps": 7
+        },
+        {
+          "date": "2025-02-12",
+          "e1rmLbs": 234.33,
+          "e1rmKg": 104.83,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 7
+        },
+        {
+          "date": "2025-02-17",
+          "e1rmLbs": 237.42,
+          "e1rmKg": 107.92,
+          "actualWeightLbs": 192.5,
+          "actualWeightKg": 87.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-02-21",
+          "e1rmLbs": 247.0,
+          "e1rmKg": 110.83,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-02-26",
+          "e1rmLbs": 250.17,
+          "e1rmKg": 114.0,
+          "actualWeightLbs": 197.5,
+          "actualWeightKg": 90.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-03-03",
+          "e1rmLbs": 240.0,
+          "e1rmKg": 108.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 6
+        },
+        {
+          "date": "2025-03-07",
+          "e1rmLbs": 236.25,
+          "e1rmKg": 107.92,
+          "actualWeightLbs": 202.5,
+          "actualWeightKg": 92.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-03-12",
+          "e1rmLbs": 252.83,
+          "e1rmKg": 114.08,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-03-17",
+          "e1rmLbs": 249.0,
+          "e1rmKg": 114.0,
+          "actualWeightLbs": 207.5,
+          "actualWeightKg": 95.0,
+          "reps": 6
+        },
+        {
+          "date": "2025-03-21",
+          "e1rmLbs": 245.0,
+          "e1rmKg": 110.83,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-03-26",
+          "e1rmLbs": 247.92,
+          "e1rmKg": 113.75,
+          "actualWeightLbs": 212.5,
+          "actualWeightKg": 97.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-03-31",
+          "e1rmLbs": 198.0,
+          "e1rmKg": 90.75,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 3
+        },
+        {
+          "date": "2025-04-04",
+          "e1rmLbs": 234.0,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 6
+        },
+        {
+          "date": "2025-04-09",
+          "e1rmLbs": 230.42,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 197.5,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-04-14",
+          "e1rmLbs": 222.0,
+          "e1rmKg": 101.75,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-04-18",
+          "e1rmLbs": 228.0,
+          "e1rmKg": 104.5,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-04-21",
+          "e1rmLbs": 228.0,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 6
+        },
+        {
+          "date": "2025-04-25",
+          "e1rmLbs": 228.0,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 6
+        },
+        {
+          "date": "2025-04-28",
+          "e1rmLbs": 253.33,
+          "e1rmKg": 114.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-05-02",
+          "e1rmLbs": 252.83,
+          "e1rmKg": 114.08,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-05-05",
+          "e1rmLbs": 246.67,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-05-09",
+          "e1rmLbs": 246.67,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-05-12",
+          "e1rmLbs": 253.33,
+          "e1rmKg": 114.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-05-16",
+          "e1rmLbs": 253.33,
+          "e1rmKg": 114.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-02",
+          "e1rmLbs": 239.17,
+          "e1rmKg": 107.92,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-06-06",
+          "e1rmLbs": 239.17,
+          "e1rmKg": 107.92,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-06-11",
+          "e1rmLbs": 255.92,
+          "e1rmKg": 117.17,
+          "actualWeightLbs": 207.5,
+          "actualWeightKg": 95.0,
+          "reps": 7
+        },
+        {
+          "date": "2025-06-16",
+          "e1rmLbs": 220.0,
+          "e1rmKg": 99.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 3
+        },
+        {
+          "date": "2025-06-20",
+          "e1rmLbs": 240.67,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-25",
+          "e1rmLbs": 250.25,
+          "e1rmKg": 113.75,
+          "actualWeightLbs": 192.5,
+          "actualWeightKg": 87.5,
+          "reps": 9
+        },
+        {
+          "date": "2025-06-30",
+          "e1rmLbs": 247.0,
+          "e1rmKg": 110.83,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-07-04",
+          "e1rmLbs": 263.33,
+          "e1rmKg": 120.0,
+          "actualWeightLbs": 197.5,
+          "actualWeightKg": 90.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-09",
+          "e1rmLbs": 236.25,
+          "e1rmKg": 107.92,
+          "actualWeightLbs": 202.5,
+          "actualWeightKg": 92.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-07-14",
+          "e1rmLbs": 173.33,
+          "e1rmKg": 80.0,
+          "actualWeightLbs": 130.0,
+          "actualWeightKg": 60.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-17",
+          "e1rmLbs": 231.0,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 165.0,
+          "actualWeightKg": 75.0,
+          "reps": 12
+        },
+        {
+          "date": "2025-07-21",
+          "e1rmLbs": 180.0,
+          "e1rmKg": 80.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-24",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 103.33,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-28",
+          "e1rmLbs": 186.67,
+          "e1rmKg": 83.33,
+          "actualWeightLbs": 140.0,
+          "actualWeightKg": 62.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-31",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 101.33,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-08-04",
+          "e1rmLbs": 193.33,
+          "e1rmKg": 86.67,
+          "actualWeightLbs": 145.0,
+          "actualWeightKg": 65.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-08-07",
+          "e1rmLbs": 252.0,
+          "e1rmKg": 115.5,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 12
+        },
+        {
+          "date": "2025-08-11",
+          "e1rmLbs": 200.0,
+          "e1rmKg": 90.0,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-08-14",
+          "e1rmLbs": 246.67,
+          "e1rmKg": 113.33,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-08-21",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 106.67,
+          "actualWeightLbs": 175.0,
+          "actualWeightKg": 80.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-08-28",
+          "e1rmLbs": 234.33,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-09-04",
+          "e1rmLbs": 227.5,
+          "e1rmKg": 102.08,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-09-11",
+          "e1rmLbs": 145.83,
+          "e1rmKg": 67.08,
+          "actualWeightLbs": 125.0,
+          "actualWeightKg": 57.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-09-18",
+          "e1rmLbs": 228.0,
+          "e1rmKg": 104.5,
+          "actualWeightLbs": 180.0,
+          "actualWeightKg": 82.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-09-25",
+          "e1rmLbs": 228.0,
+          "e1rmKg": 102.0,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 6
+        },
+        {
+          "date": "2025-10-20",
+          "e1rmLbs": 213.33,
+          "e1rmKg": 96.67,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-10-23",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        }
+      ]
+    },
+    "deadlift": {
+      "exerciseName": "Deadlift",
+      "e1rmHistory": [
+        {
+          "date": "2019-01-26",
+          "e1rmLbs": 110.83,
+          "e1rmKg": 49.58,
+          "actualWeightLbs": 95.0,
+          "actualWeightKg": 42.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-01-31",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-05",
+          "e1rmLbs": 169.17,
+          "e1rmKg": 75.83,
+          "actualWeightLbs": 145.0,
+          "actualWeightKg": 65.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-09",
+          "e1rmLbs": 180.83,
+          "e1rmKg": 81.67,
+          "actualWeightLbs": 155.0,
+          "actualWeightKg": 70.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-14",
+          "e1rmLbs": 215.83,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-19",
+          "e1rmLbs": 227.5,
+          "e1rmKg": 102.08,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-23",
+          "e1rmLbs": 262.5,
+          "e1rmKg": 119.58,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-28",
+          "e1rmLbs": 274.17,
+          "e1rmKg": 125.42,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-05",
+          "e1rmLbs": 285.83,
+          "e1rmKg": 128.33,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-09",
+          "e1rmLbs": 297.5,
+          "e1rmKg": 134.17,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-14",
+          "e1rmLbs": 309.17,
+          "e1rmKg": 140.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-19",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-23",
+          "e1rmLbs": 332.5,
+          "e1rmKg": 151.67,
+          "actualWeightLbs": 285.0,
+          "actualWeightKg": 130.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-03-28",
+          "e1rmLbs": 344.17,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-02",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-06",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-11",
+          "e1rmLbs": 357.5,
+          "e1rmKg": 162.25,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-04-15",
+          "e1rmLbs": 346.5,
+          "e1rmKg": 156.75,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-04-16",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-19",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-24",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-04-30",
+          "e1rmLbs": 342.0,
+          "e1rmKg": 156.0,
+          "actualWeightLbs": 285.0,
+          "actualWeightKg": 130.0,
+          "reps": 6
+        },
+        {
+          "date": "2019-05-03",
+          "e1rmLbs": 180.0,
+          "e1rmKg": 80.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-07",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-05-10",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 103.33,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-14",
+          "e1rmLbs": 390.0,
+          "e1rmKg": 177.0,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 6
+        },
+        {
+          "date": "2019-05-17",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 103.33,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-21",
+          "e1rmLbs": 233.33,
+          "e1rmKg": 105.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-05-24",
+          "e1rmLbs": 226.67,
+          "e1rmKg": 103.33,
+          "actualWeightLbs": 170.0,
+          "actualWeightKg": 77.5,
+          "reps": 10
+        },
+        {
+          "date": "2019-05-29",
+          "e1rmLbs": 361.67,
+          "e1rmKg": 163.33,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-06-05",
+          "e1rmLbs": 362.67,
+          "e1rmKg": 164.33,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 4
+        },
+        {
+          "date": "2019-06-27",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-07-04",
+          "e1rmLbs": 346.5,
+          "e1rmKg": 156.75,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-07-11",
+          "e1rmLbs": 390.83,
+          "e1rmKg": 177.92,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-07-16",
+          "e1rmLbs": 350.0,
+          "e1rmKg": 157.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-07-23",
+          "e1rmLbs": 357.0,
+          "e1rmKg": 161.5,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 4
+        },
+        {
+          "date": "2019-07-30",
+          "e1rmLbs": 402.0,
+          "e1rmKg": 183.0,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 6
+        },
+        {
+          "date": "2019-08-06",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-08-13",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-08-20",
+          "e1rmLbs": 425.5,
+          "e1rmKg": 194.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 7
+        },
+        {
+          "date": "2019-08-28",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-04",
+          "e1rmLbs": 408.33,
+          "e1rmKg": 183.75,
+          "actualWeightLbs": 350.0,
+          "actualWeightKg": 157.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-11",
+          "e1rmLbs": 444.0,
+          "e1rmKg": 200.42,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 7
+        },
+        {
+          "date": "2019-09-18",
+          "e1rmLbs": 462.0,
+          "e1rmKg": 210.0,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 6
+        },
+        {
+          "date": "2019-09-24",
+          "e1rmLbs": 414.17,
+          "e1rmKg": 186.67,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-09-27",
+          "e1rmLbs": 280.0,
+          "e1rmKg": 126.67,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 10
+        },
+        {
+          "date": "2019-10-01",
+          "e1rmLbs": 425.0,
+          "e1rmKg": 192.67,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 4
+        },
+        {
+          "date": "2019-10-08",
+          "e1rmLbs": 474.0,
+          "e1rmKg": 216.0,
+          "actualWeightLbs": 395.0,
+          "actualWeightKg": 180.0,
+          "reps": 6
+        },
+        {
+          "date": "2019-10-15",
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.58,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-10-18",
+          "e1rmLbs": 272.33,
+          "e1rmKg": 123.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 8
+        },
+        {
+          "date": "2019-10-22",
+          "e1rmLbs": 449.17,
+          "e1rmKg": 204.17,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-10-29",
+          "e1rmLbs": 486.0,
+          "e1rmKg": 219.0,
+          "actualWeightLbs": 405.0,
+          "actualWeightKg": 182.5,
+          "reps": 6
+        },
+        {
+          "date": "2019-11-05",
+          "e1rmLbs": 431.67,
+          "e1rmKg": 195.42,
+          "actualWeightLbs": 370.0,
+          "actualWeightKg": 167.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-11-12",
+          "e1rmLbs": 442.0,
+          "e1rmKg": 201.17,
+          "actualWeightLbs": 390.0,
+          "actualWeightKg": 177.5,
+          "reps": 4
+        },
+        {
+          "date": "2019-11-19",
+          "e1rmLbs": 478.33,
+          "e1rmKg": 215.83,
+          "actualWeightLbs": 410.0,
+          "actualWeightKg": 185.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-12-04",
+          "e1rmLbs": 455.0,
+          "e1rmKg": 207.08,
+          "actualWeightLbs": 390.0,
+          "actualWeightKg": 177.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-12-11",
+          "e1rmLbs": 466.67,
+          "e1rmKg": 212.92,
+          "actualWeightLbs": 400.0,
+          "actualWeightKg": 182.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-01-07",
+          "e1rmLbs": 431.67,
+          "e1rmKg": 195.42,
+          "actualWeightLbs": 370.0,
+          "actualWeightKg": 167.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-01-14",
+          "e1rmLbs": 434.5,
+          "e1rmKg": 198.0,
+          "actualWeightLbs": 395.0,
+          "actualWeightKg": 180.0,
+          "reps": 3
+        },
+        {
+          "date": "2020-01-21",
+          "e1rmLbs": 484.17,
+          "e1rmKg": 218.75,
+          "actualWeightLbs": 415.0,
+          "actualWeightKg": 187.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-01-28",
+          "e1rmLbs": 443.33,
+          "e1rmKg": 201.25,
+          "actualWeightLbs": 380.0,
+          "actualWeightKg": 172.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-02-04",
+          "e1rmLbs": 445.5,
+          "e1rmKg": 200.75,
+          "actualWeightLbs": 405.0,
+          "actualWeightKg": 182.5,
+          "reps": 3
+        },
+        {
+          "date": "2020-02-11",
+          "e1rmLbs": 495.83,
+          "e1rmKg": 224.58,
+          "actualWeightLbs": 425.0,
+          "actualWeightKg": 192.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-02-18",
+          "e1rmLbs": 443.33,
+          "e1rmKg": 201.25,
+          "actualWeightLbs": 380.0,
+          "actualWeightKg": 172.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-02-25",
+          "e1rmLbs": 440.0,
+          "e1rmKg": 200.75,
+          "actualWeightLbs": 400.0,
+          "actualWeightKg": 182.5,
+          "reps": 3
+        },
+        {
+          "date": "2020-03-03",
+          "e1rmLbs": 390.83,
+          "e1rmKg": 177.92,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-03-10",
+          "e1rmLbs": 455.0,
+          "e1rmKg": 207.08,
+          "actualWeightLbs": 390.0,
+          "actualWeightKg": 177.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-03-17",
+          "e1rmLbs": 478.33,
+          "e1rmKg": 215.83,
+          "actualWeightLbs": 410.0,
+          "actualWeightKg": 185.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-03-24",
+          "e1rmLbs": 467.5,
+          "e1rmKg": 211.75,
+          "actualWeightLbs": 425.0,
+          "actualWeightKg": 192.5,
+          "reps": 3
+        },
+        {
+          "date": "2020-03-31",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-04-07",
+          "e1rmLbs": 478.33,
+          "e1rmKg": 215.83,
+          "actualWeightLbs": 410.0,
+          "actualWeightKg": 185.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-04-14",
+          "e1rmLbs": 478.5,
+          "e1rmKg": 217.25,
+          "actualWeightLbs": 435.0,
+          "actualWeightKg": 197.5,
+          "reps": 3
+        },
+        {
+          "date": "2020-04-21",
+          "e1rmLbs": 443.33,
+          "e1rmKg": 201.25,
+          "actualWeightLbs": 380.0,
+          "actualWeightKg": 172.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-04-28",
+          "e1rmLbs": 478.33,
+          "e1rmKg": 215.83,
+          "actualWeightLbs": 410.0,
+          "actualWeightKg": 185.0,
+          "reps": 5
+        },
+        {
+          "date": "2020-05-05",
+          "e1rmLbs": 464.0,
+          "e1rmKg": 210.67,
+          "actualWeightLbs": 435.0,
+          "actualWeightKg": 197.5,
+          "reps": 2
+        },
+        {
+          "date": "2020-05-12",
+          "e1rmLbs": 315.0,
+          "e1rmKg": 142.92,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-05-19",
+          "e1rmLbs": 456.0,
+          "e1rmKg": 207.0,
+          "actualWeightLbs": 380.0,
+          "actualWeightKg": 172.5,
+          "reps": 6
+        },
+        {
+          "date": "2020-05-26",
+          "e1rmLbs": 466.67,
+          "e1rmKg": 212.92,
+          "actualWeightLbs": 400.0,
+          "actualWeightKg": 182.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-06-02",
+          "e1rmLbs": 510.0,
+          "e1rmKg": 231.0,
+          "actualWeightLbs": 425.0,
+          "actualWeightKg": 192.5,
+          "reps": 6
+        },
+        {
+          "date": "2020-06-09",
+          "e1rmLbs": 455.0,
+          "e1rmKg": 207.08,
+          "actualWeightLbs": 390.0,
+          "actualWeightKg": 177.5,
+          "reps": 5
+        },
+        {
+          "date": "2020-06-16",
+          "e1rmLbs": 401.5,
+          "e1rmKg": 181.5,
+          "actualWeightLbs": 365.0,
+          "actualWeightKg": 165.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-01-11",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-19",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-27",
+          "e1rmLbs": 390.83,
+          "e1rmKg": 177.92,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-04",
+          "e1rmLbs": 402.5,
+          "e1rmKg": 183.75,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-12",
+          "e1rmLbs": 414.17,
+          "e1rmKg": 186.67,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-02-23",
+          "e1rmLbs": 425.83,
+          "e1rmKg": 192.5,
+          "actualWeightLbs": 365.0,
+          "actualWeightKg": 165.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-03-03",
+          "e1rmLbs": 475.0,
+          "e1rmKg": 215.33,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 8
+        },
+        {
+          "date": "2021-03-11",
+          "e1rmLbs": 449.17,
+          "e1rmKg": 204.17,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-03-22",
+          "e1rmLbs": 460.83,
+          "e1rmKg": 210.0,
+          "actualWeightLbs": 395.0,
+          "actualWeightKg": 180.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-03-30",
+          "e1rmLbs": 472.5,
+          "e1rmKg": 212.92,
+          "actualWeightLbs": 405.0,
+          "actualWeightKg": 182.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-08",
+          "e1rmLbs": 449.17,
+          "e1rmKg": 204.17,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-15",
+          "e1rmLbs": 460.83,
+          "e1rmKg": 210.0,
+          "actualWeightLbs": 395.0,
+          "actualWeightKg": 180.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-04-22",
+          "e1rmLbs": 459.0,
+          "e1rmKg": 206.83,
+          "actualWeightLbs": 405.0,
+          "actualWeightKg": 182.5,
+          "reps": 4
+        },
+        {
+          "date": "2021-04-29",
+          "e1rmLbs": 472.5,
+          "e1rmKg": 212.92,
+          "actualWeightLbs": 405.0,
+          "actualWeightKg": 182.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-05-06",
+          "e1rmLbs": 484.17,
+          "e1rmKg": 218.75,
+          "actualWeightLbs": 415.0,
+          "actualWeightKg": 187.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-05-13",
+          "e1rmLbs": 495.83,
+          "e1rmKg": 224.58,
+          "actualWeightLbs": 425.0,
+          "actualWeightKg": 192.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-05-20",
+          "e1rmLbs": 478.5,
+          "e1rmKg": 217.25,
+          "actualWeightLbs": 435.0,
+          "actualWeightKg": 197.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-05-27",
+          "e1rmLbs": 513.33,
+          "e1rmKg": 233.33,
+          "actualWeightLbs": 440.0,
+          "actualWeightKg": 200.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-06-10",
+          "e1rmLbs": 450.0,
+          "e1rmKg": 205.0,
+          "actualWeightLbs": 450.0,
+          "actualWeightKg": 205.0,
+          "reps": 1
+        },
+        {
+          "date": "2021-06-17",
+          "e1rmLbs": 455.0,
+          "e1rmKg": 207.5,
+          "actualWeightLbs": 455.0,
+          "actualWeightKg": 207.5,
+          "reps": 1
+        },
+        {
+          "date": "2021-06-24",
+          "e1rmLbs": 506.0,
+          "e1rmKg": 228.25,
+          "actualWeightLbs": 460.0,
+          "actualWeightKg": 207.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-07-01",
+          "e1rmLbs": 496.0,
+          "e1rmKg": 224.0,
+          "actualWeightLbs": 465.0,
+          "actualWeightKg": 210.0,
+          "reps": 2
+        },
+        {
+          "date": "2021-07-15",
+          "e1rmLbs": 484.0,
+          "e1rmKg": 220.0,
+          "actualWeightLbs": 440.0,
+          "actualWeightKg": 200.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-07-22",
+          "e1rmLbs": 489.5,
+          "e1rmKg": 222.75,
+          "actualWeightLbs": 445.0,
+          "actualWeightKg": 202.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-07-29",
+          "e1rmLbs": 480.0,
+          "e1rmKg": 218.67,
+          "actualWeightLbs": 450.0,
+          "actualWeightKg": 205.0,
+          "reps": 2
+        },
+        {
+          "date": "2021-08-05",
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.58,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-08-12",
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.58,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-08-19",
+          "e1rmLbs": 465.0,
+          "e1rmKg": 210.0,
+          "actualWeightLbs": 465.0,
+          "actualWeightKg": 210.0,
+          "reps": 1
+        },
+        {
+          "date": "2021-09-02",
+          "e1rmLbs": 437.5,
+          "e1rmKg": 198.33,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-09-09",
+          "e1rmLbs": 437.5,
+          "e1rmKg": 198.33,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 5
+        },
+        {
+          "date": "2021-09-16",
+          "e1rmLbs": 443.33,
+          "e1rmKg": 201.25,
+          "actualWeightLbs": 380.0,
+          "actualWeightKg": 172.5,
+          "reps": 5
+        },
+        {
+          "date": "2021-09-23",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-10-07",
+          "e1rmLbs": 423.5,
+          "e1rmKg": 192.5,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-10-14",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-10-29",
+          "e1rmLbs": 423.5,
+          "e1rmKg": 192.5,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-11-12",
+          "e1rmLbs": 434.5,
+          "e1rmKg": 198.0,
+          "actualWeightLbs": 395.0,
+          "actualWeightKg": 180.0,
+          "reps": 3
+        },
+        {
+          "date": "2021-12-03",
+          "e1rmLbs": 456.5,
+          "e1rmKg": 206.25,
+          "actualWeightLbs": 415.0,
+          "actualWeightKg": 187.5,
+          "reps": 3
+        },
+        {
+          "date": "2021-12-09",
+          "e1rmLbs": 476.0,
+          "e1rmKg": 215.33,
+          "actualWeightLbs": 420.0,
+          "actualWeightKg": 190.0,
+          "reps": 4
+        },
+        {
+          "date": "2021-12-16",
+          "e1rmLbs": 423.5,
+          "e1rmKg": 192.5,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-01-07",
+          "e1rmLbs": 423.5,
+          "e1rmKg": 192.5,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-01-28",
+          "e1rmLbs": 436.33,
+          "e1rmKg": 198.33,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 4
+        },
+        {
+          "date": "2022-02-11",
+          "e1rmLbs": 445.5,
+          "e1rmKg": 200.75,
+          "actualWeightLbs": 405.0,
+          "actualWeightKg": 182.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-02-18",
+          "e1rmLbs": 470.33,
+          "e1rmKg": 212.5,
+          "actualWeightLbs": 415.0,
+          "actualWeightKg": 187.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-02-25",
+          "e1rmLbs": 467.5,
+          "e1rmKg": 211.75,
+          "actualWeightLbs": 425.0,
+          "actualWeightKg": 192.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-03-04",
+          "e1rmLbs": 473.0,
+          "e1rmKg": 214.5,
+          "actualWeightLbs": 430.0,
+          "actualWeightKg": 195.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-03-11",
+          "e1rmLbs": 440.0,
+          "e1rmKg": 200.0,
+          "actualWeightLbs": 440.0,
+          "actualWeightKg": 200.0,
+          "reps": 1
+        },
+        {
+          "date": "2022-04-08",
+          "e1rmLbs": 368.5,
+          "e1rmKg": 167.75,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-04-15",
+          "e1rmLbs": 484.0,
+          "e1rmKg": 220.0,
+          "actualWeightLbs": 440.0,
+          "actualWeightKg": 200.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-04-22",
+          "e1rmLbs": 489.5,
+          "e1rmKg": 222.75,
+          "actualWeightLbs": 445.0,
+          "actualWeightKg": 202.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-05-06",
+          "e1rmLbs": 456.5,
+          "e1rmKg": 206.25,
+          "actualWeightLbs": 415.0,
+          "actualWeightKg": 187.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-05-13",
+          "e1rmLbs": 412.5,
+          "e1rmKg": 187.0,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-06-10",
+          "e1rmLbs": 291.67,
+          "e1rmKg": 131.25,
+          "actualWeightLbs": 250.0,
+          "actualWeightKg": 112.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-06-17",
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.58,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-06-24",
+          "e1rmLbs": 374.0,
+          "e1rmKg": 170.5,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-07-01",
+          "e1rmLbs": 445.5,
+          "e1rmKg": 200.75,
+          "actualWeightLbs": 405.0,
+          "actualWeightKg": 182.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-07-15",
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.58,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-07-28",
+          "e1rmLbs": 423.5,
+          "e1rmKg": 192.5,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-08-04",
+          "e1rmLbs": 429.0,
+          "e1rmKg": 195.25,
+          "actualWeightLbs": 390.0,
+          "actualWeightKg": 177.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-08-11",
+          "e1rmLbs": 395.0,
+          "e1rmKg": 180.0,
+          "actualWeightLbs": 395.0,
+          "actualWeightKg": 180.0,
+          "reps": 1
+        },
+        {
+          "date": "2022-08-18",
+          "e1rmLbs": 390.5,
+          "e1rmKg": 176.0,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-08-25",
+          "e1rmLbs": 459.0,
+          "e1rmKg": 206.83,
+          "actualWeightLbs": 405.0,
+          "actualWeightKg": 182.5,
+          "reps": 4
+        },
+        {
+          "date": "2022-09-01",
+          "e1rmLbs": 451.0,
+          "e1rmKg": 203.5,
+          "actualWeightLbs": 410.0,
+          "actualWeightKg": 185.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-09-15",
+          "e1rmLbs": 462.0,
+          "e1rmKg": 209.0,
+          "actualWeightLbs": 420.0,
+          "actualWeightKg": 190.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-09-22",
+          "e1rmLbs": 467.5,
+          "e1rmKg": 211.75,
+          "actualWeightLbs": 425.0,
+          "actualWeightKg": 192.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-10-06",
+          "e1rmLbs": 473.0,
+          "e1rmKg": 214.5,
+          "actualWeightLbs": 430.0,
+          "actualWeightKg": 195.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-10-13",
+          "e1rmLbs": 478.5,
+          "e1rmKg": 217.25,
+          "actualWeightLbs": 435.0,
+          "actualWeightKg": 197.5,
+          "reps": 3
+        },
+        {
+          "date": "2022-10-20",
+          "e1rmLbs": 513.33,
+          "e1rmKg": 233.33,
+          "actualWeightLbs": 440.0,
+          "actualWeightKg": 200.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-10-27",
+          "e1rmLbs": 484.0,
+          "e1rmKg": 220.0,
+          "actualWeightLbs": 440.0,
+          "actualWeightKg": 200.0,
+          "reps": 3
+        },
+        {
+          "date": "2022-11-17",
+          "e1rmLbs": 420.0,
+          "e1rmKg": 189.58,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 5
+        },
+        {
+          "date": "2022-12-01",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2022-12-08",
+          "e1rmLbs": 462.0,
+          "e1rmKg": 209.0,
+          "actualWeightLbs": 420.0,
+          "actualWeightKg": 190.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-01-05",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 175.0,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 1
+        },
+        {
+          "date": "2023-01-12",
+          "e1rmLbs": 355.83,
+          "e1rmKg": 160.42,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-01-26",
+          "e1rmLbs": 423.5,
+          "e1rmKg": 192.5,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-02-02",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-02-09",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-03-09",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-03-16",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-04-13",
+          "e1rmLbs": 401.5,
+          "e1rmKg": 181.5,
+          "actualWeightLbs": 365.0,
+          "actualWeightKg": 165.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-04-20",
+          "e1rmLbs": 423.5,
+          "e1rmKg": 192.5,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-04-27",
+          "e1rmLbs": 361.67,
+          "e1rmKg": 163.33,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-05-04",
+          "e1rmLbs": 412.5,
+          "e1rmKg": 187.0,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-05-11",
+          "e1rmLbs": 434.5,
+          "e1rmKg": 198.0,
+          "actualWeightLbs": 395.0,
+          "actualWeightKg": 180.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-05-18",
+          "e1rmLbs": 414.17,
+          "e1rmKg": 186.67,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-06-01",
+          "e1rmLbs": 412.5,
+          "e1rmKg": 187.0,
+          "actualWeightLbs": 375.0,
+          "actualWeightKg": 170.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-06-08",
+          "e1rmLbs": 434.5,
+          "e1rmKg": 198.0,
+          "actualWeightLbs": 395.0,
+          "actualWeightKg": 180.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-06-15",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-07-14",
+          "e1rmLbs": 330.0,
+          "e1rmKg": 148.5,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 3
+        },
+        {
+          "date": "2023-07-21",
+          "e1rmLbs": 335.5,
+          "e1rmKg": 151.25,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-07-28",
+          "e1rmLbs": 361.67,
+          "e1rmKg": 163.33,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 5
+        },
+        {
+          "date": "2023-08-04",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-08-11",
+          "e1rmLbs": 341.33,
+          "e1rmKg": 154.67,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 2
+        },
+        {
+          "date": "2023-08-17",
+          "e1rmLbs": 379.5,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-08-24",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 173.25,
+          "actualWeightLbs": 350.0,
+          "actualWeightKg": 157.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-08-31",
+          "e1rmLbs": 402.33,
+          "e1rmKg": 181.33,
+          "actualWeightLbs": 355.0,
+          "actualWeightKg": 160.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-09-07",
+          "e1rmLbs": 408.0,
+          "e1rmKg": 184.17,
+          "actualWeightLbs": 360.0,
+          "actualWeightKg": 162.5,
+          "reps": 4
+        },
+        {
+          "date": "2023-09-14",
+          "e1rmLbs": 413.67,
+          "e1rmKg": 187.0,
+          "actualWeightLbs": 365.0,
+          "actualWeightKg": 165.0,
+          "reps": 4
+        },
+        {
+          "date": "2023-09-21",
+          "e1rmLbs": 385.0,
+          "e1rmKg": 175.0,
+          "actualWeightLbs": 385.0,
+          "actualWeightKg": 175.0,
+          "reps": 1
+        },
+        {
+          "date": "2023-09-28",
+          "e1rmLbs": 429.0,
+          "e1rmKg": 195.25,
+          "actualWeightLbs": 390.0,
+          "actualWeightKg": 177.5,
+          "reps": 3
+        },
+        {
+          "date": "2023-10-19",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2023-10-27",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2024-07-24",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2024-07-31",
+          "e1rmLbs": 196.0,
+          "e1rmKg": 87.5,
+          "actualWeightLbs": 140.0,
+          "actualWeightKg": 62.5,
+          "reps": 12
+        },
+        {
+          "date": "2024-08-07",
+          "e1rmLbs": 200.0,
+          "e1rmKg": 90.0,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 10
+        },
+        {
+          "date": "2024-11-27",
+          "e1rmLbs": 213.33,
+          "e1rmKg": 96.67,
+          "actualWeightLbs": 160.0,
+          "actualWeightKg": 72.5,
+          "reps": 10
+        },
+        {
+          "date": "2024-12-04",
+          "e1rmLbs": 277.5,
+          "e1rmKg": 126.42,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 7
+        },
+        {
+          "date": "2024-12-11",
+          "e1rmLbs": 299.0,
+          "e1rmKg": 136.5,
+          "actualWeightLbs": 230.0,
+          "actualWeightKg": 105.0,
+          "reps": 9
+        },
+        {
+          "date": "2024-12-18",
+          "e1rmLbs": 274.17,
+          "e1rmKg": 125.42,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 5
+        },
+        {
+          "date": "2024-12-25",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-01-01",
+          "e1rmLbs": 326.67,
+          "e1rmKg": 148.75,
+          "actualWeightLbs": 280.0,
+          "actualWeightKg": 127.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-01-29",
+          "e1rmLbs": 323.0,
+          "e1rmKg": 145.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-02-05",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-02-12",
+          "e1rmLbs": 354.67,
+          "e1rmKg": 161.5,
+          "actualWeightLbs": 280.0,
+          "actualWeightKg": 127.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-02-19",
+          "e1rmLbs": 378.0,
+          "e1rmKg": 171.0,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 6
+        },
+        {
+          "date": "2025-02-26",
+          "e1rmLbs": 373.33,
+          "e1rmKg": 169.17,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-03-05",
+          "e1rmLbs": 390.0,
+          "e1rmKg": 177.0,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 6
+        },
+        {
+          "date": "2025-03-12",
+          "e1rmLbs": 418.0,
+          "e1rmKg": 190.0,
+          "actualWeightLbs": 330.0,
+          "actualWeightKg": 150.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-03-19",
+          "e1rmLbs": 402.0,
+          "e1rmKg": 183.0,
+          "actualWeightLbs": 335.0,
+          "actualWeightKg": 152.5,
+          "reps": 6
+        },
+        {
+          "date": "2025-03-26",
+          "e1rmLbs": 396.67,
+          "e1rmKg": 180.83,
+          "actualWeightLbs": 340.0,
+          "actualWeightKg": 155.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-04-02",
+          "e1rmLbs": 402.5,
+          "e1rmKg": 183.75,
+          "actualWeightLbs": 345.0,
+          "actualWeightKg": 157.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-04-09",
+          "e1rmLbs": 302.5,
+          "e1rmKg": 137.5,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 3
+        },
+        {
+          "date": "2025-04-16",
+          "e1rmLbs": 342.0,
+          "e1rmKg": 155.17,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-04-23",
+          "e1rmLbs": 361.0,
+          "e1rmKg": 164.67,
+          "actualWeightLbs": 285.0,
+          "actualWeightKg": 130.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-04-30",
+          "e1rmLbs": 388.5,
+          "e1rmKg": 175.75,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 7
+        },
+        {
+          "date": "2025-05-07",
+          "e1rmLbs": 393.33,
+          "e1rmKg": 180.0,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-05-14",
+          "e1rmLbs": 392.67,
+          "e1rmKg": 177.33,
+          "actualWeightLbs": 310.0,
+          "actualWeightKg": 140.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-04",
+          "e1rmLbs": 399.0,
+          "e1rmKg": 180.5,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-11",
+          "e1rmLbs": 405.33,
+          "e1rmKg": 183.67,
+          "actualWeightLbs": 320.0,
+          "actualWeightKg": 145.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-06-18",
+          "e1rmLbs": 379.17,
+          "e1rmKg": 172.08,
+          "actualWeightLbs": 325.0,
+          "actualWeightKg": 147.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-06-25",
+          "e1rmLbs": 291.5,
+          "e1rmKg": 132.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 3
+        },
+        {
+          "date": "2025-07-02",
+          "e1rmLbs": 363.83,
+          "e1rmKg": 166.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 7
+        },
+        {
+          "date": "2025-07-09",
+          "e1rmLbs": 367.5,
+          "e1rmKg": 166.25,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 5
+        },
+        {
+          "date": "2025-07-15",
+          "e1rmLbs": 300.0,
+          "e1rmKg": 136.67,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-18",
+          "e1rmLbs": 353.33,
+          "e1rmKg": 160.0,
+          "actualWeightLbs": 265.0,
+          "actualWeightKg": 120.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-22",
+          "e1rmLbs": 313.33,
+          "e1rmKg": 143.33,
+          "actualWeightLbs": 235.0,
+          "actualWeightKg": 107.5,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-25",
+          "e1rmLbs": 357.5,
+          "e1rmKg": 162.5,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 9
+        },
+        {
+          "date": "2025-07-29",
+          "e1rmLbs": 326.67,
+          "e1rmKg": 146.67,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-08-01",
+          "e1rmLbs": 361.0,
+          "e1rmKg": 164.67,
+          "actualWeightLbs": 285.0,
+          "actualWeightKg": 130.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-08-05",
+          "e1rmLbs": 310.33,
+          "e1rmKg": 139.33,
+          "actualWeightLbs": 245.0,
+          "actualWeightKg": 110.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-08-08",
+          "e1rmLbs": 383.5,
+          "e1rmKg": 175.5,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 9
+        },
+        {
+          "date": "2025-08-12",
+          "e1rmLbs": 323.0,
+          "e1rmKg": 145.67,
+          "actualWeightLbs": 255.0,
+          "actualWeightKg": 115.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-08-15",
+          "e1rmLbs": 386.33,
+          "e1rmKg": 174.17,
+          "actualWeightLbs": 305.0,
+          "actualWeightKg": 137.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-08-19",
+          "e1rmLbs": 351.0,
+          "e1rmKg": 159.25,
+          "actualWeightLbs": 270.0,
+          "actualWeightKg": 122.5,
+          "reps": 9
+        },
+        {
+          "date": "2025-08-26",
+          "e1rmLbs": 380.0,
+          "e1rmKg": 173.33,
+          "actualWeightLbs": 285.0,
+          "actualWeightKg": 130.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-09-02",
+          "e1rmLbs": 400.0,
+          "e1rmKg": 180.0,
+          "actualWeightLbs": 300.0,
+          "actualWeightKg": 135.0,
+          "reps": 10
+        },
+        {
+          "date": "2025-09-09",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-09-16",
+          "e1rmLbs": 339.17,
+          "e1rmKg": 154.17,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 7
+        },
+        {
+          "date": "2025-09-23",
+          "e1rmLbs": 373.67,
+          "e1rmKg": 171.0,
+          "actualWeightLbs": 295.0,
+          "actualWeightKg": 135.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-10-24",
+          "e1rmLbs": 302.5,
+          "e1rmKg": 137.5,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 3
+        }
+      ]
+    }
+  },
   "programs": [
     {
       "name": "StrongLifts 5x5",

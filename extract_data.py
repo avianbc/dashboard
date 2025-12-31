@@ -319,6 +319,78 @@ def get_exercise_progress(conn):
 
     return exercise_progress
 
+def calculate_e1rm(weight, reps):
+    """Calculate estimated 1RM using Epley formula."""
+    if reps == 1:
+        return weight
+    # Epley formula: weight × (1 + reps/30)
+    return weight * (1 + reps / 30)
+
+def get_big_three_e1rm(conn):
+    """Get estimated 1RM data for Big 3 lifts from every workout."""
+    cursor = conn.cursor()
+
+    # Map exercise name variations
+    squat_names = ['Squat', 'Back Squat', 'Front Squat', 'Squats']
+    bench_names = ['Bench Press', 'Bench', 'Flat Bench Press']
+    deadlift_names = ['Deadlift', 'Conventional Deadlift', 'Deadlifts']
+
+    big_three_e1rm = {}
+
+    for canonical_name, name_list in [('squat', squat_names), ('bench', bench_names), ('deadlift', deadlift_names)]:
+        # Get all sets for this exercise
+        placeholders = ','.join('?' * len(name_list))
+        cursor.execute(f"""
+            SELECT
+                date(h.date/1000, 'unixepoch') as workout_date,
+                he.weightlb,
+                he.weightkg,
+                he.reps,
+                e.exercise_name
+            FROM history_exercises he
+            JOIN history h ON he.history_id = h.id
+            JOIN exercises e ON he.exercise_id = e.id
+            WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+            AND he.reps > 0
+            ORDER BY h.date
+        """, name_list)
+
+        rows = cursor.fetchall()
+        if not rows:
+            continue
+
+        # Group by workout date and find best e1RM per workout
+        workout_e1rms = {}
+        for row in rows:
+            date = row['workout_date']
+            weight_lbs = row['weightlb'] or 0
+            weight_kg = row['weightkg'] or 0
+            reps = row['reps']
+
+            e1rm_lbs = calculate_e1rm(weight_lbs, reps)
+            e1rm_kg = calculate_e1rm(weight_kg, reps)
+
+            if date not in workout_e1rms or e1rm_lbs > workout_e1rms[date]['e1rmLbs']:
+                workout_e1rms[date] = {
+                    'date': date,
+                    'e1rmLbs': round(e1rm_lbs, 2),
+                    'e1rmKg': round(e1rm_kg, 2),
+                    'actualWeightLbs': round(weight_lbs, 2),
+                    'actualWeightKg': round(weight_kg, 2),
+                    'reps': reps
+                }
+
+        # Convert to sorted list
+        e1rm_data = sorted(workout_e1rms.values(), key=lambda x: x['date'])
+
+        if e1rm_data:
+            big_three_e1rm[canonical_name] = {
+                'exerciseName': rows[0]['exercise_name'],
+                'e1rmHistory': e1rm_data
+            }
+
+    return big_three_e1rm
+
 def get_big_three(conn, exercise_progress):
     """Extract Big 3 lifts (Squat, Bench Press, Deadlift) with detailed progress."""
     big_three = {}
@@ -520,6 +592,9 @@ def main():
     print("Extracting Big 3 lifts...")
     big_three = get_big_three(conn, exercise_progress)
 
+    print("Calculating Big 3 estimated 1RM progression...")
+    big_three_e1rm = get_big_three_e1rm(conn)
+
     print("Getting program history...")
     programs = get_programs(conn)
 
@@ -539,6 +614,7 @@ def main():
         'workoutCalendar': workout_calendar,
         'exerciseProgress': exercise_progress,
         'bigThree': big_three,
+        'bigThreeE1RM': big_three_e1rm,
         'programs': programs,
         'workoutsByDayOfWeek': workouts_by_day,
         'notableWorkouts': notable_workouts,
