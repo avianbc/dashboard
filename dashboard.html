@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strength Training Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .unit-toggle {
+            position: absolute;
+            top: 2rem;
+            right: 0;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .unit-toggle:hover {
+            background: #222;
+            border-color: #555;
+        }
+
+        section {
+            margin: 4rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        section:first-of-type {
+            border-top: none;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: #fff;
+        }
+
+        .foreword {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #aaa;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: #111;
+            border-radius: 8px;
+            border: 1px solid #1a1a1a;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .chart-container {
+            margin: 2rem 0;
+            background: #111;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #1a1a1a;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .heatmap-cell {
+            cursor: pointer;
+        }
+
+        .heatmap-cell:hover {
+            stroke: #fff;
+            stroke-width: 2;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .exercise-list {
+            list-style: none;
+        }
+
+        .exercise-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .exercise-item:last-child {
+            border-bottom: none;
+        }
+
+        .exercise-name {
+            font-weight: 600;
+        }
+
+        .exercise-volume {
+            font-family: 'Courier New', monospace;
+            color: #888;
+        }
+
+        .notable-workout {
+            background: #111;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            border-left: 3px solid #4a9eff;
+        }
+
+        .notable-date {
+            font-weight: 600;
+            color: #4a9eff;
+        }
+
+        .milestone {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .milestone-date {
+            min-width: 100px;
+            font-family: 'Courier New', monospace;
+            color: #888;
+        }
+
+        .milestone-text {
+            color: #e0e0e0;
+        }
+
+        .program-card {
+            background: #111;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            border-left: 3px solid #888;
+        }
+
+        .program-name {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.5rem;
+            color: #888;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .unit-toggle {
+                position: static;
+                display: block;
+                margin: 1rem auto 0;
+                max-width: 150px;
+            }
+
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NO DAYS OFF</h1>
+            <p class="tagline">A data-driven look at my strength training journey</p>
+            <button class="unit-toggle" id="unitToggle">lbs / kg</button>
+        </header>
+
+        <section>
+            <div class="foreword">
+                <p>
+                    This dashboard chronicles my strength training journey from January 2019 onwards.
+                    Every rep, every set, every workout—tracked, analyzed, and visualized.
+                    The data tells the story of consistency, progression, and the relentless pursuit of strength.
+                </p>
+            </div>
+        </section>
+
+        <section id="summary">
+            <h2>Summary</h2>
+            <div class="summary-stats" id="summaryStats">
+                <!-- Generated dynamically -->
+            </div>
+        </section>
+
+        <section id="volume-over-time">
+            <h2>Volume Over Time</h2>
+            <div class="chart-container">
+                <canvas id="annualVolumeChart" style="max-height: 400px;"></canvas>
+            </div>
+        </section>
+
+        <section id="calendar">
+            <h2>Workout Calendar</h2>
+            <div class="chart-container">
+                <div id="workoutHeatmap"></div>
+            </div>
+        </section>
+
+        <section id="big-three">
+            <h2>The Big Three</h2>
+            <div id="bigThreeCharts">
+                <!-- Generated dynamically -->
+            </div>
+        </section>
+
+        <section id="exercises">
+            <h2>Exercises by Volume</h2>
+            <div class="chart-container">
+                <div id="exerciseVolumeChart"></div>
+            </div>
+        </section>
+
+        <section id="workout-patterns">
+            <h2>Workout Patterns</h2>
+            <h3>Volume by Day of Week</h3>
+            <div class="chart-container">
+                <div id="dayOfWeekChart"></div>
+            </div>
+        </section>
+
+        <section id="programs">
+            <h2>Training Programs</h2>
+            <div id="programsList">
+                <!-- Generated dynamically -->
+            </div>
+        </section>
+
+        <section id="notable">
+            <h2>Notable Workouts</h2>
+            <div id="notableWorkoutsList">
+                <!-- Generated dynamically -->
+            </div>
+        </section>
+
+        <section id="milestones">
+            <h2>Milestones</h2>
+            <div id="milestonesList">
+                <!-- Generated dynamically -->
+            </div>
+        </section>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        // Global state
+        let trainingData = null;
+        let currentUnit = localStorage.getItem('weightUnit') || 'lbs';
+
+        // Load data and initialize dashboard
+        async function init() {
+            try {
+                // Try to load from external JSON file first (works with http/https)
+                try {
+                    const response = await fetch('training_data.json');
+                    trainingData = await response.json();
+                } catch (fetchError) {
+                    // If fetch fails (file:// protocol), load from embedded script tag
+                    const dataScript = document.getElementById('trainingDataScript');
+                    if (dataScript) {
+                        trainingData = JSON.parse(dataScript.textContent);
+                    } else {
+                        throw new Error('Training data not found. Please run extract_data.py and either use a local server or embed the data.');
+                    }
+                }
+                renderDashboard();
+                setupUnitToggle();
+            } catch (error) {
+                console.error('Error loading training data:', error);
+                document.querySelector('.container').innerHTML = `
+                    <section style="text-align: center; padding: 4rem 2rem;">
+                        <h2 style="color: #ff6b6b; margin-bottom: 1rem;">Unable to Load Data</h2>
+                        <p style="margin-bottom: 2rem;">The dashboard cannot load training_data.json due to browser CORS restrictions.</p>
+                        <p style="margin-bottom: 1rem;"><strong>Solution 1:</strong> Use a local web server:</p>
+                        <pre style="background: #111; padding: 1rem; border-radius: 4px; display: inline-block; text-align: left; margin-bottom: 2rem;">
+python -m http.server 8000
+# Then open: http://localhost:8000/dashboard.html</pre>
+                        <p style="margin-bottom: 1rem;"><strong>Solution 2:</strong> Run the embed script:</p>
+                        <pre style="background: #111; padding: 1rem; border-radius: 4px; display: inline-block; text-align: left;">
+python embed_data.py
+# Then open the generated dashboard_embedded.html</pre>
+                    </section>
+                `;
+            }
+        }
+
+        function setupUnitToggle() {
+            const toggleButton = document.getElementById('unitToggle');
+            updateToggleButton();
+
+            toggleButton.addEventListener('click', () => {
+                currentUnit = currentUnit === 'lbs' ? 'kg' : 'lbs';
+                localStorage.setItem('weightUnit', currentUnit);
+                updateToggleButton();
+                renderDashboard();
+            });
+        }
+
+        function updateToggleButton() {
+            const toggleButton = document.getElementById('unitToggle');
+            toggleButton.textContent = currentUnit === 'lbs' ? 'switch to kg' : 'switch to lbs';
+        }
+
+        function getVolume(volumeLbs, volumeKg) {
+            return currentUnit === 'lbs' ? volumeLbs : volumeKg;
+        }
+
+        function formatVolume(volumeLbs, volumeKg) {
+            const volume = getVolume(volumeLbs, volumeKg);
+            return `${volume.toLocaleString()} ${currentUnit}`;
+        }
+
+        function renderDashboard() {
+            renderSummaryStats();
+            renderAnnualVolumeChart();
+            renderWorkoutHeatmap();
+            renderBigThree();
+            renderExerciseVolumeChart();
+            renderDayOfWeekChart();
+            renderPrograms();
+            renderNotableWorkouts();
+            renderMilestones();
+        }
+
+        function renderSummaryStats() {
+            const { summary } = trainingData;
+            const statsContainer = document.getElementById('summaryStats');
+
+            const totalVolume = getVolume(summary.totalVolumeLbs, summary.totalVolumeKg);
+            const years = calculateYears(summary.firstWorkout, summary.lastWorkout);
+
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${summary.totalWorkouts}</div>
+                    <div class="stat-label">Total Workouts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${Math.round(totalVolume / 1000)}K</div>
+                    <div class="stat-label">Total Volume (${currentUnit})</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${summary.totalHours}</div>
+                    <div class="stat-label">Hours Trained</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${years}</div>
+                    <div class="stat-label">Years Training</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${summary.longestStreak}</div>
+                    <div class="stat-label">Longest Streak</div>
+                </div>
+            `;
+        }
+
+        function calculateYears(startDate, endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            const years = (end - start) / (1000 * 60 * 60 * 24 * 365.25);
+            return years.toFixed(1);
+        }
+
+        let annualVolumeChartInstance = null;
+        let bigThreeChartInstances = {};
+
+        function renderAnnualVolumeChart() {
+            const { volumeTimeSeries } = trainingData;
+            const data = volumeTimeSeries.yearly;
+
+            if (data.length === 0) return;
+
+            const canvas = document.getElementById('annualVolumeChart');
+            const ctx = canvas.getContext('2d');
+
+            // Destroy existing chart if it exists
+            if (annualVolumeChartInstance) {
+                annualVolumeChartInstance.destroy();
+            }
+
+            const chartData = data.map(d => ({
+                x: d.year.toString(),
+                y: getVolume(d.volumeLbs, d.volumeKg)
+            }));
+
+            annualVolumeChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: `Annual Volume (${currentUnit})`,
+                        data: chartData,
+                        borderColor: '#4a9eff',
+                        backgroundColor: '#4a9eff33',
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        tension: 0.2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: '#1a1a1a',
+                            titleColor: '#e0e0e0',
+                            bodyColor: '#e0e0e0',
+                            borderColor: '#333',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    const volume = context.parsed.y;
+                                    return `${(volume / 1000).toFixed(1)}K ${currentUnit}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#1a1a1a' },
+                            ticks: { color: '#888', font: { size: 12 } }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#1a1a1a' },
+                            ticks: {
+                                color: '#888',
+                                font: { size: 12 },
+                                callback: function(value) {
+                                    return (value / 1000).toFixed(0) + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderWorkoutHeatmap() {
+            const { workoutCalendar } = trainingData;
+            const container = document.getElementById('workoutHeatmap');
+
+            // Get date range
+            const dates = Object.keys(workoutCalendar).sort();
+            if (dates.length === 0) return;
+
+            const startDate = new Date(dates[0]);
+            const endDate = new Date(dates[dates.length - 1]);
+
+            // Calculate heatmap dimensions
+            const cellSize = 12;
+            const cellPadding = 2;
+            const weeks = Math.ceil((endDate - startDate) / (7 * 24 * 60 * 60 * 1000));
+            const width = Math.min(container.offsetWidth, (cellSize + cellPadding) * weeks + 100);
+            const height = (cellSize + cellPadding) * 7 + 100;
+
+            // Calculate volume percentiles for color scaling
+            const volumes = dates.map(d => getVolume(workoutCalendar[d].volumeLbs, workoutCalendar[d].volumeKg));
+            const sortedVolumes = [...volumes].filter(v => v > 0).sort((a, b) => a - b);
+            const getColorLevel = (volume) => {
+                if (volume === 0) return 0;
+                const percentile = sortedVolumes.indexOf(sortedVolumes.find(v => v >= volume)) / sortedVolumes.length;
+                if (percentile < 0.2) return 1;
+                if (percentile < 0.4) return 2;
+                if (percentile < 0.6) return 3;
+                if (percentile < 0.8) return 4;
+                return 5;
+            };
+
+            const colors = ['#161616', '#0e4429', '#006d32', '#26a641', '#39d353', '#39d353'];
+
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+            // Fill in all dates
+            const currentDate = new Date(startDate);
+            let weekIndex = 0;
+
+            while (currentDate <= endDate) {
+                const dateStr = currentDate.toISOString().split('T')[0];
+                const dayOfWeek = currentDate.getDay();
+                const data = workoutCalendar[dateStr];
+                const volume = data ? getVolume(data.volumeLbs, data.volumeKg) : 0;
+                const colorLevel = getColorLevel(volume);
+
+                const x = 50 + weekIndex * (cellSize + cellPadding);
+                const y = 30 + dayOfWeek * (cellSize + cellPadding);
+
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', x);
+                rect.setAttribute('y', y);
+                rect.setAttribute('width', cellSize);
+                rect.setAttribute('height', cellSize);
+                rect.setAttribute('fill', colors[colorLevel]);
+                rect.setAttribute('class', 'heatmap-cell');
+                rect.setAttribute('data-date', dateStr);
+                rect.setAttribute('data-volume', volume.toFixed(0));
+                rect.setAttribute('data-workouts', data ? data.count : 0);
+
+                rect.addEventListener('mouseenter', (e) => showTooltip(e, dateStr, volume, data ? data.count : 0));
+                rect.addEventListener('mouseleave', hideTooltip);
+
+                svg.appendChild(rect);
+
+                if (dayOfWeek === 6) weekIndex++;
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            // Day labels
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            days.forEach((day, i) => {
+                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                label.setAttribute('x', 35);
+                label.setAttribute('y', 38 + i * (cellSize + cellPadding));
+                label.setAttribute('text-anchor', 'end');
+                label.setAttribute('fill', '#888');
+                label.setAttribute('font-size', '10');
+                label.textContent = day;
+                svg.appendChild(label);
+            });
+
+            container.innerHTML = '';
+            container.appendChild(svg);
+        }
+
+        function showTooltip(e, date, volume, workouts) {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'block';
+            tooltip.innerHTML = `
+                <strong>${date}</strong><br>
+                Workouts: ${workouts}<br>
+                Volume: ${volume.toLocaleString()} ${currentUnit}
+            `;
+            tooltip.style.left = (e.pageX + 10) + 'px';
+            tooltip.style.top = (e.pageY + 10) + 'px';
+        }
+
+        function hideTooltip() {
+            document.getElementById('tooltip').style.display = 'none';
+        }
+
+        function renderBigThree() {
+            const { bigThree } = trainingData;
+            const container = document.getElementById('bigThreeCharts');
+            container.innerHTML = '';
+
+            if (!bigThree || Object.keys(bigThree).length === 0) {
+                container.innerHTML = '<p style="color: #888;">No Big 3 data available</p>';
+                return;
+            }
+
+            const order = ['squat', 'bench', 'deadlift'];
+            const names = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift' };
+            const colors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66' };
+
+            order.forEach(lift => {
+                if (bigThree[lift] && bigThree[lift].prs && bigThree[lift].prs.length > 0) {
+                    const data = bigThree[lift];
+                    const chartDiv = document.createElement('div');
+                    chartDiv.className = 'chart-container';
+
+                    const title = document.createElement('h3');
+                    title.textContent = `${names[lift]} Progress`;
+                    title.style.marginTop = '0';
+                    title.style.marginBottom = '1rem';
+                    chartDiv.appendChild(title);
+
+                    // Show total volume and PR info
+                    const stats = document.createElement('div');
+                    stats.style.marginBottom = '1rem';
+                    stats.style.color = '#888';
+                    const totalVol = getVolume(data.totalVolumeLbs, data.totalVolumeKg);
+                    const latestPR = data.prs[data.prs.length - 1];
+                    const latestWeight = getVolume(latestPR.weightLbs, latestPR.weightKg);
+                    stats.innerHTML = `Total Volume: ${(totalVol / 1000).toFixed(0)}K ${currentUnit} | Latest PR: ${latestWeight} ${currentUnit} × ${latestPR.reps}`;
+                    chartDiv.appendChild(stats);
+
+                    // Create canvas for Chart.js
+                    const canvas = document.createElement('canvas');
+                    canvas.id = `${lift}Chart`;
+                    canvas.style.maxHeight = '300px';
+                    chartDiv.appendChild(canvas);
+
+                    container.appendChild(chartDiv);
+
+                    // Render chart after DOM update
+                    setTimeout(() => renderBigThreeChart(lift, data.prs, colors[lift]), 0);
+                }
+            });
+
+            if (container.children.length === 0) {
+                container.innerHTML = '<p style="color: #888;">No Big 3 data available</p>';
+            }
+        }
+
+        function renderBigThreeChart(lift, prs, color) {
+            const canvas = document.getElementById(`${lift}Chart`);
+            if (!canvas) return;
+
+            // Destroy existing chart if it exists
+            if (bigThreeChartInstances[lift]) {
+                bigThreeChartInstances[lift].destroy();
+            }
+
+            const ctx = canvas.getContext('2d');
+
+            // Group PRs by rep range for better visualization
+            const repRanges = {};
+            prs.forEach(pr => {
+                const reps = pr.reps;
+                if (!repRanges[reps]) {
+                    repRanges[reps] = [];
+                }
+                repRanges[reps].push({
+                    x: pr.date,
+                    y: getVolume(pr.weightLbs, pr.weightKg)
+                });
+            });
+
+            // Create datasets for each rep range
+            const datasets = Object.entries(repRanges).map(([reps, data], index) => {
+                const hue = 200 + (index * 40); // Vary colors
+                return {
+                    label: `${reps} reps`,
+                    data: data,
+                    borderColor: color,
+                    backgroundColor: color + '33',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.1
+                };
+            });
+
+            bigThreeChartInstances[lift] = new Chart(ctx, {
+                type: 'line',
+                data: { datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: { color: '#888', font: { size: 11 } }
+                        },
+                        tooltip: {
+                            backgroundColor: '#1a1a1a',
+                            titleColor: '#e0e0e0',
+                            bodyColor: '#e0e0e0',
+                            borderColor: '#333',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.parsed.y} ${currentUnit} × ${context.dataset.label}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'month',
+                                displayFormats: { month: 'MMM yyyy' }
+                            },
+                            grid: { color: '#1a1a1a' },
+                            ticks: { color: '#888', font: { size: 10 } }
+                        },
+                        y: {
+                            beginAtZero: false,
+                            grid: { color: '#1a1a1a' },
+                            ticks: {
+                                color: '#888',
+                                font: { size: 10 },
+                                callback: function(value) {
+                                    return value + ' ' + currentUnit;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Removed renderProgressChart - now using Chart.js for Big 3
+
+        function renderExerciseVolumeChart() {
+            const { exerciseProgress } = trainingData;
+            const container = document.getElementById('exerciseVolumeChart');
+
+            // Sort exercises by volume and take top 15
+            const exercises = Object.entries(exerciseProgress)
+                .map(([name, data]) => ({
+                    name,
+                    volume: getVolume(data.totalVolumeLbs, data.totalVolumeKg)
+                }))
+                .sort((a, b) => b.volume - a.volume)
+                .slice(0, 15);
+
+            if (exercises.length === 0) return;
+
+            const width = container.offsetWidth;
+            const height = exercises.length * 35 + 60;
+            const padding = { top: 20, right: 100, bottom: 40, left: 200 };
+
+            const maxVolume = Math.max(...exercises.map(e => e.volume));
+
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+            exercises.forEach((exercise, i) => {
+                const y = padding.top + i * 35;
+                const barWidth = ((exercise.volume / maxVolume) * (width - padding.left - padding.right));
+
+                // Bar
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', padding.left);
+                rect.setAttribute('y', y);
+                rect.setAttribute('width', barWidth);
+                rect.setAttribute('height', 25);
+                rect.setAttribute('fill', '#4a9eff');
+                svg.appendChild(rect);
+
+                // Exercise name
+                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                label.setAttribute('x', padding.left - 10);
+                label.setAttribute('y', y + 17);
+                label.setAttribute('text-anchor', 'end');
+                label.setAttribute('fill', '#e0e0e0');
+                label.setAttribute('font-size', '12');
+                label.textContent = exercise.name;
+                svg.appendChild(label);
+
+                // Volume label
+                const volumeLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                volumeLabel.setAttribute('x', padding.left + barWidth + 10);
+                volumeLabel.setAttribute('y', y + 17);
+                volumeLabel.setAttribute('fill', '#888');
+                volumeLabel.setAttribute('font-size', '12');
+                volumeLabel.textContent = `${Math.round(exercise.volume / 1000)}K`;
+                svg.appendChild(volumeLabel);
+            });
+
+            container.innerHTML = '';
+            container.appendChild(svg);
+        }
+
+        function renderDayOfWeekChart() {
+            const { workoutsByDayOfWeek } = trainingData;
+            const container = document.getElementById('dayOfWeekChart');
+
+            const dayOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            const data = dayOrder
+                .filter(day => workoutsByDayOfWeek[day])
+                .map(day => ({
+                    day,
+                    volume: getVolume(workoutsByDayOfWeek[day].avgVolumeLbs, workoutsByDayOfWeek[day].avgVolumeKg),
+                    count: workoutsByDayOfWeek[day].count
+                }));
+
+            if (data.length === 0) return;
+
+            const width = container.offsetWidth;
+            const height = 400;
+            const padding = { top: 40, right: 40, bottom: 60, left: 80 };
+
+            const maxVolume = Math.max(...data.map(d => d.volume));
+            const barWidth = (width - padding.left - padding.right) / data.length;
+
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+            // Grid lines
+            for (let i = 0; i <= 5; i++) {
+                const y = padding.top + (i / 5) * (height - padding.top - padding.bottom);
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', padding.left);
+                line.setAttribute('y1', y);
+                line.setAttribute('x2', width - padding.right);
+                line.setAttribute('y2', y);
+                line.setAttribute('stroke', '#1a1a1a');
+                svg.appendChild(line);
+            }
+
+            data.forEach((d, i) => {
+                const x = padding.left + i * barWidth;
+                const barHeight = (d.volume / maxVolume) * (height - padding.top - padding.bottom);
+                const y = height - padding.bottom - barHeight;
+
+                // Bar
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', x + barWidth * 0.1);
+                rect.setAttribute('y', y);
+                rect.setAttribute('width', barWidth * 0.8);
+                rect.setAttribute('height', barHeight);
+                rect.setAttribute('fill', '#4a9eff');
+                svg.appendChild(rect);
+
+                // Day label
+                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                label.setAttribute('x', x + barWidth / 2);
+                label.setAttribute('y', height - padding.bottom + 20);
+                label.setAttribute('text-anchor', 'middle');
+                label.setAttribute('fill', '#888');
+                label.setAttribute('font-size', '12');
+                label.textContent = d.day.substring(0, 3);
+                svg.appendChild(label);
+            });
+
+            container.innerHTML = '';
+            container.appendChild(svg);
+        }
+
+        function renderPrograms() {
+            const { programs } = trainingData;
+            const container = document.getElementById('programsList');
+
+            container.innerHTML = programs.map(program => `
+                <div class="program-card">
+                    <div class="program-name">${program.name}</div>
+                    <div>${program.startDate} → ${program.endDate}</div>
+                    <div class="program-stats">
+                        <span>${program.workouts} workouts</span>
+                        <span>${formatVolume(program.totalVolumeLbs, program.totalVolumeKg)} total volume</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderNotableWorkouts() {
+            const { notableWorkouts } = trainingData;
+            const container = document.getElementById('notableWorkoutsList');
+
+            container.innerHTML = notableWorkouts.map(workout => `
+                <div class="notable-workout">
+                    <div class="notable-date">${workout.date}</div>
+                    <div>${workout.reason}</div>
+                    <div style="color: #888; margin-top: 0.25rem;">
+                        ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderMilestones() {
+            const { milestones } = trainingData;
+            const container = document.getElementById('milestonesList');
+
+            container.innerHTML = milestones.map(milestone => `
+                <div class="milestone">
+                    <div class="milestone-date">${milestone.date}</div>
+                    <div class="milestone-text">${milestone.milestone}</div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize on page load
+        init();
+    </script>
+</body>
+</html>
