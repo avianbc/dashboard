@@ -364,7 +364,7 @@
         </section>
 
         <section id="big-three">
-            <h2>The Big Three</h2>
+            <h2>Big 3 + OHP</h2>
             <div id="bigThreeCharts">
                 <!-- Generated dynamically -->
             </div>
@@ -809,7 +809,8 @@
             const bigThreeConfig = [
                 { lift: 'squat', name: 'Squat', color: '#4a9eff' },
                 { lift: 'bench', name: 'Bench Press', color: '#ff6b6b' },
-                { lift: 'deadlift', name: 'Deadlift', color: '#51cf66' }
+                { lift: 'deadlift', name: 'Deadlift', color: '#51cf66' },
+                { lift: 'ohp', name: 'Overhead Press', color: '#ffd93d' }
             ];
 
             bigThreeConfig.forEach(config => {
@@ -1110,9 +1111,9 @@
                 return;
             }
 
-            const order = ['squat', 'bench', 'deadlift'];
-            const names = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift' };
-            const colors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66' };
+            const order = ['squat', 'bench', 'deadlift', 'ohp'];
+            const names = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift', ohp: 'Overhead Press' };
+            const colors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66', ohp: '#ffd93d' };
 
             order.forEach(lift => {
                 const hasE1RM = bigThreeE1RM && bigThreeE1RM[lift] && bigThreeE1RM[lift].e1rmHistory && bigThreeE1RM[lift].e1rmHistory.length > 0;
@@ -1408,26 +1409,26 @@
         function renderPRsAndClubs() {
             const { powerliftingTotals, plateMilestones, allTimePRs } = trainingData;
             const container = document.getElementById('prsClubsContent');
-            
+
             if (!powerliftingTotals && !plateMilestones && !allTimePRs) {
                 container.innerHTML = '<p style="color: #888;">No PR data available</p>';
                 return;
             }
 
             let html = '';
-            
+
             // 1000 lb Club Section
             if (powerliftingTotals && powerliftingTotals.current) {
                 const current = powerliftingTotals.current;
                 const peak = powerliftingTotals.peak;
                 const clubs = powerliftingTotals.clubMilestones || {};
-                
+
                 const totalValue = currentUnit === 'lbs' ? current.totalLbs : current.totalKg;
                 const peakValue = peak ? (currentUnit === 'lbs' ? peak.totalLbs : peak.totalKg) : totalValue;
                 const squatValue = currentUnit === 'lbs' ? current.squatE1rm : Math.round(current.squatE1rm * 0.453592);
                 const benchValue = currentUnit === 'lbs' ? current.benchE1rm : Math.round(current.benchE1rm * 0.453592);
                 const deadliftValue = currentUnit === 'lbs' ? current.deadliftE1rm : Math.round(current.deadliftE1rm * 0.453592);
-                
+
                 // Determine club status
                 const clubThresholds = [
                     { threshold: 1500, name: '1500 lb Club', color: '#ffd700', emoji: '👑' },
@@ -1436,18 +1437,18 @@
                     { threshold: 750, name: '750 lb Club', color: '#4a9eff', emoji: '💎' },
                     { threshold: 500, name: '500 lb Club', color: '#51cf66', emoji: '⭐' }
                 ];
-                
+
                 const achievedClub = clubThresholds.find(c => current.totalLbs >= c.threshold);
                 const nextClub = clubThresholds.slice().reverse().find(c => current.totalLbs < c.threshold);
-                
+
                 html += `<div class="chart-container">`;
                 html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
                     ${achievedClub ? achievedClub.emoji : '🎯'} Powerlifting Total (S+B+D)
                 </h3>`;
-                
+
                 // Current total display
                 html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; text-align: center; margin-bottom: 2rem;">`;
-                
+
                 html += `
                     <div>
                         <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current Total</div>
@@ -1467,7 +1468,7 @@
                         <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${Math.round(deadliftValue)} ${currentUnit}</div>
                     </div>
                 </div>`;
-                
+
                 // Next club progress
                 if (nextClub) {
                     const remaining = nextClub.threshold - current.totalLbs;
@@ -1484,7 +1485,7 @@
                         </div>
                     `;
                 }
-                
+
                 // Club milestones achieved
                 const achievedMilestones = Object.entries(clubs).sort((a, b) => parseInt(b[0]) - parseInt(a[0]));
                 if (achievedMilestones.length > 0) {
@@ -1505,35 +1506,35 @@
                     });
                     html += `</div>`;
                 }
-                
+
                 html += `</div>`;
             }
-            
+
             // Plate Milestones Section
             if (plateMilestones && Object.keys(plateMilestones).length > 0) {
-                const liftNames = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift' };
-                const liftColors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66' };
+                const liftNames = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift', ohp: 'Overhead Press' };
+                const liftColors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66', ohp: '#ffd93d' };
                 const plateLabels = { 1: '1 Plate (135)', 2: '2 Plates (225)', 3: '3 Plates (315)', 4: '4 Plates (405)', 5: '5 Plates (495)' };
-                
+
                 html += `<div class="chart-container">`;
                 html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏅 Plate Milestones</h3>`;
-                
+
                 html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">`;
-                
-                ['squat', 'bench', 'deadlift'].forEach(lift => {
+
+                ['squat', 'bench', 'deadlift', 'ohp'].forEach(lift => {
                     const liftData = plateMilestones[lift] || {};
                     const maxPlates = Math.max(...Object.keys(liftData).map(Number), 0);
-                    
+
                     html += `<div>`;
                     html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
-                    
+
                     [1, 2, 3, 4, 5].forEach(plates => {
                         const achieved = liftData[plates];
                         const plateWeight = currentUnit === 'lbs' ? plates * 90 + 45 : Math.round((plates * 90 + 45) * 0.453592);
-                        const plateLabel = currentUnit === 'lbs' 
+                        const plateLabel = currentUnit === 'lbs'
                             ? `${plates} plate${plates > 1 ? 's' : ''} (${plates * 90 + 45})`
                             : `${plates} plate${plates > 1 ? 's' : ''} (${plateWeight}kg)`;
-                        
+
                         if (achieved) {
                             html += `
                                 <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a;">
@@ -1552,34 +1553,34 @@
                             `;
                         }
                     });
-                    
+
                     html += `</div>`;
                 });
-                
+
                 html += `</div></div>`;
             }
-            
-            // All-Time PRs Section  
+
+            // All-Time PRs Section
             if (allTimePRs && Object.keys(allTimePRs).length > 0) {
-                const liftNames = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift' };
-                const liftColors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66' };
-                
+                const liftNames = { squat: 'Squat', bench: 'Bench Press', deadlift: 'Deadlift', ohp: 'Overhead Press' };
+                const liftColors = { squat: '#4a9eff', bench: '#ff6b6b', deadlift: '#51cf66', ohp: '#ffd93d' };
+
                 html += `<div class="chart-container">`;
                 html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏆 All-Time PRs</h3>`;
-                
+
                 html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">`;
-                
-                ['squat', 'bench', 'deadlift'].forEach(lift => {
+
+                ['squat', 'bench', 'deadlift', 'ohp'].forEach(lift => {
                     const liftData = allTimePRs[lift];
                     if (!liftData) return;
-                    
+
                     const maxEver = liftData.maxEver;
                     const bestE1rm = liftData.bestE1rm;
                     const repPRs = liftData.repPRs || {};
-                    
+
                     html += `<div>`;
                     html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
-                    
+
                     // Best e1RM
                     if (bestE1rm) {
                         const e1rmValue = currentUnit === 'lbs' ? bestE1rm.e1rmLbs : bestE1rm.e1rmKg;
@@ -1590,7 +1591,7 @@
                             </div>
                         `;
                     }
-                    
+
                     // Rep PRs table
                     const sortedReps = Object.keys(repPRs).map(Number).sort((a, b) => a - b);
                     if (sortedReps.length > 0) {
@@ -1607,13 +1608,13 @@
                         });
                         html += `</div>`;
                     }
-                    
+
                     html += `</div>`;
                 });
-                
+
                 html += `</div></div>`;
             }
-            
+
             container.innerHTML = html;
         }
 
@@ -1824,7 +1825,7 @@
         function updateActiveNav() {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('nav a');
-            
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
