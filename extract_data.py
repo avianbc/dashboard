@@ -65,10 +65,10 @@ def get_summary_stats(conn):
     total_volume_lbs = round(volume_row['total_volume_lbs'] or 0, 2)
     total_volume_kg = round(volume_row['total_volume_kg'] or 0, 2)
 
-    # Total hours (duration is in seconds based on common conventions)
-    cursor.execute("SELECT SUM(duration) as total_seconds FROM history WHERE duration IS NOT NULL")
-    total_seconds = cursor.fetchone()['total_seconds'] or 0
-    total_hours = round(total_seconds / 3600, 1)
+    # Total hours (duration is in minutes)
+    cursor.execute("SELECT SUM(duration) as total_minutes FROM history WHERE duration IS NOT NULL")
+    total_minutes = cursor.fetchone()['total_minutes'] or 0
+    total_hours = round(total_minutes / 60, 1)
 
     # Date range
     cursor.execute("SELECT MIN(date) as first, MAX(date) as last FROM history")
