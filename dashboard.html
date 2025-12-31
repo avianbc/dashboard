@@ -355,19 +355,8 @@
         // Load data and initialize dashboard
         async function init() {
             try {
-                // Try to load from external JSON file first (works with http/https)
-                try {
-                    const response = await fetch(`training_data.json?v=${Date.now()}`);
-                    trainingData = await response.json();
-                } catch (fetchError) {
-                    // If fetch fails (file:// protocol), load from embedded script tag
-                    const dataScript = document.getElementById('trainingDataScript');
-                    if (dataScript) {
-                        trainingData = JSON.parse(dataScript.textContent);
-                    } else {
-                        throw new Error('Training data not found. Please run extract_data.py and either use a local server or embed the data.');
-                    }
-                }
+                const response = await fetch(`training_data.json?v=${Date.now()}`);
+                trainingData = await response.json();
                 renderDashboard();
                 setupUnitToggle();
             } catch (error) {
