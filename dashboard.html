@@ -677,10 +677,10 @@
             const leftMargin = 60;
             const topMargin = 20;
             const rowHeight = (cellSize + cellPadding) * 7 + 50; // Extra space for year header
-            const yearGap = 10;
+            const yearGap = 25;
             const width = leftMargin + (cellSize + cellPadding) * 53 + 20; // Max 53 weeks per year
             const years = Object.keys(yearRanges).length;
-            const height = topMargin + (rowHeight + yearGap) * years;
+            const height = topMargin + (rowHeight + yearGap) * years + 60; // Extra space for legend
 
             // Calculate volume percentiles for color scaling
             const volumes = dates.map(d => getVolume(workoutCalendar[d].volumeLbs, workoutCalendar[d].volumeKg));
@@ -701,12 +701,19 @@
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
 
+            // Calculate workout counts per year
+            const yearWorkoutCounts = {};
+            Object.keys(workoutCalendar).forEach(dateStr => {
+                const year = dateStr.substring(0, 4);
+                yearWorkoutCounts[year] = (yearWorkoutCounts[year] || 0) + workoutCalendar[dateStr].count;
+            });
+
             // Render each year as a separate row
             let rowIndex = 0;
             for (const [year, range] of Object.entries(yearRanges)) {
                 const rowY = topMargin + rowIndex * (rowHeight + yearGap);
 
-                // Year header (centered above the row)
+                // Year header with workout count
                 const yearLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
                 yearLabel.setAttribute('x', leftMargin);
                 yearLabel.setAttribute('y', rowY + 15);
@@ -715,6 +722,28 @@
                 yearLabel.setAttribute('font-weight', '600');
                 yearLabel.textContent = year;
                 svg.appendChild(yearLabel);
+
+                // Workout count for the year
+                const workoutCount = yearWorkoutCounts[year] || 0;
+                const countLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                countLabel.setAttribute('x', leftMargin + 40);
+                countLabel.setAttribute('y', rowY + 15);
+                countLabel.setAttribute('fill', '#666');
+                countLabel.setAttribute('font-size', '12');
+                countLabel.textContent = `${workoutCount} workouts`;
+                svg.appendChild(countLabel);
+
+                // Separator line (except for first year)
+                if (rowIndex > 0) {
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('x1', leftMargin);
+                    line.setAttribute('y1', rowY - yearGap / 2);
+                    line.setAttribute('x2', width - 20);
+                    line.setAttribute('y2', rowY - yearGap / 2);
+                    line.setAttribute('stroke', '#1a1a1a');
+                    line.setAttribute('stroke-width', '1');
+                    svg.appendChild(line);
+                }
 
                 // Weekday labels for this row
                 const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S']; // Abbreviated
@@ -776,8 +805,9 @@
                         const monthLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
                         monthLabel.setAttribute('x', x);
                         monthLabel.setAttribute('y', rowY + 27);
-                        monthLabel.setAttribute('fill', '#888');
+                        monthLabel.setAttribute('fill', '#aaa');
                         monthLabel.setAttribute('font-size', '10');
+                        monthLabel.setAttribute('font-weight', '600');
                         monthLabel.textContent = monthNames[month];
                         svg.appendChild(monthLabel);
                         lastMonth = month;
@@ -789,6 +819,39 @@
 
                 rowIndex++;
             }
+
+            // Add color legend at the bottom
+            const legendY = height - 40;
+            const legendX = width - 200;
+
+            const legendLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            legendLabel.setAttribute('x', legendX - 40);
+            legendLabel.setAttribute('y', legendY + 10);
+            legendLabel.setAttribute('fill', '#888');
+            legendLabel.setAttribute('font-size', '10');
+            legendLabel.textContent = 'Less';
+            svg.appendChild(legendLabel);
+
+            // Legend boxes
+            for (let i = 0; i < 5; i++) {
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', legendX + i * 16);
+                rect.setAttribute('y', legendY);
+                rect.setAttribute('width', cellSize);
+                rect.setAttribute('height', cellSize);
+                rect.setAttribute('fill', colors[i + 1]);
+                rect.setAttribute('stroke', '#1a1a1a');
+                rect.setAttribute('stroke-width', '1');
+                svg.appendChild(rect);
+            }
+
+            const legendLabel2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            legendLabel2.setAttribute('x', legendX + 85);
+            legendLabel2.setAttribute('y', legendY + 10);
+            legendLabel2.setAttribute('fill', '#888');
+            legendLabel2.setAttribute('font-size', '10');
+            legendLabel2.textContent = 'More';
+            svg.appendChild(legendLabel2);
 
             container.innerHTML = '';
             container.appendChild(svg);
