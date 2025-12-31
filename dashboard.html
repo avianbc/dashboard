@@ -357,7 +357,7 @@
             try {
                 // Try to load from external JSON file first (works with http/https)
                 try {
-                    const response = await fetch('training_data.json');
+                    const response = await fetch(`training_data.json?v=${Date.now()}`);
                     trainingData = await response.json();
                 } catch (fetchError) {
                     // If fetch fails (file:// protocol), load from embedded script tag
