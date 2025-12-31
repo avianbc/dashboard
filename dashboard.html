@@ -8,6 +8,52 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <style>
+      :root {
+        /* Background colors */
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #111;
+        --bg-tertiary: #1a1a1a;
+        --bg-hover: #222;
+        
+        /* Text colors */
+        --text-primary: #e0e0e0;
+        --text-bright: #fff;
+        --text-muted: #888;
+        --text-muted-light: #aaa;
+        --text-muted-dark: #666;
+        
+        /* Accent colors */
+        --accent-blue: #4a9eff;
+        --accent-green: #51cf66;
+        --accent-red: #ff6b6b;
+        --accent-yellow: #ffd93d;
+        --accent-gold: #ffd700;
+        
+        /* Lift-specific colors */
+        --lift-squat: #4a9eff;
+        --lift-bench: #ff6b6b;
+        --lift-deadlift: #51cf66;
+        --lift-ohp: #ffd93d;
+        
+        /* Border colors */
+        --border-primary: #1a1a1a;
+        --border-secondary: #333;
+        --border-hover: #555;
+        
+        /* Spacing */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 4rem;
+        
+        /* Border radius */
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 20px;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -18,20 +64,20 @@
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, sans-serif;
-        background: #0a0a0a;
-        color: #e0e0e0;
+        background: var(--bg-primary);
+        color: var(--text-primary);
         line-height: 1.6;
       }
 
       .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: var(--spacing-xl);
       }
 
       header {
         text-align: center;
-        padding: 4rem 0 2rem;
+        padding: var(--spacing-2xl) 0 var(--spacing-xl);
         position: relative;
       }
 
@@ -39,54 +85,54 @@
         font-size: 3rem;
         font-weight: 800;
         letter-spacing: -0.02em;
-        margin-bottom: 0.5rem;
+        margin-bottom: var(--spacing-sm);
       }
 
       .tagline {
         font-size: 1.125rem;
-        color: #888;
-        margin-bottom: 2rem;
+        color: var(--text-muted);
+        margin-bottom: var(--spacing-xl);
       }
 
       .unit-toggle {
         position: absolute;
-        top: 2rem;
+        top: var(--spacing-xl);
         right: 0;
-        background: #1a1a1a;
-        border: 1px solid #333;
-        color: #e0e0e0;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-secondary);
+        color: var(--text-primary);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--radius-lg);
         cursor: pointer;
         font-size: 0.875rem;
         transition: all 0.2s;
       }
 
       .unit-toggle:hover {
-        background: #222;
-        border-color: #555;
+        background: var(--bg-hover);
+        border-color: var(--border-hover);
       }
 
       nav {
         position: sticky;
         top: 0;
-        background: #0a0a0a;
-        border-bottom: 1px solid #1a1a1a;
-        padding: 1rem 0;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-primary);
+        padding: var(--spacing-md) 0;
         z-index: 100;
-        margin-bottom: 2rem;
+        margin-bottom: var(--spacing-xl);
       }
 
       nav ul {
         list-style: none;
         display: flex;
-        gap: 1.5rem;
+        gap: var(--spacing-lg);
         justify-content: center;
         flex-wrap: wrap;
       }
 
       nav a {
-        color: #888;
+        color: var(--text-muted);
         text-decoration: none;
         font-size: 0.875rem;
         text-transform: uppercase;
@@ -95,17 +141,17 @@
       }
 
       nav a:hover {
-        color: #4a9eff;
+        color: var(--accent-blue);
       }
 
       nav a.active {
-        color: #e0e0e0;
+        color: var(--text-primary);
       }
 
       section {
-        margin: 4rem 0;
-        padding: 2rem 0;
-        border-top: 1px solid #1a1a1a;
+        margin: var(--spacing-2xl) 0;
+        padding: var(--spacing-xl) 0;
+        border-top: 1px solid var(--border-primary);
       }
 
       section:first-of-type {
@@ -115,15 +161,15 @@
       h2 {
         font-size: 1.5rem;
         font-weight: 700;
-        margin-bottom: 2rem;
-        color: #fff;
+        margin-bottom: var(--spacing-xl);
+        color: var(--text-bright);
       }
 
       h3 {
         font-size: 1.25rem;
         font-weight: 600;
-        margin: 2rem 0 1rem;
-        color: #fff;
+        margin: var(--spacing-xl) 0 var(--spacing-md);
+        color: var(--text-bright);
       }
 
       .foreword {
@@ -131,44 +177,130 @@
         margin: 0 auto;
         font-size: 1rem;
         line-height: 1.8;
-        color: #aaa;
+        color: var(--text-muted-light);
       }
 
       .summary-stats {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
+        gap: var(--spacing-xl);
         margin: 3rem 0;
       }
 
       .stat-card {
         text-align: center;
-        padding: 1.5rem;
-        background: #111;
-        border-radius: 8px;
-        border: 1px solid #1a1a1a;
+        padding: var(--spacing-lg);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-primary);
       }
 
       .stat-number {
         font-size: 3rem;
         font-weight: 700;
-        color: #fff;
-        margin-bottom: 0.5rem;
+        color: var(--text-bright);
+        margin-bottom: var(--spacing-sm);
       }
 
       .stat-label {
         font-size: 0.875rem;
-        color: #888;
+        color: var(--text-muted);
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
 
+      /* Mini stat styles for inline replacement */
+      .stat-mini {
+        text-align: center;
+      }
+
+      .stat-mini-label {
+        color: var(--text-muted-dark);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .stat-mini-value {
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .stat-mini-value.large {
+        font-size: 2rem;
+      }
+
+      .stat-mini-value.accent-blue {
+        color: var(--lift-squat);
+      }
+
+      .stat-mini-value.accent-red {
+        color: var(--lift-bench);
+      }
+
+      .stat-mini-value.accent-green {
+        color: var(--lift-deadlift);
+      }
+
+      .stat-mini-value.accent-gold {
+        color: var(--accent-gold);
+      }
+
+      .stat-mini-detail {
+        color: var(--text-muted-dark);
+        font-size: 0.75rem;
+        margin-top: var(--spacing-xs);
+      }
+
+      /* Progress bar styles */
+      .progress-bar {
+        background: var(--bg-tertiary);
+        height: 12px;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        border-radius: 6px;
+        transition: width 0.3s;
+      }
+
+      .progress-fill.accent-blue {
+        background: var(--accent-blue);
+      }
+
+      /* Milestone and PR row styles */
+      .milestone-item {
+        border-left: 3px solid;
+        padding-left: var(--spacing-md);
+        margin: var(--spacing-sm) 0;
+      }
+
+      .pr-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.35rem 0;
+        border-bottom: 1px solid var(--border-primary);
+      }
+
+      .pr-label {
+        color: var(--text-muted);
+      }
+
+      .pr-value {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
       .chart-container {
-        margin: 2rem 0;
-        background: #111;
-        padding: 2rem;
-        border-radius: 8px;
-        border: 1px solid #1a1a1a;
+        margin: var(--spacing-xl) 0;
+        background: var(--bg-secondary);
+        padding: var(--spacing-xl);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-primary);
       }
 
       svg {
@@ -181,16 +313,16 @@
       }
 
       .heatmap-cell:hover {
-        stroke: #fff;
+        stroke: var(--text-bright);
         stroke-width: 2;
       }
 
       .tooltip {
         position: absolute;
-        background: #1a1a1a;
-        border: 1px solid #333;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-secondary);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--radius-sm);
         font-size: 0.875rem;
         pointer-events: none;
         z-index: 1000;
@@ -198,88 +330,88 @@
       }
 
       .notable-workout {
-        background: #111;
-        padding: 1rem;
-        margin: 0.5rem 0;
-        border-radius: 4px;
-        border-left: 3px solid #4a9eff;
+        background: var(--bg-secondary);
+        padding: var(--spacing-md);
+        margin: var(--spacing-sm) 0;
+        border-radius: var(--radius-sm);
+        border-left: 3px solid var(--accent-blue);
       }
 
       .notable-date {
         font-weight: 600;
-        color: #4a9eff;
+        color: var(--accent-blue);
       }
 
       .milestone {
         display: flex;
         align-items: center;
         padding: 0.75rem 0;
-        border-bottom: 1px solid #1a1a1a;
+        border-bottom: 1px solid var(--border-primary);
       }
 
       .milestone-date {
         min-width: 100px;
-        color: #888;
+        color: var(--text-muted);
       }
 
       .milestone-text {
-        color: #e0e0e0;
+        color: var(--text-primary);
       }
 
       .program-card {
-        background: #111;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border-radius: 4px;
-        border-left: 3px solid #888;
+        background: var(--bg-secondary);
+        padding: var(--spacing-lg);
+        margin: var(--spacing-md) 0;
+        border-radius: var(--radius-sm);
+        border-left: 3px solid var(--text-muted);
       }
 
       .program-name {
         font-weight: 600;
         font-size: 1.125rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: var(--spacing-sm);
       }
 
       .program-stats {
         display: flex;
-        gap: 2rem;
-        margin-top: 0.5rem;
-        color: #888;
+        gap: var(--spacing-xl);
+        margin-top: var(--spacing-sm);
+        color: var(--text-muted);
         font-size: 0.875rem;
       }
 
       .view-toggle {
         display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
         justify-content: center;
       }
 
       .view-toggle button {
-        background: #1a1a1a;
-        border: 1px solid #333;
-        color: #888;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-secondary);
+        color: var(--text-muted);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--radius-sm);
         cursor: pointer;
         font-size: 0.875rem;
         transition: all 0.2s;
       }
 
       .view-toggle button:hover {
-        border-color: #555;
-        color: #e0e0e0;
+        border-color: var(--border-hover);
+        color: var(--text-primary);
       }
 
       .view-toggle button.active {
-        background: #4a9eff;
-        border-color: #4a9eff;
-        color: #fff;
+        background: var(--accent-blue);
+        border-color: var(--accent-blue);
+        color: var(--text-bright);
       }
 
       @media (max-width: 768px) {
         .container {
-          padding: 1rem;
+          padding: var(--spacing-md);
         }
 
         h1 {
@@ -289,7 +421,7 @@
         .unit-toggle {
           position: static;
           display: block;
-          margin: 1rem auto 0;
+          margin: var(--spacing-md) auto 0;
           max-width: 150px;
         }
 
@@ -509,6 +641,20 @@
         return monday.toISOString().split("T")[0];
       }
 
+      function createSVGElement(tag, attrs = {}) {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        Object.entries(attrs).forEach(([key, value]) => {
+          el.setAttribute(key, value);
+        });
+        return el;
+      }
+
+      function createSVGText(x, y, text, attrs = {}) {
+        const el = createSVGElement('text', { x, y, ...attrs });
+        el.textContent = text;
+        return el;
+      }
+
       function renderDashboard() {
         renderSummaryStats();
         renderAnnualVolumeChart();
@@ -599,6 +745,15 @@
         tension: 0.4,
         hitRadius: 10,
       };
+
+      const LIFT_CONFIG = {
+        squat: { name: 'Squat', color: '#4a9eff', order: 0 },
+        bench: { name: 'Bench Press', color: '#ff6b6b', order: 1 },
+        deadlift: { name: 'Deadlift', color: '#51cf66', order: 2 },
+        ohp: { name: 'Overhead Press', color: '#ffd93d', order: 3 }
+      };
+
+      const LIFT_ORDER = ['squat', 'bench', 'deadlift', 'ohp'];
 
       function getBaseChartOptions(overrides = {}) {
         return {
@@ -814,16 +969,10 @@
           }),
         ];
 
-        // Add Big 3 datasets
-        const bigThreeConfig = [
-          { lift: "squat", name: "Squat", color: "#4a9eff" },
-          { lift: "bench", name: "Bench Press", color: "#ff6b6b" },
-          { lift: "deadlift", name: "Deadlift", color: "#51cf66" },
-          { lift: "ohp", name: "Overhead Press", color: "#ffd93d" },
-        ];
-
-        bigThreeConfig.forEach((config) => {
-          const liftData = aggregateBigThreeVolume(config.lift);
+        // Add Big 3 datasets using centralized config
+        LIFT_ORDER.forEach((lift) => {
+          const config = LIFT_CONFIG[lift];
+          const liftData = aggregateBigThreeVolume(lift);
           if (liftData.length > 0) {
             datasets.push(
               createLineDataset(config.name, liftData, config.color, {
@@ -838,7 +987,14 @@
           type: "line",
           data: { datasets },
           options: getBaseChartOptions({
-            legend: { display: true },
+            legend: { 
+              display: true,
+              labels: {
+                boxWidth: 12,
+                boxHeight: 12,
+                usePointStyle: false
+              }
+            },
             tooltip: {
               callbacks: {
                 title: function (context) {
@@ -1201,21 +1357,8 @@
           return;
         }
 
-        const order = ["squat", "bench", "deadlift", "ohp"];
-        const names = {
-          squat: "Squat",
-          bench: "Bench Press",
-          deadlift: "Deadlift",
-          ohp: "Overhead Press",
-        };
-        const colors = {
-          squat: "#4a9eff",
-          bench: "#ff6b6b",
-          deadlift: "#51cf66",
-          ohp: "#ffd93d",
-        };
-
-        order.forEach((lift) => {
+        LIFT_ORDER.forEach((lift) => {
+          const config = LIFT_CONFIG[lift];
           const hasE1RM =
             bigThreeE1RM &&
             bigThreeE1RM[lift] &&
@@ -1237,7 +1380,7 @@
           chartDiv.className = "chart-container";
 
           const title = document.createElement("h3");
-          title.textContent = names[lift];
+          title.textContent = config.name;
           title.style.marginTop = "0";
           title.style.marginBottom = "1rem";
           chartDiv.appendChild(title);
@@ -1320,7 +1463,7 @@
                 lift,
                 data.prs || [],
                 e1rmData.e1rmHistory || [],
-                colors[lift],
+                config.color,
               ),
             0,
           );
@@ -1378,11 +1521,13 @@
             data: prData,
             type: "scatter",
             backgroundColor: "#ffd700",
-            borderColor: "#ffd700",
-            pointRadius: 6,
-            pointHoverRadius: 8,
-            pointStyle: "star",
+            borderColor: "#fff",
+            borderWidth: 2,
+            pointRadius: 8,
+            pointHoverRadius: 10,
+            pointStyle: "circle",
             showLine: false,
+            order: 0,
           });
         }
 
@@ -1669,11 +1814,11 @@
             html += `
                         <div style="margin-top: 1.5rem;">
                             <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span style="color: #888;">Progress to ${nextClub.name}</span>
-                                <span style="color: ${nextClub.color}; font-weight: 600;">${Math.round(remaining)} lbs to go</span>
+                                <span style="color: var(--text-muted);">Progress to ${nextClub.name}</span>
+                                <span style="color: var(--accent-blue); font-weight: 600;">${Math.round(remaining)} lbs to go</span>
                             </div>
-                            <div style="background: #1a1a1a; height: 12px; border-radius: 6px; overflow: hidden;">
-                                <div style="background: ${nextClub.color}; height: 100%; width: ${Math.min(progressPercent, 100)}%; border-radius: 6px; transition: width 0.3s;"></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill accent-blue" style="width: ${Math.min(progressPercent, 100)}%;"></div>
                             </div>
                         </div>
                     `;
@@ -1709,18 +1854,6 @@
 
         // Plate Milestones Section
         if (plateMilestones && Object.keys(plateMilestones).length > 0) {
-          const liftNames = {
-            squat: "Squat",
-            bench: "Bench Press",
-            deadlift: "Deadlift",
-            ohp: "Overhead Press",
-          };
-          const liftColors = {
-            squat: "#4a9eff",
-            bench: "#ff6b6b",
-            deadlift: "#51cf66",
-            ohp: "#ffd93d",
-          };
           const plateLabels = {
             1: "1 Plate (135)",
             2: "2 Plates (225)",
@@ -1732,14 +1865,15 @@
           html += `<div class="chart-container">`;
           html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏅 Plate Milestones</h3>`;
 
-          html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">`;
+          html += `<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">`;
 
-          ["squat", "bench", "deadlift", "ohp"].forEach((lift) => {
+          LIFT_ORDER.forEach((lift) => {
+            const config = LIFT_CONFIG[lift];
             const liftData = plateMilestones[lift] || {};
             const maxPlates = Math.max(...Object.keys(liftData).map(Number), 0);
 
             html += `<div>`;
-            html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
+            html += `<h4 style="color: ${config.color}; margin-bottom: 1rem;">${config.name}</h4>`;
 
             [1, 2, 3, 4, 5].forEach((plates) => {
               const achieved = liftData[plates];
@@ -1779,25 +1913,13 @@
 
         // All-Time PRs Section
         if (allTimePRs && Object.keys(allTimePRs).length > 0) {
-          const liftNames = {
-            squat: "Squat",
-            bench: "Bench Press",
-            deadlift: "Deadlift",
-            ohp: "Overhead Press",
-          };
-          const liftColors = {
-            squat: "#4a9eff",
-            bench: "#ff6b6b",
-            deadlift: "#51cf66",
-            ohp: "#ffd93d",
-          };
-
           html += `<div class="chart-container">`;
           html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏆 All-Time PRs</h3>`;
 
-          html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">`;
+          html += `<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">`;
 
-          ["squat", "bench", "deadlift", "ohp"].forEach((lift) => {
+          LIFT_ORDER.forEach((lift) => {
+            const config = LIFT_CONFIG[lift];
             const liftData = allTimePRs[lift];
             if (!liftData) return;
 
@@ -1806,16 +1928,16 @@
             const repPRs = liftData.repPRs || {};
 
             html += `<div>`;
-            html += `<h4 style="color: ${liftColors[lift]}; margin-bottom: 1rem;">${liftNames[lift]}</h4>`;
+            html += `<h4 style="color: ${config.color}; margin-bottom: 1rem;">${config.name}</h4>`;
 
             // Best e1RM
             if (bestE1rm) {
               const e1rmValue =
                 currentUnit === "lbs" ? bestE1rm.e1rmLbs : bestE1rm.e1rmKg;
               html += `
-                            <div style="background: #111; border: 1px solid ${liftColors[lift]}44; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center;">
+                            <div style="background: #111; border: 1px solid ${config.color}44; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center;">
                                 <div style="color: #888; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Best e1RM</div>
-                                <div style="color: ${liftColors[lift]}; font-size: 1.75rem; font-weight: 700;">${Math.round(e1rmValue)} ${currentUnit}</div>
+                                <div style="color: ${config.color}; font-size: 1.75rem; font-weight: 700;">${Math.round(e1rmValue)} ${currentUnit}</div>
                             </div>
                         `;
             }
@@ -1992,6 +2114,11 @@
         const { programs } = trainingData;
         const container = document.getElementById("programsList");
 
+        if (!programs || programs.length === 0) {
+          container.innerHTML = '<p style="color: var(--text-muted);">No programs found</p>';
+          return;
+        }
+
         container.innerHTML = programs
           .map(
             (program) => `
@@ -2011,6 +2138,11 @@
       function renderNotableWorkouts() {
         const { notableWorkouts } = trainingData;
         const container = document.getElementById("notableWorkoutsList");
+
+        if (!notableWorkouts || notableWorkouts.length === 0) {
+          container.innerHTML = '<p style="color: var(--text-muted);">No notable workouts found</p>';
+          return;
+        }
 
         container.innerHTML = notableWorkouts
           .map(
