@@ -443,16 +443,16 @@ def get_programs(conn):
         start_date = row['start_date']
         end_date = row['end_date']
 
-        # Count PRs set during this program's date range
+        # Count unique PRs set during this program's date range (distinct exercise+rep combinations where weight increased)
         cursor.execute("""
-            SELECT COUNT(*) as pr_count
+            SELECT COUNT(DISTINCT exercise_id || '-' || reps) as pr_count
             FROM (
                 SELECT
                     date(h.date/1000, 'unixepoch') as pr_date,
                     he.exercise_id,
                     he.reps,
-                    he.weightlb,
-                    MAX(he.weightlb) OVER (
+                    MAX(he.weightlb) as max_weight_day,
+                    MAX(MAX(he.weightlb)) OVER (
                         PARTITION BY he.exercise_id, he.reps
                         ORDER BY h.date
                         ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
@@ -460,8 +460,9 @@ def get_programs(conn):
                 FROM history_exercises he
                 JOIN history h ON he.history_id = h.id
                 WHERE he.reps > 0
+                GROUP BY he.exercise_id, he.reps, h.date
             ) subq
-            WHERE (prev_max IS NULL OR weightlb > prev_max)
+            WHERE prev_max IS NOT NULL AND max_weight_day > prev_max
             AND pr_date BETWEEN ? AND ?
         """, (start_date, end_date))
 
@@ -563,15 +564,15 @@ def get_notable_workouts(conn):
 
     notable = []
     for row in cursor.fetchall():
-        # Count PRs on this day
+        # Count unique PRs on this day (distinct exercise + rep combinations where weight increased)
         cursor.execute("""
-            SELECT COUNT(*) as pr_count
+            SELECT COUNT(DISTINCT exercise_id || '-' || reps) as pr_count
             FROM (
                 SELECT
                     he.exercise_id,
                     he.reps,
-                    he.weightlb,
-                    MAX(he.weightlb) OVER (
+                    MAX(he.weightlb) as max_weight_day,
+                    MAX(MAX(he.weightlb)) OVER (
                         PARTITION BY he.exercise_id, he.reps
                         ORDER BY h.date
                         ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
@@ -580,8 +581,9 @@ def get_notable_workouts(conn):
                 JOIN history h ON he.history_id = h.id
                 WHERE date(h.date/1000, 'unixepoch') = ?
                 AND he.reps > 0
+                GROUP BY he.exercise_id, he.reps, h.date
             ) subq
-            WHERE prev_max IS NULL OR weightlb > prev_max
+            WHERE prev_max IS NOT NULL AND max_weight_day > prev_max
         """, (row['workout_date'],))
 
         pr_count = cursor.fetchone()['pr_count']
