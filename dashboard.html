@@ -660,12 +660,27 @@
             const startDate = new Date(dates[0]);
             const endDate = new Date(dates[dates.length - 1]);
 
-            // Calculate heatmap dimensions
+            // Group dates by year
+            const yearRanges = {};
+            for (let year = startDate.getFullYear(); year <= endDate.getFullYear(); year++) {
+                const yearStart = new Date(year, 0, 1);
+                const yearEnd = new Date(year, 11, 31);
+                yearRanges[year] = {
+                    start: year === startDate.getFullYear() ? startDate : yearStart,
+                    end: year === endDate.getFullYear() ? endDate : yearEnd
+                };
+            }
+
+            // Calculate dimensions
             const cellSize = 12;
             const cellPadding = 2;
-            const weeks = Math.ceil((endDate - startDate) / (7 * 24 * 60 * 60 * 1000));
-            const width = Math.min(container.offsetWidth, (cellSize + cellPadding) * weeks + 100);
-            const height = (cellSize + cellPadding) * 7 + 100;
+            const leftMargin = 60;
+            const topMargin = 20;
+            const rowHeight = (cellSize + cellPadding) * 7 + 50; // Extra space for year header
+            const yearGap = 10;
+            const width = leftMargin + (cellSize + cellPadding) * 53 + 20; // Max 53 weeks per year
+            const years = Object.keys(yearRanges).length;
+            const height = topMargin + (rowHeight + yearGap) * years;
 
             // Calculate volume percentiles for color scaling
             const volumes = dates.map(d => getVolume(workoutCalendar[d].volumeLbs, workoutCalendar[d].volumeKg));
@@ -681,56 +696,99 @@
             };
 
             const colors = ['#161616', '#0e4429', '#006d32', '#26a641', '#39d353', '#39d353'];
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
 
-            // Fill in all dates
-            const currentDate = new Date(startDate);
-            let weekIndex = 0;
+            // Render each year as a separate row
+            let rowIndex = 0;
+            for (const [year, range] of Object.entries(yearRanges)) {
+                const rowY = topMargin + rowIndex * (rowHeight + yearGap);
 
-            while (currentDate <= endDate) {
-                const dateStr = currentDate.toISOString().split('T')[0];
-                const dayOfWeek = currentDate.getDay();
-                const data = workoutCalendar[dateStr];
-                const volume = data ? getVolume(data.volumeLbs, data.volumeKg) : 0;
-                const colorLevel = getColorLevel(volume);
+                // Year header (centered above the row)
+                const yearLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                yearLabel.setAttribute('x', leftMargin);
+                yearLabel.setAttribute('y', rowY + 15);
+                yearLabel.setAttribute('fill', '#e0e0e0');
+                yearLabel.setAttribute('font-size', '14');
+                yearLabel.setAttribute('font-weight', '600');
+                yearLabel.textContent = year;
+                svg.appendChild(yearLabel);
 
-                const x = 50 + weekIndex * (cellSize + cellPadding);
-                const y = 30 + dayOfWeek * (cellSize + cellPadding);
+                // Weekday labels for this row
+                const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S']; // Abbreviated
+                days.forEach((day, i) => {
+                    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    label.setAttribute('x', 48);
+                    label.setAttribute('y', rowY + 42 + i * (cellSize + cellPadding));
+                    label.setAttribute('text-anchor', 'end');
+                    label.setAttribute('fill', '#888');
+                    label.setAttribute('font-size', '10');
+                    label.textContent = day;
+                    svg.appendChild(label);
+                });
 
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                rect.setAttribute('x', x);
-                rect.setAttribute('y', y);
-                rect.setAttribute('width', cellSize);
-                rect.setAttribute('height', cellSize);
-                rect.setAttribute('fill', colors[colorLevel]);
-                rect.setAttribute('class', 'heatmap-cell');
-                rect.setAttribute('data-date', dateStr);
-                rect.setAttribute('data-volume', volume.toFixed(0));
-                rect.setAttribute('data-workouts', data ? data.count : 0);
+                // Start from the Sunday before Jan 1st
+                const yearStart = new Date(parseInt(year), 0, 1);
+                const adjustedStart = new Date(yearStart);
+                adjustedStart.setDate(adjustedStart.getDate() - adjustedStart.getDay());
 
-                rect.addEventListener('mouseenter', (e) => showTooltip(e, dateStr, volume, data ? data.count : 0));
-                rect.addEventListener('mouseleave', hideTooltip);
+                const yearEnd = new Date(parseInt(year), 11, 31);
+                const currentDate = new Date(adjustedStart);
+                let weekIndex = 0;
+                let lastMonth = -1;
 
-                svg.appendChild(rect);
+                while (currentDate <= yearEnd) {
+                    const dateStr = currentDate.toISOString().split('T')[0];
+                    const dayOfWeek = currentDate.getDay();
+                    const month = currentDate.getMonth();
+                    const dateYear = currentDate.getFullYear();
 
-                if (dayOfWeek === 6) weekIndex++;
-                currentDate.setDate(currentDate.getDate() + 1);
+                    const x = leftMargin + weekIndex * (cellSize + cellPadding);
+                    const y = rowY + 35 + dayOfWeek * (cellSize + cellPadding);
+
+                    // Only draw cells for dates within the year and data range
+                    if (currentDate >= range.start && currentDate <= range.end) {
+                        const data = workoutCalendar[dateStr];
+                        const volume = data ? getVolume(data.volumeLbs, data.volumeKg) : 0;
+                        const colorLevel = getColorLevel(volume);
+
+                        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                        rect.setAttribute('x', x);
+                        rect.setAttribute('y', y);
+                        rect.setAttribute('width', cellSize);
+                        rect.setAttribute('height', cellSize);
+                        rect.setAttribute('fill', colors[colorLevel]);
+                        rect.setAttribute('class', 'heatmap-cell');
+                        rect.setAttribute('data-date', dateStr);
+                        rect.setAttribute('data-volume', volume.toFixed(0));
+                        rect.setAttribute('data-workouts', data ? data.count : 0);
+
+                        rect.addEventListener('mouseenter', (e) => showTooltip(e, dateStr, volume, data ? data.count : 0));
+                        rect.addEventListener('mouseleave', hideTooltip);
+
+                        svg.appendChild(rect);
+                    }
+
+                    // Add month labels (only on Sundays, when month changes, and for current year)
+                    if (dayOfWeek === 0 && month !== lastMonth && dateYear === parseInt(year)) {
+                        const monthLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                        monthLabel.setAttribute('x', x);
+                        monthLabel.setAttribute('y', rowY + 27);
+                        monthLabel.setAttribute('fill', '#888');
+                        monthLabel.setAttribute('font-size', '10');
+                        monthLabel.textContent = monthNames[month];
+                        svg.appendChild(monthLabel);
+                        lastMonth = month;
+                    }
+
+                    if (dayOfWeek === 6) weekIndex++;
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+
+                rowIndex++;
             }
-
-            // Day labels
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            days.forEach((day, i) => {
-                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                label.setAttribute('x', 35);
-                label.setAttribute('y', 38 + i * (cellSize + cellPadding));
-                label.setAttribute('text-anchor', 'end');
-                label.setAttribute('fill', '#888');
-                label.setAttribute('font-size', '10');
-                label.textContent = day;
-                svg.appendChild(label);
-            });
 
             container.innerHTML = '';
             container.appendChild(svg);
