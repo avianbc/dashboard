@@ -449,6 +449,7 @@
             const statsContainer = document.getElementById('summaryStats');
 
             const totalVolume = getVolume(summary.totalVolumeLbs, summary.totalVolumeKg);
+            const avgVolume = getVolume(summary.avgVolumePerWorkoutLbs, summary.avgVolumePerWorkoutKg);
             const years = calculateYears(summary.firstWorkout, summary.lastWorkout);
 
             statsContainer.innerHTML = `
@@ -457,16 +458,28 @@
                     <div class="stat-label">Total Workouts</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">${summary.totalSets.toLocaleString()}</div>
-                    <div class="stat-label">Total Sets</div>
+                    <div class="stat-number">${summary.workoutsPerWeekAvg}</div>
+                    <div class="stat-label">Workouts/Week Avg</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">${Math.round(totalVolume / 1000)}K</div>
                     <div class="stat-label">Total Volume (${currentUnit})</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-number">${Math.round(avgVolume / 1000)}K</div>
+                    <div class="stat-label">Avg Volume/Workout (${currentUnit})</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${summary.avgSetsPerWorkout}</div>
+                    <div class="stat-label">Avg Sets/Workout</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${summary.avgWorkoutDuration}</div>
+                    <div class="stat-label">Avg Duration (min)</div>
+                </div>
+                <div class="stat-card">
                     <div class="stat-number">${summary.totalHours}</div>
-                    <div class="stat-label">Hours Trained</div>
+                    <div class="stat-label">Total Hours</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">${years}</div>

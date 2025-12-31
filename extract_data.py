@@ -74,6 +74,22 @@ def get_summary_stats(conn):
     first_workout = ms_to_date(date_range['first'])
     last_workout = ms_to_date(date_range['last'])
 
+    # Calculate derived statistics
+    avg_workout_duration = round(total_minutes / total_workouts, 1) if total_workouts > 0 else 0
+    avg_volume_per_workout_lbs = round(total_volume_lbs / total_workouts, 2) if total_workouts > 0 else 0
+    avg_volume_per_workout_kg = round(total_volume_kg / total_workouts, 2) if total_workouts > 0 else 0
+    avg_sets_per_workout = round(total_sets / total_workouts, 1) if total_workouts > 0 else 0
+
+    # Calculate workouts per week average
+    if date_range['first'] and date_range['last']:
+        first_date = datetime.fromtimestamp(date_range['first'] / 1000)
+        last_date = datetime.fromtimestamp(date_range['last'] / 1000)
+        total_days = (last_date - first_date).days + 1
+        total_weeks = total_days / 7
+        workouts_per_week_avg = round(total_workouts / total_weeks, 1) if total_weeks > 0 else 0
+    else:
+        workouts_per_week_avg = 0
+
     return {
         'totalWorkouts': total_workouts,
         'totalSets': total_sets,
@@ -81,7 +97,12 @@ def get_summary_stats(conn):
         'totalVolumeKg': total_volume_kg,
         'totalHours': total_hours,
         'firstWorkout': first_workout,
-        'lastWorkout': last_workout
+        'lastWorkout': last_workout,
+        'avgWorkoutDuration': avg_workout_duration,
+        'avgVolumePerWorkoutLbs': avg_volume_per_workout_lbs,
+        'avgVolumePerWorkoutKg': avg_volume_per_workout_kg,
+        'avgSetsPerWorkout': avg_sets_per_workout,
+        'workoutsPerWeekAvg': workouts_per_week_avg
     }
 
 def get_volume_time_series(conn):

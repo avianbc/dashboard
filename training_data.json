@@ -6,7 +6,12 @@
     "totalVolumeKg": 3094002.5,
     "totalHours": 734.1,
     "firstWorkout": "2019-01-23",
-    "lastWorkout": "2025-10-24"
+    "lastWorkout": "2025-10-24",
+    "avgWorkoutDuration": 45.5,
+    "avgVolumePerWorkoutLbs": 7052.17,
+    "avgVolumePerWorkoutKg": 3192.99,
+    "avgSetsPerWorkout": 9.9,
+    "workoutsPerWeekAvg": 2.8
   },
   "volumeTimeSeries": {
     "daily": [
