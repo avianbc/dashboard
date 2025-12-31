@@ -432,6 +432,23 @@
             return `${volume.toLocaleString()} ${currentUnit}`;
         }
 
+        function isoWeekToDate(weekString) {
+            // Convert YYYY-Www format to date of Monday of that week
+            const parts = weekString.match(/^(\d{4})-W(\d{2})$/);
+            if (!parts) return weekString;
+
+            const year = parseInt(parts[1]);
+            const week = parseInt(parts[2]);
+
+            // January 4th is always in week 1 (ISO 8601)
+            const jan4 = new Date(year, 0, 4);
+            const monday = new Date(jan4);
+            monday.setDate(jan4.getDate() - (jan4.getDay() || 7) + 1);
+            monday.setDate(monday.getDate() + (week - 1) * 7);
+
+            return monday.toISOString().split('T')[0];
+        }
+
         function renderDashboard() {
             renderSummaryStats();
             renderAnnualVolumeChart();
@@ -675,7 +692,7 @@
             } else if (volumeView === 'weekly') {
                 data = volumeTimeSeries.weekly;
                 chartData = data.map(d => ({
-                    x: d.week + '-1', // Convert YYYY-Www to date
+                    x: isoWeekToDate(d.week),
                     y: getVolume(d.volumeLbs, d.volumeKg)
                 }));
                 label = `Total Volume (${currentUnit})`;
