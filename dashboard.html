@@ -508,6 +508,97 @@
         let annualVolumeChartInstance = null;
         let bigThreeChartInstances = {};
 
+        // Shared Chart.js Configuration
+        const CHART_COLORS = {
+            grid: '#1a1a1a',
+            text: '#888',
+            textBright: '#e0e0e0',
+            tooltipBg: '#1a1a1a',
+            tooltipBorder: '#333'
+        };
+
+        const CHART_DEFAULTS = {
+            borderWidth: 2.5,
+            pointRadius: 0,
+            pointHoverRadius: 6,
+            pointHoverBorderWidth: 2,
+            tension: 0.4,
+            hitRadius: 10
+        };
+
+        function getBaseChartOptions(overrides = {}) {
+            return {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            color: CHART_COLORS.textBright,
+                            padding: 15,
+                            font: { size: 12 },
+                            usePointStyle: true,
+                            pointStyle: 'line'
+                        },
+                        ...(overrides.legend || {})
+                    },
+                    tooltip: {
+                        backgroundColor: CHART_COLORS.tooltipBg,
+                        titleColor: CHART_COLORS.textBright,
+                        bodyColor: CHART_COLORS.textBright,
+                        borderColor: CHART_COLORS.tooltipBorder,
+                        borderWidth: 1,
+                        titleFont: { size: 13, weight: '600' },
+                        bodyFont: { size: 12 },
+                        padding: 12,
+                        displayColors: false,
+                        ...(overrides.tooltip || {})
+                    },
+                    ...(overrides.plugins || {})
+                },
+                scales: {
+                    x: {
+                        grid: { color: CHART_COLORS.grid },
+                        ticks: {
+                            color: CHART_COLORS.text,
+                            font: { size: 11 },
+                            maxRotation: 45
+                        },
+                        ...(overrides.x || {})
+                    },
+                    y: {
+                        beginAtZero: false,
+                        grid: { color: CHART_COLORS.grid },
+                        ticks: {
+                            color: CHART_COLORS.text,
+                            font: { size: 11 }
+                        },
+                        ...(overrides.y || {})
+                    }
+                }
+            };
+        }
+
+        function createLineDataset(label, data, color, overrides = {}) {
+            return {
+                label,
+                data,
+                borderColor: color,
+                backgroundColor: color + '20',
+                borderWidth: CHART_DEFAULTS.borderWidth,
+                pointRadius: CHART_DEFAULTS.pointRadius,
+                pointHoverRadius: CHART_DEFAULTS.pointHoverRadius,
+                pointHoverBorderWidth: CHART_DEFAULTS.pointHoverBorderWidth,
+                pointBackgroundColor: color,
+                pointBorderColor: '#fff',
+                hitRadius: CHART_DEFAULTS.hitRadius,
+                tension: CHART_DEFAULTS.tension,
+                fill: false,
+                ...overrides
+            };
+        }
+
         function renderAnnualVolumeChart() {
             const { volumeTimeSeries, bigThreeVolume } = trainingData;
 
@@ -635,17 +726,20 @@
             const isYearly = volumeView === 'yearly';
 
             // Build datasets array with total volume + Big 3
-            const datasets = [{
-                label: label,
-                data: chartData,
-                borderColor: isCumulative ? '#51cf66' : '#888',
-                backgroundColor: isCumulative ? '#51cf6633' : '#88888833',
-                borderWidth: isCumulative ? 3 : 2,
-                pointRadius: isYearly ? 6 : 2,
-                pointHoverRadius: isYearly ? 8 : 5,
-                tension: isCumulative ? 0.4 : 0.3,
-                fill: true
-            }];
+            const datasets = [
+                createLineDataset(
+                    label, 
+                    chartData, 
+                    isCumulative ? '#51cf66' : '#888',
+                    {
+                        borderWidth: isCumulative ? 3 : 2.5,
+                        pointRadius: isYearly ? 6 : 0,
+                        pointHoverRadius: isYearly ? 8 : 6,
+                        fill: true,
+                        backgroundColor: isCumulative ? '#51cf6633' : '#88888833'
+                    }
+                )
+            ];
 
             // Add Big 3 datasets
             const bigThreeConfig = [
@@ -657,93 +751,64 @@
             bigThreeConfig.forEach(config => {
                 const liftData = aggregateBigThreeVolume(config.lift);
                 if (liftData.length > 0) {
-                    datasets.push({
-                        label: config.name,
-                        data: liftData,
-                        borderColor: config.color,
-                        backgroundColor: config.color + '33',
-                        borderWidth: 2,
-                        pointRadius: isYearly ? 4 : 0,
-                        pointHoverRadius: isYearly ? 6 : 4,
-                        tension: 0.3,
-                        fill: false
-                    });
+                    datasets.push(createLineDataset(
+                        config.name,
+                        liftData,
+                        config.color,
+                        {
+                            pointRadius: isYearly ? 4 : 0,
+                            pointHoverRadius: isYearly ? 6 : 4
+                        }
+                    ));
                 }
             });
 
             annualVolumeChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: { datasets },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                            labels: {
-                                color: '#e0e0e0',
-                                padding: 15,
-                                font: { size: 12 },
-                                usePointStyle: true,
-                                pointStyle: 'line'
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: '#1a1a1a',
-                            titleColor: '#e0e0e0',
-                            bodyColor: '#e0e0e0',
-                            borderColor: '#333',
-                            borderWidth: 1,
-                            callbacks: {
-                                title: function(context) {
-                                    if (volumeView === 'yearly') {
-                                        return context[0].label;
-                                    }
-                                    const date = new Date(context[0].parsed.x);
-                                    if (volumeView === 'weekly') {
-                                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                                    }
-                                    // Monthly and cumulative
-                                    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-                                },
-                                label: function(context) {
-                                    const volume = context.parsed.y;
-                                    const datasetLabel = context.dataset.label;
-                                    if (isCumulative) {
-                                        return `${datasetLabel}: ${(volume / 1000000).toFixed(2)}M ${currentUnit}`;
-                                    }
-                                    return `${datasetLabel}: ${(volume / 1000).toFixed(1)}K ${currentUnit}`;
+                options: getBaseChartOptions({
+                    legend: { display: true },
+                    tooltip: {
+                        callbacks: {
+                            title: function(context) {
+                                if (volumeView === 'yearly') {
+                                    return context[0].label;
                                 }
+                                const date = new Date(context[0].parsed.x);
+                                if (volumeView === 'weekly') {
+                                    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                                }
+                                return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+                            },
+                            label: function(context) {
+                                const volume = context.parsed.y;
+                                const datasetLabel = context.dataset.label;
+                                if (isCumulative) {
+                                    return `${datasetLabel}: ${(volume / 1000000).toFixed(2)}M ${currentUnit}`;
+                                }
+                                return `${datasetLabel}: ${(volume / 1000).toFixed(1)}K ${currentUnit}`;
                             }
                         }
                     },
-                    scales: {
-                        x: {
-                            type: isYearly ? 'category' : 'time',
-                            time: !isYearly ? {
-                                unit: timeUnit,
-                                displayFormats: displayFormat
-                            } : undefined,
-                            grid: { color: '#1a1a1a' },
-                            ticks: { color: '#888', font: { size: 11 }, maxRotation: 45 }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            grid: { color: '#1a1a1a' },
-                            ticks: {
-                                color: '#888',
-                                font: { size: 12 },
-                                callback: function(value) {
-                                    if (isCumulative && value >= 1000000) {
-                                        return (value / 1000000).toFixed(1) + 'M';
-                                    }
-                                    return (value / 1000).toFixed(0) + 'K';
+                    x: {
+                        type: isYearly ? 'category' : 'time',
+                        time: !isYearly ? {
+                            unit: timeUnit,
+                            displayFormats: displayFormat
+                        } : undefined
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                if (isCumulative && value >= 1000000) {
+                                    return (value / 1000000).toFixed(1) + 'M';
                                 }
+                                return (value / 1000).toFixed(0) + 'K';
                             }
                         }
                     }
-                }
+                })
             });
         }
 
@@ -1082,21 +1147,15 @@
                     reps: point.reps
                 }));
 
-                datasets.push({
-                    label: 'Estimated 1RM',
-                    data: e1rmData,
-                    borderColor: color,
-                    backgroundColor: color + '15',
-                    borderWidth: 2.5,
-                    pointRadius: 0,
-                    pointHoverRadius: 6,
-                    pointHoverBorderWidth: 2,
-                    pointBackgroundColor: color,
-                    pointBorderColor: '#fff',
-                    hitRadius: 10,
-                    tension: 0.4,
-                    fill: true
-                });
+                datasets.push(createLineDataset(
+                    'Estimated 1RM',
+                    e1rmData,
+                    color,
+                    {
+                        backgroundColor: color + '15',
+                        fill: true
+                    }
+                ));
             }
 
             // Plate milestones for reference lines (in lbs, convert if kg)
@@ -1139,67 +1198,45 @@
             bigThreeChartInstances[lift] = new Chart(ctx, {
                 type: 'line',
                 data: { datasets },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
+                options: getBaseChartOptions({
                     plugins: {
-                        legend: {
-                            display: false
-                        },
                         annotation: {
                             annotations: annotations
-                        },
-                        tooltip: {
-                            backgroundColor: '#1a1a1a',
-                            titleColor: '#e0e0e0',
-                            bodyColor: '#e0e0e0',
-                            borderColor: '#333',
-                            borderWidth: 1,
-                            titleFont: { size: 13, weight: '600' },
-                            bodyFont: { size: 12 },
-                            padding: 12,
-                            displayColors: false,
-                            callbacks: {
-                                title: function(context) {
-                                    const date = new Date(context[0].parsed.x);
-                                    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                                },
-                                label: function(context) {
-                                    const value = context.parsed.y;
-                                    return `Estimated 1RM: ${value} ${currentUnit}`;
-                                },
-                                afterLabel: function(context) {
-                                    if (context.raw.actualWeight) {
-                                        return `From: ${context.raw.actualWeight} ${currentUnit} × ${context.raw.reps} reps`;
-                                    }
-                                    return '';
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(context) {
+                                const date = new Date(context[0].parsed.x);
+                                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                            },
+                            label: function(context) {
+                                const value = context.parsed.y;
+                                return `Estimated 1RM: ${value} ${currentUnit}`;
+                            },
+                            afterLabel: function(context) {
+                                if (context.raw.actualWeight) {
+                                    return `From: ${context.raw.actualWeight} ${currentUnit} × ${context.raw.reps} reps`;
                                 }
+                                return '';
                             }
                         }
                     },
-                    scales: {
-                        x: {
-                            type: 'time',
-                            time: {
-                                unit: 'month',
-                                displayFormats: { month: 'MMM yyyy' }
-                            },
-                            grid: { color: '#1a1a1a' },
-                            ticks: { color: '#888', font: { size: 10 }, maxRotation: 45 }
-                        },
-                        y: {
-                            beginAtZero: false,
-                            grid: { color: '#1a1a1a' },
-                            ticks: {
-                                color: '#888',
-                                font: { size: 10 },
-                                callback: function(value) {
-                                    return value + ' ' + currentUnit;
-                                }
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'month',
+                            displayFormats: { month: 'MMM yyyy' }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            callback: function(value) {
+                                return value + ' ' + currentUnit;
                             }
                         }
                     }
-                }
+                })
             });
         }
 
