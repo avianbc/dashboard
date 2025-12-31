@@ -728,8 +728,8 @@
             // Build datasets array with total volume + Big 3
             const datasets = [
                 createLineDataset(
-                    label, 
-                    chartData, 
+                    label,
+                    chartData,
                     isCumulative ? '#51cf66' : '#888',
                     {
                         borderWidth: isCumulative ? 3 : 2.5,
@@ -1075,6 +1075,7 @@
                 stats.style.gap = '2rem';
                 stats.style.flexWrap = 'wrap';
                 stats.style.fontSize = '0.95rem';
+                stats.style.justifyContent = 'center';
 
                 if (hasE1RM) {
                     const history = e1rmData.e1rmHistory;
@@ -1084,16 +1085,22 @@
                     );
                     const first = history[0];
 
-                    const currentE1RM = getVolume(latest.e1rmLbs, latest.e1rmKg);
-                    const peakE1RM = getVolume(peak.e1rmLbs, peak.e1rmKg);
-                    const startE1RM = getVolume(first.e1rmLbs, first.e1rmKg);
+                    const currentE1RM = Math.round(getVolume(latest.e1rmLbs, latest.e1rmKg));
+                    const peakE1RM = Math.round(getVolume(peak.e1rmLbs, peak.e1rmKg));
+                    const startE1RM = Math.round(getVolume(first.e1rmLbs, first.e1rmKg));
                     const totalGain = currentE1RM - startE1RM;
                     const gainPercent = ((totalGain / startE1RM) * 100).toFixed(0);
 
                     stats.innerHTML = `
                         <div>
+                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Starting e1RM</div>
+                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${startE1RM} ${currentUnit}</div>
+                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(first.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
+                        </div>
+                        <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current e1RM</div>
                             <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace;">${currentE1RM} ${currentUnit}</div>
+                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(latest.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
                         </div>
                         <div>
                             <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Peak e1RM</div>
