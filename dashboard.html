@@ -54,6 +54,41 @@
         --radius-lg: 20px;
       }
 
+      /* Lift-specific card styles */
+      .lift-card {
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-primary);
+        border-left: 3px solid;
+        padding: var(--spacing-lg);
+        text-align: left;
+      }
+
+      .lift-card-squat {
+        border-left-color: var(--lift-squat);
+      }
+
+      .lift-card-bench {
+        border-left-color: var(--lift-bench);
+      }
+
+      .lift-card-deadlift {
+        border-left-color: var(--lift-deadlift);
+      }
+
+      .lift-card-ohp {
+        border-left-color: var(--lift-ohp);
+      }
+
+      .lift-card h4 {
+        margin: 0 0 var(--spacing-md) 0;
+      }
+
+      .lift-card-squat h4 { color: var(--lift-squat); }
+      .lift-card-bench h4 { color: var(--lift-bench); }
+      .lift-card-deadlift h4 { color: var(--lift-deadlift); }
+      .lift-card-ohp h4 { color: var(--lift-ohp); }
+
       * {
         margin: 0;
         padding: 0;
@@ -1533,13 +1568,7 @@
         }));
         const maxDistance = Math.max(...liftDistances.map(d => d.distance));
 
-        // Lift colors matching LIFT_CONFIG
-        const liftColors = {
-          squat: '#4a9eff',
-          bench: '#ff6b6b',
-          deadlift: '#51cf66',
-          ohp: '#ffd93d'
-        };
+        // Lift names for display
         const liftNames = {
           squat: 'Squat',
           bench: 'Bench Press',
@@ -1574,27 +1603,22 @@
 
         // Bar chart for distance by lift
         html += '<h4 style="margin-bottom: 1rem; color: #aaa;">Distance by Lift</h4>';
-        html += '<div style="display: flex; flex-direction: column; gap: 0.75rem;">';
+        html += '<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">';
 
         // Sort by distance descending
         liftDistances.sort((a, b) => b.distance - a.distance);
 
         liftDistances.forEach(({ lift, distance, reps, distancePerRep }) => {
           const percentage = (distance / maxDistance) * 100;
-          const color = liftColors[lift];
           const name = liftNames[lift];
 
           html += `
-            <div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
-                <span style="color: ${color}; font-weight: 600;">${name}</span>
-                <span style="color: #888; font-size: 0.875rem;">
-                  ${distance.toFixed(2)} ${distanceUnit}
-                  <span style="color: #666;">(${reps.toLocaleString()} reps × ${distancePerRep}")</span>
-                </span>
-              </div>
-              <div style="background: #1a1a1a; height: 20px; border-radius: 4px; overflow: hidden;">
-                <div style="background: ${color}; height: 100%; width: ${percentage}%; border-radius: 4px; transition: width 0.3s;"></div>
+            <div class="lift-card lift-card-${lift}">
+              <h4>${name}</h4>
+              <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">${distance.toFixed(2)} ${distanceUnit}</div>
+              <div style="color: var(--text-muted); font-size: 0.875rem;">${reps.toLocaleString()} reps × ${distancePerRep}"</div>
+              <div style="margin-top: 0.75rem; background: var(--bg-tertiary); height: 8px; border-radius: 4px; overflow: hidden;">
+                <div style="background: var(--lift-${lift}); height: 100%; width: ${percentage}%; border-radius: 4px;"></div>
               </div>
             </div>
           `;
@@ -1717,9 +1741,9 @@
           const currentLift = currentUnit === 'lbs' ? current.liftLbs : current.liftKg;
 
           html += `
-            <div class="stat-card" style="border-left: 3px solid ${color}; text-align: left;">
+            <div class="lift-card lift-card-${key}">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h4 style="color: ${color}; margin: 0;">${name}</h4>
+                <h4>${name}</h4>
                 <span style="background: ${levelColor}22; color: ${levelColor}; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">${level}</span>
               </div>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center;">
@@ -1789,11 +1813,10 @@
           const daysSince = daysSinceLastPR && daysSinceLastPR[lift] !== null ? daysSinceLastPR[lift] : null;
 
           const chartDiv = document.createElement("div");
-          chartDiv.className = "chart-container";
+          chartDiv.className = `chart-container lift-card lift-card-${lift}`;
 
-          const title = document.createElement("h3");
+          const title = document.createElement("h4");
           title.textContent = config.name;
-          title.className = "section-title";
           chartDiv.appendChild(title);
 
           // Show key stats
@@ -2358,8 +2381,8 @@
             const liftData = plateMilestones[lift] || {};
             const maxPlates = Math.max(...Object.keys(liftData).map(Number), 0);
 
-            html += `<div class="plate-lift-section">`;
-            html += `<h4 style="color: ${config.color};">${config.name}</h4>`;
+            html += `<div class="lift-card lift-card-${lift}">`;
+            html += `<h4>${config.name}</h4>`;
 
             [1, 2, 3, 4, 5].forEach((plates) => {
               const achieved = liftData[plates];
@@ -2413,17 +2436,17 @@
             const bestE1rm = liftData.bestE1rm;
             const repPRs = liftData.repPRs || {};
 
-            html += `<div>`;
-            html += `<h4 class="section-title" style="color: ${config.color};">${config.name}</h4>`;
+            html += `<div class="lift-card lift-card-${lift}">`;
+            html += `<h4>${config.name}</h4>`;
 
             // Best e1RM
             if (bestE1rm) {
               const e1rmValue =
                 currentUnit === "lbs" ? bestE1rm.e1rmLbs : bestE1rm.e1rmKg;
               html += `
-                            <div style="background: #111; border: 1px solid ${config.color}44; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center;">
-                                <div style="color: #888; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Best e1RM</div>
-                                <div style="color: ${config.color}; font-size: 1.75rem; font-weight: 700;">${Math.round(e1rmValue)} ${currentUnit}</div>
+                            <div style="background: var(--bg-tertiary); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center;">
+                                <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Best e1RM</div>
+                                <div style="font-size: 1.75rem; font-weight: 700;">${Math.round(e1rmValue)} ${currentUnit}</div>
                             </div>
                         `;
             }
