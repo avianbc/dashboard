@@ -254,6 +254,104 @@
         margin-top: var(--spacing-xs);
       }
 
+      /* Lift stats grid */
+      .lift-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .lift-stats-grid.big-three-stats {
+        margin-bottom: 1.5rem;
+      }
+
+      /* Powerlifting total display */
+      .total-header {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .progress-indicator {
+        margin-top: 1.5rem;
+      }
+
+      .progress-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+      }
+
+      .progress-label {
+        color: var(--text-muted);
+      }
+
+      .progress-value {
+        color: var(--accent-blue);
+        font-weight: 600;
+      }
+
+      /* Club milestone section */
+      .club-milestones {
+        margin-top: 2rem;
+      }
+
+      .club-milestones h4 {
+        margin-bottom: 1rem;
+        color: var(--text-muted);
+      }
+
+      .club-milestone {
+        border-left: 3px solid;
+        padding-left: 1rem;
+        margin: 0.5rem 0;
+      }
+
+      .club-milestone-text {
+        margin-left: 0.5rem;
+        color: var(--text-muted-dark);
+      }
+
+      /* Plate milestone grid */
+      .plate-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .plate-lift-section h4 {
+        margin-bottom: 1rem;
+      }
+
+      .plate-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-primary);
+      }
+
+      .plate-item.unachieved {
+        opacity: 0.4;
+      }
+
+      .plate-icon {
+        font-size: 1.25rem;
+      }
+
+      .plate-label {
+        flex: 1;
+      }
+
+      .plate-date {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
+
       /* Progress bar styles */
       .progress-bar {
         background: var(--bg-tertiary);
@@ -273,6 +371,30 @@
       }
 
       /* Milestone and PR row styles */
+      .milestone {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid var(--border-primary);
+      }
+
+      .milestone:last-child {
+        border-bottom: none;
+      }
+
+      .milestone-date {
+        min-width: 100px;
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        flex-shrink: 0;
+      }
+
+      .milestone-text {
+        color: var(--text-primary);
+        flex: 1;
+      }
+
       .milestone-item {
         border-left: 3px solid;
         padding-left: var(--spacing-md);
@@ -448,15 +570,11 @@
       <nav>
         <ul>
           <li><a href="#summary">Summary</a></li>
-          <li><a href="#volume-over-time">Volume</a></li>
-          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#volume-calendar">Volume & Calendar</a></li>
           <li><a href="#big-three">Big 3</a></li>
           <li><a href="#prs-clubs">PRs & Clubs</a></li>
-          <li><a href="#exercises">Exercises</a></li>
-          <li><a href="#milestones">Milestones</a></li>
-          <li><a href="#workout-patterns">Patterns</a></li>
-          <li><a href="#programs">Programs</a></li>
-          <li><a href="#notable">Notable</a></li>
+          <li><a href="#exercises-patterns">Analysis</a></li>
+          <li><a href="#history">History</a></li>
         </ul>
       </nav>
 
@@ -478,9 +596,10 @@
         </div>
       </section>
 
-      <section id="volume-over-time">
-        <h2>Volume Over Time</h2>
+      <section id="volume-calendar">
+        <h2>Volume & Calendar</h2>
         <div class="chart-container">
+          <h3>Volume Over Time</h3>
           <div class="view-toggle">
             <button data-view="weekly">Weekly</button>
             <button data-view="monthly" class="active">Monthly</button>
@@ -489,11 +608,8 @@
           </div>
           <canvas id="annualVolumeChart" style="max-height: 400px"></canvas>
         </div>
-      </section>
-
-      <section id="calendar">
-        <h2>Workout Calendar</h2>
         <div class="chart-container">
+          <h3>Workout Calendar</h3>
           <div id="workoutHeatmap"></div>
         </div>
       </section>
@@ -505,13 +621,6 @@
         </div>
       </section>
 
-      <section id="exercises">
-        <h2>Exercises by Volume</h2>
-        <div class="chart-container">
-          <div id="exerciseVolumeChart"></div>
-        </div>
-      </section>
-
       <section id="prs-clubs">
         <h2>PRs & Clubs</h2>
         <div id="prsClubsContent">
@@ -519,30 +628,25 @@
         </div>
       </section>
 
-      <section id="milestones">
-        <h2>Milestones</h2>
-        <div id="milestonesList">
-          <!-- Generated dynamically -->
-        </div>
-      </section>
-
-      <section id="workout-patterns">
-        <h2>Workout Patterns</h2>
-        <h3>Volume by Day of Week</h3>
+      <section id="exercises-patterns">
+        <h2>Exercise Analysis</h2>
         <div class="chart-container">
+          <h3>Exercises by Volume</h3>
+          <div id="exerciseVolumeChart"></div>
+        </div>
+        <div class="chart-container">
+          <h3>Volume by Day of Week</h3>
           <div id="dayOfWeekChart"></div>
         </div>
       </section>
 
-      <section id="programs">
-        <h2>Training Programs</h2>
+      <section id="history">
+        <h2>Training History</h2>
+        <h3>Programs</h3>
         <div id="programsList">
           <!-- Generated dynamically -->
         </div>
-      </section>
-
-      <section id="notable">
-        <h2>Notable Workouts</h2>
+        <h3 style="margin-top: 3rem;">Notable Workouts</h3>
         <div id="notableWorkoutsList">
           <!-- Generated dynamically -->
         </div>
@@ -665,7 +769,6 @@
         renderDayOfWeekChart();
         renderPrograms();
         renderNotableWorkouts();
-        renderMilestones();
       }
 
       function renderSummaryStats() {
@@ -1378,12 +1481,7 @@
 
           // Show key stats
           const stats = document.createElement("div");
-          stats.style.marginBottom = "1.5rem";
-          stats.style.display = "flex";
-          stats.style.gap = "2rem";
-          stats.style.flexWrap = "wrap";
-          stats.style.fontSize = "0.95rem";
-          stats.style.justifyContent = "center";
+          stats.className = "lift-stats-grid big-three-stats";
 
           if (hasE1RM) {
             const history = e1rmData.e1rmHistory;
@@ -1413,32 +1511,32 @@
               const label = daysSince === 0 ? 'Today!' : daysSince === 1 ? '1 day ago' : `${daysSince} days ago`;
               daysSinceHTML = `
                 <div>
-                  <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Last PR</div>
-                  <div style="color: ${color}; font-size: 1.5rem; font-weight: 700;">${label}</div>
+                  <div class="stat-mini-label">Last PR</div>
+                  <div class="stat-mini-value" style="color: ${color};">${label}</div>
                 </div>
               `;
             }
 
             stats.innerHTML = `
                         <div>
-                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Starting e1RM</div>
-                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700;">${startE1RM} ${currentUnit}</div>
-                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(first.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</div>
+                            <div class="stat-mini-label">Starting e1RM</div>
+                            <div class="stat-mini-value">${startE1RM} ${currentUnit}</div>
+                            <div class="stat-mini-detail">${new Date(first.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</div>
                         </div>
                         <div>
-                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current e1RM</div>
-                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700;">${currentE1RM} ${currentUnit}</div>
-                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(latest.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</div>
+                            <div class="stat-mini-label">Current e1RM</div>
+                            <div class="stat-mini-value">${currentE1RM} ${currentUnit}</div>
+                            <div class="stat-mini-detail">${new Date(latest.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</div>
                         </div>
                         <div>
-                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Peak e1RM</div>
-                            <div style="color: #e0e0e0; font-size: 1.5rem; font-weight: 700;">${peakE1RM} ${currentUnit}</div>
-                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">${new Date(peak.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</div>
+                            <div class="stat-mini-label">Peak e1RM</div>
+                            <div class="stat-mini-value">${peakE1RM} ${currentUnit}</div>
+                            <div class="stat-mini-detail">${new Date(peak.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</div>
                         </div>
                         <div>
-                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Total Gain</div>
-                            <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700;">+${totalGain} ${currentUnit}</div>
-                            <div style="color: #51cf66; font-size: 0.75rem; margin-top: 0.25rem;">+${gainPercent}%</div>
+                            <div class="stat-mini-label">Total Gain</div>
+                            <div class="stat-mini-value accent-green">+${totalGain} ${currentUnit}</div>
+                            <div class="stat-mini-detail" style="color: #51cf66;">+${gainPercent}%</div>
                         </div>
                         ${daysSinceHTML}
                     `;
@@ -1797,30 +1895,30 @@
             .find((c) => current.totalLbs < c.threshold);
 
           html += `<div class="chart-container">`;
-          html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+          html += `<h3 class="total-header">
                     ${achievedClub ? achievedClub.emoji : "🎯"} Powerlifting Total (S+B+D)
                 </h3>`;
 
           // Current total display
-          html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; text-align: center; margin-bottom: 2rem;">`;
+          html += `<div class="lift-stats-grid">`;
 
           html += `
                     <div>
-                        <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Current Total</div>
-                        <div style="color: ${achievedClub ? achievedClub.color : "#e0e0e0"}; font-size: 2rem; font-weight: 700;">${Math.round(totalValue)} ${currentUnit}</div>
-                        ${achievedClub ? `<div style="color: ${achievedClub.color}; font-size: 0.8rem; margin-top: 0.25rem;">${achievedClub.name}</div>` : ""}
+                        <div class="stat-mini-label">Current Total</div>
+                        <div class="stat-mini-value large" style="color: ${achievedClub ? achievedClub.color : "#e0e0e0"};">${Math.round(totalValue)} ${currentUnit}</div>
+                        ${achievedClub ? `<div class="stat-mini-detail" style="color: ${achievedClub.color};">${achievedClub.name}</div>` : ""}
                     </div>
                     <div>
-                        <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Squat e1RM</div>
-                        <div style="color: #4a9eff; font-size: 1.5rem; font-weight: 700;">${Math.round(squatValue)} ${currentUnit}</div>
+                        <div class="stat-mini-label">Squat e1RM</div>
+                        <div class="stat-mini-value accent-blue">${Math.round(squatValue)} ${currentUnit}</div>
                     </div>
                     <div>
-                        <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Bench e1RM</div>
-                        <div style="color: #ff6b6b; font-size: 1.5rem; font-weight: 700;">${Math.round(benchValue)} ${currentUnit}</div>
+                        <div class="stat-mini-label">Bench e1RM</div>
+                        <div class="stat-mini-value accent-red">${Math.round(benchValue)} ${currentUnit}</div>
                     </div>
                     <div>
-                        <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Deadlift e1RM</div>
-                        <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700;">${Math.round(deadliftValue)} ${currentUnit}</div>
+                        <div class="stat-mini-label">Deadlift e1RM</div>
+                        <div class="stat-mini-value accent-green">${Math.round(deadliftValue)} ${currentUnit}</div>
                     </div>
                 </div>`;
 
@@ -1830,10 +1928,10 @@
             const progressPercent =
               (current.totalLbs / nextClub.threshold) * 100;
             html += `
-                        <div style="margin-top: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span style="color: var(--text-muted);">Progress to ${nextClub.name}</span>
-                                <span style="color: var(--accent-blue); font-weight: 600;">${Math.round(remaining)} lbs to go</span>
+                        <div class="progress-indicator">
+                            <div class="progress-header">
+                                <span class="progress-label">Progress to ${nextClub.name}</span>
+                                <span class="progress-value">${Math.round(remaining)} lbs to go</span>
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill accent-blue" style="width: ${Math.min(progressPercent, 100)}%;"></div>
@@ -1847,22 +1945,37 @@
             (a, b) => parseInt(b[0]) - parseInt(a[0]),
           );
           if (achievedMilestones.length > 0) {
-            html += `<div style="margin-top: 2rem;"><h4 style="margin-bottom: 1rem; color: #888;">Club Milestones Achieved</h4>`;
+            html += `<div class="club-milestones"><h4>Club Milestones Achieved</h4>`;
             achievedMilestones.forEach(([threshold, data]) => {
               const club = clubThresholds.find(
                 (c) => c.threshold === parseInt(threshold),
               );
               if (club && data) {
                 html += `
-                                <div class="milestone" style="border-left: 3px solid ${club.color}; padding-left: 1rem; margin: 0.5rem 0;">
+                                <div class="milestone">
                                     <div class="milestone-date">${data.date}</div>
                                     <div class="milestone-text">
                                         <span style="color: ${club.color};">${club.emoji} ${club.name}</span>
-                                        <span style="color: #666; margin-left: 0.5rem;">(S:${Math.round(data.squat)} B:${Math.round(data.bench)} D:${Math.round(data.deadlift)} = ${Math.round(data.totalLbs)} lbs)</span>
+                                        <span class="club-milestone-text">(S:${Math.round(data.squat)} B:${Math.round(data.bench)} D:${Math.round(data.deadlift)} = ${Math.round(data.totalLbs)} lbs)</span>
                                     </div>
                                 </div>
                             `;
               }
+            });
+            html += `</div>`;
+          }
+
+          // Add volume and workout milestones
+          const { milestones, summary } = trainingData;
+          if (milestones && milestones.length > 0) {
+            html += `<div class="club-milestones"><h4>Volume & Workout Milestones</h4>`;
+            [...milestones].reverse().slice(0, 10).forEach((m) => {
+              html += `
+                <div class="milestone">
+                  <div class="milestone-date">${m.date}</div>
+                  <div class="milestone-text">${m.icon} ${m.milestone}</div>
+                </div>
+              `;
             });
             html += `</div>`;
           }
@@ -1881,17 +1994,17 @@
           };
 
           html += `<div class="chart-container">`;
-          html += `<h3 style="margin-top: 0; margin-bottom: 1.5rem;">🏅 Plate Milestones</h3>`;
+          html += `<h3>🏅 Plate Milestones</h3>`;
 
-          html += `<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">`;
+          html += `<div class="plate-grid">`;
 
           LIFT_ORDER.forEach((lift) => {
             const config = LIFT_CONFIG[lift];
             const liftData = plateMilestones[lift] || {};
             const maxPlates = Math.max(...Object.keys(liftData).map(Number), 0);
 
-            html += `<div>`;
-            html += `<h4 style="color: ${config.color}; margin-bottom: 1rem;">${config.name}</h4>`;
+            html += `<div class="plate-lift-section">`;
+            html += `<h4 style="color: ${config.color};">${config.name}</h4>`;
 
             [1, 2, 3, 4, 5].forEach((plates) => {
               const achieved = liftData[plates];
@@ -1906,18 +2019,18 @@
 
               if (achieved) {
                 html += `
-                                <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a;">
-                                    <span style="font-size: 1.25rem;">✅</span>
-                                    <span style="flex: 1; color: #e0e0e0;">${plateLabel}</span>
-                                    <span style="color: #888; font-size: 0.875rem;">${achieved.date}</span>
+                                <div class="plate-item">
+                                    <span class="plate-icon">✅</span>
+                                    <span class="plate-label">${plateLabel}</span>
+                                    <span class="plate-date">${achieved.date}</span>
                                 </div>
                             `;
               } else {
                 html += `
-                                <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a; opacity: 0.4;">
-                                    <span style="font-size: 1.25rem;">⬜</span>
-                                    <span style="flex: 1; color: #888;">${plateLabel}</span>
-                                    <span style="color: #666; font-size: 0.875rem;">—</span>
+                                <div class="plate-item unachieved">
+                                    <span class="plate-icon">⬜</span>
+                                    <span class="plate-label" style="color: var(--text-muted);">${plateLabel}</span>
+                                    <span class="plate-date">—</span>
                                 </div>
                             `;
               }
@@ -2176,94 +2289,6 @@
             `,
           )
           .join("");
-      }
-
-      function renderMilestones() {
-        const { milestones, summary } = trainingData;
-        const container = document.getElementById("milestonesList");
-
-        // Calculate upcoming milestones
-        const upcomingMilestones = [];
-        const workoutMilestones = [100, 250, 500, 750, 1000, 1500, 2000];
-        const volumeMilestonesLbs = [
-          1000000, 2500000, 5000000, 7500000, 10000000,
-        ];
-        const volumeMilestonesKg = [500000, 1000000, 2500000, 5000000];
-
-        // Find next workout milestone
-        const nextWorkoutMilestone = workoutMilestones.find(
-          (m) => m > summary.totalWorkouts,
-        );
-        if (nextWorkoutMilestone) {
-          const remaining = nextWorkoutMilestone - summary.totalWorkouts;
-          upcomingMilestones.push({
-            target: `${nextWorkoutMilestone.toLocaleString()} workouts`,
-            remaining: `${remaining} to go`,
-            icon: "🏋️",
-          });
-        }
-
-        // Find next volume milestone
-        const volumeMilestones =
-          currentUnit === "lbs" ? volumeMilestonesLbs : volumeMilestonesKg;
-        const currentVolume = getVolume(
-          summary.totalVolumeLbs,
-          summary.totalVolumeKg,
-        );
-        const nextVolumeMilestone = volumeMilestones.find(
-          (m) => m > currentVolume,
-        );
-        if (nextVolumeMilestone) {
-          const remaining = nextVolumeMilestone - currentVolume;
-          const label =
-            nextVolumeMilestone >= 1000000
-              ? `${(nextVolumeMilestone / 1000000).toFixed(0)}M ${currentUnit}`
-              : `${(nextVolumeMilestone / 1000).toFixed(0)}K ${currentUnit}`;
-          const remainingLabel =
-            remaining >= 1000000
-              ? `${(remaining / 1000000).toFixed(2)}M to go`
-              : `${(remaining / 1000).toFixed(0)}K to go`;
-          upcomingMilestones.push({
-            target: `${label} total volume`,
-            remaining: remainingLabel,
-            icon: "📈",
-          });
-        }
-
-        // Render upcoming milestones first
-        let html = "";
-        if (upcomingMilestones.length > 0) {
-          html += `<h3 style="margin-bottom: 1rem; color: #51cf66;">🎯 Upcoming</h3>`;
-          html += upcomingMilestones
-            .map(
-              (m) => `
-                    <div class="milestone" style="border-left: 3px solid #51cf66; padding-left: 1rem; margin-left: 0.5rem;">
-                        <div class="milestone-date" style="color: #51cf66;">${m.icon}</div>
-                        <div class="milestone-text">
-                            <strong>${m.target}</strong>
-                            <span style="color: #888; margin-left: 0.5rem;">(${m.remaining})</span>
-                        </div>
-                    </div>
-                `,
-            )
-            .join("");
-          html += `<h3 style="margin: 2rem 0 1rem; color: #888;">✅ Achieved</h3>`;
-        }
-
-        // Render achieved milestones (most recent first)
-        html += [...milestones]
-          .reverse()
-          .map(
-            (milestone) => `
-                <div class="milestone">
-                    <div class="milestone-date">${milestone.date}</div>
-                    <div class="milestone-text">${milestone.milestone}</div>
-                </div>
-            `,
-          )
-          .join("");
-
-        container.innerHTML = html;
       }
 
       // Scroll spy for navigation
