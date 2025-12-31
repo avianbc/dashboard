@@ -1712,16 +1712,6 @@
           </div>
         `;
 
-        // Stale data warning
-        if (hasStaleData) {
-          html += `
-            <div style="background: #332800; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid #665200; font-size: 0.875rem; margin-bottom: 1.5rem;">
-              <span style="color: #ffd93d;">⚠️ Note:</span>
-              <span style="color: #cca300;"> Body weight data was not updated for extended periods (${stalePeriods[0]?.count || 0}+ entries at ${stalePeriods[0]?.weightLbs || 0} lbs)</span>
-            </div>
-          `;
-        }
-
         // Individual lift details with benchmarks - 2x2 grid
         html += `<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">`;
 
@@ -1805,6 +1795,7 @@
         html += `
           <div style="margin-top: 2rem;">
             <h4 style="color: #aaa; margin-bottom: 1rem;">📈 Body Weight Timeline</h4>
+            ${hasStaleData ? '<div style="color: #cca300; font-size: 0.8rem; margin-bottom: 0.75rem;">⚠️ Note: Body weight data contains periods without updates</div>' : ''}
             <canvas id="bodyWeightChart" style="max-height: 200px;"></canvas>
           </div>
         `;
