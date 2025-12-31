@@ -91,12 +91,69 @@ def get_summary_stats(conn):
     else:
         workouts_per_week_avg = 0
 
+    # Total reps ever
+    cursor.execute("SELECT SUM(reps) as total_reps FROM history_exercises WHERE reps > 0")
+    total_reps = cursor.fetchone()['total_reps'] or 0
+
+    # Total tons (lbs / 2000)
+    total_tons = round(total_volume_lbs / 2000, 1) if total_volume_lbs > 0 else 0
+
+    # Best month ever
+    cursor.execute("""
+        SELECT 
+            strftime('%Y-%m', h.date/1000, 'unixepoch') as month,
+            SUM(he.weightlb * he.reps) as volume_lbs,
+            SUM(he.weightkg * he.reps) as volume_kg
+        FROM history h
+        JOIN history_exercises he ON h.id = he.history_id
+        WHERE he.reps > 0
+        GROUP BY month
+        ORDER BY volume_lbs DESC
+        LIMIT 1
+    """)
+    best_month_row = cursor.fetchone()
+    best_month_ever = None
+    if best_month_row:
+        best_month_ever = {
+            'month': best_month_row['month'],
+            'volumeLbs': round(best_month_row['volume_lbs'] or 0, 2),
+            'volumeKg': round(best_month_row['volume_kg'] or 0, 2)
+        }
+
+    # Best year ever
+    cursor.execute("""
+        SELECT 
+            strftime('%Y', h.date/1000, 'unixepoch') as year,
+            SUM(he.weightlb * he.reps) as volume_lbs,
+            SUM(he.weightkg * he.reps) as volume_kg,
+            COUNT(DISTINCT h.id) as workouts
+        FROM history h
+        JOIN history_exercises he ON h.id = he.history_id
+        WHERE he.reps > 0
+        GROUP BY year
+        ORDER BY volume_lbs DESC
+        LIMIT 1
+    """)
+    best_year_row = cursor.fetchone()
+    best_year_ever = None
+    if best_year_row:
+        best_year_ever = {
+            'year': int(best_year_row['year']),
+            'volumeLbs': round(best_year_row['volume_lbs'] or 0, 2),
+            'volumeKg': round(best_year_row['volume_kg'] or 0, 2),
+            'workouts': best_year_row['workouts']
+        }
+
     return {
         'totalWorkouts': total_workouts,
         'totalSets': total_sets,
         'totalVolumeLbs': total_volume_lbs,
         'totalVolumeKg': total_volume_kg,
         'totalHours': total_hours,
+        'totalReps': total_reps,
+        'totalTons': total_tons,
+        'bestMonthEver': best_month_ever,
+        'bestYearEver': best_year_ever,
         'firstWorkout': first_workout,
         'lastWorkout': last_workout,
         'avgWorkoutDuration': avg_workout_duration,
@@ -524,76 +581,59 @@ def get_workouts_by_day_of_week(conn):
     return by_day
 
 def get_notable_workouts(conn):
-    """Identify notable workouts (PR days, comebacks)."""
+    """Identify notable workouts (volume records, set records, comebacks)."""
     cursor = conn.cursor()
+    notable = []
 
-    # Find all PR days (days where at least one PR was set)
+    # Top 5 Volume Records
     cursor.execute("""
-        SELECT DISTINCT
+        SELECT
             date(h.date/1000, 'unixepoch') as workout_date,
             SUM(he.weightlb * he.reps) as volume_lbs,
             SUM(he.weightkg * he.reps) as volume_kg,
             p.routine as program_name
-        FROM (
-            SELECT
-                h.id,
-                h.date,
-                h.program_id,
-                he.exercise_id,
-                he.reps,
-                he.weightlb,
-                he.weightkg,
-                MAX(he.weightlb) OVER (
-                    PARTITION BY he.exercise_id, he.reps
-                    ORDER BY h.date
-                    ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
-                ) as prev_max
-            FROM history_exercises he
-            JOIN history h ON he.history_id = h.id
-            WHERE he.reps > 0
-        ) pr_check
-        JOIN history h ON pr_check.id = h.id
+        FROM history h
         LEFT JOIN history_exercises he ON h.id = he.history_id AND he.reps > 0
         LEFT JOIN programs p ON h.program_id = p.id
-        LEFT JOIN exercises e ON pr_check.exercise_id = e.id
-        WHERE prev_max IS NULL OR pr_check.weightlb > prev_max
-        GROUP BY h.id, workout_date, program_name
-        ORDER BY workout_date DESC
-        LIMIT 20
+        GROUP BY h.id
+        ORDER BY volume_lbs DESC
+        LIMIT 5
     """)
 
-    notable = []
-    for row in cursor.fetchall():
-        # Count unique PRs on this day (distinct exercise + rep combinations where weight increased)
-        cursor.execute("""
-            SELECT COUNT(DISTINCT exercise_id || '-' || reps) as pr_count
-            FROM (
-                SELECT
-                    he.exercise_id,
-                    he.reps,
-                    MAX(he.weightlb) as max_weight_day,
-                    MAX(MAX(he.weightlb)) OVER (
-                        PARTITION BY he.exercise_id, he.reps
-                        ORDER BY h.date
-                        ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
-                    ) as prev_max
-                FROM history_exercises he
-                JOIN history h ON he.history_id = h.id
-                WHERE date(h.date/1000, 'unixepoch') = ?
-                AND he.reps > 0
-                GROUP BY he.exercise_id, he.reps, h.date
-            ) subq
-            WHERE prev_max IS NOT NULL AND max_weight_day > prev_max
-        """, (row['workout_date'],))
-
-        pr_count = cursor.fetchone()['pr_count']
-
+    for i, row in enumerate(cursor.fetchall(), 1):
         notable.append({
             'date': row['workout_date'],
-            'reason': f'{pr_count} PR{"s" if pr_count != 1 else ""} Set',
+            'reason': f'Volume Record #{i}',
             'volumeLbs': round(row['volume_lbs'] or 0, 2),
             'volumeKg': round(row['volume_kg'] or 0, 2),
-            'details': row['program_name'] or 'Unknown Program'
+            'details': row['program_name'] or 'Unknown Program',
+            'category': 'volume'
+        })
+
+    # Top 5 Most Sets
+    cursor.execute("""
+        SELECT
+            date(h.date/1000, 'unixepoch') as workout_date,
+            COUNT(*) as set_count,
+            SUM(he.weightlb * he.reps) as volume_lbs,
+            SUM(he.weightkg * he.reps) as volume_kg,
+            p.routine as program_name
+        FROM history h
+        LEFT JOIN history_exercises he ON h.id = he.history_id AND he.reps > 0
+        LEFT JOIN programs p ON h.program_id = p.id
+        GROUP BY h.id
+        ORDER BY set_count DESC
+        LIMIT 5
+    """)
+
+    for i, row in enumerate(cursor.fetchall(), 1):
+        notable.append({
+            'date': row['workout_date'],
+            'reason': f'Most Sets #{i} ({row["set_count"]} sets)',
+            'volumeLbs': round(row['volume_lbs'] or 0, 2),
+            'volumeKg': round(row['volume_kg'] or 0, 2),
+            'details': row['program_name'] or 'Unknown Program',
+            'category': 'sets'
         })
 
     # Find comeback workouts (first workout after 14+ day gap)
@@ -624,10 +664,11 @@ def get_notable_workouts(conn):
     for row in cursor.fetchall():
         notable.append({
             'date': row['workout_date'],
-            'reason': f'Comeback Workout ({int(row["days_gap"])} days off)',
+            'reason': f'Comeback ({int(row["days_gap"])} days off)',
             'volumeLbs': round(row['volume_lbs'] or 0, 2),
             'volumeKg': round(row['volume_kg'] or 0, 2),
-            'details': row['program_name'] or 'Unknown Program'
+            'details': row['program_name'] or 'Unknown Program',
+            'category': 'comeback'
         })
 
     # Sort by date descending

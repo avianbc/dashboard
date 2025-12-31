@@ -795,8 +795,12 @@
                     <div class="stat-label">Workouts/Week Avg</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">${Math.round(totalVolume / 1000)}K</div>
-                    <div class="stat-label">Total Volume (${currentUnit})</div>
+                    <div class="stat-number">${summary.totalTons.toLocaleString()}</div>
+                    <div class="stat-label">Total Tons <span style="font-size: 0.6em; display: block; margin-top: 0.25rem;">(${Math.round(totalVolume / 1000)}K ${currentUnit})</span></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${Math.round(summary.totalReps / 1000)}K</div>
+                    <div class="stat-label">Total Reps</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">${Math.round(avgVolume / 1000)}K</div>
@@ -817,6 +821,10 @@
                 <div class="stat-card">
                     <div class="stat-number">${years}</div>
                     <div class="stat-label">Years Training</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${summary.bestYearEver ? summary.bestYearEver.year : '—'}</div>
+                    <div class="stat-label">Best Year <span style="font-size: 0.6em; display: block; margin-top: 0.25rem;">${summary.bestYearEver ? Math.round(getVolume(summary.bestYearEver.volumeLbs, summary.bestYearEver.volumeKg) / 1000) + 'K ' + currentUnit : ''}</span></div>
                 </div>
             `;
       }
@@ -2294,19 +2302,62 @@
           return;
         }
 
-        container.innerHTML = notableWorkouts
-          .map(
-            (workout) => `
-                <div class="notable-workout">
-                    <div class="notable-date">${workout.date}</div>
-                    <div>${workout.reason}</div>
-                    <div style="color: #888; margin-top: 0.25rem;">
-                        ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
-                    </div>
+        // Group by category
+        const volumeRecords = notableWorkouts.filter(w => w.category === 'volume');
+        const setRecords = notableWorkouts.filter(w => w.category === 'sets');
+        const comebacks = notableWorkouts.filter(w => w.category === 'comeback');
+
+        let html = '';
+
+        // Volume Records
+        if (volumeRecords.length > 0) {
+          html += '<h3 style="margin-bottom: 1rem;">🏆 Volume Records</h3>';
+          volumeRecords.forEach(workout => {
+            html += `
+              <div class="notable-workout">
+                <div class="notable-date">${workout.date}</div>
+                <div style="font-weight: 600;">${workout.reason}</div>
+                <div style="color: #888; margin-top: 0.25rem;">
+                  ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
                 </div>
-            `,
-          )
-          .join("");
+              </div>
+            `;
+          });
+        }
+
+        // Set Records
+        if (setRecords.length > 0) {
+          html += '<h3 style="margin-top: 2rem; margin-bottom: 1rem;">💪 Set Records</h3>';
+          setRecords.forEach(workout => {
+            html += `
+              <div class="notable-workout" style="border-left-color: #51cf66;">
+                <div class="notable-date">${workout.date}</div>
+                <div style="font-weight: 600;">${workout.reason}</div>
+                <div style="color: #888; margin-top: 0.25rem;">
+                  ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
+                </div>
+              </div>
+            `;
+          });
+        }
+
+        // Comebacks
+        if (comebacks.length > 0) {
+          html += '<h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔥 Comeback Workouts</h3>';
+          comebacks.forEach(workout => {
+            html += `
+              <div class="notable-workout" style="border-left-color: #ffd93d;">
+                <div class="notable-date">${workout.date}</div>
+                <div style="font-weight: 600;">${workout.reason}</div>
+                <div style="color: #888; margin-top: 0.25rem;">
+                  ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
+                </div>
+              </div>
+            `;
+          });
+        }
+
+        container.innerHTML = html;
       }
 
       // Scroll spy for navigation
