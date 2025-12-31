@@ -594,11 +594,11 @@
 
       <nav>
         <ul>
-          <li><a href="#summary">Summary</a></li>
-          <li><a href="#volume-calendar">Volume & Calendar</a></li>
-          <li><a href="#big-three">Big 3</a></li>
-          <li><a href="#prs-clubs">PRs & Clubs</a></li>
-          <li><a href="#exercises-patterns">Analysis</a></li>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#volume">Volume</a></li>
+          <li><a href="#strength">Strength</a></li>
+          <li><a href="#milestones">Milestones</a></li>
+          <li><a href="#patterns">Patterns</a></li>
           <li><a href="#history">History</a></li>
         </ul>
       </nav>
@@ -614,15 +614,18 @@
         </div>
       </section>
 
-      <section id="summary">
-        <h2>Summary</h2>
+      <section id="overview">
+        <h2>Overview</h2>
         <div class="summary-stats" id="summaryStats">
+          <!-- Generated dynamically -->
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;" id="workoutStructureStats">
           <!-- Generated dynamically -->
         </div>
       </section>
 
-      <section id="volume-calendar">
-        <h2>Volume & Calendar</h2>
+      <section id="volume">
+        <h2>Volume & Trends</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;" id="volumeHighlights">
           <!-- Generated dynamically -->
         </div>
@@ -640,38 +643,31 @@
           <h3>Workout Calendar</h3>
           <div id="workoutHeatmap"></div>
         </div>
-        <div class="chart-container">
-          <h3>🏔️ Bar Travel Distance</h3>
-          <div id="barTravelStats"></div>
-        </div>
       </section>
 
-      <section id="big-three">
-        <h2>Big 3 + OHP</h2>
+      <section id="strength">
+        <h2>Strength Progress</h2>
         <div id="bigThreeCharts">
           <!-- Generated dynamically -->
         </div>
       </section>
 
-      <section id="prs-clubs">
-        <h2>PRs & Clubs</h2>
+      <section id="milestones">
+        <h2>Milestones & Achievements</h2>
         <div id="prsClubsContent">
           <!-- Generated dynamically -->
         </div>
       </section>
 
-      <section id="exercises-patterns">
-        <h2>Exercise Analysis</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;" id="workoutStructureStats">
-          <!-- Generated dynamically -->
+      <section id="patterns">
+        <h2>Patterns & Analysis</h2>
+        <div class="chart-container">
+          <h3>Volume by Day of Week</h3>
+          <div id="dayOfWeekChart"></div>
         </div>
         <div class="chart-container">
           <h3>Exercises by Volume</h3>
           <div id="exerciseVolumeChart"></div>
-        </div>
-        <div class="chart-container">
-          <h3>Volume by Day of Week</h3>
-          <div id="dayOfWeekChart"></div>
         </div>
       </section>
 
@@ -684,6 +680,10 @@
         <h3 style="margin-top: 3rem;">Notable Workouts</h3>
         <div id="notableWorkoutsList">
           <!-- Generated dynamically -->
+        </div>
+        <div class="chart-container" style="margin-top: 3rem;">
+          <h3>🎯 Fun Stats: Bar Travel Distance</h3>
+          <div id="barTravelStats"></div>
         </div>
       </section>
     </div>
@@ -795,18 +795,29 @@
       }
 
       function renderDashboard() {
+        // Overview section
         renderSummaryStats();
+        renderWorkoutStructure();
+
+        // Volume & Trends section
         renderVolumeHighlights();
         renderAnnualVolumeChart();
         renderWorkoutHeatmap();
-        renderBarTravel();
+
+        // Strength Progress section
         renderBigThree();
-        renderWorkoutStructure();
-        renderExerciseVolumeChart();
+
+        // Milestones & Achievements section
         renderPRsAndClubs();
+
+        // Patterns & Analysis section
         renderDayOfWeekChart();
+        renderExerciseVolumeChart();
+
+        // Training History section
         renderPrograms();
         renderNotableWorkouts();
+        renderBarTravel();
       }
 
       function renderSummaryStats() {
@@ -1508,7 +1519,7 @@
 
         const { byLift, total, landmarks } = barTravel;
         const useMetric = currentUnit === 'kg';
-        
+
         // Calculate max distance for bar chart scaling
         const liftDistances = Object.entries(byLift).map(([lift, data]) => ({
           lift,
@@ -1535,7 +1546,7 @@
         // Main stats display
         const totalDistance = useMetric ? total.km : total.miles;
         const distanceUnit = useMetric ? 'km' : 'miles';
-        
+
         let html = `
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
             <div class="stat-card">
@@ -1560,21 +1571,21 @@
         // Bar chart for distance by lift
         html += '<h4 style="margin-bottom: 1rem; color: #aaa;">Distance by Lift</h4>';
         html += '<div style="display: flex; flex-direction: column; gap: 0.75rem;">';
-        
+
         // Sort by distance descending
         liftDistances.sort((a, b) => b.distance - a.distance);
-        
+
         liftDistances.forEach(({ lift, distance, reps, distancePerRep }) => {
           const percentage = (distance / maxDistance) * 100;
           const color = liftColors[lift];
           const name = liftNames[lift];
-          
+
           html += `
             <div>
               <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
                 <span style="color: ${color}; font-weight: 600;">${name}</span>
                 <span style="color: #888; font-size: 0.875rem;">
-                  ${distance.toFixed(2)} ${distanceUnit} 
+                  ${distance.toFixed(2)} ${distanceUnit}
                   <span style="color: #666;">(${reps.toLocaleString()} reps × ${distancePerRep}")</span>
                 </span>
               </div>
@@ -1584,18 +1595,18 @@
             </div>
           `;
         });
-        
+
         html += '</div>';
 
         // Fun facts section
         const totalFeet = total.feet;
         const marathons = totalFeet / (26.2 * 5280);
-        
+
         html += `
           <div style="margin-top: 2rem; padding: 1rem; background: #111; border-radius: 8px; border-left: 3px solid #4a9eff;">
             <div style="color: #aaa; font-size: 0.875rem; margin-bottom: 0.5rem;">🎯 Fun Perspective</div>
             <div style="color: #e0e0e0;">
-              If you laid all the bar travel end-to-end, you've moved the barbell 
+              If you laid all the bar travel end-to-end, you've moved the barbell
               <strong style="color: #ffd700;">${totalDistance.toFixed(1)} ${distanceUnit}</strong>
               — equivalent to running <strong style="color: #51cf66;">${marathons.toFixed(1)} marathons</strong>!
             </div>

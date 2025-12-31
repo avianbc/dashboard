@@ -992,16 +992,16 @@ def get_days_since_last_pr(conn):
 def get_bar_travel_stats(conn):
     """Calculate bar travel distance statistics for Big 4 lifts."""
     cursor = conn.cursor()
-    
+
     # Bar travel distance per rep in inches (measured by user)
     # These are full rep distances (down + up for squat/bench, up + down for deadlift/ohp)
     BAR_TRAVEL_INCHES = {
         'squat': 47,        # 23.5" down + 23.5" up
-        'bench': 38,        # 19" down + 19" up  
+        'bench': 38,        # 19" down + 19" up
         'deadlift': 50.3,   # (34" - 8.85") × 2 = 25.15" × 2
         'ohp': 48,          # 24" up + 24" down
     }
-    
+
     # Landmark heights in inches for fun comparisons
     LANDMARKS = {
         'everest': 29032 * 12,      # 29,032 feet = 348,384 inches
@@ -1010,11 +1010,11 @@ def get_bar_travel_stats(conn):
         'eiffel_tower': 1083 * 12,  # 1,083 feet = 12,996 inches
         'big_ben': 316 * 12,        # 316 feet = 3,792 inches
     }
-    
+
     bar_travel = {}
     total_distance_inches = 0
-    
-    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES), 
+
+    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES),
                                         ('deadlift', DEADLIFT_NAMES), ('ohp', OHP_NAMES)]:
         # Get total reps for this exercise
         cursor.execute(f"""
@@ -1024,20 +1024,20 @@ def get_bar_travel_stats(conn):
             WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
             AND he.reps > 0
         """, name_list)
-        
+
         row = cursor.fetchone()
         total_reps = row['total_reps'] or 0
-        
+
         distance_per_rep = BAR_TRAVEL_INCHES.get(canonical_name, 0)
         total_inches = total_reps * distance_per_rep
         total_distance_inches += total_inches
-        
+
         # Convert to various units
         total_feet = total_inches / 12
         total_miles = total_feet / 5280
         total_meters = total_inches * 0.0254
         total_km = total_meters / 1000
-        
+
         bar_travel[canonical_name] = {
             'totalReps': total_reps,
             'distancePerRepInches': distance_per_rep,
@@ -1047,19 +1047,19 @@ def get_bar_travel_stats(conn):
             'totalMeters': round(total_meters, 2),
             'totalKm': round(total_km, 2),
         }
-    
+
     # Calculate totals across all lifts
     total_feet = total_distance_inches / 12
     total_miles = total_feet / 5280
     total_meters = total_distance_inches * 0.0254
     total_km = total_meters / 1000
-    
+
     # Fun landmark comparisons
     everest_climbs = total_distance_inches / LANDMARKS['everest']
     empire_state_climbs = total_distance_inches / LANDMARKS['empire_state']
     eiffel_tower_climbs = total_distance_inches / LANDMARKS['eiffel_tower']
     statue_liberty_climbs = total_distance_inches / LANDMARKS['statue_liberty']
-    
+
     return {
         'byLift': bar_travel,
         'total': {
