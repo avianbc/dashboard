@@ -931,6 +931,7 @@
 
       let annualVolumeChartInstance = null;
       let bigThreeChartInstances = {};
+      let bodyWeightChartInstance = null;
 
       // Shared Chart.js Configuration
       const CHART_COLORS = {
@@ -1785,7 +1786,141 @@
 
         html += `</div>`;
 
+        // Body Weight Timeline Chart
+        html += `
+          <div style="margin-top: 2rem;">
+            <h4 style="color: #aaa; margin-bottom: 1rem;">📈 Body Weight Timeline</h4>
+            <canvas id="bodyWeightChart" style="max-height: 200px;"></canvas>
+          </div>
+        `;
+
         container.innerHTML = html;
+
+        // Render body weight chart after DOM update
+        setTimeout(() => renderBodyWeightChart(), 0);
+      }
+
+      function renderBodyWeightChart() {
+        const { bodyWeight } = trainingData;
+        const canvas = document.getElementById('bodyWeightChart');
+        if (!canvas || !bodyWeight || !bodyWeight.monthlyTimeline || bodyWeight.monthlyTimeline.length === 0) return;
+
+        // Destroy existing chart if it exists
+        if (bodyWeightChartInstance) {
+          bodyWeightChartInstance.destroy();
+        }
+
+        const ctx = canvas.getContext('2d');
+        const timeline = bodyWeight.monthlyTimeline;
+
+        // Prepare data
+        const avgData = timeline.map(d => ({
+          x: d.month + '-15',
+          y: currentUnit === 'lbs' ? d.avgLbs : d.avgKg
+        }));
+
+        // Min/max range for shaded area
+        const rangeData = timeline.map(d => ({
+          x: d.month + '-15',
+          min: currentUnit === 'lbs' ? d.minLbs : d.minKg,
+          max: currentUnit === 'lbs' ? d.maxLbs : d.maxKg
+        }));
+
+        const datasets = [
+          // Shaded range (min to max)
+          {
+            label: 'Range',
+            data: rangeData.map(d => ({ x: d.x, y: [d.min, d.max] })),
+            backgroundColor: '#4a9eff15',
+            borderColor: 'transparent',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 0,
+            // Use custom parsing for range
+            parsing: false,
+            normalized: true,
+          },
+          // Upper bound line (for fill reference)
+          {
+            label: 'Max',
+            data: rangeData.map(d => ({ x: d.x, y: d.max })),
+            borderColor: '#4a9eff33',
+            backgroundColor: '#4a9eff15',
+            borderWidth: 1,
+            pointRadius: 0,
+            tension: 0.4,
+            fill: '+1',
+          },
+          // Lower bound line
+          {
+            label: 'Min',
+            data: rangeData.map(d => ({ x: d.x, y: d.min })),
+            borderColor: '#4a9eff33',
+            borderWidth: 1,
+            pointRadius: 0,
+            tension: 0.4,
+            fill: false,
+          },
+          // Average line (main)
+          createLineDataset('Body Weight', avgData, '#4a9eff', {
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHoverRadius: 4,
+            fill: false,
+          }),
+        ];
+
+        bodyWeightChartInstance = new Chart(ctx, {
+          type: 'line',
+          data: { datasets },
+          options: getBaseChartOptions({
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                title: function(context) {
+                  const date = new Date(context[0].parsed.x);
+                  return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+                },
+                label: function(context) {
+                  if (context.dataset.label === 'Body Weight') {
+                    const value = context.parsed.y;
+                    // Find the corresponding range data
+                    const idx = context.dataIndex;
+                    const range = rangeData[idx];
+                    if (range) {
+                      return [
+                        `Avg: ${value.toFixed(1)} ${currentUnit}`,
+                        `Range: ${range.min.toFixed(1)} - ${range.max.toFixed(1)} ${currentUnit}`
+                      ];
+                    }
+                    return `${value.toFixed(1)} ${currentUnit}`;
+                  }
+                  return null;
+                },
+                filter: function(tooltipItem) {
+                  return tooltipItem.dataset.label === 'Body Weight';
+                }
+              },
+            },
+            x: {
+              type: 'time',
+              time: {
+                unit: 'month',
+                displayFormats: { month: 'MMM yyyy' },
+              },
+              ticks: {
+                maxTicksLimit: 12,
+              },
+            },
+            y: {
+              ticks: {
+                callback: function(value) {
+                  return value + ' ' + currentUnit;
+                },
+              },
+            },
+          }),
+        });
       }
 
       function renderBigThree() {
