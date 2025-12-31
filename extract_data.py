@@ -1078,6 +1078,258 @@ def get_bar_travel_stats(conn):
         'distancePerRepInches': BAR_TRAVEL_INCHES,
     }
 
+def get_body_weight_data(conn):
+    """Extract body weight data and calculate relative strength metrics."""
+    cursor = conn.cursor()
+
+    # Get body weight timeline (monthly averages)
+    cursor.execute("""
+        SELECT
+            strftime('%Y-%m', date/1000, 'unixepoch') as month,
+            MIN(weightlb) as min_lbs,
+            MAX(weightlb) as max_lbs,
+            AVG(weightlb) as avg_lbs,
+            MIN(weightkg) as min_kg,
+            MAX(weightkg) as max_kg,
+            AVG(weightkg) as avg_kg,
+            COUNT(*) as entries
+        FROM body_weight
+        GROUP BY month
+        ORDER BY month
+    """)
+
+    monthly_timeline = []
+    for row in cursor.fetchall():
+        monthly_timeline.append({
+            'month': row['month'],
+            'minLbs': round(row['min_lbs'] or 0, 1),
+            'maxLbs': round(row['max_lbs'] or 0, 1),
+            'avgLbs': round(row['avg_lbs'] or 0, 1),
+            'minKg': round(row['min_kg'] or 0, 1),
+            'maxKg': round(row['max_kg'] or 0, 1),
+            'avgKg': round(row['avg_kg'] or 0, 1),
+            'entries': row['entries']
+        })
+
+    # Get current body weight (most recent)
+    cursor.execute("""
+        SELECT weightlb, weightkg, date(date/1000, 'unixepoch') as date
+        FROM body_weight
+        ORDER BY date DESC
+        LIMIT 1
+    """)
+    current_row = cursor.fetchone()
+    current_bw = {
+        'lbs': round(current_row['weightlb'], 1) if current_row else None,
+        'kg': round(current_row['weightkg'], 1) if current_row else None,
+        'date': current_row['date'] if current_row else None
+    }
+
+    # Get earliest body weight
+    cursor.execute("""
+        SELECT weightlb, weightkg, date(date/1000, 'unixepoch') as date
+        FROM body_weight
+        ORDER BY date ASC
+        LIMIT 1
+    """)
+    first_row = cursor.fetchone()
+    starting_bw = {
+        'lbs': round(first_row['weightlb'], 1) if first_row else None,
+        'kg': round(first_row['weightkg'], 1) if first_row else None,
+        'date': first_row['date'] if first_row else None
+    }
+
+    # Get body weight stats
+    cursor.execute("""
+        SELECT
+            MIN(weightlb) as min_lbs,
+            MAX(weightlb) as max_lbs,
+            AVG(weightlb) as avg_lbs,
+            MIN(weightkg) as min_kg,
+            MAX(weightkg) as max_kg,
+            AVG(weightkg) as avg_kg,
+            COUNT(*) as total_entries
+        FROM body_weight
+    """)
+    stats_row = cursor.fetchone()
+    bw_stats = {
+        'minLbs': round(stats_row['min_lbs'] or 0, 1),
+        'maxLbs': round(stats_row['max_lbs'] or 0, 1),
+        'avgLbs': round(stats_row['avg_lbs'] or 0, 1),
+        'minKg': round(stats_row['min_kg'] or 0, 1),
+        'maxKg': round(stats_row['max_kg'] or 0, 1),
+        'avgKg': round(stats_row['avg_kg'] or 0, 1),
+        'totalEntries': stats_row['total_entries']
+    }
+
+    # Detect stale periods (where body weight doesn't change for 30+ days)
+    cursor.execute("""
+        SELECT
+            weightlb,
+            MIN(date(date/1000, 'unixepoch')) as start_date,
+            MAX(date(date/1000, 'unixepoch')) as end_date,
+            COUNT(*) as count
+        FROM body_weight
+        GROUP BY weightlb
+        HAVING COUNT(*) > 30
+        ORDER BY count DESC
+    """)
+
+    stale_periods = []
+    for row in cursor.fetchall():
+        stale_periods.append({
+            'weightLbs': round(row['weightlb'], 1),
+            'startDate': row['start_date'],
+            'endDate': row['end_date'],
+            'count': row['count']
+        })
+
+    return {
+        'current': current_bw,
+        'starting': starting_bw,
+        'stats': bw_stats,
+        'monthlyTimeline': monthly_timeline,
+        'stalePeriods': stale_periods
+    }
+
+def get_relative_strength(conn):
+    """Calculate relative strength metrics (body weight multiples) for Big 3."""
+    cursor = conn.cursor()
+
+    relative_strength = {}
+
+    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES),
+                                        ('deadlift', DEADLIFT_NAMES), ('ohp', OHP_NAMES)]:
+        # Get best body weight multiple for each workout
+        cursor.execute(f"""
+            SELECT
+                date(h.date/1000, 'unixepoch') as workout_date,
+                MAX(he.weightlb) as max_lift_lbs,
+                MAX(he.weightkg) as max_lift_kg,
+                bw.weightlb as body_weight_lbs,
+                bw.weightkg as body_weight_kg,
+                ROUND(MAX(he.weightlb) / bw.weightlb, 2) as bw_multiple
+            FROM history h
+            JOIN history_exercises he ON h.id = he.history_id
+            JOIN exercises e ON he.exercise_id = e.id
+            LEFT JOIN body_weight bw ON date(h.date/1000, 'unixepoch') = date(bw.date/1000, 'unixepoch')
+            WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+            AND he.reps > 0
+            AND bw.weightlb IS NOT NULL
+            GROUP BY h.id
+            ORDER BY bw_multiple DESC
+            LIMIT 1
+        """, name_list)
+
+        best_row = cursor.fetchone()
+
+        # Get timeline of BW multiples (monthly bests) using subquery
+        cursor.execute(f"""
+            SELECT
+                month,
+                MAX(max_lift_lbs) as max_lift_lbs,
+                MAX(max_lift_kg) as max_lift_kg,
+                AVG(body_weight_lbs) as avg_bw_lbs,
+                AVG(body_weight_kg) as avg_bw_kg,
+                MAX(bw_multiple) as best_bw_multiple
+            FROM (
+                SELECT
+                    strftime('%Y-%m', h.date/1000, 'unixepoch') as month,
+                    MAX(he.weightlb) as max_lift_lbs,
+                    MAX(he.weightkg) as max_lift_kg,
+                    bw.weightlb as body_weight_lbs,
+                    bw.weightkg as body_weight_kg,
+                    ROUND(MAX(he.weightlb) / bw.weightlb, 2) as bw_multiple
+                FROM history h
+                JOIN history_exercises he ON h.id = he.history_id
+                JOIN exercises e ON he.exercise_id = e.id
+                LEFT JOIN body_weight bw ON date(h.date/1000, 'unixepoch') = date(bw.date/1000, 'unixepoch')
+                WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+                AND he.reps > 0
+                AND bw.weightlb IS NOT NULL
+                GROUP BY h.id
+            ) subq
+            GROUP BY month
+            ORDER BY month
+        """, name_list)
+
+        monthly_progression = []
+        for row in cursor.fetchall():
+            monthly_progression.append({
+                'month': row['month'],
+                'maxLiftLbs': round(row['max_lift_lbs'] or 0, 1),
+                'maxLiftKg': round(row['max_lift_kg'] or 0, 1),
+                'avgBwLbs': round(row['avg_bw_lbs'] or 0, 1),
+                'avgBwKg': round(row['avg_bw_kg'] or 0, 1),
+                'bwMultiple': row['best_bw_multiple'] or 0
+            })
+
+        # Get current BW multiple (most recent workout for this lift)
+        cursor.execute(f"""
+            SELECT
+                date(h.date/1000, 'unixepoch') as workout_date,
+                MAX(he.weightlb) as max_lift_lbs,
+                MAX(he.weightkg) as max_lift_kg,
+                bw.weightlb as body_weight_lbs,
+                bw.weightkg as body_weight_kg,
+                ROUND(MAX(he.weightlb) / bw.weightlb, 2) as bw_multiple
+            FROM history h
+            JOIN history_exercises he ON h.id = he.history_id
+            JOIN exercises e ON he.exercise_id = e.id
+            LEFT JOIN body_weight bw ON date(h.date/1000, 'unixepoch') = date(bw.date/1000, 'unixepoch')
+            WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+            AND he.reps > 0
+            AND bw.weightlb IS NOT NULL
+            GROUP BY h.id
+            ORDER BY h.date DESC
+            LIMIT 1
+        """, name_list)
+
+        current_row = cursor.fetchone()
+
+        relative_strength[canonical_name] = {
+            'best': {
+                'date': best_row['workout_date'] if best_row else None,
+                'liftLbs': round(best_row['max_lift_lbs'], 1) if best_row else None,
+                'liftKg': round(best_row['max_lift_kg'], 1) if best_row else None,
+                'bodyWeightLbs': round(best_row['body_weight_lbs'], 1) if best_row else None,
+                'bodyWeightKg': round(best_row['body_weight_kg'], 1) if best_row else None,
+                'multiple': best_row['bw_multiple'] if best_row else None
+            },
+            'current': {
+                'date': current_row['workout_date'] if current_row else None,
+                'liftLbs': round(current_row['max_lift_lbs'], 1) if current_row else None,
+                'liftKg': round(current_row['max_lift_kg'], 1) if current_row else None,
+                'bodyWeightLbs': round(current_row['body_weight_lbs'], 1) if current_row else None,
+                'bodyWeightKg': round(current_row['body_weight_kg'], 1) if current_row else None,
+                'multiple': current_row['bw_multiple'] if current_row else None
+            },
+            'monthlyProgression': monthly_progression
+        }
+
+    # Calculate combined total BW multiple (S+B+D best multiples)
+    squat_best = relative_strength.get('squat', {}).get('best', {}).get('multiple', 0) or 0
+    bench_best = relative_strength.get('bench', {}).get('best', {}).get('multiple', 0) or 0
+    deadlift_best = relative_strength.get('deadlift', {}).get('best', {}).get('multiple', 0) or 0
+    total_multiple = round(squat_best + bench_best + deadlift_best, 2)
+
+    relative_strength['totalMultiple'] = {
+        'best': total_multiple,
+        'squat': squat_best,
+        'bench': bench_best,
+        'deadlift': deadlift_best
+    }
+
+    # Standard benchmarks for reference
+    relative_strength['benchmarks'] = {
+        'squat': {'beginner': 1.0, 'intermediate': 1.5, 'advanced': 2.0, 'elite': 2.5},
+        'bench': {'beginner': 0.75, 'intermediate': 1.0, 'advanced': 1.5, 'elite': 2.0},
+        'deadlift': {'beginner': 1.25, 'intermediate': 1.75, 'advanced': 2.5, 'elite': 3.0},
+        'ohp': {'beginner': 0.5, 'intermediate': 0.75, 'advanced': 1.0, 'elite': 1.25}
+    }
+
+    return relative_strength
+
 def main():
     """Main execution function."""
     print("Connecting to database...")
@@ -1128,6 +1380,12 @@ def main():
     print("Calculating bar travel statistics...")
     bar_travel_stats = get_bar_travel_stats(conn)
 
+    print("Extracting body weight data...")
+    body_weight_data = get_body_weight_data(conn)
+
+    print("Calculating relative strength metrics...")
+    relative_strength = get_relative_strength(conn)
+
     # Compile all data
     data = {
         'summary': summary,
@@ -1148,7 +1406,9 @@ def main():
         },
         'allTimePRs': all_time_prs,
         'daysSinceLastPR': days_since_last_pr,
-        'barTravel': bar_travel_stats
+        'barTravel': bar_travel_stats,
+        'bodyWeight': body_weight_data,
+        'relativeStrength': relative_strength
     }
 
     print(f"Writing output to {OUTPUT_PATH}...")
@@ -1170,6 +1430,13 @@ def main():
     # Print bar travel info
     if bar_travel_stats:
         print(f"  - Total Bar Travel: {bar_travel_stats['total']['miles']:.1f} miles ({bar_travel_stats['landmarks']['everestClimbs']:.1f}× Mt. Everest)")
+
+    # Print body weight and relative strength info
+    if body_weight_data.get('current') and body_weight_data['current'].get('lbs'):
+        print(f"  - Current Body Weight: {body_weight_data['current']['lbs']} lbs / {body_weight_data['current']['kg']} kg")
+    if relative_strength.get('totalMultiple'):
+        tm = relative_strength['totalMultiple']
+        print(f"  - Best BW Multiples: S:{tm['squat']}× B:{tm['bench']}× D:{tm['deadlift']}× (Total: {tm['best']}×)")
 
     conn.close()
 

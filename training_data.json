@@ -31147,5 +31147,2836 @@
       "deadlift": 50.3,
       "ohp": 48
     }
+  },
+  "bodyWeight": {
+    "current": {
+      "lbs": 205.0,
+      "kg": 93.0,
+      "date": "2025-10-24"
+    },
+    "starting": {
+      "lbs": 182.0,
+      "kg": 82.5,
+      "date": "2019-01-24"
+    },
+    "stats": {
+      "minLbs": 180.0,
+      "maxLbs": 205.0,
+      "avgLbs": 183.8,
+      "minKg": 81.6,
+      "maxKg": 93.0,
+      "avgKg": 83.4,
+      "totalEntries": 979
+    },
+    "monthlyTimeline": [
+      {
+        "month": "2019-01",
+        "minLbs": 180.0,
+        "maxLbs": 182.0,
+        "avgLbs": 181.0,
+        "minKg": 81.6,
+        "maxKg": 82.5,
+        "avgKg": 82.1,
+        "entries": 4
+      },
+      {
+        "month": "2019-02",
+        "minLbs": 180.0,
+        "maxLbs": 190.0,
+        "avgLbs": 185.1,
+        "minKg": 81.6,
+        "maxKg": 86.2,
+        "avgKg": 84.0,
+        "entries": 12
+      },
+      {
+        "month": "2019-03",
+        "minLbs": 189.2,
+        "maxLbs": 195.4,
+        "avgLbs": 192.1,
+        "minKg": 85.8,
+        "maxKg": 88.6,
+        "avgKg": 87.1,
+        "entries": 13
+      },
+      {
+        "month": "2019-04",
+        "minLbs": 192.8,
+        "maxLbs": 198.0,
+        "avgLbs": 194.9,
+        "minKg": 87.4,
+        "maxKg": 89.8,
+        "avgKg": 88.4,
+        "entries": 18
+      },
+      {
+        "month": "2019-05",
+        "minLbs": 188.0,
+        "maxLbs": 196.8,
+        "avgLbs": 192.6,
+        "minKg": 85.3,
+        "maxKg": 89.3,
+        "avgKg": 87.3,
+        "entries": 21
+      },
+      {
+        "month": "2019-06",
+        "minLbs": 184.0,
+        "maxLbs": 188.0,
+        "avgLbs": 186.4,
+        "minKg": 83.4,
+        "maxKg": 85.3,
+        "avgKg": 84.5,
+        "entries": 9
+      },
+      {
+        "month": "2019-07",
+        "minLbs": 181.6,
+        "maxLbs": 185.6,
+        "avgLbs": 184.4,
+        "minKg": 82.4,
+        "maxKg": 84.2,
+        "avgKg": 83.6,
+        "entries": 19
+      },
+      {
+        "month": "2019-08",
+        "minLbs": 181.8,
+        "maxLbs": 181.8,
+        "avgLbs": 181.8,
+        "minKg": 82.4,
+        "maxKg": 82.4,
+        "avgKg": 82.4,
+        "entries": 17
+      },
+      {
+        "month": "2019-09",
+        "minLbs": 180.4,
+        "maxLbs": 181.8,
+        "avgLbs": 181.0,
+        "minKg": 81.8,
+        "maxKg": 82.4,
+        "avgKg": 82.1,
+        "entries": 14
+      },
+      {
+        "month": "2019-10",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 18
+      },
+      {
+        "month": "2019-11",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 12
+      },
+      {
+        "month": "2019-12",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 6
+      },
+      {
+        "month": "2020-01",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 16
+      },
+      {
+        "month": "2020-02",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 15
+      },
+      {
+        "month": "2020-03",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 18
+      },
+      {
+        "month": "2020-04",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 17
+      },
+      {
+        "month": "2020-05",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 17
+      },
+      {
+        "month": "2020-06",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 15
+      },
+      {
+        "month": "2020-09",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 1
+      },
+      {
+        "month": "2021-01",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 19
+      },
+      {
+        "month": "2021-02",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 19
+      },
+      {
+        "month": "2021-03",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 22
+      },
+      {
+        "month": "2021-04",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 21
+      },
+      {
+        "month": "2021-05",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 21
+      },
+      {
+        "month": "2021-06",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 20
+      },
+      {
+        "month": "2021-07",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 17
+      },
+      {
+        "month": "2021-08",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 21
+      },
+      {
+        "month": "2021-09",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 20
+      },
+      {
+        "month": "2021-10",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 17
+      },
+      {
+        "month": "2021-11",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 10
+      },
+      {
+        "month": "2021-12",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 13
+      },
+      {
+        "month": "2022-01",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 12
+      },
+      {
+        "month": "2022-02",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 15
+      },
+      {
+        "month": "2022-03",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 16
+      },
+      {
+        "month": "2022-04",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 15
+      },
+      {
+        "month": "2022-05",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 14
+      },
+      {
+        "month": "2022-06",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 18
+      },
+      {
+        "month": "2022-07",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 11
+      },
+      {
+        "month": "2022-08",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 23
+      },
+      {
+        "month": "2022-09",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 19
+      },
+      {
+        "month": "2022-10",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 21
+      },
+      {
+        "month": "2022-11",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 17
+      },
+      {
+        "month": "2022-12",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 13
+      },
+      {
+        "month": "2023-01",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 21
+      },
+      {
+        "month": "2023-02",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 16
+      },
+      {
+        "month": "2023-03",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 9
+      },
+      {
+        "month": "2023-04",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 15
+      },
+      {
+        "month": "2023-05",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 14
+      },
+      {
+        "month": "2023-06",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 12
+      },
+      {
+        "month": "2023-07",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 13
+      },
+      {
+        "month": "2023-08",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 21
+      },
+      {
+        "month": "2023-09",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 20
+      },
+      {
+        "month": "2023-10",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 13
+      },
+      {
+        "month": "2023-11",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 3
+      },
+      {
+        "month": "2024-07",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 5
+      },
+      {
+        "month": "2024-08",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 4
+      },
+      {
+        "month": "2024-11",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 3
+      },
+      {
+        "month": "2024-12",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 13
+      },
+      {
+        "month": "2025-01",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 8
+      },
+      {
+        "month": "2025-02",
+        "minLbs": 180.4,
+        "maxLbs": 180.4,
+        "avgLbs": 180.4,
+        "minKg": 81.8,
+        "maxKg": 81.8,
+        "avgKg": 81.8,
+        "entries": 12
+      },
+      {
+        "month": "2025-03",
+        "minLbs": 180.4,
+        "maxLbs": 205.0,
+        "avgLbs": 201.2,
+        "minKg": 81.8,
+        "maxKg": 93.0,
+        "avgKg": 91.3,
+        "entries": 13
+      },
+      {
+        "month": "2025-04",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 15
+      },
+      {
+        "month": "2025-05",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 7
+      },
+      {
+        "month": "2025-06",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 13
+      },
+      {
+        "month": "2025-07",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 16
+      },
+      {
+        "month": "2025-08",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 17
+      },
+      {
+        "month": "2025-09",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 16
+      },
+      {
+        "month": "2025-10",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 4
+      }
+    ],
+    "stalePeriods": [
+      {
+        "weightLbs": 180.4,
+        "startDate": "2019-09-16",
+        "endDate": "2025-03-05",
+        "count": 761
+      },
+      {
+        "weightLbs": 205.0,
+        "startDate": "2025-03-07",
+        "endDate": "2025-10-24",
+        "count": 99
+      }
+    ]
+  },
+  "relativeStrength": {
+    "squat": {
+      "best": {
+        "date": "2022-11-15",
+        "liftLbs": 400.0,
+        "liftKg": 182.5,
+        "bodyWeightLbs": 180.4,
+        "bodyWeightKg": 81.8,
+        "multiple": 2.22
+      },
+      "current": {
+        "date": "2025-10-20",
+        "liftLbs": 280.0,
+        "liftKg": 127.5,
+        "bodyWeightLbs": 205.0,
+        "bodyWeightKg": 93.0,
+        "multiple": 1.37
+      },
+      "monthlyProgression": [
+        {
+          "month": "2019-04",
+          "maxLiftLbs": 275.0,
+          "maxLiftKg": 125.0,
+          "avgBwLbs": 195.0,
+          "avgBwKg": 88.4,
+          "bwMultiple": 1.43
+        },
+        {
+          "month": "2019-05",
+          "maxLiftLbs": 295.0,
+          "maxLiftKg": 135.0,
+          "avgBwLbs": 192.3,
+          "avgBwKg": 87.2,
+          "bwMultiple": 1.57
+        },
+        {
+          "month": "2019-06",
+          "maxLiftLbs": 300.0,
+          "maxLiftKg": 135.0,
+          "avgBwLbs": 187.6,
+          "avgBwKg": 85.1,
+          "bwMultiple": 1.6
+        },
+        {
+          "month": "2019-07",
+          "maxLiftLbs": 320.0,
+          "maxLiftKg": 145.0,
+          "avgBwLbs": 184.2,
+          "avgBwKg": 83.5,
+          "bwMultiple": 1.72
+        },
+        {
+          "month": "2019-08",
+          "maxLiftLbs": 320.0,
+          "maxLiftKg": 145.0,
+          "avgBwLbs": 181.8,
+          "avgBwKg": 82.4,
+          "bwMultiple": 1.76
+        },
+        {
+          "month": "2019-09",
+          "maxLiftLbs": 310.0,
+          "maxLiftKg": 140.0,
+          "avgBwLbs": 181.0,
+          "avgBwKg": 82.1,
+          "bwMultiple": 1.71
+        },
+        {
+          "month": "2019-10",
+          "maxLiftLbs": 330.0,
+          "maxLiftKg": 150.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.83
+        },
+        {
+          "month": "2019-11",
+          "maxLiftLbs": 340.0,
+          "maxLiftKg": 155.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.88
+        },
+        {
+          "month": "2019-12",
+          "maxLiftLbs": 300.0,
+          "maxLiftKg": 135.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.66
+        },
+        {
+          "month": "2020-01",
+          "maxLiftLbs": 350.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.94
+        },
+        {
+          "month": "2020-02",
+          "maxLiftLbs": 330.0,
+          "maxLiftKg": 150.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.83
+        },
+        {
+          "month": "2020-03",
+          "maxLiftLbs": 360.0,
+          "maxLiftKg": 162.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.0
+        },
+        {
+          "month": "2020-04",
+          "maxLiftLbs": 360.0,
+          "maxLiftKg": 162.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.0
+        },
+        {
+          "month": "2020-05",
+          "maxLiftLbs": 360.0,
+          "maxLiftKg": 162.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.0
+        },
+        {
+          "month": "2020-06",
+          "maxLiftLbs": 360.0,
+          "maxLiftKg": 162.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.0
+        },
+        {
+          "month": "2021-01",
+          "maxLiftLbs": 315.0,
+          "maxLiftKg": 142.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.75
+        },
+        {
+          "month": "2021-02",
+          "maxLiftLbs": 315.0,
+          "maxLiftKg": 142.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.75
+        },
+        {
+          "month": "2021-03",
+          "maxLiftLbs": 325.0,
+          "maxLiftKg": 147.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.8
+        },
+        {
+          "month": "2021-04",
+          "maxLiftLbs": 320.0,
+          "maxLiftKg": 145.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.77
+        },
+        {
+          "month": "2021-05",
+          "maxLiftLbs": 360.0,
+          "maxLiftKg": 162.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.0
+        },
+        {
+          "month": "2021-06",
+          "maxLiftLbs": 345.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.91
+        },
+        {
+          "month": "2021-07",
+          "maxLiftLbs": 370.0,
+          "maxLiftKg": 167.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.05
+        },
+        {
+          "month": "2021-08",
+          "maxLiftLbs": 350.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.94
+        },
+        {
+          "month": "2021-09",
+          "maxLiftLbs": 360.0,
+          "maxLiftKg": 162.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.0
+        },
+        {
+          "month": "2021-10",
+          "maxLiftLbs": 340.0,
+          "maxLiftKg": 155.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.88
+        },
+        {
+          "month": "2021-11",
+          "maxLiftLbs": 340.0,
+          "maxLiftKg": 155.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.88
+        },
+        {
+          "month": "2021-12",
+          "maxLiftLbs": 355.0,
+          "maxLiftKg": 160.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.97
+        },
+        {
+          "month": "2022-01",
+          "maxLiftLbs": 305.0,
+          "maxLiftKg": 137.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.69
+        },
+        {
+          "month": "2022-02",
+          "maxLiftLbs": 320.0,
+          "maxLiftKg": 145.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.77
+        },
+        {
+          "month": "2022-03",
+          "maxLiftLbs": 340.0,
+          "maxLiftKg": 155.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.88
+        },
+        {
+          "month": "2022-04",
+          "maxLiftLbs": 355.0,
+          "maxLiftKg": 160.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.97
+        },
+        {
+          "month": "2022-05",
+          "maxLiftLbs": 345.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.91
+        },
+        {
+          "month": "2022-06",
+          "maxLiftLbs": 325.0,
+          "maxLiftKg": 147.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.8
+        },
+        {
+          "month": "2022-07",
+          "maxLiftLbs": 320.0,
+          "maxLiftKg": 145.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.77
+        },
+        {
+          "month": "2022-08",
+          "maxLiftLbs": 340.0,
+          "maxLiftKg": 155.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.88
+        },
+        {
+          "month": "2022-09",
+          "maxLiftLbs": 360.0,
+          "maxLiftKg": 162.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.0
+        },
+        {
+          "month": "2022-10",
+          "maxLiftLbs": 375.0,
+          "maxLiftKg": 170.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.08
+        },
+        {
+          "month": "2022-11",
+          "maxLiftLbs": 400.0,
+          "maxLiftKg": 182.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.22
+        },
+        {
+          "month": "2022-12",
+          "maxLiftLbs": 345.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.91
+        },
+        {
+          "month": "2023-01",
+          "maxLiftLbs": 300.0,
+          "maxLiftKg": 135.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.66
+        },
+        {
+          "month": "2023-02",
+          "maxLiftLbs": 300.0,
+          "maxLiftKg": 135.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.66
+        },
+        {
+          "month": "2023-03",
+          "maxLiftLbs": 300.0,
+          "maxLiftKg": 135.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.66
+        },
+        {
+          "month": "2023-04",
+          "maxLiftLbs": 345.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.91
+        },
+        {
+          "month": "2023-05",
+          "maxLiftLbs": 355.0,
+          "maxLiftKg": 160.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.97
+        },
+        {
+          "month": "2023-06",
+          "maxLiftLbs": 365.0,
+          "maxLiftKg": 165.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.02
+        },
+        {
+          "month": "2023-07",
+          "maxLiftLbs": 310.0,
+          "maxLiftKg": 140.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.72
+        },
+        {
+          "month": "2023-08",
+          "maxLiftLbs": 355.0,
+          "maxLiftKg": 160.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.97
+        },
+        {
+          "month": "2023-09",
+          "maxLiftLbs": 375.0,
+          "maxLiftKg": 170.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.08
+        },
+        {
+          "month": "2023-10",
+          "maxLiftLbs": 380.0,
+          "maxLiftKg": 172.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.11
+        },
+        {
+          "month": "2023-11",
+          "maxLiftLbs": 220.0,
+          "maxLiftKg": 100.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.22
+        },
+        {
+          "month": "2024-07",
+          "maxLiftLbs": 150.0,
+          "maxLiftKg": 67.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.83
+        },
+        {
+          "month": "2024-08",
+          "maxLiftLbs": 180.0,
+          "maxLiftKg": 82.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.0
+        },
+        {
+          "month": "2024-11",
+          "maxLiftLbs": 175.0,
+          "maxLiftKg": 80.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.97
+        },
+        {
+          "month": "2024-12",
+          "maxLiftLbs": 215.0,
+          "maxLiftKg": 97.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.19
+        },
+        {
+          "month": "2025-01",
+          "maxLiftLbs": 220.0,
+          "maxLiftKg": 100.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.22
+        },
+        {
+          "month": "2025-02",
+          "maxLiftLbs": 260.0,
+          "maxLiftKg": 117.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.44
+        },
+        {
+          "month": "2025-03",
+          "maxLiftLbs": 290.0,
+          "maxLiftKg": 132.5,
+          "avgBwLbs": 201.9,
+          "avgBwKg": 91.6,
+          "bwMultiple": 1.47
+        },
+        {
+          "month": "2025-04",
+          "maxLiftLbs": 245.0,
+          "maxLiftKg": 110.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.2
+        },
+        {
+          "month": "2025-05",
+          "maxLiftLbs": 275.0,
+          "maxLiftKg": 125.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.34
+        },
+        {
+          "month": "2025-06",
+          "maxLiftLbs": 265.0,
+          "maxLiftKg": 120.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.29
+        },
+        {
+          "month": "2025-07",
+          "maxLiftLbs": 275.0,
+          "maxLiftKg": 125.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.34
+        },
+        {
+          "month": "2025-08",
+          "maxLiftLbs": 275.0,
+          "maxLiftKg": 125.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.34
+        },
+        {
+          "month": "2025-09",
+          "maxLiftLbs": 260.0,
+          "maxLiftKg": 117.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.27
+        },
+        {
+          "month": "2025-10",
+          "maxLiftLbs": 280.0,
+          "maxLiftKg": 127.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.37
+        }
+      ]
+    },
+    "bench": {
+      "best": {
+        "date": "2022-11-04",
+        "liftLbs": 275.0,
+        "liftKg": 125.0,
+        "bodyWeightLbs": 180.4,
+        "bodyWeightKg": 81.8,
+        "multiple": 1.52
+      },
+      "current": {
+        "date": "2025-10-23",
+        "liftLbs": 200.0,
+        "liftKg": 90.0,
+        "bodyWeightLbs": 205.0,
+        "bodyWeightKg": 93.0,
+        "multiple": 0.98
+      },
+      "monthlyProgression": [
+        {
+          "month": "2019-04",
+          "maxLiftLbs": 190.0,
+          "maxLiftKg": 85.0,
+          "avgBwLbs": 194.2,
+          "avgBwKg": 88.1,
+          "bwMultiple": 0.99
+        },
+        {
+          "month": "2019-05",
+          "maxLiftLbs": 200.0,
+          "maxLiftKg": 90.0,
+          "avgBwLbs": 193.0,
+          "avgBwKg": 87.5,
+          "bwMultiple": 1.06
+        },
+        {
+          "month": "2019-06",
+          "maxLiftLbs": 205.0,
+          "maxLiftKg": 92.5,
+          "avgBwLbs": 187.1,
+          "avgBwKg": 84.8,
+          "bwMultiple": 1.09
+        },
+        {
+          "month": "2019-07",
+          "maxLiftLbs": 195.0,
+          "maxLiftKg": 87.5,
+          "avgBwLbs": 184.2,
+          "avgBwKg": 83.5,
+          "bwMultiple": 1.07
+        },
+        {
+          "month": "2019-08",
+          "maxLiftLbs": 210.0,
+          "maxLiftKg": 95.0,
+          "avgBwLbs": 181.8,
+          "avgBwKg": 82.4,
+          "bwMultiple": 1.16
+        },
+        {
+          "month": "2019-09",
+          "maxLiftLbs": 210.0,
+          "maxLiftKg": 95.0,
+          "avgBwLbs": 181.0,
+          "avgBwKg": 82.1,
+          "bwMultiple": 1.16
+        },
+        {
+          "month": "2019-10",
+          "maxLiftLbs": 210.0,
+          "maxLiftKg": 95.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.16
+        },
+        {
+          "month": "2019-11",
+          "maxLiftLbs": 215.0,
+          "maxLiftKg": 97.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.19
+        },
+        {
+          "month": "2019-12",
+          "maxLiftLbs": 200.0,
+          "maxLiftKg": 90.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.11
+        },
+        {
+          "month": "2020-01",
+          "maxLiftLbs": 205.0,
+          "maxLiftKg": 92.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.14
+        },
+        {
+          "month": "2020-02",
+          "maxLiftLbs": 210.0,
+          "maxLiftKg": 95.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.16
+        },
+        {
+          "month": "2020-03",
+          "maxLiftLbs": 210.0,
+          "maxLiftKg": 95.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.16
+        },
+        {
+          "month": "2020-04",
+          "maxLiftLbs": 210.0,
+          "maxLiftKg": 95.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.16
+        },
+        {
+          "month": "2020-05",
+          "maxLiftLbs": 210.0,
+          "maxLiftKg": 95.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.16
+        },
+        {
+          "month": "2020-06",
+          "maxLiftLbs": 220.0,
+          "maxLiftKg": 100.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.22
+        },
+        {
+          "month": "2021-01",
+          "maxLiftLbs": 185.0,
+          "maxLiftKg": 85.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.03
+        },
+        {
+          "month": "2021-02",
+          "maxLiftLbs": 180.0,
+          "maxLiftKg": 82.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.0
+        },
+        {
+          "month": "2021-03",
+          "maxLiftLbs": 195.0,
+          "maxLiftKg": 87.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.08
+        },
+        {
+          "month": "2021-04",
+          "maxLiftLbs": 235.0,
+          "maxLiftKg": 107.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.3
+        },
+        {
+          "month": "2021-05",
+          "maxLiftLbs": 255.0,
+          "maxLiftKg": 115.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.41
+        },
+        {
+          "month": "2021-06",
+          "maxLiftLbs": 255.0,
+          "maxLiftKg": 115.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.41
+        },
+        {
+          "month": "2021-07",
+          "maxLiftLbs": 255.0,
+          "maxLiftKg": 115.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.41
+        },
+        {
+          "month": "2021-08",
+          "maxLiftLbs": 250.0,
+          "maxLiftKg": 112.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.39
+        },
+        {
+          "month": "2021-09",
+          "maxLiftLbs": 255.0,
+          "maxLiftKg": 115.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.41
+        },
+        {
+          "month": "2021-10",
+          "maxLiftLbs": 270.0,
+          "maxLiftKg": 122.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.5
+        },
+        {
+          "month": "2021-11",
+          "maxLiftLbs": 270.0,
+          "maxLiftKg": 122.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.5
+        },
+        {
+          "month": "2021-12",
+          "maxLiftLbs": 265.0,
+          "maxLiftKg": 120.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.47
+        },
+        {
+          "month": "2022-01",
+          "maxLiftLbs": 270.0,
+          "maxLiftKg": 122.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.5
+        },
+        {
+          "month": "2022-02",
+          "maxLiftLbs": 265.0,
+          "maxLiftKg": 120.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.47
+        },
+        {
+          "month": "2022-03",
+          "maxLiftLbs": 265.0,
+          "maxLiftKg": 120.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.47
+        },
+        {
+          "month": "2022-04",
+          "maxLiftLbs": 265.0,
+          "maxLiftKg": 120.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.47
+        },
+        {
+          "month": "2022-05",
+          "maxLiftLbs": 270.0,
+          "maxLiftKg": 122.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.5
+        },
+        {
+          "month": "2022-06",
+          "maxLiftLbs": 255.0,
+          "maxLiftKg": 115.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.41
+        },
+        {
+          "month": "2022-07",
+          "maxLiftLbs": 240.0,
+          "maxLiftKg": 110.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.33
+        },
+        {
+          "month": "2022-08",
+          "maxLiftLbs": 240.0,
+          "maxLiftKg": 110.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.33
+        },
+        {
+          "month": "2022-09",
+          "maxLiftLbs": 240.0,
+          "maxLiftKg": 110.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.33
+        },
+        {
+          "month": "2022-10",
+          "maxLiftLbs": 265.0,
+          "maxLiftKg": 120.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.47
+        },
+        {
+          "month": "2022-11",
+          "maxLiftLbs": 275.0,
+          "maxLiftKg": 125.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.52
+        },
+        {
+          "month": "2022-12",
+          "maxLiftLbs": 275.0,
+          "maxLiftKg": 125.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.52
+        },
+        {
+          "month": "2023-01",
+          "maxLiftLbs": 260.0,
+          "maxLiftKg": 117.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.44
+        },
+        {
+          "month": "2023-02",
+          "maxLiftLbs": 260.0,
+          "maxLiftKg": 117.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.44
+        },
+        {
+          "month": "2023-03",
+          "maxLiftLbs": 250.0,
+          "maxLiftKg": 112.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.39
+        },
+        {
+          "month": "2023-04",
+          "maxLiftLbs": 230.0,
+          "maxLiftKg": 105.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.27
+        },
+        {
+          "month": "2023-05",
+          "maxLiftLbs": 235.0,
+          "maxLiftKg": 107.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.3
+        },
+        {
+          "month": "2023-06",
+          "maxLiftLbs": 240.0,
+          "maxLiftKg": 110.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.33
+        },
+        {
+          "month": "2023-07",
+          "maxLiftLbs": 225.0,
+          "maxLiftKg": 102.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.25
+        },
+        {
+          "month": "2023-08",
+          "maxLiftLbs": 230.0,
+          "maxLiftKg": 105.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.27
+        },
+        {
+          "month": "2023-09",
+          "maxLiftLbs": 245.0,
+          "maxLiftKg": 110.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.36
+        },
+        {
+          "month": "2023-10",
+          "maxLiftLbs": 245.0,
+          "maxLiftKg": 110.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.36
+        },
+        {
+          "month": "2023-11",
+          "maxLiftLbs": 245.0,
+          "maxLiftKg": 110.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.36
+        },
+        {
+          "month": "2024-07",
+          "maxLiftLbs": 130.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.72
+        },
+        {
+          "month": "2024-08",
+          "maxLiftLbs": 145.0,
+          "maxLiftKg": 65.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.8
+        },
+        {
+          "month": "2024-11",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2024-12",
+          "maxLiftLbs": 167.5,
+          "maxLiftKg": 75.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.93
+        },
+        {
+          "month": "2025-01",
+          "maxLiftLbs": 180.0,
+          "maxLiftKg": 82.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.0
+        },
+        {
+          "month": "2025-02",
+          "maxLiftLbs": 197.5,
+          "maxLiftKg": 90.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.09
+        },
+        {
+          "month": "2025-03",
+          "maxLiftLbs": 212.5,
+          "maxLiftKg": 97.5,
+          "avgBwLbs": 201.5,
+          "avgBwKg": 91.4,
+          "bwMultiple": 1.11
+        },
+        {
+          "month": "2025-04",
+          "maxLiftLbs": 200.0,
+          "maxLiftKg": 90.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.98
+        },
+        {
+          "month": "2025-05",
+          "maxLiftLbs": 205.0,
+          "maxLiftKg": 92.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.0
+        },
+        {
+          "month": "2025-06",
+          "maxLiftLbs": 207.5,
+          "maxLiftKg": 95.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.01
+        },
+        {
+          "month": "2025-07",
+          "maxLiftLbs": 202.5,
+          "maxLiftKg": 92.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.99
+        },
+        {
+          "month": "2025-08",
+          "maxLiftLbs": 185.0,
+          "maxLiftKg": 85.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.9
+        },
+        {
+          "month": "2025-09",
+          "maxLiftLbs": 195.0,
+          "maxLiftKg": 87.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.95
+        },
+        {
+          "month": "2025-10",
+          "maxLiftLbs": 200.0,
+          "maxLiftKg": 90.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.98
+        }
+      ]
+    },
+    "deadlift": {
+      "best": {
+        "date": "2021-07-01",
+        "liftLbs": 465.0,
+        "liftKg": 210.0,
+        "bodyWeightLbs": 180.4,
+        "bodyWeightKg": 81.8,
+        "multiple": 2.58
+      },
+      "current": {
+        "date": "2025-10-24",
+        "liftLbs": 275.0,
+        "liftKg": 125.0,
+        "bodyWeightLbs": 205.0,
+        "bodyWeightKg": 93.0,
+        "multiple": 1.34
+      },
+      "monthlyProgression": [
+        {
+          "month": "2019-04",
+          "maxLiftLbs": 325.0,
+          "maxLiftKg": 147.5,
+          "avgBwLbs": 195.1,
+          "avgBwKg": 88.5,
+          "bwMultiple": 1.69
+        },
+        {
+          "month": "2019-05",
+          "maxLiftLbs": 325.0,
+          "maxLiftKg": 147.5,
+          "avgBwLbs": 192.8,
+          "avgBwKg": 87.4,
+          "bwMultiple": 1.68
+        },
+        {
+          "month": "2019-06",
+          "maxLiftLbs": 320.0,
+          "maxLiftKg": 145.0,
+          "avgBwLbs": 186.2,
+          "avgBwKg": 84.4,
+          "bwMultiple": 1.7
+        },
+        {
+          "month": "2019-07",
+          "maxLiftLbs": 335.0,
+          "maxLiftKg": 152.5,
+          "avgBwLbs": 184.5,
+          "avgBwKg": 83.7,
+          "bwMultiple": 1.84
+        },
+        {
+          "month": "2019-08",
+          "maxLiftLbs": 345.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 181.8,
+          "avgBwKg": 82.4,
+          "bwMultiple": 1.9
+        },
+        {
+          "month": "2019-09",
+          "maxLiftLbs": 385.0,
+          "maxLiftKg": 175.0,
+          "avgBwLbs": 181.0,
+          "avgBwKg": 82.1,
+          "bwMultiple": 2.13
+        },
+        {
+          "month": "2019-10",
+          "maxLiftLbs": 405.0,
+          "maxLiftKg": 182.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.25
+        },
+        {
+          "month": "2019-11",
+          "maxLiftLbs": 410.0,
+          "maxLiftKg": 185.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.27
+        },
+        {
+          "month": "2019-12",
+          "maxLiftLbs": 400.0,
+          "maxLiftKg": 182.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.22
+        },
+        {
+          "month": "2020-01",
+          "maxLiftLbs": 415.0,
+          "maxLiftKg": 187.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.3
+        },
+        {
+          "month": "2020-02",
+          "maxLiftLbs": 425.0,
+          "maxLiftKg": 192.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.36
+        },
+        {
+          "month": "2020-03",
+          "maxLiftLbs": 425.0,
+          "maxLiftKg": 192.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.36
+        },
+        {
+          "month": "2020-04",
+          "maxLiftLbs": 435.0,
+          "maxLiftKg": 197.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.41
+        },
+        {
+          "month": "2020-05",
+          "maxLiftLbs": 435.0,
+          "maxLiftKg": 197.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.41
+        },
+        {
+          "month": "2020-06",
+          "maxLiftLbs": 425.0,
+          "maxLiftKg": 192.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.36
+        },
+        {
+          "month": "2021-01",
+          "maxLiftLbs": 335.0,
+          "maxLiftKg": 152.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.86
+        },
+        {
+          "month": "2021-02",
+          "maxLiftLbs": 365.0,
+          "maxLiftKg": 165.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.02
+        },
+        {
+          "month": "2021-03",
+          "maxLiftLbs": 405.0,
+          "maxLiftKg": 182.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.25
+        },
+        {
+          "month": "2021-04",
+          "maxLiftLbs": 405.0,
+          "maxLiftKg": 182.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.25
+        },
+        {
+          "month": "2021-05",
+          "maxLiftLbs": 440.0,
+          "maxLiftKg": 200.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.44
+        },
+        {
+          "month": "2021-06",
+          "maxLiftLbs": 460.0,
+          "maxLiftKg": 207.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.55
+        },
+        {
+          "month": "2021-07",
+          "maxLiftLbs": 465.0,
+          "maxLiftKg": 210.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.58
+        },
+        {
+          "month": "2021-08",
+          "maxLiftLbs": 465.0,
+          "maxLiftKg": 210.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.58
+        },
+        {
+          "month": "2021-09",
+          "maxLiftLbs": 380.0,
+          "maxLiftKg": 172.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.11
+        },
+        {
+          "month": "2021-10",
+          "maxLiftLbs": 385.0,
+          "maxLiftKg": 175.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.13
+        },
+        {
+          "month": "2021-11",
+          "maxLiftLbs": 395.0,
+          "maxLiftKg": 180.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.19
+        },
+        {
+          "month": "2021-12",
+          "maxLiftLbs": 420.0,
+          "maxLiftKg": 190.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.33
+        },
+        {
+          "month": "2022-01",
+          "maxLiftLbs": 385.0,
+          "maxLiftKg": 175.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.13
+        },
+        {
+          "month": "2022-02",
+          "maxLiftLbs": 425.0,
+          "maxLiftKg": 192.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.36
+        },
+        {
+          "month": "2022-03",
+          "maxLiftLbs": 440.0,
+          "maxLiftKg": 200.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.44
+        },
+        {
+          "month": "2022-04",
+          "maxLiftLbs": 445.0,
+          "maxLiftKg": 202.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.47
+        },
+        {
+          "month": "2022-05",
+          "maxLiftLbs": 415.0,
+          "maxLiftKg": 187.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.3
+        },
+        {
+          "month": "2022-06",
+          "maxLiftLbs": 360.0,
+          "maxLiftKg": 162.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.0
+        },
+        {
+          "month": "2022-07",
+          "maxLiftLbs": 405.0,
+          "maxLiftKg": 182.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.25
+        },
+        {
+          "month": "2022-08",
+          "maxLiftLbs": 405.0,
+          "maxLiftKg": 182.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.25
+        },
+        {
+          "month": "2022-09",
+          "maxLiftLbs": 425.0,
+          "maxLiftKg": 192.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.36
+        },
+        {
+          "month": "2022-10",
+          "maxLiftLbs": 440.0,
+          "maxLiftKg": 200.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.44
+        },
+        {
+          "month": "2022-11",
+          "maxLiftLbs": 360.0,
+          "maxLiftKg": 162.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.0
+        },
+        {
+          "month": "2022-12",
+          "maxLiftLbs": 420.0,
+          "maxLiftKg": 190.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.33
+        },
+        {
+          "month": "2023-01",
+          "maxLiftLbs": 385.0,
+          "maxLiftKg": 175.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.13
+        },
+        {
+          "month": "2023-02",
+          "maxLiftLbs": 345.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.91
+        },
+        {
+          "month": "2023-03",
+          "maxLiftLbs": 345.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.91
+        },
+        {
+          "month": "2023-04",
+          "maxLiftLbs": 385.0,
+          "maxLiftKg": 175.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.13
+        },
+        {
+          "month": "2023-05",
+          "maxLiftLbs": 395.0,
+          "maxLiftKg": 180.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.19
+        },
+        {
+          "month": "2023-06",
+          "maxLiftLbs": 395.0,
+          "maxLiftKg": 180.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.19
+        },
+        {
+          "month": "2023-07",
+          "maxLiftLbs": 310.0,
+          "maxLiftKg": 140.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.72
+        },
+        {
+          "month": "2023-08",
+          "maxLiftLbs": 355.0,
+          "maxLiftKg": 160.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.97
+        },
+        {
+          "month": "2023-09",
+          "maxLiftLbs": 390.0,
+          "maxLiftKg": 177.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 2.16
+        },
+        {
+          "month": "2023-10",
+          "maxLiftLbs": 320.0,
+          "maxLiftKg": 145.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.77
+        },
+        {
+          "month": "2024-07",
+          "maxLiftLbs": 140.0,
+          "maxLiftKg": 62.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.78
+        },
+        {
+          "month": "2024-08",
+          "maxLiftLbs": 150.0,
+          "maxLiftKg": 67.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.83
+        },
+        {
+          "month": "2024-11",
+          "maxLiftLbs": 160.0,
+          "maxLiftKg": 72.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.89
+        },
+        {
+          "month": "2024-12",
+          "maxLiftLbs": 275.0,
+          "maxLiftKg": 125.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.52
+        },
+        {
+          "month": "2025-01",
+          "maxLiftLbs": 280.0,
+          "maxLiftKg": 127.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.55
+        },
+        {
+          "month": "2025-02",
+          "maxLiftLbs": 320.0,
+          "maxLiftKg": 145.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.77
+        },
+        {
+          "month": "2025-03",
+          "maxLiftLbs": 340.0,
+          "maxLiftKg": 155.0,
+          "avgBwLbs": 198.8,
+          "avgBwKg": 90.2,
+          "bwMultiple": 1.8
+        },
+        {
+          "month": "2025-04",
+          "maxLiftLbs": 345.0,
+          "maxLiftKg": 157.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.68
+        },
+        {
+          "month": "2025-05",
+          "maxLiftLbs": 310.0,
+          "maxLiftKg": 140.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.51
+        },
+        {
+          "month": "2025-06",
+          "maxLiftLbs": 325.0,
+          "maxLiftKg": 147.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.59
+        },
+        {
+          "month": "2025-07",
+          "maxLiftLbs": 315.0,
+          "maxLiftKg": 142.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.54
+        },
+        {
+          "month": "2025-08",
+          "maxLiftLbs": 305.0,
+          "maxLiftKg": 137.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.49
+        },
+        {
+          "month": "2025-09",
+          "maxLiftLbs": 300.0,
+          "maxLiftKg": 135.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.46
+        },
+        {
+          "month": "2025-10",
+          "maxLiftLbs": 275.0,
+          "maxLiftKg": 125.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.34
+        }
+      ]
+    },
+    "ohp": {
+      "best": {
+        "date": "2023-02-08",
+        "liftLbs": 180.0,
+        "liftKg": 82.5,
+        "bodyWeightLbs": 180.4,
+        "bodyWeightKg": 81.8,
+        "multiple": 1.0
+      },
+      "current": {
+        "date": "2025-10-21",
+        "liftLbs": 125.0,
+        "liftKg": 57.5,
+        "bodyWeightLbs": 205.0,
+        "bodyWeightKg": 93.0,
+        "multiple": 0.61
+      },
+      "monthlyProgression": [
+        {
+          "month": "2019-04",
+          "maxLiftLbs": 120.0,
+          "maxLiftKg": 55.0,
+          "avgBwLbs": 195.7,
+          "avgBwKg": 88.8,
+          "bwMultiple": 0.61
+        },
+        {
+          "month": "2019-05",
+          "maxLiftLbs": 120.0,
+          "maxLiftKg": 55.0,
+          "avgBwLbs": 193.2,
+          "avgBwKg": 87.6,
+          "bwMultiple": 0.62
+        },
+        {
+          "month": "2019-06",
+          "maxLiftLbs": 115.0,
+          "maxLiftKg": 52.5,
+          "avgBwLbs": 187.0,
+          "avgBwKg": 84.8,
+          "bwMultiple": 0.61
+        },
+        {
+          "month": "2019-07",
+          "maxLiftLbs": 120.0,
+          "maxLiftKg": 55.0,
+          "avgBwLbs": 184.5,
+          "avgBwKg": 83.7,
+          "bwMultiple": 0.66
+        },
+        {
+          "month": "2019-08",
+          "maxLiftLbs": 125.0,
+          "maxLiftKg": 57.5,
+          "avgBwLbs": 181.8,
+          "avgBwKg": 82.4,
+          "bwMultiple": 0.69
+        },
+        {
+          "month": "2019-09",
+          "maxLiftLbs": 120.0,
+          "maxLiftKg": 55.0,
+          "avgBwLbs": 180.9,
+          "avgBwKg": 82.0,
+          "bwMultiple": 0.66
+        },
+        {
+          "month": "2019-10",
+          "maxLiftLbs": 130.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.72
+        },
+        {
+          "month": "2019-11",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2020-01",
+          "maxLiftLbs": 130.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.72
+        },
+        {
+          "month": "2020-02",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2020-03",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2020-04",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2020-05",
+          "maxLiftLbs": 140.0,
+          "maxLiftKg": 62.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.78
+        },
+        {
+          "month": "2020-06",
+          "maxLiftLbs": 155.0,
+          "maxLiftKg": 70.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.86
+        },
+        {
+          "month": "2020-09",
+          "maxLiftLbs": 120.0,
+          "maxLiftKg": 55.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.67
+        },
+        {
+          "month": "2021-01",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2021-02",
+          "maxLiftLbs": 125.0,
+          "maxLiftKg": 57.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.69
+        },
+        {
+          "month": "2021-03",
+          "maxLiftLbs": 105.0,
+          "maxLiftKg": 47.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.58
+        },
+        {
+          "month": "2021-04",
+          "maxLiftLbs": 145.0,
+          "maxLiftKg": 65.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.8
+        },
+        {
+          "month": "2021-05",
+          "maxLiftLbs": 160.0,
+          "maxLiftKg": 72.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.89
+        },
+        {
+          "month": "2021-06",
+          "maxLiftLbs": 160.0,
+          "maxLiftKg": 72.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.89
+        },
+        {
+          "month": "2021-07",
+          "maxLiftLbs": 165.0,
+          "maxLiftKg": 75.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.91
+        },
+        {
+          "month": "2021-08",
+          "maxLiftLbs": 165.0,
+          "maxLiftKg": 75.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.91
+        },
+        {
+          "month": "2021-09",
+          "maxLiftLbs": 165.0,
+          "maxLiftKg": 75.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.91
+        },
+        {
+          "month": "2021-10",
+          "maxLiftLbs": 165.0,
+          "maxLiftKg": 75.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.91
+        },
+        {
+          "month": "2021-11",
+          "maxLiftLbs": 115.0,
+          "maxLiftKg": 52.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.64
+        },
+        {
+          "month": "2022-05",
+          "maxLiftLbs": 150.0,
+          "maxLiftKg": 67.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.83
+        },
+        {
+          "month": "2022-06",
+          "maxLiftLbs": 155.0,
+          "maxLiftKg": 70.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.86
+        },
+        {
+          "month": "2022-07",
+          "maxLiftLbs": 150.0,
+          "maxLiftKg": 67.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.83
+        },
+        {
+          "month": "2022-08",
+          "maxLiftLbs": 155.0,
+          "maxLiftKg": 70.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.86
+        },
+        {
+          "month": "2022-09",
+          "maxLiftLbs": 155.0,
+          "maxLiftKg": 70.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.86
+        },
+        {
+          "month": "2022-10",
+          "maxLiftLbs": 165.0,
+          "maxLiftKg": 75.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.91
+        },
+        {
+          "month": "2022-11",
+          "maxLiftLbs": 170.0,
+          "maxLiftKg": 77.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.94
+        },
+        {
+          "month": "2022-12",
+          "maxLiftLbs": 170.0,
+          "maxLiftKg": 77.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.94
+        },
+        {
+          "month": "2023-01",
+          "maxLiftLbs": 170.0,
+          "maxLiftKg": 77.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.94
+        },
+        {
+          "month": "2023-02",
+          "maxLiftLbs": 180.0,
+          "maxLiftKg": 82.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 1.0
+        },
+        {
+          "month": "2023-03",
+          "maxLiftLbs": 145.0,
+          "maxLiftKg": 65.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.8
+        },
+        {
+          "month": "2023-04",
+          "maxLiftLbs": 145.0,
+          "maxLiftKg": 65.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.8
+        },
+        {
+          "month": "2023-05",
+          "maxLiftLbs": 145.0,
+          "maxLiftKg": 65.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.8
+        },
+        {
+          "month": "2023-06",
+          "maxLiftLbs": 145.0,
+          "maxLiftKg": 65.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.8
+        },
+        {
+          "month": "2023-07",
+          "maxLiftLbs": 95.0,
+          "maxLiftKg": 42.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.53
+        },
+        {
+          "month": "2023-08",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2023-09",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2023-10",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2023-11",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2024-07",
+          "maxLiftLbs": 90.0,
+          "maxLiftKg": 40.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.5
+        },
+        {
+          "month": "2024-08",
+          "maxLiftLbs": 100.0,
+          "maxLiftKg": 45.0,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.55
+        },
+        {
+          "month": "2024-11",
+          "maxLiftLbs": 102.5,
+          "maxLiftKg": 47.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.57
+        },
+        {
+          "month": "2024-12",
+          "maxLiftLbs": 105.0,
+          "maxLiftKg": 47.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.58
+        },
+        {
+          "month": "2025-01",
+          "maxLiftLbs": 115.0,
+          "maxLiftKg": 52.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.64
+        },
+        {
+          "month": "2025-02",
+          "maxLiftLbs": 127.5,
+          "maxLiftKg": 57.5,
+          "avgBwLbs": 180.4,
+          "avgBwKg": 81.8,
+          "bwMultiple": 0.71
+        },
+        {
+          "month": "2025-03",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 200.9,
+          "avgBwKg": 91.1,
+          "bwMultiple": 0.72
+        },
+        {
+          "month": "2025-04",
+          "maxLiftLbs": 130.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.63
+        },
+        {
+          "month": "2025-05",
+          "maxLiftLbs": 110.0,
+          "maxLiftKg": 50.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.54
+        },
+        {
+          "month": "2025-06",
+          "maxLiftLbs": 127.5,
+          "maxLiftKg": 57.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.62
+        },
+        {
+          "month": "2025-07",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.66
+        },
+        {
+          "month": "2025-08",
+          "maxLiftLbs": 130.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.63
+        },
+        {
+          "month": "2025-09",
+          "maxLiftLbs": 115.0,
+          "maxLiftKg": 52.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.56
+        },
+        {
+          "month": "2025-10",
+          "maxLiftLbs": 125.0,
+          "maxLiftKg": 57.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.61
+        }
+      ]
+    },
+    "totalMultiple": {
+      "best": 6.32,
+      "squat": 2.22,
+      "bench": 1.52,
+      "deadlift": 2.58
+    },
+    "benchmarks": {
+      "squat": {
+        "beginner": 1.0,
+        "intermediate": 1.5,
+        "advanced": 2.0,
+        "elite": 2.5
+      },
+      "bench": {
+        "beginner": 0.75,
+        "intermediate": 1.0,
+        "advanced": 1.5,
+        "elite": 2.0
+      },
+      "deadlift": {
+        "beginner": 1.25,
+        "intermediate": 1.75,
+        "advanced": 2.5,
+        "elite": 3.0
+      },
+      "ohp": {
+        "beginner": 0.5,
+        "intermediate": 0.75,
+        "advanced": 1.0,
+        "elite": 1.25
+      }
+    }
   }
 }

@@ -647,6 +647,9 @@
 
       <section id="strength">
         <h2>Strength Progress</h2>
+        <div class="chart-container" id="relativeStrengthSection">
+          <!-- Generated dynamically - Relative Strength Metrics -->
+        </div>
         <div id="bigThreeCharts">
           <!-- Generated dynamically -->
         </div>
@@ -805,6 +808,7 @@
         renderWorkoutHeatmap();
 
         // Strength Progress section
+        renderRelativeStrength();
         renderBigThree();
 
         // Milestones & Achievements section
@@ -1612,6 +1616,152 @@
             </div>
           </div>
         `;
+
+        container.innerHTML = html;
+      }
+
+      function renderRelativeStrength() {
+        const { relativeStrength, bodyWeight } = trainingData;
+        const container = document.getElementById("relativeStrengthSection");
+
+        if (!relativeStrength) {
+          container.innerHTML = '<p style="color: #888;">No relative strength data available</p>';
+          return;
+        }
+
+        const benchmarks = relativeStrength.benchmarks || {};
+        const totalMultiple = relativeStrength.totalMultiple || {};
+
+        // Get body weight info
+        const currentBW = bodyWeight?.current;
+        const bwDisplay = currentBW ?
+          (currentUnit === 'lbs' ? `${currentBW.lbs} lbs` : `${currentBW.kg} kg`) : 'N/A';
+
+        // Check for stale data
+        const stalePeriods = bodyWeight?.stalePeriods || [];
+        const hasStaleData = stalePeriods.length > 0;
+
+        let html = `<h3>💪 Relative Strength (Body Weight Multiples)</h3>`;
+
+        // Body weight info with warning about stale data
+        html += `
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+            <div style="background: #111; padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid #333;">
+              <span style="color: #888;">Current BW:</span>
+              <span style="color: #e0e0e0; font-weight: 600; margin-left: 0.5rem;">${bwDisplay}</span>
+            </div>
+            ${hasStaleData ? `
+              <div style="background: #332800; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #665200; font-size: 0.875rem;">
+                <span style="color: #ffd93d;">⚠️ Note:</span>
+                <span style="color: #cca300;"> Body weight data was not updated for extended periods (${stalePeriods[0]?.count || 0}+ entries at ${stalePeriods[0]?.weightLbs || 0} lbs)</span>
+              </div>
+            ` : ''}
+          </div>
+        `;
+
+        // Combined total BW multiple
+        html += `
+          <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #333;">
+            <div style="text-align: center; margin-bottom: 1rem;">
+              <div style="color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">Combined S+B+D Multiple</div>
+              <div style="color: #ffd700; font-size: 3rem; font-weight: 700;">${totalMultiple.best || 0}×</div>
+              <div style="color: #666; font-size: 0.875rem;">body weight</div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+              <div>
+                <div style="color: #4a9eff; font-size: 1.5rem; font-weight: 600;">${totalMultiple.squat || 0}×</div>
+                <div style="color: #888; font-size: 0.75rem;">Squat</div>
+              </div>
+              <div>
+                <div style="color: #ff6b6b; font-size: 1.5rem; font-weight: 600;">${totalMultiple.bench || 0}×</div>
+                <div style="color: #888; font-size: 0.75rem;">Bench</div>
+              </div>
+              <div>
+                <div style="color: #51cf66; font-size: 1.5rem; font-weight: 600;">${totalMultiple.deadlift || 0}×</div>
+                <div style="color: #888; font-size: 0.75rem;">Deadlift</div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Individual lift details with benchmarks
+        html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">`;
+
+        const liftConfigs = [
+          { key: 'squat', name: 'Squat', color: '#4a9eff' },
+          { key: 'bench', name: 'Bench Press', color: '#ff6b6b' },
+          { key: 'deadlift', name: 'Deadlift', color: '#51cf66' },
+          { key: 'ohp', name: 'Overhead Press', color: '#ffd93d' }
+        ];
+
+        liftConfigs.forEach(({ key, name, color }) => {
+          const liftData = relativeStrength[key];
+          const liftBenchmarks = benchmarks[key] || {};
+
+          if (!liftData) return;
+
+          const best = liftData.best || {};
+          const current = liftData.current || {};
+
+          // Determine strength level based on best multiple
+          const bestMult = best.multiple || 0;
+          let level = 'Beginner';
+          let levelColor = '#888';
+          if (bestMult >= (liftBenchmarks.elite || 999)) {
+            level = 'Elite'; levelColor = '#ffd700';
+          } else if (bestMult >= (liftBenchmarks.advanced || 999)) {
+            level = 'Advanced'; levelColor = '#51cf66';
+          } else if (bestMult >= (liftBenchmarks.intermediate || 999)) {
+            level = 'Intermediate'; levelColor = '#4a9eff';
+          }
+
+          const bestLift = currentUnit === 'lbs' ? best.liftLbs : best.liftKg;
+          const currentLift = currentUnit === 'lbs' ? current.liftLbs : current.liftKg;
+
+          html += `
+            <div style="background: #111; border-radius: 8px; padding: 1.25rem; border-left: 3px solid ${color};">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h4 style="color: ${color}; margin: 0;">${name}</h4>
+                <span style="background: ${levelColor}22; color: ${levelColor}; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">${level}</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center;">
+                <div>
+                  <div style="color: #666; font-size: 0.7rem; text-transform: uppercase;">Best</div>
+                  <div style="color: #e0e0e0; font-size: 1.25rem; font-weight: 600;">${best.multiple || '—'}×</div>
+                  <div style="color: #888; font-size: 0.75rem;">${bestLift ? Math.round(bestLift) + ' ' + currentUnit : '—'}</div>
+                </div>
+                <div>
+                  <div style="color: #666; font-size: 0.7rem; text-transform: uppercase;">Current</div>
+                  <div style="color: #aaa; font-size: 1.25rem; font-weight: 600;">${current.multiple || '—'}×</div>
+                  <div style="color: #888; font-size: 0.75rem;">${currentLift ? Math.round(currentLift) + ' ' + currentUnit : '—'}</div>
+                </div>
+              </div>
+              <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid #222;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #666; margin-bottom: 0.25rem;">
+                  <span>Beginner</span>
+                  <span>Intermediate</span>
+                  <span>Advanced</span>
+                  <span>Elite</span>
+                </div>
+                <div style="position: relative; height: 8px; background: #222; border-radius: 4px; overflow: hidden;">
+                  ${(() => {
+                    const maxBench = liftBenchmarks.elite || 2.5;
+                    const pct = Math.min((bestMult / maxBench) * 100, 100);
+                    return `<div style="position: absolute; height: 100%; width: ${pct}%; background: ${color}; border-radius: 4px;"></div>`;
+                  })()}
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #555; margin-top: 0.25rem;">
+                  <span>${liftBenchmarks.beginner || 0}×</span>
+                  <span>${liftBenchmarks.intermediate || 0}×</span>
+                  <span>${liftBenchmarks.advanced || 0}×</span>
+                  <span>${liftBenchmarks.elite || 0}×</span>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        html += `</div>`;
 
         container.innerHTML = html;
       }

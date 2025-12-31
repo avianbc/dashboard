@@ -55,8 +55,10 @@ WHERE reps > 0  -- Exclude warmups
 1. Summary stats cards - Total workouts, volume, hours, streaks
 2. Annual volume chart - Chart.js line graph
 3. GitHub-style heatmap - Custom SVG, 7×260 grid (5+ years)
-4. Big 3 progress - Separate Chart.js charts per lift (squat/bench/deadlift)
-5. Exercise volume bars - Custom SVG horizontal bars
+4. Relative strength metrics - Body weight multiples with strength level benchmarks
+5. Big 3 progress - Separate Chart.js charts per lift (squat/bench/deadlift/ohp)
+6. Exercise volume bars - Custom SVG horizontal bars
+7. Bar travel distance - Fun statistics on total distance moved
 
 ## Code Conventions
 
@@ -105,6 +107,8 @@ WHERE reps > 0  -- Exclude warmups
 3. **Streak logic:** Counts consecutive calendar days, not workout sessions (multiple workouts/day = 1 streak day)
 4. **Chart.js memory leaks:** Always destroy instances before re-creating on unit toggle
 5. **File:// protocol fails:** Dashboard requires HTTP server for fetch() to work - use `serve.py`
+6. **Body weight data staleness:** Data was locked at 180.4 lbs for ~5 years (Sep 2019 - Mar 2025), then updated to 205 lbs. Relative strength calculations may be affected. Dashboard shows a warning when stale periods are detected.
+7. **Relative strength benchmarks:** Uses standard strength level thresholds (beginner/intermediate/advanced/elite) based on body weight multiples
 
 ## Reference Files
 
