@@ -30427,6 +30427,46 @@
   },
   "notableWorkouts": [
     {
+      "date": "2025-10-20",
+      "reason": "Comeback (21 days off)",
+      "volumeLbs": 11100.0,
+      "volumeKg": 5030.0,
+      "details": "GZCLP",
+      "category": "comeback"
+    },
+    {
+      "date": "2025-06-02",
+      "reason": "Comeback (17 days off)",
+      "volumeLbs": 10265.0,
+      "volumeKg": 4612.5,
+      "details": "GreySkull LP with Arms",
+      "category": "comeback"
+    },
+    {
+      "date": "2024-11-25",
+      "reason": "Comeback (108 days off)",
+      "volumeLbs": 4052.5,
+      "volumeKg": 1825.0,
+      "details": "GreySkull LP with Arms",
+      "category": "comeback"
+    },
+    {
+      "date": "2024-07-22",
+      "reason": "Comeback (261 days off)",
+      "volumeLbs": 6390.0,
+      "volumeKg": 2835.0,
+      "details": "GreySkull LP with Arms",
+      "category": "comeback"
+    },
+    {
+      "date": "2023-07-10",
+      "reason": "Comeback (19 days off)",
+      "volumeLbs": 7835.0,
+      "volumeKg": 3527.5,
+      "details": "nSuns 531 LP 4 day version",
+      "category": "comeback"
+    },
+    {
       "date": "2019-09-13",
       "reason": "Volume Record #3",
       "volumeLbs": 16625.0,

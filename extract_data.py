@@ -650,7 +650,7 @@ def get_notable_workouts(conn):
                 SUM(he.weightlb * he.reps) as volume_lbs,
                 SUM(he.weightkg * he.reps) as volume_kg,
                 p.routine as program_name,
-                JULIANDAY(h.date/1000, 'unixepoch') - JULIANDAY(LAG(h.date/1000, 'unixepoch') OVER (ORDER BY h.date), 'unixepoch') as days_gap
+                JULIANDAY(datetime(h.date/1000, 'unixepoch')) - JULIANDAY(LAG(datetime(h.date/1000, 'unixepoch')) OVER (ORDER BY h.date)) as days_gap
             FROM history h
             LEFT JOIN history_exercises he ON h.id = he.history_id AND he.reps > 0
             LEFT JOIN programs p ON h.program_id = p.id
