@@ -1242,7 +1242,7 @@
 
             const width = container.offsetWidth;
             const height = 400;
-            const padding = { top: 40, right: 40, bottom: 60, left: 80 };
+            const padding = { top: 40, right: 40, bottom: 80, left: 80 };
 
             const maxVolume = Math.max(...data.map(d => d.volume));
             const barWidth = (width - padding.left - padding.right) / data.length;
@@ -1267,14 +1267,45 @@
                 const barHeight = (d.volume / maxVolume) * (height - padding.top - padding.bottom);
                 const y = height - padding.bottom - barHeight;
 
-                // Bar
+                // Bar (with reduced opacity if very few workouts)
                 const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                 rect.setAttribute('x', x + barWidth * 0.1);
                 rect.setAttribute('y', y);
                 rect.setAttribute('width', barWidth * 0.8);
                 rect.setAttribute('height', barHeight);
-                rect.setAttribute('fill', '#4a9eff');
+                // Use reduced opacity for days with < 10 workouts
+                rect.setAttribute('fill', d.count < 10 ? '#4a9eff66' : '#4a9eff');
+                rect.setAttribute('class', 'day-bar');
+                rect.setAttribute('data-day', d.day);
+                rect.setAttribute('data-count', d.count);
+                rect.setAttribute('data-volume', Math.round(d.volume));
+
+                // Add hover effect
+                rect.addEventListener('mouseenter', (e) => {
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.style.display = 'block';
+                    tooltip.innerHTML = `
+                        <strong>${d.day}</strong><br>
+                        ${d.count} workout${d.count !== 1 ? 's' : ''}<br>
+                        Avg volume: ${Math.round(d.volume).toLocaleString()} ${currentUnit}
+                    `;
+                    tooltip.style.left = (e.pageX + 10) + 'px';
+                    tooltip.style.top = (e.pageY + 10) + 'px';
+                });
+                rect.addEventListener('mouseleave', hideTooltip);
+
                 svg.appendChild(rect);
+
+                // Workout count label (above bar)
+                const countLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                countLabel.setAttribute('x', x + barWidth / 2);
+                countLabel.setAttribute('y', y - 8);
+                countLabel.setAttribute('text-anchor', 'middle');
+                countLabel.setAttribute('fill', d.count < 10 ? '#666' : '#aaa');
+                countLabel.setAttribute('font-size', '11');
+                countLabel.setAttribute('font-weight', d.count < 10 ? 'normal' : '600');
+                countLabel.textContent = `${d.count}×`;
+                svg.appendChild(countLabel);
 
                 // Day label
                 const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -1285,6 +1316,18 @@
                 label.setAttribute('font-size', '12');
                 label.textContent = d.day.substring(0, 3);
                 svg.appendChild(label);
+
+                // Add note for low-frequency days
+                if (d.count < 10) {
+                    const noteLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    noteLabel.setAttribute('x', x + barWidth / 2);
+                    noteLabel.setAttribute('y', height - padding.bottom + 35);
+                    noteLabel.setAttribute('text-anchor', 'middle');
+                    noteLabel.setAttribute('fill', '#666');
+                    noteLabel.setAttribute('font-size', '9');
+                    noteLabel.textContent = '(rare)';
+                    svg.appendChild(noteLabel);
+                }
             });
 
             container.innerHTML = '';

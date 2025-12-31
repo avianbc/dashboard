@@ -504,6 +504,7 @@ def get_workouts_by_day_of_week(conn):
 
     cursor.execute("""
         SELECT
+            CAST(strftime('%w', h.date/1000, 'unixepoch') AS INTEGER) as day_num,
             CASE CAST(strftime('%w', h.date/1000, 'unixepoch') AS INTEGER)
                 WHEN 0 THEN 'Sunday'
                 WHEN 1 THEN 'Monday'
@@ -513,7 +514,6 @@ def get_workouts_by_day_of_week(conn):
                 WHEN 5 THEN 'Friday'
                 WHEN 6 THEN 'Saturday'
             END as day_name,
-            CAST(strftime('%w', h.date/1000, 'unixepoch') AS INTEGER) as day_num,
             COUNT(DISTINCT h.id) as workout_count,
             AVG(daily_volume_lbs) as avg_volume_lbs,
             AVG(daily_volume_kg) as avg_volume_kg
@@ -527,7 +527,7 @@ def get_workouts_by_day_of_week(conn):
             WHERE reps > 0
             GROUP BY history_id
         ) volumes ON h.id = volumes.history_id
-        GROUP BY day_num, day_name
+        GROUP BY day_num
         ORDER BY day_num
     """)
 

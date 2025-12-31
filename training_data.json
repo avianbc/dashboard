@@ -26727,29 +26727,29 @@
   ],
   "workoutsByDayOfWeek": {
     "Monday": {
-      "count": 2,
-      "avgVolumeLbs": 12685.0,
-      "avgVolumeKg": 5785.0
+      "count": 233,
+      "avgVolumeLbs": 7327.78,
+      "avgVolumeKg": 3320.2
     },
     "Tuesday": {
-      "count": 5,
-      "avgVolumeLbs": 9544.0,
-      "avgVolumeKg": 4318.0
+      "count": 189,
+      "avgVolumeLbs": 6873.1,
+      "avgVolumeKg": 3110.58
     },
     "Wednesday": {
-      "count": 4,
-      "avgVolumeLbs": 11266.25,
-      "avgVolumeKg": 5088.12
+      "count": 129,
+      "avgVolumeLbs": 6450.47,
+      "avgVolumeKg": 2919.4
     },
     "Thursday": {
-      "count": 4,
-      "avgVolumeLbs": 10392.5,
-      "avgVolumeKg": 4719.38
+      "count": 191,
+      "avgVolumeLbs": 6671.26,
+      "avgVolumeKg": 3023.72
     },
     "Friday": {
-      "count": 1,
-      "avgVolumeLbs": 5400.0,
-      "avgVolumeKg": 2437.5
+      "count": 214,
+      "avgVolumeLbs": 7483.62,
+      "avgVolumeKg": 3384.96
     },
     "Saturday": {
       "count": 13,
