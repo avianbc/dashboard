@@ -415,28 +415,7 @@ def get_big_three_volume(conn):
 
     return big_three_volume
 
-def get_big_three(exercise_progress):
-    """Extract Big 3 lifts (Squat, Bench Press, Deadlift) with detailed progress."""
-    big_three = {}
 
-    for exercise_name, data in exercise_progress.items():
-        canonical_name = None
-        if any(name.lower() == exercise_name.lower() for name in SQUAT_NAMES):
-            canonical_name = 'squat'
-        elif any(name.lower() == exercise_name.lower() for name in BENCH_NAMES):
-            canonical_name = 'bench'
-        elif any(name.lower() == exercise_name.lower() for name in DEADLIFT_NAMES):
-            canonical_name = 'deadlift'
-        elif any(name.lower() == exercise_name.lower() for name in OHP_NAMES):
-            canonical_name = 'ohp'
-
-        if canonical_name:
-            big_three[canonical_name] = {
-                'exerciseName': exercise_name,
-                **data
-            }
-
-    return big_three
 
 def get_programs(conn):
     """Get program history and statistics."""
@@ -444,6 +423,7 @@ def get_programs(conn):
 
     cursor.execute("""
         SELECT
+            p.id as program_id,
             p.routine as name,
             MIN(date(h.date/1000, 'unixepoch')) as start_date,
             MAX(date(h.date/1000, 'unixepoch')) as end_date,
@@ -459,13 +439,42 @@ def get_programs(conn):
 
     programs = []
     for row in cursor.fetchall():
+        program_id = row['program_id']
+        start_date = row['start_date']
+        end_date = row['end_date']
+
+        # Count PRs set during this program's date range
+        cursor.execute("""
+            SELECT COUNT(*) as pr_count
+            FROM (
+                SELECT
+                    date(h.date/1000, 'unixepoch') as pr_date,
+                    he.exercise_id,
+                    he.reps,
+                    he.weightlb,
+                    MAX(he.weightlb) OVER (
+                        PARTITION BY he.exercise_id, he.reps
+                        ORDER BY h.date
+                        ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
+                    ) as prev_max
+                FROM history_exercises he
+                JOIN history h ON he.history_id = h.id
+                WHERE he.reps > 0
+            ) subq
+            WHERE (prev_max IS NULL OR weightlb > prev_max)
+            AND pr_date BETWEEN ? AND ?
+        """, (start_date, end_date))
+
+        pr_count = cursor.fetchone()['pr_count']
+
         programs.append({
             'name': row['name'],
-            'startDate': row['start_date'],
-            'endDate': row['end_date'],
+            'startDate': start_date,
+            'endDate': end_date,
             'workouts': row['workout_count'],
             'totalVolumeLbs': round(row['total_volume_lbs'] or 0, 2),
-            'totalVolumeKg': round(row['total_volume_kg'] or 0, 2)
+            'totalVolumeKg': round(row['total_volume_kg'] or 0, 2),
+            'prsSet': pr_count
         })
 
     return programs
@@ -514,33 +523,113 @@ def get_workouts_by_day_of_week(conn):
     return by_day
 
 def get_notable_workouts(conn):
-    """Identify notable workouts (high volume, PRs, milestones)."""
+    """Identify notable workouts (PR days, comebacks)."""
     cursor = conn.cursor()
 
-    # Top 10 highest volume workouts
+    # Find all PR days (days where at least one PR was set)
     cursor.execute("""
-        SELECT
+        SELECT DISTINCT
             date(h.date/1000, 'unixepoch') as workout_date,
             SUM(he.weightlb * he.reps) as volume_lbs,
             SUM(he.weightkg * he.reps) as volume_kg,
             p.routine as program_name
-        FROM history h
+        FROM (
+            SELECT
+                h.id,
+                h.date,
+                h.program_id,
+                he.exercise_id,
+                he.reps,
+                he.weightlb,
+                he.weightkg,
+                MAX(he.weightlb) OVER (
+                    PARTITION BY he.exercise_id, he.reps
+                    ORDER BY h.date
+                    ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
+                ) as prev_max
+            FROM history_exercises he
+            JOIN history h ON he.history_id = h.id
+            WHERE he.reps > 0
+        ) pr_check
+        JOIN history h ON pr_check.id = h.id
         LEFT JOIN history_exercises he ON h.id = he.history_id AND he.reps > 0
         LEFT JOIN programs p ON h.program_id = p.id
-        GROUP BY h.id
-        ORDER BY volume_lbs DESC
-        LIMIT 10
+        LEFT JOIN exercises e ON pr_check.exercise_id = e.id
+        WHERE prev_max IS NULL OR pr_check.weightlb > prev_max
+        GROUP BY h.id, workout_date, program_name
+        ORDER BY workout_date DESC
+        LIMIT 20
     """)
 
     notable = []
-    for i, row in enumerate(cursor.fetchall(), 1):
+    for row in cursor.fetchall():
+        # Count PRs on this day
+        cursor.execute("""
+            SELECT COUNT(*) as pr_count
+            FROM (
+                SELECT
+                    he.exercise_id,
+                    he.reps,
+                    he.weightlb,
+                    MAX(he.weightlb) OVER (
+                        PARTITION BY he.exercise_id, he.reps
+                        ORDER BY h.date
+                        ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
+                    ) as prev_max
+                FROM history_exercises he
+                JOIN history h ON he.history_id = h.id
+                WHERE date(h.date/1000, 'unixepoch') = ?
+                AND he.reps > 0
+            ) subq
+            WHERE prev_max IS NULL OR weightlb > prev_max
+        """, (row['workout_date'],))
+
+        pr_count = cursor.fetchone()['pr_count']
+
         notable.append({
             'date': row['workout_date'],
-            'reason': f'#{i} Highest Volume',
+            'reason': f'{pr_count} PR{"s" if pr_count != 1 else ""} Set',
             'volumeLbs': round(row['volume_lbs'] or 0, 2),
             'volumeKg': round(row['volume_kg'] or 0, 2),
             'details': row['program_name'] or 'Unknown Program'
         })
+
+    # Find comeback workouts (first workout after 14+ day gap)
+    cursor.execute("""
+        SELECT
+            workout_date,
+            volume_lbs,
+            volume_kg,
+            program_name,
+            days_gap
+        FROM (
+            SELECT
+                date(h.date/1000, 'unixepoch') as workout_date,
+                SUM(he.weightlb * he.reps) as volume_lbs,
+                SUM(he.weightkg * he.reps) as volume_kg,
+                p.routine as program_name,
+                JULIANDAY(h.date/1000, 'unixepoch') - JULIANDAY(LAG(h.date/1000, 'unixepoch') OVER (ORDER BY h.date), 'unixepoch') as days_gap
+            FROM history h
+            LEFT JOIN history_exercises he ON h.id = he.history_id AND he.reps > 0
+            LEFT JOIN programs p ON h.program_id = p.id
+            GROUP BY h.id
+        ) subq
+        WHERE days_gap >= 14
+        ORDER BY workout_date DESC
+        LIMIT 5
+    """)
+
+    for row in cursor.fetchall():
+        notable.append({
+            'date': row['workout_date'],
+            'reason': f'Comeback Workout ({int(row["days_gap"])} days off)',
+            'volumeLbs': round(row['volume_lbs'] or 0, 2),
+            'volumeKg': round(row['volume_kg'] or 0, 2),
+            'details': row['program_name'] or 'Unknown Program'
+        })
+
+    # Sort by date descending
+    notable.sort(key=lambda x: x['date'], reverse=True)
 
     return notable
 
@@ -702,8 +791,10 @@ def get_powerlifting_totals(conn):
         500: None,
         750: None,
         1000: None,
+        1100: None,
         1200: None,
-        1500: None,
+        1300: None,
+        1400: None,
     }
 
     for date in all_dates:
@@ -813,6 +904,47 @@ def get_all_time_prs(conn):
 
     return all_time_prs
 
+def get_days_since_last_pr(conn):
+    """Calculate days since most recent PR for each Big 3 lift."""
+    from datetime import datetime, date
+    cursor = conn.cursor()
+
+    days_since = {}
+    today = date.today()
+
+    for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES), ('deadlift', DEADLIFT_NAMES), ('ohp', OHP_NAMES)]:
+        # Get most recent PR date for this lift
+        cursor.execute(f"""
+            SELECT MAX(date(h.date/1000, 'unixepoch')) as latest_pr_date
+            FROM (
+                SELECT
+                    h.date,
+                    he.weightlb,
+                    he.reps,
+                    MAX(he.weightlb) OVER (
+                        PARTITION BY he.reps
+                        ORDER BY h.date
+                        ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
+                    ) as prev_max
+                FROM history_exercises he
+                JOIN history h ON he.history_id = h.id
+                JOIN exercises e ON he.exercise_id = e.id
+                WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+                AND he.reps > 0 AND he.reps <= 10
+            ) subq
+            JOIN history h ON subq.date = h.date
+            WHERE prev_max IS NULL OR weightlb > prev_max
+        """, name_list)
+
+        result = cursor.fetchone()
+        if result and result['latest_pr_date']:
+            latest_pr = datetime.strptime(result['latest_pr_date'], '%Y-%m-%d').date()
+            days_since[canonical_name] = (today - latest_pr).days
+        else:
+            days_since[canonical_name] = None
+
+    return days_since
+
 def main():
     """Main execution function."""
     print("Connecting to database...")
@@ -829,9 +961,6 @@ def main():
 
     print("Analyzing exercise progress...")
     exercise_progress = get_exercise_progress(conn)
-
-    print("Extracting Big 3 lifts...")
-    big_three = get_big_three(exercise_progress)
 
     print("Calculating Big 3 estimated 1RM progression...")
     big_three_e1rm = get_big_three_e1rm(conn)
@@ -860,13 +989,15 @@ def main():
     print("Extracting all-time PRs...")
     all_time_prs = get_all_time_prs(conn)
 
+    print("Calculating days since last PR...")
+    days_since_last_pr = get_days_since_last_pr(conn)
+
     # Compile all data
     data = {
         'summary': summary,
         'volumeTimeSeries': volume_time_series,
         'workoutCalendar': workout_calendar,
         'exerciseProgress': exercise_progress,
-        'bigThree': big_three,
         'bigThreeE1RM': big_three_e1rm,
         'bigThreeVolume': big_three_volume,
         'programs': programs,
@@ -874,8 +1005,13 @@ def main():
         'notableWorkouts': notable_workouts,
         'milestones': milestones,
         'plateMilestones': plate_milestones,
-        'powerliftingTotals': powerlifting_totals,
-        'allTimePRs': all_time_prs
+        'powerliftingTotals': {
+            'current': powerlifting_totals['current'],
+            'peak': powerlifting_totals['peak'],
+            'clubMilestones': powerlifting_totals['clubMilestones']
+        },
+        'allTimePRs': all_time_prs,
+        'daysSinceLastPR': days_since_last_pr
     }
 
     print(f"Writing output to {OUTPUT_PATH}...")

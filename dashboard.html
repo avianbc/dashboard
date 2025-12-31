@@ -14,32 +14,32 @@
         --bg-secondary: #111;
         --bg-tertiary: #1a1a1a;
         --bg-hover: #222;
-        
+
         /* Text colors */
         --text-primary: #e0e0e0;
         --text-bright: #fff;
         --text-muted: #888;
         --text-muted-light: #aaa;
         --text-muted-dark: #666;
-        
+
         /* Accent colors */
         --accent-blue: #4a9eff;
         --accent-green: #51cf66;
         --accent-red: #ff6b6b;
         --accent-yellow: #ffd93d;
         --accent-gold: #ffd700;
-        
+
         /* Lift-specific colors */
         --lift-squat: #4a9eff;
         --lift-bench: #ff6b6b;
         --lift-deadlift: #51cf66;
         --lift-ohp: #ffd93d;
-        
+
         /* Border colors */
         --border-primary: #1a1a1a;
         --border-secondary: #333;
         --border-hover: #555;
-        
+
         /* Spacing */
         --spacing-xs: 0.25rem;
         --spacing-sm: 0.5rem;
@@ -47,7 +47,7 @@
         --spacing-lg: 1.5rem;
         --spacing-xl: 2rem;
         --spacing-2xl: 4rem;
-        
+
         /* Border radius */
         --radius-sm: 4px;
         --radius-md: 8px;
@@ -987,7 +987,7 @@
           type: "line",
           data: { datasets },
           options: getBaseChartOptions({
-            legend: { 
+            legend: {
               display: true,
               labels: {
                 boxWidth: 12,
@@ -1344,14 +1344,11 @@
       }
 
       function renderBigThree() {
-        const { bigThree, bigThreeE1RM } = trainingData;
+        const { bigThreeE1RM, daysSinceLastPR } = trainingData;
         const container = document.getElementById("bigThreeCharts");
         container.innerHTML = "";
 
-        if (
-          (!bigThree || Object.keys(bigThree).length === 0) &&
-          (!bigThreeE1RM || Object.keys(bigThreeE1RM).length === 0)
-        ) {
+        if (!bigThreeE1RM || Object.keys(bigThreeE1RM).length === 0) {
           container.innerHTML =
             '<p style="color: #888;">No Big 3 data available</p>';
           return;
@@ -1364,17 +1361,11 @@
             bigThreeE1RM[lift] &&
             bigThreeE1RM[lift].e1rmHistory &&
             bigThreeE1RM[lift].e1rmHistory.length > 0;
-          const hasPRs =
-            bigThree &&
-            bigThree[lift] &&
-            bigThree[lift].prs &&
-            bigThree[lift].prs.length > 0;
 
-          if (!hasE1RM && !hasPRs) return;
+          if (!hasE1RM) return;
 
-          const data = bigThree && bigThree[lift] ? bigThree[lift] : {};
-          const e1rmData =
-            bigThreeE1RM && bigThreeE1RM[lift] ? bigThreeE1RM[lift] : {};
+          const e1rmData = bigThreeE1RM[lift];
+          const daysSince = daysSinceLastPR && daysSinceLastPR[lift] !== null ? daysSinceLastPR[lift] : null;
 
           const chartDiv = document.createElement("div");
           chartDiv.className = "chart-container";
@@ -1415,8 +1406,18 @@
             const totalGain = currentE1RM - startE1RM;
             const gainPercent = ((totalGain / startE1RM) * 100).toFixed(0);
 
-            // Count actual PRs
-            const prCount = hasPRs ? data.prs.length : 0;
+            // Days since last PR with color coding
+            let daysSinceHTML = '';
+            if (daysSince !== null) {
+              const color = daysSince < 30 ? '#51cf66' : daysSince < 90 ? '#ffd93d' : '#ff6b6b';
+              const label = daysSince === 0 ? 'Today!' : daysSince === 1 ? '1 day ago' : `${daysSince} days ago`;
+              daysSinceHTML = `
+                <div>
+                  <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Last PR</div>
+                  <div style="color: ${color}; font-size: 1.5rem; font-weight: 700;">${label}</div>
+                </div>
+              `;
+            }
 
             stats.innerHTML = `
                         <div>
@@ -1439,11 +1440,7 @@
                             <div style="color: #51cf66; font-size: 1.5rem; font-weight: 700;">+${totalGain} ${currentUnit}</div>
                             <div style="color: #51cf66; font-size: 0.75rem; margin-top: 0.25rem;">+${gainPercent}%</div>
                         </div>
-                        <div>
-                            <div style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">PRs Set</div>
-                            <div style="color: #ffd700; font-size: 1.5rem; font-weight: 700;">${prCount}</div>
-                            <div style="color: #666; font-size: 0.75rem; margin-top: 0.25rem;">across all rep ranges</div>
-                        </div>
+                        ${daysSinceHTML}
                     `;
           }
           chartDiv.appendChild(stats);
@@ -1461,7 +1458,6 @@
             () =>
               renderBigThreeChart(
                 lift,
-                data.prs || [],
                 e1rmData.e1rmHistory || [],
                 config.color,
               ),
@@ -1475,7 +1471,7 @@
         }
       }
 
-      function renderBigThreeChart(lift, prs, e1rmHistory, color) {
+      function renderBigThreeChart(lift, e1rmHistory, color) {
         const canvas = document.getElementById(`${lift}Chart`);
         if (!canvas) return;
 
@@ -1486,6 +1482,10 @@
 
         const ctx = canvas.getContext("2d");
         const datasets = [];
+
+        // Get PRs from allTimePRs
+        const allTimePRs = trainingData.allTimePRs;
+        const liftPRs = allTimePRs && allTimePRs[lift] && allTimePRs[lift].repPRs ? allTimePRs[lift].repPRs : {};
 
         // Show e1RM progression
         if (e1rmHistory && e1rmHistory.length > 0) {
@@ -1507,28 +1507,46 @@
           );
         }
 
-        // Add actual PR markers (rep-specific PRs, not estimated)
-        if (prs && prs.length > 0) {
-          const prData = prs.map((pr) => ({
-            x: pr.date,
-            y: getVolume(pr.weightLbs, pr.weightKg),
-            reps: pr.reps,
-            isPR: true,
-          }));
+        // Add actual PR markers from allTimePRs (show max weight for key rep ranges)
+        if (Object.keys(liftPRs).length > 0) {
+          // Only show PRs for key rep ranges (1, 3, 5, 8, 10)
+          const keyRepRanges = [1, 3, 5, 8, 10];
+          const prData = [];
 
-          datasets.push({
-            label: "Actual PRs",
-            data: prData,
-            type: "scatter",
-            backgroundColor: "#ffd700",
-            borderColor: "#fff",
-            borderWidth: 2,
-            pointRadius: 8,
-            pointHoverRadius: 10,
-            pointStyle: "circle",
-            showLine: false,
-            order: 0,
+          keyRepRanges.forEach(reps => {
+            if (liftPRs[reps]) {
+              // Find the date when this PR was achieved from e1rmHistory
+              const prEntry = e1rmHistory.find(entry =>
+                entry.reps === reps &&
+                Math.abs(getVolume(entry.actualWeightLbs, entry.actualWeightKg) - getVolume(liftPRs[reps].weightLbs, liftPRs[reps].weightKg)) < 0.1
+              );
+
+              if (prEntry) {
+                prData.push({
+                  x: prEntry.date,
+                  y: getVolume(liftPRs[reps].weightLbs, liftPRs[reps].weightKg),
+                  reps: reps,
+                  isPR: true,
+                });
+              }
+            }
           });
+
+          if (prData.length > 0) {
+            datasets.push({
+              label: "Key PRs",
+              data: prData,
+              type: "scatter",
+              backgroundColor: "#ffd700",
+              borderColor: "#fff",
+              borderWidth: 2,
+              pointRadius: 8,
+              pointHoverRadius: 10,
+              pointStyle: "circle",
+              showLine: false,
+              order: 0,
+            });
+          }
         }
 
         // Plate milestones for reference lines (in lbs, convert if kg)
@@ -2128,6 +2146,7 @@
                     <div class="program-stats">
                         <span>${program.workouts} workouts</span>
                         <span>${formatVolume(program.totalVolumeLbs, program.totalVolumeKg)} total volume</span>
+                        <span style="color: #ffd700;">${program.prsSet || 0} PRs set</span>
                     </div>
                 </div>
             `,
