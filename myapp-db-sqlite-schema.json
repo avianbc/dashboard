@@ -1,21 +1,107 @@
-[{"name":"android_metadata","type":"table","sql":"CREATE TABLE android_metadata (locale TEXT)"},
-{"name":"savedworkout","type":"table","sql":"CREATE TABLE savedworkout (id integer primary key, type integer, index1 integer, index2 integer, intvalue integer, doublevalue real, stringvalue text, backedup integer )"},
-{"name":"onerepmax","type":"table","sql":"CREATE TABLE onerepmax (id integer primary key, exercise_id integer, weightkg real, weightlb real,  oldweightkg real, oldweightlb real, incrementkg real, incrementlb real, backedup integer, FOREIGN KEY(exercise_id) REFERENCES exercises(id))"},
-{"name":"current_program","type":"table","sql":"CREATE TABLE current_program (id integer primary key, program_id integer, week integer, backedup integer, FOREIGN KEY(program_id) REFERENCES programs(id))"},
-{"name":"history","type":"table","sql":"CREATE TABLE history (id integer primary key, date integer, program_id integer, day integer, day_name TEXT, realdays integer, duration integer, percentage integer, note TEXT, backedup integer, FOREIGN KEY(program_id) REFERENCES programs(id))"},
-{"name":"history_exercises","type":"table","sql":"CREATE TABLE history_exercises (id integer primary key, history_id integer, exercise_id integer, type integer DEFAULT 0,weightkg real, weightlb real, reps integer, max_reps integer, reptype integer, set_number integer, exercise_number integer, duration integer, percentage integer, backedup integer, supersetnumber INTEGER DEFAULT -1, RPE REAL DEFAULT 0.0, FOREIGN KEY(history_id) REFERENCES history(id), FOREIGN KEY(exercise_id) REFERENCES exercises(id))"},
-{"name":"next_workout","type":"table","sql":"CREATE TABLE next_workout (id integer primary key, date integer, program_id integer, day integer, realdays integer, backedup integer, day_name TEXT, FOREIGN KEY(program_id) REFERENCES programs(id))"},
-{"name":"next_workout_exercises","type":"table","sql":"CREATE TABLE next_workout_exercises (id integer primary key, next_id integer, exercise_id integer, dependent_exercise_id integer, weightkg real, weightlb real, reps integer, reps2 integer, set_number integer, exercise_number integer, incrementkg real, incrementlb real, resttime1 integer, resttime2 integer, resttime3 integer, failures integer, failuresallowed integer, percentage real, reptype integer, exercisetype integer, increment text, backedup integer, increment_type INTEGER DEFAULT 0, deload_percentage INTEGER DEFAULT 10, dependentIncrementID integer DEFAULT -1, supersetnumber INTEGER DEFAULT -1, RPE real DEFAULT 0.0,FOREIGN KEY(next_id) REFERENCES nextWorkout(id), FOREIGN KEY(exercise_id) REFERENCES exercises(id))"},
-{"name":"body_weight","type":"table","sql":"CREATE TABLE body_weight (id integer primary key, date integer, weight double, weightkg double, weightlb double, backedup integer)"},
-{"name":"warmups","type":"table","sql":"CREATE TABLE warmups (id integer primary key, name text, explanation text, scheme text, backedup integer )"},
-{"name":"weights","type":"table","sql":"CREATE TABLE weights (id integer primary key, type integer, weightunit integer, weight real, count integer, backedup integer)"},
-{"name":"programs","type":"table","sql":"CREATE TABLE programs (id integer primary key, routine text, routine_short_name text, days integer, realdays integer, program_days integer, category integer, routinetype text, level text, explanation text, theme_color integer, noofdays integer, backedup integer, when_to_update_weights INTEGER DEFAULT 1000, deleted integer DEFAULT 0)"},
-{"name":"program_exercises","type":"table","sql":"CREATE TABLE program_exercises (id integer primary key, program_id integer, exercise_id integer, dependent_exercise_id integer,weightkg real, weightlb real, reps integer, reps2 integer, set_number integer, exercise_number integer, day_number integer, failuresallowed integer, increment text, incrementkg real, incrementlb real, resttime1 integer, resttime2 integer, resttime3 integer, percentage real, reptype integer, exercisetype integer, backedup integer, day_name TEXT, increment_type INTEGER DEFAULT 0, deload_percentage INTEGER DEFAULT 10, dependentIncrementID integer DEFAULT -1, supersetnumber INTEGER DEFAULT -1, RPE REAL DEFAULT 0.0, FOREIGN KEY(program_id) REFERENCES programs(id), FOREIGN KEY(exercise_id) REFERENCES exercises(id))"},
-{"name":"exercises","type":"table","sql":"CREATE TABLE exercises (id integer primary key, exercise_name text, explanation text, type integer, target_body integer, exercise_video text, exercise_pic1 text, exercise_pic2 text, picturetype integer, barbell_lb REAL DEFAULT 45.0, barbell_kg REAL DEFAULT 20.0, show_warm_up INTEGER DEFAULT 1, show_graph INTEGER DEFAULT 1, rest_time INTEGER DEFAULT 60, rest_time_last_rep INTEGER DEFAULT 90, backedup integer, roundkg real DEFAULT 2.5, roundlb real DEFAULT 5, tonnage_multiple INTEGER DEFAULT 1, warmup_type integer DEFAULT -1, deleted integer DEFAULT 0, original_name text)"},
-{"name":"freecustomworkouts","type":"table","sql":"CREATE TABLE freecustomworkouts (id integer primary key, count integer, backedup integer)"},
-{"name":"increment_schemes","type":"table","sql":"CREATE TABLE increment_schemes (id integer primary key, name text, explanation text, scheme text, backedup integer )"},
-{"name":"additional_next_workout","type":"table","sql":"CREATE TABLE additional_next_workout (id integer primary key, additional_workout_id integer, date integer, program_id integer, day integer, realdays integer, backedup integer, day_name TEXT, FOREIGN KEY(program_id) REFERENCES programs(id))"},
-{"name":"additional_next_workout_exercises","type":"table","sql":"CREATE TABLE additional_next_workout_exercises (id integer primary key, next_id integer, exercise_id integer, dependent_exercise_id integer, weightkg real, weightlb real, reps integer, reps2 integer, set_number integer, exercise_number integer, incrementkg real, incrementlb real, resttime1 integer, resttime2 integer, resttime3 integer, failures integer, failuresallowed integer, percentage real, reptype integer, exercisetype integer, increment text, backedup integer,dependentIncrementID integer DEFAULT -1, supersetnumber INTEGER DEFAULT -1, increment_type INTEGER DEFAULT 0, deload_percentage INTEGER DEFAULT 10,FOREIGN KEY(next_id) REFERENCES nextWorkout(id), FOREIGN KEY(exercise_id) REFERENCES exercises(id))"},
-{"name":"additional_savedworkout","type":"table","sql":"CREATE TABLE additional_savedworkout (id integer primary key, additional_workout_id integer, type integer, index1 integer, index2 integer, intvalue integer, doublevalue real, stringvalue text, backedup integer )"},
-{"name":"additional_onerepmax","type":"table","sql":"CREATE TABLE additional_onerepmax (id integer primary key, additional_workout_id integer, exercise_id integer, weightkg real, weightlb real,  oldweightkg real, oldweightlb real, incrementkg real, incrementlb real, backedup integer, FOREIGN KEY(exercise_id) REFERENCES exercises(id))"},
-{"name":"additional_workouts","type":"table","sql":"CREATE TABLE additional_workouts (id integer primary key, program_id integer, FOREIGN KEY(program_id) REFERENCES programs(id))"}]
+[
+  {
+    "name": "android_metadata",
+    "type": "table",
+    "sql": "CREATE TABLE android_metadata (locale TEXT)"
+  },
+  {
+    "name": "savedworkout",
+    "type": "table",
+    "sql": "CREATE TABLE savedworkout (id integer primary key, type integer, index1 integer, index2 integer, intvalue integer, doublevalue real, stringvalue text, backedup integer )"
+  },
+  {
+    "name": "onerepmax",
+    "type": "table",
+    "sql": "CREATE TABLE onerepmax (id integer primary key, exercise_id integer, weightkg real, weightlb real,  oldweightkg real, oldweightlb real, incrementkg real, incrementlb real, backedup integer, FOREIGN KEY(exercise_id) REFERENCES exercises(id))"
+  },
+  {
+    "name": "current_program",
+    "type": "table",
+    "sql": "CREATE TABLE current_program (id integer primary key, program_id integer, week integer, backedup integer, FOREIGN KEY(program_id) REFERENCES programs(id))"
+  },
+  {
+    "name": "history",
+    "type": "table",
+    "sql": "CREATE TABLE history (id integer primary key, date integer, program_id integer, day integer, day_name TEXT, realdays integer, duration integer, percentage integer, note TEXT, backedup integer, FOREIGN KEY(program_id) REFERENCES programs(id))"
+  },
+  {
+    "name": "history_exercises",
+    "type": "table",
+    "sql": "CREATE TABLE history_exercises (id integer primary key, history_id integer, exercise_id integer, type integer DEFAULT 0,weightkg real, weightlb real, reps integer, max_reps integer, reptype integer, set_number integer, exercise_number integer, duration integer, percentage integer, backedup integer, supersetnumber INTEGER DEFAULT -1, RPE REAL DEFAULT 0.0, FOREIGN KEY(history_id) REFERENCES history(id), FOREIGN KEY(exercise_id) REFERENCES exercises(id))"
+  },
+  {
+    "name": "next_workout",
+    "type": "table",
+    "sql": "CREATE TABLE next_workout (id integer primary key, date integer, program_id integer, day integer, realdays integer, backedup integer, day_name TEXT, FOREIGN KEY(program_id) REFERENCES programs(id))"
+  },
+  {
+    "name": "next_workout_exercises",
+    "type": "table",
+    "sql": "CREATE TABLE next_workout_exercises (id integer primary key, next_id integer, exercise_id integer, dependent_exercise_id integer, weightkg real, weightlb real, reps integer, reps2 integer, set_number integer, exercise_number integer, incrementkg real, incrementlb real, resttime1 integer, resttime2 integer, resttime3 integer, failures integer, failuresallowed integer, percentage real, reptype integer, exercisetype integer, increment text, backedup integer, increment_type INTEGER DEFAULT 0, deload_percentage INTEGER DEFAULT 10, dependentIncrementID integer DEFAULT -1, supersetnumber INTEGER DEFAULT -1, RPE real DEFAULT 0.0,FOREIGN KEY(next_id) REFERENCES nextWorkout(id), FOREIGN KEY(exercise_id) REFERENCES exercises(id))"
+  },
+  {
+    "name": "body_weight",
+    "type": "table",
+    "sql": "CREATE TABLE body_weight (id integer primary key, date integer, weight double, weightkg double, weightlb double, backedup integer)"
+  },
+  {
+    "name": "warmups",
+    "type": "table",
+    "sql": "CREATE TABLE warmups (id integer primary key, name text, explanation text, scheme text, backedup integer )"
+  },
+  {
+    "name": "weights",
+    "type": "table",
+    "sql": "CREATE TABLE weights (id integer primary key, type integer, weightunit integer, weight real, count integer, backedup integer)"
+  },
+  {
+    "name": "programs",
+    "type": "table",
+    "sql": "CREATE TABLE programs (id integer primary key, routine text, routine_short_name text, days integer, realdays integer, program_days integer, category integer, routinetype text, level text, explanation text, theme_color integer, noofdays integer, backedup integer, when_to_update_weights INTEGER DEFAULT 1000, deleted integer DEFAULT 0)"
+  },
+  {
+    "name": "program_exercises",
+    "type": "table",
+    "sql": "CREATE TABLE program_exercises (id integer primary key, program_id integer, exercise_id integer, dependent_exercise_id integer,weightkg real, weightlb real, reps integer, reps2 integer, set_number integer, exercise_number integer, day_number integer, failuresallowed integer, increment text, incrementkg real, incrementlb real, resttime1 integer, resttime2 integer, resttime3 integer, percentage real, reptype integer, exercisetype integer, backedup integer, day_name TEXT, increment_type INTEGER DEFAULT 0, deload_percentage INTEGER DEFAULT 10, dependentIncrementID integer DEFAULT -1, supersetnumber INTEGER DEFAULT -1, RPE REAL DEFAULT 0.0, FOREIGN KEY(program_id) REFERENCES programs(id), FOREIGN KEY(exercise_id) REFERENCES exercises(id))"
+  },
+  {
+    "name": "exercises",
+    "type": "table",
+    "sql": "CREATE TABLE exercises (id integer primary key, exercise_name text, explanation text, type integer, target_body integer, exercise_video text, exercise_pic1 text, exercise_pic2 text, picturetype integer, barbell_lb REAL DEFAULT 45.0, barbell_kg REAL DEFAULT 20.0, show_warm_up INTEGER DEFAULT 1, show_graph INTEGER DEFAULT 1, rest_time INTEGER DEFAULT 60, rest_time_last_rep INTEGER DEFAULT 90, backedup integer, roundkg real DEFAULT 2.5, roundlb real DEFAULT 5, tonnage_multiple INTEGER DEFAULT 1, warmup_type integer DEFAULT -1, deleted integer DEFAULT 0, original_name text)"
+  },
+  {
+    "name": "freecustomworkouts",
+    "type": "table",
+    "sql": "CREATE TABLE freecustomworkouts (id integer primary key, count integer, backedup integer)"
+  },
+  {
+    "name": "increment_schemes",
+    "type": "table",
+    "sql": "CREATE TABLE increment_schemes (id integer primary key, name text, explanation text, scheme text, backedup integer )"
+  },
+  {
+    "name": "additional_next_workout",
+    "type": "table",
+    "sql": "CREATE TABLE additional_next_workout (id integer primary key, additional_workout_id integer, date integer, program_id integer, day integer, realdays integer, backedup integer, day_name TEXT, FOREIGN KEY(program_id) REFERENCES programs(id))"
+  },
+  {
+    "name": "additional_next_workout_exercises",
+    "type": "table",
+    "sql": "CREATE TABLE additional_next_workout_exercises (id integer primary key, next_id integer, exercise_id integer, dependent_exercise_id integer, weightkg real, weightlb real, reps integer, reps2 integer, set_number integer, exercise_number integer, incrementkg real, incrementlb real, resttime1 integer, resttime2 integer, resttime3 integer, failures integer, failuresallowed integer, percentage real, reptype integer, exercisetype integer, increment text, backedup integer,dependentIncrementID integer DEFAULT -1, supersetnumber INTEGER DEFAULT -1, increment_type INTEGER DEFAULT 0, deload_percentage INTEGER DEFAULT 10,FOREIGN KEY(next_id) REFERENCES nextWorkout(id), FOREIGN KEY(exercise_id) REFERENCES exercises(id))"
+  },
+  {
+    "name": "additional_savedworkout",
+    "type": "table",
+    "sql": "CREATE TABLE additional_savedworkout (id integer primary key, additional_workout_id integer, type integer, index1 integer, index2 integer, intvalue integer, doublevalue real, stringvalue text, backedup integer )"
+  },
+  {
+    "name": "additional_onerepmax",
+    "type": "table",
+    "sql": "CREATE TABLE additional_onerepmax (id integer primary key, additional_workout_id integer, exercise_id integer, weightkg real, weightlb real,  oldweightkg real, oldweightlb real, incrementkg real, incrementlb real, backedup integer, FOREIGN KEY(exercise_id) REFERENCES exercises(id))"
+  },
+  {
+    "name": "additional_workouts",
+    "type": "table",
+    "sql": "CREATE TABLE additional_workouts (id integer primary key, program_id integer, FOREIGN KEY(program_id) REFERENCES programs(id))"
+  }
+]

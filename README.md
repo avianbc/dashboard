@@ -59,12 +59,14 @@ python extract_data.py
 ```
 
 This will:
+
 - Connect to `MyApp.db`
 - Calculate all statistics
 - Generate `training_data.json`
 - Display a summary of your data
 
 **Output Example:**
+
 ```
 Successfully generated training_data.json
 
@@ -82,6 +84,7 @@ npm start
 ```
 
 This will:
+
 - Start a web server on http://localhost:8000
 - Automatically open dashboard.html in your browser
 - Press Ctrl+C to stop the server when done
@@ -106,27 +109,33 @@ python extract_data.py --db MyApp.db --out training_data.json --verbose
 ## Dashboard Sections
 
 ### Overview
+
 - **Summary Stats**: Large number cards showing total workouts, volume lifted (with unit toggle), hours spent training, years of training, and longest workout streak
 - **Workout Structure**: Additional stats on average sets per workout, duration, and workout frequency
 
 ### Volume & Trends
+
 - **Volume Highlights**: Key volume statistics including best month/year and average volume per workout
 - **Volume Over Time**: Interactive line chart with view toggles for weekly, monthly, yearly, and cumulative volume trends
 - **Workout Calendar**: GitHub-style contribution heatmap showing workout frequency and volume intensity by day
 
 ### Strength Progress
+
 - **Relative Strength Metrics**: Body weight multiples, Wilks scores, and strength level benchmarks for Big 3 lifts
 - **Big Three Charts**: Progress charts for Squat, Bench Press, Deadlift, and Overhead Press showing estimated 1RM progression over time
 
 ### Milestones & Achievements
+
 - **PRs and Clubs**: All-time personal records, powerlifting total milestones, and plate milestones
 - **Bar Travel Distance**: Fun statistics on total distance moved, with landmark comparisons
 
 ### Patterns & Analysis
+
 - **Volume by Day of Week**: Bar chart showing average volume and workout frequency by day
 - **Exercises by Volume**: Horizontal bar chart of top exercises ranked by total volume
 
 ### Training History
+
 - **Programs**: Timeline of training programs with date ranges, workout counts, and volume statistics
 - **Notable Workouts**: List of highest volume sessions, PR days, and comeback workouts
 
@@ -153,26 +162,31 @@ python extract_data.py --db MyApp.db --out training_data.json --verbose
 The dashboard processes 969+ workouts spanning 5+ years of training data, calculating comprehensive statistics across multiple dimensions:
 
 **Total Statistics**:
+
 - Total workouts, sets, volume (lbs & kg), training hours, and date ranges
 - Average workout duration, volume per workout, and sets per workout
 - Best month/year ever by volume
 
 **Volume Analysis**:
+
 - Daily, weekly, monthly, and yearly volume aggregations
 - Volume by exercise and by training program
 - Cumulative volume tracking over time
 
 **Exercise Progress**:
+
 - Big 3 lifts (Squat, Bench, Deadlift, Overhead Press) with estimated 1RM progression
 - All exercises: total volume, first/last performed dates, PR timelines
 - Relative strength metrics (body weight multiples, Wilks scores)
 
 **Workout Patterns**:
+
 - Workout frequency calendar for heatmap visualization
 - Average volume and frequency by day of week
 - Notable workouts (highest volume, PR days, comebacks)
 
 **Achievements & Milestones**:
+
 - Volume and workout count milestones
 - Plate milestones for Big 3 lifts
 - Powerlifting total progression (1000 lb club tracking)
@@ -183,6 +197,7 @@ The dashboard processes 969+ workouts spanning 5+ years of training data, calcul
 See [myapp-db-sqlite-schema.json](myapp-db-sqlite-schema.json) for full schema dump.
 
 Key tables used:
+
 - `history` - Workout sessions
 - `history_exercises` - Individual sets
 - `exercises` - Exercise catalog
@@ -229,6 +244,7 @@ Key tables used:
 ### Modify Color Scheme
 
 Edit the CSS in `dashboard.html`:
+
 - Background: `#0a0a0a`
 - Text: `#e0e0e0`
 - Accent: `#4a9eff`
@@ -244,6 +260,7 @@ Edit the CSS in `dashboard.html`:
 ### Adjust Data Extraction
 
 Modify `extract_data.py`:
+
 - Add new SQL queries
 - Calculate additional statistics
 - Update JSON structure
@@ -252,27 +269,33 @@ Modify `extract_data.py`:
 ## Troubleshooting
 
 ### CORS Error / "Failed to fetch"
+
 This happens when opening `dashboard.html` directly from the filesystem (file:// protocol).
 
 **Solution:** Use the local web server
+
 ```bash
 npm start
 ```
 
 ### Dashboard shows "Error loading data"
+
 - Ensure `training_data.json` is in the same directory
 - Check browser console for specific errors
 - Verify JSON file is valid (not corrupted)
 
 ### Unit toggle not working
+
 - Clear browser cache and localStorage
 - Check browser console for JavaScript errors
 
 ### Missing exercises in Big 3
+
 - Verify exercise names in database match: "Squat", "Bench Press", "Deadlift"
 - Check `get_big_three()` function for name variations
 
 ### Incorrect volume calculations
+
 - Verify warmup sets are properly filtered (reps = -1)
 - Check for NULL values in weight columns
 - Ensure both kg and lb columns have data
@@ -280,6 +303,7 @@ npm start
 ## Future Enhancements
 
 Potential additions:
+
 - Time of day analysis
 - Rest time statistics
 - RPE (Rate of Perceived Exertion) tracking
@@ -293,6 +317,7 @@ Potential additions:
 Inspired by [nodaysoff.run](https://nodaysoff.run/) by [the creator's running dashboard]
 
 Built with:
+
 - Python 3 (data extraction)
 - Chart.js (interactive charts for Big 3 and volume trends)
 - Vanilla JavaScript + SVG (heatmap and other visualizations)
