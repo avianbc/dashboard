@@ -6,7 +6,7 @@
     "start": "http-server -p 8000 -o dashboard.html",
     "extract": "python extract_data.py",
     "build": "python extract_data.py && npm start",
-    "format": "npx prettier . --write"
+    "format": "npx prettier . --write --single-quote"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
