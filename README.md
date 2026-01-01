@@ -106,45 +106,30 @@ python extract_data.py --db MyApp.db --out training_data.json --verbose
 
 ## Dashboard Sections
 
-### Summary Stats
-Large number cards showing:
-- Total workouts completed
-- Total volume lifted (with unit toggle)
-- Hours spent training
-- Years of training
-- Longest workout streak
+### Overview
+- **Summary Stats**: Large number cards showing total workouts, volume lifted (with unit toggle), hours spent training, years of training, and longest workout streak
+- **Workout Structure**: Additional stats on average sets per workout, duration, and workout frequency
 
-### Volume Over Time
-Line chart showing annual volume trends from 2019 to present.
+### Volume & Trends
+- **Volume Highlights**: Key volume statistics including best month/year and average volume per workout
+- **Volume Over Time**: Interactive line chart with view toggles for weekly, monthly, yearly, and cumulative volume trends
+- **Workout Calendar**: GitHub-style contribution heatmap showing workout frequency and volume intensity by day
 
-### Workout Calendar
-GitHub-style contribution heatmap where:
-- Each cell = one day
-- Color intensity = volume lifted that day
-- Hover for details (date, workouts, volume)
+### Strength Progress
+- **Relative Strength Metrics**: Body weight multiples, Wilks scores, and strength level benchmarks for Big 3 lifts
+- **Big Three Charts**: Progress charts for Squat, Bench Press, Deadlift, and Overhead Press showing estimated 1RM progression over time
 
-### The Big Three
-Progress charts for Squat, Bench Press, and Deadlift showing PRs over time for different rep ranges.
+### Milestones & Achievements
+- **PRs and Clubs**: All-time personal records, powerlifting total milestones, and plate milestones
+- **Bar Travel Distance**: Fun statistics on total distance moved, with landmark comparisons
 
-### Exercises by Volume
-Horizontal bar chart of top 15 exercises ranked by total volume.
+### Patterns & Analysis
+- **Volume by Day of Week**: Bar chart showing average volume and workout frequency by day
+- **Exercises by Volume**: Horizontal bar chart of top exercises ranked by total volume
 
-### Workout Patterns
-Bar chart showing average volume by day of week (Monday-Sunday).
-
-### Training Programs
-Timeline of all programs you've run with:
-- Date ranges
-- Workout count
-- Total volume
-
-### Notable Workouts
-Top 10 highest volume workouts with dates and details.
-
-### Milestones
-Chronological list of achievements:
-- Volume landmarks (100K, 250K, 500K, 1M+ lbs)
-- Workout count milestones (100, 250, 500+ workouts)
+### Training History
+- **Programs**: Timeline of training programs with date ranges, workout counts, and volume statistics
+- **Notable Workouts**: List of highest volume sessions, PR days, and comeback workouts
 
 ## Technical Details
 
@@ -163,6 +148,8 @@ Chronological list of achievements:
 **Units**: Both kg and lb values stored in database and JSON, user chooses display preference
 
 ### Database Schema
+
+See [myapp-db-sqlite-schema.json](myapp-db-sqlite-schema.json) for full schema dump.
 
 Key tables used:
 - `history` - Workout sessions
@@ -184,33 +171,27 @@ Key tables used:
   },
   "workoutCalendar": { ... },
   "exerciseProgress": { ... },
-  "bigThree": { ... },
+  "bigThreeE1RM": { ... },
+  "bigThreeVolume": { ... },
   "programs": [...],
   "workoutsByDayOfWeek": { ... },
   "notableWorkouts": [...],
-  "milestones": [...]
+  "milestones": [...],
+  "plateMilestones": { ... },
+  "powerliftingTotals": { ... },
+  "allTimePRs": { ... },
+  "daysSinceLastPR": { ... },
+  "barTravel": { ... },
+  "bodyWeight": { ... },
+  "relativeStrength": { ... }
 }
 ```
 
 ## Requirements
 
-- **Python 3.6+** (for data extraction)
+- **Python 3.6+** (for data extraction, uses built-in `sqlite3` module)
+- Node.js/npm LTS (for local server/prettier)
 - **Modern web browser** (Chrome, Firefox, Edge, Safari)
-- No additional dependencies (uses built-in `sqlite3` module)
-
-## Browser Compatibility
-
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Any browser with ES6 and SVG support
-
-## Performance
-
-- Data extraction: ~2-5 seconds for 969 workouts
-- Dashboard load: <1 second
-- JSON file size: ~500KB-2MB depending on data
-- Smooth rendering for 5+ years of data
 
 ## Customization
 
