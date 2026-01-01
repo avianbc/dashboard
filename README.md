@@ -94,6 +94,16 @@ Whenever you add new workouts to MyApp.db:
 1. Run `npm run extract` (or `python extract_data.py`)
 2. Refresh the dashboard in your browser
 
+You can also specify a different database path or output file using the new CLI flags. Examples:
+
+```bash
+# Use a specific database file and output path
+python extract_data.py -d path/to/MyApp.db -o path/to/training_data.json
+
+# Verbose mode
+python extract_data.py --db MyApp.db --out training_data.json --verbose
+```
+
 ## Dashboard Sections
 
 ### Summary Stats

@@ -6,6 +6,7 @@ for the dashboard visualization.
 
 import sqlite3
 import json
+import argparse
 from datetime import datetime
 import sys
 
@@ -18,10 +19,10 @@ BENCH_NAMES = ['Bench Press', 'Bench', 'Flat Bench Press']
 DEADLIFT_NAMES = ['Deadlift', 'Conventional Deadlift', 'Deadlifts']
 OHP_NAMES = ['Overhead Press', 'OHP', 'Military Press', 'Standing Press', 'Shoulder Press', 'Barbell Overhead Press']
 
-def connect_db():
+def connect_db(db_path=DB_PATH):
     """Connect to the SQLite database."""
     try:
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
         return conn
     except sqlite3.Error as e:
@@ -1409,8 +1410,15 @@ def get_relative_strength(conn):
 
 def main():
     """Main execution function."""
-    print("Connecting to database...")
-    conn = connect_db()
+    parser = argparse.ArgumentParser(description='Extract training data from SQLite DB and produce training_data.json')
+    parser.add_argument('-d', '--db', dest='db_path', default=DB_PATH, help='Path to SQLite database file')
+    parser.add_argument('-o', '--out', dest='output_path', default=OUTPUT_PATH, help='Output JSON path')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Verbose output')
+    args = parser.parse_args()
+
+    if args.verbose:
+        print(f"Connecting to database at {args.db_path}...")
+    conn = connect_db(args.db_path)
 
     print("Extracting summary statistics...")
     summary = get_summary_stats(conn)
@@ -1488,11 +1496,14 @@ def main():
         'relativeStrength': relative_strength
     }
 
-    print(f"Writing output to {OUTPUT_PATH}...")
-    with open(OUTPUT_PATH, 'w') as f:
+    output_path = args.output_path
+    if args.verbose:
+        print(f"Writing output to {output_path}...")
+    with open(output_path, 'w') as f:
         json.dump(data, f, indent=2)
 
-    print(f"Successfully generated {OUTPUT_PATH}")
+    if args.verbose:
+        print(f"Successfully generated {output_path}")
     print(f"\nSummary:")
     print(f"  - Total Workouts: {summary['totalWorkouts']}")
     print(f"  - Total Volume: {summary['totalVolumeLbs']:,.0f} lbs / {summary['totalVolumeKg']:,.0f} kg")
