@@ -89,6 +89,93 @@
       .lift-card-deadlift h4 { color: var(--lift-deadlift); }
       .lift-card-ohp h4 { color: var(--lift-ohp); }
 
+      /* Utility classes */
+      .text-xs { font-size: 0.65rem; }
+      .text-sm { font-size: 0.75rem; }
+      .text-base { font-size: 0.875rem; }
+      .text-lg { font-size: 1rem; }
+      .text-xl { font-size: 1.25rem; }
+      .text-2xl { font-size: 1.5rem; }
+      .text-3xl { font-size: 1.75rem; }
+
+      .text-muted-color { color: var(--text-muted); }
+      .text-muted-light-color { color: var(--text-muted-light); }
+      .text-muted-dark-color { color: var(--text-muted-dark); }
+      .text-primary-color { color: var(--text-primary); }
+      .text-bright-color { color: var(--text-bright); }
+
+      .text-upper { text-transform: uppercase; }
+      .text-center { text-align: center; }
+      .font-weight-600 { font-weight: 600; }
+      .font-weight-700 { font-weight: 700; }
+
+      .mb-0 { margin-bottom: 0; }
+      .mb-xs { margin-bottom: var(--spacing-xs); }
+      .mb-sm { margin-bottom: var(--spacing-sm); }
+      .mb-md { margin-bottom: var(--spacing-md); }
+      .mb-lg { margin-bottom: var(--spacing-lg); }
+      .mb-xl { margin-bottom: var(--spacing-xl); }
+
+      .mt-xs { margin-top: var(--spacing-xs); }
+      .mt-sm { margin-top: var(--spacing-sm); }
+      .mt-md { margin-top: var(--spacing-md); }
+      .mt-lg { margin-top: var(--spacing-lg); }
+      .mt-xl { margin-top: var(--spacing-xl); }
+      .mt-2xl { margin-top: var(--spacing-2xl); }
+
+      .p-md { padding: var(--spacing-md); }
+      .p-lg { padding: var(--spacing-lg); }
+
+      .flex { display: flex; }
+      .flex-between { justify-content: space-between; }
+      .flex-center { justify-content: center; }
+      .align-center { align-items: center; }
+      .gap-sm { gap: var(--spacing-sm); }
+      .gap-md { gap: var(--spacing-md); }
+      .gap-lg { gap: var(--spacing-lg); }
+
+      .grid-2col { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-lg); }
+      .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg); }
+
+      .bg-tertiary { background: var(--bg-tertiary); }
+      .rounded-md { border-radius: var(--radius-md); }
+      .rounded-sm { border-radius: var(--radius-sm); }
+
+      .border-top { border-top: 1px solid var(--border-primary); }
+      .border-bottom { border-bottom: 1px solid var(--border-primary); }
+
+      .h-8 { height: 8px; }
+      .overflow-hidden { overflow: hidden; }
+
+      .level-badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .strength-bar {
+        position: relative;
+        height: 8px;
+        background: #222;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .strength-bar-fill {
+        position: absolute;
+        height: 100%;
+        border-radius: 4px;
+      }
+
+      .fun-fact-box {
+        margin-top: 2rem;
+        padding: 1rem;
+        background: #111;
+        border-radius: 8px;
+        border-left: 3px solid #4a9eff;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -1748,37 +1835,37 @@
 
           html += `
             <div class="lift-card lift-card-${key}">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h4>${name}</h4>
-                <span style="background: ${levelColor}22; color: ${levelColor}; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">${level}</span>
+              <div class="flex flex-between align-center mb-md">
+                <h4 class="mb-0">${name}</h4>
+                <span class="level-badge" style="background: ${levelColor}22; color: ${levelColor};">${level}</span>
               </div>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center;">
                 <div>
-                  <div style="color: #666; font-size: 0.7rem; text-transform: uppercase;">Best</div>
-                  <div style="color: #e0e0e0; font-size: 1.25rem; font-weight: 600;">${best.multiple || '—'}×</div>
-                  <div style="color: #888; font-size: 0.75rem;">${bestLift ? Math.round(bestLift) + ' ' + currentUnit : '—'}</div>
+                  <div class="text-muted-dark-color text-xs text-upper">Best</div>
+                  <div class="text-primary-color text-xl font-weight-600">${best.multiple || '—'}×</div>
+                  <div class="text-muted-color text-sm">${bestLift ? Math.round(bestLift) + ' ' + currentUnit : '—'}</div>
                 </div>
                 <div>
-                  <div style="color: #666; font-size: 0.7rem; text-transform: uppercase;">Current</div>
-                  <div style="color: #aaa; font-size: 1.25rem; font-weight: 600;">${current.multiple || '—'}×</div>
-                  <div style="color: #888; font-size: 0.75rem;">${currentLift ? Math.round(currentLift) + ' ' + currentUnit : '—'}</div>
+                  <div class="text-muted-dark-color text-xs text-upper">Current</div>
+                  <div class="text-muted-light-color text-xl font-weight-600">${current.multiple || '—'}×</div>
+                  <div class="text-muted-color text-sm">${currentLift ? Math.round(currentLift) + ' ' + currentUnit : '—'}</div>
                 </div>
               </div>
-              <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid #222;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #666; margin-bottom: 0.25rem;">
+              <div class="mt-md border-top" style="padding-top: 0.75rem;">
+                <div class="flex flex-between text-xs text-muted-dark-color mb-xs">
                   <span>Beginner</span>
                   <span>Intermediate</span>
                   <span>Advanced</span>
                   <span>Elite</span>
                 </div>
-                <div style="position: relative; height: 8px; background: #222; border-radius: 4px; overflow: hidden;">
+                <div class="strength-bar">
                   ${(() => {
                     const maxBench = liftBenchmarks.elite || 2.5;
                     const pct = Math.min((bestMult / maxBench) * 100, 100);
-                    return `<div style="position: absolute; height: 100%; width: ${pct}%; background: ${color}; border-radius: 4px;"></div>`;
+                    return `<div class="strength-bar-fill" style="width: ${pct}%; background: ${color};"></div>`;
                   })()}
                 </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #555; margin-top: 0.25rem;">
+                <div class="flex flex-between text-xs mt-xs" style="color: #555;">
                   <span>${liftBenchmarks.beginner || 0}×</span>
                   <span>${liftBenchmarks.intermediate || 0}×</span>
                   <span>${liftBenchmarks.advanced || 0}×</span>
@@ -1793,8 +1880,8 @@
 
         // Body Weight Timeline Chart
         html += `
-          <div style="margin-top: 2rem;">
-            <h4 style="color: #aaa; margin-bottom: 1rem;">📈 Body Weight Timeline</h4>
+          <div class="mt-2xl">
+            <h4 class="text-muted-light-color mb-md">📈 Body Weight Timeline</h4>
             ${hasStaleData ? '<div style="color: #cca300; font-size: 0.8rem; margin-bottom: 0.75rem;">⚠️ Note: Body weight data contains periods without updates</div>' : ''}
             <canvas id="bodyWeightChart" style="max-height: 200px;"></canvas>
           </div>
@@ -2314,21 +2401,328 @@
         container.appendChild(svg);
       }
 
+      function renderPowerliftingTotals() {
+        const { powerliftingTotals, milestones } = trainingData;
+        if (!powerliftingTotals || !powerliftingTotals.current) return '';
+
+        let html = '';
+        const current = powerliftingTotals.current;
+        const peak = powerliftingTotals.peak;
+        const clubs = powerliftingTotals.clubMilestones || {};
+
+        const totalValue =
+          currentUnit === "lbs" ? current.totalLbs : current.totalKg;
+        const peakValue = peak
+          ? currentUnit === "lbs"
+            ? peak.totalLbs
+            : peak.totalKg
+          : totalValue;
+        const squatValue =
+          currentUnit === "lbs"
+            ? current.squatE1rm
+            : Math.round(current.squatE1rm * 0.453592);
+        const benchValue =
+          currentUnit === "lbs"
+            ? current.benchE1rm
+            : Math.round(current.benchE1rm * 0.453592);
+        const deadliftValue =
+          currentUnit === "lbs"
+            ? current.deadliftE1rm
+            : Math.round(current.deadliftE1rm * 0.453592);
+
+        // Determine club status
+        const clubThresholds = [
+          {
+            threshold: 1500,
+            name: "1500 lb Club",
+            color: "#ffd700",
+            emoji: "👑",
+          },
+          {
+            threshold: 1400,
+            name: "1400 lb Club",
+            color: "#e6b800",
+            emoji: "👑",
+          },
+          {
+            threshold: 1300,
+            name: "1300 lb Club",
+            color: "#d4af37",
+            emoji: "💪",
+          },
+          {
+            threshold: 1200,
+            name: "1200 lb Club",
+            color: "#c0c0c0",
+            emoji: "💪",
+          },
+          {
+            threshold: 1100,
+            name: "1100 lb Club",
+            color: "#b8860b",
+            emoji: "🏆",
+          },
+          {
+            threshold: 1000,
+            name: "1000 lb Club",
+            color: "#cd7f32",
+            emoji: "🏆",
+          },
+          {
+            threshold: 750,
+            name: "750 lb Club",
+            color: "#4a9eff",
+            emoji: "💎",
+          },
+          {
+            threshold: 500,
+            name: "500 lb Club",
+            color: "#51cf66",
+            emoji: "⭐",
+          },
+        ];
+
+        const achievedClub = clubThresholds.find(
+          (c) => current.totalLbs >= c.threshold,
+        );
+        const nextClub = clubThresholds
+          .slice()
+          .reverse()
+          .find((c) => current.totalLbs < c.threshold);
+
+        html += `<div class="chart-container">`;
+        html += `<h3 class="total-header">
+                  ${achievedClub ? achievedClub.emoji : "🎯"} Powerlifting Total (S+B+D)
+              </h3>`;
+
+        // Current total display
+        html += `<div class="lift-stats-grid">`;
+
+        html += `
+                  <div>
+                      <div class="stat-mini-label">Current Total</div>
+                      <div class="stat-mini-value large" style="color: ${achievedClub ? achievedClub.color : "#e0e0e0"};">${Math.round(totalValue)} ${currentUnit}</div>
+                      ${achievedClub ? `<div class="stat-mini-detail" style="color: ${achievedClub.color};">${achievedClub.name}</div>` : ""}
+                  </div>
+                  <div>
+                      <div class="stat-mini-label">Squat e1RM</div>
+                      <div class="stat-mini-value accent-blue">${Math.round(squatValue)} ${currentUnit}</div>
+                  </div>
+                  <div>
+                      <div class="stat-mini-label">Bench e1RM</div>
+                      <div class="stat-mini-value accent-red">${Math.round(benchValue)} ${currentUnit}</div>
+                  </div>
+                  <div>
+                      <div class="stat-mini-label">Deadlift e1RM</div>
+                      <div class="stat-mini-value accent-green">${Math.round(deadliftValue)} ${currentUnit}</div>
+                  </div>
+              </div>`;
+
+        // Next club progress
+        if (nextClub) {
+          const remaining = nextClub.threshold - current.totalLbs;
+          const progressPercent =
+            (current.totalLbs / nextClub.threshold) * 100;
+          html += `
+                      <div class="progress-indicator">
+                          <div class="progress-header">
+                              <span class="progress-label">Progress to ${nextClub.name}</span>
+                              <span class="progress-value">${Math.round(remaining)} lbs to go</span>
+                          </div>
+                          <div class="progress-bar">
+                              <div class="progress-fill accent-blue" style="width: ${Math.min(progressPercent, 100)}%;"></div>
+                          </div>
+                      </div>
+                  `;
+        }
+
+        // Club milestones achieved
+        const achievedMilestones = Object.entries(clubs).sort(
+          (a, b) => parseInt(b[0]) - parseInt(a[0]),
+        );
+        if (achievedMilestones.length > 0) {
+          html += `<div class="club-milestones"><h4>Club Milestones Achieved</h4>`;
+          achievedMilestones.forEach(([threshold, data]) => {
+            const club = clubThresholds.find(
+              (c) => c.threshold === parseInt(threshold),
+            );
+            if (club && data) {
+              html += `
+                              <div class="milestone">
+                                  <div class="milestone-date">${data.date}</div>
+                                  <div class="milestone-text">
+                                      <span style="color: ${club.color};">${club.emoji} ${club.name}</span>
+                                      <span class="club-milestone-text">(S:${Math.round(data.squat)} B:${Math.round(data.bench)} D:${Math.round(data.deadlift)} = ${Math.round(data.totalLbs)} lbs)</span>
+                                  </div>
+                              </div>
+                          `;
+            }
+          });
+          html += `</div>`;
+        }
+
+        // Add volume and workout milestones
+        if (milestones && milestones.length > 0) {
+          html += `<div class="club-milestones"><h4>Volume & Workout Milestones</h4>`;
+          [...milestones].reverse().slice(0, 10).forEach((m) => {
+            html += `
+              <div class="milestone">
+                <div class="milestone-date">${m.date}</div>
+                <div class="milestone-text">${m.icon} ${m.milestone}</div>
+              </div>
+            `;
+          });
+          html += `</div>`;
+        }
+
+        html += `</div>`;
+        return html;
+      }
+
+      function renderPlateMilestones() {
+        const { plateMilestones } = trainingData;
+        if (!plateMilestones || Object.keys(plateMilestones).length === 0) return '';
+
+        let html = '';
+        const plateLabels = {
+          1: "1 Plate (135)",
+          2: "2 Plates (225)",
+          3: "3 Plates (315)",
+          4: "4 Plates (405)",
+          5: "5 Plates (495)",
+        };
+
+        html += `<div class="chart-container">`;
+        html += `<h3>🏅 Plate Milestones</h3>`;
+
+        html += `<div class="plate-grid">`;
+
+        LIFT_ORDER.forEach((lift) => {
+          const config = LIFT_CONFIG[lift];
+          const liftData = plateMilestones[lift] || {};
+          const maxPlates = Math.max(...Object.keys(liftData).map(Number), 0);
+
+          html += `<div class="lift-card lift-card-${lift}">`;
+          html += `<h4>${config.name}</h4>`;
+
+          [1, 2, 3, 4, 5].forEach((plates) => {
+            const achieved = liftData[plates];
+            const plateWeight =
+              currentUnit === "lbs"
+                ? plates * 90 + 45
+                : Math.round((plates * 90 + 45) * 0.453592);
+            const plateLabel =
+              currentUnit === "lbs"
+                ? `${plates} plate${plates > 1 ? "s" : ""} (${plates * 90 + 45})`
+                : `${plates} plate${plates > 1 ? "s" : ""} (${plateWeight}kg)`;
+
+            if (achieved) {
+              html += `
+                              <div class="plate-item">
+                                  <span class="plate-icon">✅</span>
+                                  <span class="plate-label">${plateLabel}</span>
+                                  <span class="plate-date">${achieved.date}</span>
+                              </div>
+                          `;
+            } else {
+              html += `
+                              <div class="plate-item unachieved">
+                                  <span class="plate-icon">⬜</span>
+                                  <span class="plate-label text-muted-color">${plateLabel}</span>
+                                  <span class="plate-date">—</span>
+                              </div>
+                          `;
+            }
+          });
+
+          html += `</div>`;
+        });
+
+        html += `</div></div>`;
+        return html;
+      }
+
+      function renderAllTimePRs() {
+        const { allTimePRs } = trainingData;
+        if (!allTimePRs || Object.keys(allTimePRs).length === 0) return '';
+
+        let html = '';
+        html += `<div class="chart-container">`;
+        html += `<h3 class="section-title">🏆 All-Time PRs</h3>`;
+
+        html += `<div class="grid-2col">`;
+
+        LIFT_ORDER.forEach((lift) => {
+          const config = LIFT_CONFIG[lift];
+          const liftData = allTimePRs[lift];
+          if (!liftData) return;
+
+          const maxEver = liftData.maxEver;
+          const bestE1rm = liftData.bestE1rm;
+          const repPRs = liftData.repPRs || {};
+
+          html += `<div class="lift-card lift-card-${lift}">`;
+          html += `<h4>${config.name}</h4>`;
+
+          // Best e1RM
+          if (bestE1rm) {
+            const e1rmValue =
+              currentUnit === "lbs" ? bestE1rm.e1rmLbs : bestE1rm.e1rmKg;
+            html += `
+                          <div class="bg-tertiary rounded-md p-lg mb-lg text-center">
+                              <div class="text-muted-color text-sm text-upper mb-xs">Best e1RM</div>
+                              <div class="text-3xl font-weight-700">${Math.round(e1rmValue)} ${currentUnit}</div>
+                          </div>
+                      `;
+          }
+
+          // Rep PRs table
+          const sortedReps = Object.keys(repPRs)
+            .map(Number)
+            .sort((a, b) => a - b);
+          if (sortedReps.length > 0) {
+            html += `<div class="text-base">`;
+            sortedReps.forEach((reps) => {
+              const pr = repPRs[reps];
+              const weight =
+                currentUnit === "lbs" ? pr.weightLbs : pr.weightKg;
+              html += `
+                              <div class="flex flex-between border-bottom" style="padding: 0.35rem 0;">
+                                  <span class="text-muted-color">${reps}RM</span>
+                                  <span class="text-primary-color font-weight-600">${Math.round(weight)} ${currentUnit}</span>
+                              </div>
+                          `;
+            });
+            html += `</div>`;
+          }
+
+          html += `</div>`;
+        });
+
+        html += `</div></div>`;
+        return html;
+      }
+
       function renderPRsAndClubs() {
-        const { powerliftingTotals, plateMilestones, allTimePRs } =
-          trainingData;
         const container = document.getElementById("prsClubsContent");
 
-        if (!powerliftingTotals && !plateMilestones && !allTimePRs) {
-          container.innerHTML =
-            '<p style="color: #888;">No PR data available</p>';
+        if (!trainingData.powerliftingTotals && !trainingData.plateMilestones && !trainingData.allTimePRs) {
+          container.innerHTML = '<p class="text-muted-color">No PR data available</p>';
           return;
         }
 
         let html = "";
+        html += renderPowerliftingTotals();
+        html += renderPlateMilestones();
+        html += renderAllTimePRs();
+        container.innerHTML = html;
+      }
 
-        // 1000 lb Club Section
-        if (powerliftingTotals && powerliftingTotals.current) {
+      function renderBarTravelOLD() {
+        const { barTravel } = trainingData;
+        const container = document.getElementById("barTravelStats");
+
+        if (!barTravel) {
           const current = powerliftingTotals.current;
           const peak = powerliftingTotals.peak;
           const clubs = powerliftingTotals.clubMilestones || {};
@@ -2804,13 +3198,13 @@
 
         // Volume Records
         if (volumeRecords.length > 0) {
-          html += '<h3 style="margin-bottom: 1rem;">🏆 Volume Records</h3>';
+          html += '<h3 class="mb-md">🏆 Volume Records</h3>';
           volumeRecords.forEach(workout => {
             html += `
               <div class="notable-workout">
                 <div class="notable-date">${workout.date}</div>
-                <div style="font-weight: 600;">${workout.reason}</div>
-                <div style="color: #888; margin-top: 0.25rem;">
+                <div class="font-weight-600">${workout.reason}</div>
+                <div class="text-muted-color mt-xs">
                   ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
                 </div>
               </div>
@@ -2820,13 +3214,13 @@
 
         // Set Records
         if (setRecords.length > 0) {
-          html += '<h3 style="margin-top: 2rem; margin-bottom: 1rem;">💪 Set Records</h3>';
+          html += '<h3 class="mt-xl mb-md">💪 Set Records</h3>';
           setRecords.forEach(workout => {
             html += `
               <div class="notable-workout" style="border-left-color: #51cf66;">
                 <div class="notable-date">${workout.date}</div>
-                <div style="font-weight: 600;">${workout.reason}</div>
-                <div style="color: #888; margin-top: 0.25rem;">
+                <div class="font-weight-600">${workout.reason}</div>
+                <div class="text-muted-color mt-xs">
                   ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
                 </div>
               </div>
@@ -2836,13 +3230,13 @@
 
         // Comebacks
         if (comebacks.length > 0) {
-          html += '<h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔥 Comeback Workouts</h3>';
+          html += '<h3 class="mt-xl mb-md">🔥 Comeback Workouts</h3>';
           comebacks.forEach(workout => {
             html += `
               <div class="notable-workout" style="border-left-color: #ffd93d;">
                 <div class="notable-date">${workout.date}</div>
-                <div style="font-weight: 600;">${workout.reason}</div>
-                <div style="color: #888; margin-top: 0.25rem;">
+                <div class="font-weight-600">${workout.reason}</div>
+                <div class="text-muted-color mt-xs">
                   ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
                 </div>
               </div>
