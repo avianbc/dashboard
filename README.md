@@ -1,6 +1,6 @@
 # Strength Training Dashboard
 
-A data-driven visualization of your strength training journey, inspired by [nodaysoff.run](https://nodaysoff.run/).
+A data-driven visualization of your strength training journey. Extracts data from your `MyApp.db` SQLite database and generates an interactive HTML dashboard to explore your workouts, volume trends, strength progress, and more.
 
 ## Overview
 
@@ -19,7 +19,7 @@ This dashboard transforms your MyApp.db strength training data into a comprehens
 ## Features
 
 - **Unit Toggle**: Switch between lbs and kg with one click (preference saved)
-- **Dark Theme**: Minimal, clean aesthetic inspired by nodaysoff.run
+- **Dark Theme**: Minimal, clean aesthetic
 - **Responsive Design**: Works on desktop, tablet, and mobile
 - **Static Files**: No backend required, works offline
 - **SVG Visualizations**: Custom-built charts without heavy libraries
@@ -31,7 +31,6 @@ This dashboard transforms your MyApp.db strength training data into a comprehens
 - `training_data.json` - Generated JSON data file
 - `dashboard.html` - Interactive dashboard
 - `README.md` - This file
-- `PLAN.md` - Implementation plan and design decisions
 
 ## Usage
 
@@ -146,6 +145,38 @@ python extract_data.py --db MyApp.db --out training_data.json --verbose
 **Date Handling**: Timestamps stored as milliseconds, converted to YYYY-MM-DD
 
 **Units**: Both kg and lb values stored in database and JSON, user chooses display preference
+
+**Calendar Color Scale**: 5 levels based on percentile distribution of daily volumes
+
+### Data Processing Details
+
+The dashboard processes 969+ workouts spanning 5+ years of training data, calculating comprehensive statistics across multiple dimensions:
+
+**Total Statistics**:
+- Total workouts, sets, volume (lbs & kg), training hours, and date ranges
+- Average workout duration, volume per workout, and sets per workout
+- Best month/year ever by volume
+
+**Volume Analysis**:
+- Daily, weekly, monthly, and yearly volume aggregations
+- Volume by exercise and by training program
+- Cumulative volume tracking over time
+
+**Exercise Progress**:
+- Big 3 lifts (Squat, Bench, Deadlift, Overhead Press) with estimated 1RM progression
+- All exercises: total volume, first/last performed dates, PR timelines
+- Relative strength metrics (body weight multiples, Wilks scores)
+
+**Workout Patterns**:
+- Workout frequency calendar for heatmap visualization
+- Average volume and frequency by day of week
+- Notable workouts (highest volume, PR days, comebacks)
+
+**Achievements & Milestones**:
+- Volume and workout count milestones
+- Plate milestones for Big 3 lifts
+- Powerlifting total progression (1000 lb club tracking)
+- Bar travel distance calculations with landmark comparisons
 
 ### Database Schema
 
