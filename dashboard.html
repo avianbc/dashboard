@@ -4,15 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Strength Training Dashboard</title>
-    
-    <!-- Import theme styles for consistency with main blog -->
-    <link rel="stylesheet" href="/css/coder.css">
-    <link rel="stylesheet" href="/css/coder-dark.css">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <style>
+      /* Base styles from hugo-coder theme */
+      html {
+        box-sizing: border-box;
+      }
+
+      *, *:after, *:before {
+        box-sizing: inherit;
+      }
       /* Dark mode colors (default - matches hugo-coder dark theme) */
       body.colorscheme-dark,
       body.colorscheme-auto {
@@ -305,7 +309,7 @@
       .strength-bar {
         position: relative;
         height: 8px;
-        background: #222;
+        background: var(--bg-tertiary);
         border-radius: 4px;
         overflow: hidden;
       }
@@ -319,9 +323,9 @@
       .fun-fact-box {
         margin-top: 2rem;
         padding: 1rem;
-        background: #111;
+        background: var(--bg-secondary);
         border-radius: 8px;
-        border-left: 3px solid #4a9eff;
+        border-left: 3px solid var(--accent-blue);
       }
 
       * {
@@ -333,10 +337,38 @@
       body {
         font-family:
           -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          'Helvetica Neue', Arial, sans-serif;
+          Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica,
+          sans-serif;
         background: var(--bg-primary);
         color: var(--text-primary);
-        line-height: 1.6;
+        font-size: 1.8em;
+        font-weight: 400;
+        line-height: 1.8em;
+      }
+
+      @media only screen and (max-width: 768px) {
+        body {
+          font-size: 1.6em;
+          line-height: 1.6em;
+        }
+      }
+
+      a {
+        font-weight: 500;
+        color: var(--accent-blue);
+        text-decoration: none;
+        transition: all 0.25s ease-in;
+      }
+
+      a:focus,
+      a:hover {
+        text-decoration: underline;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        color: var(--text-bright);
+        margin: 4rem 0 2.5rem 0;
       }
 
       .container {
@@ -984,13 +1016,13 @@
       (function initTheme() {
         const body = document.body;
         const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        
+
         function setTheme(theme) {
           body.classList.remove('colorscheme-auto', 'colorscheme-light', 'colorscheme-dark');
           body.classList.add('colorscheme-' + theme);
           document.documentElement.style['color-scheme'] = theme;
         }
-        
+
         // Check localStorage for theme preference (synced with main blog)
         if (localStorage.getItem('colorscheme')) {
           setTheme(localStorage.getItem('colorscheme'));
@@ -998,14 +1030,14 @@
           // Fall back to prefers-color-scheme
           setTheme(darkModeMediaQuery.matches ? 'dark' : 'light');
         }
-        
+
         // Listen for system theme changes
         darkModeMediaQuery.addListener((event) => {
           if (!localStorage.getItem('colorscheme')) {
             setTheme(event.matches ? 'dark' : 'light');
           }
         });
-        
+
         // Listen for theme changes from main blog
         window.addEventListener('storage', (e) => {
           if (e.key === 'colorscheme' && e.newValue) {
@@ -1138,7 +1170,7 @@
         // Update colors from CSS variables (for theme switching)
         CHART_COLORS = getChartColors();
         updateLiftConfig();
-        
+
         // Overview section
         renderSummaryStats();
         renderWorkoutStructure();
@@ -1514,11 +1546,12 @@
 
         // Build datasets array with total volume + Big 3
         const datasets = [
-          createLineDataset(label, chartData, CHART_COLORS.text, {
+          createLineDataset(label, chartData, CHART_COLORS.textBright, {
             pointRadius: isYearly ? 6 : 0,
             pointHoverRadius: isYearly ? 8 : 6,
             fill: true,
-            backgroundColor: CHART_COLORS.text + '33',
+            backgroundColor: CHART_COLORS.textBright + '22',
+            borderWidth: 2,
           }),
         ];
 
@@ -1657,13 +1690,23 @@
           return 5;
         };
 
-        const colors = [
-          '#161616',
+        // GitHub-style heatmap colors (adapt to theme)
+        const isDark = document.body.classList.contains('colorscheme-dark') ||
+                       document.body.classList.contains('colorscheme-auto');
+        const colors = isDark ? [
+          '#161616',  // no activity - dark gray
           '#0e4429',
           '#006d32',
           '#26a641',
           '#39d353',
           '#39d353',
+        ] : [
+          '#ebedf0',  // no activity - light gray (like GitHub light mode)
+          '#9be9a8',
+          '#40c463',
+          '#30a14e',
+          '#216e39',
+          '#216e39',
         ];
         const monthNames = [
           'Jan',
