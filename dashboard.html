@@ -4,41 +4,85 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Strength Training Dashboard</title>
+    
+    <!-- Import theme styles for consistency with main blog -->
+    <link rel="stylesheet" href="/css/coder.css">
+    <link rel="stylesheet" href="/css/coder-dark.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <style>
-      :root {
+      /* Dark mode colors (default - matches hugo-coder dark theme) */
+      body.colorscheme-dark,
+      body.colorscheme-auto {
         /* Background colors */
-        --bg-primary: #0a0a0a;
-        --bg-secondary: #111;
-        --bg-tertiary: #1a1a1a;
-        --bg-hover: #222;
+        --bg-primary: #212121;
+        --bg-secondary: #292929;
+        --bg-tertiary: #333;
+        --bg-hover: #424242;
 
         /* Text colors */
-        --text-primary: #e0e0e0;
+        --text-primary: #dadada;
         --text-bright: #fff;
         --text-muted: #888;
         --text-muted-light: #aaa;
         --text-muted-dark: #666;
 
-        /* Accent colors */
-        --accent-blue: #4a9eff;
+        /* Accent colors - aligned with hugo-coder */
+        --accent-blue: #42a5f5;
         --accent-green: #51cf66;
         --accent-red: #ff6b6b;
         --accent-yellow: #ffd93d;
         --accent-gold: #ffd700;
 
         /* Lift-specific colors */
-        --lift-squat: #4a9eff;
+        --lift-squat: #42a5f5;
         --lift-bench: #ff6b6b;
         --lift-deadlift: #51cf66;
         --lift-ohp: #ffd93d;
 
         /* Border colors */
-        --border-primary: #1a1a1a;
-        --border-secondary: #333;
+        --border-primary: #333;
+        --border-secondary: #424242;
         --border-hover: #555;
+      }
+
+      /* Light mode colors (matches hugo-coder light theme) */
+      body.colorscheme-light {
+        /* Background colors */
+        --bg-primary: #fafafa;
+        --bg-secondary: #fff;
+        --bg-tertiary: #f5f5f5;
+        --bg-hover: #e0e0e0;
+
+        /* Text colors */
+        --text-primary: #212121;
+        --text-bright: #000;
+        --text-muted: #666;
+        --text-muted-light: #555;
+        --text-muted-dark: #999;
+
+        /* Accent colors */
+        --accent-blue: #1565c0;
+        --accent-green: #2e7d32;
+        --accent-red: #c62828;
+        --accent-yellow: #f57c00;
+        --accent-gold: #f9a825;
+
+        /* Lift-specific colors */
+        --lift-squat: #1565c0;
+        --lift-bench: #c62828;
+        --lift-deadlift: #2e7d32;
+        --lift-ohp: #f57c00;
+
+        /* Border colors */
+        --border-primary: #e0e0e0;
+        --border-secondary: #ccc;
+        --border-hover: #bbb;
+      }
+
+      :root {
 
         /* Spacing */
         --spacing-xs: 0.25rem;
@@ -936,6 +980,40 @@
     <div class="tooltip" id="tooltip"></div>
 
     <script>
+      // Theme synchronization with hugo-coder (based on coder.js)
+      (function initTheme() {
+        const body = document.body;
+        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        function setTheme(theme) {
+          body.classList.remove('colorscheme-auto', 'colorscheme-light', 'colorscheme-dark');
+          body.classList.add('colorscheme-' + theme);
+          document.documentElement.style['color-scheme'] = theme;
+        }
+        
+        // Check localStorage for theme preference (synced with main blog)
+        if (localStorage.getItem('colorscheme')) {
+          setTheme(localStorage.getItem('colorscheme'));
+        } else {
+          // Fall back to prefers-color-scheme
+          setTheme(darkModeMediaQuery.matches ? 'dark' : 'light');
+        }
+        
+        // Listen for system theme changes
+        darkModeMediaQuery.addListener((event) => {
+          if (!localStorage.getItem('colorscheme')) {
+            setTheme(event.matches ? 'dark' : 'light');
+          }
+        });
+        
+        // Listen for theme changes from main blog
+        window.addEventListener('storage', (e) => {
+          if (e.key === 'colorscheme' && e.newValue) {
+            setTheme(e.newValue);
+          }
+        });
+      })();
+
       // Global state
       let trainingData = null;
       let currentUnit = localStorage.getItem('weightUnit') || 'lbs';
@@ -949,6 +1027,7 @@
           renderDashboard();
           setupUnitToggle();
           setupViewToggle();
+          setupThemeObserver();
         } catch (error) {
           console.error('Error loading training data:', error);
           document.querySelector('.container').innerHTML = `
@@ -999,6 +1078,22 @@
         });
       }
 
+      function setupThemeObserver() {
+        // Watch for theme changes and re-render dashboard
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+              renderDashboard();
+            }
+          });
+        });
+
+        observer.observe(document.body, {
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      }
+
       function getVolume(volumeLbs, volumeKg) {
         return currentUnit === 'lbs' ? volumeLbs : volumeKg;
       }
@@ -1040,6 +1135,10 @@
       }
 
       function renderDashboard() {
+        // Update colors from CSS variables (for theme switching)
+        CHART_COLORS = getChartColors();
+        updateLiftConfig();
+        
         // Overview section
         renderSummaryStats();
         renderWorkoutStructure();
@@ -1161,14 +1260,30 @@
       let bigThreeChartInstances = {};
       let bodyWeightChartInstance = null;
 
+      // Get colors from CSS variables (updated dynamically for light/dark mode)
+      function getChartColors() {
+        const style = getComputedStyle(document.body);
+        return {
+          grid: style.getPropertyValue('--border-primary').trim(),
+          text: style.getPropertyValue('--text-muted').trim(),
+          textBright: style.getPropertyValue('--text-primary').trim(),
+          tooltipBg: style.getPropertyValue('--bg-secondary').trim(),
+          tooltipBorder: style.getPropertyValue('--border-secondary').trim(),
+        };
+      }
+
+      function getLiftColors() {
+        const style = getComputedStyle(document.body);
+        return {
+          squat: style.getPropertyValue('--lift-squat').trim(),
+          bench: style.getPropertyValue('--lift-bench').trim(),
+          deadlift: style.getPropertyValue('--lift-deadlift').trim(),
+          ohp: style.getPropertyValue('--lift-ohp').trim(),
+        };
+      }
+
       // Shared Chart.js Configuration
-      const CHART_COLORS = {
-        grid: '#1a1a1a',
-        text: '#888',
-        textBright: '#e0e0e0',
-        tooltipBg: '#1a1a1a',
-        tooltipBorder: '#333',
-      };
+      let CHART_COLORS = getChartColors();
 
       const CHART_DEFAULTS = {
         borderWidth: 2.5,
@@ -1179,12 +1294,17 @@
         hitRadius: 10,
       };
 
-      const LIFT_CONFIG = {
-        squat: { name: 'Squat', color: '#4a9eff', order: 0 },
-        bench: { name: 'Bench Press', color: '#ff6b6b', order: 1 },
-        deadlift: { name: 'Deadlift', color: '#51cf66', order: 2 },
-        ohp: { name: 'Overhead Press', color: '#ffd93d', order: 3 },
-      };
+      let LIFT_CONFIG = null;
+      function updateLiftConfig() {
+        const colors = getLiftColors();
+        LIFT_CONFIG = {
+          squat: { name: 'Squat', color: colors.squat, order: 0 },
+          bench: { name: 'Bench Press', color: colors.bench, order: 1 },
+          deadlift: { name: 'Deadlift', color: colors.deadlift, order: 2 },
+          ohp: { name: 'Overhead Press', color: colors.ohp, order: 3 },
+        };
+      }
+      updateLiftConfig();
 
       const LIFT_ORDER = ['squat', 'bench', 'deadlift', 'ohp'];
 
@@ -1394,11 +1514,11 @@
 
         // Build datasets array with total volume + Big 3
         const datasets = [
-          createLineDataset(label, chartData, '#888', {
+          createLineDataset(label, chartData, CHART_COLORS.text, {
             pointRadius: isYearly ? 6 : 0,
             pointHoverRadius: isYearly ? 8 : 6,
             fill: true,
-            backgroundColor: '#88888833',
+            backgroundColor: CHART_COLORS.text + '33',
           }),
         ];
 
@@ -1586,7 +1706,7 @@
           );
           yearLabel.setAttribute('x', leftMargin);
           yearLabel.setAttribute('y', rowY + 15);
-          yearLabel.setAttribute('fill', '#e0e0e0');
+          yearLabel.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--text-primary').trim());
           yearLabel.setAttribute('font-size', '14');
           yearLabel.setAttribute('font-weight', '600');
           yearLabel.textContent = year;
@@ -1600,7 +1720,7 @@
           );
           countLabel.setAttribute('x', leftMargin + 40);
           countLabel.setAttribute('y', rowY + 15);
-          countLabel.setAttribute('fill', '#666');
+          countLabel.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--text-muted-dark').trim());
           countLabel.setAttribute('font-size', '12');
           countLabel.textContent = `${workoutCount} workouts`;
           svg.appendChild(countLabel);
@@ -1615,7 +1735,7 @@
             line.setAttribute('y1', rowY - yearGap / 2);
             line.setAttribute('x2', width - 20);
             line.setAttribute('y2', rowY - yearGap / 2);
-            line.setAttribute('stroke', '#1a1a1a');
+            line.setAttribute('stroke', getComputedStyle(document.body).getPropertyValue('--border-primary').trim());
             line.setAttribute('stroke-width', '1');
             svg.appendChild(line);
           }
@@ -1630,7 +1750,7 @@
             label.setAttribute('x', 48);
             label.setAttribute('y', rowY + 42 + i * (cellSize + cellPadding));
             label.setAttribute('text-anchor', 'end');
-            label.setAttribute('fill', '#888');
+            label.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--text-muted').trim());
             label.setAttribute('font-size', '10');
             label.textContent = day;
             svg.appendChild(label);
@@ -1699,7 +1819,7 @@
               );
               monthLabel.setAttribute('x', x);
               monthLabel.setAttribute('y', rowY + 27);
-              monthLabel.setAttribute('fill', '#aaa');
+              monthLabel.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--text-muted-light').trim());
               monthLabel.setAttribute('font-size', '10');
               monthLabel.setAttribute('font-weight', '600');
               monthLabel.textContent = monthNames[month];
@@ -1724,7 +1844,7 @@
         );
         legendLabel.setAttribute('x', legendX - 40);
         legendLabel.setAttribute('y', legendY + 10);
-        legendLabel.setAttribute('fill', '#888');
+        legendLabel.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--text-muted').trim());
         legendLabel.setAttribute('font-size', '10');
         legendLabel.textContent = 'Less';
         svg.appendChild(legendLabel);
@@ -1740,7 +1860,7 @@
           rect.setAttribute('width', cellSize);
           rect.setAttribute('height', cellSize);
           rect.setAttribute('fill', colors[i + 1]);
-          rect.setAttribute('stroke', '#1a1a1a');
+          rect.setAttribute('stroke', getComputedStyle(document.body).getPropertyValue('--border-primary').trim());
           rect.setAttribute('stroke-width', '1');
           svg.appendChild(rect);
         }
@@ -1751,7 +1871,7 @@
         );
         legendLabel2.setAttribute('x', legendX + 85);
         legendLabel2.setAttribute('y', legendY + 10);
-        legendLabel2.setAttribute('fill', '#888');
+        legendLabel2.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--text-muted').trim());
         legendLabel2.setAttribute('font-size', '10');
         legendLabel2.textContent = 'More';
         svg.appendChild(legendLabel2);
@@ -1782,7 +1902,7 @@
 
         if (!barTravel) {
           container.innerHTML =
-            '<p style="color: #888;">No bar travel data available</p>';
+            '<p class="text-muted-color">No bar travel data available</p>';
           return;
         }
 
@@ -1882,7 +2002,7 @@
 
         if (!relativeStrength) {
           container.innerHTML =
-            '<p style="color: #888;">No relative strength data available</p>';
+            '<p class="text-muted-color">No relative strength data available</p>';
           return;
         }
 
@@ -2189,7 +2309,7 @@
 
         if (!bigThreeE1RM || Object.keys(bigThreeE1RM).length === 0) {
           container.innerHTML =
-            '<p style="color: #888;">No Big 3 data available</p>';
+            '<p class="text-muted-color">No Big 3 data available</p>';
           return;
         }
 
@@ -2312,7 +2432,7 @@
 
         if (container.children.length === 0) {
           container.innerHTML =
-            '<p style="color: #888;">No Big 3 data available</p>';
+            '<p class="text-muted-color">No Big 3 data available</p>';
         }
       }
 
@@ -2557,7 +2677,7 @@
           rect.setAttribute('y', y);
           rect.setAttribute('width', barWidth);
           rect.setAttribute('height', 25);
-          rect.setAttribute('fill', '#4a9eff');
+          rect.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--accent-blue').trim());
           svg.appendChild(rect);
 
           // Exercise name
@@ -2568,7 +2688,7 @@
           label.setAttribute('x', padding.left - 10);
           label.setAttribute('y', y + 17);
           label.setAttribute('text-anchor', 'end');
-          label.setAttribute('fill', '#e0e0e0');
+          label.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--text-primary').trim());
           label.setAttribute('font-size', '12');
           label.textContent = exercise.name;
           svg.appendChild(label);
@@ -2580,7 +2700,7 @@
           );
           volumeLabel.setAttribute('x', padding.left + barWidth + 10);
           volumeLabel.setAttribute('y', y + 17);
-          volumeLabel.setAttribute('fill', '#888');
+          volumeLabel.setAttribute('fill', getComputedStyle(document.body).getPropertyValue('--text-muted').trim());
           volumeLabel.setAttribute('font-size', '12');
           volumeLabel.textContent = `${Math.round(exercise.volume / 1000)}K`;
           svg.appendChild(volumeLabel);
