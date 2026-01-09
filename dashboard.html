@@ -873,9 +873,12 @@
           <h3>Volume Over Time</h3>
           <div class="view-toggle">
             <button data-view="weekly">Weekly</button>
-            <button data-view="monthly" class="active">Monthly</button>
+            <button data-view="monthly">Monthly</button>
             <button data-view="yearly">Yearly</button>
             <button data-view="cumulative">Cumulative</button>
+          </div>
+          <div id="stackedToggleContainer" class="view-toggle" style="margin-top: 0.5rem;">
+            <button id="stackedToggle">📊 Show Stacked</button>
           </div>
           <canvas id="annualVolumeChart" style="max-height: 400px"></canvas>
         </div>
@@ -938,6 +941,7 @@
       let trainingData = null;
       let currentUnit = localStorage.getItem('weightUnit') || 'lbs';
       let volumeView = localStorage.getItem('volumeView') || 'monthly';
+      let volumeStacked = localStorage.getItem('volumeStacked') === 'true';
 
       // Load data and initialize dashboard
       async function init() {
@@ -947,6 +951,7 @@
           renderDashboard();
           setupUnitToggle();
           setupViewToggle();
+          setupStackedToggle();
         } catch (error) {
           console.error('Error loading training data:', error);
           document.querySelector('.container').innerHTML = `
@@ -976,13 +981,19 @@
       }
 
       function setupViewToggle() {
-        const buttons = document.querySelectorAll('.view-toggle button');
+        const buttons = document.querySelectorAll('.view-toggle button[data-view]');
+        const stackedContainer = document.getElementById('stackedToggleContainer');
 
-        // Update active state
+        // Update active state and toggle stacked button visibility
         function updateActiveButton() {
           buttons.forEach((btn) => {
             btn.classList.toggle('active', btn.dataset.view === volumeView);
           });
+
+          // Hide stacked toggle for cumulative view (stacking doesn't make sense for cumulative data)
+          if (stackedContainer) {
+            stackedContainer.style.display = volumeView === 'cumulative' ? 'none' : '';
+          }
         }
 
         updateActiveButton();
@@ -994,6 +1005,25 @@
             updateActiveButton();
             renderAnnualVolumeChart();
           });
+        });
+      }
+
+      function setupStackedToggle() {
+        const button = document.getElementById('stackedToggle');
+        if (!button) return;
+
+        function updateButtonState() {
+          button.classList.toggle('active', volumeStacked);
+          button.textContent = volumeStacked ? '📊 Show Overlaid' : '📊 Show Stacked';
+        }
+
+        updateButtonState();
+
+        button.addEventListener('click', () => {
+          volumeStacked = !volumeStacked;
+          localStorage.setItem('volumeStacked', volumeStacked);
+          updateButtonState();
+          renderAnnualVolumeChart();
         });
       }
 
@@ -1389,29 +1419,65 @@
         // Adjust visual settings based on view
         const isCumulative = volumeView === 'cumulative';
         const isYearly = volumeView === 'yearly';
+        const useStacked = volumeStacked && !isCumulative;
 
         // Build datasets array with total volume + Big 3
-        const datasets = [
-          createLineDataset(label, chartData, '#888', {
-            pointRadius: isYearly ? 6 : 0,
-            pointHoverRadius: isYearly ? 8 : 6,
-            fill: true,
-            backgroundColor: '#88888833',
-          }),
-        ];
+        const datasets = [];
+
+        // Only show total volume line when not in stacked mode
+        if (!useStacked) {
+          datasets.push(
+            createLineDataset(label, chartData, '#888', {
+              pointRadius: isYearly ? 6 : 0,
+              pointHoverRadius: isYearly ? 8 : 6,
+              fill: true,
+              backgroundColor: '#88888833',
+            }),
+          );
+        }
 
         // Add Big 3 datasets using centralized config
+        const liftDatasets = [];
         LIFT_ORDER.forEach((lift) => {
           const config = LIFT_CONFIG[lift];
           const liftData = aggregateBigThreeVolume(lift);
           if (liftData.length > 0) {
-            datasets.push(
-              createLineDataset(config.name, liftData, config.color, {
-                pointRadius: isYearly ? 4 : 0,
-                pointHoverRadius: isYearly ? 6 : 4,
-              }),
-            );
+            liftDatasets.push({ lift, config, data: liftData });
           }
+        });
+
+        // Normalize data points for stacking - all datasets need same x values
+        if (useStacked && liftDatasets.length > 0) {
+          // Collect all unique x values
+          const allXValues = new Set();
+          liftDatasets.forEach(({ data }) => {
+            data.forEach(point => allXValues.add(point.x));
+          });
+          const sortedXValues = Array.from(allXValues).sort();
+
+          // Normalize each dataset to have all x values (fill missing with 0)
+          liftDatasets.forEach(({ data }) => {
+            const dataMap = new Map(data.map(d => [d.x, d.y]));
+            const normalized = sortedXValues.map(x => ({
+              x: x,
+              y: dataMap.get(x) || 0
+            }));
+            data.length = 0;
+            data.push(...normalized);
+          });
+        }
+
+        // Add normalized datasets to chart
+        liftDatasets.forEach(({ config, data }) => {
+          datasets.push(
+            createLineDataset(config.name, data, config.color, {
+              pointRadius: isYearly ? 4 : 0,
+              pointHoverRadius: isYearly ? 6 : 4,
+              fill: useStacked,
+              stack: useStacked ? 'volume' : undefined,
+              backgroundColor: useStacked ? config.color + '99' : config.color + '20',
+            }),
+          );
         });
 
         annualVolumeChartInstance = new Chart(ctx, {
@@ -1427,6 +1493,8 @@
               },
             },
             tooltip: {
+              mode: useStacked ? 'index' : 'nearest',
+              intersect: false,
               callbacks: {
                 title: function (context) {
                   if (volumeView === 'yearly') {
@@ -1453,10 +1521,18 @@
                   }
                   return `${datasetLabel}: ${(volume / 1000).toFixed(1)}K ${currentUnit}`;
                 },
+                footer: useStacked ? function(tooltipItems) {
+                  let total = 0;
+                  tooltipItems.forEach(item => {
+                    total += item.parsed.y;
+                  });
+                  return `Total: ${(total / 1000).toFixed(1)}K ${currentUnit}`;
+                } : undefined,
               },
             },
             x: {
               type: isYearly ? 'category' : 'time',
+              stacked: useStacked,
               time: !isYearly
                 ? {
                     unit: timeUnit,
@@ -1466,6 +1542,7 @@
             },
             y: {
               beginAtZero: true,
+              stacked: useStacked,
               ticks: {
                 callback: function (value) {
                   if (isCumulative && value >= 1000000) {
