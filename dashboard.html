@@ -1950,6 +1950,14 @@
           </div>
         `;
 
+        // Radar chart for strength profile
+        html += `
+          <div class="chart-container" style="max-width: 600px; margin: 2rem auto;">
+            <h4 class="text-muted-light-color mb-md text-center">Strength Profile</h4>
+            <canvas id="strengthRadarChart" style="max-height: 400px;"></canvas>
+          </div>
+        `;
+
         // Individual lift details with benchmarks - 2x2 grid
         html += `<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">`;
 
@@ -2044,8 +2052,117 @@
 
         container.innerHTML = html;
 
-        // Render body weight chart after DOM update
-        setTimeout(() => renderBodyWeightChart(), 0);
+        // Render charts after DOM update
+        setTimeout(() => {
+          renderStrengthRadarChart();
+          renderBodyWeightChart();
+        }, 0);
+      }
+
+      let strengthRadarChartInstance = null;
+
+      function renderStrengthRadarChart() {
+        const { relativeStrength } = trainingData;
+        const canvas = document.getElementById('strengthRadarChart');
+        if (!canvas || !relativeStrength) return;
+
+        // Destroy existing chart if it exists
+        if (strengthRadarChartInstance) {
+          strengthRadarChartInstance.destroy();
+        }
+
+        const ctx = canvas.getContext('2d');
+
+        // Extract data for each lift
+        const lifts = ['squat', 'bench', 'deadlift', 'ohp'];
+        const liftLabels = ['Squat', 'Bench', 'Deadlift', 'OHP'];
+
+        const bestData = lifts.map(lift => relativeStrength[lift]?.best?.multiple || 0);
+        const currentData = lifts.map(lift => relativeStrength[lift]?.current?.multiple || 0);
+
+        // Get max value for better scaling (add 20% padding)
+        const maxMultiple = Math.max(...bestData, 3);
+        const suggestedMax = Math.ceil(maxMultiple * 1.2 * 2) / 2; // Round to nearest 0.5
+
+        strengthRadarChartInstance = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: liftLabels,
+            datasets: [
+              {
+                label: 'Best',
+                data: bestData,
+                borderColor: '#ffd700',
+                backgroundColor: '#ffd70033',
+                pointBackgroundColor: '#ffd700',
+                pointBorderColor: '#fff',
+                pointHoverRadius: 6,
+                pointRadius: 4,
+                borderWidth: 2.5,
+              },
+              {
+                label: 'Current',
+                data: currentData,
+                borderColor: '#4a9eff',
+                backgroundColor: '#4a9eff22',
+                pointBackgroundColor: '#4a9eff',
+                pointBorderColor: '#fff',
+                pointHoverRadius: 6,
+                pointRadius: 4,
+                borderWidth: 2.5,
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                  color: CHART_COLORS.textBright,
+                  padding: 15,
+                  font: { size: 12 },
+                  usePointStyle: true,
+                }
+              },
+              tooltip: {
+                backgroundColor: CHART_COLORS.tooltipBg,
+                titleColor: CHART_COLORS.textBright,
+                bodyColor: CHART_COLORS.textBright,
+                borderColor: CHART_COLORS.tooltipBorder,
+                borderWidth: 1,
+                callbacks: {
+                  label: function(context) {
+                    return `${context.dataset.label}: ${context.parsed.r.toFixed(2)}× BW`;
+                  }
+                }
+              }
+            },
+            scales: {
+              r: {
+                beginAtZero: true,
+                suggestedMax: suggestedMax,
+                ticks: {
+                  color: CHART_COLORS.text,
+                  backdropColor: 'transparent',
+                  stepSize: 0.5,
+                  callback: function(value) {
+                    return value.toFixed(1) + '×';
+                  }
+                },
+                grid: {
+                  color: CHART_COLORS.grid
+                },
+                pointLabels: {
+                  color: CHART_COLORS.textBright,
+                  font: { size: 13, weight: '600' }
+                }
+              }
+            }
+          }
+        });
       }
 
       function renderBodyWeightChart() {
