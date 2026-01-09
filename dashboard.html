@@ -227,6 +227,20 @@
         gap: var(--spacing-lg);
       }
 
+      /* Additional grid variations */
+      .grid-stats-compact {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .grid-2col-even {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        text-align: center;
+      }
+
       .bg-tertiary {
         background: var(--bg-tertiary);
       }
@@ -845,30 +859,14 @@
         <div class="summary-stats" id="summaryStats">
           <!-- Generated dynamically -->
         </div>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-          "
-          id="workoutStructureStats"
-        >
+        <div class="grid-stats-compact mt-xl" id="workoutStructureStats">
           <!-- Generated dynamically -->
         </div>
       </section>
 
       <section id="volume">
         <h2>Volume & Trends</h2>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-          "
-          id="volumeHighlights"
-        >
+        <div class="grid-stats-compact mb-xl" id="volumeHighlights">
           <!-- Generated dynamically -->
         </div>
         <div class="chart-container">
@@ -1996,7 +1994,7 @@
                 <h4 class="mb-0">${name}</h4>
                 <span class="level-badge" style="background: ${levelColor}22; color: ${levelColor};">${level}</span>
               </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center;">
+              <div class="grid-2col-even">
                 <div>
                   <div class="text-muted-dark-color text-xs text-upper">Best</div>
                   <div class="text-primary-color text-xl font-weight-600">${best.multiple || '—'}×</div>
