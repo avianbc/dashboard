@@ -1,0 +1,365 @@
+.section {
+  margin-bottom: var(--space-12);
+}
+
+.sectionTitle {
+  font-size: var(--font-3xl);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+}
+
+.sectionDescription {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+  font-size: var(--font-base);
+}
+
+.subsection {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-6);
+}
+
+.subsectionTitle {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+  color: var(--color-text-primary);
+}
+
+/* Bullet Charts */
+.bulletCharts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.bulletChart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.bulletHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.bulletTitle {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.bulletStats {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.bulletStat {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+}
+
+.bulletStatLabel {
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+}
+
+.bulletStatValue {
+  font-size: var(--font-base);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.bulletBar {
+  position: relative;
+  height: 48px;
+  border-radius: var(--radius-md);
+  overflow: visible;
+}
+
+.bulletBands {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.bulletBand {
+  height: 100%;
+  transition: opacity 0.2s;
+}
+
+.bandUntrained {
+  background: var(--color-band-untrained);
+}
+
+.bandNovice {
+  background: var(--color-band-novice);
+}
+
+.bandIntermediate {
+  background: var(--color-band-intermediate);
+}
+
+.bandAdvanced {
+  background: var(--color-band-advanced);
+}
+
+.bandElite {
+  background: var(--color-band-elite);
+}
+
+.bulletValue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--space-3);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.bulletValueLabel {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-variant-numeric: tabular-nums;
+}
+
+.bulletMarkerBest {
+  position: absolute;
+  top: -8px;
+  height: calc(100% + 16px);
+  width: 3px;
+  border-left: 3px dashed;
+  opacity: 0.6;
+  z-index: 3;
+  transform: translateX(-1.5px);
+  pointer-events: none;
+}
+
+.bulletMarkerBest .bulletMarkerLabel {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  background: var(--color-card-bg);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.bulletScale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+  padding: 0 var(--space-1);
+}
+
+.bulletScale span {
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Wilks Score */
+.wilksSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.wilksHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.wilksHeader h3 {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.wilksStats {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.wilksStat {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+}
+
+.wilksStatLabel {
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+}
+
+.wilksStatValue {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.wilksBar {
+  position: relative;
+  height: 60px;
+  border-radius: var(--radius-md);
+  overflow: visible;
+}
+
+.wilksBands {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.wilksBand {
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.wilksBandLabel {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  padding: 0 var(--space-1);
+}
+
+.wilksMarkerBest,
+.wilksMarkerCurrent {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: calc(100% + 24px);
+  z-index: 3;
+}
+
+.wilksMarkerBest {
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--color-accent);
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.wilksMarkerCurrent {
+  background: var(--color-accent);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.wilksMarkerLabel {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  background: var(--color-card-bg);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wilksMarkerBest .wilksMarkerLabel {
+  top: -32px;
+  border-style: dashed;
+  opacity: 0.8;
+}
+
+.wilksMarkerCurrent .wilksMarkerLabel {
+  bottom: -32px;
+  top: auto;
+}
+
+.wilksScale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+  padding: 0 var(--space-1);
+}
+
+.wilksScale span {
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .bulletHeader,
+  .wilksHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bulletStats,
+  .wilksStats {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .bulletScale span:nth-child(2),
+  .bulletScale span:nth-child(4) {
+    display: none;
+  }
+
+  .wilksBandLabel {
+    font-size: 9px;
+  }
+
+  .wilksScale span:nth-child(2),
+  .wilksScale span:nth-child(4) {
+    display: none;
+  }
+}

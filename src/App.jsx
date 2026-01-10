@@ -4,6 +4,7 @@ import { HeroSection } from './components/HeroSection'
 import { WorkoutCalendar } from './components/WorkoutCalendar'
 import StrengthProgressionCharts from './components/StrengthProgressionCharts'
 import { PlateMilestones } from './components/PlateMilestones'
+import RelativeStrength from './components/RelativeStrength/RelativeStrength'
 import { loadTrainingData } from './utils/data'
 import styles from './App.module.css'
 
@@ -56,6 +57,8 @@ export function App() {
       <StrengthProgressionCharts data={data} />
 
       <PlateMilestones plateMilestones={data.plateMilestones} />
+
+      <RelativeStrength data={data.relativeStrength} />
 
       <div className={styles.placeholder}>
         <p>More sections coming soon...</p>

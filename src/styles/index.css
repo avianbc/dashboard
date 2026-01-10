@@ -20,6 +20,23 @@
   --color-warning: #eab308;
   --color-error: #ef4444;
 
+  /* Strength Bands (Bodyweight Multiples) */
+  --color-band-untrained: #e5e7eb;
+  --color-band-novice: #d1d5db;
+  --color-band-intermediate: #9ca3af;
+  --color-band-advanced: #6b7280;
+  --color-band-elite: #4b5563;
+
+  /* Benchmark Colors (Wilks) */
+  --color-benchmark-beginner: #93c5fd;
+  --color-benchmark-intermediate: #60a5fa;
+  --color-benchmark-advanced: #3b82f6;
+  --color-benchmark-elite: #2563eb;
+  --color-benchmark-world: #1e40af;
+
+  /* Borders */
+  --color-border: #e0e0e0;
+
   /* Typography Scale */
   --font-xs: 0.75rem;    /* 12px */
   --font-sm: 0.875rem;   /* 14px */
@@ -78,6 +95,23 @@
     --color-warning: #facc15;
     --color-error: #f87171;
 
+    /* Strength Bands (Bodyweight Multiples) - Dark mode */
+    --color-band-untrained: #374151;
+    --color-band-novice: #4b5563;
+    --color-band-intermediate: #6b7280;
+    --color-band-advanced: #9ca3af;
+    --color-band-elite: #d1d5db;
+
+    /* Benchmark Colors (Wilks) - Dark mode */
+    --color-benchmark-beginner: #1e40af;
+    --color-benchmark-intermediate: #2563eb;
+    --color-benchmark-advanced: #3b82f6;
+    --color-benchmark-elite: #60a5fa;
+    --color-benchmark-world: #93c5fd;
+
+    /* Borders - Dark mode */
+    --color-border: #424242;
+
     /* Shadows - Lighter for dark mode */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.4);
@@ -101,6 +135,17 @@
   --color-success: #22c55e;
   --color-warning: #eab308;
   --color-error: #ef4444;
+  --color-band-untrained: #e5e7eb;
+  --color-band-novice: #d1d5db;
+  --color-band-intermediate: #9ca3af;
+  --color-band-advanced: #6b7280;
+  --color-band-elite: #4b5563;
+  --color-benchmark-beginner: #93c5fd;
+  --color-benchmark-intermediate: #60a5fa;
+  --color-benchmark-advanced: #3b82f6;
+  --color-benchmark-elite: #2563eb;
+  --color-benchmark-world: #1e40af;
+  --color-border: #e0e0e0;
 }
 
 [data-theme="dark"] {
@@ -118,6 +163,17 @@
   --color-success: #4ade80;
   --color-warning: #facc15;
   --color-error: #f87171;
+  --color-band-untrained: #374151;
+  --color-band-novice: #4b5563;
+  --color-band-intermediate: #6b7280;
+  --color-band-advanced: #9ca3af;
+  --color-band-elite: #d1d5db;
+  --color-benchmark-beginner: #1e40af;
+  --color-benchmark-intermediate: #2563eb;
+  --color-benchmark-advanced: #3b82f6;
+  --color-benchmark-elite: #60a5fa;
+  --color-benchmark-world: #93c5fd;
+  --color-border: #424242;
 }
 
 /* Base Styles */
