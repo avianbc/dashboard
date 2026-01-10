@@ -614,7 +614,7 @@ Without the `powerliftingTotals.history` array, section 3b (Powerlifting Total P
 
 **Status**: Basic app structure complete with header, hero section, and working toggles
 
-### ✅ Phase 2: Core Visualizations (COMPLETED - Heatmap)
+### ✅ Phase 2: Core Visualizations (COMPLETED)
 9. ✅ Add Workout Consistency Calendar (heatmap) - VERIFIED WORKING
    - ✅ Year-by-year cards stacked vertically (desktop)
    - ✅ Percentile-based color buckets for intensity (GitHub-style)
@@ -629,12 +629,27 @@ Without the `powerliftingTotals.history` array, section 3b (Powerlifting Total P
    - ✅ **Desktop responsive** (1280x800) - All years visible
    - ✅ **Performance verified** - ~2,200 cells render smoothly
 
-**Status**: Heatmap complete and verified in browser. Ready for next visualization.
+10. ✅ Add Strength Progression Charts (E1RM over time) - VERIFIED WORKING
+   - ✅ Four lift charts (Squat, Bench, Deadlift, OHP) in responsive grid
+   - ✅ Toggle between "Running PR" (step chart) and "Raw E1RM" (scatter + 30-day rolling average)
+   - ✅ Running PR view shows monotonically increasing PRs with step chart
+   - ✅ Raw E1RM view shows semi-transparent scatter points + smooth 30-day rolling average line
+   - ✅ Proper color coding per lift (blue/red/green/purple)
+   - ✅ **Light mode tested** - Excellent contrast, readable axes and labels
+   - ✅ **Dark mode tested** - Lighter color variants, good contrast on dark background
+   - ✅ **Unit toggle tested** - Charts update correctly from lbs to kg
+   - ✅ **Toggle functionality verified** - Smooth transitions between views
 
-### 🚧 Phase 2: Core Visualizations (CONTINUED)
-10. Add Strength Progression Charts (E1RM over time)
-11. Add Powerlifting Total Progression chart
-12. Test responsive behavior across all sections
+11. ✅ Add Powerlifting Total Progression chart - VERIFIED WORKING
+   - ✅ Area chart showing total progression over time
+   - ✅ Peak annotation marking all-time best (1276 lbs / 580 kg)
+   - ✅ Milestone lines at 500/750/1000/1100/1200 lb clubs (imperial only)
+   - ✅ Golden/amber gradient area fill for visual impact
+   - ✅ **Light mode tested** - Clean area fill, readable milestone labels
+   - ✅ **Dark mode tested** - Proper gradient opacity, visible on dark background
+   - ✅ **Unit toggle tested** - Switches correctly between lbs and kg
+
+**Status**: Phase 2 complete! Heatmap and strength progression charts fully implemented and verified in both light/dark modes with unit toggling.
 
 ### 📋 Phase 3: Additional Sections (TODO)
 13. Add Plate Milestones achievement grid

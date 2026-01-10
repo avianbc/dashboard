@@ -2,6 +2,7 @@ import { useState, useEffect } from 'preact/hooks'
 import { Layout } from './components/Layout'
 import { HeroSection } from './components/HeroSection'
 import { WorkoutCalendar } from './components/WorkoutCalendar'
+import StrengthProgressionCharts from './components/StrengthProgressionCharts'
 import { loadTrainingData } from './utils/data'
 import styles from './App.module.css'
 
@@ -50,6 +51,8 @@ export function App() {
       <HeroSection summary={data.summary} barTravel={data.barTravel} />
 
       <WorkoutCalendar workoutCalendar={data.workoutCalendar} />
+
+      <StrengthProgressionCharts data={data} />
 
       <div className={styles.placeholder}>
         <p>More sections coming soon...</p>
