@@ -614,11 +614,27 @@ Without the `powerliftingTotals.history` array, section 3b (Powerlifting Total P
 
 **Status**: Basic app structure complete with header, hero section, and working toggles
 
-### 🚧 Phase 2: Core Visualizations (IN PROGRESS)
-9. Add Workout Consistency Calendar (heatmap)
+### ✅ Phase 2: Core Visualizations (COMPLETED - Heatmap)
+9. ✅ Add Workout Consistency Calendar (heatmap) - VERIFIED WORKING
+   - ✅ Year-by-year cards stacked vertically (desktop)
+   - ✅ Percentile-based color buckets for intensity (GitHub-style)
+   - ✅ Hover tooltips with date, volume, workout count
+   - ✅ Mobile: Single year view with year picker dropdown
+   - ✅ All 7 years (2019-2025) rendering correctly
+   - ✅ Data loading fixed (converted object to array format)
+   - ✅ Hero section animations working
+   - ✅ **Light mode tested** - All elements readable, proper contrast
+   - ✅ **Dark mode tested** - Colors stand out, no readability issues
+   - ✅ **Mobile responsive** (375x667) - Year picker functional
+   - ✅ **Desktop responsive** (1280x800) - All years visible
+   - ✅ **Performance verified** - ~2,200 cells render smoothly
+
+**Status**: Heatmap complete and verified in browser. Ready for next visualization.
+
+### 🚧 Phase 2: Core Visualizations (CONTINUED)
 10. Add Strength Progression Charts (E1RM over time)
 11. Add Powerlifting Total Progression chart
-12. Test responsive behavior
+12. Test responsive behavior across all sections
 
 ### 📋 Phase 3: Additional Sections (TODO)
 13. Add Plate Milestones achievement grid
