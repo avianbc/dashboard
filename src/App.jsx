@@ -7,6 +7,7 @@ import { PlateMilestones } from './components/PlateMilestones'
 import RelativeStrength from './components/RelativeStrength/RelativeStrength'
 import { VolumeAnalytics } from './components/VolumeAnalytics'
 import { TrainingPrograms } from './components/TrainingPrograms'
+import PersonalRecords from './components/PersonalRecords'
 import { loadTrainingData } from './utils/data'
 import styles from './App.module.css'
 
@@ -68,6 +69,8 @@ export function App() {
       />
 
       <TrainingPrograms programs={data.programs} />
+
+      <PersonalRecords data={data} />
 
       <div className={styles.placeholder}>
         {/* <p>More sections coming soon...</p> */}

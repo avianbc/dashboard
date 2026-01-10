@@ -1,0 +1,337 @@
+.personalRecords {
+  margin-bottom: var(--space-12);
+}
+
+.header {
+  margin-bottom: var(--space-8);
+}
+
+.header h2 {
+  font-size: var(--font-3xl);
+  font-weight: 700;
+  margin: 0 0 var(--space-2) 0;
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  font-size: var(--font-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Days Since Last PR Indicators */
+.prIndicators {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.prIndicator {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border-left: 4px solid var(--lift-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.prIndicator:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.indicatorIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--lift-color);
+  color: white;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.indicatorContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.indicatorLift {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.indicatorDays {
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.indicatorMessage {
+  font-size: var(--font-xs);
+  color: var(--lift-color);
+  font-style: italic;
+}
+
+/* PR Grid */
+.gridContainer {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.gridWrapper {
+  min-width: 800px;
+}
+
+.prGrid {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.prGrid thead {
+  border-bottom: 2px solid var(--color-border);
+}
+
+.prGrid th {
+  padding: var(--space-3) var(--space-2);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.liftHeader {
+  text-align: left !important;
+  padding-left: var(--space-4) !important;
+  width: 150px;
+}
+
+.repHeader {
+  min-width: 80px;
+}
+
+.prGrid tbody tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prGrid tbody tr:last-child {
+  border-bottom: none;
+}
+
+.liftCell {
+  padding: var(--space-3) var(--space-4);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  position: relative;
+}
+
+.liftCell::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: var(--lift-color);
+  border-radius: 0 2px 2px 0;
+}
+
+.liftName {
+  display: block;
+  padding-left: var(--space-2);
+}
+
+.prCell {
+  padding: var(--space-3);
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+}
+
+.prCell.hasPR {
+  background: var(--color-bg);
+}
+
+.prCell.hasPR:hover {
+  background: var(--lift-color);
+  transform: scale(1.05);
+}
+
+.prCell.hasPR:hover .weight {
+  color: white;
+  font-weight: 600;
+}
+
+.prCell.noPR {
+  background: transparent;
+  cursor: default;
+  opacity: 0.4;
+}
+
+.prCell.selected {
+  background: var(--lift-color) !important;
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.prCell.selected .weight {
+  color: white !important;
+  font-weight: 700;
+}
+
+.prValue {
+  position: relative;
+}
+
+.weight {
+  display: block;
+  font-size: var(--font-base);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+}
+
+.noData {
+  font-size: var(--font-lg);
+  color: var(--color-text-tertiary);
+  opacity: 0.5;
+}
+
+.prDetails {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg);
+  border: 2px solid var(--lift-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  min-width: 200px;
+  animation: slideDown 0.2s ease;
+}
+
+.prDetailsAbove {
+  top: auto;
+  bottom: calc(100% + var(--space-1));
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) 0;
+  gap: var(--space-4);
+  min-width: 160px;
+}
+
+.detailRow:not(:last-child) {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.detailLabel {
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detailValue {
+  font-size: var(--font-base);
+  color: var(--color-text-primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  margin-top: var(--space-4);
+  text-align: center;
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.error {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .prIndicators {
+    grid-template-columns: 1fr;
+  }
+
+  .gridContainer {
+    padding: var(--space-4);
+    margin: 0 calc(var(--space-4) * -1);
+    border-radius: 0;
+  }
+
+  .prGrid th,
+  .prGrid td {
+    padding: var(--space-2);
+    font-size: var(--font-xs);
+  }
+
+  .liftHeader {
+    width: 100px;
+  }
+
+  .repHeader {
+    min-width: 60px;
+  }
+
+  .weight {
+    font-size: var(--font-sm);
+  }
+
+  .prDetails {
+    min-width: 150px;
+  }
+}
