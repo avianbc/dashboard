@@ -62,6 +62,13 @@
         border-left: 3px solid;
         padding: var(--spacing-lg);
         text-align: left;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .lift-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
 
       .lift-card-squat {
@@ -272,18 +279,62 @@
         font-weight: 600;
       }
 
+      .pr-badge {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-secondary);
+      }
+
+      .pr-badge.recent {
+        background: rgba(81, 207, 102, 0.15);
+        border-color: rgba(81, 207, 102, 0.3);
+        color: #51cf66;
+      }
+
+      .pr-badge.moderate {
+        background: rgba(255, 217, 61, 0.15);
+        border-color: rgba(255, 217, 61, 0.3);
+        color: #ffd93d;
+      }
+
+      .pr-badge.stale {
+        background: rgba(239, 83, 80, 0.15);
+        border-color: rgba(239, 83, 80, 0.3);
+        color: #ef5350;
+      }
+
       .strength-bar {
         position: relative;
-        height: 8px;
+        height: 12px;
         background: var(--bg-hover);
-        border-radius: 4px;
+        border-radius: 6px;
         overflow: hidden;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
       }
 
       .strength-bar-fill {
         position: absolute;
         height: 100%;
-        border-radius: 4px;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: width 0.6s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .strength-bar-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+        border-radius: 6px;
       }
 
       .fun-fact-box {
@@ -427,12 +478,22 @@
 
       section {
         margin: var(--spacing-2xl) 0;
-        padding: var(--spacing-xl) 0;
+        padding: var(--spacing-2xl) 0;
         border-top: 1px solid var(--border-primary);
+        position: relative;
       }
 
       section:first-of-type {
         border-top: none;
+        padding-top: 0;
+      }
+
+      section:nth-child(even) {
+        background: linear-gradient(to bottom, transparent, rgba(42, 42, 42, 0.3) 10%, rgba(42, 42, 42, 0.3) 90%, transparent);
+        margin-left: calc(var(--spacing-xl) * -1);
+        margin-right: calc(var(--spacing-xl) * -1);
+        padding-left: var(--spacing-xl);
+        padding-right: var(--spacing-xl);
       }
 
       h2 {
@@ -478,6 +539,13 @@
         background: var(--bg-secondary);
         border-radius: var(--radius-md);
         border: 1px solid var(--border-primary);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
 
       .stat-number {
@@ -485,6 +553,18 @@
         font-weight: 700;
         color: var(--text-bright);
         margin-bottom: var(--spacing-sm);
+      }
+
+      .stat-number.accent {
+        color: var(--accent-blue);
+      }
+
+      .stat-number.accent-gold {
+        color: var(--accent-gold);
+      }
+
+      .stat-number.accent-green {
+        color: var(--accent-green);
       }
 
       .stat-label {
@@ -665,15 +745,30 @@
       /* Progress bar styles */
       .progress-bar {
         background: var(--bg-tertiary);
-        height: 12px;
-        border-radius: 6px;
+        height: 16px;
+        border-radius: 8px;
         overflow: hidden;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border-primary);
       }
 
       .progress-fill {
         height: 100%;
-        border-radius: 6px;
-        transition: width 0.3s;
+        border-radius: 8px;
+        transition: width 0.6s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .progress-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
       }
 
       .progress-fill.accent-blue {
@@ -733,6 +828,7 @@
         padding: var(--spacing-xl);
         border-radius: var(--radius-md);
         border: 1px solid var(--border-primary);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       }
 
       svg {
@@ -2521,25 +2617,27 @@
             const totalGain = currentE1RM - startE1RM;
             const gainPercent = ((totalGain / startE1RM) * 100).toFixed(0);
 
-            // Days since last PR with color coding
+            // Days since last PR with color coding and badge styling
             let daysSinceHTML = '';
             if (daysSince !== null) {
-              const color =
+              const badgeClass =
                 daysSince < 30
-                  ? '#51cf66'
+                  ? 'recent'
                   : daysSince < 90
-                    ? '#ffd93d'
-                    : '#ff6b6b';
+                    ? 'moderate'
+                    : 'stale';
               const label =
                 daysSince === 0
-                  ? 'Today!'
+                  ? 'PR Today!'
                   : daysSince === 1
                     ? '1 day ago'
                     : `${daysSince} days ago`;
               daysSinceHTML = `
-                <div>
+                <div style="text-align: center;">
                   <div class="stat-mini-label">Last PR</div>
-                  <div class="stat-mini-value" style="color: ${color};">${label}</div>
+                  <div style="margin-top: 0.5rem;">
+                    <span class="pr-badge ${badgeClass}">${label}</span>
+                  </div>
                 </div>
               `;
             }
