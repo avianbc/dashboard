@@ -1,10 +1,56 @@
-import './App.module.css'
+import { useState, useEffect } from 'preact/hooks'
+import { Layout } from './components/Layout'
+import { HeroSection } from './components/HeroSection'
+import { loadTrainingData } from './utils/data'
+import styles from './App.module.css'
 
 export function App() {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    loadTrainingData()
+      .then((trainingData) => {
+        setData(trainingData)
+        setLoading(false)
+      })
+      .catch((err) => {
+        setError(err.message)
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className={styles.loading}>
+          <div className={styles.spinner}></div>
+          <p>Loading workout data...</p>
+        </div>
+      </Layout>
+    )
+  }
+
+  if (error) {
+    return (
+      <Layout>
+        <div className={styles.error}>
+          <h2>Error Loading Data</h2>
+          <p>{error}</p>
+          <button onClick={() => window.location.reload()}>Retry</button>
+        </div>
+      </Layout>
+    )
+  }
+
   return (
-    <div className="app">
-      <h1>Workout Dashboard</h1>
-      <p>Loading...</p>
-    </div>
+    <Layout>
+      <HeroSection summary={data.summary} barTravel={data.barTravel} />
+
+      <div className={styles.placeholder}>
+        <p>More sections coming soon...</p>
+      </div>
+    </Layout>
   )
 }
