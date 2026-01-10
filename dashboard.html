@@ -1388,6 +1388,10 @@
           <h3>Exercises by Volume</h3>
           <div id="exerciseVolumeChart"></div>
         </div>
+        <div class="chart-container" style="max-width: 500px; margin-left: auto; margin-right: auto;">
+          <h3>Volume by Lift Type</h3>
+          <canvas id="volumeDonutChart" style="max-height: 400px;"></canvas>
+        </div>
       </section>
 
       <section id="history">
@@ -1514,6 +1518,16 @@
         return `${volume.toLocaleString()} ${currentUnit}`;
       }
 
+      function calculateLiftVolumeTotals() {
+        const totals = {};
+        for (const [lift, liftData] of Object.entries(trainingData.bigThreeVolume)) {
+          const totalLbs = liftData.dailyVolume.reduce((sum, d) => sum + (d.volumeLbs || 0), 0);
+          const totalKg = liftData.dailyVolume.reduce((sum, d) => sum + (d.volumeKg || 0), 0);
+          totals[lift] = { volumeLbs: totalLbs, volumeKg: totalKg };
+        }
+        return totals;
+      }
+
       function isoWeekToDate(weekString) {
         // Convert YYYY-Www format to date of Monday of that week
         const parts = weekString.match(/^(\d{4})-W(\d{2})$/);
@@ -1567,6 +1581,7 @@
         // Patterns & Analysis section
         renderDayOfWeekChart();
         renderExerciseVolumeChart();
+        createVolumeDonutChart();
 
         // Training History section
         renderPrograms();
@@ -1694,6 +1709,32 @@
       };
 
       const LIFT_ORDER = ['squat', 'bench', 'deadlift', 'ohp'];
+
+      // Chart.js plugin for displaying center text in donut chart
+      const centerTextPlugin = {
+        id: 'centerText',
+        afterDraw(chart) {
+          if (chart.config.type !== 'doughnut') return;
+
+          const { ctx, chartArea: { width, height } } = chart;
+          const total = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+
+          // Convert to tons (assuming lbs or kg input)
+          const tons = (total / 2000).toFixed(1);
+
+          ctx.save();
+          ctx.font = 'bold 24px system-ui';
+          ctx.fillStyle = CHART_COLORS.textBright;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(`${tons}`, width / 2, height / 2 - 10);
+
+          ctx.font = '14px system-ui';
+          ctx.fillStyle = CHART_COLORS.text;
+          ctx.fillText('tons', width / 2, height / 2 + 15);
+          ctx.restore();
+        }
+      };
 
       function getBaseChartOptions(overrides = {}) {
         return {
@@ -3338,6 +3379,73 @@
 
         container.innerHTML = '';
         container.appendChild(svg);
+      }
+
+      function createVolumeDonutChart() {
+        const canvas = document.getElementById('volumeDonutChart');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const totals = calculateLiftVolumeTotals();
+
+        // Prepare data in LIFT_ORDER
+        const chartData = {
+          labels: LIFT_ORDER.map(lift => LIFT_CONFIG[lift].name),
+          datasets: [{
+            data: LIFT_ORDER.map(lift =>
+              getVolume(totals[lift].volumeLbs, totals[lift].volumeKg)
+            ),
+            backgroundColor: LIFT_ORDER.map(lift => LIFT_CONFIG[lift].color),
+            borderWidth: 0,
+            hoverOffset: 8,
+            hoverBorderWidth: 2,
+            hoverBorderColor: CHART_COLORS.textBright
+          }]
+        };
+
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: chartData,
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            cutout: '65%',
+            plugins: {
+              legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                  color: CHART_COLORS.textBright,
+                  padding: 15,
+                  font: { size: 12, family: 'system-ui' },
+                  usePointStyle: true,
+                  pointStyle: 'circle'
+                }
+              },
+              tooltip: {
+                enabled: true,
+                backgroundColor: CHART_COLORS.tooltipBg,
+                titleColor: CHART_COLORS.textBright,
+                bodyColor: CHART_COLORS.textBright,
+                borderColor: CHART_COLORS.tooltipBorder,
+                borderWidth: 1,
+                padding: 12,
+                displayColors: true,
+                callbacks: {
+                  label: function(context) {
+                    const label = context.label || '';
+                    const value = context.parsed || 0;
+                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                    const percentage = ((value / total) * 100).toFixed(1);
+                    const formattedValue = value.toLocaleString();
+                    return `${label}: ${formattedValue} ${currentUnit} (${percentage}%)`;
+                  }
+                }
+              }
+            }
+          },
+          plugins: [centerTextPlugin]
+        });
       }
 
       function renderPowerliftingTotals() {
