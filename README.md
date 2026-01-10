@@ -29,7 +29,7 @@ This dashboard transforms your MyApp.db strength training data into a comprehens
 - `MyApp.db` - Your SQLite database (read-only)
 - `extract_data.py` - Python script to extract and process data
 - `training_data.json` - Generated JSON data file
-- `dashboard.html` - Interactive dashboard
+- `index.html` - Interactive dashboard
 - `README.md` - This file
 
 ## Usage
@@ -86,7 +86,7 @@ npm start
 This will:
 
 - Start a web server on http://localhost:8000
-- Automatically open dashboard.html in your browser
+- Automatically open index.html in your browser
 - Press Ctrl+C to stop the server when done
 
 #### Step 3: Update Data (Optional)
@@ -243,7 +243,7 @@ Key tables used:
 
 ### Modify Color Scheme
 
-Edit the CSS in `dashboard.html`:
+Edit the CSS in `index.html`:
 
 - Background: `#0a0a0a`
 - Text: `#e0e0e0`
@@ -270,7 +270,7 @@ Modify `extract_data.py`:
 
 ### CORS Error / "Failed to fetch"
 
-This happens when opening `dashboard.html` directly from the filesystem (file:// protocol).
+This happens when opening `index.html` directly from the filesystem (file:// protocol).
 
 **Solution:** Use the local web server
 

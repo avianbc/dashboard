@@ -79,9 +79,9 @@ npm start
 npm run build
 ```
 
-Expected behavior: Opens `http://localhost:8000/dashboard.html` in default browser. Press Ctrl+C to stop server.
+Expected behavior: Opens `http://localhost:8000/index.html` in default browser. Press Ctrl+C to stop server.
 
-**IMPORTANT:** The dashboard MUST be served via http-server due to CORS restrictions when loading JSON files. Opening `dashboard.html` directly from filesystem (file://) will fail with CORS errors.
+**IMPORTANT:** The dashboard MUST be served via http-server due to CORS restrictions when loading JSON files. Opening `index.html` directly from filesystem (file://) will fail with CORS errors.
 
 ### Validation (No Tests)
 
@@ -116,7 +116,7 @@ npm start                      # Opens browser
 ├── .gitignore                 # Ignores node_modules, package-lock.json, __pycache__
 ├── MyApp.db                   # SQLite database (1.4MB, read-only)
 ├── README.md                  # Comprehensive documentation (304 lines)
-├── dashboard.html             # Main visualization (3,484 lines, 114KB)
+├── index.html             # Main visualization (3,484 lines, 114KB)
 ├── extract_data.py            # Data extraction script (1,534 lines, 56KB)
 ├── fix_stronglifts_dates.py   # Utility script for date fixes (126 lines)
 ├── myapp-db-sqlite-schema.json # DB schema reference (7KB)
@@ -136,7 +136,7 @@ npm start                      # Opens browser
 - Outputs comprehensive JSON with nested structure (see README lines 194-219)
 - No external dependencies - uses only Python standard library
 
-**`dashboard.html`** (Single-page application):
+**`index.html`** (Single-page application):
 
 - Self-contained: HTML, CSS (lines 10-1200), JavaScript (lines 1201-3484)
 - Uses Chart.js from CDN for Big 3 progress charts and volume trends
@@ -198,15 +198,15 @@ There is 1 active workflow:
 
 **HTML/CSS:**
 
-- CSS variables for theming (lines 11-55 of dashboard.html)
+- CSS variables for theming (lines 11-55 of index.html)
 - BEM-like naming for specific components (e.g., `lift-card-squat`)
 - Mobile-first responsive design
 
 ### Data Flow
 
-1. `MyApp.db` (source) → 2. `extract_data.py` (processing) → 3. `training_data.json` (intermediate) → 4. `dashboard.html` (visualization)
+1. `MyApp.db` (source) → 2. `extract_data.py` (processing) → 3. `training_data.json` (intermediate) → 4. `index.html` (visualization)
 
-**Critical:** If you modify the data structure in extract_data.py, you MUST update the JavaScript in dashboard.html to match the new JSON structure.
+**Critical:** If you modify the data structure in extract_data.py, you MUST update the JavaScript in index.html to match the new JSON structure.
 
 ## Important Notes and Gotchas
 
@@ -214,7 +214,7 @@ There is 1 active workflow:
 
 - **Generated files:** `training_data.json` is git-tracked (intentionally) to allow viewing dashboard without Python
 - **Database:** `MyApp.db` is git-tracked and should be treated as read-only
-- **Safe to edit:** `extract_data.py`, `dashboard.html`, `README.md`, `package.json`
+- **Safe to edit:** `extract_data.py`, `index.html`, `README.md`, `package.json`
 
 ### Dependencies
 
@@ -224,7 +224,7 @@ There is 1 active workflow:
 
 ### Common Mistakes to Avoid
 
-1. **DO NOT** open dashboard.html directly (file://). Must use `npm start` for http:// protocol
+1. **DO NOT** open index.html directly (file://). Must use `npm start` for http:// protocol
 2. **DO NOT** run `npm start` before `npm install` - will fail with "command not found"
 3. **DO NOT** modify database files without backing up first
 4. **DO NOT** add test frameworks unless explicitly requested (none exist currently)
@@ -266,7 +266,7 @@ All commands complete quickly:
    - Verify JSON output: `python -m json.tool training_data.json > /dev/null`
    - Check syntax: `python -m py_compile extract_data.py`
 
-2. **Dashboard changes** (dashboard.html):
+2. **Dashboard changes** (index.html):
    - Run: `npm start` to view in browser
    - Check browser console (F12) for errors
    - Test unit toggle functionality

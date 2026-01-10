@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A data-driven visualization of strength training progress",
   "scripts": {
-    "start": "http-server -p 8000 -o dashboard.html",
+    "start": "http-server -p 8000 -o",
     "extract": "python extract_data.py",
     "build": "python extract_data.py && npm start",
     "format": "npx prettier . --write --single-quote"
