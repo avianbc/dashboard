@@ -1,0 +1,187 @@
+/* Design Tokens - Based on hugo-coder theme */
+:root {
+  /* Colors - Light Mode */
+  --color-bg: #fafafa;
+  --color-bg-card: #ffffff;
+  --color-bg-alt: #e0e0e0;
+  --color-text-primary: #212121;
+  --color-text-secondary: #666666;
+  --color-link: #1565c0;
+
+  /* Lift Colors */
+  --color-squat: #2563eb;
+  --color-bench: #dc2626;
+  --color-deadlift: #16a34a;
+  --color-ohp: #9333ea;
+
+  /* Semantic Colors */
+  --color-accent: #f59e0b;
+  --color-success: #22c55e;
+  --color-warning: #eab308;
+  --color-error: #ef4444;
+
+  /* Typography Scale */
+  --font-xs: 0.75rem;    /* 12px */
+  --font-sm: 0.875rem;   /* 14px */
+  --font-base: 1rem;     /* 16px */
+  --font-lg: 1.125rem;   /* 18px */
+  --font-xl: 1.25rem;    /* 20px */
+  --font-2xl: 1.5rem;    /* 24px */
+  --font-3xl: 1.875rem;  /* 30px */
+  --font-4xl: 2.25rem;   /* 36px */
+  --font-5xl: 3rem;      /* 48px */
+
+  /* Spacing System (8px base) */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Font Families */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1a1a2e;
+    --color-bg-card: #242438;
+    --color-bg-alt: #424242;
+    --color-text-primary: #e0e0e0;
+    --color-text-secondary: #a0a0a0;
+    --color-link: #42a5f5;
+
+    /* Lift Colors - Lighter for dark mode */
+    --color-squat: #60a5fa;
+    --color-bench: #f87171;
+    --color-deadlift: #4ade80;
+    --color-ohp: #c084fc;
+
+    /* Semantic Colors - Lighter for dark mode */
+    --color-accent: #fbbf24;
+    --color-success: #4ade80;
+    --color-warning: #facc15;
+    --color-error: #f87171;
+
+    /* Shadows - Lighter for dark mode */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Manual theme overrides */
+[data-theme="light"] {
+  --color-bg: #fafafa;
+  --color-bg-card: #ffffff;
+  --color-bg-alt: #e0e0e0;
+  --color-text-primary: #212121;
+  --color-text-secondary: #666666;
+  --color-link: #1565c0;
+  --color-squat: #2563eb;
+  --color-bench: #dc2626;
+  --color-deadlift: #16a34a;
+  --color-ohp: #9333ea;
+  --color-accent: #f59e0b;
+  --color-success: #22c55e;
+  --color-warning: #eab308;
+  --color-error: #ef4444;
+}
+
+[data-theme="dark"] {
+  --color-bg: #1a1a2e;
+  --color-bg-card: #242438;
+  --color-bg-alt: #424242;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #a0a0a0;
+  --color-link: #42a5f5;
+  --color-squat: #60a5fa;
+  --color-bench: #f87171;
+  --color-deadlift: #4ade80;
+  --color-ohp: #c084fc;
+  --color-accent: #fbbf24;
+  --color-success: #4ade80;
+  --color-warning: #facc15;
+  --color-error: #f87171;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+}
+
+h1 { font-size: var(--font-4xl); }
+h2 { font-size: var(--font-3xl); }
+h3 { font-size: var(--font-2xl); }
+h4 { font-size: var(--font-xl); }
+h5 { font-size: var(--font-lg); }
+h6 { font-size: var(--font-base); }
+
+p {
+  margin-bottom: var(--space-4);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-link);
+  outline-offset: 2px;
+}

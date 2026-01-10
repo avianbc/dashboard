@@ -5,3 +5,17 @@
 
 # User provded database
 # MyApp.db
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
