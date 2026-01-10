@@ -3,6 +3,7 @@ import { Layout } from './components/Layout'
 import { HeroSection } from './components/HeroSection'
 import { WorkoutCalendar } from './components/WorkoutCalendar'
 import StrengthProgressionCharts from './components/StrengthProgressionCharts'
+import { PlateMilestones } from './components/PlateMilestones'
 import { loadTrainingData } from './utils/data'
 import styles from './App.module.css'
 
@@ -53,6 +54,8 @@ export function App() {
       <WorkoutCalendar workoutCalendar={data.workoutCalendar} />
 
       <StrengthProgressionCharts data={data} />
+
+      <PlateMilestones plateMilestones={data.plateMilestones} />
 
       <div className={styles.placeholder}>
         <p>More sections coming soon...</p>
