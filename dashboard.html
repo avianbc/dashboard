@@ -1143,6 +1143,129 @@
           gap: 1rem;
         }
       }
+
+      /* PR Timeline - Clean Card List */
+      .pr-timeline-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .pr-event-card {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        border-left: 4px solid var(--event-color);
+        padding: var(--spacing-md);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .pr-event-card:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .pr-event-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-tertiary);
+        flex-shrink: 0;
+      }
+
+      .pr-event-icon {
+        font-size: 1.25rem;
+        color: var(--event-color);
+      }
+
+      .pr-event-peak .pr-event-indicator {
+        background: color-mix(in srgb, var(--event-color) 20%, transparent);
+      }
+
+      .pr-event-club .pr-event-indicator {
+        background: rgba(255, 215, 0, 0.15);
+      }
+
+      .pr-event-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .pr-event-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: 4px;
+      }
+
+      .pr-event-lift {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--event-color);
+      }
+
+      .pr-event-type {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-muted);
+        background: var(--bg-tertiary);
+        padding: 2px 6px;
+        border-radius: var(--radius-sm);
+      }
+
+      .pr-event-details {
+        display: flex;
+        align-items: baseline;
+        gap: var(--spacing-sm);
+      }
+
+      .pr-event-milestone {
+        font-size: 0.85rem;
+        color: var(--text-muted-light);
+      }
+
+      .pr-event-weight {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--text-bright);
+      }
+
+      .pr-event-date {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-align: right;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 600px) {
+        .pr-event-card {
+          flex-wrap: wrap;
+          gap: var(--spacing-sm);
+        }
+
+        .pr-event-date {
+          width: 100%;
+          text-align: left;
+          padding-left: calc(40px + var(--spacing-md));
+          margin-top: -4px;
+        }
+
+        .pr-event-indicator {
+          width: 32px;
+          height: 32px;
+        }
+
+        .pr-event-icon {
+          font-size: 1rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1237,6 +1360,15 @@
 
       <section id="milestones">
         <h2>Milestones & Achievements</h2>
+        <div class="chart-container" style="margin-bottom: 2rem">
+          <h3>📅 PR Timeline</h3>
+          <p class="text-muted-color" style="margin-bottom: 1.5rem">
+            Major milestones and peak performances throughout your training journey
+          </p>
+          <div id="prTimeline">
+            <!-- Generated dynamically -->
+          </div>
+        </div>
         <div id="prsClubsContent">
           <!-- Generated dynamically -->
         </div>
@@ -1428,6 +1560,7 @@
         renderBigThree();
 
         // Milestones & Achievements section
+        renderPRTimeline();
         renderPRsAndClubs();
         renderBarTravel();
 
@@ -3509,6 +3642,150 @@
 
         html += `</div></div>`;
         return html;
+      }
+
+      function renderPRTimeline() {
+        const container = document.getElementById('prTimeline');
+        if (!trainingData.bigThreeE1RM) {
+          container.innerHTML = '<p class="text-muted-color">No PR data available</p>';
+          return;
+        }
+
+        // Only track 3+ plate milestones (skip 135/225)
+        const plateMilestones = [315, 405, 495];
+        const events = [];
+        const lifts = ['squat', 'bench', 'deadlift', 'ohp'];
+        const liftNames = { squat: 'Squat', bench: 'Bench', deadlift: 'Deadlift', ohp: 'OHP' };
+
+        lifts.forEach(lift => {
+          const liftData = trainingData.bigThreeE1RM[lift];
+          if (!liftData?.e1rmHistory?.length) return;
+
+          const history = liftData.e1rmHistory;
+          const achieved = new Set();
+          let maxE1RM = 0;
+
+          // Find 3+ plate milestones only
+          history.forEach(entry => {
+            const e1rm = getVolume(entry.e1rmLbs, entry.e1rmKg);
+            if (e1rm > maxE1RM) {
+              const lbs = Math.round(entry.e1rmLbs);
+              plateMilestones.forEach(plate => {
+                if (lbs >= plate && !achieved.has(plate)) {
+                  events.push({
+                    date: new Date(entry.date),
+                    lift,
+                    liftName: liftNames[lift],
+                    e1rmLbs: lbs,
+                    e1rmKg: Math.round(entry.e1rmKg),
+                    milestone: `${plate} lb`,
+                    type: 'plate',
+                    plateValue: plate
+                  });
+                  achieved.add(plate);
+                }
+              });
+              maxE1RM = e1rm;
+            }
+          });
+
+          // Add peak PR for this lift
+          const peak = history.reduce((max, p) =>
+            getVolume(p.e1rmLbs, p.e1rmKg) > getVolume(max.e1rmLbs, max.e1rmKg) ? p : max
+          );
+          events.push({
+            date: new Date(peak.date),
+            lift,
+            liftName: liftNames[lift],
+            e1rmLbs: Math.round(peak.e1rmLbs),
+            e1rmKg: Math.round(peak.e1rmKg),
+            milestone: 'All-Time Best',
+            type: 'peak'
+          });
+        });
+
+        // Add total club milestones (1000lb+)
+        const clubs = trainingData.powerliftingTotals?.clubMilestones || {};
+        const significantClubs = [1000, 1100, 1200, 1300, 1400, 1500];
+
+        Object.entries(clubs).forEach(([threshold, data]) => {
+          const thresholdNum = parseInt(threshold);
+          if (significantClubs.includes(thresholdNum) && data) {
+            events.push({
+              date: new Date(data.date),
+              lift: 'total',
+              liftName: 'Total',
+              e1rmLbs: Math.round(data.totalLbs),
+              e1rmKg: Math.round(data.totalLbs * 0.453592),
+              milestone: `${thresholdNum} lb Club`,
+              type: 'club',
+              clubData: data
+            });
+          }
+        });
+
+        if (events.length === 0) {
+          container.innerHTML = '<p class="text-muted-color">No significant PR events found</p>';
+          return;
+        }
+
+        // Sort newest first (descending by date)
+        events.sort((a, b) => b.date - a.date);
+
+        // Build clean vertical list HTML
+        let html = '<div class="pr-timeline-list">';
+
+        events.forEach(event => {
+          const weight = currentUnit === 'lbs' ? event.e1rmLbs : event.e1rmKg;
+          const dateStr = event.date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+          });
+
+          // Determine visual elements based on event type
+          let icon, typeLabel, cardClass;
+          if (event.type === 'peak') {
+            icon = '&#9733;'; // Star symbol (★)
+            typeLabel = 'Peak PR';
+            cardClass = 'pr-event-peak';
+          } else if (event.type === 'club') {
+            icon = '&#127942;'; // Trophy (🏆)
+            typeLabel = 'Total Club';
+            cardClass = 'pr-event-club';
+          } else {
+            icon = '&#9651;'; // Triangle (△) for plate milestones
+            typeLabel = 'Plate Milestone';
+            cardClass = 'pr-event-plate';
+          }
+
+          // Use lift color for styling, gold for club milestones
+          const colorVar = event.lift === 'total'
+            ? '--accent-gold'
+            : `--lift-${event.lift}`;
+
+          html += `
+            <div class="pr-event-card ${cardClass}" style="--event-color: var(${colorVar});">
+              <div class="pr-event-indicator">
+                <span class="pr-event-icon">${icon}</span>
+              </div>
+              <div class="pr-event-content">
+                <div class="pr-event-header">
+                  <span class="pr-event-lift">${event.liftName}</span>
+                  <span class="pr-event-type">${typeLabel}</span>
+                </div>
+                <div class="pr-event-details">
+                  <span class="pr-event-milestone">${event.milestone}</span>
+                  <span class="pr-event-weight">${weight} ${currentUnit}</span>
+                </div>
+              </div>
+              <div class="pr-event-date">${dateStr}</div>
+            </div>
+          `;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
       }
 
       function renderPRsAndClubs() {
