@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Strength Training Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
@@ -1416,7 +1417,7 @@
             <button data-view="cumulative" aria-label="Show cumulative volume data">Cumulative</button>
           </div>
           <div id="stackedToggleContainer" class="view-toggle" style="margin-top: 0.5rem;">
-            <button id="stackedToggle" aria-label="Toggle between stacked and overlaid chart view">📊 Show Stacked</button>
+            <button id="stackedToggle" aria-label="Toggle between stacked and overlaid chart view"><i class="fa-solid fa-chart-column"></i> Show Stacked</button>
           </div>
           <canvas id="annualVolumeChart" style="max-height: 400px" role="img" aria-label="Volume over time chart"></canvas>
         </div>
@@ -1442,7 +1443,7 @@
           <!-- Generated dynamically -->
         </div>
         <div class="chart-container" style="margin-top: 2rem">
-          <h3>📅 Achievement Timeline</h3>
+          <h3><i class="fa-solid fa-calendar"></i> Achievement Timeline</h3>
           <p class="text-muted-color" style="margin-bottom: 1.5rem">
             All your major milestones in chronological order
           </p>
@@ -1451,7 +1452,7 @@
           </div>
         </div>
         <div class="chart-container" style="margin-top: 2rem">
-          <h3>🎯 Bar Travel Distance</h3>
+          <h3><i class="fa-solid fa-bullseye"></i> Bar Travel Distance</h3>
           <div id="barTravelStats"></div>
         </div>
       </section>
@@ -1574,7 +1575,7 @@
 
         function updateButtonState() {
           button.classList.toggle('active', volumeStacked);
-          button.textContent = volumeStacked ? '📊 Show Overlaid' : '📊 Show Stacked';
+          button.innerHTML = volumeStacked ? '<i class="fa-solid fa-chart-column"></i> Show Overlaid' : '<i class="fa-solid fa-chart-column"></i> Show Stacked';
         }
 
         updateButtonState();
@@ -2556,7 +2557,7 @@
 
         html += `
           <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-secondary); border-radius: 8px; border-left: 3px solid var(--accent-blue);">
-            <div style="color: #aaa; font-size: 0.875rem; margin-bottom: 0.5rem;">🎯 Fun Perspective</div>
+            <div style="color: #aaa; font-size: 0.875rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-bullseye"></i> Fun Perspective</div>
             <div style="color: #dadada;">
               If you laid all the bar travel end-to-end, you've moved the barbell
               <strong style="color: #ffd700;">${totalDistance.toFixed(1)} ${distanceUnit}</strong>
@@ -2602,7 +2603,7 @@
         const stalePeriods = bodyWeight?.stalePeriods || [];
         const hasStaleData = stalePeriods.length > 0;
 
-        let html = `<h3>💪 Relative Strength</h3>`;
+        let html = `<h3><i class="fa-solid fa-dumbbell"></i> Relative Strength</h3>`;
 
         // Determine Wilks level
         const wilksBenchmarks = wilks.benchmarks || {};
@@ -2627,19 +2628,19 @@
           <div class="summary-stats" style="margin: 1.5rem 0;">
             <div class="stat-card">
               <div class="stat-number">${totalMultiple.best || 0}×</div>
-              <div class="stat-label">S+B+D Total<span class="stat-sublabel">body weight</span></div>
+              <div class="stat-label"><i class="fa-solid fa-calculator"></i> S+B+D Total<span class="stat-sublabel">body weight</span></div>
             </div>
             <div class="stat-card">
               <div class="stat-number" style="color: ${wilksColor};">${wilks.best || '—'}</div>
-              <div class="stat-label">Wilks Score<span class="stat-sublabel">${wilksLevel}</span></div>
+              <div class="stat-label"><i class="fa-solid fa-ranking-star"></i> Wilks Score<span class="stat-sublabel">${wilksLevel}</span></div>
             </div>
             <div class="stat-card">
               <div class="stat-number">${bwDisplay}</div>
-              <div class="stat-label">Body Weight<span class="stat-sublabel">${currentUnit}</span></div>
+              <div class="stat-label"><i class="fa-solid fa-weight-scale"></i> Body Weight<span class="stat-sublabel">${currentUnit}</span></div>
             </div>
             <div class="stat-card">
               <div class="stat-number">${bmi}</div>
-              <div class="stat-label">BMI<span class="stat-sublabel">kg/m²</span></div>
+              <div class="stat-label"><i class="fa-solid fa-user"></i> BMI<span class="stat-sublabel">kg/m²</span></div>
             </div>
           </div>
         `;
@@ -2738,8 +2739,8 @@
         // Body Weight Timeline Chart
         html += `
           <div class="mt-2xl">
-            <h4 class="text-muted-light-color mb-md">📈 Body Weight Timeline</h4>
-            ${hasStaleData ? '<div style="color: #cca300; font-size: 0.8rem; margin-bottom: 0.75rem;">⚠️ Note: Body weight data contains periods without updates</div>' : ''}
+            <h4 class="text-muted-light-color mb-md"><i class="fa-solid fa-chart-line"></i> Body Weight Timeline</h4>
+            ${hasStaleData ? '<div style="color: #cca300; font-size: 0.8rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-triangle-exclamation"></i> Note: Body weight data contains periods without updates</div>' : ''}
             <canvas id="bodyWeightChart" style="max-height: 200px;"></canvas>
           </div>
         `;
@@ -3281,7 +3282,7 @@
                 label: function (context) {
                   const value = context.parsed.y;
                   if (context.raw.isPR) {
-                    return `🏆 PR: ${value} ${currentUnit} × ${context.raw.reps} reps`;
+                    return `PR: ${value} ${currentUnit} × ${context.raw.reps} reps`;
                   }
                   return `Estimated 1RM: ${value} ${currentUnit}`;
                 },
@@ -3561,49 +3562,49 @@
             threshold: 1500,
             name: '1500 lb Club',
             color: '#ffd700',
-            emoji: '👑',
+            icon: '<i class="fa-solid fa-crown"></i>',
           },
           {
             threshold: 1400,
             name: '1400 lb Club',
             color: '#e6b800',
-            emoji: '👑',
+            icon: '<i class="fa-solid fa-crown"></i>',
           },
           {
             threshold: 1300,
             name: '1300 lb Club',
             color: '#d4af37',
-            emoji: '💪',
+            icon: '<i class="fa-solid fa-dumbbell"></i>',
           },
           {
             threshold: 1200,
             name: '1200 lb Club',
             color: '#c0c0c0',
-            emoji: '💪',
+            icon: '<i class="fa-solid fa-dumbbell"></i>',
           },
           {
             threshold: 1100,
             name: '1100 lb Club',
             color: '#b8860b',
-            emoji: '🏆',
+            icon: '<i class="fa-solid fa-trophy"></i>',
           },
           {
             threshold: 1000,
             name: '1000 lb Club',
             color: '#cd7f32',
-            emoji: '🏆',
+            icon: '<i class="fa-solid fa-trophy"></i>',
           },
           {
             threshold: 750,
             name: '750 lb Club',
             color: '#4a9eff',
-            emoji: '💎',
+            icon: '<i class="fa-solid fa-gem"></i>',
           },
           {
             threshold: 500,
             name: '500 lb Club',
             color: '#51cf66',
-            emoji: '⭐',
+            icon: '<i class="fa-solid fa-star"></i>',
           },
         ];
 
@@ -3617,7 +3618,7 @@
 
         html += `<div class="chart-container">`;
         html += `<h3 class="total-header">
-                  ${achievedClub ? achievedClub.emoji : '🎯'} Powerlifting Total (S+B+D)
+                  ${achievedClub ? achievedClub.icon : '<i class="fa-solid fa-bullseye"></i>'} Powerlifting Total (S+B+D)
               </h3>`;
 
         // Current total display
@@ -3676,7 +3677,7 @@
                               <div class="milestone">
                                   <div class="milestone-date">${data.date}</div>
                                   <div class="milestone-text">
-                                      <span style="color: ${club.color};">${club.emoji} ${club.name}</span>
+                                      <span style="color: ${club.color};">${club.icon} ${club.name}</span>
                                       <span class="club-milestone-text">(S:${Math.round(data.squat)} B:${Math.round(data.bench)} D:${Math.round(data.deadlift)} = ${Math.round(data.totalLbs)} lbs)</span>
                                   </div>
                               </div>
@@ -3762,7 +3763,7 @@
         };
 
         html += `<div class="chart-container">`;
-        html += `<h3>🏅 Plate Milestones</h3>`;
+        html += `<h3><i class="fa-solid fa-medal"></i> Plate Milestones</h3>`;
 
         html += `<div class="plate-grid">`;
 
@@ -3788,7 +3789,7 @@
             if (achieved) {
               html += `
                               <div class="plate-item">
-                                  <span class="plate-icon">✅</span>
+                                  <span class="plate-icon"><i class="fa-solid fa-check"></i></span>
                                   <span class="plate-label">${plateLabel}</span>
                                   <span class="plate-date">${achieved.date}</span>
                               </div>
@@ -3796,7 +3797,7 @@
             } else {
               html += `
                               <div class="plate-item unachieved">
-                                  <span class="plate-icon">⬜</span>
+                                  <span class="plate-icon"><i class="fa-regular fa-square"></i></span>
                                   <span class="plate-label text-muted-color">${plateLabel}</span>
                                   <span class="plate-date">—</span>
                               </div>
@@ -3817,7 +3818,7 @@
 
         let html = '';
         html += `<div class="chart-container">`;
-        html += `<h3 class="section-title">🏆 All-Time PRs</h3>`;
+        html += `<h3 class="section-title"><i class="fa-solid fa-trophy"></i> All-Time PRs</h3>`;
 
         html += `<div class="grid-2col">`;
 
@@ -3973,15 +3974,15 @@
           // Determine visual elements based on event type
           let icon, typeLabel, cardClass;
           if (event.type === 'peak') {
-            icon = '&#9733;'; // Star symbol (★)
+            icon = '<i class="fa-solid fa-star"></i>';
             typeLabel = 'Peak PR';
             cardClass = 'pr-event-peak';
           } else if (event.type === 'club') {
-            icon = '&#127942;'; // Trophy (🏆)
+            icon = '<i class="fa-solid fa-trophy"></i>';
             typeLabel = 'Total Club';
             cardClass = 'pr-event-club';
           } else {
-            icon = '&#9651;'; // Triangle (△) for plate milestones
+            icon = '<i class="fa-solid fa-weight-hanging"></i>';
             typeLabel = 'Plate Milestone';
             cardClass = 'pr-event-plate';
           }
@@ -4250,7 +4251,7 @@
           html += `
             <div class="history-event-card" style="--event-color: var(--accent-purple);">
               <div class="history-event-indicator">
-                <span class="history-event-icon">&#128221;</span>
+                <span class="history-event-icon"><i class="fa-solid fa-clipboard"></i></span>
               </div>
               <div class="history-event-content">
                 <div class="history-event-header">
@@ -4293,19 +4294,19 @@
           // Determine icon, color, and label based on category
           let icon, color, label;
           if (workout.category === 'volume') {
-            icon = '&#127942;'; // 🏆
+            icon = '<i class="fa-solid fa-trophy"></i>';
             color = 'var(--accent-blue)';
             label = 'Volume Record';
           } else if (workout.category === 'sets') {
-            icon = '&#128170;'; // 💪
+            icon = '<i class="fa-solid fa-dumbbell"></i>';
             color = '#51cf66';
             label = 'Set Record';
           } else if (workout.category === 'comeback') {
-            icon = '&#128293;'; // 🔥
+            icon = '<i class="fa-solid fa-fire"></i>';
             color = '#ffd93d';
             label = 'Comeback';
           } else {
-            icon = '&#11088;'; // ⭐
+            icon = '<i class="fa-solid fa-star"></i>';
             color = 'var(--text-muted)';
             label = 'Notable';
           }
