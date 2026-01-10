@@ -1201,11 +1201,11 @@
 
       // Shared Chart.js Configuration
       const CHART_COLORS = {
-        grid: '#1a1a1a',
+        grid: '#3a3a3a',
         text: '#888',
-        textBright: '#e0e0e0',
-        tooltipBg: '#1a1a1a',
-        tooltipBorder: '#333',
+        textBright: '#dadada',
+        tooltipBg: '#2a2a2a',
+        tooltipBorder: '#424242',
       };
 
       const CHART_DEFAULTS = {
@@ -1623,12 +1623,12 @@
         };
 
         const colors = [
-          '#161616',
-          '#0e4429',
-          '#006d32',
-          '#26a641',
-          '#39d353',
-          '#39d353',
+          '#262626', // No activity - lighter gray (more subtle)
+          '#1b5e20', // Low activity - dark green
+          '#2e7d32', // Medium-low activity
+          '#43a047', // Medium activity
+          '#4CAF50', // High activity - logo green
+          '#66BB6A', // Very high activity - lighter green
         ];
         const monthNames = [
           'Jan',
@@ -1671,7 +1671,7 @@
           );
           yearLabel.setAttribute('x', leftMargin);
           yearLabel.setAttribute('y', rowY + 15);
-          yearLabel.setAttribute('fill', '#e0e0e0');
+          yearLabel.setAttribute('fill', '#dadada');
           yearLabel.setAttribute('font-size', '14');
           yearLabel.setAttribute('font-weight', '600');
           yearLabel.textContent = year;
@@ -1700,7 +1700,7 @@
             line.setAttribute('y1', rowY - yearGap / 2);
             line.setAttribute('x2', width - 20);
             line.setAttribute('y2', rowY - yearGap / 2);
-            line.setAttribute('stroke', '#1a1a1a');
+            line.setAttribute('stroke', '#3a3a3a');
             line.setAttribute('stroke-width', '1');
             svg.appendChild(line);
           }
@@ -1759,6 +1759,8 @@
               rect.setAttribute('width', cellSize);
               rect.setAttribute('height', cellSize);
               rect.setAttribute('fill', colors[colorLevel]);
+              rect.setAttribute('rx', '2'); // Subtle rounded corners like GitHub
+              rect.setAttribute('ry', '2');
               rect.setAttribute('class', 'heatmap-cell');
               rect.setAttribute('data-date', dateStr);
               rect.setAttribute('data-volume', volume.toFixed(0));
@@ -1948,12 +1950,12 @@
         const marathons = totalFeet / (26.2 * 5280);
 
         html += `
-          <div style="margin-top: 2rem; padding: 1rem; background: #111; border-radius: 8px; border-left: 3px solid #4a9eff;">
+          <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-secondary); border-radius: 8px; border-left: 3px solid var(--accent-blue);">
             <div style="color: #aaa; font-size: 0.875rem; margin-bottom: 0.5rem;">🎯 Fun Perspective</div>
-            <div style="color: #e0e0e0;">
+            <div style="color: #dadada;">
               If you laid all the bar travel end-to-end, you've moved the barbell
               <strong style="color: #ffd700;">${totalDistance.toFixed(1)} ${distanceUnit}</strong>
-              — equivalent to running <strong style="color: #51cf66;">${marathons.toFixed(1)} marathons</strong>!
+              — equivalent to running <strong style="color: #4CAF50;">${marathons.toFixed(1)} marathons</strong>!
             </div>
           </div>
         `;
@@ -2770,7 +2772,7 @@
           label.setAttribute('x', padding.left - 10);
           label.setAttribute('y', y + 17);
           label.setAttribute('text-anchor', 'end');
-          label.setAttribute('fill', '#e0e0e0');
+          label.setAttribute('fill', '#dadada');
           label.setAttribute('font-size', '12');
           label.textContent = exercise.name;
           svg.appendChild(label);
@@ -2892,7 +2894,7 @@
         html += `
                   <div>
                       <div class="stat-mini-label">Current Total</div>
-                      <div class="stat-mini-value large" style="color: ${achievedClub ? achievedClub.color : '#e0e0e0'};">${Math.round(totalValue)} ${currentUnit}</div>
+                      <div class="stat-mini-value large" style="color: ${achievedClub ? achievedClub.color : '#dadada'};">${Math.round(totalValue)} ${currentUnit}</div>
                       ${achievedClub ? `<div class="stat-mini-detail" style="color: ${achievedClub.color};">${achievedClub.name}</div>` : ''}
                   </div>
                   <div>
@@ -3168,7 +3170,7 @@
           line.setAttribute('y1', y);
           line.setAttribute('x2', width - padding.right);
           line.setAttribute('y2', y);
-          line.setAttribute('stroke', '#1a1a1a');
+          line.setAttribute('stroke', '#3a3a3a');
           svg.appendChild(line);
         }
 
