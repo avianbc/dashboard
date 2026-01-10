@@ -3457,29 +3457,30 @@
                   </div>
               </div>`;
 
-        // Next club progress
-        if (nextClub) {
-          const remaining = nextClub.threshold - current.totalLbs;
-          const progressPercent = (current.totalLbs / nextClub.threshold) * 100;
-          html += `
-                      <div class="progress-indicator">
-                          <div class="progress-header">
-                              <span class="progress-label">Progress to ${nextClub.name}</span>
-                              <span class="progress-value">${Math.round(remaining)} lbs to go</span>
-                          </div>
-                          <div class="progress-bar">
-                              <div class="progress-fill accent-blue" style="width: ${Math.min(progressPercent, 100)}%;"></div>
-                          </div>
-                      </div>
-                  `;
-        }
-
-        // Club milestones achieved
+        // Club milestones achieved section
         const achievedMilestones = Object.entries(clubs).sort(
           (a, b) => parseInt(b[0]) - parseInt(a[0]),
         );
         if (achievedMilestones.length > 0) {
           html += `<div class="club-milestones"><h4>Club Milestones Achieved</h4>`;
+
+          // Next club progress
+          if (nextClub) {
+            const remaining = nextClub.threshold - current.totalLbs;
+            const progressPercent = (current.totalLbs / nextClub.threshold) * 100;
+            html += `
+                        <div class="progress-indicator" style="margin-bottom: 1.5rem;">
+                            <div class="progress-header">
+                                <span class="progress-label">Progress to ${nextClub.name}</span>
+                                <span class="progress-value">${Math.round(remaining)} lbs to go</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill accent-blue" style="width: ${Math.min(progressPercent, 100)}%;"></div>
+                            </div>
+                        </div>
+                    `;
+          }
+
           achievedMilestones.forEach(([threshold, data]) => {
             const club = clubThresholds.find(
               (c) => c.threshold === parseInt(threshold),
@@ -3502,6 +3503,46 @@
         // Add volume and workout milestones
         if (milestones && milestones.length > 0) {
           html += `<div class="club-milestones"><h4>Volume & Workout Milestones</h4>`;
+
+          // Calculate next workout milestone (increments of 50)
+          const totalWorkouts = trainingData.summary.totalWorkouts;
+          const nextWorkoutMilestone = Math.ceil(totalWorkouts / 50) * 50;
+          const workoutProgress = (totalWorkouts / nextWorkoutMilestone) * 100;
+          const workoutsRemaining = nextWorkoutMilestone - totalWorkouts;
+
+          // Calculate next ton milestone (increments of 1000)
+          const totalTons = trainingData.summary.totalTons;
+          const nextTonMilestone = Math.ceil(totalTons / 1000) * 1000;
+          const tonProgress = (totalTons / nextTonMilestone) * 100;
+          const tonsRemaining = nextTonMilestone - totalTons;
+
+          // Show whichever milestone is closer to completion
+          if (workoutProgress > tonProgress) {
+            html += `
+              <div class="progress-indicator" style="margin-bottom: 1.5rem;">
+                <div class="progress-header">
+                  <span class="progress-label">Progress to ${nextWorkoutMilestone} workouts</span>
+                  <span class="progress-value">${workoutsRemaining} to go</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill accent-blue" style="width: ${Math.min(workoutProgress, 100)}%;"></div>
+                </div>
+              </div>
+            `;
+          } else {
+            html += `
+              <div class="progress-indicator" style="margin-bottom: 1.5rem;">
+                <div class="progress-header">
+                  <span class="progress-label">Progress to ${nextTonMilestone.toLocaleString()} tons</span>
+                  <span class="progress-value">${Math.round(tonsRemaining).toLocaleString()} to go</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill accent-blue" style="width: ${Math.min(tonProgress, 100)}%;"></div>
+                </div>
+              </div>
+            `;
+          }
+
           [...milestones]
             .reverse()
             .slice(0, 10)
