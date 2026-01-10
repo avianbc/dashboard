@@ -867,17 +867,117 @@
         display: none;
       }
 
-      .notable-workout {
-        background: var(--bg-secondary);
-        padding: var(--spacing-md);
-        margin: var(--spacing-sm) 0;
-        border-radius: var(--radius-sm);
-        border-left: 3px solid var(--accent-blue);
+      /* Training History Timeline Cards */
+      .history-timeline-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
       }
 
-      .notable-date {
+      .history-event-card {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        border-left: 4px solid var(--event-color);
+        padding: var(--spacing-md);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .history-event-card:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .history-event-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-tertiary);
+        flex-shrink: 0;
+      }
+
+      .history-event-icon {
+        font-size: 1.25rem;
+      }
+
+      .history-event-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .history-event-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: 4px;
+        flex-wrap: wrap;
+      }
+
+      .history-event-title {
         font-weight: 600;
-        color: var(--accent-blue);
+        font-size: 0.95rem;
+        color: var(--text-bright);
+      }
+
+      .history-event-type {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-muted);
+        background: var(--bg-tertiary);
+        padding: 2px 6px;
+        border-radius: var(--radius-sm);
+      }
+
+      .history-event-details {
+        display: flex;
+        align-items: baseline;
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        color: var(--text-muted-light);
+      }
+
+      .history-event-stat {
+        white-space: nowrap;
+      }
+
+      .history-event-date {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-align: right;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* Responsive adjustments for history cards */
+      @media (max-width: 600px) {
+        .history-event-card {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--spacing-sm);
+        }
+
+        .history-event-date {
+          width: 100%;
+          text-align: left;
+          padding-left: calc(40px + var(--spacing-md));
+          margin-top: -4px;
+        }
+
+        .history-event-indicator {
+          width: 32px;
+          height: 32px;
+        }
+
+        .history-event-icon {
+          font-size: 1rem;
+        }
       }
 
       .milestone {
@@ -894,28 +994,6 @@
 
       .milestone-text {
         color: var(--text-primary);
-      }
-
-      .program-card {
-        background: var(--bg-secondary);
-        padding: var(--spacing-lg);
-        margin: var(--spacing-md) 0;
-        border-radius: var(--radius-sm);
-        border-left: 3px solid var(--text-muted);
-      }
-
-      .program-name {
-        font-weight: 600;
-        font-size: 1.125rem;
-        margin-bottom: var(--spacing-sm);
-      }
-
-      .program-stats {
-        display: flex;
-        gap: var(--spacing-xl);
-        margin-top: var(--spacing-sm);
-        color: var(--text-muted);
-        font-size: 0.875rem;
       }
 
       .view-toggle {
@@ -4162,21 +4240,36 @@
           return;
         }
 
-        container.innerHTML = programs
-          .map(
-            (program) => `
-                <div class="program-card">
-                    <div class="program-name">${program.name}</div>
-                    <div>${program.startDate} → ${program.endDate}</div>
-                    <div class="program-stats">
-                        <span>${program.workouts} workouts</span>
-                        <span>${formatVolume(program.totalVolumeLbs, program.totalVolumeKg)} total volume</span>
-                        <span style="color: #ffd700;">${program.prsSet || 0} PRs set</span>
-                    </div>
+        let html = '<div class="history-timeline-list">';
+
+        programs.forEach(program => {
+          const dateRange = `${program.startDate} → ${program.endDate}`;
+          const prs = program.prsSet || 0;
+          const prColor = prs > 0 ? '#ffd700' : 'var(--text-muted)';
+
+          html += `
+            <div class="history-event-card" style="--event-color: var(--accent-purple);">
+              <div class="history-event-indicator">
+                <span class="history-event-icon">&#128221;</span>
+              </div>
+              <div class="history-event-content">
+                <div class="history-event-header">
+                  <span class="history-event-title">${program.name}</span>
+                  <span class="history-event-type">Program</span>
                 </div>
-            `,
-          )
-          .join('');
+                <div class="history-event-details">
+                  <span class="history-event-stat">${program.workouts} workouts</span>
+                  <span class="history-event-stat">${formatVolume(program.totalVolumeLbs, program.totalVolumeKg)} total</span>
+                  <span class="history-event-stat" style="color: ${prColor};">${prs} PRs</span>
+                </div>
+              </div>
+              <div class="history-event-date">${dateRange}</div>
+            </div>
+          `;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
       }
 
       function renderNotableWorkouts() {
@@ -4189,65 +4282,61 @@
           return;
         }
 
-        // Group by category
-        const volumeRecords = notableWorkouts.filter(
-          (w) => w.category === 'volume',
-        );
-        const setRecords = notableWorkouts.filter((w) => w.category === 'sets');
-        const comebacks = notableWorkouts.filter(
-          (w) => w.category === 'comeback',
+        // Sort by date (most recent first)
+        const sortedWorkouts = [...notableWorkouts].sort((a, b) =>
+          new Date(b.date) - new Date(a.date)
         );
 
-        let html = '';
+        let html = '<div class="history-timeline-list">';
 
-        // Volume Records
-        if (volumeRecords.length > 0) {
-          html += '<h3 class="mb-md">🏆 Volume Records</h3>';
-          volumeRecords.forEach((workout) => {
-            html += `
-              <div class="notable-workout">
-                <div class="notable-date">${workout.date}</div>
-                <div class="font-weight-600">${workout.reason}</div>
-                <div class="text-muted-color mt-xs">
-                  ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
+        sortedWorkouts.forEach(workout => {
+          // Determine icon, color, and label based on category
+          let icon, color, label;
+          if (workout.category === 'volume') {
+            icon = '&#127942;'; // 🏆
+            color = 'var(--accent-blue)';
+            label = 'Volume Record';
+          } else if (workout.category === 'sets') {
+            icon = '&#128170;'; // 💪
+            color = '#51cf66';
+            label = 'Set Record';
+          } else if (workout.category === 'comeback') {
+            icon = '&#128293;'; // 🔥
+            color = '#ffd93d';
+            label = 'Comeback';
+          } else {
+            icon = '&#11088;'; // ⭐
+            color = 'var(--text-muted)';
+            label = 'Notable';
+          }
+
+          const dateStr = new Date(workout.date).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+          });
+
+          html += `
+            <div class="history-event-card" style="--event-color: ${color};">
+              <div class="history-event-indicator">
+                <span class="history-event-icon">${icon}</span>
+              </div>
+              <div class="history-event-content">
+                <div class="history-event-header">
+                  <span class="history-event-title">${workout.reason}</span>
+                  <span class="history-event-type">${label}</span>
+                </div>
+                <div class="history-event-details">
+                  <span class="history-event-stat">${formatVolume(workout.volumeLbs, workout.volumeKg)}</span>
+                  <span class="history-event-stat">${workout.details}</span>
                 </div>
               </div>
-            `;
-          });
-        }
+              <div class="history-event-date">${dateStr}</div>
+            </div>
+          `;
+        });
 
-        // Set Records
-        if (setRecords.length > 0) {
-          html += '<h3 class="mt-xl mb-md">💪 Set Records</h3>';
-          setRecords.forEach((workout) => {
-            html += `
-              <div class="notable-workout" style="border-left-color: #51cf66;">
-                <div class="notable-date">${workout.date}</div>
-                <div class="font-weight-600">${workout.reason}</div>
-                <div class="text-muted-color mt-xs">
-                  ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
-                </div>
-              </div>
-            `;
-          });
-        }
-
-        // Comebacks
-        if (comebacks.length > 0) {
-          html += '<h3 class="mt-xl mb-md">🔥 Comeback Workouts</h3>';
-          comebacks.forEach((workout) => {
-            html += `
-              <div class="notable-workout" style="border-left-color: #ffd93d;">
-                <div class="notable-date">${workout.date}</div>
-                <div class="font-weight-600">${workout.reason}</div>
-                <div class="text-muted-color mt-xs">
-                  ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
-                </div>
-              </div>
-            `;
-          });
-        }
-
+        html += '</div>';
         container.innerHTML = html;
       }
 
