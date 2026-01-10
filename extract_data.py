@@ -743,7 +743,7 @@ def get_milestones(conn, summary):
                 'date': row['workout_date'],
                 'milestone': f'{volume_milestones[volume_idx]:,} lbs total volume',
                 'type': 'volume',
-                'icon': '📊'
+                'icon': '<i class="fa-solid fa-chart-column"></i>'
             })
             volume_idx += 1
 
@@ -753,7 +753,7 @@ def get_milestones(conn, summary):
                 'date': row['workout_date'],
                 'milestone': f'{workout_milestones[workout_idx]} workouts completed',
                 'type': 'workouts',
-                'icon': '🏋️'
+                'icon': '<i class="fa-solid fa-dumbbell"></i>'
             })
             workout_idx += 1
 

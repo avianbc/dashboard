@@ -30552,97 +30552,97 @@
       "date": "2019-02-20",
       "milestone": "100,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2019-03-25",
       "milestone": "250,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2019-05-10",
       "milestone": "500,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2019-07-05",
       "milestone": "750,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2019-08-20",
       "milestone": "100 workouts completed",
       "type": "workouts",
-      "icon": "\ud83c\udfcb\ufe0f"
+      "icon": "<i class=\"fa-solid fa-dumbbell\"></i>"
     },
     {
       "date": "2019-08-22",
       "milestone": "1,000,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2020-01-07",
       "milestone": "1,500,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2020-05-19",
       "milestone": "2,000,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2020-06-19",
       "milestone": "250 workouts completed",
       "type": "workouts",
-      "icon": "\ud83c\udfcb\ufe0f"
+      "icon": "<i class=\"fa-solid fa-dumbbell\"></i>"
     },
     {
       "date": "2021-03-18",
       "milestone": "2,500,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2021-05-31",
       "milestone": "3,000,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2022-02-25",
       "milestone": "4,000,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2022-02-25",
       "milestone": "500 workouts completed",
       "type": "workouts",
-      "icon": "\ud83c\udfcb\ufe0f"
+      "icon": "<i class=\"fa-solid fa-dumbbell\"></i>"
     },
     {
       "date": "2023-01-24",
       "milestone": "5,000,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
       "date": "2023-06-12",
       "milestone": "750 workouts completed",
       "type": "workouts",
-      "icon": "\ud83c\udfcb\ufe0f"
+      "icon": "<i class=\"fa-solid fa-dumbbell\"></i>"
     },
     {
       "date": "2025-03-14",
       "milestone": "6,000,000 lbs total volume",
       "type": "volume",
-      "icon": "\ud83d\udcca"
+      "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     }
   ],
   "plateMilestones": {
@@ -31084,10 +31084,10 @@
     }
   },
   "daysSinceLastPR": {
-    "squat": 234,
-    "bench": 181,
-    "deadlift": 121,
-    "ohp": 232
+    "squat": 243,
+    "bench": 190,
+    "deadlift": 130,
+    "ohp": 241
   },
   "barTravel": {
     "byLift": {

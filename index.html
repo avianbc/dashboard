@@ -4,40 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Strength Training Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <style>
       :root {
-        /* Background colors */
-        --bg-primary: #0a0a0a;
-        --bg-secondary: #111;
-        --bg-tertiary: #1a1a1a;
-        --bg-hover: #222;
+        /* Background colors - aligned with blog theme */
+        --bg-primary: #212121;
+        --bg-secondary: #2a2a2a;
+        --bg-tertiary: #333333;
+        --bg-hover: #3a3a3a;
 
-        /* Text colors */
-        --text-primary: #e0e0e0;
+        /* Text colors - aligned with blog theme */
+        --text-primary: #dadada;
         --text-bright: #fff;
         --text-muted: #888;
         --text-muted-light: #aaa;
         --text-muted-dark: #666;
 
-        /* Accent colors */
-        --accent-blue: #4a9eff;
-        --accent-green: #51cf66;
-        --accent-red: #ff6b6b;
-        --accent-yellow: #ffd93d;
+        /* Accent colors - aligned with blog theme */
+        --accent-blue: #42a5f5;
+        --accent-green: #4caf50;
+        --accent-red: #ef5350;
+        --accent-yellow: #ffc107;
         --accent-gold: #ffd700;
 
-        /* Lift-specific colors */
-        --lift-squat: #4a9eff;
-        --lift-bench: #ff6b6b;
-        --lift-deadlift: #51cf66;
-        --lift-ohp: #ffd93d;
+        /* Lift-specific colors - slightly adjusted for cohesion */
+        --lift-squat: #42a5f5;
+        --lift-bench: #ef5350;
+        --lift-deadlift: #4caf50;
+        --lift-ohp: #ffc107;
 
         /* Border colors */
-        --border-primary: #1a1a1a;
-        --border-secondary: #333;
+        --border-primary: #3a3a3a;
+        --border-secondary: #424242;
         --border-hover: #555;
 
         /* Spacing */
@@ -62,6 +66,15 @@
         border-left: 3px solid;
         padding: var(--spacing-lg);
         text-align: left;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .lift-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
 
       .lift-card-squat {
@@ -227,6 +240,20 @@
         gap: var(--spacing-lg);
       }
 
+      /* Additional grid variations */
+      .grid-stats-compact {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .grid-2col-even {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        text-align: center;
+      }
+
       .bg-tertiary {
         background: var(--bg-tertiary);
       }
@@ -258,26 +285,74 @@
         font-weight: 600;
       }
 
+      .pr-badge {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-secondary);
+      }
+
+      .pr-badge.recent {
+        background: rgba(81, 207, 102, 0.15);
+        border-color: rgba(81, 207, 102, 0.3);
+        color: #51cf66;
+      }
+
+      .pr-badge.moderate {
+        background: rgba(255, 217, 61, 0.15);
+        border-color: rgba(255, 217, 61, 0.3);
+        color: #ffd93d;
+      }
+
+      .pr-badge.stale {
+        background: rgba(239, 83, 80, 0.15);
+        border-color: rgba(239, 83, 80, 0.3);
+        color: #ef5350;
+      }
+
       .strength-bar {
         position: relative;
-        height: 8px;
-        background: #222;
-        border-radius: 4px;
+        height: 12px;
+        background: var(--bg-hover);
+        border-radius: 6px;
         overflow: hidden;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
       }
 
       .strength-bar-fill {
         position: absolute;
         height: 100%;
-        border-radius: 4px;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: width 0.6s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .strength-bar-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        border-radius: 6px;
       }
 
       .fun-fact-box {
         margin-top: 2rem;
         padding: 1rem;
-        background: #111;
-        border-radius: 8px;
-        border-left: 3px solid #4a9eff;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        border-left: 3px solid var(--accent-blue);
       }
 
       * {
@@ -286,13 +361,18 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          'Helvetica Neue', Arial, sans-serif;
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
+          Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
         background: var(--bg-primary);
         color: var(--text-primary);
-        line-height: 1.6;
+        font-size: 16px;
+        line-height: 1.7;
       }
 
       .container {
@@ -303,40 +383,24 @@
 
       header {
         text-align: center;
-        padding: var(--spacing-2xl) 0 var(--spacing-xl);
-        position: relative;
-      }
-
-      h1 {
-        font-size: 3rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        margin-bottom: var(--spacing-sm);
-      }
-
-      .tagline {
-        font-size: 1.125rem;
-        color: var(--text-muted);
+        padding: var(--spacing-xl) 0;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-primary);
         margin-bottom: var(--spacing-xl);
       }
 
-      .unit-toggle {
-        position: absolute;
-        top: var(--spacing-xl);
-        right: 0;
-        background: var(--bg-tertiary);
-        border: 1px solid var(--border-secondary);
-        color: var(--text-primary);
-        padding: var(--spacing-sm) var(--spacing-md);
-        border-radius: var(--radius-lg);
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: all 0.2s;
+      h1 {
+        font-size: 2.75rem;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-bright);
       }
 
-      .unit-toggle:hover {
-        background: var(--bg-hover);
-        border-color: var(--border-hover);
+      .tagline {
+        font-size: 1rem;
+        color: var(--text-muted-light);
+        margin: 0;
       }
 
       nav {
@@ -347,14 +411,29 @@
         padding: var(--spacing-md) 0;
         z-index: 100;
         margin-bottom: var(--spacing-xl);
+        transition: box-shadow 0.3s ease;
       }
 
-      nav ul {
-        list-style: none;
+      nav.scrolled {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-xl);
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+      }
+
+      .nav-links {
         display: flex;
         gap: var(--spacing-lg);
-        justify-content: center;
         flex-wrap: wrap;
+        list-style: none;
       }
 
       nav a {
@@ -374,28 +453,94 @@
         color: var(--text-primary);
       }
 
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+      }
+
+      .back-link {
+        color: var(--text-muted-light);
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .back-link:hover {
+        color: var(--accent-blue);
+      }
+
+      .unit-toggle {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-secondary);
+        color: var(--text-primary);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--radius-lg);
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .unit-toggle:hover {
+        background: var(--bg-hover);
+        border-color: var(--border-hover);
+      }
+
+      .unit-toggle:focus {
+        outline: 2px solid var(--accent-blue);
+        outline-offset: 2px;
+      }
+
       section {
         margin: var(--spacing-2xl) 0;
-        padding: var(--spacing-xl) 0;
+        padding: var(--spacing-2xl) 0;
         border-top: 1px solid var(--border-primary);
+        position: relative;
       }
 
       section:first-of-type {
         border-top: none;
+        padding-top: 0;
+      }
+
+      section:nth-child(even) {
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(42, 42, 42, 0.3) 10%,
+          rgba(42, 42, 42, 0.3) 90%,
+          transparent
+        );
+        margin-left: calc(var(--spacing-xl) * -1);
+        margin-right: calc(var(--spacing-xl) * -1);
+        padding-left: var(--spacing-xl);
+        padding-right: var(--spacing-xl);
       }
 
       h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: var(--spacing-xl);
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin: var(--spacing-2xl) 0 var(--spacing-lg);
         color: var(--text-bright);
+        letter-spacing: -0.01em;
       }
 
       h3 {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
         font-weight: 600;
-        margin: var(--spacing-xl) 0 var(--spacing-md);
+        margin: var(--spacing-xl) 0 var(--spacing-lg);
         color: var(--text-bright);
+      }
+
+      h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: var(--spacing-lg) 0 var(--spacing-md);
+        color: var(--text-primary);
       }
 
       .foreword {
@@ -404,6 +549,10 @@
         font-size: 1rem;
         line-height: 1.8;
         color: var(--text-muted-light);
+      }
+
+      p {
+        margin-bottom: var(--spacing-md);
       }
 
       .summary-stats {
@@ -419,6 +568,15 @@
         background: var(--bg-secondary);
         border-radius: var(--radius-md);
         border: 1px solid var(--border-primary);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
 
       .stat-number {
@@ -426,6 +584,18 @@
         font-weight: 700;
         color: var(--text-bright);
         margin-bottom: var(--spacing-sm);
+      }
+
+      .stat-number.accent {
+        color: var(--accent-blue);
+      }
+
+      .stat-number.accent-gold {
+        color: var(--accent-gold);
+      }
+
+      .stat-number.accent-green {
+        color: var(--accent-green);
       }
 
       .stat-label {
@@ -606,15 +776,34 @@
       /* Progress bar styles */
       .progress-bar {
         background: var(--bg-tertiary);
-        height: 12px;
-        border-radius: 6px;
+        height: 16px;
+        border-radius: 8px;
         overflow: hidden;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border-primary);
       }
 
       .progress-fill {
         height: 100%;
-        border-radius: 6px;
-        transition: width 0.3s;
+        border-radius: 8px;
+        transition: width 0.6s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .progress-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
       }
 
       .progress-fill.accent-blue {
@@ -674,6 +863,7 @@
         padding: var(--spacing-xl);
         border-radius: var(--radius-md);
         border: 1px solid var(--border-primary);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       }
 
       svg {
@@ -688,6 +878,7 @@
       .heatmap-cell:hover {
         stroke: var(--text-bright);
         stroke-width: 2;
+        transition: stroke 0.2s ease;
       }
 
       .tooltip {
@@ -702,17 +893,119 @@
         display: none;
       }
 
-      .notable-workout {
-        background: var(--bg-secondary);
-        padding: var(--spacing-md);
-        margin: var(--spacing-sm) 0;
-        border-radius: var(--radius-sm);
-        border-left: 3px solid var(--accent-blue);
+      /* Training History Timeline Cards */
+      .history-timeline-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
       }
 
-      .notable-date {
+      .history-event-card {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        border-left: 4px solid var(--event-color);
+        padding: var(--spacing-md);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .history-event-card:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .history-event-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-tertiary);
+        flex-shrink: 0;
+      }
+
+      .history-event-icon {
+        font-size: 1.25rem;
+      }
+
+      .history-event-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .history-event-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: 4px;
+        flex-wrap: wrap;
+      }
+
+      .history-event-title {
         font-weight: 600;
-        color: var(--accent-blue);
+        font-size: 0.95rem;
+        color: var(--text-bright);
+      }
+
+      .history-event-type {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-muted);
+        background: var(--bg-tertiary);
+        padding: 2px 6px;
+        border-radius: var(--radius-sm);
+      }
+
+      .history-event-details {
+        display: flex;
+        align-items: baseline;
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        color: var(--text-muted-light);
+      }
+
+      .history-event-stat {
+        white-space: nowrap;
+      }
+
+      .history-event-date {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-align: right;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* Responsive adjustments for history cards */
+      @media (max-width: 600px) {
+        .history-event-card {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--spacing-sm);
+        }
+
+        .history-event-date {
+          width: 100%;
+          text-align: left;
+          padding-left: calc(40px + var(--spacing-md));
+          margin-top: -4px;
+        }
+
+        .history-event-indicator {
+          width: 32px;
+          height: 32px;
+        }
+
+        .history-event-icon {
+          font-size: 1rem;
+        }
       }
 
       .milestone {
@@ -729,28 +1022,6 @@
 
       .milestone-text {
         color: var(--text-primary);
-      }
-
-      .program-card {
-        background: var(--bg-secondary);
-        padding: var(--spacing-lg);
-        margin: var(--spacing-md) 0;
-        border-radius: var(--radius-sm);
-        border-left: 3px solid var(--text-muted);
-      }
-
-      .program-name {
-        font-weight: 600;
-        font-size: 1.125rem;
-        margin-bottom: var(--spacing-sm);
-      }
-
-      .program-stats {
-        display: flex;
-        gap: var(--spacing-xl);
-        margin-top: var(--spacing-sm);
-        color: var(--text-muted);
-        font-size: 0.875rem;
       }
 
       .view-toggle {
@@ -782,6 +1053,68 @@
         color: var(--text-bright);
       }
 
+      .view-toggle button:focus {
+        outline: 2px solid var(--accent-blue);
+        outline-offset: 2px;
+      }
+
+      /* General button focus states */
+      button:focus-visible {
+        outline: 2px solid var(--accent-blue);
+        outline-offset: 2px;
+      }
+
+      /* Link focus states */
+      a:focus-visible {
+        outline: 2px solid var(--accent-blue);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      /* Loading state */
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-primary);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+      }
+
+      .loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid var(--bg-tertiary);
+        border-top-color: var(--accent-blue);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading-text {
+        margin-top: var(--spacing-lg);
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
+
       @media (max-width: 768px) {
         .container {
           padding: var(--spacing-md);
@@ -791,11 +1124,31 @@
           font-size: 2rem;
         }
 
-        .unit-toggle {
-          position: static;
-          display: block;
-          margin: var(--spacing-md) auto 0;
-          max-width: 150px;
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+        }
+
+        .nav-container {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .nav-links {
+          justify-content: center;
+          order: 1;
+          gap: var(--spacing-sm);
+          font-size: 0.8rem;
+        }
+
+        .nav-controls {
+          order: 2;
+          justify-content: center;
+          width: 100%;
+          flex-wrap: wrap;
         }
 
         .summary-stats {
@@ -805,37 +1158,320 @@
         .stat-number {
           font-size: 2rem;
         }
+
+        /* Simplify grid layouts for mobile */
+        .grid-2col {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-stats-compact {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .plate-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* Reduce chart heights on mobile */
+        .chart-canvas {
+          max-height: 250px !important;
+        }
+
+        canvas {
+          max-height: 250px !important;
+        }
+
+        /* Stack view toggle buttons vertically */
+        .view-toggle {
+          flex-wrap: wrap;
+          gap: var(--spacing-xs);
+        }
+
+        .view-toggle button {
+          flex: 1 1 auto;
+          min-width: 80px;
+        }
+
+        /* Improve readability of stat mini values */
+        .stat-mini-value {
+          font-size: 1.25rem;
+        }
+
+        .stat-mini-value.large {
+          font-size: 1.5rem;
+        }
+
+        /* Adjust lift card padding */
+        .lift-card {
+          padding: var(--spacing-md);
+        }
+
+        /* Reduce spacing in sections */
+        section {
+          margin: var(--spacing-lg) 0;
+          padding: var(--spacing-lg) 0;
+        }
+
+        section:nth-child(even) {
+          margin-left: calc(var(--spacing-md) * -1);
+          margin-right: calc(var(--spacing-md) * -1);
+          padding-left: var(--spacing-md);
+          padding-right: var(--spacing-md);
+        }
+
+        /* Improve modal display on mobile */
+        #keyboardShortcutsModal {
+          max-width: 90% !important;
+          padding: 1.5rem !important;
+        }
+      }
+
+      /* Additional breakpoint for very small screens */
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.75rem;
+        }
+
+        .nav-links {
+          font-size: 0.75rem;
+        }
+
+        .stat-number {
+          font-size: 1.75rem;
+        }
+
+        .grid-stats-compact {
+          grid-template-columns: 1fr;
+        }
+
+        .lift-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+      }
+
+      /* PR Timeline - Clean Card List */
+      .pr-timeline-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .pr-event-card {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        border-left: 4px solid var(--event-color);
+        padding: var(--spacing-md);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .pr-event-card:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .pr-event-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-tertiary);
+        flex-shrink: 0;
+      }
+
+      .pr-event-icon {
+        font-size: 1.25rem;
+        color: var(--event-color);
+      }
+
+      .pr-event-peak .pr-event-indicator {
+        background: color-mix(in srgb, var(--event-color) 20%, transparent);
+      }
+
+      .pr-event-club .pr-event-indicator {
+        background: rgba(255, 215, 0, 0.15);
+      }
+
+      .pr-event-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .pr-event-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: 4px;
+      }
+
+      .pr-event-lift {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--event-color);
+      }
+
+      .pr-event-type {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-muted);
+        background: var(--bg-tertiary);
+        padding: 2px 6px;
+        border-radius: var(--radius-sm);
+      }
+
+      .pr-event-details {
+        display: flex;
+        align-items: baseline;
+        gap: var(--spacing-sm);
+      }
+
+      .pr-event-milestone {
+        font-size: 0.85rem;
+        color: var(--text-muted-light);
+      }
+
+      .pr-event-weight {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--text-bright);
+      }
+
+      .pr-event-date {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-align: right;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 600px) {
+        .pr-event-card {
+          flex-wrap: wrap;
+          gap: var(--spacing-sm);
+        }
+
+        .pr-event-date {
+          width: 100%;
+          text-align: left;
+          padding-left: calc(40px + var(--spacing-md));
+          margin-top: -4px;
+        }
+
+        .pr-event-indicator {
+          width: 32px;
+          height: 32px;
+        }
+
+        .pr-event-icon {
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <h1>NO DAYS OFF</h1>
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+      <div class="loading-spinner" role="status" aria-live="polite"></div>
+      <div class="loading-text">Loading training data...</div>
+    </div>
+
+    <header>
+      <div class="container">
+        <h1>Stronger Than Yesterday</h1>
         <p class="tagline">
           A data-driven look at my strength training journey
         </p>
-        <button class="unit-toggle" id="unitToggle">lbs / kg</button>
-      </header>
+      </div>
+    </header>
 
-      <nav>
-        <ul>
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#volume">Volume</a></li>
-          <li><a href="#strength">Strength</a></li>
-          <li><a href="#milestones">Milestones</a></li>
-          <li><a href="#patterns">Patterns</a></li>
-          <li><a href="#history">History</a></li>
+    <nav id="mainNav" role="navigation" aria-label="Dashboard navigation">
+      <div class="nav-container">
+        <ul class="nav-links">
+          <li>
+            <a href="#overview" aria-label="Navigate to Overview section"
+              >Overview</a
+            >
+          </li>
+          <li>
+            <a href="#volume" aria-label="Navigate to Volume section">Volume</a>
+          </li>
+          <li>
+            <a href="#strength" aria-label="Navigate to Strength section"
+              >Strength</a
+            >
+          </li>
+          <li>
+            <a href="#milestones" aria-label="Navigate to Milestones section"
+              >Milestones</a
+            >
+          </li>
+          <li>
+            <a href="#patterns" aria-label="Navigate to Patterns section"
+              >Patterns</a
+            >
+          </li>
+          <li>
+            <a href="#history" aria-label="Navigate to History section"
+              >History</a
+            >
+          </li>
         </ul>
-      </nav>
+        <div class="nav-controls">
+          <a href="/" class="back-link" aria-label="Return to blog homepage"
+            >← Back to Blog</a
+          >
+          <button
+            class="unit-toggle"
+            id="unitToggle"
+            aria-label="Toggle between pounds and kilograms"
+          >
+            lbs / kg
+          </button>
+        </div>
+      </div>
+    </nav>
 
+    <div class="container">
       <section>
         <div class="foreword">
+          <h2>Foreword</h2>
           <p>
-            This dashboard chronicles my strength training journey from January
-            2019 onwards. Every rep, every set, every workout—tracked, analyzed,
-            and visualized. The data tells the story of consistency,
-            progression, and the relentless pursuit of strength.
+            When I finally landed a fully remote job in 2015, I made myself a promise: use the time I'd been wasting commuting
+            to work to get into shape. I started poorly. Walking, jump rope, a weight bench collecting dust in the garage,
+            resistance bands, dumbbells that quickly became too light.
+          </p>
+          <p>
+            No plan, little knowledge, just the vague idea that I should be doing something.
+          </p>
+          <p>
+            In 2018, I invested in a power rack and a barbell. I began to study nutrition and followed a structured program. My
+            strength <b>exploded</b>. The results were immediate and intoxicating.
+          </p>
+          <p>
+            The path since then has not been a straight line. I have thrashed through various programs and hit plateaus that
+            felt immoveable. Yet, through the trial and error of the last several years, I discovered the fundamental
+            satisfaction of this sport. There is a singular, profound joy in pulling a weight off the floor that you previously
+            could not budge. It is a tangible measurement of personal growth that few other hobbies can provide.
+          </p>
+          <p>
+            My path was far from perfect. I made every mistake you can make. But I kept showing up, kept loading the bar, kept
+            trying. This dashboard is the record of that journey. Every rep, every set, every workout since 2019, tracked and
+            visualized. The data tells a story, and it's still being written.
+          </p>
+          <p style="margin-top: 1.5rem; font-style: italic; text-align: right">
+            Bradley Carey<br>January 2026
           </p>
         </div>
       </section>
@@ -845,41 +1481,57 @@
         <div class="summary-stats" id="summaryStats">
           <!-- Generated dynamically -->
         </div>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-          "
-          id="workoutStructureStats"
-        >
+        <div class="grid-stats-compact mt-xl" id="workoutStructureStats">
           <!-- Generated dynamically -->
         </div>
       </section>
 
       <section id="volume">
         <h2>Volume & Trends</h2>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-          "
-          id="volumeHighlights"
-        >
+        <div class="grid-stats-compact mb-xl" id="volumeHighlights">
           <!-- Generated dynamically -->
         </div>
         <div class="chart-container">
           <h3>Volume Over Time</h3>
-          <div class="view-toggle">
-            <button data-view="weekly">Weekly</button>
-            <button data-view="monthly" class="active">Monthly</button>
-            <button data-view="yearly">Yearly</button>
-            <button data-view="cumulative">Cumulative</button>
+          <div
+            class="view-toggle"
+            role="group"
+            aria-label="Volume chart time period selector"
+          >
+            <button data-view="weekly" aria-label="Show weekly volume data">
+              Weekly
+            </button>
+            <button data-view="monthly" aria-label="Show monthly volume data">
+              Monthly
+            </button>
+            <button data-view="yearly" aria-label="Show yearly volume data">
+              Yearly
+            </button>
+            <button
+              data-view="cumulative"
+              aria-label="Show cumulative volume data"
+            >
+              Cumulative
+            </button>
           </div>
-          <canvas id="annualVolumeChart" style="max-height: 400px"></canvas>
+          <div
+            id="stackedToggleContainer"
+            class="view-toggle"
+            style="margin-top: 0.5rem"
+          >
+            <button
+              id="stackedToggle"
+              aria-label="Toggle between stacked and overlaid chart view"
+            >
+              <i class="fa-solid fa-chart-column"></i> Show Stacked
+            </button>
+          </div>
+          <canvas
+            id="annualVolumeChart"
+            style="max-height: 400px"
+            role="img"
+            aria-label="Volume over time chart"
+          ></canvas>
         </div>
         <div class="chart-container">
           <h3>Workout Calendar</h3>
@@ -903,7 +1555,16 @@
           <!-- Generated dynamically -->
         </div>
         <div class="chart-container" style="margin-top: 2rem">
-          <h3>🎯 Bar Travel Distance</h3>
+          <h3><i class="fa-solid fa-calendar"></i> Achievement Timeline</h3>
+          <p class="text-muted-color" style="margin-bottom: 1.5rem">
+            All your major milestones in chronological order
+          </p>
+          <div id="prTimeline">
+            <!-- Generated dynamically -->
+          </div>
+        </div>
+        <div class="chart-container" style="margin-top: 2rem">
+          <h3><i class="fa-solid fa-bullseye"></i> Bar Travel Distance</h3>
           <div id="barTravelStats"></div>
         </div>
       </section>
@@ -917,6 +1578,13 @@
         <div class="chart-container">
           <h3>Exercises by Volume</h3>
           <div id="exerciseVolumeChart"></div>
+        </div>
+        <div
+          class="chart-container"
+          style="max-width: 500px; margin-left: auto; margin-right: auto"
+        >
+          <h3>Volume by Lift Type</h3>
+          <canvas id="volumeDonutChart" style="max-height: 400px"></canvas>
         </div>
       </section>
 
@@ -940,20 +1608,31 @@
       let trainingData = null;
       let currentUnit = localStorage.getItem('weightUnit') || 'lbs';
       let volumeView = localStorage.getItem('volumeView') || 'monthly';
+      let volumeStacked = localStorage.getItem('volumeStacked') === 'true';
 
       // Load data and initialize dashboard
       async function init() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
         try {
           const response = await fetch(`training_data.json?v=${Date.now()}`);
           trainingData = await response.json();
           renderDashboard();
           setupUnitToggle();
           setupViewToggle();
+          setupStackedToggle();
+
+          // Hide loading overlay after content is rendered
+          setTimeout(() => {
+            loadingOverlay.classList.add('hidden');
+          }, 300);
         } catch (error) {
           console.error('Error loading training data:', error);
+          loadingOverlay.classList.add('hidden');
           document.querySelector('.container').innerHTML = `
                     <section style="text-align: center; padding: 4rem 2rem;">
                         <h2 style="color: #ff6b6b; margin-bottom: 1rem;">Unable to Load Data</h2>
+                        <p style="color: var(--text-muted);">Please refresh the page to try again.</p>
                     </section>
                 `;
         }
@@ -978,13 +1657,24 @@
       }
 
       function setupViewToggle() {
-        const buttons = document.querySelectorAll('.view-toggle button');
+        const buttons = document.querySelectorAll(
+          '.view-toggle button[data-view]',
+        );
+        const stackedContainer = document.getElementById(
+          'stackedToggleContainer',
+        );
 
-        // Update active state
+        // Update active state and toggle stacked button visibility
         function updateActiveButton() {
           buttons.forEach((btn) => {
             btn.classList.toggle('active', btn.dataset.view === volumeView);
           });
+
+          // Hide stacked toggle for cumulative view (stacking doesn't make sense for cumulative data)
+          if (stackedContainer) {
+            stackedContainer.style.display =
+              volumeView === 'cumulative' ? 'none' : '';
+          }
         }
 
         updateActiveButton();
@@ -999,6 +1689,27 @@
         });
       }
 
+      function setupStackedToggle() {
+        const button = document.getElementById('stackedToggle');
+        if (!button) return;
+
+        function updateButtonState() {
+          button.classList.toggle('active', volumeStacked);
+          button.innerHTML = volumeStacked
+            ? '<i class="fa-solid fa-chart-column"></i> Show Overlaid'
+            : '<i class="fa-solid fa-chart-column"></i> Show Stacked';
+        }
+
+        updateButtonState();
+
+        button.addEventListener('click', () => {
+          volumeStacked = !volumeStacked;
+          localStorage.setItem('volumeStacked', volumeStacked);
+          updateButtonState();
+          renderAnnualVolumeChart();
+        });
+      }
+
       function getVolume(volumeLbs, volumeKg) {
         return currentUnit === 'lbs' ? volumeLbs : volumeKg;
       }
@@ -1006,6 +1717,24 @@
       function formatVolume(volumeLbs, volumeKg) {
         const volume = getVolume(volumeLbs, volumeKg);
         return `${volume.toLocaleString()} ${currentUnit}`;
+      }
+
+      function calculateLiftVolumeTotals() {
+        const totals = {};
+        for (const [lift, liftData] of Object.entries(
+          trainingData.bigThreeVolume,
+        )) {
+          const totalLbs = liftData.dailyVolume.reduce(
+            (sum, d) => sum + (d.volumeLbs || 0),
+            0,
+          );
+          const totalKg = liftData.dailyVolume.reduce(
+            (sum, d) => sum + (d.volumeKg || 0),
+            0,
+          );
+          totals[lift] = { volumeLbs: totalLbs, volumeKg: totalKg };
+        }
+        return totals;
       }
 
       function isoWeekToDate(weekString) {
@@ -1054,12 +1783,14 @@
         renderBigThree();
 
         // Milestones & Achievements section
+        renderPRTimeline();
         renderPRsAndClubs();
         renderBarTravel();
 
         // Patterns & Analysis section
         renderDayOfWeekChart();
         renderExerciseVolumeChart();
+        createVolumeDonutChart();
 
         // Training History section
         renderPrograms();
@@ -1163,11 +1894,11 @@
 
       // Shared Chart.js Configuration
       const CHART_COLORS = {
-        grid: '#1a1a1a',
+        grid: '#3a3a3a',
         text: '#888',
-        textBright: '#e0e0e0',
-        tooltipBg: '#1a1a1a',
-        tooltipBorder: '#333',
+        textBright: '#dadada',
+        tooltipBg: '#2a2a2a',
+        tooltipBorder: '#424242',
       };
 
       const CHART_DEFAULTS = {
@@ -1187,6 +1918,35 @@
       };
 
       const LIFT_ORDER = ['squat', 'bench', 'deadlift', 'ohp'];
+
+      // Chart.js plugin for displaying center text in donut chart
+      const centerTextPlugin = {
+        id: 'centerText',
+        afterDraw(chart) {
+          if (chart.config.type !== 'doughnut') return;
+
+          const {
+            ctx,
+            chartArea: { width, height },
+          } = chart;
+          const total = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+
+          // Convert to tons (assuming lbs or kg input)
+          const tons = (total / 2000).toFixed(1);
+
+          ctx.save();
+          ctx.font = 'bold 24px system-ui';
+          ctx.fillStyle = CHART_COLORS.textBright;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(`${tons}`, width / 2, height / 2 - 10);
+
+          ctx.font = '14px system-ui';
+          ctx.fillStyle = CHART_COLORS.text;
+          ctx.fillText('tons', width / 2, height / 2 + 15);
+          ctx.restore();
+        },
+      };
 
       function getBaseChartOptions(overrides = {}) {
         return {
@@ -1391,29 +2151,67 @@
         // Adjust visual settings based on view
         const isCumulative = volumeView === 'cumulative';
         const isYearly = volumeView === 'yearly';
+        const useStacked = volumeStacked && !isCumulative;
 
         // Build datasets array with total volume + Big 3
-        const datasets = [
-          createLineDataset(label, chartData, '#888', {
-            pointRadius: isYearly ? 6 : 0,
-            pointHoverRadius: isYearly ? 8 : 6,
-            fill: true,
-            backgroundColor: '#88888833',
-          }),
-        ];
+        const datasets = [];
+
+        // Only show total volume line when not in stacked mode
+        if (!useStacked) {
+          datasets.push(
+            createLineDataset(label, chartData, '#888', {
+              pointRadius: isYearly ? 6 : 0,
+              pointHoverRadius: isYearly ? 8 : 6,
+              fill: true,
+              backgroundColor: '#88888833',
+            }),
+          );
+        }
 
         // Add Big 3 datasets using centralized config
+        const liftDatasets = [];
         LIFT_ORDER.forEach((lift) => {
           const config = LIFT_CONFIG[lift];
           const liftData = aggregateBigThreeVolume(lift);
           if (liftData.length > 0) {
-            datasets.push(
-              createLineDataset(config.name, liftData, config.color, {
-                pointRadius: isYearly ? 4 : 0,
-                pointHoverRadius: isYearly ? 6 : 4,
-              }),
-            );
+            liftDatasets.push({ lift, config, data: liftData });
           }
+        });
+
+        // Normalize data points for stacking - all datasets need same x values
+        if (useStacked && liftDatasets.length > 0) {
+          // Collect all unique x values
+          const allXValues = new Set();
+          liftDatasets.forEach(({ data }) => {
+            data.forEach((point) => allXValues.add(point.x));
+          });
+          const sortedXValues = Array.from(allXValues).sort();
+
+          // Normalize each dataset to have all x values (fill missing with 0)
+          liftDatasets.forEach(({ data }) => {
+            const dataMap = new Map(data.map((d) => [d.x, d.y]));
+            const normalized = sortedXValues.map((x) => ({
+              x: x,
+              y: dataMap.get(x) || 0,
+            }));
+            data.length = 0;
+            data.push(...normalized);
+          });
+        }
+
+        // Add normalized datasets to chart
+        liftDatasets.forEach(({ config, data }) => {
+          datasets.push(
+            createLineDataset(config.name, data, config.color, {
+              pointRadius: isYearly ? 4 : 0,
+              pointHoverRadius: isYearly ? 6 : 4,
+              fill: useStacked,
+              stack: useStacked ? 'volume' : undefined,
+              backgroundColor: useStacked
+                ? config.color + '99'
+                : config.color + '20',
+            }),
+          );
         });
 
         annualVolumeChartInstance = new Chart(ctx, {
@@ -1427,8 +2225,22 @@
                 boxHeight: 12,
                 usePointStyle: false,
               },
+              onClick: function (e, legendItem, legend) {
+                const index = legendItem.datasetIndex;
+                const chart = legend.chart;
+                const meta = chart.getDatasetMeta(index);
+
+                // Toggle visibility
+                meta.hidden =
+                  meta.hidden === null
+                    ? !chart.data.datasets[index].hidden
+                    : null;
+                chart.update();
+              },
             },
             tooltip: {
+              mode: useStacked ? 'index' : 'nearest',
+              intersect: false,
               callbacks: {
                 title: function (context) {
                   if (volumeView === 'yearly') {
@@ -1455,10 +2267,20 @@
                   }
                   return `${datasetLabel}: ${(volume / 1000).toFixed(1)}K ${currentUnit}`;
                 },
+                footer: useStacked
+                  ? function (tooltipItems) {
+                      let total = 0;
+                      tooltipItems.forEach((item) => {
+                        total += item.parsed.y;
+                      });
+                      return `Total: ${(total / 1000).toFixed(1)}K ${currentUnit}`;
+                    }
+                  : undefined,
               },
             },
             x: {
               type: isYearly ? 'category' : 'time',
+              stacked: useStacked,
               time: !isYearly
                 ? {
                     unit: timeUnit,
@@ -1468,6 +2290,7 @@
             },
             y: {
               beginAtZero: true,
+              stacked: useStacked,
               ticks: {
                 callback: function (value) {
                   if (isCumulative && value >= 1000000) {
@@ -1538,12 +2361,12 @@
         };
 
         const colors = [
-          '#161616',
-          '#0e4429',
-          '#006d32',
-          '#26a641',
-          '#39d353',
-          '#39d353',
+          '#262626', // No activity - lighter gray (more subtle)
+          '#1b5e20', // Low activity - dark green
+          '#2e7d32', // Medium-low activity
+          '#43a047', // Medium activity
+          '#4CAF50', // High activity - logo green
+          '#66BB6A', // Very high activity - lighter green
         ];
         const monthNames = [
           'Jan',
@@ -1586,7 +2409,7 @@
           );
           yearLabel.setAttribute('x', leftMargin);
           yearLabel.setAttribute('y', rowY + 15);
-          yearLabel.setAttribute('fill', '#e0e0e0');
+          yearLabel.setAttribute('fill', '#dadada');
           yearLabel.setAttribute('font-size', '14');
           yearLabel.setAttribute('font-weight', '600');
           yearLabel.textContent = year;
@@ -1615,7 +2438,7 @@
             line.setAttribute('y1', rowY - yearGap / 2);
             line.setAttribute('x2', width - 20);
             line.setAttribute('y2', rowY - yearGap / 2);
-            line.setAttribute('stroke', '#1a1a1a');
+            line.setAttribute('stroke', '#3a3a3a');
             line.setAttribute('stroke-width', '1');
             svg.appendChild(line);
           }
@@ -1674,6 +2497,8 @@
               rect.setAttribute('width', cellSize);
               rect.setAttribute('height', cellSize);
               rect.setAttribute('fill', colors[colorLevel]);
+              rect.setAttribute('rx', '2'); // Subtle rounded corners like GitHub
+              rect.setAttribute('ry', '2');
               rect.setAttribute('class', 'heatmap-cell');
               rect.setAttribute('data-date', dateStr);
               rect.setAttribute('data-volume', volume.toFixed(0));
@@ -1762,10 +2587,20 @@
 
       function showTooltip(e, date, volume, workouts) {
         const tooltip = document.getElementById('tooltip');
+        const dateObj = new Date(date);
+        const dayName = dateObj.toLocaleDateString('en-US', {
+          weekday: 'long',
+        });
+        const formattedDate = dateObj.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        });
+
         tooltip.style.display = 'block';
         tooltip.innerHTML = `
-                <strong>${date}</strong><br>
-                Workouts: ${workouts}<br>
+                <strong>${formattedDate}</strong> (${dayName})<br>
+                ${workouts} workout${workouts !== 1 ? 's' : ''}<br>
                 Volume: ${volume.toLocaleString()} ${currentUnit}
             `;
         tooltip.style.left = e.pageX + 10 + 'px';
@@ -1863,12 +2698,12 @@
         const marathons = totalFeet / (26.2 * 5280);
 
         html += `
-          <div style="margin-top: 2rem; padding: 1rem; background: #111; border-radius: 8px; border-left: 3px solid #4a9eff;">
-            <div style="color: #aaa; font-size: 0.875rem; margin-bottom: 0.5rem;">🎯 Fun Perspective</div>
-            <div style="color: #e0e0e0;">
+          <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-secondary); border-radius: 8px; border-left: 3px solid var(--accent-blue);">
+            <div style="color: #aaa; font-size: 0.875rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-bullseye"></i> Fun Perspective</div>
+            <div style="color: #dadada;">
               If you laid all the bar travel end-to-end, you've moved the barbell
               <strong style="color: #ffd700;">${totalDistance.toFixed(1)} ${distanceUnit}</strong>
-              — equivalent to running <strong style="color: #51cf66;">${marathons.toFixed(1)} marathons</strong>!
+              — equivalent to running <strong style="color: #4CAF50;">${marathons.toFixed(1)} marathons</strong>!
             </div>
           </div>
         `;
@@ -1910,7 +2745,7 @@
         const stalePeriods = bodyWeight?.stalePeriods || [];
         const hasStaleData = stalePeriods.length > 0;
 
-        let html = `<h3>💪 Relative Strength</h3>`;
+        let html = `<h3><i class="fa-solid fa-dumbbell"></i> Relative Strength</h3>`;
 
         // Determine Wilks level
         const wilksBenchmarks = wilks.benchmarks || {};
@@ -1935,20 +2770,28 @@
           <div class="summary-stats" style="margin: 1.5rem 0;">
             <div class="stat-card">
               <div class="stat-number">${totalMultiple.best || 0}×</div>
-              <div class="stat-label">S+B+D Total<span class="stat-sublabel">body weight</span></div>
+              <div class="stat-label"><i class="fa-solid fa-calculator"></i> S+B+D Total<span class="stat-sublabel">body weight</span></div>
             </div>
             <div class="stat-card">
               <div class="stat-number" style="color: ${wilksColor};">${wilks.best || '—'}</div>
-              <div class="stat-label">Wilks Score<span class="stat-sublabel">${wilksLevel}</span></div>
+              <div class="stat-label"><i class="fa-solid fa-ranking-star"></i> Wilks Score<span class="stat-sublabel">${wilksLevel}</span></div>
             </div>
             <div class="stat-card">
               <div class="stat-number">${bwDisplay}</div>
-              <div class="stat-label">Body Weight<span class="stat-sublabel">${currentUnit}</span></div>
+              <div class="stat-label"><i class="fa-solid fa-weight-scale"></i> Body Weight<span class="stat-sublabel">${currentUnit}</span></div>
             </div>
             <div class="stat-card">
               <div class="stat-number">${bmi}</div>
-              <div class="stat-label">BMI<span class="stat-sublabel">kg/m²</span></div>
+              <div class="stat-label"><i class="fa-solid fa-user"></i> BMI<span class="stat-sublabel">kg/m²</span></div>
             </div>
+          </div>
+        `;
+
+        // Radar chart for strength profile
+        html += `
+          <div class="chart-container" style="max-width: 700px; margin: 2rem auto;">
+            <h4 class="text-muted-light-color mb-md text-center">Strength Profile</h4>
+            <canvas id="strengthRadarChart" style="max-height: 500px;"></canvas>
           </div>
         `;
 
@@ -1996,7 +2839,7 @@
                 <h4 class="mb-0">${name}</h4>
                 <span class="level-badge" style="background: ${levelColor}22; color: ${levelColor};">${level}</span>
               </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center;">
+              <div class="grid-2col-even">
                 <div>
                   <div class="text-muted-dark-color text-xs text-upper">Best</div>
                   <div class="text-primary-color text-xl font-weight-600">${best.multiple || '—'}×</div>
@@ -2038,16 +2881,134 @@
         // Body Weight Timeline Chart
         html += `
           <div class="mt-2xl">
-            <h4 class="text-muted-light-color mb-md">📈 Body Weight Timeline</h4>
-            ${hasStaleData ? '<div style="color: #cca300; font-size: 0.8rem; margin-bottom: 0.75rem;">⚠️ Note: Body weight data contains periods without updates</div>' : ''}
+            <h4 class="text-muted-light-color mb-md"><i class="fa-solid fa-chart-line"></i> Body Weight Timeline</h4>
+            ${hasStaleData ? '<div style="color: #cca300; font-size: 0.8rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-triangle-exclamation"></i> Note: Body weight data contains periods without updates</div>' : ''}
             <canvas id="bodyWeightChart" style="max-height: 200px;"></canvas>
           </div>
         `;
 
         container.innerHTML = html;
 
-        // Render body weight chart after DOM update
-        setTimeout(() => renderBodyWeightChart(), 0);
+        // Render charts after DOM update
+        setTimeout(() => {
+          renderStrengthRadarChart();
+          renderBodyWeightChart();
+        }, 0);
+      }
+
+      let strengthRadarChartInstance = null;
+
+      function renderStrengthRadarChart() {
+        const { relativeStrength } = trainingData;
+        const canvas = document.getElementById('strengthRadarChart');
+        if (!canvas || !relativeStrength) return;
+
+        // Destroy existing chart if it exists
+        if (strengthRadarChartInstance) {
+          strengthRadarChartInstance.destroy();
+        }
+
+        const ctx = canvas.getContext('2d');
+
+        // Extract data for each lift
+        const lifts = ['squat', 'bench', 'deadlift', 'ohp'];
+        const liftLabels = ['Squat', 'Bench', 'Deadlift', 'OHP'];
+
+        const bestData = lifts.map(
+          (lift) => relativeStrength[lift]?.best?.multiple || 0,
+        );
+        const currentData = lifts.map(
+          (lift) => relativeStrength[lift]?.current?.multiple || 0,
+        );
+
+        // Get max value for better scaling (add 20% padding)
+        const maxMultiple = Math.max(...bestData, 3);
+        const suggestedMax = Math.ceil(maxMultiple * 1.2 * 2) / 2; // Round to nearest 0.5
+
+        strengthRadarChartInstance = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: liftLabels,
+            datasets: [
+              {
+                label: 'Best',
+                data: bestData,
+                borderColor: '#ffd700',
+                backgroundColor: '#ffd70033',
+                pointBackgroundColor: '#ffd700',
+                pointBorderColor: '#fff',
+                pointHoverRadius: 7,
+                pointRadius: 5,
+                borderWidth: 3,
+              },
+              {
+                label: 'Current',
+                data: currentData,
+                borderColor: '#4a9eff',
+                backgroundColor: '#4a9eff22',
+                pointBackgroundColor: '#4a9eff',
+                pointBorderColor: '#fff',
+                pointHoverRadius: 7,
+                pointRadius: 5,
+                borderWidth: 3,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                  color: CHART_COLORS.textBright,
+                  padding: 20,
+                  font: { size: 14 },
+                  usePointStyle: true,
+                },
+              },
+              tooltip: {
+                backgroundColor: CHART_COLORS.tooltipBg,
+                titleColor: CHART_COLORS.textBright,
+                bodyColor: CHART_COLORS.textBright,
+                borderColor: CHART_COLORS.tooltipBorder,
+                borderWidth: 1,
+                padding: 12,
+                titleFont: { size: 14 },
+                bodyFont: { size: 13 },
+                callbacks: {
+                  label: function (context) {
+                    return `${context.dataset.label}: ${context.parsed.r.toFixed(2)}× BW`;
+                  },
+                },
+              },
+            },
+            scales: {
+              r: {
+                beginAtZero: true,
+                suggestedMax: suggestedMax,
+                ticks: {
+                  color: CHART_COLORS.text,
+                  backdropColor: 'transparent',
+                  stepSize: 0.5,
+                  font: { size: 12 },
+                  callback: function (value) {
+                    return value.toFixed(1) + '×';
+                  },
+                },
+                grid: {
+                  color: CHART_COLORS.grid,
+                },
+                pointLabels: {
+                  color: CHART_COLORS.textBright,
+                  font: { size: 15, weight: '600' },
+                  padding: 8,
+                },
+              },
+            },
+          },
+        });
       }
 
       function renderBodyWeightChart() {
@@ -2241,25 +3202,27 @@
             const totalGain = currentE1RM - startE1RM;
             const gainPercent = ((totalGain / startE1RM) * 100).toFixed(0);
 
-            // Days since last PR with color coding
+            // Days since last PR with color coding and badge styling
             let daysSinceHTML = '';
             if (daysSince !== null) {
-              const color =
+              const badgeClass =
                 daysSince < 30
-                  ? '#51cf66'
+                  ? 'recent'
                   : daysSince < 90
-                    ? '#ffd93d'
-                    : '#ff6b6b';
+                    ? 'moderate'
+                    : 'stale';
               const label =
                 daysSince === 0
-                  ? 'Today!'
+                  ? 'PR Today!'
                   : daysSince === 1
                     ? '1 day ago'
                     : `${daysSince} days ago`;
               daysSinceHTML = `
-                <div>
+                <div style="text-align: center;">
                   <div class="stat-mini-label">Last PR</div>
-                  <div class="stat-mini-value" style="color: ${color};">${label}</div>
+                  <div style="margin-top: 0.5rem;">
+                    <span class="pr-badge ${badgeClass}">${label}</span>
+                  </div>
                 </div>
               `;
             }
@@ -2465,7 +3428,7 @@
                 label: function (context) {
                   const value = context.parsed.y;
                   if (context.raw.isPR) {
-                    return `🏆 PR: ${value} ${currentUnit} × ${context.raw.reps} reps`;
+                    return `PR: ${value} ${currentUnit} × ${context.raw.reps} reps`;
                   }
                   return `Estimated 1RM: ${value} ${currentUnit}`;
                 },
@@ -2530,9 +3493,20 @@
 
         if (exercises.length === 0) return;
 
+        // Calculate total volume for percentage
+        const totalVolume = exercises.reduce((sum, e) => sum + e.volume, 0);
+
+        // Define colors for Big 4 lifts
+        const liftColors = {
+          Squat: '#4a9eff',
+          'Bench Press': '#ff6b6b',
+          Deadlift: '#51cf66',
+          'Overhead Press': '#ffd93d',
+        };
+
         const width = container.offsetWidth;
         const height = exercises.length * 35 + 60;
-        const padding = { top: 20, right: 100, bottom: 40, left: 200 };
+        const padding = { top: 20, right: 150, bottom: 40, left: 200 };
 
         const maxVolume = Math.max(...exercises.map((e) => e.volume));
 
@@ -2547,20 +3521,52 @@
           const barWidth =
             (exercise.volume / maxVolume) *
             (width - padding.left - padding.right);
+          const percentage = ((exercise.volume / totalVolume) * 100).toFixed(1);
 
-          // Bar
+          // Determine bar color (use lift-specific color if it's a Big 4 lift)
+          const barColor = liftColors[exercise.name] || '#4a9eff';
+
+          // Bar with rounded corners
           const rect = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'rect',
           );
           rect.setAttribute('x', padding.left);
           rect.setAttribute('y', y);
-          rect.setAttribute('width', barWidth);
+          rect.setAttribute('width', 0); // Start with 0 for animation
           rect.setAttribute('height', 25);
-          rect.setAttribute('fill', '#4a9eff');
+          rect.setAttribute('fill', barColor);
+          rect.setAttribute('rx', '3');
+          rect.setAttribute('ry', '3');
+          rect.style.opacity = '0.9';
+          rect.style.transition = 'opacity 0.2s';
+
+          // Animate bar growth
+          const animate = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'animate',
+          );
+          animate.setAttribute('attributeName', 'width');
+          animate.setAttribute('from', '0');
+          animate.setAttribute('to', barWidth);
+          animate.setAttribute('begin', `${i * 0.05}s`);
+          animate.setAttribute('dur', '0.6s');
+          animate.setAttribute('fill', 'freeze');
+          rect.appendChild(animate);
+
+          // Add hover effect
+          rect.addEventListener('mouseenter', () => {
+            rect.style.opacity = '1';
+            rect.style.filter = 'brightness(1.1)';
+          });
+          rect.addEventListener('mouseleave', () => {
+            rect.style.opacity = '0.9';
+            rect.style.filter = 'none';
+          });
+
           svg.appendChild(rect);
 
-          // Exercise name
+          // Exercise name with color indicator for Big 4
           const label = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'text',
@@ -2568,26 +3574,119 @@
           label.setAttribute('x', padding.left - 10);
           label.setAttribute('y', y + 17);
           label.setAttribute('text-anchor', 'end');
-          label.setAttribute('fill', '#e0e0e0');
+          label.setAttribute(
+            'fill',
+            liftColors[exercise.name] ? barColor : '#dadada',
+          );
           label.setAttribute('font-size', '12');
+          label.setAttribute(
+            'font-weight',
+            liftColors[exercise.name] ? '600' : 'normal',
+          );
           label.textContent = exercise.name;
           svg.appendChild(label);
 
-          // Volume label
+          // Volume label with percentage
           const volumeLabel = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'text',
           );
           volumeLabel.setAttribute('x', padding.left + barWidth + 10);
           volumeLabel.setAttribute('y', y + 17);
-          volumeLabel.setAttribute('fill', '#888');
+          volumeLabel.setAttribute('fill', '#aaa');
           volumeLabel.setAttribute('font-size', '12');
           volumeLabel.textContent = `${Math.round(exercise.volume / 1000)}K`;
           svg.appendChild(volumeLabel);
+
+          // Percentage label
+          const percentLabel = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'text',
+          );
+          percentLabel.setAttribute('x', padding.left + barWidth + 50);
+          percentLabel.setAttribute('y', y + 17);
+          percentLabel.setAttribute('fill', '#666');
+          percentLabel.setAttribute('font-size', '11');
+          percentLabel.textContent = `${percentage}%`;
+          svg.appendChild(percentLabel);
         });
 
         container.innerHTML = '';
         container.appendChild(svg);
+      }
+
+      function createVolumeDonutChart() {
+        const canvas = document.getElementById('volumeDonutChart');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const totals = calculateLiftVolumeTotals();
+
+        // Prepare data in LIFT_ORDER
+        const chartData = {
+          labels: LIFT_ORDER.map((lift) => LIFT_CONFIG[lift].name),
+          datasets: [
+            {
+              data: LIFT_ORDER.map((lift) =>
+                getVolume(totals[lift].volumeLbs, totals[lift].volumeKg),
+              ),
+              backgroundColor: LIFT_ORDER.map(
+                (lift) => LIFT_CONFIG[lift].color,
+              ),
+              borderWidth: 0,
+              hoverOffset: 8,
+              hoverBorderWidth: 2,
+              hoverBorderColor: CHART_COLORS.textBright,
+            },
+          ],
+        };
+
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: chartData,
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            cutout: '65%',
+            plugins: {
+              legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                  color: CHART_COLORS.textBright,
+                  padding: 15,
+                  font: { size: 12, family: 'system-ui' },
+                  usePointStyle: true,
+                  pointStyle: 'circle',
+                },
+              },
+              tooltip: {
+                enabled: true,
+                backgroundColor: CHART_COLORS.tooltipBg,
+                titleColor: CHART_COLORS.textBright,
+                bodyColor: CHART_COLORS.textBright,
+                borderColor: CHART_COLORS.tooltipBorder,
+                borderWidth: 1,
+                padding: 12,
+                displayColors: true,
+                callbacks: {
+                  label: function (context) {
+                    const label = context.label || '';
+                    const value = context.parsed || 0;
+                    const total = context.dataset.data.reduce(
+                      (a, b) => a + b,
+                      0,
+                    );
+                    const percentage = ((value / total) * 100).toFixed(1);
+                    const formattedValue = value.toLocaleString();
+                    return `${label}: ${formattedValue} ${currentUnit} (${percentage}%)`;
+                  },
+                },
+              },
+            },
+          },
+          plugins: [centerTextPlugin],
+        });
       }
 
       function renderPowerliftingTotals() {
@@ -2625,49 +3724,49 @@
             threshold: 1500,
             name: '1500 lb Club',
             color: '#ffd700',
-            emoji: '👑',
+            icon: '<i class="fa-solid fa-crown"></i>',
           },
           {
             threshold: 1400,
             name: '1400 lb Club',
             color: '#e6b800',
-            emoji: '👑',
+            icon: '<i class="fa-solid fa-crown"></i>',
           },
           {
             threshold: 1300,
             name: '1300 lb Club',
             color: '#d4af37',
-            emoji: '💪',
+            icon: '<i class="fa-solid fa-dumbbell"></i>',
           },
           {
             threshold: 1200,
             name: '1200 lb Club',
             color: '#c0c0c0',
-            emoji: '💪',
+            icon: '<i class="fa-solid fa-dumbbell"></i>',
           },
           {
             threshold: 1100,
             name: '1100 lb Club',
             color: '#b8860b',
-            emoji: '🏆',
+            icon: '<i class="fa-solid fa-trophy"></i>',
           },
           {
             threshold: 1000,
             name: '1000 lb Club',
             color: '#cd7f32',
-            emoji: '🏆',
+            icon: '<i class="fa-solid fa-trophy"></i>',
           },
           {
             threshold: 750,
             name: '750 lb Club',
             color: '#4a9eff',
-            emoji: '💎',
+            icon: '<i class="fa-solid fa-gem"></i>',
           },
           {
             threshold: 500,
             name: '500 lb Club',
             color: '#51cf66',
-            emoji: '⭐',
+            icon: '<i class="fa-solid fa-star"></i>',
           },
         ];
 
@@ -2681,7 +3780,7 @@
 
         html += `<div class="chart-container">`;
         html += `<h3 class="total-header">
-                  ${achievedClub ? achievedClub.emoji : '🎯'} Powerlifting Total (S+B+D)
+                  ${achievedClub ? achievedClub.icon : '<i class="fa-solid fa-bullseye"></i>'} Powerlifting Total (S+B+D)
               </h3>`;
 
         // Current total display
@@ -2690,7 +3789,7 @@
         html += `
                   <div>
                       <div class="stat-mini-label">Current Total</div>
-                      <div class="stat-mini-value large" style="color: ${achievedClub ? achievedClub.color : '#e0e0e0'};">${Math.round(totalValue)} ${currentUnit}</div>
+                      <div class="stat-mini-value large" style="color: ${achievedClub ? achievedClub.color : '#dadada'};">${Math.round(totalValue)} ${currentUnit}</div>
                       ${achievedClub ? `<div class="stat-mini-detail" style="color: ${achievedClub.color};">${achievedClub.name}</div>` : ''}
                   </div>
                   <div>
@@ -2707,29 +3806,31 @@
                   </div>
               </div>`;
 
-        // Next club progress
-        if (nextClub) {
-          const remaining = nextClub.threshold - current.totalLbs;
-          const progressPercent = (current.totalLbs / nextClub.threshold) * 100;
-          html += `
-                      <div class="progress-indicator">
-                          <div class="progress-header">
-                              <span class="progress-label">Progress to ${nextClub.name}</span>
-                              <span class="progress-value">${Math.round(remaining)} lbs to go</span>
-                          </div>
-                          <div class="progress-bar">
-                              <div class="progress-fill accent-blue" style="width: ${Math.min(progressPercent, 100)}%;"></div>
-                          </div>
-                      </div>
-                  `;
-        }
-
-        // Club milestones achieved
+        // Club milestones achieved section
         const achievedMilestones = Object.entries(clubs).sort(
           (a, b) => parseInt(b[0]) - parseInt(a[0]),
         );
         if (achievedMilestones.length > 0) {
           html += `<div class="club-milestones"><h4>Club Milestones Achieved</h4>`;
+
+          // Next club progress
+          if (nextClub) {
+            const remaining = nextClub.threshold - current.totalLbs;
+            const progressPercent =
+              (current.totalLbs / nextClub.threshold) * 100;
+            html += `
+                        <div class="progress-indicator" style="margin-bottom: 1.5rem;">
+                            <div class="progress-header">
+                                <span class="progress-label">Progress to ${nextClub.name}</span>
+                                <span class="progress-value">${Math.round(remaining)} lbs to go</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill accent-blue" style="width: ${Math.min(progressPercent, 100)}%;"></div>
+                            </div>
+                        </div>
+                    `;
+          }
+
           achievedMilestones.forEach(([threshold, data]) => {
             const club = clubThresholds.find(
               (c) => c.threshold === parseInt(threshold),
@@ -2739,7 +3840,7 @@
                               <div class="milestone">
                                   <div class="milestone-date">${data.date}</div>
                                   <div class="milestone-text">
-                                      <span style="color: ${club.color};">${club.emoji} ${club.name}</span>
+                                      <span style="color: ${club.color};">${club.icon} ${club.name}</span>
                                       <span class="club-milestone-text">(S:${Math.round(data.squat)} B:${Math.round(data.bench)} D:${Math.round(data.deadlift)} = ${Math.round(data.totalLbs)} lbs)</span>
                                   </div>
                               </div>
@@ -2752,6 +3853,46 @@
         // Add volume and workout milestones
         if (milestones && milestones.length > 0) {
           html += `<div class="club-milestones"><h4>Volume & Workout Milestones</h4>`;
+
+          // Calculate next workout milestone (increments of 50)
+          const totalWorkouts = trainingData.summary.totalWorkouts;
+          const nextWorkoutMilestone = Math.ceil(totalWorkouts / 50) * 50;
+          const workoutProgress = (totalWorkouts / nextWorkoutMilestone) * 100;
+          const workoutsRemaining = nextWorkoutMilestone - totalWorkouts;
+
+          // Calculate next ton milestone (increments of 1000)
+          const totalTons = trainingData.summary.totalTons;
+          const nextTonMilestone = Math.ceil(totalTons / 1000) * 1000;
+          const tonProgress = (totalTons / nextTonMilestone) * 100;
+          const tonsRemaining = nextTonMilestone - totalTons;
+
+          // Show whichever milestone is closer to completion
+          if (workoutProgress > tonProgress) {
+            html += `
+              <div class="progress-indicator" style="margin-bottom: 1.5rem;">
+                <div class="progress-header">
+                  <span class="progress-label">Progress to ${nextWorkoutMilestone} workouts</span>
+                  <span class="progress-value">${workoutsRemaining} to go</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill accent-blue" style="width: ${Math.min(workoutProgress, 100)}%;"></div>
+                </div>
+              </div>
+            `;
+          } else {
+            html += `
+              <div class="progress-indicator" style="margin-bottom: 1.5rem;">
+                <div class="progress-header">
+                  <span class="progress-label">Progress to ${nextTonMilestone.toLocaleString()} tons</span>
+                  <span class="progress-value">${Math.round(tonsRemaining).toLocaleString()} to go</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill accent-blue" style="width: ${Math.min(tonProgress, 100)}%;"></div>
+                </div>
+              </div>
+            `;
+          }
+
           [...milestones]
             .reverse()
             .slice(0, 10)
@@ -2785,7 +3926,7 @@
         };
 
         html += `<div class="chart-container">`;
-        html += `<h3>🏅 Plate Milestones</h3>`;
+        html += `<h3><i class="fa-solid fa-medal"></i> Plate Milestones</h3>`;
 
         html += `<div class="plate-grid">`;
 
@@ -2811,7 +3952,7 @@
             if (achieved) {
               html += `
                               <div class="plate-item">
-                                  <span class="plate-icon">✅</span>
+                                  <span class="plate-icon"><i class="fa-solid fa-check"></i></span>
                                   <span class="plate-label">${plateLabel}</span>
                                   <span class="plate-date">${achieved.date}</span>
                               </div>
@@ -2819,7 +3960,7 @@
             } else {
               html += `
                               <div class="plate-item unachieved">
-                                  <span class="plate-icon">⬜</span>
+                                  <span class="plate-icon"><i class="fa-regular fa-square"></i></span>
                                   <span class="plate-label text-muted-color">${plateLabel}</span>
                                   <span class="plate-date">—</span>
                               </div>
@@ -2840,7 +3981,7 @@
 
         let html = '';
         html += `<div class="chart-container">`;
-        html += `<h3 class="section-title">🏆 All-Time PRs</h3>`;
+        html += `<h3 class="section-title"><i class="fa-solid fa-trophy"></i> All-Time PRs</h3>`;
 
         html += `<div class="grid-2col">`;
 
@@ -2894,6 +4035,158 @@
         return html;
       }
 
+      function renderPRTimeline() {
+        const container = document.getElementById('prTimeline');
+        if (!trainingData.bigThreeE1RM) {
+          container.innerHTML =
+            '<p class="text-muted-color">No PR data available</p>';
+          return;
+        }
+
+        // Only track 3+ plate milestones (skip 135/225)
+        const plateMilestones = [315, 405, 495];
+        const events = [];
+        const lifts = ['squat', 'bench', 'deadlift', 'ohp'];
+        const liftNames = {
+          squat: 'Squat',
+          bench: 'Bench',
+          deadlift: 'Deadlift',
+          ohp: 'OHP',
+        };
+
+        lifts.forEach((lift) => {
+          const liftData = trainingData.bigThreeE1RM[lift];
+          if (!liftData?.e1rmHistory?.length) return;
+
+          const history = liftData.e1rmHistory;
+          const achieved = new Set();
+          let maxE1RM = 0;
+
+          // Find 3+ plate milestones only
+          history.forEach((entry) => {
+            const e1rm = getVolume(entry.e1rmLbs, entry.e1rmKg);
+            if (e1rm > maxE1RM) {
+              const lbs = Math.round(entry.e1rmLbs);
+              plateMilestones.forEach((plate) => {
+                if (lbs >= plate && !achieved.has(plate)) {
+                  events.push({
+                    date: new Date(entry.date),
+                    lift,
+                    liftName: liftNames[lift],
+                    e1rmLbs: lbs,
+                    e1rmKg: Math.round(entry.e1rmKg),
+                    milestone: `${plate} lb`,
+                    type: 'plate',
+                    plateValue: plate,
+                  });
+                  achieved.add(plate);
+                }
+              });
+              maxE1RM = e1rm;
+            }
+          });
+
+          // Add peak PR for this lift
+          const peak = history.reduce((max, p) =>
+            getVolume(p.e1rmLbs, p.e1rmKg) > getVolume(max.e1rmLbs, max.e1rmKg)
+              ? p
+              : max,
+          );
+          events.push({
+            date: new Date(peak.date),
+            lift,
+            liftName: liftNames[lift],
+            e1rmLbs: Math.round(peak.e1rmLbs),
+            e1rmKg: Math.round(peak.e1rmKg),
+            milestone: 'All-Time Best',
+            type: 'peak',
+          });
+        });
+
+        // Add total club milestones (1000lb+)
+        const clubs = trainingData.powerliftingTotals?.clubMilestones || {};
+        const significantClubs = [1000, 1100, 1200, 1300, 1400, 1500];
+
+        Object.entries(clubs).forEach(([threshold, data]) => {
+          const thresholdNum = parseInt(threshold);
+          if (significantClubs.includes(thresholdNum) && data) {
+            events.push({
+              date: new Date(data.date),
+              lift: 'total',
+              liftName: 'Total',
+              e1rmLbs: Math.round(data.totalLbs),
+              e1rmKg: Math.round(data.totalLbs * 0.453592),
+              milestone: `${thresholdNum} lb Club`,
+              type: 'club',
+              clubData: data,
+            });
+          }
+        });
+
+        if (events.length === 0) {
+          container.innerHTML =
+            '<p class="text-muted-color">No significant PR events found</p>';
+          return;
+        }
+
+        // Sort newest first (descending by date)
+        events.sort((a, b) => b.date - a.date);
+
+        // Build clean vertical list HTML
+        let html = '<div class="pr-timeline-list">';
+
+        events.forEach((event) => {
+          const weight = currentUnit === 'lbs' ? event.e1rmLbs : event.e1rmKg;
+          const dateStr = event.date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          });
+
+          // Determine visual elements based on event type
+          let icon, typeLabel, cardClass;
+          if (event.type === 'peak') {
+            icon = '<i class="fa-solid fa-star"></i>';
+            typeLabel = 'Peak PR';
+            cardClass = 'pr-event-peak';
+          } else if (event.type === 'club') {
+            icon = '<i class="fa-solid fa-trophy"></i>';
+            typeLabel = 'Total Club';
+            cardClass = 'pr-event-club';
+          } else {
+            icon = '<i class="fa-solid fa-weight-hanging"></i>';
+            typeLabel = 'Plate Milestone';
+            cardClass = 'pr-event-plate';
+          }
+
+          // Use lift color for styling, gold for club milestones
+          const colorVar =
+            event.lift === 'total' ? '--accent-gold' : `--lift-${event.lift}`;
+
+          html += `
+            <div class="pr-event-card ${cardClass}" style="--event-color: var(${colorVar});">
+              <div class="pr-event-indicator">
+                <span class="pr-event-icon">${icon}</span>
+              </div>
+              <div class="pr-event-content">
+                <div class="pr-event-header">
+                  <span class="pr-event-lift">${event.liftName}</span>
+                  <span class="pr-event-type">${typeLabel}</span>
+                </div>
+                <div class="pr-event-details">
+                  <span class="pr-event-milestone">${event.milestone}</span>
+                  <span class="pr-event-weight">${weight} ${currentUnit}</span>
+                </div>
+              </div>
+              <div class="pr-event-date">${dateStr}</div>
+            </div>
+          `;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
+      }
+
       function renderPRsAndClubs() {
         const container = document.getElementById('prsClubsContent');
 
@@ -2911,306 +4204,6 @@
         html += renderPowerliftingTotals();
         html += renderPlateMilestones();
         html += renderAllTimePRs();
-        container.innerHTML = html;
-      }
-
-      function renderBarTravelOLD() {
-        const { barTravel } = trainingData;
-        const container = document.getElementById('barTravelStats');
-
-        if (!barTravel) {
-          const current = powerliftingTotals.current;
-          const peak = powerliftingTotals.peak;
-          const clubs = powerliftingTotals.clubMilestones || {};
-
-          const totalValue =
-            currentUnit === 'lbs' ? current.totalLbs : current.totalKg;
-          const peakValue = peak
-            ? currentUnit === 'lbs'
-              ? peak.totalLbs
-              : peak.totalKg
-            : totalValue;
-          const squatValue =
-            currentUnit === 'lbs'
-              ? current.squatE1rm
-              : Math.round(current.squatE1rm * 0.453592);
-          const benchValue =
-            currentUnit === 'lbs'
-              ? current.benchE1rm
-              : Math.round(current.benchE1rm * 0.453592);
-          const deadliftValue =
-            currentUnit === 'lbs'
-              ? current.deadliftE1rm
-              : Math.round(current.deadliftE1rm * 0.453592);
-
-          // Determine club status
-          const clubThresholds = [
-            {
-              threshold: 1500,
-              name: '1500 lb Club',
-              color: '#ffd700',
-              emoji: '👑',
-            },
-            {
-              threshold: 1400,
-              name: '1400 lb Club',
-              color: '#e6b800',
-              emoji: '👑',
-            },
-            {
-              threshold: 1300,
-              name: '1300 lb Club',
-              color: '#d4af37',
-              emoji: '💪',
-            },
-            {
-              threshold: 1200,
-              name: '1200 lb Club',
-              color: '#c0c0c0',
-              emoji: '💪',
-            },
-            {
-              threshold: 1100,
-              name: '1100 lb Club',
-              color: '#b8860b',
-              emoji: '🏆',
-            },
-            {
-              threshold: 1000,
-              name: '1000 lb Club',
-              color: '#cd7f32',
-              emoji: '🏆',
-            },
-            {
-              threshold: 750,
-              name: '750 lb Club',
-              color: '#4a9eff',
-              emoji: '💎',
-            },
-            {
-              threshold: 500,
-              name: '500 lb Club',
-              color: '#51cf66',
-              emoji: '⭐',
-            },
-          ];
-
-          const achievedClub = clubThresholds.find(
-            (c) => current.totalLbs >= c.threshold,
-          );
-          const nextClub = clubThresholds
-            .slice()
-            .reverse()
-            .find((c) => current.totalLbs < c.threshold);
-
-          html += `<div class="chart-container">`;
-          html += `<h3 class="total-header">
-                    ${achievedClub ? achievedClub.emoji : '🎯'} Powerlifting Total (S+B+D)
-                </h3>`;
-
-          // Current total display
-          html += `<div class="lift-stats-grid">`;
-
-          html += `
-                    <div>
-                        <div class="stat-mini-label">Current Total</div>
-                        <div class="stat-mini-value large" style="color: ${achievedClub ? achievedClub.color : '#e0e0e0'};">${Math.round(totalValue)} ${currentUnit}</div>
-                        ${achievedClub ? `<div class="stat-mini-detail" style="color: ${achievedClub.color};">${achievedClub.name}</div>` : ''}
-                    </div>
-                    <div>
-                        <div class="stat-mini-label">Squat e1RM</div>
-                        <div class="stat-mini-value accent-blue">${Math.round(squatValue)} ${currentUnit}</div>
-                    </div>
-                    <div>
-                        <div class="stat-mini-label">Bench e1RM</div>
-                        <div class="stat-mini-value accent-red">${Math.round(benchValue)} ${currentUnit}</div>
-                    </div>
-                    <div>
-                        <div class="stat-mini-label">Deadlift e1RM</div>
-                        <div class="stat-mini-value accent-green">${Math.round(deadliftValue)} ${currentUnit}</div>
-                    </div>
-                </div>`;
-
-          // Next club progress
-          if (nextClub) {
-            const remaining = nextClub.threshold - current.totalLbs;
-            const progressPercent =
-              (current.totalLbs / nextClub.threshold) * 100;
-            html += `
-                        <div class="progress-indicator">
-                            <div class="progress-header">
-                                <span class="progress-label">Progress to ${nextClub.name}</span>
-                                <span class="progress-value">${Math.round(remaining)} lbs to go</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill accent-blue" style="width: ${Math.min(progressPercent, 100)}%;"></div>
-                            </div>
-                        </div>
-                    `;
-          }
-
-          // Club milestones achieved
-          const achievedMilestones = Object.entries(clubs).sort(
-            (a, b) => parseInt(b[0]) - parseInt(a[0]),
-          );
-          if (achievedMilestones.length > 0) {
-            html += `<div class="club-milestones"><h4>Club Milestones Achieved</h4>`;
-            achievedMilestones.forEach(([threshold, data]) => {
-              const club = clubThresholds.find(
-                (c) => c.threshold === parseInt(threshold),
-              );
-              if (club && data) {
-                html += `
-                                <div class="milestone">
-                                    <div class="milestone-date">${data.date}</div>
-                                    <div class="milestone-text">
-                                        <span style="color: ${club.color};">${club.emoji} ${club.name}</span>
-                                        <span class="club-milestone-text">(S:${Math.round(data.squat)} B:${Math.round(data.bench)} D:${Math.round(data.deadlift)} = ${Math.round(data.totalLbs)} lbs)</span>
-                                    </div>
-                                </div>
-                            `;
-              }
-            });
-            html += `</div>`;
-          }
-
-          // Add volume and workout milestones
-          const { milestones, summary } = trainingData;
-          if (milestones && milestones.length > 0) {
-            html += `<div class="club-milestones"><h4>Volume & Workout Milestones</h4>`;
-            [...milestones]
-              .reverse()
-              .slice(0, 10)
-              .forEach((m) => {
-                html += `
-                <div class="milestone">
-                  <div class="milestone-date">${m.date}</div>
-                  <div class="milestone-text">${m.icon} ${m.milestone}</div>
-                </div>
-              `;
-              });
-            html += `</div>`;
-          }
-
-          html += `</div>`;
-        }
-
-        // Plate Milestones Section
-        if (plateMilestones && Object.keys(plateMilestones).length > 0) {
-          const plateLabels = {
-            1: '1 Plate (135)',
-            2: '2 Plates (225)',
-            3: '3 Plates (315)',
-            4: '4 Plates (405)',
-            5: '5 Plates (495)',
-          };
-
-          html += `<div class="chart-container">`;
-          html += `<h3>🏅 Plate Milestones</h3>`;
-
-          html += `<div class="plate-grid">`;
-
-          LIFT_ORDER.forEach((lift) => {
-            const config = LIFT_CONFIG[lift];
-            const liftData = plateMilestones[lift] || {};
-            const maxPlates = Math.max(...Object.keys(liftData).map(Number), 0);
-
-            html += `<div class="lift-card lift-card-${lift}">`;
-            html += `<h4>${config.name}</h4>`;
-
-            [1, 2, 3, 4, 5].forEach((plates) => {
-              const achieved = liftData[plates];
-              const plateWeight =
-                currentUnit === 'lbs'
-                  ? plates * 90 + 45
-                  : Math.round((plates * 90 + 45) * 0.453592);
-              const plateLabel =
-                currentUnit === 'lbs'
-                  ? `${plates} plate${plates > 1 ? 's' : ''} (${plates * 90 + 45})`
-                  : `${plates} plate${plates > 1 ? 's' : ''} (${plateWeight}kg)`;
-
-              if (achieved) {
-                html += `
-                                <div class="plate-item">
-                                    <span class="plate-icon">✅</span>
-                                    <span class="plate-label">${plateLabel}</span>
-                                    <span class="plate-date">${achieved.date}</span>
-                                </div>
-                            `;
-              } else {
-                html += `
-                                <div class="plate-item unachieved">
-                                    <span class="plate-icon">⬜</span>
-                                    <span class="plate-label" style="color: var(--text-muted);">${plateLabel}</span>
-                                    <span class="plate-date">—</span>
-                                </div>
-                            `;
-              }
-            });
-
-            html += `</div>`;
-          });
-
-          html += `</div></div>`;
-        }
-
-        // All-Time PRs Section
-        if (allTimePRs && Object.keys(allTimePRs).length > 0) {
-          html += `<div class="chart-container">`;
-          html += `<h3 class="section-title">🏆 All-Time PRs</h3>`;
-
-          html += `<div class="grid-2col">`;
-
-          LIFT_ORDER.forEach((lift) => {
-            const config = LIFT_CONFIG[lift];
-            const liftData = allTimePRs[lift];
-            if (!liftData) return;
-
-            const maxEver = liftData.maxEver;
-            const bestE1rm = liftData.bestE1rm;
-            const repPRs = liftData.repPRs || {};
-
-            html += `<div class="lift-card lift-card-${lift}">`;
-            html += `<h4>${config.name}</h4>`;
-
-            // Best e1RM
-            if (bestE1rm) {
-              const e1rmValue =
-                currentUnit === 'lbs' ? bestE1rm.e1rmLbs : bestE1rm.e1rmKg;
-              html += `
-                            <div style="background: var(--bg-tertiary); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center;">
-                                <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Best e1RM</div>
-                                <div style="font-size: 1.75rem; font-weight: 700;">${Math.round(e1rmValue)} ${currentUnit}</div>
-                            </div>
-                        `;
-            }
-
-            // Rep PRs table
-            const sortedReps = Object.keys(repPRs)
-              .map(Number)
-              .sort((a, b) => a - b);
-            if (sortedReps.length > 0) {
-              html += `<div style="font-size: 0.875rem;">`;
-              sortedReps.forEach((reps) => {
-                const pr = repPRs[reps];
-                const weight =
-                  currentUnit === 'lbs' ? pr.weightLbs : pr.weightKg;
-                html += `
-                                <div style="display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px solid #1a1a1a;">
-                                    <span style="color: #888;">${reps}RM</span>
-                                    <span style="color: #e0e0e0; font-weight: 600;">${Math.round(weight)} ${currentUnit}</span>
-                                </div>
-                            `;
-              });
-              html += `</div>`;
-            }
-
-            html += `</div>`;
-          });
-
-          html += `</div></div>`;
-        }
-
         container.innerHTML = html;
       }
 
@@ -3245,6 +4238,7 @@
         const padding = { top: 40, right: 40, bottom: 80, left: 80 };
 
         const maxVolume = Math.max(...data.map((d) => d.volume));
+        const minVolume = Math.min(...data.map((d) => d.volume));
         const barWidth = (width - padding.left - padding.right) / data.length;
 
         const svg = document.createElementNS(
@@ -3252,6 +4246,40 @@
           'svg',
         );
         svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+        // Define gradient for bars
+        const defs = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'defs',
+        );
+        const gradient = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'linearGradient',
+        );
+        gradient.setAttribute('id', 'barGradient');
+        gradient.setAttribute('x1', '0%');
+        gradient.setAttribute('x2', '0%');
+        gradient.setAttribute('y1', '100%');
+        gradient.setAttribute('y2', '0%');
+
+        const stop1 = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'stop',
+        );
+        stop1.setAttribute('offset', '0%');
+        stop1.setAttribute('style', 'stop-color:#2196F3;stop-opacity:1');
+
+        const stop2 = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'stop',
+        );
+        stop2.setAttribute('offset', '100%');
+        stop2.setAttribute('style', 'stop-color:#64B5F6;stop-opacity:1');
+
+        gradient.appendChild(stop1);
+        gradient.appendChild(stop2);
+        defs.appendChild(gradient);
+        svg.appendChild(defs);
 
         // Grid lines
         for (let i = 0; i <= 5; i++) {
@@ -3265,7 +4293,7 @@
           line.setAttribute('y1', y);
           line.setAttribute('x2', width - padding.right);
           line.setAttribute('y2', y);
-          line.setAttribute('stroke', '#1a1a1a');
+          line.setAttribute('stroke', '#3a3a3a');
           svg.appendChild(line);
         }
 
@@ -3275,17 +4303,59 @@
             (d.volume / maxVolume) * (height - padding.top - padding.bottom);
           const y = height - padding.bottom - barHeight;
 
-          // Bar (with reduced opacity if very few workouts)
+          // Calculate intensity-based color
+          const volumeIntensity =
+            (d.volume - minVolume) / (maxVolume - minVolume);
+          const baseColor = d.count < 10 ? 0.4 : 1.0; // Reduced opacity for rare days
+          const colorIntensity = Math.max(0.3, volumeIntensity) * baseColor;
+
+          // Create color based on intensity (darker blue for low, brighter for high)
+          const r = Math.floor(66 + (100 - 66) * colorIntensity);
+          const g = Math.floor(165 + (181 - 165) * colorIntensity);
+          const b = Math.floor(245 + (246 - 245) * colorIntensity);
+          const fillColor = `rgba(${r}, ${g}, ${b}, ${baseColor})`;
+
+          // Bar with intensity-based coloring
           const rect = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'rect',
           );
           rect.setAttribute('x', x + barWidth * 0.1);
-          rect.setAttribute('y', y);
+          rect.setAttribute('y', height - padding.bottom); // Start from bottom for animation
           rect.setAttribute('width', barWidth * 0.8);
-          rect.setAttribute('height', barHeight);
-          // Use reduced opacity for days with < 10 workouts
-          rect.setAttribute('fill', d.count < 10 ? '#4a9eff66' : '#4a9eff');
+          rect.setAttribute('height', 0); // Start with 0 height for animation
+          rect.setAttribute(
+            'fill',
+            d.count < 10 ? '#4a9eff66' : 'url(#barGradient)',
+          );
+          rect.setAttribute('rx', '4'); // Rounded corners
+          rect.setAttribute('ry', '4');
+
+          // Animate bar growth
+          const animate = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'animate',
+          );
+          animate.setAttribute('attributeName', 'height');
+          animate.setAttribute('from', '0');
+          animate.setAttribute('to', barHeight);
+          animate.setAttribute('begin', `${i * 0.1}s`);
+          animate.setAttribute('dur', '0.6s');
+          animate.setAttribute('fill', 'freeze');
+
+          const animateY = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'animate',
+          );
+          animateY.setAttribute('attributeName', 'y');
+          animateY.setAttribute('from', height - padding.bottom);
+          animateY.setAttribute('to', y);
+          animateY.setAttribute('begin', `${i * 0.1}s`);
+          animateY.setAttribute('dur', '0.6s');
+          animateY.setAttribute('fill', 'freeze');
+
+          rect.appendChild(animate);
+          rect.appendChild(animateY);
 
           // Add hover effect
           rect.addEventListener('mouseenter', (e) => {
@@ -3363,21 +4433,36 @@
           return;
         }
 
-        container.innerHTML = programs
-          .map(
-            (program) => `
-                <div class="program-card">
-                    <div class="program-name">${program.name}</div>
-                    <div>${program.startDate} → ${program.endDate}</div>
-                    <div class="program-stats">
-                        <span>${program.workouts} workouts</span>
-                        <span>${formatVolume(program.totalVolumeLbs, program.totalVolumeKg)} total volume</span>
-                        <span style="color: #ffd700;">${program.prsSet || 0} PRs set</span>
-                    </div>
+        let html = '<div class="history-timeline-list">';
+
+        programs.forEach((program) => {
+          const dateRange = `${program.startDate} → ${program.endDate}`;
+          const prs = program.prsSet || 0;
+          const prColor = prs > 0 ? '#ffd700' : 'var(--text-muted)';
+
+          html += `
+            <div class="history-event-card" style="--event-color: var(--accent-purple);">
+              <div class="history-event-indicator">
+                <span class="history-event-icon"><i class="fa-solid fa-clipboard"></i></span>
+              </div>
+              <div class="history-event-content">
+                <div class="history-event-header">
+                  <span class="history-event-title">${program.name}</span>
+                  <span class="history-event-type">Program</span>
                 </div>
-            `,
-          )
-          .join('');
+                <div class="history-event-details">
+                  <span class="history-event-stat">${program.workouts} workouts</span>
+                  <span class="history-event-stat">${formatVolume(program.totalVolumeLbs, program.totalVolumeKg)} total</span>
+                  <span class="history-event-stat" style="color: ${prColor};">${prs} PRs</span>
+                </div>
+              </div>
+              <div class="history-event-date">${dateRange}</div>
+            </div>
+          `;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
       }
 
       function renderNotableWorkouts() {
@@ -3390,65 +4475,61 @@
           return;
         }
 
-        // Group by category
-        const volumeRecords = notableWorkouts.filter(
-          (w) => w.category === 'volume',
-        );
-        const setRecords = notableWorkouts.filter((w) => w.category === 'sets');
-        const comebacks = notableWorkouts.filter(
-          (w) => w.category === 'comeback',
+        // Sort by date (most recent first)
+        const sortedWorkouts = [...notableWorkouts].sort(
+          (a, b) => new Date(b.date) - new Date(a.date),
         );
 
-        let html = '';
+        let html = '<div class="history-timeline-list">';
 
-        // Volume Records
-        if (volumeRecords.length > 0) {
-          html += '<h3 class="mb-md">🏆 Volume Records</h3>';
-          volumeRecords.forEach((workout) => {
-            html += `
-              <div class="notable-workout">
-                <div class="notable-date">${workout.date}</div>
-                <div class="font-weight-600">${workout.reason}</div>
-                <div class="text-muted-color mt-xs">
-                  ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
+        sortedWorkouts.forEach((workout) => {
+          // Determine icon, color, and label based on category
+          let icon, color, label;
+          if (workout.category === 'volume') {
+            icon = '<i class="fa-solid fa-trophy"></i>';
+            color = 'var(--accent-blue)';
+            label = 'Volume Record';
+          } else if (workout.category === 'sets') {
+            icon = '<i class="fa-solid fa-dumbbell"></i>';
+            color = '#51cf66';
+            label = 'Set Record';
+          } else if (workout.category === 'comeback') {
+            icon = '<i class="fa-solid fa-fire"></i>';
+            color = '#ffd93d';
+            label = 'Comeback';
+          } else {
+            icon = '<i class="fa-solid fa-star"></i>';
+            color = 'var(--text-muted)';
+            label = 'Notable';
+          }
+
+          const dateStr = new Date(workout.date).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          });
+
+          html += `
+            <div class="history-event-card" style="--event-color: ${color};">
+              <div class="history-event-indicator">
+                <span class="history-event-icon">${icon}</span>
+              </div>
+              <div class="history-event-content">
+                <div class="history-event-header">
+                  <span class="history-event-title">${workout.reason}</span>
+                  <span class="history-event-type">${label}</span>
+                </div>
+                <div class="history-event-details">
+                  <span class="history-event-stat">${formatVolume(workout.volumeLbs, workout.volumeKg)}</span>
+                  <span class="history-event-stat">${workout.details}</span>
                 </div>
               </div>
-            `;
-          });
-        }
+              <div class="history-event-date">${dateStr}</div>
+            </div>
+          `;
+        });
 
-        // Set Records
-        if (setRecords.length > 0) {
-          html += '<h3 class="mt-xl mb-md">💪 Set Records</h3>';
-          setRecords.forEach((workout) => {
-            html += `
-              <div class="notable-workout" style="border-left-color: #51cf66;">
-                <div class="notable-date">${workout.date}</div>
-                <div class="font-weight-600">${workout.reason}</div>
-                <div class="text-muted-color mt-xs">
-                  ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
-                </div>
-              </div>
-            `;
-          });
-        }
-
-        // Comebacks
-        if (comebacks.length > 0) {
-          html += '<h3 class="mt-xl mb-md">🔥 Comeback Workouts</h3>';
-          comebacks.forEach((workout) => {
-            html += `
-              <div class="notable-workout" style="border-left-color: #ffd93d;">
-                <div class="notable-date">${workout.date}</div>
-                <div class="font-weight-600">${workout.reason}</div>
-                <div class="text-muted-color mt-xs">
-                  ${formatVolume(workout.volumeLbs, workout.volumeKg)} • ${workout.details}
-                </div>
-              </div>
-            `;
-          });
-        }
-
+        html += '</div>';
         container.innerHTML = html;
       }
 
@@ -3474,8 +4555,24 @@
         });
       }
 
-      window.addEventListener('scroll', updateActiveNav);
-      window.addEventListener('load', updateActiveNav);
+      // Add shadow to nav when scrolled
+      function updateNavShadow() {
+        const nav = document.getElementById('mainNav');
+        if (window.scrollY > 0) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', () => {
+        updateActiveNav();
+        updateNavShadow();
+      });
+      window.addEventListener('load', () => {
+        updateActiveNav();
+        updateNavShadow();
+      });
 
       // Initialize on page load
       init();
