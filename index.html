@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Strength Training Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
@@ -25,7 +28,7 @@
 
         /* Accent colors - aligned with blog theme */
         --accent-blue: #42a5f5;
-        --accent-green: #4CAF50;
+        --accent-green: #4caf50;
         --accent-red: #ef5350;
         --accent-yellow: #ffc107;
         --accent-gold: #ffd700;
@@ -33,7 +36,7 @@
         /* Lift-specific colors - slightly adjusted for cohesion */
         --lift-squat: #42a5f5;
         --lift-bench: #ef5350;
-        --lift-deadlift: #4CAF50;
+        --lift-deadlift: #4caf50;
         --lift-ohp: #ffc107;
 
         /* Border colors */
@@ -64,7 +67,9 @@
         padding: var(--spacing-lg);
         text-align: left;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
       .lift-card:hover {
@@ -334,7 +339,11 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
         border-radius: 6px;
       }
 
@@ -499,7 +508,13 @@
       }
 
       section:nth-child(even) {
-        background: linear-gradient(to bottom, transparent, rgba(42, 42, 42, 0.3) 10%, rgba(42, 42, 42, 0.3) 90%, transparent);
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(42, 42, 42, 0.3) 10%,
+          rgba(42, 42, 42, 0.3) 90%,
+          transparent
+        );
         margin-left: calc(var(--spacing-xl) * -1);
         margin-right: calc(var(--spacing-xl) * -1);
         padding-left: var(--spacing-xl);
@@ -550,7 +565,9 @@
         border-radius: var(--radius-md);
         border: 1px solid var(--border-primary);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
       .stat-card:hover {
@@ -778,7 +795,11 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
       }
 
       .progress-fill.accent-blue {
@@ -883,7 +904,9 @@
         border-radius: var(--radius-md);
         border-left: 4px solid var(--event-color);
         padding: var(--spacing-md);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
       .history-event-card:hover {
@@ -1057,7 +1080,9 @@
         align-items: center;
         justify-content: center;
         z-index: 9999;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
       }
 
       .loading-overlay.hidden {
@@ -1075,7 +1100,9 @@
       }
 
       @keyframes spin {
-        to { transform: rotate(360deg); }
+        to {
+          transform: rotate(360deg);
+        }
       }
 
       .loading-text {
@@ -1238,7 +1265,9 @@
         border-radius: var(--radius-md);
         border-left: 4px solid var(--event-color);
         padding: var(--spacing-md);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
       .pr-event-card:hover {
@@ -1366,22 +1395,51 @@
     <nav id="mainNav" role="navigation" aria-label="Dashboard navigation">
       <div class="nav-container">
         <ul class="nav-links">
-          <li><a href="#overview" aria-label="Navigate to Overview section">Overview</a></li>
-          <li><a href="#volume" aria-label="Navigate to Volume section">Volume</a></li>
-          <li><a href="#strength" aria-label="Navigate to Strength section">Strength</a></li>
-          <li><a href="#milestones" aria-label="Navigate to Milestones section">Milestones</a></li>
-          <li><a href="#patterns" aria-label="Navigate to Patterns section">Patterns</a></li>
-          <li><a href="#history" aria-label="Navigate to History section">History</a></li>
+          <li>
+            <a href="#overview" aria-label="Navigate to Overview section"
+              >Overview</a
+            >
+          </li>
+          <li>
+            <a href="#volume" aria-label="Navigate to Volume section">Volume</a>
+          </li>
+          <li>
+            <a href="#strength" aria-label="Navigate to Strength section"
+              >Strength</a
+            >
+          </li>
+          <li>
+            <a href="#milestones" aria-label="Navigate to Milestones section"
+              >Milestones</a
+            >
+          </li>
+          <li>
+            <a href="#patterns" aria-label="Navigate to Patterns section"
+              >Patterns</a
+            >
+          </li>
+          <li>
+            <a href="#history" aria-label="Navigate to History section"
+              >History</a
+            >
+          </li>
         </ul>
         <div class="nav-controls">
-          <a href="/" class="back-link" aria-label="Return to blog homepage">← Back to Blog</a>
-          <button class="unit-toggle" id="unitToggle" aria-label="Toggle between pounds and kilograms">lbs / kg</button>
+          <a href="/" class="back-link" aria-label="Return to blog homepage"
+            >← Back to Blog</a
+          >
+          <button
+            class="unit-toggle"
+            id="unitToggle"
+            aria-label="Toggle between pounds and kilograms"
+          >
+            lbs / kg
+          </button>
         </div>
       </div>
     </nav>
 
     <div class="container">
-
       <section>
         <div class="foreword">
           <p>
@@ -1410,16 +1468,45 @@
         </div>
         <div class="chart-container">
           <h3>Volume Over Time</h3>
-          <div class="view-toggle" role="group" aria-label="Volume chart time period selector">
-            <button data-view="weekly" aria-label="Show weekly volume data">Weekly</button>
-            <button data-view="monthly" aria-label="Show monthly volume data">Monthly</button>
-            <button data-view="yearly" aria-label="Show yearly volume data">Yearly</button>
-            <button data-view="cumulative" aria-label="Show cumulative volume data">Cumulative</button>
+          <div
+            class="view-toggle"
+            role="group"
+            aria-label="Volume chart time period selector"
+          >
+            <button data-view="weekly" aria-label="Show weekly volume data">
+              Weekly
+            </button>
+            <button data-view="monthly" aria-label="Show monthly volume data">
+              Monthly
+            </button>
+            <button data-view="yearly" aria-label="Show yearly volume data">
+              Yearly
+            </button>
+            <button
+              data-view="cumulative"
+              aria-label="Show cumulative volume data"
+            >
+              Cumulative
+            </button>
           </div>
-          <div id="stackedToggleContainer" class="view-toggle" style="margin-top: 0.5rem;">
-            <button id="stackedToggle" aria-label="Toggle between stacked and overlaid chart view"><i class="fa-solid fa-chart-column"></i> Show Stacked</button>
+          <div
+            id="stackedToggleContainer"
+            class="view-toggle"
+            style="margin-top: 0.5rem"
+          >
+            <button
+              id="stackedToggle"
+              aria-label="Toggle between stacked and overlaid chart view"
+            >
+              <i class="fa-solid fa-chart-column"></i> Show Stacked
+            </button>
           </div>
-          <canvas id="annualVolumeChart" style="max-height: 400px" role="img" aria-label="Volume over time chart"></canvas>
+          <canvas
+            id="annualVolumeChart"
+            style="max-height: 400px"
+            role="img"
+            aria-label="Volume over time chart"
+          ></canvas>
         </div>
         <div class="chart-container">
           <h3>Workout Calendar</h3>
@@ -1467,9 +1554,12 @@
           <h3>Exercises by Volume</h3>
           <div id="exerciseVolumeChart"></div>
         </div>
-        <div class="chart-container" style="max-width: 500px; margin-left: auto; margin-right: auto;">
+        <div
+          class="chart-container"
+          style="max-width: 500px; margin-left: auto; margin-right: auto"
+        >
           <h3>Volume by Lift Type</h3>
-          <canvas id="volumeDonutChart" style="max-height: 400px;"></canvas>
+          <canvas id="volumeDonutChart" style="max-height: 400px"></canvas>
         </div>
       </section>
 
@@ -1542,8 +1632,12 @@
       }
 
       function setupViewToggle() {
-        const buttons = document.querySelectorAll('.view-toggle button[data-view]');
-        const stackedContainer = document.getElementById('stackedToggleContainer');
+        const buttons = document.querySelectorAll(
+          '.view-toggle button[data-view]',
+        );
+        const stackedContainer = document.getElementById(
+          'stackedToggleContainer',
+        );
 
         // Update active state and toggle stacked button visibility
         function updateActiveButton() {
@@ -1553,7 +1647,8 @@
 
           // Hide stacked toggle for cumulative view (stacking doesn't make sense for cumulative data)
           if (stackedContainer) {
-            stackedContainer.style.display = volumeView === 'cumulative' ? 'none' : '';
+            stackedContainer.style.display =
+              volumeView === 'cumulative' ? 'none' : '';
           }
         }
 
@@ -1575,7 +1670,9 @@
 
         function updateButtonState() {
           button.classList.toggle('active', volumeStacked);
-          button.innerHTML = volumeStacked ? '<i class="fa-solid fa-chart-column"></i> Show Overlaid' : '<i class="fa-solid fa-chart-column"></i> Show Stacked';
+          button.innerHTML = volumeStacked
+            ? '<i class="fa-solid fa-chart-column"></i> Show Overlaid'
+            : '<i class="fa-solid fa-chart-column"></i> Show Stacked';
         }
 
         updateButtonState();
@@ -1599,9 +1696,17 @@
 
       function calculateLiftVolumeTotals() {
         const totals = {};
-        for (const [lift, liftData] of Object.entries(trainingData.bigThreeVolume)) {
-          const totalLbs = liftData.dailyVolume.reduce((sum, d) => sum + (d.volumeLbs || 0), 0);
-          const totalKg = liftData.dailyVolume.reduce((sum, d) => sum + (d.volumeKg || 0), 0);
+        for (const [lift, liftData] of Object.entries(
+          trainingData.bigThreeVolume,
+        )) {
+          const totalLbs = liftData.dailyVolume.reduce(
+            (sum, d) => sum + (d.volumeLbs || 0),
+            0,
+          );
+          const totalKg = liftData.dailyVolume.reduce(
+            (sum, d) => sum + (d.volumeKg || 0),
+            0,
+          );
           totals[lift] = { volumeLbs: totalLbs, volumeKg: totalKg };
         }
         return totals;
@@ -1795,7 +1900,10 @@
         afterDraw(chart) {
           if (chart.config.type !== 'doughnut') return;
 
-          const { ctx, chartArea: { width, height } } = chart;
+          const {
+            ctx,
+            chartArea: { width, height },
+          } = chart;
           const total = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
 
           // Convert to tons (assuming lbs or kg input)
@@ -1812,7 +1920,7 @@
           ctx.fillStyle = CHART_COLORS.text;
           ctx.fillText('tons', width / 2, height / 2 + 15);
           ctx.restore();
-        }
+        },
       };
 
       function getBaseChartOptions(overrides = {}) {
@@ -2050,16 +2158,16 @@
           // Collect all unique x values
           const allXValues = new Set();
           liftDatasets.forEach(({ data }) => {
-            data.forEach(point => allXValues.add(point.x));
+            data.forEach((point) => allXValues.add(point.x));
           });
           const sortedXValues = Array.from(allXValues).sort();
 
           // Normalize each dataset to have all x values (fill missing with 0)
           liftDatasets.forEach(({ data }) => {
-            const dataMap = new Map(data.map(d => [d.x, d.y]));
-            const normalized = sortedXValues.map(x => ({
+            const dataMap = new Map(data.map((d) => [d.x, d.y]));
+            const normalized = sortedXValues.map((x) => ({
               x: x,
-              y: dataMap.get(x) || 0
+              y: dataMap.get(x) || 0,
             }));
             data.length = 0;
             data.push(...normalized);
@@ -2074,7 +2182,9 @@
               pointHoverRadius: isYearly ? 6 : 4,
               fill: useStacked,
               stack: useStacked ? 'volume' : undefined,
-              backgroundColor: useStacked ? config.color + '99' : config.color + '20',
+              backgroundColor: useStacked
+                ? config.color + '99'
+                : config.color + '20',
             }),
           );
         });
@@ -2090,13 +2200,16 @@
                 boxHeight: 12,
                 usePointStyle: false,
               },
-              onClick: function(e, legendItem, legend) {
+              onClick: function (e, legendItem, legend) {
                 const index = legendItem.datasetIndex;
                 const chart = legend.chart;
                 const meta = chart.getDatasetMeta(index);
 
                 // Toggle visibility
-                meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
+                meta.hidden =
+                  meta.hidden === null
+                    ? !chart.data.datasets[index].hidden
+                    : null;
                 chart.update();
               },
             },
@@ -2129,13 +2242,15 @@
                   }
                   return `${datasetLabel}: ${(volume / 1000).toFixed(1)}K ${currentUnit}`;
                 },
-                footer: useStacked ? function(tooltipItems) {
-                  let total = 0;
-                  tooltipItems.forEach(item => {
-                    total += item.parsed.y;
-                  });
-                  return `Total: ${(total / 1000).toFixed(1)}K ${currentUnit}`;
-                } : undefined,
+                footer: useStacked
+                  ? function (tooltipItems) {
+                      let total = 0;
+                      tooltipItems.forEach((item) => {
+                        total += item.parsed.y;
+                      });
+                      return `Total: ${(total / 1000).toFixed(1)}K ${currentUnit}`;
+                    }
+                  : undefined,
               },
             },
             x: {
@@ -2448,11 +2563,13 @@
       function showTooltip(e, date, volume, workouts) {
         const tooltip = document.getElementById('tooltip');
         const dateObj = new Date(date);
-        const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
+        const dayName = dateObj.toLocaleDateString('en-US', {
+          weekday: 'long',
+        });
         const formattedDate = dateObj.toLocaleDateString('en-US', {
           month: 'short',
           day: 'numeric',
-          year: 'numeric'
+          year: 'numeric',
         });
 
         tooltip.style.display = 'block';
@@ -2772,8 +2889,12 @@
         const lifts = ['squat', 'bench', 'deadlift', 'ohp'];
         const liftLabels = ['Squat', 'Bench', 'Deadlift', 'OHP'];
 
-        const bestData = lifts.map(lift => relativeStrength[lift]?.best?.multiple || 0);
-        const currentData = lifts.map(lift => relativeStrength[lift]?.current?.multiple || 0);
+        const bestData = lifts.map(
+          (lift) => relativeStrength[lift]?.best?.multiple || 0,
+        );
+        const currentData = lifts.map(
+          (lift) => relativeStrength[lift]?.current?.multiple || 0,
+        );
 
         // Get max value for better scaling (add 20% padding)
         const maxMultiple = Math.max(...bestData, 3);
@@ -2805,8 +2926,8 @@
                 pointHoverRadius: 7,
                 pointRadius: 5,
                 borderWidth: 3,
-              }
-            ]
+              },
+            ],
           },
           options: {
             responsive: true,
@@ -2820,7 +2941,7 @@
                   padding: 20,
                   font: { size: 14 },
                   usePointStyle: true,
-                }
+                },
               },
               tooltip: {
                 backgroundColor: CHART_COLORS.tooltipBg,
@@ -2832,11 +2953,11 @@
                 titleFont: { size: 14 },
                 bodyFont: { size: 13 },
                 callbacks: {
-                  label: function(context) {
+                  label: function (context) {
                     return `${context.dataset.label}: ${context.parsed.r.toFixed(2)}× BW`;
-                  }
-                }
-              }
+                  },
+                },
+              },
             },
             scales: {
               r: {
@@ -2847,21 +2968,21 @@
                   backdropColor: 'transparent',
                   stepSize: 0.5,
                   font: { size: 12 },
-                  callback: function(value) {
+                  callback: function (value) {
                     return value.toFixed(1) + '×';
-                  }
+                  },
                 },
                 grid: {
-                  color: CHART_COLORS.grid
+                  color: CHART_COLORS.grid,
                 },
                 pointLabels: {
                   color: CHART_COLORS.textBright,
                   font: { size: 15, weight: '600' },
-                  padding: 8
-                }
-              }
-            }
-          }
+                  padding: 8,
+                },
+              },
+            },
+          },
         });
       }
 
@@ -3352,10 +3473,10 @@
 
         // Define colors for Big 4 lifts
         const liftColors = {
-          'Squat': '#4a9eff',
+          Squat: '#4a9eff',
           'Bench Press': '#ff6b6b',
-          'Deadlift': '#51cf66',
-          'Overhead Press': '#ffd93d'
+          Deadlift: '#51cf66',
+          'Overhead Press': '#ffd93d',
         };
 
         const width = container.offsetWidth;
@@ -3396,7 +3517,10 @@
           rect.style.transition = 'opacity 0.2s';
 
           // Animate bar growth
-          const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+          const animate = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'animate',
+          );
           animate.setAttribute('attributeName', 'width');
           animate.setAttribute('from', '0');
           animate.setAttribute('to', barWidth);
@@ -3425,9 +3549,15 @@
           label.setAttribute('x', padding.left - 10);
           label.setAttribute('y', y + 17);
           label.setAttribute('text-anchor', 'end');
-          label.setAttribute('fill', liftColors[exercise.name] ? barColor : '#dadada');
+          label.setAttribute(
+            'fill',
+            liftColors[exercise.name] ? barColor : '#dadada',
+          );
           label.setAttribute('font-size', '12');
-          label.setAttribute('font-weight', liftColors[exercise.name] ? '600' : 'normal');
+          label.setAttribute(
+            'font-weight',
+            liftColors[exercise.name] ? '600' : 'normal',
+          );
           label.textContent = exercise.name;
           svg.appendChild(label);
 
@@ -3469,17 +3599,21 @@
 
         // Prepare data in LIFT_ORDER
         const chartData = {
-          labels: LIFT_ORDER.map(lift => LIFT_CONFIG[lift].name),
-          datasets: [{
-            data: LIFT_ORDER.map(lift =>
-              getVolume(totals[lift].volumeLbs, totals[lift].volumeKg)
-            ),
-            backgroundColor: LIFT_ORDER.map(lift => LIFT_CONFIG[lift].color),
-            borderWidth: 0,
-            hoverOffset: 8,
-            hoverBorderWidth: 2,
-            hoverBorderColor: CHART_COLORS.textBright
-          }]
+          labels: LIFT_ORDER.map((lift) => LIFT_CONFIG[lift].name),
+          datasets: [
+            {
+              data: LIFT_ORDER.map((lift) =>
+                getVolume(totals[lift].volumeLbs, totals[lift].volumeKg),
+              ),
+              backgroundColor: LIFT_ORDER.map(
+                (lift) => LIFT_CONFIG[lift].color,
+              ),
+              borderWidth: 0,
+              hoverOffset: 8,
+              hoverBorderWidth: 2,
+              hoverBorderColor: CHART_COLORS.textBright,
+            },
+          ],
         };
 
         new Chart(ctx, {
@@ -3498,8 +3632,8 @@
                   padding: 15,
                   font: { size: 12, family: 'system-ui' },
                   usePointStyle: true,
-                  pointStyle: 'circle'
-                }
+                  pointStyle: 'circle',
+                },
               },
               tooltip: {
                 enabled: true,
@@ -3511,19 +3645,22 @@
                 padding: 12,
                 displayColors: true,
                 callbacks: {
-                  label: function(context) {
+                  label: function (context) {
                     const label = context.label || '';
                     const value = context.parsed || 0;
-                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                    const total = context.dataset.data.reduce(
+                      (a, b) => a + b,
+                      0,
+                    );
                     const percentage = ((value / total) * 100).toFixed(1);
                     const formattedValue = value.toLocaleString();
                     return `${label}: ${formattedValue} ${currentUnit} (${percentage}%)`;
-                  }
-                }
-              }
-            }
+                  },
+                },
+              },
+            },
           },
-          plugins: [centerTextPlugin]
+          plugins: [centerTextPlugin],
         });
       }
 
@@ -3654,7 +3791,8 @@
           // Next club progress
           if (nextClub) {
             const remaining = nextClub.threshold - current.totalLbs;
-            const progressPercent = (current.totalLbs / nextClub.threshold) * 100;
+            const progressPercent =
+              (current.totalLbs / nextClub.threshold) * 100;
             html += `
                         <div class="progress-indicator" style="margin-bottom: 1.5rem;">
                             <div class="progress-header">
@@ -3875,7 +4013,8 @@
       function renderPRTimeline() {
         const container = document.getElementById('prTimeline');
         if (!trainingData.bigThreeE1RM) {
-          container.innerHTML = '<p class="text-muted-color">No PR data available</p>';
+          container.innerHTML =
+            '<p class="text-muted-color">No PR data available</p>';
           return;
         }
 
@@ -3883,9 +4022,14 @@
         const plateMilestones = [315, 405, 495];
         const events = [];
         const lifts = ['squat', 'bench', 'deadlift', 'ohp'];
-        const liftNames = { squat: 'Squat', bench: 'Bench', deadlift: 'Deadlift', ohp: 'OHP' };
+        const liftNames = {
+          squat: 'Squat',
+          bench: 'Bench',
+          deadlift: 'Deadlift',
+          ohp: 'OHP',
+        };
 
-        lifts.forEach(lift => {
+        lifts.forEach((lift) => {
           const liftData = trainingData.bigThreeE1RM[lift];
           if (!liftData?.e1rmHistory?.length) return;
 
@@ -3894,11 +4038,11 @@
           let maxE1RM = 0;
 
           // Find 3+ plate milestones only
-          history.forEach(entry => {
+          history.forEach((entry) => {
             const e1rm = getVolume(entry.e1rmLbs, entry.e1rmKg);
             if (e1rm > maxE1RM) {
               const lbs = Math.round(entry.e1rmLbs);
-              plateMilestones.forEach(plate => {
+              plateMilestones.forEach((plate) => {
                 if (lbs >= plate && !achieved.has(plate)) {
                   events.push({
                     date: new Date(entry.date),
@@ -3908,7 +4052,7 @@
                     e1rmKg: Math.round(entry.e1rmKg),
                     milestone: `${plate} lb`,
                     type: 'plate',
-                    plateValue: plate
+                    plateValue: plate,
                   });
                   achieved.add(plate);
                 }
@@ -3919,7 +4063,9 @@
 
           // Add peak PR for this lift
           const peak = history.reduce((max, p) =>
-            getVolume(p.e1rmLbs, p.e1rmKg) > getVolume(max.e1rmLbs, max.e1rmKg) ? p : max
+            getVolume(p.e1rmLbs, p.e1rmKg) > getVolume(max.e1rmLbs, max.e1rmKg)
+              ? p
+              : max,
           );
           events.push({
             date: new Date(peak.date),
@@ -3928,7 +4074,7 @@
             e1rmLbs: Math.round(peak.e1rmLbs),
             e1rmKg: Math.round(peak.e1rmKg),
             milestone: 'All-Time Best',
-            type: 'peak'
+            type: 'peak',
           });
         });
 
@@ -3947,13 +4093,14 @@
               e1rmKg: Math.round(data.totalLbs * 0.453592),
               milestone: `${thresholdNum} lb Club`,
               type: 'club',
-              clubData: data
+              clubData: data,
             });
           }
         });
 
         if (events.length === 0) {
-          container.innerHTML = '<p class="text-muted-color">No significant PR events found</p>';
+          container.innerHTML =
+            '<p class="text-muted-color">No significant PR events found</p>';
           return;
         }
 
@@ -3963,12 +4110,12 @@
         // Build clean vertical list HTML
         let html = '<div class="pr-timeline-list">';
 
-        events.forEach(event => {
+        events.forEach((event) => {
           const weight = currentUnit === 'lbs' ? event.e1rmLbs : event.e1rmKg;
           const dateStr = event.date.toLocaleDateString('en-US', {
             month: 'short',
             day: 'numeric',
-            year: 'numeric'
+            year: 'numeric',
           });
 
           // Determine visual elements based on event type
@@ -3988,9 +4135,8 @@
           }
 
           // Use lift color for styling, gold for club milestones
-          const colorVar = event.lift === 'total'
-            ? '--accent-gold'
-            : `--lift-${event.lift}`;
+          const colorVar =
+            event.lift === 'total' ? '--accent-gold' : `--lift-${event.lift}`;
 
           html += `
             <div class="pr-event-card ${cardClass}" style="--event-color: var(${colorVar});">
@@ -4036,7 +4182,6 @@
         container.innerHTML = html;
       }
 
-
       function renderDayOfWeekChart() {
         const { workoutsByDayOfWeek } = trainingData;
         const container = document.getElementById('dayOfWeekChart');
@@ -4078,19 +4223,31 @@
         svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
 
         // Define gradient for bars
-        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-        const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        const defs = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'defs',
+        );
+        const gradient = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'linearGradient',
+        );
         gradient.setAttribute('id', 'barGradient');
         gradient.setAttribute('x1', '0%');
         gradient.setAttribute('x2', '0%');
         gradient.setAttribute('y1', '100%');
         gradient.setAttribute('y2', '0%');
 
-        const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        const stop1 = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'stop',
+        );
         stop1.setAttribute('offset', '0%');
         stop1.setAttribute('style', 'stop-color:#2196F3;stop-opacity:1');
 
-        const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        const stop2 = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'stop',
+        );
         stop2.setAttribute('offset', '100%');
         stop2.setAttribute('style', 'stop-color:#64B5F6;stop-opacity:1');
 
@@ -4122,7 +4279,8 @@
           const y = height - padding.bottom - barHeight;
 
           // Calculate intensity-based color
-          const volumeIntensity = (d.volume - minVolume) / (maxVolume - minVolume);
+          const volumeIntensity =
+            (d.volume - minVolume) / (maxVolume - minVolume);
           const baseColor = d.count < 10 ? 0.4 : 1.0; // Reduced opacity for rare days
           const colorIntensity = Math.max(0.3, volumeIntensity) * baseColor;
 
@@ -4141,12 +4299,18 @@
           rect.setAttribute('y', height - padding.bottom); // Start from bottom for animation
           rect.setAttribute('width', barWidth * 0.8);
           rect.setAttribute('height', 0); // Start with 0 height for animation
-          rect.setAttribute('fill', d.count < 10 ? '#4a9eff66' : 'url(#barGradient)');
+          rect.setAttribute(
+            'fill',
+            d.count < 10 ? '#4a9eff66' : 'url(#barGradient)',
+          );
           rect.setAttribute('rx', '4'); // Rounded corners
           rect.setAttribute('ry', '4');
 
           // Animate bar growth
-          const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+          const animate = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'animate',
+          );
           animate.setAttribute('attributeName', 'height');
           animate.setAttribute('from', '0');
           animate.setAttribute('to', barHeight);
@@ -4154,7 +4318,10 @@
           animate.setAttribute('dur', '0.6s');
           animate.setAttribute('fill', 'freeze');
 
-          const animateY = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+          const animateY = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'animate',
+          );
           animateY.setAttribute('attributeName', 'y');
           animateY.setAttribute('from', height - padding.bottom);
           animateY.setAttribute('to', y);
@@ -4243,7 +4410,7 @@
 
         let html = '<div class="history-timeline-list">';
 
-        programs.forEach(program => {
+        programs.forEach((program) => {
           const dateRange = `${program.startDate} → ${program.endDate}`;
           const prs = program.prsSet || 0;
           const prColor = prs > 0 ? '#ffd700' : 'var(--text-muted)';
@@ -4284,13 +4451,13 @@
         }
 
         // Sort by date (most recent first)
-        const sortedWorkouts = [...notableWorkouts].sort((a, b) =>
-          new Date(b.date) - new Date(a.date)
+        const sortedWorkouts = [...notableWorkouts].sort(
+          (a, b) => new Date(b.date) - new Date(a.date),
         );
 
         let html = '<div class="history-timeline-list">';
 
-        sortedWorkouts.forEach(workout => {
+        sortedWorkouts.forEach((workout) => {
           // Determine icon, color, and label based on category
           let icon, color, label;
           if (workout.category === 'volume') {
@@ -4314,7 +4481,7 @@
           const dateStr = new Date(workout.date).toLocaleDateString('en-US', {
             month: 'short',
             day: 'numeric',
-            year: 'numeric'
+            year: 'numeric',
           });
 
           html += `
