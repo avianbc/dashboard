@@ -318,41 +318,24 @@
 
       header {
         text-align: center;
-        padding: var(--spacing-2xl) 0 var(--spacing-xl);
-        position: relative;
+        padding: var(--spacing-xl) 0;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-primary);
+        margin-bottom: var(--spacing-xl);
       }
 
       h1 {
         font-size: 2.75rem;
         font-weight: 700;
         letter-spacing: -0.015em;
-        margin-bottom: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
         color: var(--text-bright);
       }
 
       .tagline {
-        font-size: 1.125rem;
-        color: var(--text-muted);
-        margin-bottom: var(--spacing-xl);
-      }
-
-      .unit-toggle {
-        position: absolute;
-        top: var(--spacing-xl);
-        right: 0;
-        background: var(--bg-tertiary);
-        border: 1px solid var(--border-secondary);
-        color: var(--text-primary);
-        padding: var(--spacing-sm) var(--spacing-md);
-        border-radius: var(--radius-lg);
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: all 0.2s;
-      }
-
-      .unit-toggle:hover {
-        background: var(--bg-hover);
-        border-color: var(--border-hover);
+        font-size: 1rem;
+        color: var(--text-muted-light);
+        margin: 0;
       }
 
       nav {
@@ -363,14 +346,29 @@
         padding: var(--spacing-md) 0;
         z-index: 100;
         margin-bottom: var(--spacing-xl);
+        transition: box-shadow 0.3s ease;
       }
 
-      nav ul {
-        list-style: none;
+      nav.scrolled {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-xl);
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+      }
+
+      .nav-links {
         display: flex;
         gap: var(--spacing-lg);
-        justify-content: center;
         flex-wrap: wrap;
+        list-style: none;
       }
 
       nav a {
@@ -388,6 +386,43 @@
 
       nav a.active {
         color: var(--text-primary);
+      }
+
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+      }
+
+      .back-link {
+        color: var(--text-muted-light);
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .back-link:hover {
+        color: var(--accent-blue);
+      }
+
+      .unit-toggle {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-secondary);
+        color: var(--text-primary);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--radius-lg);
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .unit-toggle:hover {
+        background: var(--bg-hover);
+        border-color: var(--border-hover);
       }
 
       section {
@@ -712,6 +747,7 @@
       .heatmap-cell:hover {
         stroke: var(--text-bright);
         stroke-width: 2;
+        transition: stroke 0.2s ease;
       }
 
       .tooltip {
@@ -815,11 +851,21 @@
           font-size: 2rem;
         }
 
-        .unit-toggle {
-          position: static;
-          display: block;
-          margin: var(--spacing-md) auto 0;
-          max-width: 150px;
+        .nav-container {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .nav-links {
+          justify-content: center;
+          order: 1;
+        }
+
+        .nav-controls {
+          order: 2;
+          justify-content: center;
+          width: 100%;
+          flex-wrap: wrap;
         }
 
         .summary-stats {
@@ -833,17 +879,18 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <header>
+    <header>
+      <div class="container">
         <h1>NO DAYS OFF</h1>
         <p class="tagline">
           A data-driven look at my strength training journey
         </p>
-        <button class="unit-toggle" id="unitToggle">lbs / kg</button>
-      </header>
+      </div>
+    </header>
 
-      <nav>
-        <ul>
+    <nav id="mainNav">
+      <div class="nav-container">
+        <ul class="nav-links">
           <li><a href="#overview">Overview</a></li>
           <li><a href="#volume">Volume</a></li>
           <li><a href="#strength">Strength</a></li>
@@ -851,7 +898,14 @@
           <li><a href="#patterns">Patterns</a></li>
           <li><a href="#history">History</a></li>
         </ul>
-      </nav>
+        <div class="nav-controls">
+          <a href="/" class="back-link">← Back to Blog</a>
+          <button class="unit-toggle" id="unitToggle">lbs / kg</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
 
       <section>
         <div class="foreword">
@@ -1501,6 +1555,15 @@
                 boxHeight: 12,
                 usePointStyle: false,
               },
+              onClick: function(e, legendItem, legend) {
+                const index = legendItem.datasetIndex;
+                const chart = legend.chart;
+                const meta = chart.getDatasetMeta(index);
+
+                // Toggle visibility
+                meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
+                chart.update();
+              },
             },
             tooltip: {
               mode: useStacked ? 'index' : 'nearest',
@@ -1849,10 +1912,18 @@
 
       function showTooltip(e, date, volume, workouts) {
         const tooltip = document.getElementById('tooltip');
+        const dateObj = new Date(date);
+        const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
+        const formattedDate = dateObj.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        });
+
         tooltip.style.display = 'block';
         tooltip.innerHTML = `
-                <strong>${date}</strong><br>
-                Workouts: ${workouts}<br>
+                <strong>${formattedDate}</strong> (${dayName})<br>
+                ${workouts} workout${workouts !== 1 ? 's' : ''}<br>
                 Volume: ${volume.toLocaleString()} ${currentUnit}
             `;
         tooltip.style.left = e.pageX + 10 + 'px';
@@ -2041,9 +2112,9 @@
 
         // Radar chart for strength profile
         html += `
-          <div class="chart-container" style="max-width: 600px; margin: 2rem auto;">
+          <div class="chart-container" style="max-width: 700px; margin: 2rem auto;">
             <h4 class="text-muted-light-color mb-md text-center">Strength Profile</h4>
-            <canvas id="strengthRadarChart" style="max-height: 400px;"></canvas>
+            <canvas id="strengthRadarChart" style="max-height: 500px;"></canvas>
           </div>
         `;
 
@@ -2185,9 +2256,9 @@
                 backgroundColor: '#ffd70033',
                 pointBackgroundColor: '#ffd700',
                 pointBorderColor: '#fff',
-                pointHoverRadius: 6,
-                pointRadius: 4,
-                borderWidth: 2.5,
+                pointHoverRadius: 7,
+                pointRadius: 5,
+                borderWidth: 3,
               },
               {
                 label: 'Current',
@@ -2196,9 +2267,9 @@
                 backgroundColor: '#4a9eff22',
                 pointBackgroundColor: '#4a9eff',
                 pointBorderColor: '#fff',
-                pointHoverRadius: 6,
-                pointRadius: 4,
-                borderWidth: 2.5,
+                pointHoverRadius: 7,
+                pointRadius: 5,
+                borderWidth: 3,
               }
             ]
           },
@@ -2211,8 +2282,8 @@
                 position: 'top',
                 labels: {
                   color: CHART_COLORS.textBright,
-                  padding: 15,
-                  font: { size: 12 },
+                  padding: 20,
+                  font: { size: 14 },
                   usePointStyle: true,
                 }
               },
@@ -2222,6 +2293,9 @@
                 bodyColor: CHART_COLORS.textBright,
                 borderColor: CHART_COLORS.tooltipBorder,
                 borderWidth: 1,
+                padding: 12,
+                titleFont: { size: 14 },
+                bodyFont: { size: 13 },
                 callbacks: {
                   label: function(context) {
                     return `${context.dataset.label}: ${context.parsed.r.toFixed(2)}× BW`;
@@ -2237,6 +2311,7 @@
                   color: CHART_COLORS.text,
                   backdropColor: 'transparent',
                   stepSize: 0.5,
+                  font: { size: 12 },
                   callback: function(value) {
                     return value.toFixed(1) + '×';
                   }
@@ -2246,7 +2321,8 @@
                 },
                 pointLabels: {
                   color: CHART_COLORS.textBright,
-                  font: { size: 13, weight: '600' }
+                  font: { size: 15, weight: '600' },
+                  padding: 8
                 }
               }
             }
@@ -2734,9 +2810,20 @@
 
         if (exercises.length === 0) return;
 
+        // Calculate total volume for percentage
+        const totalVolume = exercises.reduce((sum, e) => sum + e.volume, 0);
+
+        // Define colors for Big 4 lifts
+        const liftColors = {
+          'Squat': '#4a9eff',
+          'Bench Press': '#ff6b6b',
+          'Deadlift': '#51cf66',
+          'Overhead Press': '#ffd93d'
+        };
+
         const width = container.offsetWidth;
         const height = exercises.length * 35 + 60;
-        const padding = { top: 20, right: 100, bottom: 40, left: 200 };
+        const padding = { top: 20, right: 150, bottom: 40, left: 200 };
 
         const maxVolume = Math.max(...exercises.map((e) => e.volume));
 
@@ -2751,20 +2838,49 @@
           const barWidth =
             (exercise.volume / maxVolume) *
             (width - padding.left - padding.right);
+          const percentage = ((exercise.volume / totalVolume) * 100).toFixed(1);
 
-          // Bar
+          // Determine bar color (use lift-specific color if it's a Big 4 lift)
+          const barColor = liftColors[exercise.name] || '#4a9eff';
+
+          // Bar with rounded corners
           const rect = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'rect',
           );
           rect.setAttribute('x', padding.left);
           rect.setAttribute('y', y);
-          rect.setAttribute('width', barWidth);
+          rect.setAttribute('width', 0); // Start with 0 for animation
           rect.setAttribute('height', 25);
-          rect.setAttribute('fill', '#4a9eff');
+          rect.setAttribute('fill', barColor);
+          rect.setAttribute('rx', '3');
+          rect.setAttribute('ry', '3');
+          rect.style.opacity = '0.9';
+          rect.style.transition = 'opacity 0.2s';
+
+          // Animate bar growth
+          const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+          animate.setAttribute('attributeName', 'width');
+          animate.setAttribute('from', '0');
+          animate.setAttribute('to', barWidth);
+          animate.setAttribute('begin', `${i * 0.05}s`);
+          animate.setAttribute('dur', '0.6s');
+          animate.setAttribute('fill', 'freeze');
+          rect.appendChild(animate);
+
+          // Add hover effect
+          rect.addEventListener('mouseenter', () => {
+            rect.style.opacity = '1';
+            rect.style.filter = 'brightness(1.1)';
+          });
+          rect.addEventListener('mouseleave', () => {
+            rect.style.opacity = '0.9';
+            rect.style.filter = 'none';
+          });
+
           svg.appendChild(rect);
 
-          // Exercise name
+          // Exercise name with color indicator for Big 4
           const label = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'text',
@@ -2772,22 +2888,35 @@
           label.setAttribute('x', padding.left - 10);
           label.setAttribute('y', y + 17);
           label.setAttribute('text-anchor', 'end');
-          label.setAttribute('fill', '#dadada');
+          label.setAttribute('fill', liftColors[exercise.name] ? barColor : '#dadada');
           label.setAttribute('font-size', '12');
+          label.setAttribute('font-weight', liftColors[exercise.name] ? '600' : 'normal');
           label.textContent = exercise.name;
           svg.appendChild(label);
 
-          // Volume label
+          // Volume label with percentage
           const volumeLabel = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'text',
           );
           volumeLabel.setAttribute('x', padding.left + barWidth + 10);
           volumeLabel.setAttribute('y', y + 17);
-          volumeLabel.setAttribute('fill', '#888');
+          volumeLabel.setAttribute('fill', '#aaa');
           volumeLabel.setAttribute('font-size', '12');
           volumeLabel.textContent = `${Math.round(exercise.volume / 1000)}K`;
           svg.appendChild(volumeLabel);
+
+          // Percentage label
+          const percentLabel = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'text',
+          );
+          percentLabel.setAttribute('x', padding.left + barWidth + 50);
+          percentLabel.setAttribute('y', y + 17);
+          percentLabel.setAttribute('fill', '#666');
+          percentLabel.setAttribute('font-size', '11');
+          percentLabel.textContent = `${percentage}%`;
+          svg.appendChild(percentLabel);
         });
 
         container.innerHTML = '';
@@ -3150,6 +3279,7 @@
         const padding = { top: 40, right: 40, bottom: 80, left: 80 };
 
         const maxVolume = Math.max(...data.map((d) => d.volume));
+        const minVolume = Math.min(...data.map((d) => d.volume));
         const barWidth = (width - padding.left - padding.right) / data.length;
 
         const svg = document.createElementNS(
@@ -3157,6 +3287,28 @@
           'svg',
         );
         svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+        // Define gradient for bars
+        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        gradient.setAttribute('id', 'barGradient');
+        gradient.setAttribute('x1', '0%');
+        gradient.setAttribute('x2', '0%');
+        gradient.setAttribute('y1', '100%');
+        gradient.setAttribute('y2', '0%');
+
+        const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop1.setAttribute('offset', '0%');
+        stop1.setAttribute('style', 'stop-color:#2196F3;stop-opacity:1');
+
+        const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop2.setAttribute('offset', '100%');
+        stop2.setAttribute('style', 'stop-color:#64B5F6;stop-opacity:1');
+
+        gradient.appendChild(stop1);
+        gradient.appendChild(stop2);
+        defs.appendChild(gradient);
+        svg.appendChild(defs);
 
         // Grid lines
         for (let i = 0; i <= 5; i++) {
@@ -3180,17 +3332,49 @@
             (d.volume / maxVolume) * (height - padding.top - padding.bottom);
           const y = height - padding.bottom - barHeight;
 
-          // Bar (with reduced opacity if very few workouts)
+          // Calculate intensity-based color
+          const volumeIntensity = (d.volume - minVolume) / (maxVolume - minVolume);
+          const baseColor = d.count < 10 ? 0.4 : 1.0; // Reduced opacity for rare days
+          const colorIntensity = Math.max(0.3, volumeIntensity) * baseColor;
+
+          // Create color based on intensity (darker blue for low, brighter for high)
+          const r = Math.floor(66 + (100 - 66) * colorIntensity);
+          const g = Math.floor(165 + (181 - 165) * colorIntensity);
+          const b = Math.floor(245 + (246 - 245) * colorIntensity);
+          const fillColor = `rgba(${r}, ${g}, ${b}, ${baseColor})`;
+
+          // Bar with intensity-based coloring
           const rect = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'rect',
           );
           rect.setAttribute('x', x + barWidth * 0.1);
-          rect.setAttribute('y', y);
+          rect.setAttribute('y', height - padding.bottom); // Start from bottom for animation
           rect.setAttribute('width', barWidth * 0.8);
-          rect.setAttribute('height', barHeight);
-          // Use reduced opacity for days with < 10 workouts
-          rect.setAttribute('fill', d.count < 10 ? '#4a9eff66' : '#4a9eff');
+          rect.setAttribute('height', 0); // Start with 0 height for animation
+          rect.setAttribute('fill', d.count < 10 ? '#4a9eff66' : 'url(#barGradient)');
+          rect.setAttribute('rx', '4'); // Rounded corners
+          rect.setAttribute('ry', '4');
+
+          // Animate bar growth
+          const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+          animate.setAttribute('attributeName', 'height');
+          animate.setAttribute('from', '0');
+          animate.setAttribute('to', barHeight);
+          animate.setAttribute('begin', `${i * 0.1}s`);
+          animate.setAttribute('dur', '0.6s');
+          animate.setAttribute('fill', 'freeze');
+
+          const animateY = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+          animateY.setAttribute('attributeName', 'y');
+          animateY.setAttribute('from', height - padding.bottom);
+          animateY.setAttribute('to', y);
+          animateY.setAttribute('begin', `${i * 0.1}s`);
+          animateY.setAttribute('dur', '0.6s');
+          animateY.setAttribute('fill', 'freeze');
+
+          rect.appendChild(animate);
+          rect.appendChild(animateY);
 
           // Add hover effect
           rect.addEventListener('mouseenter', (e) => {
@@ -3379,8 +3563,24 @@
         });
       }
 
-      window.addEventListener('scroll', updateActiveNav);
-      window.addEventListener('load', updateActiveNav);
+      // Add shadow to nav when scrolled
+      function updateNavShadow() {
+        const nav = document.getElementById('mainNav');
+        if (window.scrollY > 0) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', () => {
+        updateActiveNav();
+        updateNavShadow();
+      });
+      window.addEventListener('load', () => {
+        updateActiveNav();
+        updateNavShadow();
+      });
 
       // Initialize on page load
       init();
