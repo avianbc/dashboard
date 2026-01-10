@@ -19,25 +19,40 @@ The `training_data.json` contains rich workout data spanning 2019-01-23 to 2025-
 ### 1. Hero/Summary Section
 *Goal: Impressive to everyone, immediately communicates scale of dedication*
 
-| Stat | Value | Notes |
-|------|-------|-------|
-| Total Volume | 3,416 tons | Big animated number |
-| Total Workouts | 969 | ~6 years of consistency |
-| Hours Trained | 734 | ~30 days non-stop |
-| Bar Travel | 32+ miles | Unique, relatable metric |
-| Training Since | Jan 2019 | Years of commitment |
+| Stat | Value | Comparative Context |
+|------|-------|---------------------|
+| Total Volume | 3,416 tons | "Equivalent to lifting 2,000+ Honda Civics" |
+| Total Workouts | 969 | "6 years of consistency" |
+| Hours Trained | 734 | "30 days straight in the gym" |
+| Bar Travel | 29.35 miles | "Climbed Mount Everest 5.3x" |
+| Training Since | Jan 2019 | Calculate dynamically: "X years, Y months" |
 
-**Implementation**: Large stat cards with count-up animations on load.
+**Implementation**:
+- Single hero card with primary stat (powerlifting total or volume) prominently displayed
+- Secondary stats as smaller elements below for clear visual hierarchy
+- Count-up animations: animate only on first view (Intersection Observer + localStorage flag)
+- Respect `prefers-reduced-motion` media query
+- Keep animations fast (< 1.5s)
+
+**Data source**: `summary`, `barTravel.landmarks`
 
 ---
 
 ### 2. Workout Consistency Calendar
 *Goal: Show dedication visually, like GitHub contribution graph*
 
-- GitHub-style heatmap (964 workout days)
-- Color intensity = volume that day
-- Year selector or scrollable view
-- Hover shows date + volume + workout count
+**Primary approach**: Year-by-year cards stacked vertically
+- Each year is a full heatmap card (simpler than continuous scroll)
+- Users scroll page naturally to see full history
+- Color intensity uses **percentile-based buckets** (0-25%, 25-50%, 50-75%, 75%+) not linear scaling
+- Hover shows: date, volume, workout count
+
+**Alternative** (more complex): Multi-year horizontal scroll with sticky year headers
+
+**Implementation notes**:
+- 6 years × 52 weeks × 7 days = ~2,200 cells total
+- Consider virtualization if performance issues arise
+- Mobile: Single year view with year picker dropdown
 
 **Data source**: `workoutCalendar`
 
@@ -46,33 +61,45 @@ The `training_data.json` contains rich workout data spanning 2019-01-23 to 2025-
 ### 3. Strength Progression Charts
 *Goal: Core value for lifters - see progress over time*
 
-#### 3a. Big Three E1RM Over Time (Line Chart)
-- Squat, Bench, Deadlift, OHP lines
-- Monthly granularity
-- Hover shows exact values
-- Option to toggle lifts on/off
+#### 3a. Big Three E1RM Over Time
+- **Primary view**: Running PR line (monotonically increasing, shows exactly when each PR was set)
+- **Secondary view**: Toggle to see raw E1RM scatter with trend line overlay
+- Per-workout data (500+ points per lift) - do NOT aggregate to monthly
+- Use **30-day rolling average** to smooth noise, with raw points as semi-transparent dots behind
 
-**Data source**: `bigThreeE1RM`
+**Chart approach**: Small multiples (4 separate mini-charts stacked vertically) OR tabs/toggle to show one lift at a time
+- Avoid 4 lines on one chart (too cluttered)
+- Consider area chart for single-lift view (more visual impact)
+
+**Data source**: `bigThreeE1RM.e1rmHistory`
 
 #### 3b. Powerlifting Total Progression
-- Combined S+B+D total over time
-- Highlight club milestones (500/750/1000/1100/1200 lbs)
-- Current vs Peak indicator
+- **Area chart** showing total over time (requires `powerliftingTotals.history`)
+- Horizontal milestone lines at 500/750/1000/1100/1200 with labels
+- Peak annotation marking all-time best point
+- **Stacked option**: Toggle to see S/B/D contribution stacked
 
-**Data source**: `powerliftingTotals`
+**Data source**: `powerliftingTotals` (NOTE: Must include `history` array - see Data Export section)
 
 ---
 
-### 4. Plate Milestones Timeline
+### 4. Plate Milestones Achievement Grid
 *Goal: Celebrate strength achievements in a way anyone understands*
 
-Visual timeline showing first time hitting:
-- 1 plate (135 lbs)
-- 2 plates (225 lbs)
-- 3 plates (315 lbs)
-- 4+ plates (405+ lbs)
+**Implementation**: Achievement cards grid (NOT timeline)
+- 4×5 grid: rows = lifts (S/B/D/OHP), columns = plate counts (1-5)
+- Unlocked achievements glow/highlight with date achieved
+- Locked achievements grayed out (shows what's left to achieve)
+- Very "gamification" feel that matches celebration goal
 
-For each major lift (Squat, Bench, Deadlift).
+| | 1 Plate (135) | 2 Plates (225) | 3 Plates (315) | 4 Plates (405) | 5 Plates (495) |
+|---|---|---|---|---|---|
+| Squat | ✓ | ✓ | ✓ | | |
+| Bench | ✓ | ✓ | | | |
+| Deadlift | ✓ | ✓ | ✓ | ✓ | |
+| OHP | ✓ | | | | |
+
+**Why grid over timeline**: Simpler, more impactful, shows both achievements AND goals. Save timeline for Programs section.
 
 **Data source**: `plateMilestones`
 
@@ -82,13 +109,17 @@ For each major lift (Squat, Bench, Deadlift).
 *Goal: Context for experienced lifters*
 
 #### 5a. Body Weight Multiples
-- Current multiples (Squat: 2.22x, Bench: 1.52x, Deadlift: 2.58x)
-- Visual gauge or progress bar vs benchmarks
-- Benchmarks: Beginner → Intermediate → Advanced → Elite
+- **Bullet charts** (NOT gauges - gauges waste space and are hard to compare)
+- 4 horizontal bullet bars stacked vertically (S/B/D/OHP)
+- Background bands showing beginner/intermediate/advanced/elite ranges
+- Your value as a bold bar, showing at a glance: "Advanced on squat/deadlift, intermediate on bench"
+- Very Tufte-approved (high data-ink ratio)
 
 #### 5b. Wilks Score
-- Current: 325, Best: 348
-- Visual comparison to population benchmarks
+- **CSS-based scale bar** (no ECharts needed)
+- Horizontal line from 0 to 500 (world class)
+- Benchmark zones with subtle colors
+- Current and best marked with different indicators
 
 **Data source**: `relativeStrength`
 
@@ -97,26 +128,34 @@ For each major lift (Squat, Bench, Deadlift).
 ### 6. Volume Analytics
 
 #### 6a. Monthly Volume Trend (Area Chart)
-- Volume over time with best month highlighted
-- Rolling average overlay
+- Area chart with **3-month rolling average** overlay for smoothing
+- Best month highlighted with annotation
+- **Default to last 2 years** with "show all" toggle (72+ months is crowded)
+- Vertical lines at year boundaries for readability
+- Add yearly aggregation view as alternative
 
 **Data source**: `volumeTimeSeries.monthly`
 
-#### 6b. Workouts by Day of Week (Bar Chart)
-- Shows training schedule patterns
-- Helpful for identifying consistency
+#### 6b. Workouts by Day of Week (Horizontal Bar Chart)
+- Horizontal bars, sorted by count (not day order)
+- Show both count AND average volume (dual bars or text labels)
+- Annotation: "Most active: Monday (235 workouts)"
 
 **Data source**: `workoutsByDayOfWeek`
 
 ---
 
-### 7. Training Programs Timeline
+### 7. Training Programs
 *Goal: Show evolution and experimentation*
 
-Horizontal timeline showing:
-- Program name, date range
-- PRs set during program
-- Total volume in program
+**Implementation**: Vertical card list (NOT horizontal timeline)
+- 17 programs over 6 years with overlaps - too crowded for horizontal
+- Simple scrollable list of program cards
+- Each card shows: name, date range, workouts, PRs set, total volume
+- Sorted by start date with time markers on the side
+- CSS-only (no ECharts needed)
+
+**Why vertical list over Gantt/timeline**: Easier to implement, actually more readable, handles overlapping programs gracefully.
 
 **Data source**: `programs`
 
@@ -124,13 +163,19 @@ Horizontal timeline showing:
 
 ### 8. Personal Records Section
 
-#### 8a. All-Time PRs Table/Cards
-- Sortable/filterable list
-- Shows weight, reps, estimated 1RM, date
+#### 8a. All-Time PRs Grid
+- **Rep PR grid** for compact overview:
+  - Rows: Lifts (S/B/D/OHP + accessories)
+  - Columns: Rep ranges (1-5 or 1-10)
+  - Cells: Weight achieved
+  - Heat coloring by relative strength or recency
+- Click cell to expand with date/details
+- Filterable by lift category
 
-#### 8b. Days Since Last PR Warnings
-- Highlight lifts that haven't seen a PR recently
-- Gamification element
+#### 8b. Days Since Last PR (Subtle Indicator)
+- Show as subtle indicator on PR cards, NOT a separate "warning" section
+- Frame as opportunity not failure: "Time to chase a new one?"
+- Note: Current data shows ~1146 days for all lifts - verify this is correct
 
 **Data source**: `allTimePRs`, `daysSinceLastPR`
 
@@ -147,14 +192,64 @@ Horizontal timeline showing:
 
 ---
 
-### 10. Exercise Deep Dive (Optional/Expandable)
-*Goal: Granular analysis for power users*
+### 10. Exercise Deep Dive (FIRST-CLASS SECTION)
+*Goal: Main interactive feature - most valuable section for serious lifters*
 
-- Per-exercise volume over time
-- Exercise frequency
-- PR history per exercise
+**This should NOT be optional** - it's the drill-down from summary sections.
+
+**Implementation**:
+- Searchable/filterable exercise list (43 exercises)
+- Per-exercise detail view:
+  - Volume over time (sparkline or small chart)
+  - PR progression timeline
+  - Frequency (workouts per month)
+  - Last performed date
+  - Total volume, sets, reps
+
+**UX**: Everything else is summary, this is the deep dive. Consider as the main interactive feature of the dashboard.
 
 **Data source**: `exerciseProgress`
+
+---
+
+### 11. Bar Travel Visualization (NEW - Engagement Feature)
+*Goal: Impressive to non-lifters, shareable*
+
+**Data available**:
+```json
+"barTravel": {
+  "total": { "miles": 29.35 },
+  "landmarks": { "everestClimbs": 5.34, "empireStateBuildings": 106 }
+}
+```
+
+**Implementation**: Fun, visual comparison graphic
+- Visual of Mt. Everest with "5.3 climbs" marker
+- Or Empire State Building × 106
+- Pure engagement/shareability feature
+- CSS-only, no ECharts needed
+
+**Data source**: `barTravel`
+
+---
+
+### 12. Body Weight Chart (NEW)
+*Goal: Context for relative strength interpretation*
+
+**Data available**:
+```json
+"bodyWeight": {
+  "current": { "lbs": 205.0 },
+  "starting": { "lbs": 180.0 },
+  "monthlyTimeline": [...]
+}
+```
+
+**Implementation**: Small line chart showing body weight over time
+- Helps interpret relative strength changes
+- Simple sparkline-style chart
+
+**Data source**: `bodyWeight`
 
 ---
 
@@ -175,11 +270,24 @@ Horizontal timeline showing:
 
 | Purpose | Choice | Notes |
 |---------|--------|-------|
+| **State Management** | Preact Signals | Lightweight reactive state for unit toggle, theme, filters. Avoid Redux/Zustand - overkill for this project |
 | **Icons** | Lucide | Modern, 1000+ icons, includes fitness/chart/UI icons, MIT licensed |
 | **Number Formatting** | `Intl.NumberFormat` | Native, no bundle cost, locale-aware |
 | **Date Formatting** | `Intl.DateTimeFormat` | Native; add `date-fns` only if needed |
 | **Animations** | CSS + Intersection Observer | Scroll-triggered reveals, count-up animations |
 | **Calendar Heatmap** | Custom ECharts implementation | ECharts has excellent heatmap support |
+
+#### State Management Example
+```javascript
+// state/settings.js
+import { signal, computed } from '@preact/signals'
+
+export const unit = signal('imperial')  // 'imperial' | 'metric'
+export const theme = signal('auto')     // 'light' | 'dark' | 'auto'
+
+// Derived
+export const isMetric = computed(() => unit.value === 'metric')
+```
 
 ### Bundle Size Estimate
 
@@ -406,17 +514,68 @@ publish = "public"
 
 ---
 
+## Responsive Strategy
+
+| Section | Desktop (1024px+) | Tablet (768px) | Mobile (640px) |
+|---------|-------------------|----------------|----------------|
+| Hero Stats | 5 cards in row | 3+2 grid | Stacked (2+2+1) |
+| Calendar | Full year cards | Same | Single year + picker |
+| Line Charts | Full width | Same | Taller aspect ratio |
+| Day of Week | Horizontal bars | Same | Vertical bars |
+| Programs | Cards in grid | Single column | Same |
+| Exercise Deep Dive | Table view | Card view | Accordion |
+
+**Key breakpoints**:
+- 1024px: Desktop (full features)
+- 768px: Tablet (maintain most features)
+- 640px: Mobile (simplify heatmap, stack everything)
+
+---
+
+## Performance Budget
+
+| Metric | Target |
+|--------|--------|
+| JS bundle (gzipped) | < 150KB |
+| First Contentful Paint | < 1.5s |
+| Time to Interactive | < 3s |
+| Lighthouse Performance | > 90 |
+| JSON data file | < 500KB |
+
+**Note**: `training_data.json` with full `bigThreeE1RM.e1rmHistory` is potentially large (2000+ points × 4 lifts). Mitigate with gzip compression on server.
+
+---
+
+## Data Export Changes Required
+
+**CRITICAL**: Before implementation, modify `data/extract_data.py`:
+
+1. **Include full powerlifting total history**:
+   ```python
+   # Line 1487-1491: Change from subset to full
+   'powerliftingTotals': powerlifting_totals,  # Include 'history' array
+   ```
+
+2. **Verify `daysSinceLastPR` calculation** - current data shows ~1146 days for all lifts
+
+3. **Sync `training_data.md` documentation** with actual output structure
+
+Without the `powerliftingTotals.history` array, section 3b (Powerlifting Total Progression) cannot be implemented.
+
+---
+
 ## Confirmed Decisions
 
 | Decision | Choice |
 |----------|--------|
 | **Framework** | Preact (React-compatible, 3KB) |
+| **State Management** | Preact Signals (lightweight, reactive) |
 | **Charts** | ECharts (with echarts-for-react) |
 | **Build Tool** | Vite |
 | **Styling** | CSS Modules + Custom Properties |
 | **Icons** | Lucide |
 | **Data Loading** | Build-time embed |
-| **Device Priority** | Desktop-first |
+| **Device Priority** | Desktop-first, responsive |
 | **Hosting** | Hugo /static folder -> bradleycarey.com/dashboard/ |
 | **CSS Framework** | None (CSS Modules, no Tailwind) |
 | **Color Scheme** | TBD (defer to design phase) |
