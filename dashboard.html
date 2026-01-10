@@ -351,6 +351,10 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family:
           -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
@@ -474,6 +478,11 @@
       .unit-toggle:hover {
         background: var(--bg-hover);
         border-color: var(--border-hover);
+      }
+
+      .unit-toggle:focus {
+        outline: 2px solid var(--accent-blue);
+        outline-offset: 2px;
       }
 
       section {
@@ -938,6 +947,64 @@
         color: var(--text-bright);
       }
 
+      .view-toggle button:focus {
+        outline: 2px solid var(--accent-blue);
+        outline-offset: 2px;
+      }
+
+      /* General button focus states */
+      button:focus-visible {
+        outline: 2px solid var(--accent-blue);
+        outline-offset: 2px;
+      }
+
+      /* Link focus states */
+      a:focus-visible {
+        outline: 2px solid var(--accent-blue);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      /* Loading state */
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-primary);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid var(--bg-tertiary);
+        border-top-color: var(--accent-blue);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .loading-text {
+        margin-top: var(--spacing-lg);
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
+
       @media (max-width: 768px) {
         .container {
           padding: var(--spacing-md);
@@ -945,6 +1012,14 @@
 
         h1 {
           font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        h3 {
+          font-size: 1.2rem;
         }
 
         .nav-container {
@@ -955,6 +1030,8 @@
         .nav-links {
           justify-content: center;
           order: 1;
+          gap: var(--spacing-sm);
+          font-size: 0.8rem;
         }
 
         .nav-controls {
@@ -971,10 +1048,110 @@
         .stat-number {
           font-size: 2rem;
         }
+
+        /* Simplify grid layouts for mobile */
+        .grid-2col {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-stats-compact {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .plate-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* Reduce chart heights on mobile */
+        .chart-canvas {
+          max-height: 250px !important;
+        }
+
+        canvas {
+          max-height: 250px !important;
+        }
+
+        /* Stack view toggle buttons vertically */
+        .view-toggle {
+          flex-wrap: wrap;
+          gap: var(--spacing-xs);
+        }
+
+        .view-toggle button {
+          flex: 1 1 auto;
+          min-width: 80px;
+        }
+
+        /* Improve readability of stat mini values */
+        .stat-mini-value {
+          font-size: 1.25rem;
+        }
+
+        .stat-mini-value.large {
+          font-size: 1.5rem;
+        }
+
+        /* Adjust lift card padding */
+        .lift-card {
+          padding: var(--spacing-md);
+        }
+
+        /* Reduce spacing in sections */
+        section {
+          margin: var(--spacing-lg) 0;
+          padding: var(--spacing-lg) 0;
+        }
+
+        section:nth-child(even) {
+          margin-left: calc(var(--spacing-md) * -1);
+          margin-right: calc(var(--spacing-md) * -1);
+          padding-left: var(--spacing-md);
+          padding-right: var(--spacing-md);
+        }
+
+        /* Improve modal display on mobile */
+        #keyboardShortcutsModal {
+          max-width: 90% !important;
+          padding: 1.5rem !important;
+        }
+      }
+
+      /* Additional breakpoint for very small screens */
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.75rem;
+        }
+
+        .nav-links {
+          font-size: 0.75rem;
+        }
+
+        .stat-number {
+          font-size: 1.75rem;
+        }
+
+        .grid-stats-compact {
+          grid-template-columns: 1fr;
+        }
+
+        .lift-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+      <div class="loading-spinner" role="status" aria-live="polite"></div>
+      <div class="loading-text">Loading training data...</div>
+    </div>
+
     <header>
       <div class="container">
         <h1>NO DAYS OFF</h1>
@@ -984,19 +1161,19 @@
       </div>
     </header>
 
-    <nav id="mainNav">
+    <nav id="mainNav" role="navigation" aria-label="Dashboard navigation">
       <div class="nav-container">
         <ul class="nav-links">
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#volume">Volume</a></li>
-          <li><a href="#strength">Strength</a></li>
-          <li><a href="#milestones">Milestones</a></li>
-          <li><a href="#patterns">Patterns</a></li>
-          <li><a href="#history">History</a></li>
+          <li><a href="#overview" aria-label="Navigate to Overview section">Overview</a></li>
+          <li><a href="#volume" aria-label="Navigate to Volume section">Volume</a></li>
+          <li><a href="#strength" aria-label="Navigate to Strength section">Strength</a></li>
+          <li><a href="#milestones" aria-label="Navigate to Milestones section">Milestones</a></li>
+          <li><a href="#patterns" aria-label="Navigate to Patterns section">Patterns</a></li>
+          <li><a href="#history" aria-label="Navigate to History section">History</a></li>
         </ul>
         <div class="nav-controls">
-          <a href="/" class="back-link">← Back to Blog</a>
-          <button class="unit-toggle" id="unitToggle">lbs / kg</button>
+          <a href="/" class="back-link" aria-label="Return to blog homepage">← Back to Blog</a>
+          <button class="unit-toggle" id="unitToggle" aria-label="Toggle between pounds and kilograms">lbs / kg</button>
         </div>
       </div>
     </nav>
@@ -1031,16 +1208,16 @@
         </div>
         <div class="chart-container">
           <h3>Volume Over Time</h3>
-          <div class="view-toggle">
-            <button data-view="weekly">Weekly</button>
-            <button data-view="monthly">Monthly</button>
-            <button data-view="yearly">Yearly</button>
-            <button data-view="cumulative">Cumulative</button>
+          <div class="view-toggle" role="group" aria-label="Volume chart time period selector">
+            <button data-view="weekly" aria-label="Show weekly volume data">Weekly</button>
+            <button data-view="monthly" aria-label="Show monthly volume data">Monthly</button>
+            <button data-view="yearly" aria-label="Show yearly volume data">Yearly</button>
+            <button data-view="cumulative" aria-label="Show cumulative volume data">Cumulative</button>
           </div>
           <div id="stackedToggleContainer" class="view-toggle" style="margin-top: 0.5rem;">
-            <button id="stackedToggle">📊 Show Stacked</button>
+            <button id="stackedToggle" aria-label="Toggle between stacked and overlaid chart view">📊 Show Stacked</button>
           </div>
-          <canvas id="annualVolumeChart" style="max-height: 400px"></canvas>
+          <canvas id="annualVolumeChart" style="max-height: 400px" role="img" aria-label="Volume over time chart"></canvas>
         </div>
         <div class="chart-container">
           <h3>Workout Calendar</h3>
@@ -1105,6 +1282,8 @@
 
       // Load data and initialize dashboard
       async function init() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
         try {
           const response = await fetch(`training_data.json?v=${Date.now()}`);
           trainingData = await response.json();
@@ -1112,11 +1291,18 @@
           setupUnitToggle();
           setupViewToggle();
           setupStackedToggle();
+
+          // Hide loading overlay after content is rendered
+          setTimeout(() => {
+            loadingOverlay.classList.add('hidden');
+          }, 300);
         } catch (error) {
           console.error('Error loading training data:', error);
+          loadingOverlay.classList.add('hidden');
           document.querySelector('.container').innerHTML = `
                     <section style="text-align: center; padding: 4rem 2rem;">
                         <h2 style="color: #ff6b6b; margin-bottom: 1rem;">Unable to Load Data</h2>
+                        <p style="color: var(--text-muted);">Please refresh the page to try again.</p>
                     </section>
                 `;
         }
