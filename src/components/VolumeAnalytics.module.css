@@ -1,0 +1,129 @@
+.volumeAnalytics {
+  margin-top: var(--space-12);
+}
+
+.volumeAnalytics h2 {
+  font-size: var(--font-3xl);
+  margin-bottom: var(--space-8);
+  color: var(--color-text-primary);
+}
+
+.card {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+  gap: var(--space-4);
+}
+
+.cardHeader h3 {
+  font-size: var(--font-2xl);
+  margin: 0 0 var(--space-2) 0;
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.subtitle strong {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.toggleButton {
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.toggleButton:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.toggleButton:active {
+  transform: translateY(0);
+}
+
+.chartContainer {
+  width: 100%;
+  min-height: 350px;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .volumeAnalytics {
+    margin-top: var(--space-8);
+  }
+
+  .volumeAnalytics h2 {
+    font-size: var(--font-2xl);
+    margin-bottom: var(--space-6);
+  }
+
+  .card {
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .cardHeader h3 {
+    font-size: var(--font-xl);
+  }
+
+  .toggleButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  .chartContainer {
+    min-height: 300px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .volumeAnalytics h2 {
+    font-size: var(--font-xl);
+  }
+
+  .cardHeader h3 {
+    font-size: var(--font-lg);
+  }
+
+  .subtitle {
+    font-size: var(--font-xs);
+  }
+
+  .chartContainer {
+    min-height: 280px;
+  }
+}

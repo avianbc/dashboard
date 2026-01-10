@@ -5,6 +5,7 @@ import { WorkoutCalendar } from './components/WorkoutCalendar'
 import StrengthProgressionCharts from './components/StrengthProgressionCharts'
 import { PlateMilestones } from './components/PlateMilestones'
 import RelativeStrength from './components/RelativeStrength/RelativeStrength'
+import { VolumeAnalytics } from './components/VolumeAnalytics'
 import { loadTrainingData } from './utils/data'
 import styles from './App.module.css'
 
@@ -60,8 +61,13 @@ export function App() {
 
       <RelativeStrength data={data.relativeStrength} />
 
+      <VolumeAnalytics
+        volumeTimeSeries={data.volumeTimeSeries}
+        workoutsByDayOfWeek={data.workoutsByDayOfWeek}
+      />
+
       <div className={styles.placeholder}>
-        <p>More sections coming soon...</p>
+        {/* <p>More sections coming soon...</p> */}
       </div>
     </Layout>
   )
