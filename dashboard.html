@@ -9,35 +9,35 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <style>
       :root {
-        /* Background colors */
-        --bg-primary: #0a0a0a;
-        --bg-secondary: #111;
-        --bg-tertiary: #1a1a1a;
-        --bg-hover: #222;
+        /* Background colors - aligned with blog theme */
+        --bg-primary: #212121;
+        --bg-secondary: #2a2a2a;
+        --bg-tertiary: #333333;
+        --bg-hover: #3a3a3a;
 
-        /* Text colors */
-        --text-primary: #e0e0e0;
+        /* Text colors - aligned with blog theme */
+        --text-primary: #dadada;
         --text-bright: #fff;
         --text-muted: #888;
         --text-muted-light: #aaa;
         --text-muted-dark: #666;
 
-        /* Accent colors */
-        --accent-blue: #4a9eff;
-        --accent-green: #51cf66;
-        --accent-red: #ff6b6b;
-        --accent-yellow: #ffd93d;
+        /* Accent colors - aligned with blog theme */
+        --accent-blue: #42a5f5;
+        --accent-green: #4CAF50;
+        --accent-red: #ef5350;
+        --accent-yellow: #ffc107;
         --accent-gold: #ffd700;
 
-        /* Lift-specific colors */
-        --lift-squat: #4a9eff;
-        --lift-bench: #ff6b6b;
-        --lift-deadlift: #51cf66;
-        --lift-ohp: #ffd93d;
+        /* Lift-specific colors - slightly adjusted for cohesion */
+        --lift-squat: #42a5f5;
+        --lift-bench: #ef5350;
+        --lift-deadlift: #4CAF50;
+        --lift-ohp: #ffc107;
 
         /* Border colors */
-        --border-primary: #1a1a1a;
-        --border-secondary: #333;
+        --border-primary: #3a3a3a;
+        --border-secondary: #424242;
         --border-hover: #555;
 
         /* Spacing */
@@ -302,11 +302,12 @@
 
       body {
         font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          'Helvetica Neue', Arial, sans-serif;
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
+          Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
         background: var(--bg-primary);
         color: var(--text-primary);
-        line-height: 1.6;
+        font-size: 16px;
+        line-height: 1.7;
       }
 
       .container {
@@ -322,10 +323,11 @@
       }
 
       h1 {
-        font-size: 3rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        margin-bottom: var(--spacing-sm);
+        font-size: 2.75rem;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-bright);
       }
 
       .tagline {
@@ -399,17 +401,25 @@
       }
 
       h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: var(--spacing-xl);
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin: var(--spacing-2xl) 0 var(--spacing-lg);
         color: var(--text-bright);
+        letter-spacing: -0.01em;
       }
 
       h3 {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
         font-weight: 600;
-        margin: var(--spacing-xl) 0 var(--spacing-md);
+        margin: var(--spacing-xl) 0 var(--spacing-lg);
         color: var(--text-bright);
+      }
+
+      h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: var(--spacing-lg) 0 var(--spacing-md);
+        color: var(--text-primary);
       }
 
       .foreword {
