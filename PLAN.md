@@ -38,13 +38,39 @@
 - **Config**: Prerender all pages, no SSR needed
 
 ## Data Structure Analysis
-From training_data.json, we have:
-- **summary**: Aggregate stats (total workouts, volume, PRs, averages)
-- **volumeTimeSeries**: Daily/weekly/monthly workout volume
-- **exerciseStats**: Per-exercise statistics and PRs
-- **workoutHistory**: Individual workout details
-- **progressionCharts**: Exercise-specific progression data
-- **bodyPartStats**: Muscle group training distribution
+
+### Complete Data Inventory
+
+From training_data.json (800KB, 6+ years of training data), we have:
+
+| Data Section | Count/Size | Key Fields | Use Cases |
+|--------------|------------|------------|-----------|
+| `summary` | 1 object | totalWorkouts (969), totalVolumeLbs (6.8M), totalHours (734), totalReps (59k), totalSets (9620), bestMonthEver, bestYearEver | Hero stats cards |
+| `volumeTimeSeries` | 964 daily, 285 weekly, 68 monthly, 7 yearly | date, volumeLbs/Kg, workouts | Main volume chart, trends |
+| `workoutCalendar` | 964 dates | count, volumeLbs/Kg | Calendar heatmap |
+| `exerciseProgress` | 43 exercises | totalVolume, firstPerformed, lastPerformed, prs[] | Exercise-specific insights |
+| `bigThreeE1RM` | 315-403 points per lift | date, e1rmLbs, actualWeightLbs, reps | Strength progression charts |
+| `bigThreeVolume` | History per lift | dailyVolume by lift | Lift-specific volume analysis |
+| `programs` | 17 programs | name, dates, workouts, volume, prsSet | Program effectiveness comparison |
+| `workoutsByDayOfWeek` | 7 days | count, avgVolumeLbs | Weekly pattern visualization |
+| `notableWorkouts` | 15 entries | date, reason, category, volume | Special achievements timeline |
+| `milestones` | 16 entries | date, milestone text (volume thresholds) | Achievement timeline |
+| `plateMilestones` | 4 lifts × up to 4 plates | date, weightLbs for 135/225/315/405 | Plate achievement visualization |
+| `powerliftingTotals` | current + peak + 5 clubs | totalLbs, squatE1rm, benchE1rm, deadliftE1rm | Total progress, club badges |
+| `allTimePRs` | 4 lifts | repPRs (1-10 reps), maxEver, bestE1rm | PR matrix table |
+| `daysSinceLastPR` | 4 lifts | days (squat: 243, bench: 190, deadlift: 130, ohp: 241) | Motivation cards |
+| `barTravel` | By lift + total | totalMiles (29.35), landmarks (5.34 Everests!) | Fun infographic |
+| `bodyWeight` | Timeline | current, starting, monthlyTimeline, stalePeriods | Body weight tracking |
+| `relativeStrength` | 4 lifts | best (2.22x squat), current, monthlyProgression | Strength-to-weight ratio |
+
+### Notable Stats to Highlight
+
+- **Duration**: 6.8 years (Jan 23, 2019 → Oct 24, 2025)
+- **Best period**: 2021 (220 workouts, 1.7M lbs volume)
+- **Peak strength**: 1,276 lbs total (442 squat + 321 bench + 513 deadlift e1rm)
+- **Most impressive**: Bar traveled 29.35 miles = 5.34 Mt. Everest climbs
+- **Consistency pattern**: Mon/Fri heavy (245 & 226 workouts), never on Sunday
+- **Relative strength peak**: 2.22x bodyweight squat @ 180 lbs
 
 ---
 
@@ -91,6 +117,379 @@ To get a working impressive dashboard quickly, focus on these features first:
 11. **Responsive refinement** (Phase 6.2-6.4)
 
 **Strategy**: Build vertically (complete features) rather than horizontally (half-built features). Get something impressive working quickly, then iterate.
+
+---
+
+## 📊 Detailed Visualization Specifications
+
+### 1. HERO STATS CARDS ⭐ (MVP - Phase 1)
+
+**Purpose**: Immediate visual impact with impressive lifetime numbers
+
+**Data Source**: `summary`, `barTravel`, `powerliftingTotals`
+
+**Six Cards**:
+1. **Total Workouts**: 969 / "Since Jan 2019" / Calendar icon
+2. **Total Volume**: 6.8M lbs / "3,417 tons lifted" / Weight icon
+3. **Time Training**: 734 hours / "30+ days of your life" / Clock icon
+4. **Bar Travel**: 29.4 miles / "5.3 Everest climbs" / Route icon
+5. **Total Reps**: 59,036 / "9,620 total sets" / Repeat icon
+6. **Powerlifting Total**: 1,276 lbs / "1200+ club member" / Trophy icon
+
+**Design Notes**:
+- Card dimensions: ~200x120px (desktop) → responsive stack
+- Large bold number (2.5rem) with subtle gradient background
+- Subtext in muted color (0.875rem)
+- Icon (24px) in top-right with accent color
+- Hover effect: subtle lift + shadow increase
+- Grid: 3x2 (desktop) → 2x3 (tablet) → 1x6 (mobile)
+
+---
+
+### 2. VOLUME OVER TIME CHART ⭐ (MVP - Phase 1)
+
+**Purpose**: Show 6+ years of training consistency and volume trends
+
+**Data Source**: `volumeTimeSeries.monthly` (68 data points)
+
+**Chart Type**: ECharts Area Chart with gradient fill
+
+**Key Features**:
+- X-axis: Months (Jan 2019 → Oct 2025)
+- Y-axis: Volume (respects unit toggle: lbs/kg)
+- Granularity toggle: Daily (964 pts) / Weekly (285 pts) / Monthly (68 pts)
+- Gradient fill: from accent color (top) → transparent (bottom)
+- Highlight best month: Apr 2021 (213,930 lbs)
+- Annotations:
+  - "COVID Gap" marker (Jun-Sep 2020)
+  - "Best Month" badge
+  - "Return to Training" markers after gaps
+- Interactive: hover shows exact date + volume + workout count
+- Optional: rolling 3-month average trendline (dashed line)
+
+**Visual ASCII Approximation**:
+```
+   Volume (K lbs)
+  250┤                    ╭╮
+  200┤              ╭─────╯╰─╮
+  150┤        ╭─────╯        ╰──╮
+  100┤    ╭───╯                  ╰──╮___
+   50┤╭───╯                             ╰───
+     └────────────────────────────────────────
+      2019  2020  2021  2022  2023  2024  2025
+```
+
+---
+
+### 3. BIG THREE + OHP PROGRESSION ⭐ (MVP - Phase 1)
+
+**Purpose**: Multi-lift strength progression over time (lifter's core metric)
+
+**Data Source**: `bigThreeE1RM`
+- Squat: 315 data points
+- Bench: 403 data points
+- Deadlift: 229 data points
+- OHP: 301 data points
+
+**Chart Type**: ECharts Multi-Line Chart
+
+**Key Features**:
+- 4 colored lines:
+  - Squat: #EF4444 (red)
+  - Bench: #3B82F6 (blue)
+  - Deadlift: #10B981 (green)
+  - OHP: #F59E0B (orange)
+- Toggle buttons to show/hide individual lifts
+- Star markers (⭐) at all-time PRs:
+  - Squat: 442 lbs e1rm
+  - Bench: 321 lbs e1rm
+  - Deadlift: 513 lbs e1rm
+  - OHP: 165 lbs e1rm
+- Plate milestone horizontal lines (135/225/315/405)
+- Hover tooltip shows: date, actual weight × reps, e1rm
+- Zoom/pan enabled for detailed exploration
+
+---
+
+### 4. CALENDAR HEATMAP ⭐ (MVP - Phase 1)
+
+**Purpose**: GitHub-style workout consistency visualization
+
+**Data Source**: `workoutCalendar` (964 workout dates)
+
+**Chart Type**: Calendar heatmap (can use ECharts or custom)
+
+**Key Features**:
+- Grid: 7 rows (Sun-Sat) × ~52 columns (weeks) per year
+- Year selector tabs (2019-2025)
+- Color scale based on volume:
+  - 0 workouts: `#ebedf0` (very light gray)
+  - 1-5K lbs: `#c6e48b` (light green)
+  - 5-10K lbs: `#7bc96f` (medium green)
+  - 10-15K lbs: `#239a3b` (dark green)
+  - 15K+ lbs: `#196127` (very dark green)
+- Hover shows: date, volume, workout count
+- Visible patterns:
+  - 2021: very dense (best year)
+  - 2020 mid-year: noticeable gap
+  - Strong Mon/Fri preference
+
+---
+
+### 5. DAY OF WEEK DISTRIBUTION (Phase 2)
+
+**Purpose**: Show workout preferences and habits
+
+**Data Source**: `workoutsByDayOfWeek`
+
+**Chart Type**: Horizontal bar chart or radial bar chart
+
+**Data**:
+| Day | Workouts | Avg Volume |
+|-----|----------|------------|
+| Monday | 245 | 7,461 lbs |
+| Friday | 226 | 7,600 lbs |
+| Thursday | 179 | 6,476 lbs |
+| Tuesday | 177 | 6,658 lbs |
+| Wednesday | 141 | 6,717 lbs |
+| Saturday | 1 | 3,300 lbs |
+| Sunday | 0 | - |
+
+**Insight Text**: "You're a Monday/Friday lifter! You've trained on Saturday exactly once and never on Sunday."
+
+---
+
+### 6. PERSONAL RECORDS TABLE (Phase 2)
+
+**Purpose**: Show all-time PRs across rep ranges (critical for lifters)
+
+**Data Source**: `allTimePRs`
+
+**Layout**: Styled table with color coding
+
+| Lift | 1RM | 3RM | 5RM | 8RM | 10RM | Best E1RM |
+|------|-----|-----|-----|-----|------|-----------|
+| **Squat** | 380 | 400 ⭐ | 360 | 310 | 255 | 442 |
+| **Bench** | 250 | 240 | 220 | 200 | 185 | 321 |
+| **Deadlift** | 440 | 405 | 385 | 340 | 315 | 513 ⭐ |
+| **OHP** | 155 | 145 | 140 | 120 | 105 | 165 |
+
+**Features**:
+- Color code each row by lift (match line chart colors)
+- E1RM formula shown on hover
+- Days since PR badge (color: green < 90, yellow < 180, red > 180)
+- Click cell to see date PR was set
+
+---
+
+### 7. PLATE MILESTONES TIMELINE (Phase 2)
+
+**Purpose**: Visual journey of plate achievements (very satisfying)
+
+**Data Source**: `plateMilestones`
+
+**Visual Type**: Horizontal progress bars or timeline
+
+**Milestones**:
+- **1 Plate (135 lbs)**: Squat (Jan 2019), Bench (Feb 2019)
+- **2 Plates (225 lbs)**: Squat (Mar 2019), Bench (Sep 2019), Deadlift (Mar 2019)
+- **3 Plates (315 lbs)**: Squat (Jul 2019), Deadlift (Mar 2019)
+- **4 Plates (405 lbs)**: Deadlift (Sep 2019)
+
+**ASCII Visual**:
+```
+SQUAT    ●─────●─────●───────────────────
+         135   225   315
+
+BENCH    ──●─────────●─────●─────────────
+           135       225   275(current)
+
+DEADLIFT ────●─────●─────●─────────────●
+             225   315   405           440
+
+OHP      ───●───────────────────────────
+            135                     165
+```
+
+---
+
+### 8. POWERLIFTING TOTAL PROGRESS (Phase 2)
+
+**Purpose**: Combined S+B+D total over time (competition standard)
+
+**Data Source**: `powerliftingTotals`
+
+**Chart Type**: Line chart with milestone badges
+
+**Key Points**:
+- Current total: **1,276 lbs**
+- Peak total: **1,276 lbs** (Dec 9, 2022)
+- Club milestones achieved:
+  - 500 lb club: Feb 11, 2019
+  - 750 lb club: Mar 15, 2019
+  - 1000 lb club: May 17, 2019
+  - 1100 lb club: Oct 4, 2019
+  - 1200 lb club: Apr 30, 2021
+
+**Visual**: Line chart with badge markers at each club milestone
+
+---
+
+### 9. BAR TRAVEL INFOGRAPHIC (Phase 3)
+
+**Purpose**: Fun/impressive stat for non-lifters
+
+**Data Source**: `barTravel`
+
+**Stats**:
+- **Total**: 29.35 miles / 47.23 km
+- **By Lift**: Bench (9.4 mi), Squat (7.6 mi), OHP (6.9 mi), Deadlift (5.5 mi)
+
+**Landmark Comparisons**:
+- 🏔️ Mt. Everest: **5.34 climbs**
+- 🏢 Empire State: **106.6 climbs**
+- 🗼 Eiffel Tower: **143.1 climbs**
+- 🗽 Statue of Liberty: **508 climbs**
+
+**Visual**: Stacked bar or pictogram with landmark icons
+
+---
+
+### 10. BODY WEIGHT vs RELATIVE STRENGTH (Phase 3)
+
+**Purpose**: Show strength-to-bodyweight ratio over time
+
+**Data Source**: `relativeStrength`, `bodyWeight`
+
+**Chart Type**: Dual-axis line chart
+
+**Key Points**:
+- **Best relative strength**: 2.22x BW squat @ 180 lbs (Nov 2022)
+- **Current**: 1.37x BW squat @ 205 lbs
+- Show monthly progression of BW multiple for squat
+
+**Insight**: "You squatted 2.22x your body weight at your lightest!"
+
+---
+
+### 11. PROGRAM COMPARISON (Phase 3)
+
+**Purpose**: Compare effectiveness of 17 training programs
+
+**Data Source**: `programs`
+
+**Chart Type**: Table or horizontal bar chart
+
+**Metrics**:
+- Program name
+- Duration (start → end date)
+- Total workouts
+- Total volume
+- PRs set
+
+**Top 3 Programs**:
+| Program | Workouts | Volume | PRs |
+|---------|----------|--------|-----|
+| nSuns LP | 92 | 1.1M lbs | 15 |
+| GZCLP | 156 | 800K lbs | 8 |
+| StrongLifts 5x5 | 36 | 352K lbs | 9 |
+
+---
+
+### 12. EXERCISE DISTRIBUTION (Phase 3)
+
+**Purpose**: Show which exercises dominate training volume
+
+**Data Source**: `exerciseProgress` (43 exercises)
+
+**Chart Type**: Treemap or donut chart
+
+**Top Exercises**:
+1. Bench Press: 2.18M lbs (32%)
+2. Squat: ~1.8M lbs (26%)
+3. Deadlift: ~800K lbs (12%)
+4. OHP: ~600K lbs (9%)
+5. Others: ~1.4M lbs (21%)
+
+**Grouping Option**: Toggle between exercise list vs muscle group aggregation
+
+---
+
+### 13. MILESTONES & NOTABLE WORKOUTS TIMELINE (Phase 3)
+
+**Purpose**: Tell the story of the lifting journey
+
+**Data Source**: `milestones` (16), `notableWorkouts` (15)
+
+**Visual**: Vertical timeline with icons
+
+**Event Types**:
+- 📊 Volume milestones (100K, 250K, 500K, 1M, 2M, 3M, 4M, 5M, 6M lbs)
+- 🏋️ Notable workouts (comebacks, high-volume days)
+- 🏆 Major PRs
+- 📝 Program changes
+
+---
+
+### 14. DAYS SINCE LAST PR CARDS (Phase 2)
+
+**Purpose**: Motivation/awareness for current training
+
+**Data Source**: `daysSinceLastPR`
+
+**Visual**: Warning-style cards with color coding
+
+| Lift | Days | Status |
+|------|------|--------|
+| Squat | 243 | 🔴 Overdue |
+| OHP | 241 | 🔴 Overdue |
+| Bench | 190 | 🟡 Aging |
+| Deadlift | 130 | 🟢 Recent |
+
+**Color Logic**:
+- Green (< 90 days): Recent, on track
+- Yellow (90-180 days): Aging, attention needed
+- Red (> 180 days): Overdue, requires focus
+
+---
+
+### Dashboard Layout Structure
+
+```
+┌──────────────────────────────────────────────┐
+│         HERO STATS (6 cards)                 │
+│  [Workouts][Volume][Hours][Miles][Reps][Total]│
+├──────────────────────────────────────────────┤
+│                                              │
+│        VOLUME OVER TIME (full width)         │
+│                                              │
+├────────────────────┬─────────────────────────┤
+│                    │                         │
+│  BIG THREE PROG.   │   CALENDAR HEATMAP      │
+│   (multi-line)     │    (yearly grid)        │
+│                    │                         │
+├────────────────────┴─────────────────────────┤
+│                                              │
+│  [PR Table]  [Plate Milestones]  [Days PR]   │
+│                                              │
+├────────────────────┬─────────────────────────┤
+│                    │                         │
+│  DAY OF WEEK       │  POWERLIFTING TOTAL     │
+│                    │                         │
+├────────────────────┼─────────────────────────┤
+│                    │                         │
+│  BAR TRAVEL        │  RELATIVE STRENGTH      │
+│                    │                         │
+├────────────────────┴─────────────────────────┤
+│                                              │
+│          PROGRAMS COMPARISON                 │
+│                                              │
+├───────────────────┬──────────────────────────┤
+│                   │                          │
+│  EXERCISE DISTRIB │   MILESTONES TIMELINE    │
+│                   │                          │
+└───────────────────┴──────────────────────────┘
+```
 
 ---
 
