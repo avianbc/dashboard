@@ -74,6 +74,94 @@ From training_data.json (800KB, 6+ years of training data), we have:
 
 ---
 
+## 🎨 UX Design Specification: "Iron Archive"
+
+### Design Philosophy
+
+**Concept**: A blend of industrial gym aesthetics with editorial data storytelling. The design should feel like opening a beautifully crafted training log - weighty, honest, and earned. Not flashy gym-bro neon, not sterile corporate dashboards. This is **artifact-quality** - something you'd want framed.
+
+**Tone**: Warm industrial meets data journalism. Think: vintage weightlifting photography meets NYT interactive graphics. Gravitas without pretension.
+
+**Memorable Element**: The massive hero stats hit like PRs - you feel the weight of 6.8 million pounds immediately. The warm copper accents make achievements glow like trophies.
+
+**Dual Themes**:
+- **Dark Mode ("Iron Archive")**: Deep charcoal backgrounds, chalk-white text, copper accents
+- **Light Mode ("Chalk & Iron")**: Warm cream/paper backgrounds, iron-dark text, same copper accents
+
+### Color System
+
+**Shared Accent Colors** (both themes):
+```css
+:root {
+  /* Accent - Earned Metal */
+  --accent-copper: #c17f59;
+  --accent-copper-hover: #d4936d;
+  --accent-gold: #d4a84b;
+
+  /* Lift Colors */
+  --lift-squat: #c44536;        /* Deep red */
+  --lift-bench: #4a7c9b;        /* Steel blue */
+  --lift-deadlift: #4a8c5c;     /* Forest green */
+  --lift-ohp: #c9a227;          /* Amber */
+
+  /* Status Colors */
+  --status-pr: #d4a84b;
+  --status-recent: #4a8c5c;     /* < 90 days */
+  --status-aging: #c9a227;      /* 90-180 days */
+  --status-overdue: #c44536;    /* > 180 days */
+}
+```
+
+**Dark Mode**:
+```css
+[data-theme="dark"] {
+  --bg-deep: #0f0e0d;
+  --bg-primary: #1a1816;
+  --bg-elevated: #252220;
+  --bg-card: #2d2926;
+  --text-primary: #f5f2eb;
+  --text-secondary: #a8a299;
+  --text-muted: #6b6560;
+}
+```
+
+**Light Mode**:
+```css
+[data-theme="light"] {
+  --bg-deep: #f5f2eb;
+  --bg-primary: #ebe7df;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #1a1816;
+  --text-secondary: #4a4640;
+  --text-muted: #7a756e;
+}
+```
+
+### Typography
+
+**Font Stack**:
+- **Display** (headlines): Bebas Neue
+- **Body** (text): Source Sans 3
+- **Mono** (data/numbers): JetBrains Mono
+
+**Type Scale**: 0.75rem → 0.875rem → 1rem → 1.125rem → 1.25rem → 1.5rem → 2rem → 2.5rem → 3.5rem → 5rem
+
+### Component Design Specifications
+
+See full specifications in design plan for:
+1. **Hero Stats Cards** - 3×2 grid, copper accents, staggered animation
+2. **Volume Chart** - Area chart with gradient fill, theme-aware
+3. **Big Three Chart** - Multi-line with lift colors, PR markers
+4. **Calendar Heatmap** - GitHub-style, 12×12px cells
+5. **PR Table** - Lift color-coding, monospace numbers
+6. **Days Since PR** - Status color cards
+7. **Day of Week Bars** - Horizontal bars showing patterns
+
+**Full design specification**: `C:\Users\brad.carey\.claude\plans\jaunty-singing-patterson.md`
+
+---
+
 ## 🚀 Quick Start: First Commands to Run
 
 Once you're ready to begin implementation:
