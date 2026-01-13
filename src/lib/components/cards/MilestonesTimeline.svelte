@@ -1,8 +1,10 @@
 <script lang="ts">
+	import type { ComponentType } from 'svelte';
 	import type { Milestone } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { format } from 'date-fns';
 	import { formatCompactNumber } from '$lib/utils';
+	import { BarChart3, Dumbbell, Trophy, Star } from 'lucide-svelte';
 
 	interface Props {
 		data: Milestone[];
@@ -17,15 +19,15 @@
 		[...data].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 	);
 
-	function getIcon(milestone: string): string {
+	function getIcon(milestone: string): ComponentType {
 		if (milestone.includes('volume') || milestone.includes('lbs')) {
-			return '📊';
+			return BarChart3;
 		} else if (milestone.includes('workout')) {
-			return '🏋️';
+			return Dumbbell;
 		} else if (milestone.includes('PR') || milestone.includes('record')) {
-			return '🏆';
+			return Trophy;
 		} else {
-			return '⭐';
+			return Star;
 		}
 	}
 </script>
@@ -36,9 +38,10 @@
 
 	<div class="timeline">
 		{#each sortedMilestones as milestone, index}
+			{@const IconComponent = getIcon(milestone.milestone)}
 			<div class="timeline-item">
 				<div class="timeline-marker">
-					<div class="marker-icon">{getIcon(milestone.milestone)}</div>
+					<div class="marker-icon"><IconComponent size={20} strokeWidth={2} /></div>
 					<div class="marker-line"></div>
 				</div>
 				<div class="timeline-content">
@@ -104,7 +107,7 @@
 		background: var(--bg-elevated);
 		border: 2px solid var(--accent-copper);
 		border-radius: 50%;
-		font-size: 1.25rem;
+		color: var(--accent-copper);
 		z-index: 1;
 		flex-shrink: 0;
 	}

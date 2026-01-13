@@ -5,6 +5,7 @@
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber, formatDate } from '$lib/utils';
 	import { Button } from '$lib/components/ui';
+	import { Flame, AlertTriangle, BarChart3 } from 'lucide-svelte';
 
 	interface Props {
 		data: WorkoutCalendarDay[] | Record<string, Omit<WorkoutCalendarDay, 'date'>>;
@@ -215,16 +216,16 @@
 	<div class="insights">
 		{#if selectedYear === 2021}
 			<p class="insight-text">
-				🔥 <strong>Best year ever!</strong> 2021 was your most consistent year with 220 workouts and 1.7M lbs
+				<Flame size={18} strokeWidth={2} class="insight-icon" /> <strong>Best year ever!</strong> 2021 was your most consistent year with 220 workouts and 1.7M lbs
 				volume.
 			</p>
 		{:else if selectedYear === 2020}
 			<p class="insight-text">
-				⚠️ Mid-year gap visible - likely COVID gym closures between June and September.
+				<AlertTriangle size={18} strokeWidth={2} class="insight-icon" /> Mid-year gap visible - likely COVID gym closures between June and September.
 			</p>
 		{:else}
 			<p class="insight-text">
-				📊 Training pattern shows strong preference for Monday and Friday workouts.
+				<BarChart3 size={18} strokeWidth={2} class="insight-icon" /> Training pattern shows strong preference for Monday and Friday workouts.
 			</p>
 		{/if}
 	</div>
@@ -288,6 +289,13 @@
 		padding: var(--space-4);
 		background: var(--bg-elevated);
 		border-radius: var(--radius-md);
+	}
+
+	.insights :global(.insight-icon) {
+		display: inline-block;
+		vertical-align: middle;
+		color: var(--accent-copper);
+		margin-right: var(--space-1);
 	}
 
 	.insight-text {

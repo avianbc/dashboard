@@ -1,6 +1,8 @@
 <script lang="ts">
+	import type { ComponentType } from 'svelte';
 	import type { DaysSinceLastPR } from '$lib/types/training';
 	import { Card } from '$lib/components/ui';
+	import { CircleCheck, CircleAlert, CircleX } from 'lucide-svelte';
 
 	interface Props {
 		data: DaysSinceLastPR;
@@ -15,13 +17,13 @@
 		{ name: 'OHP', key: 'ohp' as const, color: 'var(--lift-ohp)' }
 	];
 
-	function getStatus(days: number): { status: string; color: string; emoji: string } {
+	function getStatus(days: number): { status: string; color: string; icon: ComponentType } {
 		if (days < 90) {
-			return { status: 'Recent', color: 'var(--status-recent)', emoji: '🟢' };
+			return { status: 'Recent', color: 'var(--status-recent)', icon: CircleCheck };
 		} else if (days < 180) {
-			return { status: 'Aging', color: 'var(--status-aging)', emoji: '🟡' };
+			return { status: 'Aging', color: 'var(--status-aging)', icon: CircleAlert };
 		} else {
-			return { status: 'Overdue', color: 'var(--status-overdue)', emoji: '🔴' };
+			return { status: 'Overdue', color: 'var(--status-overdue)', icon: CircleX };
 		}
 	}
 </script>
@@ -32,10 +34,11 @@
 		{#each lifts as lift}
 			{@const days = data[lift.key]}
 			{@const statusInfo = getStatus(days)}
+			{@const StatusIcon = statusInfo.icon}
 			<Card hover class="pr-card" style="--lift-color: {lift.color}; --status-color: {statusInfo.color}">
 				<div class="pr-card-header">
 					<span class="lift-name">{lift.name}</span>
-					<span class="status-emoji">{statusInfo.emoji}</span>
+					<span class="status-icon"><StatusIcon size={20} strokeWidth={2} /></span>
 				</div>
 				<div class="days-value">{days}</div>
 				<div class="days-label">days</div>
@@ -89,8 +92,10 @@
 		letter-spacing: 0.05em;
 	}
 
-	.status-emoji {
-		font-size: 1rem;
+	.status-icon {
+		color: var(--status-color);
+		display: flex;
+		align-items: center;
 	}
 
 	.days-value {

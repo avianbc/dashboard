@@ -1,7 +1,9 @@
 <script lang="ts">
+	import type { ComponentType } from 'svelte';
 	import type { NotableWorkout } from '$lib/types/training';
 	import { formatDate, formatCompactNumber } from '$lib/utils';
 	import { Card } from '$lib/components/ui';
+	import { Flame, Dumbbell, Star, Trophy, BarChart3 } from 'lucide-svelte';
 
 	interface Props {
 		data: NotableWorkout[];
@@ -12,18 +14,18 @@
 	// Take the most recent 10 notable workouts
 	const recentWorkouts = data.slice(0, 10);
 
-	function getCategoryIcon(category: string): string {
+	function getCategoryIcon(category: string): ComponentType {
 		switch (category) {
 			case 'comeback':
-				return '🔥';
+				return Flame;
 			case 'volume':
-				return '💪';
+				return Dumbbell;
 			case 'pr':
-				return '⭐';
+				return Star;
 			case 'milestone':
-				return '🏆';
+				return Trophy;
 			default:
-				return '📊';
+				return BarChart3;
 		}
 	}
 
@@ -47,9 +49,10 @@
 	<h3 class="section-title">Notable Workouts</h3>
 	<div class="activity-list">
 		{#each recentWorkouts as workout}
+			{@const IconComponent = getCategoryIcon(workout.category)}
 			<Card hover class="activity-item">
 				<div class="activity-icon" style="color: {getCategoryColor(workout.category)}">
-					{getCategoryIcon(workout.category)}
+					<IconComponent size={24} strokeWidth={2} />
 				</div>
 				<div class="activity-content">
 					<div class="activity-reason">{workout.reason}</div>
@@ -91,7 +94,9 @@
 	}
 
 	.activity-icon {
-		font-size: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		flex-shrink: 0;
 	}
 

@@ -45,15 +45,6 @@ export function getPRStatusColor(days: number): 'recent' | 'aging' | 'overdue' {
 }
 
 /**
- * Get status emoji for days since last PR
- */
-export function getPRStatusEmoji(days: number): string {
-	if (days < 90) return '🟢';
-	if (days < 180) return '🟡';
-	return '🔴';
-}
-
-/**
  * Sort array by date (descending by default)
  * Memoized for performance
  */

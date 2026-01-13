@@ -21,7 +21,7 @@
 	} from '$lib/components/cards';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatCompactNumber, formatNumber, lbsToKg, milesToKm } from '$lib/utils';
-	import { Calendar, Dumbbell, Clock, Route, Repeat, Trophy, Moon, Sun } from 'lucide-svelte';
+	import { Calendar, Dumbbell, Clock, Route, Repeat, Trophy, Moon, Sun, AlertTriangle } from 'lucide-svelte';
 
 	// Get data from page load
 	let { data }: { data: PageData } = $props();
@@ -128,7 +128,8 @@
 		<!-- Error Banner -->
 		{#if hasError}
 			<div class="error-banner" role="alert" aria-live="polite">
-				<p>⚠️ Error loading training data: {data.error}</p>
+				<AlertTriangle size={20} strokeWidth={2} />
+				<p>Error loading training data: {data.error}</p>
 			</div>
 		{/if}
 
@@ -633,12 +634,15 @@
 
 	/* Error banner */
 	.error-banner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-2);
 		background: var(--status-overdue);
 		color: var(--text-primary);
 		padding: var(--space-4);
 		border-radius: var(--border-radius-md);
 		margin-bottom: var(--space-6);
-		text-align: center;
 		animation: slideDown 0.3s ease-out;
 	}
 

@@ -5,6 +5,7 @@
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber, formatDate, lbsToKg } from '$lib/utils';
 	import { Button, Loading, Error } from '$lib/components/ui';
+	import { Star } from 'lucide-svelte';
 
 	// Props
 	let {
@@ -407,7 +408,7 @@
 				<span>Training Volume</span>
 			</div>
 			<div class="legend-item">
-				<div class="legend-marker">⭐</div>
+				<div class="legend-marker"><Star size={16} strokeWidth={2} fill="var(--accent-gold)" /></div>
 				<span>Best Month Ever</span>
 			</div>
 		</div>
@@ -492,7 +493,10 @@
 	}
 
 	.legend-marker {
-		font-size: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--accent-gold);
 	}
 
 	/* Responsive adjustments */

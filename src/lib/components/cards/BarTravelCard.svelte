@@ -2,6 +2,7 @@
 	import type { BarTravel } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber } from '$lib/utils';
+	import { Mountain, Building2, Landmark } from 'lucide-svelte';
 
 	interface Props {
 		data: BarTravel;
@@ -63,28 +64,28 @@
 		<h4>Equivalent To</h4>
 		<div class="landmark-grid">
 			<div class="landmark-item">
-				<div class="landmark-icon">🏔️</div>
+				<div class="landmark-icon"><Mountain size={32} strokeWidth={1.5} /></div>
 				<div class="landmark-info">
 					<div class="landmark-value">{data.landmarks.everestClimbs.toFixed(2)}×</div>
 					<div class="landmark-name">Mt. Everest</div>
 				</div>
 			</div>
 			<div class="landmark-item">
-				<div class="landmark-icon">🏢</div>
+				<div class="landmark-icon"><Building2 size={32} strokeWidth={1.5} /></div>
 				<div class="landmark-info">
 					<div class="landmark-value">{data.landmarks.empireStateClimbs.toFixed(1)}×</div>
 					<div class="landmark-name">Empire State</div>
 				</div>
 			</div>
 			<div class="landmark-item">
-				<div class="landmark-icon">🗼</div>
+				<div class="landmark-icon"><Landmark size={32} strokeWidth={1.5} /></div>
 				<div class="landmark-info">
 					<div class="landmark-value">{data.landmarks.eiffelTowerClimbs.toFixed(1)}×</div>
 					<div class="landmark-name">Eiffel Tower</div>
 				</div>
 			</div>
 			<div class="landmark-item">
-				<div class="landmark-icon">🗽</div>
+				<div class="landmark-icon"><Landmark size={32} strokeWidth={1.5} /></div>
 				<div class="landmark-info">
 					<div class="landmark-value">{data.landmarks.statueOfLibertyClimbs.toFixed(0)}×</div>
 					<div class="landmark-name">Statue of Liberty</div>
@@ -198,8 +199,10 @@
 	}
 
 	.landmark-icon {
-		font-size: 2rem;
-		line-height: 1;
+		color: var(--accent-copper);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.landmark-info {
