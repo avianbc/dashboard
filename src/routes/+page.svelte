@@ -193,7 +193,7 @@
 		</section>
 
 		<!-- Volume Over Time Chart -->
-		<section class="mb-12">
+		<section class="mb-12" aria-label="Volume Over Time">
 			<Card padding="lg">
 				<LazyChart minHeight="400px">
 					<VolumeChart data={volumeTimeSeries} />
@@ -202,7 +202,7 @@
 		</section>
 
 		<!-- Big Three + OHP Progression Chart -->
-		<section class="mb-12">
+		<section class="mb-12" aria-label="Big Three and OHP Progression">
 			<Card padding="lg">
 				<LazyChart minHeight="400px">
 					<BigThreeChart data={bigThreeE1RM} {allTimePRs} />
@@ -211,7 +211,7 @@
 		</section>
 
 		<!-- Exercise Distribution Chart -->
-		<section class="mb-12">
+		<section class="mb-12" aria-label="Exercise Distribution">
 			<Card padding="lg">
 				<LazyChart minHeight="400px">
 					<ExerciseDistributionChart data={exerciseProgress} />
@@ -220,7 +220,7 @@
 		</section>
 
 		<!-- Calendar Heatmap -->
-		<section class="mb-12">
+		<section class="mb-12" aria-label="Workout Calendar">
 			<Card padding="lg">
 				<LazyChart minHeight="300px">
 					<CalendarHeatmap data={workoutCalendar} />
@@ -339,6 +339,19 @@
 		background: var(--bg-deep);
 	}
 
+	/* Accessibility - Visually hidden but accessible to screen readers */
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
+
 	.dashboard-header {
 		background: var(--bg-elevated);
 		border-bottom: 1px solid var(--bg-card);
@@ -374,6 +387,38 @@
 		gap: var(--space-3);
 		position: relative;
 		overflow: hidden;
+		animation: fadeInUp 0.6s ease-out backwards;
+	}
+
+	/* Staggered animation for stat cards */
+	.stat-card:nth-child(1) {
+		animation-delay: 0.1s;
+	}
+	.stat-card:nth-child(2) {
+		animation-delay: 0.2s;
+	}
+	.stat-card:nth-child(3) {
+		animation-delay: 0.3s;
+	}
+	.stat-card:nth-child(4) {
+		animation-delay: 0.4s;
+	}
+	.stat-card:nth-child(5) {
+		animation-delay: 0.5s;
+	}
+	.stat-card:nth-child(6) {
+		animation-delay: 0.6s;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	.stat-card::before {
@@ -390,6 +435,11 @@
 
 	.stat-card:hover::before {
 		opacity: 1;
+	}
+
+	.stat-card:hover {
+		transform: translateY(-2px);
+		transition: transform var(--transition-normal);
 	}
 
 	.stat-icon {
