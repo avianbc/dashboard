@@ -64,8 +64,13 @@
 					const data = params[0];
 					const week = data.axisValue;
 					const workouts = data.value;
+
+					// Parse ISO week format for display
+					const match = week.match(/(\d{4})-W(\d{2})/);
+					const displayWeek = match ? `Week ${match[2]}, ${match[1]}` : week;
+
 					return `<div style="padding: 4px;">
-						<div style="font-weight: bold; margin-bottom: 4px;">Week of ${week}</div>
+						<div style="font-weight: bold; margin-bottom: 4px;">${displayWeek}</div>
 						<div>${workouts} workout${workouts !== 1 ? 's' : ''}</div>
 					</div>`;
 				}
@@ -85,8 +90,16 @@
 					color: subtleColor,
 					interval: 'auto',
 					formatter: (value: string) => {
-						const date = new Date(value);
-						return `${date.getMonth() + 1}/${date.getFullYear().toString().slice(2)}`;
+						// Parse ISO week format (e.g., "2019-W03")
+						const match = value.match(/(\d{4})-W(\d{2})/);
+						if (!match) return value;
+
+						const year = match[1];
+						const weekNum = match[2];
+
+						// Show year change or first week, otherwise just show every few weeks
+						const showYear = weekNum === '01' || weekNum === '02';
+						return showYear ? `W${weekNum} '${year.slice(2)}` : `W${weekNum}`;
 					}
 				},
 				axisLine: {
