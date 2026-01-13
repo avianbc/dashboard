@@ -1,7 +1,12 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { Card, Button, Loading, Error as ErrorComponent } from '$lib/components/ui';
-	import { VolumeChart, BigThreeChart, ExerciseDistributionChart } from '$lib/components/charts';
+	import {
+		VolumeChart,
+		BigThreeChart,
+		ExerciseDistributionChart,
+		CalendarHeatmap
+	} from '$lib/components/charts';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatCompactNumber, formatNumber } from '$lib/utils';
 	import { Calendar, Dumbbell, Clock, Route, Repeat, Trophy, Moon, Sun } from 'lucide-svelte';
@@ -35,6 +40,7 @@
 	const bigThreeE1RM = trainingData.bigThreeE1RM;
 	const allTimePRs = trainingData.allTimePRs;
 	const exerciseProgress = trainingData.exerciseProgress;
+	const workoutCalendar = trainingData.workoutCalendar;
 </script>
 
 <div class="dashboard">
@@ -169,14 +175,21 @@
 			</Card>
 		</section>
 
-		<!-- Phase 3.3 Complete Badge -->
+		<!-- Calendar Heatmap -->
+		<section class="mb-12">
+			<Card padding="lg">
+				<CalendarHeatmap data={workoutCalendar} />
+			</Card>
+		</section>
+
+		<!-- Phase 3.4 Complete Badge -->
 		<section class="mb-12">
 			<Card padding="lg" class="text-center bg-elevated">
-				<div class="text-4xl mb-4">📊</div>
-				<h3 class="mb-2">Phase 3.3 Complete</h3>
+				<div class="text-4xl mb-4">📅</div>
+				<h3 class="mb-2">Phase 3.4 Complete</h3>
 				<p class="text-secondary">
-					Exercise Distribution chart showing training volume breakdown across 43 exercises. Big 4
-					compound lifts account for 89% of total volume.
+					GitHub-style calendar heatmap showing 6+ years of workout consistency across 964 training
+					days. Color intensity represents daily volume.
 				</p>
 			</Card>
 		</section>
