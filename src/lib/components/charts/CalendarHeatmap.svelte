@@ -186,7 +186,7 @@
 	<div class="year-selector">
 		{#each years as year}
 			<Button
-				variant={selectedYear === year ? 'default' : 'outline'}
+				variant={selectedYear === year ? 'primary' : 'outline'}
 				size="sm"
 				onclick={() => (selectedYear = year)}
 			>
