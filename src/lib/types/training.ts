@@ -80,7 +80,6 @@ export interface PRRecord {
 }
 
 export interface ExerciseProgress {
-	exerciseName: string;
 	totalVolumeLbs: number;
 	totalVolumeKg: number;
 	firstPerformed: string;
@@ -290,7 +289,7 @@ export interface TrainingData {
 	summary: Summary;
 	volumeTimeSeries: VolumeTimeSeries;
 	workoutCalendar: WorkoutCalendarDay[];
-	exerciseProgress: ExerciseProgress[];
+	exerciseProgress: Record<string, ExerciseProgress>;
 	bigThreeE1RM: BigThreeE1RM;
 	bigThreeVolume: BigThreeVolume;
 	programs: Program[];
