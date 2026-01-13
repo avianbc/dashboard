@@ -520,7 +520,6 @@
 		font-size: 1rem;
 		color: var(--text-muted);
 		font-weight: normal;
-		margin-left: var(--space-2);
 	}
 
 	.stat-subtitle {
