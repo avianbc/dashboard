@@ -22,7 +22,6 @@
 	// State
 	let chartContainer = $state<HTMLDivElement>();
 	let chartInstance: echarts.ECharts | null = null;
-	let currentUnitSystem = $state('imperial');
 
 	// Visibility state for each lift
 	let visibleLifts = $state({
@@ -43,20 +42,16 @@
 	// Plate milestones in lbs
 	const plateMilestones = [135, 225, 315, 405];
 
-	// Subscribe to unit system
+	// React to unit system changes
 	$effect(() => {
-		const unsubscribe = unitSystem.subscribe((value) => {
-			currentUnitSystem = value;
-			if (chartInstance) {
-				updateChart();
-			}
-		});
-		return unsubscribe;
+		if (chartInstance && unitSystem.current) {
+			updateChart();
+		}
 	});
 
 	// Get chart data for all lifts
 	function getChartData() {
-		const useMetric = currentUnitSystem === 'metric';
+		const useMetric = unitSystem.current === 'metric';
 		const lifts = ['squat', 'bench', 'deadlift', 'ohp'] as const;
 
 		return lifts.map((lift) => {
@@ -77,7 +72,7 @@
 
 	// Find PR points for each lift
 	function getPRPoints() {
-		const useMetric = currentUnitSystem === 'metric';
+		const useMetric = unitSystem.current === 'metric';
 		const lifts = ['squat', 'bench', 'deadlift', 'ohp'] as const;
 
 		return lifts.map((lift) => {
@@ -107,7 +102,7 @@
 
 		const chartData = getChartData();
 		const prPoints = getPRPoints();
-		const useMetric = currentUnitSystem === 'metric';
+		const useMetric = unitSystem.current === 'metric';
 		const unit = useMetric ? 'kg' : 'lbs';
 
 		// Get computed colors from CSS variables

@@ -21,22 +21,17 @@
 	let chartContainer = $state<HTMLDivElement>();
 	let chartInstance: echarts.ECharts | null = null;
 	let granularity: 'daily' | 'weekly' | 'monthly' = $state('monthly');
-	let currentUnitSystem = $state('imperial');
 
-	// Subscribe to unit system
+	// React to unit system changes
 	$effect(() => {
-		const unsubscribe = unitSystem.subscribe((value) => {
-			currentUnitSystem = value;
-			if (chartInstance) {
-				updateChart();
-			}
-		});
-		return unsubscribe;
+		if (chartInstance && unitSystem.current) {
+			updateChart();
+		}
 	});
 
 	// Get the appropriate data based on granularity
 	function getChartData() {
-		const useMetric = currentUnitSystem === 'metric';
+		const useMetric = unitSystem.current === 'metric';
 
 		switch (granularity) {
 			case 'daily':
@@ -63,7 +58,7 @@
 
 	// Find best month for annotation
 	function getBestMonth() {
-		const useMetric = currentUnitSystem === 'metric';
+		const useMetric = unitSystem.current === 'metric';
 		const monthlyData = data.monthly;
 		let bestMonth = monthlyData[0];
 
@@ -86,7 +81,7 @@
 
 		const chartData = getChartData();
 		const bestMonth = getBestMonth();
-		const useMetric = currentUnitSystem === 'metric';
+		const useMetric = unitSystem.current === 'metric';
 		const unit = useMetric ? 'kg' : 'lbs';
 
 		// Get computed colors from CSS variables

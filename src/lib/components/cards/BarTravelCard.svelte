@@ -9,16 +9,7 @@
 
 	let { data }: Props = $props();
 
-	let currentUnit = $state('imperial');
-
-	$effect(() => {
-		const unsubUnit = unitSystem.subscribe((value) => {
-			currentUnit = value;
-		});
-		return unsubUnit;
-	});
-
-	const isMetric = $derived(currentUnit === 'metric');
+	const isMetric = $derived(unitSystem.current === 'metric');
 	const totalDistance = $derived(isMetric ? data.total.km : data.total.miles);
 	const distanceUnit = $derived(isMetric ? 'km' : 'mi');
 </script>

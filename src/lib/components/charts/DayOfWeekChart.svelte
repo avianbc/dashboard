@@ -13,27 +13,12 @@
 
 	let chartContainer: HTMLDivElement;
 	let chart: echarts.ECharts;
-	let currentTheme = $state('dark');
-	let currentUnit = $state('imperial');
 
+	// React to theme and unit changes
 	$effect(() => {
-		const unsubTheme = theme.subscribe((value) => {
-			currentTheme = value;
-			if (chart) {
-				updateChart();
-			}
-		});
-		return unsubTheme;
-	});
-
-	$effect(() => {
-		const unsubUnit = unitSystem.subscribe((value) => {
-			currentUnit = value;
-			if (chart) {
-				updateChart();
-			}
-		});
-		return unsubUnit;
+		if (chart && (theme.current || unitSystem.current)) {
+			updateChart();
+		}
 	});
 
 	onMount(() => {
@@ -70,10 +55,10 @@
 			return;
 		}
 
-		const isDark = currentTheme === 'dark';
+		const isDark = theme.current === 'dark';
 		const textColor = isDark ? '#f5f2eb' : '#1a1816';
 		const subtleColor = isDark ? '#6b6560' : '#7a756e';
-		const isMetric = currentUnit === 'metric';
+		const isMetric = unitSystem.current === 'metric';
 
 		// Sort days in proper order (Monday first)
 		const dayOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];

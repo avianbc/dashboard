@@ -14,16 +14,11 @@
 
 	let chartContainer: HTMLDivElement;
 	let chart: echarts.ECharts;
-	let currentTheme = $state('dark');
 
 	$effect(() => {
-		const unsubTheme = theme.subscribe((value) => {
-			currentTheme = value;
-			if (chart) {
-				updateChart();
-			}
-		});
-		return unsubTheme;
+		if (chart && theme.current) {
+			updateChart();
+		}
 	});
 
 	onMount(() => {
@@ -63,7 +58,7 @@
 			return;
 		}
 
-		const isDark = currentTheme === 'dark';
+		const isDark = theme.current === 'dark';
 		const textColor = isDark ? '#f5f2eb' : '#1a1816';
 		const subtleColor = isDark ? '#6b6560' : '#7a756e';
 

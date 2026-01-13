@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import { clsx } from 'clsx';
 
 	interface Props {
@@ -6,10 +7,22 @@
 		padding?: 'sm' | 'md' | 'lg';
 		shadow?: 'sm' | 'md' | 'lg' | 'none';
 		hover?: boolean;
-		children?: any;
+		children?: Snippet;
+		role?: string;
+		'aria-label'?: string;
+		style?: string;
 	}
 
-	let { class: className = '', padding = 'md', shadow = 'md', hover = false, children }: Props = $props();
+	let {
+		class: className = '',
+		padding = 'md',
+		shadow = 'md',
+		hover = false,
+		children,
+		role,
+		'aria-label': ariaLabel,
+		style
+	}: Props = $props();
 
 	const paddingClasses = {
 		sm: 'p-4',
@@ -26,6 +39,9 @@
 </script>
 
 <div
+	{role}
+	{style}
+	aria-label={ariaLabel}
 	class={clsx(
 		'bg-card rounded-lg transition-all',
 		paddingClasses[padding],

@@ -14,7 +14,6 @@
 
 	let chartContainer: HTMLDivElement;
 	let chart: echarts.ECharts;
-	let currentUnit = $state('imperial');
 	let selectedYear = $state(2025);
 
 	// Convert data to array if it's an object
@@ -39,14 +38,6 @@
 		return Array.from(uniqueYears).sort((a, b) => b - a); // Sort descending (newest first)
 	});
 
-	// Subscribe to unit system changes
-	$effect(() => {
-		const unsubUnit = unitSystem.subscribe((value) => {
-			currentUnit = value;
-		});
-		return unsubUnit;
-	});
-
 	// Filter data for selected year
 	const yearData = $derived.by(() => {
 		return dataArray.filter((day) => {
@@ -58,7 +49,7 @@
 	// Transform data for ECharts
 	const chartData = $derived.by(() => {
 		return yearData.map((day) => {
-			const volume = currentUnit === 'imperial' ? day.volumeLbs : day.volumeKg;
+			const volume = unitSystem.current === 'imperial' ? day.volumeLbs : day.volumeKg;
 			return [day.date, volume, day.count];
 		});
 	});
@@ -96,7 +87,7 @@
 					const date = params.data[0];
 					const volume = params.data[1];
 					const count = params.data[2];
-					const unit = currentUnit === 'imperial' ? 'lbs' : 'kg';
+					const unit = unitSystem.current === 'imperial' ? 'lbs' : 'kg';
 
 					return `
 						<div style="padding: 8px;">

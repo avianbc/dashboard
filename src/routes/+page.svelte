@@ -29,24 +29,6 @@
 	// Check for data loading errors
 	const hasError = data.error !== undefined;
 
-	let currentTheme = $state('dark');
-	let currentUnit = $state('imperial');
-
-	// Subscribe to stores
-	$effect(() => {
-		const unsubTheme = theme.subscribe((value) => {
-			currentTheme = value;
-		});
-		return unsubTheme;
-	});
-
-	$effect(() => {
-		const unsubUnit = unitSystem.subscribe((value) => {
-			currentUnit = value;
-		});
-		return unsubUnit;
-	});
-
 	// Add defensive checks for missing data with memoization using $derived
 	const trainingData = $derived(data.trainingData || {});
 	const summary = $derived(
@@ -116,10 +98,10 @@
 						variant="outline"
 						size="sm"
 						onclick={() => theme.toggle()}
-						aria-label={currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-						title={currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+						aria-label={theme.current === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+						title={theme.current === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
 					>
-						{#if currentTheme === 'dark'}
+						{#if theme.current === 'dark'}
 							<Sun size={16} aria-hidden="true" />
 							<span class="visually-hidden">Light mode</span>
 						{:else}
@@ -131,10 +113,10 @@
 						variant="outline"
 						size="sm"
 						onclick={() => unitSystem.toggle()}
-						aria-label={`Switch to ${currentUnit === 'imperial' ? 'metric' : 'imperial'} units`}
-						title={`Currently showing ${currentUnit} units. Click to switch.`}
+						aria-label={`Switch to ${unitSystem.current === 'imperial' ? 'metric' : 'imperial'} units`}
+						title={`Currently showing ${unitSystem.current} units. Click to switch.`}
 					>
-						{currentUnit === 'imperial' ? 'lbs → kg' : 'kg → lbs'}
+						{unitSystem.current === 'imperial' ? 'lbs → kg' : 'kg → lbs'}
 					</Button>
 				</nav>
 			</div>
@@ -167,19 +149,19 @@
 				</Card>
 
 				<!-- Total Volume -->
-				<Card hover class="stat-card" role="listitem" aria-label="Total volume: {formatCompactNumber(currentUnit === 'imperial' ? summary.totalVolumeLbs : lbsToKg(summary.totalVolumeLbs))} {currentUnit === 'imperial' ? 'pounds' : 'kilograms'}">
+				<Card hover class="stat-card" role="listitem" aria-label="Total volume: {formatCompactNumber(unitSystem.current === 'imperial' ? summary.totalVolumeLbs : lbsToKg(summary.totalVolumeLbs))} {unitSystem.current === 'imperial' ? 'pounds' : 'kilograms'}">
 					<div class="stat-icon" aria-hidden="true">
 						<Dumbbell size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Total Volume</div>
 						<div class="stat-value">
-						{formatCompactNumber(currentUnit === 'imperial' ? summary.totalVolumeLbs : lbsToKg(summary.totalVolumeLbs))}
-						<span class="unit-label">{currentUnit === 'imperial' ? 'lbs' : 'kg'}</span>
+						{formatCompactNumber(unitSystem.current === 'imperial' ? summary.totalVolumeLbs : lbsToKg(summary.totalVolumeLbs))}
+						<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
 					</div>
 						<div class="stat-subtitle">
-							{currentUnit === 'imperial' ? (summary.totalVolumeLbs / 2000).toFixed(0) : (lbsToKg(summary.totalVolumeLbs) / 1000).toFixed(0)}
-							{currentUnit === 'imperial' ? 'tons' : 'tonnes'} lifted
+							{unitSystem.current === 'imperial' ? (summary.totalVolumeLbs / 2000).toFixed(0) : (lbsToKg(summary.totalVolumeLbs) / 1000).toFixed(0)}
+							{unitSystem.current === 'imperial' ? 'tons' : 'tonnes'} lifted
 						</div>
 					</div>
 				</Card>
@@ -197,15 +179,15 @@
 				</Card>
 
 				<!-- Bar Travel -->
-				<Card hover class="stat-card" role="listitem" aria-label="Bar travel: {(currentUnit === 'imperial' ? barTravel.total.miles : milesToKm(barTravel.total.miles)).toFixed(1)} {currentUnit === 'imperial' ? 'miles' : 'kilometers'}">
+				<Card hover class="stat-card" role="listitem" aria-label="Bar travel: {(unitSystem.current === 'imperial' ? barTravel.total.miles : milesToKm(barTravel.total.miles)).toFixed(1)} {unitSystem.current === 'imperial' ? 'miles' : 'kilometers'}">
 					<div class="stat-icon" aria-hidden="true">
 						<Route size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Bar Travel</div>
 						<div class="stat-value">
-						{(currentUnit === 'imperial' ? barTravel.total.miles : milesToKm(barTravel.total.miles)).toFixed(1)}
-						<span class="unit-label">{currentUnit === 'imperial' ? 'mi' : 'km'}</span>
+						{(unitSystem.current === 'imperial' ? barTravel.total.miles : milesToKm(barTravel.total.miles)).toFixed(1)}
+						<span class="unit-label">{unitSystem.current === 'imperial' ? 'mi' : 'km'}</span>
 					</div>
 						<div class="stat-subtitle">{barTravel.landmarks.everestClimbs.toFixed(1)} Everests</div>
 					</div>
@@ -224,15 +206,15 @@
 				</Card>
 
 				<!-- Powerlifting Total -->
-				<Card hover class="stat-card" role="listitem" aria-label="Powerlifting total: {formatNumber(currentUnit === 'imperial' ? powerliftingTotals.current.totalLbs : lbsToKg(powerliftingTotals.current.totalLbs))} {currentUnit === 'imperial' ? 'pounds' : 'kilograms'}">
+				<Card hover class="stat-card" role="listitem" aria-label="Powerlifting total: {formatNumber(unitSystem.current === 'imperial' ? powerliftingTotals.current.totalLbs : lbsToKg(powerliftingTotals.current.totalLbs))} {unitSystem.current === 'imperial' ? 'pounds' : 'kilograms'}">
 					<div class="stat-icon" aria-hidden="true">
 						<Trophy size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Powerlifting Total</div>
 						<div class="stat-value">
-						{formatNumber(currentUnit === 'imperial' ? powerliftingTotals.current.totalLbs : lbsToKg(powerliftingTotals.current.totalLbs))}
-						<span class="unit-label">{currentUnit === 'imperial' ? 'lbs' : 'kg'}</span>
+						{formatNumber(unitSystem.current === 'imperial' ? powerliftingTotals.current.totalLbs : lbsToKg(powerliftingTotals.current.totalLbs))}
+						<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
 					</div>
 						<div class="stat-subtitle">1200+ club member</div>
 					</div>
@@ -299,11 +281,6 @@
 				<RecentActivity data={notableWorkouts} />
 			</Card>
 		</section>
-
-		<!-- Phase 5: Advanced Features -->
-		<div class="phase-divider mb-12">
-			<h2 class="phase-title">Phase 5: Advanced Visualizations</h2>
-		</div>
 
 		<!-- Workout Frequency Analysis -->
 		<section class="mb-12">

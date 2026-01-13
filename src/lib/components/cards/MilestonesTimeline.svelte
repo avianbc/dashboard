@@ -10,16 +10,7 @@
 
 	let { data }: Props = $props();
 
-	let currentUnit = $state('imperial');
-
-	$effect(() => {
-		const unsubUnit = unitSystem.subscribe((value) => {
-			currentUnit = value;
-		});
-		return unsubUnit;
-	});
-
-	const isMetric = $derived(currentUnit === 'metric');
+	const isMetric = $derived(unitSystem.current === 'metric');
 
 	// Sort milestones by date (descending - newest first)
 	const sortedMilestones = $derived(

@@ -12,27 +12,11 @@
 
 	let chartContainer: HTMLDivElement;
 	let chart: echarts.ECharts;
-	let currentTheme = $state('dark');
-	let currentUnit = $state('imperial');
 
 	$effect(() => {
-		const unsubTheme = theme.subscribe((value) => {
-			currentTheme = value;
-			if (chart) {
-				updateChart();
-			}
-		});
-		return unsubTheme;
-	});
-
-	$effect(() => {
-		const unsubUnit = unitSystem.subscribe((value) => {
-			currentUnit = value;
-			if (chart) {
-				updateChart();
-			}
-		});
-		return unsubUnit;
+		if (chart && theme.current) {
+			updateChart();
+		}
 	});
 
 	onMount(() => {
@@ -51,7 +35,7 @@
 	});
 
 	function updateChart() {
-		const isDark = currentTheme === 'dark';
+		const isDark = theme.current === 'dark';
 		const textColor = isDark ? '#f5f2eb' : '#1a1816';
 		const subtleColor = isDark ? '#6b6560' : '#7a756e';
 

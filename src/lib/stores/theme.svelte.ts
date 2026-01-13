@@ -1,4 +1,3 @@
-import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
 export type Theme = 'dark' | 'light';
@@ -51,56 +50,48 @@ function applyTheme(theme: Theme): void {
 }
 
 /**
- * Create the theme store
+ * Reactive theme state using Svelte 5 runes
  */
-function createThemeStore() {
-	const { subscribe, set, update } = writable<Theme>(loadTheme());
+class ThemeState {
+	current = $state<Theme>(loadTheme());
 
-	// Apply initial theme
-	if (browser) {
-		applyTheme(loadTheme());
+	constructor() {
+		// Apply initial theme
+		if (browser) {
+			applyTheme(this.current);
+		}
 	}
 
-	return {
-		subscribe,
-		set: (value: Theme) => {
-			saveTheme(value);
-			applyTheme(value);
-			set(value);
-		},
-		toggle: () => {
-			update((current) => {
-				const newValue = current === 'dark' ? 'light' : 'dark';
-				saveTheme(newValue);
-				applyTheme(newValue);
-				return newValue;
-			});
-		},
-		setDark: () => {
-			saveTheme('dark');
-			applyTheme('dark');
-			set('dark');
-		},
-		setLight: () => {
-			saveTheme('light');
-			applyTheme('light');
-			set('light');
-		},
-		reset: () => {
-			saveTheme(DEFAULT_THEME);
-			applyTheme(DEFAULT_THEME);
-			set(DEFAULT_THEME);
-		}
-	};
+	set(value: Theme) {
+		this.current = value;
+		saveTheme(value);
+		applyTheme(value);
+	}
+
+	toggle() {
+		const newValue = this.current === 'dark' ? 'light' : 'dark';
+		this.set(newValue);
+	}
+
+	setDark() {
+		this.set('dark');
+	}
+
+	setLight() {
+		this.set('light');
+	}
+
+	reset() {
+		this.set(DEFAULT_THEME);
+	}
+
+	get isDark() {
+		return this.current === 'dark';
+	}
+
+	get isLight() {
+		return this.current === 'light';
+	}
 }
 
-export const theme = createThemeStore();
-
-/**
- * Derived store to check if current theme is dark
- */
-export const isDark = {
-	subscribe: (run: (value: boolean) => void) => {
-		return theme.subscribe((value) => run(value === 'dark'));
-	}
-};
+export const theme = new ThemeState();

@@ -14,17 +14,12 @@
 
 	let chartContainer: HTMLDivElement;
 	let chart: echarts.ECharts | null = null;
-	let currentUnit = $state('imperial');
 
 	// Subscribe to unit system changes
 	$effect(() => {
-		const unsubscribe = unitSystem.subscribe((value) => {
-			currentUnit = value;
-			if (chart && browser) {
-				updateChart();
-			}
-		});
-		return unsubscribe;
+		if (chart && browser && unitSystem.current) {
+			updateChart();
+		}
 	});
 
 	onMount(() => {
@@ -54,7 +49,7 @@
 			.sort((a, b) => b.volumeLbs - a.volumeLbs);
 
 		const totalVolume =
-			currentUnit === 'imperial'
+			unitSystem.current === 'imperial'
 				? exercises.reduce((sum, ex) => sum + ex.volumeLbs, 0)
 				: exercises.reduce((sum, ex) => sum + ex.volumeKg, 0);
 
@@ -63,13 +58,13 @@
 		const othersExercises = exercises.slice(6);
 
 		const othersVolume =
-			currentUnit === 'imperial'
+			unitSystem.current === 'imperial'
 				? othersExercises.reduce((sum, ex) => sum + ex.volumeLbs, 0)
 				: othersExercises.reduce((sum, ex) => sum + ex.volumeKg, 0);
 
 		const chartData = topExercises.map((ex) => ({
 			name: ex.name,
-			value: currentUnit === 'imperial' ? ex.volumeLbs : ex.volumeKg
+			value: unitSystem.current === 'imperial' ? ex.volumeLbs : ex.volumeKg
 		}));
 
 		if (othersVolume > 0) {
@@ -109,7 +104,7 @@
 		if (!chart) return;
 
 		const { chartData, totalVolume } = processData();
-		const unit = currentUnit === 'imperial' ? 'lbs' : 'kg';
+		const unit = unitSystem.current === 'imperial' ? 'lbs' : 'kg';
 
 		const colors = chartData.map((item) => getExerciseColor(item.name));
 

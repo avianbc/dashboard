@@ -9,16 +9,6 @@
 
 	let { data }: Props = $props();
 
-	let currentUnit = $state('imperial');
-
-	// Subscribe to unit system
-	$effect(() => {
-		const unsubscribe = unitSystem.subscribe((value) => {
-			currentUnit = value;
-		});
-		return unsubscribe;
-	});
-
 	const lifts = [
 		{ name: 'Squat', key: 'squat', color: 'var(--lift-squat)' },
 		{ name: 'Bench', key: 'bench', color: 'var(--lift-bench)' },
@@ -37,7 +27,7 @@
 
 	function displayWeight(weightLbs: number | null): string {
 		if (weightLbs === null) return '—';
-		const weight = currentUnit === 'imperial' ? weightLbs : lbsToKg(weightLbs);
+		const weight = unitSystem.current === 'imperial' ? weightLbs : lbsToKg(weightLbs);
 		return Math.round(weight).toString();
 	}
 </script>
@@ -74,7 +64,7 @@
 			</tbody>
 		</table>
 	</div>
-	<p class="table-note">All weights in {currentUnit === 'imperial' ? 'lbs' : 'kg'}. E1RM = Estimated 1 Rep Max</p>
+	<p class="table-note">All weights in {unitSystem.current === 'imperial' ? 'lbs' : 'kg'}. E1RM = Estimated 1 Rep Max</p>
 </div>
 
 <style>

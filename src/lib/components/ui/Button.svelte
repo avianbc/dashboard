@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import { clsx } from 'clsx';
 
 	interface Props {
@@ -8,7 +9,9 @@
 		disabled?: boolean;
 		type?: 'button' | 'submit' | 'reset';
 		onclick?: (event: MouseEvent) => void;
-		children?: any;
+		children?: Snippet;
+		'aria-label'?: string;
+		title?: string;
 	}
 
 	let {
@@ -18,7 +21,9 @@
 		disabled = false,
 		type = 'button',
 		onclick,
-		children
+		children,
+		'aria-label': ariaLabel,
+		title
 	}: Props = $props();
 
 	const variantClasses = {
@@ -38,6 +43,8 @@
 <button
 	{type}
 	{disabled}
+	{title}
+	aria-label={ariaLabel}
 	onclick={onclick}
 	class={clsx(
 		'rounded-md font-medium transition-all inline-flex items-center justify-center gap-2',
