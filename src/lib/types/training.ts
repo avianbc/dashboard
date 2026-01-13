@@ -119,7 +119,7 @@ export interface Program {
 	name: string;
 	startDate: string;
 	endDate: string;
-	totalWorkouts: number;
+	workouts: number;
 	totalVolumeLbs: number;
 	totalVolumeKg: number;
 	prsSet: number;
@@ -303,37 +303,62 @@ export interface BodyWeight {
 	}[];
 }
 
+export interface RelativeStrengthRecord {
+	date: string;
+	liftLbs: number;
+	liftKg: number;
+	bodyWeightLbs: number;
+	bodyWeightKg: number;
+	multiple: number;
+}
+
 export interface RelativeStrength {
 	squat: {
-		best: number;
-		current: number;
+		best: RelativeStrengthRecord;
+		current: RelativeStrengthRecord;
 		monthlyProgression: {
 			month: string;
-			multiple: number;
+			maxLiftLbs: number;
+			maxLiftKg: number;
+			avgBwLbs: number;
+			avgBwKg: number;
+			bwMultiple: number;
 		}[];
 	};
 	bench: {
-		best: number;
-		current: number;
+		best: RelativeStrengthRecord;
+		current: RelativeStrengthRecord;
 		monthlyProgression: {
 			month: string;
-			multiple: number;
+			maxLiftLbs: number;
+			maxLiftKg: number;
+			avgBwLbs: number;
+			avgBwKg: number;
+			bwMultiple: number;
 		}[];
 	};
 	deadlift: {
-		best: number;
-		current: number;
+		best: RelativeStrengthRecord;
+		current: RelativeStrengthRecord;
 		monthlyProgression: {
 			month: string;
-			multiple: number;
+			maxLiftLbs: number;
+			maxLiftKg: number;
+			avgBwLbs: number;
+			avgBwKg: number;
+			bwMultiple: number;
 		}[];
 	};
 	ohp: {
-		best: number;
-		current: number;
+		best: RelativeStrengthRecord;
+		current: RelativeStrengthRecord;
 		monthlyProgression: {
 			month: string;
-			multiple: number;
+			maxLiftLbs: number;
+			maxLiftKg: number;
+			avgBwLbs: number;
+			avgBwKg: number;
+			bwMultiple: number;
 		}[];
 	};
 }

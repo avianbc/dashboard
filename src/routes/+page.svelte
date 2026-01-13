@@ -5,9 +5,20 @@
 		VolumeChart,
 		BigThreeChart,
 		ExerciseDistributionChart,
-		CalendarHeatmap
+		CalendarHeatmap,
+		WorkoutFrequencyChart,
+		DayOfWeekChart,
+		PowerliftingTotalChart,
+		RelativeStrengthChart,
+		ProgramComparisonChart
 	} from '$lib/components/charts';
-	import { PRTable, DaysSincePR, RecentActivity } from '$lib/components/cards';
+	import {
+		PRTable,
+		DaysSincePR,
+		RecentActivity,
+		BarTravelCard,
+		MilestonesTimeline
+	} from '$lib/components/cards';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatCompactNumber, formatNumber } from '$lib/utils';
 	import { Calendar, Dumbbell, Clock, Route, Repeat, Trophy, Moon, Sun } from 'lucide-svelte';
@@ -37,13 +48,36 @@
 	const summary = trainingData.summary;
 	const volumeTimeSeries = trainingData.volumeTimeSeries;
 	const barTravel = trainingData.barTravel;
-	const powerliftingTotals = trainingData.powerliftingTotals;
+	// Transform powerliftingTotals.clubMilestones from object to clubs array
+	const powerliftingTotals = {
+		...trainingData.powerliftingTotals,
+		clubs: Object.entries(trainingData.powerliftingTotals?.clubMilestones || {}).map(
+			([name, milestone]: [string, any]) => ({
+				name: `${name}lb Club`,
+				totalLbs: milestone.totalLbs,
+				dateAchieved: milestone.date
+			})
+		)
+	};
 	const bigThreeE1RM = trainingData.bigThreeE1RM;
 	const allTimePRs = trainingData.allTimePRs;
 	const daysSinceLastPR = trainingData.daysSinceLastPR;
 	const exerciseProgress = trainingData.exerciseProgress;
 	const workoutCalendar = trainingData.workoutCalendar;
 	const notableWorkouts = trainingData.notableWorkouts;
+	// Transform workoutsByDayOfWeek from object to array
+	const workoutsByDayOfWeek = Object.entries(trainingData.workoutsByDayOfWeek || {}).map(
+		([day, stats]: [string, any]) => ({
+			day,
+			count: stats.count,
+			avgVolumeLbs: stats.avgVolumeLbs,
+			avgVolumeKg: stats.avgVolumeKg
+		})
+	);
+	const programs = trainingData.programs;
+	const milestones = trainingData.milestones;
+	const relativeStrength = trainingData.relativeStrength;
+	const bodyWeight = trainingData.bodyWeight;
 </script>
 
 <div class="dashboard">
@@ -209,14 +243,69 @@
 			</Card>
 		</section>
 
-		<!-- Phase 4 Complete Badge -->
+		<!-- Phase 5: Advanced Features -->
+		<div class="phase-divider mb-12">
+			<h2 class="phase-title">Phase 5: Advanced Visualizations</h2>
+		</div>
+
+		<!-- Workout Frequency Analysis -->
+		<section class="mb-12">
+			<Card padding="lg">
+				<WorkoutFrequencyChart data={volumeTimeSeries} />
+			</Card>
+		</section>
+
+		<!-- Two-column layout: Day of Week + Powerlifting Total -->
+		<div class="two-column-layout mb-12">
+			<section>
+				<Card padding="lg">
+					<DayOfWeekChart data={workoutsByDayOfWeek} />
+				</Card>
+			</section>
+			<section>
+				<Card padding="lg">
+					<PowerliftingTotalChart powerliftingTotals={powerliftingTotals} bigThreeData={bigThreeE1RM} />
+				</Card>
+			</section>
+		</div>
+
+		<!-- Two-column layout: Bar Travel + Relative Strength -->
+		<div class="two-column-layout mb-12">
+			<section>
+				<Card padding="lg">
+					<BarTravelCard data={barTravel} />
+				</Card>
+			</section>
+			<section>
+				<Card padding="lg">
+					<RelativeStrengthChart relativeStrength={relativeStrength} bodyWeight={bodyWeight} />
+				</Card>
+			</section>
+		</div>
+
+		<!-- Program Comparison -->
+		<section class="mb-12">
+			<Card padding="lg">
+				<ProgramComparisonChart data={programs} />
+			</Card>
+		</section>
+
+		<!-- Milestones Timeline -->
+		<section class="mb-12">
+			<Card padding="lg">
+				<MilestonesTimeline data={milestones} />
+			</Card>
+		</section>
+
+		<!-- Phase 5 Complete Badge -->
 		<section class="mb-12">
 			<Card padding="lg" class="text-center bg-elevated">
 				<div class="text-4xl mb-4">✅</div>
-				<h3 class="mb-2">Phase 4 Complete</h3>
+				<h3 class="mb-2">Phase 5 Complete</h3>
 				<p class="text-secondary">
-					Dashboard layout with summary stat cards, personal records table showing rep PRs across
-					lifts, days since last PR tracking with color-coded status, and notable workouts timeline.
+					Advanced visualizations including workout frequency analysis, day of week patterns,
+					powerlifting total progress, bar travel infographic, relative strength tracking, program
+					comparison, and milestone timeline.
 				</p>
 			</Card>
 		</section>
@@ -354,5 +443,21 @@
 		.two-column-layout {
 			grid-template-columns: 1fr;
 		}
+	}
+
+	/* Phase divider */
+	.phase-divider {
+		padding: var(--space-8) 0;
+		border-top: 2px solid var(--bg-card);
+		border-bottom: 2px solid var(--bg-card);
+		text-align: center;
+	}
+
+	.phase-title {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 2rem;
+		color: var(--accent-copper);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
 	}
 </style>
