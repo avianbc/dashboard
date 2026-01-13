@@ -8,7 +8,12 @@ export const load: PageLoad = async ({ fetch }) => {
 		const response = await fetch('/data/training_data.json');
 
 		if (!response.ok) {
-			throw new Error(`Failed to load training data: ${response.statusText}`);
+			console.error(`Failed to load training data: ${response.statusText}`);
+			// Return empty data structure instead of throwing
+			return {
+				trainingData: {} as TrainingData,
+				error: `Failed to load training data: ${response.statusText}`
+			};
 		}
 
 		const data: TrainingData = await response.json();
@@ -18,6 +23,10 @@ export const load: PageLoad = async ({ fetch }) => {
 		};
 	} catch (error) {
 		console.error('Error loading training data:', error);
-		throw error;
+		// Return empty data structure to allow graceful degradation
+		return {
+			trainingData: {} as TrainingData,
+			error: error instanceof Error ? error.message : 'Unknown error loading data'
+		};
 	}
 };

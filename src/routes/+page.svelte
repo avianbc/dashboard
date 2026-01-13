@@ -26,6 +26,9 @@
 	// Get data from page load
 	let { data }: { data: PageData } = $props();
 
+	// Check for data loading errors
+	const hasError = data.error !== undefined;
+
 	let currentTheme = $state('dark');
 	let currentUnit = $state('imperial');
 
@@ -44,74 +47,109 @@
 		return unsubUnit;
 	});
 
-	const trainingData = data.trainingData;
-	const summary = trainingData.summary;
-	const volumeTimeSeries = trainingData.volumeTimeSeries;
-	const barTravel = trainingData.barTravel;
+	// Add defensive checks for missing data with memoization using $derived
+	const trainingData = $derived(data.trainingData || {});
+	const summary = $derived(
+		trainingData.summary || {
+			totalWorkouts: 0,
+			totalVolumeLbs: 0,
+			totalHours: 0,
+			totalReps: 0,
+			totalSets: 0
+		}
+	);
+	const volumeTimeSeries = $derived(
+		trainingData.volumeTimeSeries || { daily: [], weekly: [], monthly: [] }
+	);
+	const barTravel = $derived(
+		trainingData.barTravel || {
+			total: { miles: 0, km: 0 },
+			landmarks: { everestClimbs: 0 }
+		}
+	);
 	// Transform powerliftingTotals.clubMilestones from object to clubs array
-	const powerliftingTotals = {
-		...trainingData.powerliftingTotals,
+	const powerliftingTotals = $derived({
+		...(trainingData.powerliftingTotals || { current: { totalLbs: 0 } }),
 		clubs: Object.entries(trainingData.powerliftingTotals?.clubMilestones || {}).map(
 			([name, milestone]: [string, any]) => ({
 				name: `${name}lb Club`,
-				totalLbs: milestone.totalLbs,
-				dateAchieved: milestone.date
+				totalLbs: milestone?.totalLbs || 0,
+				dateAchieved: milestone?.date || ''
 			})
 		)
-	};
-	const bigThreeE1RM = trainingData.bigThreeE1RM;
-	const allTimePRs = trainingData.allTimePRs;
-	const daysSinceLastPR = trainingData.daysSinceLastPR;
-	const exerciseProgress = trainingData.exerciseProgress;
-	const workoutCalendar = trainingData.workoutCalendar;
-	const notableWorkouts = trainingData.notableWorkouts;
+	});
+	const bigThreeE1RM = $derived(trainingData.bigThreeE1RM || {});
+	const allTimePRs = $derived(trainingData.allTimePRs || {});
+	const daysSinceLastPR = $derived(trainingData.daysSinceLastPR || {});
+	const exerciseProgress = $derived(trainingData.exerciseProgress || {});
+	const workoutCalendar = $derived(trainingData.workoutCalendar || {});
+	const notableWorkouts = $derived(trainingData.notableWorkouts || []);
 	// Transform workoutsByDayOfWeek from object to array
-	const workoutsByDayOfWeek = Object.entries(trainingData.workoutsByDayOfWeek || {}).map(
-		([day, stats]: [string, any]) => ({
+	const workoutsByDayOfWeek = $derived(
+		Object.entries(trainingData.workoutsByDayOfWeek || {}).map(([day, stats]: [string, any]) => ({
 			day,
-			count: stats.count,
-			avgVolumeLbs: stats.avgVolumeLbs,
-			avgVolumeKg: stats.avgVolumeKg
-		})
+			count: stats?.count || 0,
+			avgVolumeLbs: stats?.avgVolumeLbs || 0,
+			avgVolumeKg: stats?.avgVolumeKg || 0
+		}))
 	);
-	const programs = trainingData.programs;
-	const milestones = trainingData.milestones;
-	const relativeStrength = trainingData.relativeStrength;
-	const bodyWeight = trainingData.bodyWeight;
+	const programs = $derived(trainingData.programs || []);
+	const milestones = $derived(trainingData.milestones || []);
+	const relativeStrength = $derived(trainingData.relativeStrength || {});
+	const bodyWeight = $derived(trainingData.bodyWeight || {});
 </script>
 
 <div class="dashboard">
+	<!-- Skip to main content link for accessibility -->
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
 	<!-- Header -->
-	<header class="dashboard-header">
+	<header class="dashboard-header" role="banner">
 		<div class="container">
 			<div class="header-content">
 				<div>
-					<h1>Iron Archive</h1>
+					<h1 id="page-title">Iron Archive</h1>
 					<p class="text-secondary">6+ Years of Training Data</p>
 				</div>
-				<div class="header-controls">
+				<nav class="header-controls" aria-label="Settings and preferences">
 					<Button
 						variant="outline"
 						size="sm"
 						onclick={() => theme.toggle()}
+						aria-label={currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
 						title={currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
 					>
 						{#if currentTheme === 'dark'}
-							<Sun size={16} />
+							<Sun size={16} aria-hidden="true" />
+							<span class="visually-hidden">Light mode</span>
 						{:else}
-							<Moon size={16} />
+							<Moon size={16} aria-hidden="true" />
+							<span class="visually-hidden">Dark mode</span>
 						{/if}
 					</Button>
-					<Button variant="outline" size="sm" onclick={() => unitSystem.toggle()}>
+					<Button
+						variant="outline"
+						size="sm"
+						onclick={() => unitSystem.toggle()}
+						aria-label={`Switch to ${currentUnit === 'imperial' ? 'metric' : 'imperial'} units`}
+						title={`Currently showing ${currentUnit} units. Click to switch.`}
+					>
 						{currentUnit === 'imperial' ? 'lbs → kg' : 'kg → lbs'}
 					</Button>
-				</div>
+				</nav>
 			</div>
 		</div>
 	</header>
 
 	<!-- Main Content -->
-	<main class="container py-8" role="main" aria-label="Training Dashboard">
+	<main id="main-content" class="container py-8" role="main" aria-labelledby="page-title">
+		<!-- Error Banner -->
+		{#if hasError}
+			<div class="error-banner" role="alert" aria-live="polite">
+				<p>⚠️ Error loading training data: {data.error}</p>
+			</div>
+		{/if}
+
 		<!-- Hero Stats Cards -->
 		<section class="mb-12" aria-label="Summary Statistics">
 			<h2 class="visually-hidden">Training Summary Statistics</h2>
@@ -317,19 +355,6 @@
 				<MilestonesTimeline data={milestones} />
 			</Card>
 		</section>
-
-		<!-- Phase 5 Complete Badge -->
-		<section class="mb-12">
-			<Card padding="lg" class="text-center bg-elevated">
-				<div class="text-4xl mb-4">✅</div>
-				<h3 class="mb-2">Phase 5 Complete</h3>
-				<p class="text-secondary">
-					Advanced visualizations including workout frequency analysis, day of week patterns,
-					powerlifting total progress, bar travel infographic, relative strength tracking, program
-					comparison, and milestone timeline.
-				</p>
-			</Card>
-		</section>
 	</main>
 </div>
 
@@ -337,6 +362,28 @@
 	.dashboard {
 		min-height: 100vh;
 		background: var(--bg-deep);
+		transition: background-color var(--transition-normal);
+	}
+
+	/* Skip link for keyboard navigation */
+	.skip-link {
+		position: absolute;
+		top: -40px;
+		left: 0;
+		background: var(--accent-copper);
+		color: var(--text-inverse);
+		padding: var(--space-2) var(--space-4);
+		text-decoration: none;
+		z-index: 9999;
+		border-radius: 0 0 var(--radius-md) 0;
+		font-weight: var(--font-weight-semibold);
+		transition: top var(--transition-fast);
+	}
+
+	.skip-link:focus {
+		top: 0;
+		outline: 3px solid var(--accent-gold);
+		outline-offset: 2px;
 	}
 
 	/* Accessibility - Visually hidden but accessible to screen readers */
@@ -358,8 +405,15 @@
 		padding: var(--space-6) 0;
 		position: sticky;
 		top: 0;
-		z-index: 100;
+		z-index: var(--z-sticky);
 		backdrop-filter: blur(8px);
+		transition: background-color var(--transition-normal), border-color var(--transition-normal);
+	}
+
+	@supports not (backdrop-filter: blur(8px)) {
+		.dashboard-header {
+			background: var(--bg-elevated);
+		}
 	}
 
 	.header-content {
@@ -388,6 +442,12 @@
 		position: relative;
 		overflow: hidden;
 		animation: fadeInUp 0.6s ease-out backwards;
+		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+	}
+
+	.stat-card:focus-within {
+		outline: 3px solid var(--accent-copper);
+		outline-offset: 2px;
 	}
 
 	/* Staggered animation for stat cards */
@@ -475,16 +535,35 @@
 		color: var(--text-secondary);
 	}
 
+	/* Reduced motion preferences */
+	@media (prefers-reduced-motion: reduce) {
+		.stat-card,
+		.stat-card:hover,
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+
+		.skip-link {
+			transition: none;
+		}
+	}
+
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
 		.header-content {
 			flex-direction: column;
 			align-items: stretch;
 			text-align: center;
+			gap: var(--space-3);
 		}
 
 		.header-controls {
 			justify-content: center;
+			flex-wrap: wrap;
 		}
 
 		.stats-grid {
@@ -495,11 +574,38 @@
 		.stat-value {
 			font-size: 2rem;
 		}
+
+		.dashboard-header {
+			padding: var(--space-4) 0;
+		}
+
+		h1 {
+			font-size: var(--text-4xl);
+		}
 	}
 
 	@media (max-width: 480px) {
 		.stats-grid {
 			grid-template-columns: 1fr;
+		}
+
+		.stat-value {
+			font-size: 1.75rem;
+		}
+
+		h1 {
+			font-size: var(--text-3xl);
+		}
+	}
+
+	/* High contrast mode support */
+	@media (prefers-contrast: high) {
+		.stat-card {
+			border: 2px solid var(--border-strong);
+		}
+
+		.skip-link:focus {
+			outline-width: 4px;
 		}
 	}
 
@@ -530,5 +636,27 @@
 		color: var(--accent-copper);
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
+	}
+
+	/* Error banner */
+	.error-banner {
+		background: var(--status-overdue);
+		color: var(--text-primary);
+		padding: var(--space-4);
+		border-radius: var(--border-radius-md);
+		margin-bottom: var(--space-6);
+		text-align: center;
+		animation: slideDown 0.3s ease-out;
+	}
+
+	@keyframes slideDown {
+		from {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 </style>
