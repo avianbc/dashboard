@@ -20,7 +20,7 @@
 		MilestonesTimeline
 	} from '$lib/components/cards';
 	import { unitSystem, theme } from '$lib/stores';
-	import { formatCompactNumber, formatNumber } from '$lib/utils';
+	import { formatCompactNumber, formatNumber, lbsToKg, milesToKm } from '$lib/utils';
 	import { Calendar, Dumbbell, Clock, Route, Repeat, Trophy, Moon, Sun } from 'lucide-svelte';
 
 	// Get data from page load
@@ -167,15 +167,19 @@
 				</Card>
 
 				<!-- Total Volume -->
-				<Card hover class="stat-card" role="listitem" aria-label="Total volume: {formatCompactNumber(summary.totalVolumeLbs)} pounds">
+				<Card hover class="stat-card" role="listitem" aria-label="Total volume: {formatCompactNumber(currentUnit === 'imperial' ? summary.totalVolumeLbs : lbsToKg(summary.totalVolumeLbs))} {currentUnit === 'imperial' ? 'pounds' : 'kilograms'}">
 					<div class="stat-icon" aria-hidden="true">
 						<Dumbbell size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Total Volume</div>
-						<div class="stat-value">{formatCompactNumber(summary.totalVolumeLbs)}</div>
+						<div class="stat-value">
+						{formatCompactNumber(currentUnit === 'imperial' ? summary.totalVolumeLbs : lbsToKg(summary.totalVolumeLbs))}
+						<span class="unit-label">{currentUnit === 'imperial' ? 'lbs' : 'kg'}</span>
+					</div>
 						<div class="stat-subtitle">
-							{(summary.totalVolumeLbs / 2000).toFixed(0)} tons lifted
+							{currentUnit === 'imperial' ? (summary.totalVolumeLbs / 2000).toFixed(0) : (lbsToKg(summary.totalVolumeLbs) / 1000).toFixed(0)}
+							{currentUnit === 'imperial' ? 'tons' : 'tonnes'} lifted
 						</div>
 					</div>
 				</Card>
@@ -193,13 +197,16 @@
 				</Card>
 
 				<!-- Bar Travel -->
-				<Card hover class="stat-card" role="listitem" aria-label="Bar travel: {barTravel.total.miles.toFixed(1)} miles">
+				<Card hover class="stat-card" role="listitem" aria-label="Bar travel: {(currentUnit === 'imperial' ? barTravel.total.miles : milesToKm(barTravel.total.miles)).toFixed(1)} {currentUnit === 'imperial' ? 'miles' : 'kilometers'}">
 					<div class="stat-icon" aria-hidden="true">
 						<Route size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Bar Travel</div>
-						<div class="stat-value">{barTravel.total.miles.toFixed(1)} mi</div>
+						<div class="stat-value">
+						{(currentUnit === 'imperial' ? barTravel.total.miles : milesToKm(barTravel.total.miles)).toFixed(1)}
+						<span class="unit-label">{currentUnit === 'imperial' ? 'mi' : 'km'}</span>
+					</div>
 						<div class="stat-subtitle">{barTravel.landmarks.everestClimbs.toFixed(1)} Everests</div>
 					</div>
 				</Card>
@@ -217,13 +224,16 @@
 				</Card>
 
 				<!-- Powerlifting Total -->
-				<Card hover class="stat-card" role="listitem" aria-label="Powerlifting total: {formatNumber(powerliftingTotals.current.totalLbs)} pounds">
+				<Card hover class="stat-card" role="listitem" aria-label="Powerlifting total: {formatNumber(currentUnit === 'imperial' ? powerliftingTotals.current.totalLbs : lbsToKg(powerliftingTotals.current.totalLbs))} {currentUnit === 'imperial' ? 'pounds' : 'kilograms'}">
 					<div class="stat-icon" aria-hidden="true">
 						<Trophy size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Powerlifting Total</div>
-						<div class="stat-value">{formatNumber(powerliftingTotals.current.totalLbs)}</div>
+						<div class="stat-value">
+						{formatNumber(currentUnit === 'imperial' ? powerliftingTotals.current.totalLbs : lbsToKg(powerliftingTotals.current.totalLbs))}
+						<span class="unit-label">{currentUnit === 'imperial' ? 'lbs' : 'kg'}</span>
+					</div>
 						<div class="stat-subtitle">1200+ club member</div>
 					</div>
 				</Card>
@@ -527,6 +537,13 @@
 		color: var(--text-primary);
 		line-height: 1;
 		margin-bottom: var(--space-2);
+	}
+
+	.unit-label {
+		font-size: 1rem;
+		color: var(--text-muted);
+		font-weight: normal;
+		margin-left: var(--space-2);
 	}
 
 	.stat-subtitle {

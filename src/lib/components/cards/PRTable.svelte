@@ -1,12 +1,23 @@
 <script lang="ts">
 	import type { AllTimePRs } from '$lib/types/training';
-	import { formatDate } from '$lib/utils';
+	import { formatDate, lbsToKg } from '$lib/utils';
+	import { unitSystem } from '$lib/stores';
 
 	interface Props {
 		data: AllTimePRs;
 	}
 
 	let { data }: Props = $props();
+
+	let currentUnit = $state('imperial');
+
+	// Subscribe to unit system
+	$effect(() => {
+		const unsubscribe = unitSystem.subscribe((value) => {
+			currentUnit = value;
+		});
+		return unsubscribe;
+	});
 
 	const lifts = [
 		{ name: 'Squat', key: 'squat', color: 'var(--lift-squat)' },
@@ -22,6 +33,12 @@
 		// repPRs is an object with keys being the rep numbers
 		const pr = liftData.repPRs[reps];
 		return pr ? pr.weightLbs : null;
+	}
+
+	function displayWeight(weightLbs: number | null): string {
+		if (weightLbs === null) return '—';
+		const weight = currentUnit === 'imperial' ? weightLbs : lbsToKg(weightLbs);
+		return Math.round(weight).toString();
 	}
 </script>
 
@@ -46,22 +63,18 @@
 						{#each repRanges as reps}
 							{@const prWeight = getPRForReps(liftData, reps)}
 							<td class="pr-value">
-								{#if prWeight}
-									{prWeight}
-								{:else}
-									<span class="no-pr">—</span>
-								{/if}
+								{displayWeight(prWeight)}
 							</td>
 						{/each}
 						<td class="e1rm-value">
-							{Math.round(liftData.bestE1rm.e1rmLbs)}
+							{displayWeight(liftData.bestE1rm.e1rmLbs)}
 						</td>
 					</tr>
 				{/each}
 			</tbody>
 		</table>
 	</div>
-	<p class="table-note">All weights in lbs. E1RM = Estimated 1 Rep Max</p>
+	<p class="table-note">All weights in {currentUnit === 'imperial' ? 'lbs' : 'kg'}. E1RM = Estimated 1 Rep Max</p>
 </div>
 
 <style>
