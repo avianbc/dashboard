@@ -111,13 +111,14 @@
 	</header>
 
 	<!-- Main Content -->
-	<main class="container py-8">
+	<main class="container py-8" role="main" aria-label="Training Dashboard">
 		<!-- Hero Stats Cards -->
-		<section class="mb-12">
-			<div class="stats-grid">
+		<section class="mb-12" aria-label="Summary Statistics">
+			<h2 class="visually-hidden">Training Summary Statistics</h2>
+			<div class="stats-grid" role="list">
 				<!-- Total Workouts -->
-				<Card hover class="stat-card">
-					<div class="stat-icon">
+				<Card hover class="stat-card" role="listitem" aria-label="Total workouts: {formatNumber(summary.totalWorkouts)}">
+					<div class="stat-icon" aria-hidden="true">
 						<Calendar size={24} />
 					</div>
 					<div class="stat-content">
@@ -128,8 +129,8 @@
 				</Card>
 
 				<!-- Total Volume -->
-				<Card hover class="stat-card">
-					<div class="stat-icon">
+				<Card hover class="stat-card" role="listitem" aria-label="Total volume: {formatCompactNumber(summary.totalVolumeLbs)} pounds">
+					<div class="stat-icon" aria-hidden="true">
 						<Dumbbell size={24} />
 					</div>
 					<div class="stat-content">
@@ -142,8 +143,8 @@
 				</Card>
 
 				<!-- Time Training -->
-				<Card hover class="stat-card">
-					<div class="stat-icon">
+				<Card hover class="stat-card" role="listitem" aria-label="Time training: {formatNumber(summary.totalHours)} hours">
+					<div class="stat-icon" aria-hidden="true">
 						<Clock size={24} />
 					</div>
 					<div class="stat-content">
@@ -154,8 +155,8 @@
 				</Card>
 
 				<!-- Bar Travel -->
-				<Card hover class="stat-card">
-					<div class="stat-icon">
+				<Card hover class="stat-card" role="listitem" aria-label="Bar travel: {barTravel.total.miles.toFixed(1)} miles">
+					<div class="stat-icon" aria-hidden="true">
 						<Route size={24} />
 					</div>
 					<div class="stat-content">
@@ -166,8 +167,8 @@
 				</Card>
 
 				<!-- Total Reps -->
-				<Card hover class="stat-card">
-					<div class="stat-icon">
+				<Card hover class="stat-card" role="listitem" aria-label="Total reps: {formatCompactNumber(summary.totalReps)}">
+					<div class="stat-icon" aria-hidden="true">
 						<Repeat size={24} />
 					</div>
 					<div class="stat-content">
@@ -178,8 +179,8 @@
 				</Card>
 
 				<!-- Powerlifting Total -->
-				<Card hover class="stat-card">
-					<div class="stat-icon">
+				<Card hover class="stat-card" role="listitem" aria-label="Powerlifting total: {formatNumber(powerliftingTotals.current.totalLbs)} pounds">
+					<div class="stat-icon" aria-hidden="true">
 						<Trophy size={24} />
 					</div>
 					<div class="stat-content">

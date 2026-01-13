@@ -1,6 +1,23 @@
 import type { TrainingData } from '$lib/types/training';
 
 /**
+ * Simple memoization helper for expensive calculations
+ */
+export function memoize<T extends (...args: any[]) => any>(fn: T): T {
+	const cache = new Map<string, ReturnType<T>>();
+
+	return ((...args: Parameters<T>): ReturnType<T> => {
+		const key = JSON.stringify(args);
+		if (cache.has(key)) {
+			return cache.get(key)!;
+		}
+		const result = fn(...args);
+		cache.set(key, result);
+		return result;
+	}) as T;
+}
+
+/**
  * Calculate days between two dates
  */
 export function daysBetween(startDate: string, endDate: string): number {
@@ -38,17 +55,18 @@ export function getPRStatusEmoji(days: number): string {
 
 /**
  * Sort array by date (descending by default)
+ * Memoized for performance
  */
-export function sortByDate<T extends { date: string }>(
+export const sortByDate = memoize(<T extends { date: string }>(
 	items: T[],
 	ascending: boolean = false
-): T[] {
+): T[] => {
 	return [...items].sort((a, b) => {
 		const dateA = new Date(a.date).getTime();
 		const dateB = new Date(b.date).getTime();
 		return ascending ? dateA - dateB : dateB - dateA;
 	});
-}
+});
 
 /**
  * Find max value in an array
@@ -68,8 +86,9 @@ export function findMin<T>(items: T[], getValue: (item: T) => number): number {
 
 /**
  * Calculate rolling average
+ * Memoized for performance with large datasets
  */
-export function rollingAverage(values: number[], windowSize: number): number[] {
+export const rollingAverage = memoize((values: number[], windowSize: number): number[] => {
 	const result: number[] = [];
 	for (let i = 0; i < values.length; i++) {
 		const start = Math.max(0, i - windowSize + 1);
@@ -78,4 +97,4 @@ export function rollingAverage(values: number[], windowSize: number): number[] {
 		result.push(avg);
 	}
 	return result;
-}
+});
