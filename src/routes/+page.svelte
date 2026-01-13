@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { Card, Button, Loading, Error as ErrorComponent } from '$lib/components/ui';
-	import { VolumeChart } from '$lib/components/charts';
+	import { VolumeChart, BigThreeChart } from '$lib/components/charts';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatCompactNumber, formatNumber } from '$lib/utils';
 	import { Calendar, Dumbbell, Clock, Route, Repeat, Trophy, Moon, Sun } from 'lucide-svelte';
@@ -32,6 +32,8 @@
 	const volumeTimeSeries = trainingData.volumeTimeSeries;
 	const barTravel = trainingData.barTravel;
 	const powerliftingTotals = trainingData.powerliftingTotals;
+	const bigThreeE1RM = trainingData.bigThreeE1RM;
+	const allTimePRs = trainingData.allTimePRs;
 </script>
 
 <div class="dashboard">
@@ -152,14 +154,21 @@
 			</Card>
 		</section>
 
-		<!-- Phase 3.1 Complete Badge -->
+		<!-- Big Three + OHP Progression Chart -->
+		<section class="mb-12">
+			<Card padding="lg">
+				<BigThreeChart data={bigThreeE1RM} {allTimePRs} />
+			</Card>
+		</section>
+
+		<!-- Phase 3.2 Complete Badge -->
 		<section class="mb-12">
 			<Card padding="lg" class="text-center bg-elevated">
-				<div class="text-4xl mb-4">📊</div>
-				<h3 class="mb-2">Phase 3.1 Complete</h3>
+				<div class="text-4xl mb-4">💪</div>
+				<h3 class="mb-2">Phase 3.2 Complete</h3>
 				<p class="text-secondary">
-					Volume Over Time chart implemented with daily/weekly/monthly granularity, interactive
-					tooltips, and best month annotation.
+					Big Three + OHP progression chart with lift toggles, PR markers, plate milestones, and
+					interactive tooltips showing actual weight × reps.
 				</p>
 			</Card>
 		</section>

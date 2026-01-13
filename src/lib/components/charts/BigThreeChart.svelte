@@ -1,0 +1,614 @@
+<script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
+	import * as echarts from 'echarts';
+	import type { BigThreeE1RM, AllTimePRs } from '$lib/types/training';
+	import { unitSystem } from '$lib/stores';
+	import { formatNumber, formatDate, lbsToKg } from '$lib/utils';
+	import { Button, Loading, Error } from '$lib/components/ui';
+
+	// Props
+	let {
+		data,
+		allTimePRs,
+		loading = false,
+		error = null
+	}: {
+		data: BigThreeE1RM;
+		allTimePRs: AllTimePRs;
+		loading?: boolean;
+		error?: string | null;
+	} = $props();
+
+	// State
+	let chartContainer = $state<HTMLDivElement>();
+	let chartInstance: echarts.ECharts | null = null;
+	let currentUnitSystem = $state('imperial');
+
+	// Visibility state for each lift
+	let visibleLifts = $state({
+		squat: true,
+		bench: true,
+		deadlift: true,
+		ohp: true
+	});
+
+	// Lift colors from PLAN.md specifications
+	const liftColors = {
+		squat: '#c44536', // Deep red
+		bench: '#4a7c9b', // Steel blue
+		deadlift: '#4a8c5c', // Forest green
+		ohp: '#c9a227' // Amber
+	};
+
+	// Plate milestones in lbs
+	const plateMilestones = [135, 225, 315, 405];
+
+	// Subscribe to unit system
+	$effect(() => {
+		const unsubscribe = unitSystem.subscribe((value) => {
+			currentUnitSystem = value;
+			if (chartInstance) {
+				updateChart();
+			}
+		});
+		return unsubscribe;
+	});
+
+	// Get chart data for all lifts
+	function getChartData() {
+		const useMetric = currentUnitSystem === 'metric';
+		const lifts = ['squat', 'bench', 'deadlift', 'ohp'] as const;
+
+		return lifts.map((lift) => {
+			const liftData = data[lift];
+			return {
+				name: lift,
+				displayName: liftData.exerciseName,
+				data: liftData.e1rmHistory.map((point) => ({
+					date: point.date,
+					value: useMetric ? point.e1rmKg : point.e1rmLbs,
+					actualWeight: useMetric ? point.actualWeightKg : point.actualWeightLbs,
+					reps: point.reps
+				})),
+				visible: visibleLifts[lift]
+			};
+		});
+	}
+
+	// Find PR points for each lift
+	function getPRPoints() {
+		const useMetric = currentUnitSystem === 'metric';
+		const lifts = ['squat', 'bench', 'deadlift', 'ohp'] as const;
+
+		return lifts.map((lift) => {
+			const pr = allTimePRs[lift].bestE1rm;
+			const liftData = data[lift];
+
+			// Find the PR point in the history
+			const prPoint = liftData.e1rmHistory.find(
+				(point) => point.date === pr.date || Math.abs(point.e1rmLbs - pr.e1rmLbs) < 0.1
+			);
+
+			if (!prPoint) return null;
+
+			return {
+				lift,
+				date: prPoint.date,
+				value: useMetric ? pr.e1rmKg : pr.e1rmLbs,
+				actualWeight: useMetric ? pr.actualWeightKg : pr.actualWeightLbs,
+				reps: pr.reps
+			};
+		}).filter(Boolean);
+	}
+
+	// Update chart with current data
+	function updateChart() {
+		if (!chartInstance) return;
+
+		const chartData = getChartData();
+		const prPoints = getPRPoints();
+		const useMetric = currentUnitSystem === 'metric';
+		const unit = useMetric ? 'kg' : 'lbs';
+
+		// Get computed colors from CSS variables
+		const computedStyle = getComputedStyle(document.documentElement);
+		const textPrimary = computedStyle.getPropertyValue('--text-primary').trim();
+		const textSecondary = computedStyle.getPropertyValue('--text-secondary').trim();
+		const textMuted = computedStyle.getPropertyValue('--text-muted').trim();
+
+		// Build series for each lift
+		const series = chartData.map((lift) => ({
+			name: lift.displayName,
+			type: 'line',
+			data: lift.data.map((d) => [d.date, d.value]),
+			smooth: true,
+			showSymbol: false,
+			lineStyle: {
+				color: liftColors[lift.name as keyof typeof liftColors],
+				width: 2
+			},
+			itemStyle: {
+				color: liftColors[lift.name as keyof typeof liftColors]
+			},
+			emphasis: {
+				focus: 'series',
+				lineStyle: {
+					width: 3
+				}
+			},
+			// Add PR markers
+			markPoint: {
+				data: prPoints
+					.filter((pr) => pr!.lift === lift.name && lift.visible)
+					.map((pr) => ({
+						name: 'PR',
+						value: pr!.value,
+						xAxis: pr!.date,
+						yAxis: pr!.value,
+						symbol: 'pin',
+						symbolSize: 50,
+						label: {
+							show: true,
+							formatter: '⭐',
+							fontSize: 20,
+							color: '#FFD700',
+							offset: [0, -10]
+						},
+						itemStyle: {
+							color: 'transparent'
+						}
+					}))
+			},
+			visible: lift.visible
+		}));
+
+		// Add plate milestone lines
+		const plateMilestoneLines = plateMilestones.map((plate) => ({
+			yAxis: useMetric ? lbsToKg(plate) : plate,
+			lineStyle: {
+				color: textMuted,
+				type: 'dashed' as const,
+				opacity: 0.3,
+				width: 1
+			},
+			label: {
+				show: true,
+				formatter: `${useMetric ? Math.round(lbsToKg(plate)) : plate} ${unit}`,
+				color: textMuted,
+				fontSize: 10,
+				position: 'insideEndTop' as const
+			}
+		}));
+
+		const option: echarts.EChartsOption = {
+			backgroundColor: 'transparent',
+			title: {
+				text: 'Strength Progression (E1RM)',
+				subtext: 'Big Three + OHP Estimated 1-Rep Max Over Time',
+				textStyle: {
+					color: textPrimary,
+					fontSize: 24,
+					fontFamily: 'Source Sans 3, sans-serif',
+					fontWeight: 'bold'
+				},
+				subtextStyle: {
+					color: textSecondary,
+					fontSize: 14,
+					fontFamily: 'Source Sans 3, sans-serif'
+				},
+				left: 'center',
+				top: 10
+			},
+			tooltip: {
+				trigger: 'axis',
+				backgroundColor: 'rgba(0, 0, 0, 0.85)',
+				borderColor: textMuted,
+				borderWidth: 1,
+				textStyle: {
+					color: '#f5f2eb',
+					fontFamily: 'Source Sans 3, sans-serif'
+				},
+				formatter: (params: any) => {
+					if (!params || params.length === 0) return '';
+
+					// Convert timestamp to date string for comparison
+					const timestamp = params[0].axisValue;
+					const dateObj = new Date(timestamp);
+					const dateString = dateObj.toISOString().split('T')[0];
+
+					let tooltipContent = `<div style="padding: 8px;">
+						<div style="font-weight: bold; margin-bottom: 8px; color: ${textPrimary};">
+							${formatDate(dateString)}
+						</div>`;
+
+					params.forEach((param: any) => {
+						if (param.seriesName) {
+							const liftName = param.seriesName.toLowerCase();
+							const liftKey = liftName === 'overhead press' ? 'ohp' : liftName === 'bench press' ? 'bench' : liftName;
+							const liftData = chartData.find((l) => l.name === liftKey);
+
+							if (liftData) {
+								const dataPoint = liftData.data.find((d) => d.date === dateString);
+								if (dataPoint) {
+									tooltipContent += `
+										<div style="margin-bottom: 6px;">
+											<span style="display: inline-block; width: 10px; height: 10px; background-color: ${param.color}; border-radius: 50%; margin-right: 6px;"></span>
+											<span style="font-weight: bold; color: ${param.color};">${param.seriesName}</span>
+											<div style="margin-left: 16px; margin-top: 2px;">
+												<span style="color: ${textSecondary};">E1RM:</span>
+												<span style="font-family: 'JetBrains Mono', monospace; margin-left: 8px; color: ${textPrimary};">
+													${formatNumber(dataPoint.value)} ${unit}
+												</span>
+											</div>
+											<div style="margin-left: 16px;">
+												<span style="color: ${textSecondary};">Actual:</span>
+												<span style="font-family: 'JetBrains Mono', monospace; margin-left: 8px; color: ${textPrimary};">
+													${formatNumber(dataPoint.actualWeight)} ${unit} × ${dataPoint.reps}
+												</span>
+											</div>
+										</div>`;
+								}
+							}
+						}
+					});
+
+					tooltipContent += '</div>';
+					return tooltipContent;
+				}
+			},
+			legend: {
+				data: chartData.map((l) => l.displayName),
+				top: 80,
+				textStyle: {
+					color: textSecondary,
+					fontFamily: 'Source Sans 3, sans-serif',
+					fontSize: 12
+				},
+				selected: {
+					Squat: visibleLifts.squat,
+					'Bench Press': visibleLifts.bench,
+					Deadlift: visibleLifts.deadlift,
+					'Overhead Press': visibleLifts.ohp
+				}
+			},
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '15%',
+				top: '25%',
+				containLabel: true
+			},
+			xAxis: {
+				type: 'time',
+				boundaryGap: false,
+				axisLine: {
+					lineStyle: {
+						color: textMuted
+					}
+				},
+				axisLabel: {
+					color: textSecondary,
+					fontFamily: 'JetBrains Mono, monospace',
+					fontSize: 11,
+					formatter: (value: number) => {
+						const date = new Date(value);
+						return date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+					}
+				},
+				splitLine: {
+					show: false
+				}
+			},
+			yAxis: {
+				type: 'value',
+				name: `E1RM (${unit})`,
+				nameLocation: 'middle',
+				nameGap: 50,
+				nameTextStyle: {
+					color: textPrimary,
+					fontFamily: 'Source Sans 3, sans-serif',
+					fontSize: 14
+				},
+				axisLine: {
+					lineStyle: {
+						color: textMuted
+					}
+				},
+				axisLabel: {
+					color: textSecondary,
+					fontFamily: 'JetBrains Mono, monospace',
+					fontSize: 11
+				},
+				splitLine: {
+					lineStyle: {
+						color: textMuted,
+						opacity: 0.2
+					}
+				},
+				// Add plate milestone lines
+				markLine: {
+					silent: true,
+					symbol: 'none',
+					data: plateMilestoneLines
+				}
+			},
+			series: series,
+			dataZoom: [
+				{
+					type: 'inside',
+					start: 0,
+					end: 100,
+					zoomOnMouseWheel: true,
+					moveOnMouseMove: true
+				},
+				{
+					type: 'slider',
+					start: 0,
+					end: 100,
+					height: 30,
+					bottom: 10,
+					borderColor: textMuted,
+					textStyle: {
+						color: textSecondary,
+						fontFamily: 'JetBrains Mono, monospace',
+						fontSize: 10
+					},
+					handleStyle: {
+						color: textPrimary,
+						borderColor: textSecondary
+					},
+					dataBackground: {
+						lineStyle: {
+							color: textMuted
+						},
+						areaStyle: {
+							color: textMuted,
+							opacity: 0.3
+						}
+					}
+				}
+			]
+		};
+
+		chartInstance.setOption(option, true);
+	}
+
+	// Initialize chart on mount
+	onMount(() => {
+		if (chartContainer) {
+			chartInstance = echarts.init(chartContainer, null, {
+				renderer: 'canvas'
+			});
+
+			updateChart();
+
+			// Handle window resize
+			const handleResize = () => {
+				chartInstance?.resize();
+			};
+
+			window.addEventListener('resize', handleResize);
+
+			return () => {
+				window.removeEventListener('resize', handleResize);
+			};
+		}
+	});
+
+	// Update chart when visibility changes
+	$effect(() => {
+		if (chartInstance && visibleLifts) {
+			updateChart();
+		}
+	});
+
+	// Cleanup on unmount
+	onDestroy(() => {
+		if (chartInstance) {
+			chartInstance.dispose();
+			chartInstance = null;
+		}
+	});
+
+	// Toggle lift visibility
+	function toggleLift(lift: keyof typeof visibleLifts) {
+		visibleLifts[lift] = !visibleLifts[lift];
+	}
+</script>
+
+{#if loading}
+	<div class="big-three-chart-container">
+		<Loading size="lg" text="Loading progression data..." />
+	</div>
+{:else if error}
+	<div class="big-three-chart-container">
+		<Error title="Failed to Load Chart" message={error} />
+	</div>
+{:else}
+	<div class="big-three-chart-wrapper">
+		<!-- Lift Toggle Controls -->
+		<div class="chart-controls">
+			<div class="control-group">
+				<span class="control-label">Show Lifts:</span>
+				<div class="button-group">
+					<Button
+						variant={visibleLifts.squat ? 'primary' : 'outline'}
+						size="sm"
+						onclick={() => toggleLift('squat')}
+						class="lift-button"
+						style="--lift-color: {liftColors.squat}"
+					>
+						Squat
+					</Button>
+					<Button
+						variant={visibleLifts.bench ? 'primary' : 'outline'}
+						size="sm"
+						onclick={() => toggleLift('bench')}
+						class="lift-button"
+						style="--lift-color: {liftColors.bench}"
+					>
+						Bench
+					</Button>
+					<Button
+						variant={visibleLifts.deadlift ? 'primary' : 'outline'}
+						size="sm"
+						onclick={() => toggleLift('deadlift')}
+						class="lift-button"
+						style="--lift-color: {liftColors.deadlift}"
+					>
+						Deadlift
+					</Button>
+					<Button
+						variant={visibleLifts.ohp ? 'primary' : 'outline'}
+						size="sm"
+						onclick={() => toggleLift('ohp')}
+						class="lift-button"
+						style="--lift-color: {liftColors.ohp}"
+					>
+						OHP
+					</Button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Chart Container -->
+		<div class="big-three-chart-container" bind:this={chartContainer}></div>
+
+		<!-- Legend -->
+		<div class="chart-legend">
+			<div class="legend-item">
+				<div class="legend-line" style="background-color: {liftColors.squat};"></div>
+				<span>Squat</span>
+			</div>
+			<div class="legend-item">
+				<div class="legend-line" style="background-color: {liftColors.bench};"></div>
+				<span>Bench Press</span>
+			</div>
+			<div class="legend-item">
+				<div class="legend-line" style="background-color: {liftColors.deadlift};"></div>
+				<span>Deadlift</span>
+			</div>
+			<div class="legend-item">
+				<div class="legend-line" style="background-color: {liftColors.ohp};"></div>
+				<span>Overhead Press</span>
+			</div>
+			<div class="legend-item">
+				<div class="legend-marker">⭐</div>
+				<span>All-Time PR</span>
+			</div>
+			<div class="legend-item">
+				<div class="legend-dashed"></div>
+				<span>Plate Milestones</span>
+			</div>
+		</div>
+	</div>
+{/if}
+
+<style>
+	.big-three-chart-wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.chart-controls {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-4);
+		justify-content: center;
+		align-items: center;
+		padding: var(--space-4);
+		background: var(--bg-elevated);
+		border-radius: var(--radius-lg);
+	}
+
+	.control-group {
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
+	}
+
+	.control-label {
+		font-family: 'Source Sans 3', sans-serif;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--text-secondary);
+	}
+
+	.button-group {
+		display: flex;
+		gap: var(--space-2);
+		flex-wrap: wrap;
+	}
+
+	.big-three-chart-container {
+		width: 100%;
+		height: 600px;
+		min-height: 500px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.chart-legend {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-6);
+		justify-content: center;
+		padding: var(--space-4);
+		font-family: 'Source Sans 3', sans-serif;
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+	}
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	.legend-line {
+		width: 24px;
+		height: 3px;
+		border-radius: var(--radius-sm);
+	}
+
+	.legend-dashed {
+		width: 24px;
+		height: 2px;
+		border-top: 2px dashed var(--text-muted);
+		opacity: 0.5;
+	}
+
+	.legend-marker {
+		font-size: 1rem;
+	}
+
+	/* Responsive adjustments */
+	@media (max-width: 768px) {
+		.big-three-chart-container {
+			height: 500px;
+			min-height: 400px;
+		}
+
+		.chart-controls {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.control-group {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.button-group {
+			flex-direction: column;
+		}
+
+		.chart-legend {
+			font-size: 0.75rem;
+			gap: var(--space-3);
+		}
+	}
+</style>

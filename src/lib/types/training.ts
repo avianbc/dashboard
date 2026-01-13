@@ -97,11 +97,16 @@ export interface E1RMPoint {
 	reps: number;
 }
 
+export interface LiftE1RMData {
+	exerciseName: string;
+	e1rmHistory: E1RMPoint[];
+}
+
 export interface BigThreeE1RM {
-	squat: E1RMPoint[];
-	bench: E1RMPoint[];
-	deadlift: E1RMPoint[];
-	ohp: E1RMPoint[];
+	squat: LiftE1RMData;
+	bench: LiftE1RMData;
+	deadlift: LiftE1RMData;
+	ohp: LiftE1RMData;
 }
 
 export interface BigThreeVolume {
