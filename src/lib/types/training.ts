@@ -35,11 +35,32 @@ export interface TimeSeriesPoint {
 	workouts: number;
 }
 
+export interface WeeklyTimeSeriesPoint {
+	week: string;
+	volumeLbs: number;
+	volumeKg: number;
+	workouts: number;
+}
+
+export interface MonthlyTimeSeriesPoint {
+	month: string;
+	volumeLbs: number;
+	volumeKg: number;
+	workouts: number;
+}
+
+export interface YearlyTimeSeriesPoint {
+	year: number;
+	volumeLbs: number;
+	volumeKg: number;
+	workouts: number;
+}
+
 export interface VolumeTimeSeries {
 	daily: TimeSeriesPoint[];
-	weekly: TimeSeriesPoint[];
-	monthly: TimeSeriesPoint[];
-	yearly: TimeSeriesPoint[];
+	weekly: WeeklyTimeSeriesPoint[];
+	monthly: MonthlyTimeSeriesPoint[];
+	yearly: YearlyTimeSeriesPoint[];
 }
 
 export interface WorkoutCalendarDay {

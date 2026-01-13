@@ -17,14 +17,14 @@
 		class: className = '',
 		title = 'No Data',
 		message = 'There is no data to display.',
-		icon = Inbox,
+		icon: Icon = Inbox,
 		action
 	}: Props = $props();
 </script>
 
 <div class={clsx('flex flex-col items-center justify-center gap-4 p-8 text-center', className)}>
 	<div class="text-text-muted">
-		<svelte:component this={icon} size={48} strokeWidth={1.5} />
+		<Icon size={48} strokeWidth={1.5} />
 	</div>
 
 	<div class="space-y-2">
