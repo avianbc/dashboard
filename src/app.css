@@ -574,6 +574,9 @@ pre {
 .mb-8 {
 	margin-bottom: var(--space-8);
 }
+.mb-12 {
+	margin-bottom: var(--space-12);
+}
 
 /* ============================================================================
    SCROLLBAR STYLING
