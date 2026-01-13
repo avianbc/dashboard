@@ -7,6 +7,7 @@
 		ExerciseDistributionChart,
 		CalendarHeatmap
 	} from '$lib/components/charts';
+	import { PRTable, DaysSincePR, RecentActivity } from '$lib/components/cards';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatCompactNumber, formatNumber } from '$lib/utils';
 	import { Calendar, Dumbbell, Clock, Route, Repeat, Trophy, Moon, Sun } from 'lucide-svelte';
@@ -39,8 +40,10 @@
 	const powerliftingTotals = trainingData.powerliftingTotals;
 	const bigThreeE1RM = trainingData.bigThreeE1RM;
 	const allTimePRs = trainingData.allTimePRs;
+	const daysSinceLastPR = trainingData.daysSinceLastPR;
 	const exerciseProgress = trainingData.exerciseProgress;
 	const workoutCalendar = trainingData.workoutCalendar;
+	const notableWorkouts = trainingData.notableWorkouts;
 </script>
 
 <div class="dashboard">
@@ -182,14 +185,38 @@
 			</Card>
 		</section>
 
-		<!-- Phase 3.4 Complete Badge -->
+		<!-- Phase 4: Personal Records & Recent Activity -->
+		<div class="two-column-layout mb-12">
+			<!-- Personal Records Section -->
+			<section>
+				<Card padding="lg">
+					<PRTable data={allTimePRs} />
+				</Card>
+			</section>
+
+			<!-- Days Since Last PR -->
+			<section>
+				<Card padding="lg">
+					<DaysSincePR data={daysSinceLastPR} />
+				</Card>
+			</section>
+		</div>
+
+		<!-- Recent Activity Section -->
+		<section class="mb-12">
+			<Card padding="lg">
+				<RecentActivity data={notableWorkouts} />
+			</Card>
+		</section>
+
+		<!-- Phase 4 Complete Badge -->
 		<section class="mb-12">
 			<Card padding="lg" class="text-center bg-elevated">
-				<div class="text-4xl mb-4">📅</div>
-				<h3 class="mb-2">Phase 3.4 Complete</h3>
+				<div class="text-4xl mb-4">✅</div>
+				<h3 class="mb-2">Phase 4 Complete</h3>
 				<p class="text-secondary">
-					GitHub-style calendar heatmap showing 6+ years of workout consistency across 964 training
-					days. Color intensity represents daily volume.
+					Dashboard layout with summary stat cards, personal records table showing rep PRs across
+					lifts, days since last PR tracking with color-coded status, and notable workouts timeline.
 				</p>
 			</Card>
 		</section>
@@ -312,6 +339,19 @@
 
 	@media (max-width: 480px) {
 		.stats-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	/* Two-column layout for Phase 4 sections */
+	.two-column-layout {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		gap: var(--space-6);
+	}
+
+	@media (max-width: 900px) {
+		.two-column-layout {
 			grid-template-columns: 1fr;
 		}
 	}

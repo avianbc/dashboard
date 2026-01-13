@@ -183,7 +183,17 @@ export interface PowerliftingTotals {
 }
 
 export interface RepPR {
-	reps: number;
+	weightLbs: number;
+	weightKg: number;
+	e1rmLbs: number;
+	e1rmKg: number;
+}
+
+export interface RepPRs {
+	[reps: string]: RepPR;
+}
+
+export interface MaxEver {
 	weightLbs: number;
 	weightKg: number;
 	date: string;
@@ -191,23 +201,23 @@ export interface RepPR {
 
 export interface AllTimePRs {
 	squat: {
-		repPRs: RepPR[];
-		maxEver: RepPR;
+		repPRs: RepPRs;
+		maxEver: MaxEver;
 		bestE1rm: E1RMPoint;
 	};
 	bench: {
-		repPRs: RepPR[];
-		maxEver: RepPR;
+		repPRs: RepPRs;
+		maxEver: MaxEver;
 		bestE1rm: E1RMPoint;
 	};
 	deadlift: {
-		repPRs: RepPR[];
-		maxEver: RepPR;
+		repPRs: RepPRs;
+		maxEver: MaxEver;
 		bestE1rm: E1RMPoint;
 	};
 	ohp: {
-		repPRs: RepPR[];
-		maxEver: RepPR;
+		repPRs: RepPRs;
+		maxEver: MaxEver;
 		bestE1rm: E1RMPoint;
 	};
 }
@@ -220,19 +230,62 @@ export interface DaysSinceLastPR {
 }
 
 export interface BarTravel {
-	totalMiles: number;
-	totalKm: number;
 	byLift: {
-		squat: { miles: number; km: number };
-		bench: { miles: number; km: number };
-		deadlift: { miles: number; km: number };
-		ohp: { miles: number; km: number };
+		squat: {
+			totalReps: number;
+			distancePerRepInches: number;
+			totalInches: number;
+			totalFeet: number;
+			totalMiles: number;
+			totalMeters: number;
+			totalKm: number;
+		};
+		bench: {
+			totalReps: number;
+			distancePerRepInches: number;
+			totalInches: number;
+			totalFeet: number;
+			totalMiles: number;
+			totalMeters: number;
+			totalKm: number;
+		};
+		deadlift: {
+			totalReps: number;
+			distancePerRepInches: number;
+			totalInches: number;
+			totalFeet: number;
+			totalMiles: number;
+			totalMeters: number;
+			totalKm: number;
+		};
+		ohp: {
+			totalReps: number;
+			distancePerRepInches: number;
+			totalInches: number;
+			totalFeet: number;
+			totalMiles: number;
+			totalMeters: number;
+			totalKm: number;
+		};
+	};
+	total: {
+		inches: number;
+		feet: number;
+		miles: number;
+		meters: number;
+		km: number;
 	};
 	landmarks: {
-		everest: number;
-		empireState: number;
-		eiffelTower: number;
-		statueOfLiberty: number;
+		everestClimbs: number;
+		empireStateClimbs: number;
+		eiffelTowerClimbs: number;
+		statueOfLibertyClimbs: number;
+	};
+	distancePerRepInches: {
+		squat: number;
+		bench: number;
+		deadlift: number;
+		ohp: number;
 	};
 }
 
