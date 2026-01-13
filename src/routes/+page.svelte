@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { Card, Button, Loading, Error as ErrorComponent } from '$lib/components/ui';
+	import { Card, Button, Loading, Error as ErrorComponent, LazyChart } from '$lib/components/ui';
 	import {
 		VolumeChart,
 		BigThreeChart,
@@ -194,28 +194,36 @@
 		<!-- Volume Over Time Chart -->
 		<section class="mb-12">
 			<Card padding="lg">
-				<VolumeChart data={volumeTimeSeries} />
+				<LazyChart minHeight="400px">
+					<VolumeChart data={volumeTimeSeries} />
+				</LazyChart>
 			</Card>
 		</section>
 
 		<!-- Big Three + OHP Progression Chart -->
 		<section class="mb-12">
 			<Card padding="lg">
-				<BigThreeChart data={bigThreeE1RM} {allTimePRs} />
+				<LazyChart minHeight="400px">
+					<BigThreeChart data={bigThreeE1RM} {allTimePRs} />
+				</LazyChart>
 			</Card>
 		</section>
 
 		<!-- Exercise Distribution Chart -->
 		<section class="mb-12">
 			<Card padding="lg">
-				<ExerciseDistributionChart data={exerciseProgress} />
+				<LazyChart minHeight="400px">
+					<ExerciseDistributionChart data={exerciseProgress} />
+				</LazyChart>
 			</Card>
 		</section>
 
 		<!-- Calendar Heatmap -->
 		<section class="mb-12">
 			<Card padding="lg">
-				<CalendarHeatmap data={workoutCalendar} />
+				<LazyChart minHeight="300px">
+					<CalendarHeatmap data={workoutCalendar} />
+				</LazyChart>
 			</Card>
 		</section>
 
@@ -251,7 +259,9 @@
 		<!-- Workout Frequency Analysis -->
 		<section class="mb-12">
 			<Card padding="lg">
-				<WorkoutFrequencyChart data={volumeTimeSeries} />
+				<LazyChart minHeight="400px">
+					<WorkoutFrequencyChart data={volumeTimeSeries} />
+				</LazyChart>
 			</Card>
 		</section>
 
@@ -259,12 +269,16 @@
 		<div class="two-column-layout mb-12">
 			<section>
 				<Card padding="lg">
-					<DayOfWeekChart data={workoutsByDayOfWeek} />
+					<LazyChart minHeight="400px">
+						<DayOfWeekChart data={workoutsByDayOfWeek} />
+					</LazyChart>
 				</Card>
 			</section>
 			<section>
 				<Card padding="lg">
-					<PowerliftingTotalChart powerliftingTotals={powerliftingTotals} bigThreeData={bigThreeE1RM} />
+					<LazyChart minHeight="400px">
+						<PowerliftingTotalChart powerliftingTotals={powerliftingTotals} bigThreeData={bigThreeE1RM} />
+					</LazyChart>
 				</Card>
 			</section>
 		</div>
@@ -273,12 +287,16 @@
 		<div class="two-column-layout mb-12">
 			<section>
 				<Card padding="lg">
-					<BarTravelCard data={barTravel} />
+					<LazyChart minHeight="400px">
+						<BarTravelCard data={barTravel} />
+					</LazyChart>
 				</Card>
 			</section>
 			<section>
 				<Card padding="lg">
-					<RelativeStrengthChart relativeStrength={relativeStrength} bodyWeight={bodyWeight} />
+					<LazyChart minHeight="400px">
+						<RelativeStrengthChart relativeStrength={relativeStrength} bodyWeight={bodyWeight} />
+					</LazyChart>
 				</Card>
 			</section>
 		</div>
@@ -286,7 +304,9 @@
 		<!-- Program Comparison -->
 		<section class="mb-12">
 			<Card padding="lg">
-				<ProgramComparisonChart data={programs} />
+				<LazyChart minHeight="400px">
+					<ProgramComparisonChart data={programs} />
+				</LazyChart>
 			</Card>
 		</section>
 

@@ -2,3 +2,4 @@
 export * from './units';
 export * from './formatting';
 export * from './data';
+export * from './lazyLoad';
