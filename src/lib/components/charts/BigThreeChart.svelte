@@ -177,23 +177,6 @@
 
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
-			title: {
-				text: 'Strength Progression (E1RM)',
-				subtext: 'Big Three + OHP Estimated 1-Rep Max Over Time',
-				textStyle: {
-					color: textPrimary,
-					fontSize: 24,
-					fontFamily: 'Source Sans 3, sans-serif',
-					fontWeight: 'bold'
-				},
-				subtextStyle: {
-					color: textSecondary,
-					fontSize: 14,
-					fontFamily: 'Source Sans 3, sans-serif'
-				},
-				left: 'center',
-				top: 10
-			},
 			tooltip: {
 				trigger: 'axis',
 				backgroundColor: 'rgba(0, 0, 0, 0.85)',
@@ -253,7 +236,7 @@
 			},
 			legend: {
 				data: chartData.map((l) => l.displayName),
-				top: 80,
+				top: 20,
 				textStyle: {
 					color: textSecondary,
 					fontFamily: 'Source Sans 3, sans-serif',
@@ -270,7 +253,7 @@
 				left: '3%',
 				right: '4%',
 				bottom: '15%',
-				top: '25%',
+				top: '15%',
 				containLabel: true
 			},
 			xAxis: {
@@ -421,6 +404,11 @@
 	</div>
 {:else}
 	<div class="big-three-chart-wrapper">
+		<div class="section-header">
+			<h3 class="section-title">Strength Progression (E1RM)</h3>
+			<p class="section-subtitle">Big Three + OHP Estimated 1-Rep Max Over Time</p>
+		</div>
+
 		<!-- Lift Toggle Controls -->
 		<div class="chart-controls">
 			<div class="control-group">
@@ -505,6 +493,24 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-4);
+	}
+
+	.section-header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	.section-title {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: var(--text-primary);
+		letter-spacing: 0.05em;
+	}
+
+	.section-subtitle {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
 	}
 
 	.chart-controls {

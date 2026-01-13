@@ -109,17 +109,6 @@
 		const colors = chartData.map((item) => getExerciseColor(item.name));
 
 		const option: echarts.EChartsOption = {
-			title: {
-				text: 'Exercise Distribution',
-				left: 'left',
-				top: 0,
-				textStyle: {
-					fontFamily: 'Bebas Neue, sans-serif',
-					fontSize: 24,
-					color: '#f5f2eb', // Light text for dark theme
-					fontWeight: 'normal'
-				}
-			},
 			tooltip: {
 				trigger: 'item',
 				backgroundColor: '#252220',
@@ -156,7 +145,7 @@
 			legend: {
 				orient: 'vertical',
 				right: 10,
-				top: 'center',
+				top: '10%',
 				textStyle: {
 					color: '#f5f2eb',
 					fontFamily: 'Source Sans 3, sans-serif',
@@ -218,6 +207,7 @@
 </script>
 
 <div class="chart-wrapper">
+	<h3 class="section-title">Exercise Distribution</h3>
 	<div bind:this={chartContainer} class="chart-container"></div>
 	<div class="chart-insight">
 		<p class="text-secondary">
@@ -232,6 +222,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-4);
+	}
+
+	.section-title {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: var(--text-primary);
+		letter-spacing: 0.05em;
 	}
 
 	.chart-container {

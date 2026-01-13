@@ -114,20 +114,6 @@
 
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
-			title: {
-				text: 'Powerlifting Total Progress',
-				left: 'left',
-				textStyle: {
-					fontFamily: 'Bebas Neue, sans-serif',
-					fontSize: 24,
-					color: textColor
-				},
-				subtext: `Squat + Bench + Deadlift (e1RM)`,
-				subtextStyle: {
-					color: subtleColor,
-					fontSize: 13
-				}
-			},
 			tooltip: {
 				trigger: 'axis',
 				backgroundColor: isDark ? '#2d2926' : '#ffffff',
@@ -148,7 +134,7 @@
 				left: '3%',
 				right: '4%',
 				bottom: '3%',
-				top: '100px',
+				top: '3%',
 				containLabel: true
 			},
 			xAxis: {
@@ -248,6 +234,8 @@
 </script>
 
 <div class="chart-wrapper">
+	<h3 class="section-title">Powerlifting Total Progress</h3>
+	<p class="section-subtitle">Squat + Bench + Deadlift (e1RM)</p>
 	<div bind:this={chartContainer} class="chart-container"></div>
 	<div class="chart-caption">
 		<div class="clubs">
@@ -264,6 +252,20 @@
 <style>
 	.chart-wrapper {
 		width: 100%;
+	}
+
+	.section-title {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: var(--text-primary);
+		letter-spacing: 0.05em;
+	}
+
+	.section-subtitle {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		margin-top: var(--space-1);
+		margin-bottom: var(--space-4);
 	}
 
 	.chart-container {

@@ -93,17 +93,6 @@
 
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
-			title: {
-				text: 'Training Volume Over Time',
-				textStyle: {
-					color: textPrimary,
-					fontSize: 24,
-					fontFamily: 'Source Sans 3, sans-serif',
-					fontWeight: 'bold'
-				},
-				left: 'center',
-				top: 10
-			},
 			tooltip: {
 				trigger: 'axis',
 				backgroundColor: 'rgba(0, 0, 0, 0.85)',
@@ -145,7 +134,7 @@
 				left: '3%',
 				right: '4%',
 				bottom: '15%',
-				top: '20%',
+				top: '3%',
 				containLabel: true
 			},
 			xAxis: {
@@ -376,6 +365,8 @@
 	</div>
 {:else}
 	<div class="volume-chart-wrapper">
+		<h3 class="section-title">Training Volume Over Time</h3>
+
 		<!-- Granularity Toggle -->
 		<div class="chart-controls">
 			<div class="control-group">
@@ -429,6 +420,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-4);
+	}
+
+	.section-title {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: var(--text-primary);
+		letter-spacing: 0.05em;
 	}
 
 	.chart-controls {

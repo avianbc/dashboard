@@ -72,16 +72,6 @@
 		}
 
 		const option: echarts.EChartsOption = {
-			title: {
-				text: `${selectedYear} Workout Calendar`,
-				left: 'center',
-				top: 10,
-				textStyle: {
-					fontFamily: 'Bebas Neue, sans-serif',
-					fontSize: 24,
-					color: 'var(--text-primary)'
-				}
-			},
 			tooltip: {
 				formatter: (params: any) => {
 					const date = params.data[0];
@@ -123,7 +113,7 @@
 				]
 			},
 			calendar: {
-				top: 80,
+				top: 20,
 				left: 30,
 				right: 30,
 				cellSize: ['auto', 13],
@@ -190,6 +180,8 @@
 </script>
 
 <div class="calendar-heatmap">
+	<h3 class="section-title">Workout Calendar</h3>
+
 	<!-- Year selector -->
 	<div class="year-selector">
 		{#each years as year}
@@ -243,6 +235,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-4);
+	}
+
+	.section-title {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: var(--text-primary);
+		letter-spacing: 0.05em;
 	}
 
 	.year-selector {

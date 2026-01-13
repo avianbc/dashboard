@@ -72,23 +72,9 @@
 
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
-			title: {
-				text: 'Relative Strength Over Time',
-				left: 'left',
-				textStyle: {
-					fontFamily: 'Bebas Neue, sans-serif',
-					fontSize: 24,
-					color: textColor
-				},
-				subtext: 'Strength-to-bodyweight ratio (e1RM / BW)',
-				subtextStyle: {
-					color: subtleColor,
-					fontSize: 13
-				}
-			},
 			legend: {
 				data: ['Squat', 'Bench', 'Deadlift'],
-				top: 60,
+				top: 10,
 				textStyle: {
 					color: textColor
 				}
@@ -114,7 +100,7 @@
 				left: '3%',
 				right: '4%',
 				bottom: '3%',
-				top: '110px',
+				top: '15%',
 				containLabel: true
 			},
 			xAxis: {
@@ -211,6 +197,8 @@
 </script>
 
 <div class="chart-wrapper">
+	<h3 class="section-title">Relative Strength Over Time</h3>
+	<p class="section-subtitle">Strength-to-bodyweight ratio (e1RM / BW)</p>
 	<div bind:this={chartContainer} class="chart-container"></div>
 	<div class="chart-caption">
 		<div class="stats">
@@ -235,6 +223,20 @@
 <style>
 	.chart-wrapper {
 		width: 100%;
+	}
+
+	.section-title {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: var(--text-primary);
+		letter-spacing: 0.05em;
+	}
+
+	.section-subtitle {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		margin-top: var(--space-1);
+		margin-bottom: var(--space-4);
 	}
 
 	.chart-container {

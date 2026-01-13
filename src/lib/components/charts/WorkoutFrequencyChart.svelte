@@ -44,15 +44,6 @@
 
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
-			title: {
-				text: 'Workout Frequency Over Time',
-				left: 'left',
-				textStyle: {
-					fontFamily: 'Bebas Neue, sans-serif',
-					fontSize: 24,
-					color: textColor
-				}
-			},
 			tooltip: {
 				trigger: 'axis',
 				backgroundColor: isDark ? '#2d2926' : '#ffffff',
@@ -79,7 +70,7 @@
 				left: '3%',
 				right: '4%',
 				bottom: '3%',
-				top: '80px',
+				top: '3%',
 				containLabel: true
 			},
 			xAxis: {
@@ -154,6 +145,7 @@
 </script>
 
 <div class="chart-wrapper">
+	<h3 class="section-title">Workout Frequency Over Time</h3>
 	<div bind:this={chartContainer} class="chart-container"></div>
 	<div class="chart-caption">
 		<p>
@@ -166,6 +158,14 @@
 <style>
 	.chart-wrapper {
 		width: 100%;
+	}
+
+	.section-title {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: var(--text-primary);
+		letter-spacing: 0.05em;
+		margin-bottom: var(--space-4);
 	}
 
 	.chart-container {
