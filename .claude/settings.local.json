@@ -21,7 +21,8 @@
       "mcp__chrome-devtools__new_page",
       "Bash(python3:*)",
       "Skill(frontend-design:frontend-design)",
-      "Bash(pnpm build:*)"
+      "Bash(pnpm build:*)",
+      "Bash(pnpm check:*)"
     ]
   }
 }
