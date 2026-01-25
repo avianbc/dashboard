@@ -30,7 +30,7 @@
 	let { data }: { data: PageData } = $props();
 
 	// Check for data loading errors
-	const hasError = data.error !== undefined;
+	const hasError = $derived(data.error !== undefined);
 
 	// State for deferred data
 	let deferredData = $state<DeferredTrainingData | null>(null);
@@ -115,7 +115,7 @@
 	<a href="#main-content" class="skip-link">Skip to main content</a>
 
 	<!-- Header -->
-	<header class="dashboard-header" role="banner">
+	<header class="dashboard-header">
 		<div class="container">
 			<div class="header-content">
 				<div>
@@ -153,7 +153,7 @@
 	</header>
 
 	<!-- Main Content -->
-	<main id="main-content" class="container py-8" role="main" aria-labelledby="page-title">
+	<main id="main-content" class="container py-8" aria-labelledby="page-title">
 		<!-- Error Banner -->
 		{#if hasError}
 			<div class="error-banner" role="alert" aria-live="polite">
@@ -492,7 +492,7 @@
 		gap: var(--space-4);
 	}
 
-	.stat-card {
+	:global(.stat-card) {
 		padding: var(--space-5);
 		display: flex;
 		flex-direction: column;
@@ -503,28 +503,28 @@
 		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 	}
 
-	.stat-card:focus-within {
+	:global(.stat-card:focus-within) {
 		outline: 3px solid var(--accent-copper);
 		outline-offset: 2px;
 	}
 
 	/* Staggered animation for stat cards */
-	.stat-card:nth-child(1) {
+	:global(.stat-card:nth-child(1)) {
 		animation-delay: 0.1s;
 	}
-	.stat-card:nth-child(2) {
+	:global(.stat-card:nth-child(2)) {
 		animation-delay: 0.2s;
 	}
-	.stat-card:nth-child(3) {
+	:global(.stat-card:nth-child(3)) {
 		animation-delay: 0.3s;
 	}
-	.stat-card:nth-child(4) {
+	:global(.stat-card:nth-child(4)) {
 		animation-delay: 0.4s;
 	}
-	.stat-card:nth-child(5) {
+	:global(.stat-card:nth-child(5)) {
 		animation-delay: 0.5s;
 	}
-	.stat-card:nth-child(6) {
+	:global(.stat-card:nth-child(6)) {
 		animation-delay: 0.6s;
 	}
 
@@ -539,7 +539,7 @@
 		}
 	}
 
-	.stat-card::before {
+	:global(.stat-card::before) {
 		content: '';
 		position: absolute;
 		top: 0;
@@ -551,11 +551,11 @@
 		transition: opacity var(--transition-normal);
 	}
 
-	.stat-card:hover::before {
+	:global(.stat-card:hover::before) {
 		opacity: 1;
 	}
 
-	.stat-card:hover {
+	:global(.stat-card:hover) {
 		transform: translateY(-2px);
 		transition: transform var(--transition-normal);
 	}
@@ -601,8 +601,8 @@
 
 	/* Reduced motion preferences */
 	@media (prefers-reduced-motion: reduce) {
-		.stat-card,
-		.stat-card:hover,
+		:global(.stat-card),
+		:global(.stat-card:hover),
 		*,
 		*::before,
 		*::after {
@@ -664,7 +664,7 @@
 
 	/* High contrast mode support */
 	@media (prefers-contrast: high) {
-		.stat-card {
+		:global(.stat-card) {
 			border: 2px solid var(--border-strong);
 		}
 
@@ -686,21 +686,6 @@
 		}
 	}
 
-	/* Phase divider */
-	.phase-divider {
-		padding: var(--space-8) 0;
-		border-top: 2px solid var(--bg-card);
-		border-bottom: 2px solid var(--bg-card);
-		text-align: center;
-	}
-
-	.phase-title {
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 2rem;
-		color: var(--accent-copper);
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-	}
 
 	/* Error banner */
 	.error-banner {
