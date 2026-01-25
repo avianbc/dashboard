@@ -264,29 +264,54 @@
 		<!-- Big Three + OHP Progression Chart -->
 		<section class="mb-12" aria-label="Big Three and OHP Progression">
 			<Card padding="lg">
-				<LazyChart minHeight="400px">
-					<BigThreeChart data={bigThreeE1RM} {allTimePRs} />
-				</LazyChart>
+				{#if deferredDataLoading}
+					<div style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
+						<Loading size="lg" text="Loading strength progression data..." />
+					</div>
+				{:else if deferredDataError}
+					<ErrorComponent title="Failed to Load Chart" message={deferredDataError} />
+				{:else}
+					<LazyChart minHeight="400px">
+						<BigThreeChart data={bigThreeE1RM} {allTimePRs} />
+					</LazyChart>
+				{/if}
 			</Card>
 		</section>
 
-		<!-- Exercise Distribution Chart -->
-		<section class="mb-12" aria-label="Exercise Distribution">
-			<Card padding="lg">
-				<LazyChart minHeight="400px">
-					<ExerciseDistributionChart data={exerciseProgress} />
-				</LazyChart>
-			</Card>
-		</section>
+		<!-- Show loading indicator or error for deferred data sections -->
+		{#if deferredDataLoading}
+			<section class="mb-12">
+				<Card padding="lg">
+					<div style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+						<Loading size="lg" text="Loading additional charts and analytics..." />
+					</div>
+				</Card>
+			</section>
+		{:else if deferredDataError}
+			<section class="mb-12">
+				<Card padding="lg">
+					<ErrorComponent title="Failed to Load Additional Data" message={deferredDataError} />
+				</Card>
+			</section>
+		{:else}
+			<!-- Exercise Distribution Chart -->
+			<section class="mb-12" aria-label="Exercise Distribution">
+				<Card padding="lg">
+					<LazyChart minHeight="400px">
+						<ExerciseDistributionChart data={exerciseProgress} />
+					</LazyChart>
+				</Card>
+			</section>
 
-		<!-- Calendar Heatmap -->
-		<section class="mb-12" aria-label="Workout Calendar">
-			<Card padding="lg">
-				<LazyChart minHeight="300px">
-					<CalendarHeatmap data={workoutCalendar} />
-				</LazyChart>
-			</Card>
-		</section>
+			<!-- Calendar Heatmap -->
+			<section class="mb-12" aria-label="Workout Calendar">
+				<Card padding="lg">
+					<LazyChart minHeight="300px">
+						<CalendarHeatmap data={workoutCalendar} />
+					</LazyChart>
+				</Card>
+			</section>
+		{/if}
 
 		<!-- Phase 4: Personal Records & Recent Activity -->
 		<div class="two-column-layout mb-12">
@@ -305,7 +330,22 @@
 			</section>
 		</div>
 
-		<!-- Recent Activity Section -->
+		<!-- Recent Activity Section and remaining deferred data sections -->
+		{#if deferredDataLoading}
+			<section class="mb-12">
+				<Card padding="lg">
+					<div style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+						<Loading size="lg" text="Loading workout analytics..." />
+					</div>
+				</Card>
+			</section>
+		{:else if deferredDataError}
+			<section class="mb-12">
+				<Card padding="lg">
+					<ErrorComponent title="Failed to Load Analytics" message={deferredDataError} />
+				</Card>
+			</section>
+		{:else}
 		<section class="mb-12">
 			<Card padding="lg">
 				<RecentActivity data={notableWorkouts} />
@@ -372,6 +412,7 @@
 				<MilestonesTimeline data={milestones} />
 			</Card>
 		</section>
+		{/if}
 	</main>
 </div>
 

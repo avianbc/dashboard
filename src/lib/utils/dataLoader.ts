@@ -3,6 +3,7 @@
  */
 
 import type { DeferredTrainingData } from '$lib/types/training';
+import { base } from '$app/paths';
 
 // Cache for deferred data
 let deferredDataCache: DeferredTrainingData | null = null;
@@ -24,7 +25,7 @@ export async function loadDeferredData(): Promise<DeferredTrainingData> {
 	}
 
 	// Start loading
-	loadingPromise = fetch('/data/training_deferred.json')
+	loadingPromise = fetch(`${base}/data/training_deferred.json`)
 		.then((response) => {
 			if (!response.ok) {
 				throw new Error(`Failed to load deferred data: ${response.statusText}`);
