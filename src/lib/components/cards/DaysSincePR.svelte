@@ -1,8 +1,6 @@
 <script lang="ts">
-	import type { ComponentType } from 'svelte';
 	import type { DaysSinceLastPR } from '$lib/types/training';
 	import { Card } from '$lib/components/ui';
-	import { CircleCheck, CircleAlert, CircleX } from 'lucide-svelte';
 	import { LIFTS } from '$lib/config';
 
 	interface Props {
@@ -18,33 +16,31 @@
 		color: lift.color
 	}));
 
-	function getStatus(days: number): { status: string; color: string; icon: ComponentType } {
+	function getTimeRange(days: number): { range: string; color: string } {
 		if (days < 90) {
-			return { status: 'Recent', color: 'var(--status-recent)', icon: CircleCheck };
+			return { range: '< 3 months', color: 'var(--status-recent)' };
 		} else if (days < 180) {
-			return { status: 'Aging', color: 'var(--status-aging)', icon: CircleAlert };
+			return { range: '3-6 months', color: 'var(--status-aging)' };
 		} else {
-			return { status: 'Overdue', color: 'var(--status-overdue)', icon: CircleX };
+			return { range: '6+ months', color: 'var(--status-overdue)' };
 		}
 	}
 </script>
 
 <div class="days-since-pr">
-	<h3 class="section-title">Days Since Last PR</h3>
+	<h3 class="section-title">Time Since Last PR</h3>
 	<div class="pr-grid">
 		{#each lifts as lift}
 			{@const days = data[lift.key]}
-			{@const statusInfo = getStatus(days)}
-			{@const StatusIcon = statusInfo.icon}
-			<Card hover class="pr-card" style="--lift-color: {lift.color}; --status-color: {statusInfo.color}">
+			{@const timeInfo = getTimeRange(days)}
+			<Card hover class="pr-card" style="--lift-color: {lift.color}; --status-color: {timeInfo.color}">
 				<div class="pr-card-header">
 					<span class="lift-name">{lift.name}</span>
-					<span class="status-icon"><StatusIcon size={20} strokeWidth={2} /></span>
 				</div>
 				<div class="days-value">{days}</div>
 				<div class="days-label">days</div>
-				<div class="status-badge" style="background: {statusInfo.color}">
-					{statusInfo.status}
+				<div class="status-badge" style="background: {timeInfo.color}">
+					{timeInfo.range}
 				</div>
 			</Card>
 		{/each}
@@ -58,12 +54,12 @@
 
 	.pr-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-		gap: var(--space-3);
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--space-4);
 	}
 
 	:global(.pr-card) {
-		padding: var(--space-4);
+		padding: var(--space-5);
 		text-align: center;
 		border-left: 3px solid var(--lift-color);
 		position: relative;
@@ -83,12 +79,6 @@
 		color: var(--text-primary);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-	}
-
-	.status-icon {
-		color: var(--status-color);
-		display: flex;
-		align-items: center;
 	}
 
 	.days-value {
