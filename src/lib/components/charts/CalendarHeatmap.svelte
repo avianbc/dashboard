@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	import { echarts } from './echarts-setup';
 	import type { WorkoutCalendarDay } from '$lib/types/training';
-	import { unitSystem, theme } from '$lib/stores';
-	import { formatNumber, formatDate, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { unitSystem } from '$lib/stores';
+	import { formatNumber } from '$lib/utils';
 	import { Callout } from '$lib/components/ui';
 	import { BarChart3 } from 'lucide-svelte';
 
@@ -13,255 +11,395 @@
 
 	let { data }: Props = $props();
 
-	let chartContainer: HTMLDivElement;
-	let chart: echarts.ECharts;
+	interface GridDay {
+		date: Date;
+		volume: number;
+		count: number;
+		level: number;
+	}
+
+	interface WeekRow {
+		days: (GridDay | null)[];
+	}
+
+	interface YearGrid {
+		year: number;
+		weeks: WeekRow[];
+		monthLabels: { month: string; weekIndex: number }[];
+	}
 
 	// Convert data to array if it's an object
 	const dataArray = $derived.by(() => {
 		if (Array.isArray(data)) {
 			return data;
 		}
-		// Convert object to array
 		return Object.entries(data).map(([date, values]) => ({
 			date,
 			...values
 		}));
 	});
 
-	// Get available years from data
+	// Create a lookup map for quick access
+	const dataMap = $derived.by(() => {
+		const map = new Map<string, { volumeLbs: number; volumeKg: number; count: number }>();
+		dataArray.forEach((day) => {
+			map.set(day.date, {
+				volumeLbs: day.volumeLbs,
+				volumeKg: day.volumeKg,
+				count: day.count
+			});
+		});
+		return map;
+	});
+
+	// Calculate dynamic thresholds based on quartiles
+	function calculateThresholds(data: WorkoutCalendarDay[]): number[] {
+		const volumes = data
+			.map((d) => (unitSystem.current === 'imperial' ? d.volumeLbs : d.volumeKg))
+			.filter((v) => v > 0)
+			.sort((a, b) => a - b);
+
+		if (volumes.length === 0) return [0, 1, 2, 3];
+
+		const q25 = volumes[Math.floor(volumes.length * 0.25)];
+		const q50 = volumes[Math.floor(volumes.length * 0.5)];
+		const q75 = volumes[Math.floor(volumes.length * 0.75)];
+
+		return [0, q25, q50, q75];
+	}
+
+	const thresholds = $derived(calculateThresholds(dataArray));
+
+	// Get level (0-4) based on volume
+	function getLevel(volume: number, thresholds: number[]): number {
+		if (volume === 0) return 0;
+		if (volume <= thresholds[1]) return 1;
+		if (volume <= thresholds[2]) return 2;
+		if (volume <= thresholds[3]) return 3;
+		return 4;
+	}
+
+	// Generate year grid structure
+	function generateYearGrid(year: number, dataMap: Map<string, any>): YearGrid {
+		const weeks: WeekRow[] = [];
+		const monthLabels: { month: string; weekIndex: number }[] = [];
+
+		// Find first Sunday on or before Jan 1
+		const jan1 = new Date(year, 0, 1);
+		const dayOfWeek = jan1.getDay();
+		const firstSunday = new Date(jan1);
+		firstSunday.setDate(jan1.getDate() - dayOfWeek);
+
+		// Generate 53 weeks (covers full year)
+		let currentMonth = -1;
+		for (let weekIndex = 0; weekIndex < 53; weekIndex++) {
+			const days: (GridDay | null)[] = [];
+
+			for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+				const date = new Date(firstSunday);
+				date.setDate(firstSunday.getDate() + weekIndex * 7 + dayIndex);
+
+				// Only include days in the current year
+				if (date.getFullYear() === year) {
+					const dateStr = date.toISOString().split('T')[0];
+					const dayData = dataMap.get(dateStr);
+
+					const volume = dayData
+						? unitSystem.current === 'imperial'
+							? dayData.volumeLbs
+							: dayData.volumeKg
+						: 0;
+					const count = dayData?.count || 0;
+					const level = getLevel(volume, thresholds);
+
+					days.push({ date, volume, count, level });
+
+					// Track month labels
+					const month = date.getMonth();
+					if (month !== currentMonth && date.getDate() <= 7) {
+						currentMonth = month;
+						monthLabels.push({
+							month: date.toLocaleString('default', { month: 'short' }),
+							weekIndex
+						});
+					}
+				} else {
+					days.push(null);
+				}
+			}
+
+			// Only add week if it has at least one day
+			if (days.some((d) => d !== null)) {
+				weeks.push({ days });
+			}
+		}
+
+		return { year, weeks, monthLabels };
+	}
+
+	// Get all years and generate grids
 	const years = $derived.by(() => {
 		const uniqueYears = new Set<number>();
 		dataArray.forEach((day) => {
 			const year = new Date(day.date).getFullYear();
 			uniqueYears.add(year);
 		});
-		return Array.from(uniqueYears).sort((a, b) => b - a); // Sort descending (newest first)
+		return Array.from(uniqueYears).sort((a, b) => b - a);
 	});
 
-	// Transform data grouped by year
-	const chartDataByYear = $derived.by(() => {
-		const grouped: Record<number, [string, number, number][]> = {};
-		dataArray.forEach((day) => {
-			const year = new Date(day.date).getFullYear();
-			const volume = unitSystem.current === 'imperial' ? day.volumeLbs : day.volumeKg;
-			if (!grouped[year]) grouped[year] = [];
-			grouped[year].push([day.date, volume, day.count]);
-		});
-		return grouped;
-	});
-
-	// Layout constants
-	const CALENDAR_HEIGHT = 160;
-	const CALENDAR_GAP = 30;
-	const FIRST_TOP = 50;
-
-	// Calculate dynamic container height
-	const containerHeight = $derived(
-		FIRST_TOP + (years.length * CALENDAR_HEIGHT) + ((years.length - 1) * CALENDAR_GAP) + 50
-	);
-
-	// Generate dynamic calendar configurations
-	const calendars = $derived.by(() => {
-		return years.map((year, index) => ({
-			top: FIRST_TOP + (index * (CALENDAR_HEIGHT + CALENDAR_GAP)),
-			left: 100,
-			right: 30,
-			cellSize: ['auto', 13],
-			range: `${year}`,
-			itemStyle: {
-				color: 'transparent',
-				borderWidth: 0.5,
-				borderColor: 'var(--bg-deep)'
-			},
-			yearLabel: {
-				show: true,
-				position: 'left',
-				margin: 45,
-				color: 'var(--text-primary)',
-				fontSize: 16,
-				fontWeight: 'bold'
-			},
-			dayLabel: {
-				firstDay: 0, // Sunday
-				nameMap: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-				color: 'var(--text-muted)',
-				fontSize: 12
-			},
-			monthLabel: {
-				color: 'var(--text-secondary)',
-				fontSize: 12
-			},
-			splitLine: {
-				show: true,
-				lineStyle: {
-					color: 'var(--bg-elevated)',
-					width: 1,
-					type: 'solid'
-				}
-			}
-		}));
-	});
-
-	// Generate dynamic series
-	const series = $derived.by(() => {
-		return years.map((year, index) => ({
-			type: 'heatmap',
-			coordinateSystem: 'calendar',
-			calendarIndex: index,
-			data: chartDataByYear[year] || []
-		}));
+	const yearGrids = $derived.by(() => {
+		return years.map((year) => generateYearGrid(year, dataMap));
 	});
 
 	// Calculate aggregate stats
 	const aggregateStats = $derived.by(() => {
-		let bestYear = { year: 0, workouts: 0 };
-		years.forEach(year => {
-			const workouts = chartDataByYear[year]?.reduce((sum, d) => sum + d[2], 0) || 0;
-			if (workouts > bestYear.workouts) bestYear = { year, workouts };
+		const yearStats = years.map((year) => {
+			const yearData = dataArray.filter((d) => new Date(d.date).getFullYear() === year);
+			const workouts = yearData.reduce((sum, d) => sum + d.count, 0);
+			return { year, workouts };
 		});
+
+		const bestYear =
+			yearStats.reduce((best, current) => (current.workouts > best.workouts ? current : best), {
+				year: 0,
+				workouts: 0
+			});
+
 		return { bestYear, yearCount: years.length };
 	});
 
-	// Get color based on volume
-	function getColor(volumeLbs: number): string {
-		if (volumeLbs === 0) return '#ebedf0';
-		if (volumeLbs < 5000) return '#c6e48b';
-		if (volumeLbs < 10000) return '#7bc96f';
-		if (volumeLbs < 15000) return '#239a3b';
-		return '#196127';
+	// Tooltip state
+	let tooltip = $state<{
+		visible: boolean;
+		x: number;
+		y: number;
+		date: string;
+		count: number;
+		volume: number;
+	}>({ visible: false, x: 0, y: 0, date: '', count: 0, volume: 0 });
+
+	function showTooltip(event: MouseEvent, day: GridDay) {
+		const rect = (event.target as SVGElement).getBoundingClientRect();
+		tooltip = {
+			visible: true,
+			x: rect.left + rect.width / 2,
+			y: rect.top - 10,
+			date: day.date.toLocaleDateString('en-US', {
+				weekday: 'short',
+				month: 'short',
+				day: 'numeric',
+				year: 'numeric'
+			}),
+			count: day.count,
+			volume: day.volume
+		};
 	}
 
-	// Initialize and update chart
-	$effect(() => {
-		if (!chartContainer) return;
+	function hideTooltip() {
+		tooltip.visible = false;
+	}
 
-		if (!chart) {
-			chart = echarts.init(chartContainer);
-		}
+	// SVG layout constants (will be adjusted via CSS for responsive)
+	const CELL_SIZE = 11;
+	const CELL_GAP = 3;
+	const CELL_RADIUS = 2;
+	const DAY_LABEL_WIDTH = 30;
+	const MONTH_LABEL_HEIGHT = 20;
+	const YEAR_LABEL_HEIGHT = 30;
+	const YEAR_GAP = 40;
 
-		const chartColors = getChartColors();
-
-		const option: echarts.EChartsOption = {
-			tooltip: {
-				...createTooltipConfig(chartColors, { trigger: 'item' }),
-				formatter: (params: any) => {
-					const date = params.data[0];
-					const volume = params.data[1];
-					const count = params.data[2];
-					const unit = unitSystem.current === 'imperial' ? 'lbs' : 'kg';
-
-					return `
-						<div style="padding: ${TOOLTIP_PADDING}px;">
-							<div style="font-weight: bold; margin-bottom: 4px;">${formatDate(date)}</div>
-							<div>${count} workout${count !== 1 ? 's' : ''}</div>
-							<div>${formatNumber(volume)} ${unit}</div>
-						</div>
-					`;
-				}
-			},
-			visualMap: {
-				show: false,
-				type: 'piecewise',
-				min: 0,
-				max: 20000,
-				calculable: false,
-				orient: 'horizontal',
-				left: 'center',
-				bottom: 20,
-				dimension: 1,
-				seriesIndex: years.map((_, i) => i),
-				inRange: {
-					color: ['transparent', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
-				},
-				pieces: [
-					{ min: 0, max: 0, color: 'transparent', label: '0' },
-					{ min: 0.01, max: 5000, color: '#c6e48b', label: '1-5K' },
-					{ min: 5000.01, max: 10000, color: '#7bc96f', label: '5-10K' },
-					{ min: 10000.01, max: 15000, color: '#239a3b', label: '10-15K' },
-					{ min: 15000.01, color: '#196127', label: '15K+' }
-				]
-			},
-			calendar: calendars,
-			series: series
-		};
-
-		chart.setOption(option, true);
-	});
-
-	// Handle resize
-	onMount(() => {
-		const handleResize = () => {
-			if (chart) {
-				chart.resize();
-			}
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		return () => {
-			window.removeEventListener('resize', handleResize);
-			if (chart) {
-				chart.dispose();
-			}
-		};
-	});
-
-	onDestroy(() => {
-		if (chart) {
-			chart.dispose();
-		}
-	});
+	function getSvgDimensions(grid: YearGrid) {
+		const width = DAY_LABEL_WIDTH + grid.weeks.length * (CELL_SIZE + CELL_GAP);
+		const height = MONTH_LABEL_HEIGHT + 7 * (CELL_SIZE + CELL_GAP);
+		return { width, height };
+	}
 </script>
 
 <div class="calendar-heatmap">
 	<h3 class="section-title">Workout Calendar</h3>
 
-	<!-- Chart container -->
-	<div bind:this={chartContainer} class="chart-container" style="height: {containerHeight}px;"></div>
+	<div class="heatmap-container">
+		{#each yearGrids as grid, yearIndex (grid.year)}
+			{@const dims = getSvgDimensions(grid)}
+			<div class="year-section">
+				<div class="year-header">{grid.year}</div>
+
+				<svg
+					class="heatmap-svg"
+					viewBox="0 0 {dims.width} {dims.height}"
+					preserveAspectRatio="xMinYMin meet"
+				>
+					<!-- Month labels -->
+					{#each grid.monthLabels as { month, weekIndex }}
+						<text
+							x={DAY_LABEL_WIDTH + weekIndex * (CELL_SIZE + CELL_GAP)}
+							y={12}
+							class="month-label"
+						>
+							{month}
+						</text>
+					{/each}
+
+					<!-- Day labels (Mon, Wed, Fri) -->
+					{#each ['Mon', 'Wed', 'Fri'] as day, i}
+						{@const dayIndex = i * 2 + 1}
+						<text
+							x={20}
+							y={MONTH_LABEL_HEIGHT + dayIndex * (CELL_SIZE + CELL_GAP) + CELL_SIZE / 2 + 4}
+							class="day-label"
+						>
+							{day}
+						</text>
+					{/each}
+
+					<!-- Grid cells -->
+					{#each grid.weeks as week, weekIndex}
+						{#each week.days as day, dayIndex}
+							{#if day !== null}
+								<rect
+									x={DAY_LABEL_WIDTH + weekIndex * (CELL_SIZE + CELL_GAP)}
+									y={MONTH_LABEL_HEIGHT + dayIndex * (CELL_SIZE + CELL_GAP)}
+									width={CELL_SIZE}
+									height={CELL_SIZE}
+									rx={CELL_RADIUS}
+									class="heatmap-cell level-{day.level}"
+									role="button"
+									tabindex="0"
+									aria-label="{day.date.toLocaleDateString()}: {day.count} workout{day.count !== 1 ? 's' : ''}"
+									onmouseenter={(e) => showTooltip(e, day)}
+									onmouseleave={hideTooltip}
+								/>
+							{/if}
+						{/each}
+					{/each}
+				</svg>
+			</div>
+		{/each}
+	</div>
 
 	<!-- Legend -->
 	<div class="legend">
 		<span class="legend-label">Less</span>
-		{#if theme.isDark}
-			<!-- Dark mode: dark to light (less visible to more visible) -->
-			<div class="legend-blocks">
-				<div class="legend-block legend-empty" title="No workouts"></div>
-				<div class="legend-block legend-max" title="15K+ lbs"></div>
-				<div class="legend-block legend-heavy" title="10-15K lbs"></div>
-				<div class="legend-block legend-medium" title="5-10K lbs"></div>
-				<div class="legend-block legend-light" title="1-5K lbs"></div>
-			</div>
-		{:else}
-			<!-- Light mode: light to dark (less visible to more visible) -->
-			<div class="legend-blocks">
-				<div class="legend-block legend-empty" title="No workouts"></div>
-				<div class="legend-block legend-light" title="1-5K lbs"></div>
-				<div class="legend-block legend-medium" title="5-10K lbs"></div>
-				<div class="legend-block legend-heavy" title="10-15K lbs"></div>
-				<div class="legend-block legend-max" title="15K+ lbs"></div>
-			</div>
-		{/if}
+		<div class="legend-blocks">
+			<div class="legend-block level-0" title="No activity"></div>
+			<div class="legend-block level-1" title="Light"></div>
+			<div class="legend-block level-2" title="Medium"></div>
+			<div class="legend-block level-3" title="High"></div>
+			<div class="legend-block level-4" title="Max"></div>
+		</div>
 		<span class="legend-label">More</span>
 	</div>
 
 	<!-- Insights -->
 	<Callout variant="info" icon={BarChart3} centered>
-		<p><strong>{aggregateStats.yearCount} years</strong> of training tracked. Best year: {aggregateStats.bestYear.year} with {aggregateStats.bestYear.workouts} workouts.</p>
+		<p>
+			<strong>{aggregateStats.yearCount} years</strong> of training tracked. Best year:
+			{aggregateStats.bestYear.year} with {aggregateStats.bestYear.workouts} workouts.
+		</p>
 	</Callout>
 </div>
+
+<!-- Tooltip -->
+{#if tooltip.visible}
+	<div
+		class="tooltip"
+		style="left: {tooltip.x}px; top: {tooltip.y}px;"
+	>
+		<div class="tooltip-date">{tooltip.date}</div>
+		<div class="tooltip-data">
+			{tooltip.count} workout{tooltip.count !== 1 ? 's' : ''}
+		</div>
+		<div class="tooltip-data">
+			{formatNumber(tooltip.volume)}
+			{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}
+		</div>
+	</div>
+{/if}
 
 <style>
 	.calendar-heatmap {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-4);
+		gap: var(--space-6);
 	}
 
-	.chart-container {
+	.heatmap-container {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-8);
+		overflow-x: auto;
+		padding: var(--space-2);
+	}
+
+	.year-section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.year-header {
+		font-family: var(--font-display);
+		font-size: var(--text-xl);
+		color: var(--text-primary);
+		letter-spacing: 0.05em;
+	}
+
+	.heatmap-svg {
 		width: 100%;
-		min-height: 400px;
+		height: auto;
+		max-width: 1200px;
 	}
 
+	/* SVG text elements */
+	.month-label {
+		font-family: var(--font-body);
+		font-size: 10px;
+		fill: var(--text-secondary);
+		text-anchor: start;
+	}
+
+	.day-label {
+		font-family: var(--font-body);
+		font-size: 9px;
+		fill: var(--text-muted);
+		text-anchor: end;
+	}
+
+	/* Heatmap cells */
+	.heatmap-cell {
+		cursor: pointer;
+		transition: opacity var(--transition-fast);
+		stroke: var(--bg-primary);
+		stroke-width: 1;
+	}
+
+	.heatmap-cell:hover {
+		opacity: 0.8;
+		stroke: var(--border-strong);
+		stroke-width: 1.5;
+	}
+
+	.heatmap-cell.level-0 {
+		fill: var(--heatmap-level-0);
+	}
+
+	.heatmap-cell.level-1 {
+		fill: var(--heatmap-level-1);
+	}
+
+	.heatmap-cell.level-2 {
+		fill: var(--heatmap-level-2);
+	}
+
+	.heatmap-cell.level-3 {
+		fill: var(--heatmap-level-3);
+	}
+
+	.heatmap-cell.level-4 {
+		fill: var(--heatmap-level-4);
+	}
+
+	/* Legend */
 	.legend {
 		display: flex;
 		align-items: center;
@@ -271,60 +409,110 @@
 	}
 
 	.legend-label {
-		font-size: 0.75rem;
+		font-size: var(--text-xs);
 		color: var(--text-muted);
-		font-family: 'Source Sans 3', sans-serif;
+		font-family: var(--font-body);
 	}
 
 	.legend-blocks {
 		display: flex;
-		gap: 2px;
+		gap: 3px;
 	}
 
 	.legend-block {
-		width: 12px;
-		height: 12px;
-		border: 0.5px solid var(--bg-deep);
-		cursor: help;
+		width: 11px;
+		height: 11px;
+		border-radius: 2px;
 	}
 
-	.legend-empty {
-		background-color: transparent;
-		border: 1px solid var(--text-muted);
+	.legend-block.level-0 {
+		background-color: var(--heatmap-level-0);
+		border: 1px solid var(--border-default);
 	}
 
-	.legend-light {
-		background-color: #c6e48b;
+	.legend-block.level-1 {
+		background-color: var(--heatmap-level-1);
 	}
 
-	.legend-medium {
-		background-color: #7bc96f;
+	.legend-block.level-2 {
+		background-color: var(--heatmap-level-2);
 	}
 
-	.legend-heavy {
-		background-color: #239a3b;
+	.legend-block.level-3 {
+		background-color: var(--heatmap-level-3);
 	}
 
-	.legend-max {
-		background-color: #196127;
+	.legend-block.level-4 {
+		background-color: var(--heatmap-level-4);
 	}
 
+	/* Tooltip */
+	.tooltip {
+		position: fixed;
+		transform: translate(-50%, -100%);
+		background: var(--chart-tooltip-bg);
+		border: 1px solid var(--chart-tooltip-border);
+		border-radius: var(--radius-md);
+		padding: var(--space-3);
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		color: var(--text-primary);
+		pointer-events: none;
+		z-index: var(--z-dropdown);
+		box-shadow: var(--shadow-lg);
+		white-space: nowrap;
+	}
+
+	.tooltip-date {
+		font-weight: var(--font-weight-semibold);
+		margin-bottom: var(--space-1);
+	}
+
+	.tooltip-data {
+		color: var(--text-secondary);
+		font-size: var(--text-xs);
+	}
 
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
-		.chart-container {
-			max-height: 600px;
-			overflow-y: auto;
+		.heatmap-svg {
+			max-width: 100%;
+		}
+
+		.year-header {
+			font-size: var(--text-lg);
+		}
+
+		.month-label {
+			font-size: 8px;
+		}
+
+		.day-label {
+			font-size: 7px;
+		}
+
+		.legend-block {
+			width: 9px;
+			height: 9px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.day-label {
+			display: none;
 		}
 
 		.legend {
 			flex-wrap: wrap;
 		}
-	}
 
-	@media (max-width: 480px) {
-		.chart-container {
-			max-height: 500px;
+		.legend-block {
+			width: 7px;
+			height: 7px;
+		}
+
+		.tooltip {
+			font-size: var(--text-xs);
 		}
 	}
 </style>
