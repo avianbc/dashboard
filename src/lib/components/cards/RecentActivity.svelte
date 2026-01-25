@@ -12,7 +12,7 @@
 	let { data }: Props = $props();
 
 	// Take the most recent 10 notable workouts
-	const recentWorkouts = data.slice(0, 10);
+	const recentWorkouts = $derived(data.slice(0, 10));
 
 	function getCategoryIcon(category: string): ComponentType {
 		switch (category) {
