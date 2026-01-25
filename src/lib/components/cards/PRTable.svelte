@@ -2,6 +2,7 @@
 	import type { AllTimePRs } from '$lib/types/training';
 	import { formatDate, lbsToKg } from '$lib/utils';
 	import { unitSystem } from '$lib/stores';
+	import { LIFTS } from '$lib/config';
 
 	interface Props {
 		data: AllTimePRs;
@@ -9,12 +10,12 @@
 
 	let { data }: Props = $props();
 
-	const lifts = [
-		{ name: 'Squat', key: 'squat', color: 'var(--lift-squat)' },
-		{ name: 'Bench', key: 'bench', color: 'var(--lift-bench)' },
-		{ name: 'Deadlift', key: 'deadlift', color: 'var(--lift-deadlift)' },
-		{ name: 'OHP', key: 'ohp', color: 'var(--lift-ohp)' }
-	] as const;
+	// Use shared lift configuration
+	const lifts = LIFTS.map((lift) => ({
+		name: lift.name === 'Overhead Press' ? 'OHP' : lift.name === 'Bench Press' ? 'Bench' : lift.name,
+		key: lift.key,
+		color: lift.color
+	}));
 
 	// Get common rep ranges we care about
 	const repRanges = [1, 3, 5, 8, 10];

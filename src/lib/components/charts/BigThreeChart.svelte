@@ -6,6 +6,7 @@
 	import { formatNumber, formatDate, lbsToKg } from '$lib/utils';
 	import { Button, Loading, Error } from '$lib/components/ui';
 	import { Star } from 'lucide-svelte';
+	import { LIFT_COLORS, PLATE_MILESTONES } from '$lib/config';
 
 	// Props
 	let {
@@ -32,16 +33,11 @@
 		ohp: true
 	});
 
-	// Lift colors from PLAN.md specifications
-	const liftColors = {
-		squat: '#c44536', // Deep red
-		bench: '#4a7c9b', // Steel blue
-		deadlift: '#4a8c5c', // Forest green
-		ohp: '#c9a227' // Amber
-	};
+	// Use shared lift colors
+	const liftColors = LIFT_COLORS;
 
-	// Plate milestones in lbs
-	const plateMilestones = [135, 225, 315, 405];
+	// Use shared plate milestones (only first 4 for chart)
+	const plateMilestones = PLATE_MILESTONES.slice(0, 4);
 
 	// React to unit system changes
 	$effect(() => {

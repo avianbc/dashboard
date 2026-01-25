@@ -3,6 +3,7 @@
 	import type { DaysSinceLastPR } from '$lib/types/training';
 	import { Card } from '$lib/components/ui';
 	import { CircleCheck, CircleAlert, CircleX } from 'lucide-svelte';
+	import { LIFTS } from '$lib/config';
 
 	interface Props {
 		data: DaysSinceLastPR;
@@ -10,12 +11,12 @@
 
 	let { data }: Props = $props();
 
-	const lifts = [
-		{ name: 'Squat', key: 'squat' as const, color: 'var(--lift-squat)' },
-		{ name: 'Bench', key: 'bench' as const, color: 'var(--lift-bench)' },
-		{ name: 'Deadlift', key: 'deadlift' as const, color: 'var(--lift-deadlift)' },
-		{ name: 'OHP', key: 'ohp' as const, color: 'var(--lift-ohp)' }
-	];
+	// Use shared lift configuration
+	const lifts = LIFTS.map((lift) => ({
+		name: lift.name === 'Overhead Press' ? 'OHP' : lift.name === 'Bench Press' ? 'Bench' : lift.name,
+		key: lift.key,
+		color: lift.color
+	}));
 
 	function getStatus(days: number): { status: string; color: string; icon: ComponentType } {
 		if (days < 90) {
