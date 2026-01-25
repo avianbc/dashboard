@@ -100,8 +100,7 @@
 				left: '3%',
 				right: '4%',
 				bottom: '3%',
-				top: '15%',
-				containLabel: true
+				top: '15%'
 			},
 			xAxis: {
 				type: 'category',

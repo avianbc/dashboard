@@ -94,8 +94,7 @@
 				left: '3%',
 				right: '4%',
 				bottom: '3%',
-				top: '3%',
-				containLabel: true
+				top: '3%'
 			},
 			xAxis: {
 				type: 'value',
