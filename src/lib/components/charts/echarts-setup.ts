@@ -7,7 +7,9 @@ import {
   TitleComponent,
   CalendarComponent,
   VisualMapComponent,
-  DataZoomComponent
+  DataZoomComponent,
+  MarkPointComponent,
+  MarkLineComponent
 } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 
@@ -23,6 +25,8 @@ echarts.use([
   CalendarComponent,
   VisualMapComponent,
   DataZoomComponent,
+  MarkPointComponent,
+  MarkLineComponent,
   CanvasRenderer
 ]);
 
