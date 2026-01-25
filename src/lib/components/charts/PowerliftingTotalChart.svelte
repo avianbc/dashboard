@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import * as echarts from 'echarts';
+	import { echarts } from './echarts-setup';
 	import type { PowerliftingTotals, BigThreeE1RM } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatNumber } from '$lib/utils';
-	import { format, parse } from 'date-fns';
+	import { format } from 'date-fns';
 
 	interface Props {
 		powerliftingTotals: PowerliftingTotals;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import * as echarts from 'echarts';
+	import { echarts } from './echarts-setup';
 	import type { VolumeTimeSeries } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
 

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import * as echarts from 'echarts';
+	import { echarts } from './echarts-setup';
 	import type { RelativeStrength, BodyWeight } from '$lib/types/training';
 	import { theme } from '$lib/stores';
-	import { format, parse } from 'date-fns';
+	import { format } from 'date-fns';
 
 	interface Props {
 		relativeStrength: RelativeStrength;

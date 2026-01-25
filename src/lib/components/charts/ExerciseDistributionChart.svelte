@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as echarts from 'echarts';
+	import { echarts } from './echarts-setup';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import { unitSystem } from '$lib/stores';

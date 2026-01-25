@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import * as echarts from 'echarts';
+	import { echarts } from './echarts-setup';
 	import type { BigThreeE1RM, AllTimePRs } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber, formatDate, lbsToKg } from '$lib/utils';
