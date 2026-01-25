@@ -72,14 +72,6 @@
 		width: 100%;
 	}
 
-	.section-title {
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 1.5rem;
-		color: var(--text-primary);
-		margin-bottom: var(--space-4);
-		letter-spacing: 0.05em;
-	}
-
 	.table-wrapper {
 		overflow-x: auto;
 		border-radius: var(--radius-md);

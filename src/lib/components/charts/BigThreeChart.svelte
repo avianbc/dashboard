@@ -502,46 +502,9 @@
 		gap: var(--space-1);
 	}
 
-	.section-title {
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 1.5rem;
-		color: var(--text-primary);
-		letter-spacing: 0.05em;
-	}
-
 	.section-subtitle {
 		font-size: 0.875rem;
 		color: var(--text-secondary);
-	}
-
-	.chart-controls {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-4);
-		justify-content: center;
-		align-items: center;
-		padding: var(--space-4);
-		background: var(--bg-elevated);
-		border-radius: var(--radius-lg);
-	}
-
-	.control-group {
-		display: flex;
-		align-items: center;
-		gap: var(--space-3);
-	}
-
-	.control-label {
-		font-family: 'Source Sans 3', sans-serif;
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: var(--text-secondary);
-	}
-
-	.button-group {
-		display: flex;
-		gap: var(--space-2);
-		flex-wrap: wrap;
 	}
 
 	.big-three-chart-container {
@@ -553,67 +516,11 @@
 		justify-content: center;
 	}
 
-	.chart-legend {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-6);
-		justify-content: center;
-		padding: var(--space-4);
-		font-family: 'Source Sans 3', sans-serif;
-		font-size: 0.875rem;
-		color: var(--text-secondary);
-	}
-
-	.legend-item {
-		display: flex;
-		align-items: center;
-		gap: var(--space-2);
-	}
-
-	.legend-line {
-		width: 24px;
-		height: 3px;
-		border-radius: var(--radius-sm);
-	}
-
-	.legend-dashed {
-		width: 24px;
-		height: 2px;
-		border-top: 2px dashed var(--text-muted);
-		opacity: 0.5;
-	}
-
-	.legend-marker {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: var(--accent-gold);
-	}
-
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
 		.big-three-chart-container {
 			height: 500px;
 			min-height: 400px;
-		}
-
-		.chart-controls {
-			flex-direction: column;
-			align-items: stretch;
-		}
-
-		.control-group {
-			flex-direction: column;
-			align-items: stretch;
-		}
-
-		.button-group {
-			flex-direction: column;
-		}
-
-		.chart-legend {
-			font-size: 0.75rem;
-			gap: var(--space-3);
 		}
 	}
 </style>

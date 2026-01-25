@@ -423,43 +423,6 @@
 		gap: var(--space-4);
 	}
 
-	.section-title {
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 1.5rem;
-		color: var(--text-primary);
-		letter-spacing: 0.05em;
-	}
-
-	.chart-controls {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-4);
-		justify-content: center;
-		align-items: center;
-		padding: var(--space-4);
-		background: var(--bg-elevated);
-		border-radius: var(--radius-lg);
-	}
-
-	.control-group {
-		display: flex;
-		align-items: center;
-		gap: var(--space-3);
-	}
-
-	.control-label {
-		font-family: 'Source Sans 3', sans-serif;
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: var(--text-secondary);
-	}
-
-	.button-group {
-		display: flex;
-		gap: var(--space-2);
-		flex-wrap: wrap;
-	}
-
 	.volume-chart-container {
 		width: 100%;
 		height: 500px;
@@ -469,60 +432,11 @@
 		justify-content: center;
 	}
 
-	.chart-legend {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-6);
-		justify-content: center;
-		padding: var(--space-4);
-		font-family: 'Source Sans 3', sans-serif;
-		font-size: 0.875rem;
-		color: var(--text-secondary);
-	}
-
-	.legend-item {
-		display: flex;
-		align-items: center;
-		gap: var(--space-2);
-	}
-
-	.legend-color {
-		width: 20px;
-		height: 3px;
-		border-radius: var(--radius-sm);
-	}
-
-	.legend-marker {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: var(--accent-gold);
-	}
-
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
 		.volume-chart-container {
 			height: 400px;
 			min-height: 300px;
-		}
-
-		.chart-controls {
-			flex-direction: column;
-			align-items: stretch;
-		}
-
-		.control-group {
-			flex-direction: column;
-			align-items: stretch;
-		}
-
-		.button-group {
-			flex-direction: column;
-		}
-
-		.chart-legend {
-			font-size: 0.75rem;
-			gap: var(--space-3);
 		}
 	}
 </style>
