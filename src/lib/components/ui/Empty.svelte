@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { clsx } from 'clsx';
 	import { Inbox } from 'lucide-svelte';
+	import Button from './Button.svelte';
 
 	interface Props {
 		class?: string;
@@ -33,22 +34,14 @@
 	</div>
 
 	{#if action}
-		<button
-			onclick={action.onclick}
-			class="mt-2 px-4 py-2 bg-accent-copper text-inverse rounded-md hover:bg-accent-copper-hover transition-colors"
-		>
+		<Button variant="primary" onclick={action.onclick} class="mt-2">
 			{action.label}
-		</button>
+		</Button>
 	{/if}
 </div>
 
 <style>
 	.space-y-2 > * + * {
 		margin-top: var(--space-2);
-	}
-
-	button {
-		transition: background-color var(--transition-fast);
-		cursor: pointer;
 	}
 </style>

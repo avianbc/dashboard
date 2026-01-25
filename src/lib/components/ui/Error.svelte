@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { clsx } from 'clsx';
 	import { AlertCircle } from 'lucide-svelte';
+	import Button from './Button.svelte';
 
 	interface Props {
 		class?: string;
@@ -21,18 +22,9 @@
 	<p class="text-secondary text-center max-w-md">{message}</p>
 
 	{#if retry}
-		<button
-			onclick={retry}
-			class="mt-4 px-6 py-2 bg-accent-copper text-inverse rounded-md hover:bg-accent-copper-hover transition-colors"
-		>
+		<Button variant="primary" onclick={retry} class="mt-4">
 			Try Again
-		</button>
+		</Button>
 	{/if}
 </div>
 
-<style>
-	button {
-		transition: background-color var(--transition-fast);
-		cursor: pointer;
-	}
-</style>
