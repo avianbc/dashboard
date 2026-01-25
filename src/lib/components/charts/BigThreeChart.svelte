@@ -4,7 +4,7 @@
 	import type { BigThreeE1RM, AllTimePRs } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber, formatDate, lbsToKg, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
-	import { Button, Loading, Error } from '$lib/components/ui';
+	import { Loading, Error } from '$lib/components/ui';
 	import { Star } from 'lucide-svelte';
 	import { LIFT_COLORS, PLATE_MILESTONES } from '$lib/config';
 
@@ -107,7 +107,7 @@
 		const { textPrimary, textSecondary, textMuted } = colors;
 
 		// Build series for each lift
-		const series = chartData.map((lift) => ({
+		const liftSeries = chartData.map((lift) => ({
 			name: lift.displayName,
 			type: 'line',
 			data: lift.data.map((d) => [d.date, d.value]),
@@ -129,46 +129,60 @@
 			// Add PR markers
 			markPoint: {
 				data: prPoints
-					.filter((pr) => pr!.lift === lift.name && lift.visible)
+					.filter((pr) => pr!.lift === lift.name && visibleLifts[lift.name as keyof typeof visibleLifts])
 					.map((pr) => ({
 						name: 'PR',
-						value: pr!.value,
-						xAxis: pr!.date,
-						yAxis: pr!.value,
-						symbol: 'pin',
-						symbolSize: 50,
+						coord: [pr!.date, pr!.value],
+						symbol: 'circle',
+						symbolSize: 30,
 						label: {
 							show: true,
 							formatter: '⭐',
-							fontSize: 20,
+							fontSize: 18,
 							color: '#FFD700',
-							offset: [0, -10]
+							offset: [0, 0]
 						},
 						itemStyle: {
-							color: 'transparent'
+							color: 'rgba(255, 215, 0, 0.2)',
+							borderColor: '#FFD700',
+							borderWidth: 2
 						}
 					}))
-			},
-			visible: lift.visible
-		}));
-
-		// Add plate milestone lines
-		const plateMilestoneLines = plateMilestones.map((plate) => ({
-			yAxis: useMetric ? lbsToKg(plate) : plate,
-			lineStyle: {
-				color: textMuted,
-				type: 'dashed' as const,
-				opacity: 0.3,
-				width: 1
-			},
-			label: {
-				show: true,
-				formatter: `${useMetric ? Math.round(lbsToKg(plate)) : plate} ${unit}`,
-				color: textMuted,
-				fontSize: 10,
-				position: 'insideEndTop' as const
 			}
 		}));
+
+		// Add plate milestone lines as a series
+		const plateMilestoneSeries = {
+			name: 'Plate Milestones',
+			type: 'line',
+			data: [],
+			markLine: {
+				silent: true,
+				symbol: 'none',
+				label: {
+					show: true,
+					position: 'insideEndTop' as const,
+					color: textMuted,
+					fontSize: 10,
+					fontFamily: 'JetBrains Mono, monospace'
+				},
+				lineStyle: {
+					color: textMuted,
+					type: 'dashed' as const,
+					opacity: 0.3,
+					width: 1
+				},
+				data: plateMilestones.map((plate) => ({
+					yAxis: useMetric ? lbsToKg(plate) : plate,
+					label: {
+						formatter: `${useMetric ? Math.round(lbsToKg(plate)) : plate} ${unit}`
+					}
+				}))
+			}
+		};
+
+		// Combine all series
+		const series = [...liftSeries, plateMilestoneSeries];
 
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
@@ -289,12 +303,6 @@
 						color: textMuted,
 						opacity: 0.2
 					}
-				},
-				// Add plate milestone lines
-				markLine: {
-					silent: true,
-					symbol: 'none',
-					data: plateMilestoneLines
 				}
 			},
 			series: series,
@@ -347,6 +355,21 @@
 
 			updateChart();
 
+			// Handle legend selection to update visibility state
+			chartInstance.on('legendselectchanged', (params: any) => {
+				const liftMap: Record<string, keyof typeof visibleLifts> = {
+					'Squat': 'squat',
+					'Bench Press': 'bench',
+					'Deadlift': 'deadlift',
+					'Overhead Press': 'ohp'
+				};
+
+				const liftKey = liftMap[params.name];
+				if (liftKey) {
+					visibleLifts[liftKey] = params.selected[params.name];
+				}
+			});
+
 			// Handle window resize
 			const handleResize = () => {
 				chartInstance?.resize();
@@ -374,11 +397,6 @@
 			chartInstance = null;
 		}
 	});
-
-	// Toggle lift visibility
-	function toggleLift(lift: keyof typeof visibleLifts) {
-		visibleLifts[lift] = !visibleLifts[lift];
-	}
 </script>
 
 {#if loading}
@@ -396,72 +414,11 @@
 			<p class="section-subtitle">Big Three + OHP Estimated 1-Rep Max Over Time</p>
 		</div>
 
-		<!-- Lift Toggle Controls -->
-		<div class="chart-controls">
-			<div class="control-group">
-				<span class="control-label">Show Lifts:</span>
-				<div class="button-group">
-					<Button
-						variant={visibleLifts.squat ? 'primary' : 'outline'}
-						size="sm"
-						onclick={() => toggleLift('squat')}
-						class="lift-button"
-						style="--lift-color: {liftColors.squat}"
-					>
-						Squat
-					</Button>
-					<Button
-						variant={visibleLifts.bench ? 'primary' : 'outline'}
-						size="sm"
-						onclick={() => toggleLift('bench')}
-						class="lift-button"
-						style="--lift-color: {liftColors.bench}"
-					>
-						Bench
-					</Button>
-					<Button
-						variant={visibleLifts.deadlift ? 'primary' : 'outline'}
-						size="sm"
-						onclick={() => toggleLift('deadlift')}
-						class="lift-button"
-						style="--lift-color: {liftColors.deadlift}"
-					>
-						Deadlift
-					</Button>
-					<Button
-						variant={visibleLifts.ohp ? 'primary' : 'outline'}
-						size="sm"
-						onclick={() => toggleLift('ohp')}
-						class="lift-button"
-						style="--lift-color: {liftColors.ohp}"
-					>
-						OHP
-					</Button>
-				</div>
-			</div>
-		</div>
-
 		<!-- Chart Container -->
 		<div class="big-three-chart-container" bind:this={chartContainer}></div>
 
 		<!-- Legend -->
 		<div class="chart-legend">
-			<div class="legend-item">
-				<div class="legend-line" style="background-color: {liftColors.squat};"></div>
-				<span>Squat</span>
-			</div>
-			<div class="legend-item">
-				<div class="legend-line" style="background-color: {liftColors.bench};"></div>
-				<span>Bench Press</span>
-			</div>
-			<div class="legend-item">
-				<div class="legend-line" style="background-color: {liftColors.deadlift};"></div>
-				<span>Deadlift</span>
-			</div>
-			<div class="legend-item">
-				<div class="legend-line" style="background-color: {liftColors.ohp};"></div>
-				<span>Overhead Press</span>
-			</div>
 			<div class="legend-item">
 				<div class="legend-marker"><Star size={16} strokeWidth={2} fill="var(--accent-gold)" /></div>
 				<span>All-Time PR</span>
