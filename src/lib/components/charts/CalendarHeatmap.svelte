@@ -216,7 +216,22 @@
 </script>
 
 <div class="calendar-heatmap">
-	<h3 class="section-title">Workout Calendar</h3>
+	<div class="header-row">
+		<h3 class="section-title">Workout Calendar</h3>
+
+		<!-- Legend -->
+		<div class="legend">
+			<span class="legend-label">Less</span>
+			<div class="legend-blocks">
+				<div class="legend-block level-0" title="No activity"></div>
+				<div class="legend-block level-1" title="Light"></div>
+				<div class="legend-block level-2" title="Medium"></div>
+				<div class="legend-block level-3" title="High"></div>
+				<div class="legend-block level-4" title="Max"></div>
+			</div>
+			<span class="legend-label">More</span>
+		</div>
+	</div>
 
 	<div class="heatmap-container">
 		{#each yearGrids as grid, yearIndex (grid.year)}
@@ -277,19 +292,6 @@
 		{/each}
 	</div>
 
-	<!-- Legend -->
-	<div class="legend">
-		<span class="legend-label">Less</span>
-		<div class="legend-blocks">
-			<div class="legend-block level-0" title="No activity"></div>
-			<div class="legend-block level-1" title="Light"></div>
-			<div class="legend-block level-2" title="Medium"></div>
-			<div class="legend-block level-3" title="High"></div>
-			<div class="legend-block level-4" title="Max"></div>
-		</div>
-		<span class="legend-label">More</span>
-	</div>
-
 	<!-- Insights -->
 	<Callout variant="info" icon={BarChart3} centered>
 		<p>
@@ -321,6 +323,18 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-6);
+	}
+
+	.header-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--space-4);
+	}
+
+	.header-row .section-title {
+		margin-bottom: 0;
 	}
 
 	.heatmap-container {
@@ -403,9 +417,7 @@
 	.legend {
 		display: flex;
 		align-items: center;
-		justify-content: center;
 		gap: var(--space-2);
-		padding: var(--space-2);
 	}
 
 	.legend-label {
@@ -420,14 +432,14 @@
 	}
 
 	.legend-block {
-		width: 11px;
-		height: 11px;
+		width: 15px;
+		height: 15px;
 		border-radius: 2px;
+		border: 1px solid var(--bg-primary);
 	}
 
 	.legend-block.level-0 {
 		background-color: var(--heatmap-level-0);
-		border: 1px solid var(--border-default);
 	}
 
 	.legend-block.level-1 {
@@ -475,6 +487,11 @@
 
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
+		.header-row {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
 		.heatmap-svg {
 			max-width: 100%;
 		}
@@ -500,10 +517,6 @@
 	@media (max-width: 480px) {
 		.day-label {
 			display: none;
-		}
-
-		.legend {
-			flex-wrap: wrap;
 		}
 
 		.legend-block {
