@@ -2,6 +2,7 @@
 	import type { Program } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber, formatCompactNumber } from '$lib/utils';
+	import { Badge } from '$lib/components/ui';
 	import { format } from 'date-fns';
 
 	interface Props {
@@ -46,7 +47,7 @@
 						<td class="program-name">
 							<div class="program-name-cell">
 								{#if index < 3}
-									<span class="rank">{index + 1}</span>
+									<Badge variant="numbered">{index + 1}</Badge>
 								{/if}
 								<span>{program.name}</span>
 							</div>
@@ -64,7 +65,7 @@
 							{isMetric ? 'kg' : 'lbs'}
 						</td>
 						<td class="text-center prs">
-							<span class="pr-badge">{program.prsSet}</span>
+							<Badge variant="muted">{program.prsSet}</Badge>
 						</td>
 					</tr>
 				{/each}
@@ -139,19 +140,6 @@
 		gap: var(--space-2);
 	}
 
-	.rank {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 24px;
-		height: 24px;
-		background: var(--accent-gold);
-		color: var(--bg-deep);
-		border-radius: 50%;
-		font-family: 'JetBrains Mono', monospace;
-		font-size: 0.75rem;
-		font-weight: bold;
-	}
 
 	.program-name {
 		text-align: left;
@@ -184,16 +172,6 @@
 		font-weight: 600;
 	}
 
-	.pr-badge {
-		display: inline-block;
-		padding: var(--space-1) var(--space-2);
-		background: var(--status-pr);
-		color: var(--bg-deep);
-		border-radius: var(--radius-sm);
-		font-family: 'JetBrains Mono', monospace;
-		font-size: 0.75rem;
-		font-weight: bold;
-	}
 
 	@media (max-width: 768px) {
 		th,

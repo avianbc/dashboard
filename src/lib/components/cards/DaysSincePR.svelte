@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { DaysSinceLastPR } from '$lib/types/training';
-	import { Card } from '$lib/components/ui';
+	import { Card, Badge } from '$lib/components/ui';
 	import { LIFTS } from '$lib/config';
 
 	interface Props {
@@ -39,9 +39,9 @@
 				</div>
 				<div class="days-value">{days}</div>
 				<div class="days-label">days</div>
-				<div class="status-badge" style="background: {timeInfo.color}">
+				<Badge variant="status" color={timeInfo.color}>
 					{timeInfo.range}
-				</div>
+				</Badge>
 			</Card>
 		{/each}
 	</div>
@@ -99,17 +99,6 @@
 		letter-spacing: 0.05em;
 	}
 
-	.status-badge {
-		display: inline-block;
-		padding: var(--space-1) var(--space-3);
-		border-radius: var(--radius-full);
-		font-family: 'Source Sans 3', sans-serif;
-		font-size: 0.75rem;
-		font-weight: 600;
-		color: white;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
 
 	@media (max-width: 768px) {
 		.pr-grid {
