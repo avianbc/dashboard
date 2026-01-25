@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import type { DeferredTrainingData } from '$lib/types/training';
-	import { Card, Button, Loading, Error as ErrorComponent, LazyChart } from '$lib/components/ui';
+	import { Card, Button, Callout, Loading, Error as ErrorComponent, LazyChart } from '$lib/components/ui';
 	import {
 		VolumeChart,
 		BigThreeChart,
@@ -156,10 +156,9 @@
 	<main id="main-content" class="container py-8" aria-labelledby="page-title">
 		<!-- Error Banner -->
 		{#if hasError}
-			<div class="error-banner" role="alert" aria-live="polite">
-				<AlertTriangle size={20} strokeWidth={2} />
+			<Callout variant="error" icon={AlertTriangle} centered>
 				<p>Error loading training data: {data.error}</p>
-			</div>
+			</Callout>
 		{/if}
 
 		<!-- Hero Stats Cards -->
@@ -687,19 +686,6 @@
 	}
 
 
-	/* Error banner */
-	.error-banner {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: var(--space-2);
-		background: var(--status-overdue);
-		color: var(--text-primary);
-		padding: var(--space-4);
-		border-radius: var(--border-radius-md);
-		margin-bottom: var(--space-6);
-		animation: slideDown 0.3s ease-out;
-	}
 
 	@keyframes slideDown {
 		from {
