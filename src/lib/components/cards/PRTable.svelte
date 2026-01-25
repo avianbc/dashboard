@@ -132,10 +132,6 @@
 		color: var(--accent-copper);
 	}
 
-	.no-pr {
-		color: var(--text-muted);
-	}
-
 	.table-note {
 		margin-top: var(--space-2);
 		font-size: 0.75rem;
