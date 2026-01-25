@@ -3,8 +3,8 @@
 	import { echarts } from './echarts-setup';
 	import type { WorkoutCalendarDay } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
-	import { formatNumber, formatDate } from '$lib/utils';
-	import { Button } from '$lib/components/ui';
+	import { formatNumber, formatDate, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { Button, Callout } from '$lib/components/ui';
 	import { Flame, AlertTriangle, BarChart3 } from 'lucide-svelte';
 
 	interface Props {
@@ -72,8 +72,11 @@
 			chart = echarts.init(chartContainer);
 		}
 
+		const chartColors = getChartColors();
+
 		const option: echarts.EChartsOption = {
 			tooltip: {
+				...createTooltipConfig(chartColors, { trigger: 'item' }),
 				formatter: (params: any) => {
 					const date = params.data[0];
 					const volume = params.data[1];
@@ -81,17 +84,12 @@
 					const unit = unitSystem.current === 'imperial' ? 'lbs' : 'kg';
 
 					return `
-						<div style="padding: 8px;">
+						<div style="padding: ${TOOLTIP_PADDING}px;">
 							<div style="font-weight: bold; margin-bottom: 4px;">${formatDate(date)}</div>
 							<div>${count} workout${count !== 1 ? 's' : ''}</div>
 							<div>${formatNumber(volume)} ${unit}</div>
 						</div>
 					`;
-				},
-				backgroundColor: 'var(--bg-elevated)',
-				borderColor: 'var(--bg-card)',
-				textStyle: {
-					color: 'var(--text-primary)'
 				}
 			},
 			visualMap: {
@@ -213,22 +211,19 @@
 	</div>
 
 	<!-- Insights -->
-	<div class="insights">
-		{#if selectedYear === 2021}
-			<p class="insight-text">
-				<Flame size={18} strokeWidth={2} class="insight-icon" /> <strong>Best year ever!</strong> 2021 was your most consistent year with 220 workouts and 1.7M lbs
-				volume.
-			</p>
-		{:else if selectedYear === 2020}
-			<p class="insight-text">
-				<AlertTriangle size={18} strokeWidth={2} class="insight-icon" /> Mid-year gap visible - likely COVID gym closures between June and September.
-			</p>
-		{:else}
-			<p class="insight-text">
-				<BarChart3 size={18} strokeWidth={2} class="insight-icon" /> Training pattern shows strong preference for Monday and Friday workouts.
-			</p>
-		{/if}
-	</div>
+	{#if selectedYear === 2021}
+		<Callout variant="success" icon={Flame} centered>
+			<p><strong>Best year ever!</strong> 2021 was your most consistent year with 220 workouts and 1.7M lbs volume.</p>
+		</Callout>
+	{:else if selectedYear === 2020}
+		<Callout variant="warning" icon={AlertTriangle} centered>
+			<p>Mid-year gap visible - likely COVID gym closures between June and September.</p>
+		</Callout>
+	{:else}
+		<Callout variant="info" icon={BarChart3} centered>
+			<p>Training pattern shows strong preference for Monday and Friday workouts.</p>
+		</Callout>
+	{/if}
 </div>
 
 <style>
@@ -277,31 +272,6 @@
 		cursor: help;
 	}
 
-	.insights {
-		text-align: center;
-		padding: var(--space-4);
-		background: var(--bg-elevated);
-		border-radius: var(--radius-md);
-	}
-
-	.insights :global(.insight-icon) {
-		display: inline-block;
-		vertical-align: middle;
-		color: var(--accent-copper);
-		margin-right: var(--space-1);
-	}
-
-	.insight-text {
-		margin: 0;
-		color: var(--text-secondary);
-		font-family: 'Source Sans 3', sans-serif;
-		font-size: 0.875rem;
-		line-height: 1.5;
-	}
-
-	.insight-text strong {
-		color: var(--accent-copper);
-	}
 
 	/* Responsive adjustments */
 	@media (max-width: 768px) {

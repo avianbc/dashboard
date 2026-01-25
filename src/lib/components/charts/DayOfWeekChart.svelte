@@ -3,7 +3,7 @@
 	import { echarts } from './echarts-setup';
 	import type { DayOfWeekStats } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
-	import { formatNumber } from '$lib/utils';
+	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 
 	interface Props {
 		data: DayOfWeekStats[];
@@ -60,6 +60,8 @@
 		const subtleColor = isDark ? '#6b6560' : '#7a756e';
 		const isMetric = unitSystem.current === 'metric';
 
+		const chartColors = getChartColors();
+
 		// Sort days in proper order (Monday first)
 		const dayOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 		const sortedData = [...data].sort(
@@ -69,12 +71,7 @@
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
-				trigger: 'axis',
-				backgroundColor: isDark ? '#2d2926' : '#ffffff',
-				borderColor: isDark ? '#454238' : '#d4d0c8',
-				textStyle: {
-					color: textColor
-				},
+				...createTooltipConfig(chartColors),
 				axisPointer: {
 					type: 'shadow'
 				},
@@ -83,7 +80,7 @@
 					const dayData = sortedData[data.dataIndex];
 					const volume = isMetric ? dayData.avgVolumeKg : dayData.avgVolumeLbs;
 					const unit = isMetric ? 'kg' : 'lbs';
-					return `<div style="padding: 4px;">
+					return `<div style="padding: ${TOOLTIP_PADDING}px;">
 						<div style="font-weight: bold; margin-bottom: 4px;">${dayData.day}</div>
 						<div>${dayData.count} workouts</div>
 						<div>Avg volume: ${formatNumber(Math.round(volume))} ${unit}</div>

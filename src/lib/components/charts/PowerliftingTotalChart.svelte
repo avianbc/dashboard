@@ -3,7 +3,8 @@
 	import { echarts } from './echarts-setup';
 	import type { PowerliftingTotals, BigThreeE1RM } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
-	import { formatNumber } from '$lib/utils';
+	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { Badge } from '$lib/components/ui';
 	import { format } from 'date-fns';
 
 	interface Props {
@@ -65,6 +66,8 @@
 		const subtleColor = isDark ? '#6b6560' : '#7a756e';
 		const isMetric = unitSystem.current === 'metric';
 
+		const chartColors = getChartColors();
+
 		// Calculate total at each point in time by combining the three lifts
 		// We'll use the squat data as the timeline reference since it's likely most complete
 		const squatData = bigThreeData.squat?.e1rmHistory || [];
@@ -115,16 +118,11 @@
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
-				trigger: 'axis',
-				backgroundColor: isDark ? '#2d2926' : '#ffffff',
-				borderColor: isDark ? '#454238' : '#d4d0c8',
-				textStyle: {
-					color: textColor
-				},
+				...createTooltipConfig(chartColors),
 				formatter: (params: any) => {
 					const data = params[0];
 					const date = format(new Date(data.axisValue), 'MMM d, yyyy');
-					return `<div style="padding: 4px;">
+					return `<div style="padding: ${TOOLTIP_PADDING}px;">
 						<div style="font-weight: bold; margin-bottom: 4px;">${date}</div>
 						<div>Total: ${formatNumber(data.value)} ${unit}</div>
 					</div>`;
@@ -241,7 +239,7 @@
 			<strong>Club Milestones Achieved:</strong>
 			<div class="club-badges">
 				{#each powerliftingTotals.clubs as club}
-					<span class="badge">{club.name}</span>
+					<Badge variant="accent">{club.name}</Badge>
 				{/each}
 			</div>
 		</div>
@@ -290,15 +288,4 @@
 		margin-top: var(--space-2);
 	}
 
-	.badge {
-		display: inline-block;
-		padding: var(--space-1) var(--space-3);
-		background: var(--accent-gold);
-		color: var(--bg-deep);
-		border-radius: var(--radius-md);
-		font-size: 0.75rem;
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
 </style>

@@ -3,7 +3,7 @@
 	import { echarts } from './echarts-setup';
 	import type { BigThreeE1RM, AllTimePRs } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
-	import { formatNumber, formatDate, lbsToKg } from '$lib/utils';
+	import { formatNumber, formatDate, lbsToKg, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 	import { Button, Loading, Error } from '$lib/components/ui';
 	import { Star } from 'lucide-svelte';
 	import { LIFT_COLORS, PLATE_MILESTONES } from '$lib/config';
@@ -103,10 +103,8 @@
 		const unit = useMetric ? 'kg' : 'lbs';
 
 		// Get computed colors from CSS variables
-		const computedStyle = getComputedStyle(document.documentElement);
-		const textPrimary = computedStyle.getPropertyValue('--text-primary').trim();
-		const textSecondary = computedStyle.getPropertyValue('--text-secondary').trim();
-		const textMuted = computedStyle.getPropertyValue('--text-muted').trim();
+		const colors = getChartColors();
+		const { textPrimary, textSecondary, textMuted } = colors;
 
 		// Build series for each lift
 		const series = chartData.map((lift) => ({
@@ -175,14 +173,7 @@
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
-				trigger: 'axis',
-				backgroundColor: 'rgba(0, 0, 0, 0.85)',
-				borderColor: textMuted,
-				borderWidth: 1,
-				textStyle: {
-					color: '#f5f2eb',
-					fontFamily: 'Source Sans 3, sans-serif'
-				},
+				...createTooltipConfig(colors),
 				formatter: (params: any) => {
 					if (!params || params.length === 0) return '';
 
@@ -191,8 +182,8 @@
 					const dateObj = new Date(timestamp);
 					const dateString = dateObj.toISOString().split('T')[0];
 
-					let tooltipContent = `<div style="padding: 8px;">
-						<div style="font-weight: bold; margin-bottom: 8px; color: ${textPrimary};">
+					let tooltipContent = `<div style="padding: ${TOOLTIP_PADDING}px;">
+						<div style="font-weight: bold; margin-bottom: ${TOOLTIP_PADDING}px; color: ${textPrimary};">
 							${formatDate(dateString)}
 						</div>`;
 
@@ -211,13 +202,13 @@
 											<span style="font-weight: bold; color: ${param.color};">${param.seriesName}</span>
 											<div style="margin-left: 16px; margin-top: 2px;">
 												<span style="color: ${textSecondary};">E1RM:</span>
-												<span style="font-family: 'JetBrains Mono', monospace; margin-left: 8px; color: ${textPrimary};">
+												<span style="font-family: 'JetBrains Mono', monospace; margin-left: ${TOOLTIP_PADDING}px; color: ${textPrimary};">
 													${formatNumber(dataPoint.value)} ${unit}
 												</span>
 											</div>
 											<div style="margin-left: 16px;">
 												<span style="color: ${textSecondary};">Actual:</span>
-												<span style="font-family: 'JetBrains Mono', monospace; margin-left: 8px; color: ${textPrimary};">
+												<span style="font-family: 'JetBrains Mono', monospace; margin-left: ${TOOLTIP_PADDING}px; color: ${textPrimary};">
 													${formatNumber(dataPoint.actualWeight)} ${unit} × ${dataPoint.reps}
 												</span>
 											</div>

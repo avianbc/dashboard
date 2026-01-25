@@ -3,7 +3,7 @@
 	import { echarts } from './echarts-setup';
 	import type { VolumeTimeSeries } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
-	import { formatNumber, formatDate, lbsToKg } from '$lib/utils';
+	import { formatNumber, formatDate, lbsToKg, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 	import { Button, Loading, Error } from '$lib/components/ui';
 	import { Star } from 'lucide-svelte';
 
@@ -86,23 +86,13 @@
 		const unit = useMetric ? 'kg' : 'lbs';
 
 		// Get computed colors from CSS variables
-		const computedStyle = getComputedStyle(document.documentElement);
-		const accentCopper = computedStyle.getPropertyValue('--accent-copper').trim();
-		const textPrimary = computedStyle.getPropertyValue('--text-primary').trim();
-		const textSecondary = computedStyle.getPropertyValue('--text-secondary').trim();
-		const textMuted = computedStyle.getPropertyValue('--text-muted').trim();
+		const colors = getChartColors();
+		const { accentCopper, textPrimary, textSecondary, textMuted } = colors;
 
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
-				trigger: 'axis',
-				backgroundColor: 'rgba(0, 0, 0, 0.85)',
-				borderColor: accentCopper,
-				borderWidth: 1,
-				textStyle: {
-					color: '#f5f2eb',
-					fontFamily: 'Source Sans 3, sans-serif'
-				},
+				...createTooltipConfig(colors),
 				formatter: (params: any) => {
 					if (!params || params.length === 0) return '';
 
@@ -111,19 +101,19 @@
 					const item = chartData[dataIndex];
 
 					return `
-						<div style="padding: 8px;">
-							<div style="font-weight: bold; margin-bottom: 8px; color: ${accentCopper};">
+						<div style="padding: ${TOOLTIP_PADDING}px;">
+							<div style="font-weight: bold; margin-bottom: ${TOOLTIP_PADDING}px; color: ${accentCopper};">
 								${formatDate(item.date)}
 							</div>
 							<div style="margin-bottom: 4px;">
 								<span style="color: ${textSecondary};">Volume:</span>
-								<span style="font-family: 'JetBrains Mono', monospace; margin-left: 8px; color: ${textPrimary};">
+								<span style="font-family: 'JetBrains Mono', monospace; margin-left: ${TOOLTIP_PADDING}px; color: ${textPrimary};">
 									${formatNumber(item.volume)} ${unit}
 								</span>
 							</div>
 							<div>
 								<span style="color: ${textSecondary};">Workouts:</span>
-								<span style="font-family: 'JetBrains Mono', monospace; margin-left: 8px; color: ${textPrimary};">
+								<span style="font-family: 'JetBrains Mono', monospace; margin-left: ${TOOLTIP_PADDING}px; color: ${textPrimary};">
 									${item.workouts}
 								</span>
 							</div>

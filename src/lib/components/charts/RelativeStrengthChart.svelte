@@ -3,6 +3,7 @@
 	import { echarts } from './echarts-setup';
 	import type { RelativeStrength, BodyWeight } from '$lib/types/training';
 	import { theme } from '$lib/stores';
+	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 	import { format } from 'date-fns';
 
 	interface Props {
@@ -62,6 +63,8 @@
 		const textColor = isDark ? '#f5f2eb' : '#1a1816';
 		const subtleColor = isDark ? '#6b6560' : '#7a756e';
 
+		const chartColors = getChartColors();
+
 		// Combine monthly progression data for all lifts
 		const squatData = relativeStrength.squat?.monthlyProgression || [];
 		const benchData = relativeStrength.bench?.monthlyProgression || [];
@@ -80,15 +83,10 @@
 				}
 			},
 			tooltip: {
-				trigger: 'axis',
-				backgroundColor: isDark ? '#2d2926' : '#ffffff',
-				borderColor: isDark ? '#454238' : '#d4d0c8',
-				textStyle: {
-					color: textColor
-				},
+				...createTooltipConfig(chartColors),
 				formatter: (params: any) => {
 					const month = params[0].axisValue;
-					let content = `<div style="padding: 4px;"><div style="font-weight: bold; margin-bottom: 4px;">${month}</div>`;
+					let content = `<div style="padding: ${TOOLTIP_PADDING}px;"><div style="font-weight: bold; margin-bottom: 4px;">${month}</div>`;
 					params.forEach((param: any) => {
 						content += `<div>${param.marker} ${param.seriesName}: ${param.value.toFixed(2)}× BW</div>`;
 					});

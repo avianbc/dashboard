@@ -3,7 +3,8 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import { unitSystem } from '$lib/stores';
-	import { formatNumber } from '$lib/utils';
+	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { Callout } from '$lib/components/ui';
 	import type { ExerciseProgress } from '$lib/types/training';
 
 	interface Props {
@@ -106,18 +107,12 @@
 		const { chartData, totalVolume } = processData();
 		const unit = unitSystem.current === 'imperial' ? 'lbs' : 'kg';
 
+		const chartColors = getChartColors();
 		const colors = chartData.map((item) => getExerciseColor(item.name));
 
 		const option: echarts.EChartsOption = {
 			tooltip: {
-				trigger: 'item',
-				backgroundColor: '#252220',
-				borderColor: '#2d2926',
-				borderWidth: 1,
-				textStyle: {
-					color: '#f5f2eb',
-					fontFamily: 'Source Sans 3, sans-serif'
-				},
+				...createTooltipConfig(chartColors, { trigger: 'item' }),
 				formatter: (params: any) => {
 					const percent = ((params.value / totalVolume) * 100).toFixed(1);
 					const volumeFormatted =
@@ -128,7 +123,7 @@
 								: params.value.toFixed(0);
 
 					return `
-						<div style="padding: 8px;">
+						<div style="padding: ${TOOLTIP_PADDING}px;">
 							<div style="font-weight: 600; margin-bottom: 4px; color: ${params.color};">
 								${params.name}
 							</div>
@@ -209,12 +204,12 @@
 <div class="chart-wrapper">
 	<h3 class="section-title">Exercise Distribution</h3>
 	<div bind:this={chartContainer} class="chart-container"></div>
-	<div class="chart-insight">
-		<p class="text-secondary">
+	<Callout variant="info" borderAccent>
+		<p>
 			<strong>Big 4 compound lifts</strong> (Squat, Bench, Deadlift, OHP) account for
 			<strong class="text-accent">89%</strong> of your total training volume.
 		</p>
-	</div>
+	</Callout>
 </div>
 
 <style>
@@ -237,18 +232,6 @@
 		min-height: 400px;
 	}
 
-	.chart-insight {
-		padding: var(--space-4);
-		background: var(--bg-elevated);
-		border-radius: var(--radius-md);
-		border-left: 3px solid var(--accent-copper);
-	}
-
-	.chart-insight p {
-		margin: 0;
-		font-size: 0.875rem;
-		line-height: 1.6;
-	}
 
 	.text-accent {
 		color: var(--accent-copper);

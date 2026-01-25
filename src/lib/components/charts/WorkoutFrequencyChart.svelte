@@ -3,6 +3,7 @@
 	import { echarts } from './echarts-setup';
 	import type { VolumeTimeSeries } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
+	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 
 	interface Props {
 		data: VolumeTimeSeries;
@@ -39,18 +40,15 @@
 		const textColor = isDark ? '#f5f2eb' : '#1a1816';
 		const subtleColor = isDark ? '#6b6560' : '#7a756e';
 
+		const chartColors = getChartColors();
+
 		// Use weekly data for frequency analysis
 		const weeklyData = data.weekly;
 
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
-				trigger: 'axis',
-				backgroundColor: isDark ? '#2d2926' : '#ffffff',
-				borderColor: isDark ? '#454238' : '#d4d0c8',
-				textStyle: {
-					color: textColor
-				},
+				...createTooltipConfig(chartColors),
 				formatter: (params: any) => {
 					const data = params[0];
 					const week = data.axisValue;
@@ -60,7 +58,7 @@
 					const match = week.match(/(\d{4})-W(\d{2})/);
 					const displayWeek = match ? `Week ${match[2]}, ${match[1]}` : week;
 
-					return `<div style="padding: 4px;">
+					return `<div style="padding: ${TOOLTIP_PADDING}px;">
 						<div style="font-weight: bold; margin-bottom: 4px;">${displayWeek}</div>
 						<div>${workouts} workout${workouts !== 1 ? 's' : ''}</div>
 					</div>`;
