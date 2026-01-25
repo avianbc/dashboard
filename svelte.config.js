@@ -15,7 +15,7 @@ const config = {
 			pages: '../static/dashboard',
 			assets: '../static/dashboard',
 			fallback: 'index.html',
-			precompress: false,
+			precompress: true,
 			strict: true
 		})
 	}

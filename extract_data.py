@@ -7,6 +7,7 @@ for the dashboard visualization.
 import sqlite3
 import json
 import argparse
+import os
 from datetime import datetime
 import sys
 
@@ -1502,8 +1503,60 @@ def main():
     with open(output_path, 'w') as f:
         json.dump(data, f, indent=2)
 
+    # Write split files for performance optimization
+    output_dir = os.path.dirname(output_path) or '.'
+
+    # Core data (~80KB) - loaded immediately
+    core_data = {
+        'summary': summary,
+        'allTimePRs': all_time_prs,
+        'daysSinceLastPR': days_since_last_pr,
+        'barTravel': bar_travel_stats,
+        'powerliftingTotals': {
+            'current': powerlifting_totals['current'],
+            'peak': powerlifting_totals['peak'],
+            'clubMilestones': powerlifting_totals['clubMilestones']
+        },
+        # Include only weekly, monthly, yearly volume data
+        'volumeTimeSeries': {
+            'weekly': volume_time_series['weekly'],
+            'monthly': volume_time_series['monthly'],
+            'yearly': volume_time_series['yearly']
+        }
+    }
+
+    core_path = os.path.join(output_dir, 'training_core.json')
+    if args.verbose:
+        print(f"Writing core data to {core_path}...")
+    with open(core_path, 'w') as f:
+        json.dump(core_data, f, indent=2)
+
+    # Deferred data (~700KB) - lazy loaded on scroll
+    deferred_data = {
+        'volumeTimeSeriesDaily': volume_time_series.get('daily', []),
+        'workoutCalendar': workout_calendar,
+        'exerciseProgress': exercise_progress,
+        'bigThreeE1RM': big_three_e1rm,
+        'bigThreeVolume': big_three_volume,
+        'programs': programs,
+        'workoutsByDayOfWeek': workouts_by_day,
+        'notableWorkouts': notable_workouts,
+        'milestones': milestones,
+        'plateMilestones': plate_milestones,
+        'bodyWeight': body_weight_data,
+        'relativeStrength': relative_strength
+    }
+
+    deferred_path = os.path.join(output_dir, 'training_deferred.json')
+    if args.verbose:
+        print(f"Writing deferred data to {deferred_path}...")
+    with open(deferred_path, 'w') as f:
+        json.dump(deferred_data, f, indent=2)
+
     if args.verbose:
         print(f"Successfully generated {output_path}")
+        print(f"Successfully generated {core_path}")
+        print(f"Successfully generated {deferred_path}")
     print(f"\nSummary:")
     print(f"  - Total Workouts: {summary['totalWorkouts']}")
     print(f"  - Total Volume: {summary['totalVolumeLbs']:,.0f} lbs / {summary['totalVolumeKg']:,.0f} kg")

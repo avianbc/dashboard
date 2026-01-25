@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+	import type { DeferredTrainingData } from '$lib/types/training';
 	import { Card, Button, Loading, Error as ErrorComponent, LazyChart } from '$lib/components/ui';
 	import {
 		VolumeChart,
@@ -21,18 +23,38 @@
 	} from '$lib/components/cards';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatCompactNumber, formatNumber, lbsToKg, milesToKm } from '$lib/utils';
+	import { loadDeferredData } from '$lib/utils/dataLoader';
 	import { Calendar, Dumbbell, Clock, Route, Repeat, Trophy, Moon, Sun, AlertTriangle } from 'lucide-svelte';
 
-	// Get data from page load
+	// Get data from page load (core data only)
 	let { data }: { data: PageData } = $props();
 
 	// Check for data loading errors
 	const hasError = data.error !== undefined;
 
-	// Add defensive checks for missing data with memoization using $derived
-	const trainingData = $derived(data.trainingData || {});
+	// State for deferred data
+	let deferredData = $state<DeferredTrainingData | null>(null);
+	let deferredDataLoading = $state(true);
+	let deferredDataError = $state<string | null>(null);
+
+	// Load deferred data on mount
+	// TODO: Implement intersection observer to load only when sections scroll into view
+	onMount(async () => {
+		try {
+			const deferred = await loadDeferredData();
+			deferredData = deferred;
+			deferredDataLoading = false;
+		} catch (error) {
+			console.error('Failed to load deferred data:', error);
+			deferredDataError = error instanceof Error ? error.message : 'Failed to load additional data';
+			deferredDataLoading = false;
+		}
+	});
+
+	// Core data (always available from initial page load)
+	const coreData = $derived(data.coreData || {});
 	const summary = $derived(
-		trainingData.summary || {
+		coreData.summary || {
 			totalWorkouts: 0,
 			totalVolumeLbs: 0,
 			totalHours: 0,
@@ -40,19 +62,16 @@
 			totalSets: 0
 		}
 	);
-	const volumeTimeSeries = $derived(
-		trainingData.volumeTimeSeries || { daily: [], weekly: [], monthly: [] }
-	);
 	const barTravel = $derived(
-		trainingData.barTravel || {
+		coreData.barTravel || {
 			total: { miles: 0, km: 0 },
 			landmarks: { everestClimbs: 0 }
 		}
 	);
 	// Transform powerliftingTotals.clubMilestones from object to clubs array
 	const powerliftingTotals = $derived({
-		...(trainingData.powerliftingTotals || { current: { totalLbs: 0 } }),
-		clubs: Object.entries(trainingData.powerliftingTotals?.clubMilestones || {}).map(
+		...(coreData.powerliftingTotals || { current: { totalLbs: 0 } }),
+		clubs: Object.entries(coreData.powerliftingTotals?.clubMilestones || {}).map(
 			([name, milestone]: [string, any]) => ({
 				name: `${name}lb Club`,
 				totalLbs: milestone?.totalLbs || 0,
@@ -60,25 +79,35 @@
 			})
 		)
 	});
-	const bigThreeE1RM = $derived(trainingData.bigThreeE1RM || {});
-	const allTimePRs = $derived(trainingData.allTimePRs || {});
-	const daysSinceLastPR = $derived(trainingData.daysSinceLastPR || {});
-	const exerciseProgress = $derived(trainingData.exerciseProgress || {});
-	const workoutCalendar = $derived(trainingData.workoutCalendar || {});
-	const notableWorkouts = $derived(trainingData.notableWorkouts || []);
+	const allTimePRs = $derived(coreData.allTimePRs || {});
+	const daysSinceLastPR = $derived(coreData.daysSinceLastPR || {});
+
+	// Volume time series with both core and deferred data
+	const volumeTimeSeries = $derived({
+		daily: deferredData?.volumeTimeSeriesDaily || [],
+		weekly: coreData.volumeTimeSeries?.weekly || [],
+		monthly: coreData.volumeTimeSeries?.monthly || [],
+		yearly: coreData.volumeTimeSeries?.yearly || []
+	});
+
+	// Deferred data (loaded after initial render)
+	const bigThreeE1RM = $derived(deferredData?.bigThreeE1RM || {});
+	const exerciseProgress = $derived(deferredData?.exerciseProgress || {});
+	const workoutCalendar = $derived(deferredData?.workoutCalendar || {});
+	const notableWorkouts = $derived(deferredData?.notableWorkouts || []);
 	// Transform workoutsByDayOfWeek from object to array
 	const workoutsByDayOfWeek = $derived(
-		Object.entries(trainingData.workoutsByDayOfWeek || {}).map(([day, stats]: [string, any]) => ({
+		Object.entries(deferredData?.workoutsByDayOfWeek || {}).map(([day, stats]: [string, any]) => ({
 			day,
 			count: stats?.count || 0,
 			avgVolumeLbs: stats?.avgVolumeLbs || 0,
 			avgVolumeKg: stats?.avgVolumeKg || 0
 		}))
 	);
-	const programs = $derived(trainingData.programs || []);
-	const milestones = $derived(trainingData.milestones || []);
-	const relativeStrength = $derived(trainingData.relativeStrength || {});
-	const bodyWeight = $derived(trainingData.bodyWeight || {});
+	const programs = $derived(deferredData?.programs || []);
+	const milestones = $derived(deferredData?.milestones || []);
+	const relativeStrength = $derived(deferredData?.relativeStrength || {});
+	const bodyWeight = $derived(deferredData?.bodyWeight || {});
 </script>
 
 <div class="dashboard">

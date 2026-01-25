@@ -383,6 +383,36 @@ export interface TrainingData {
 	relativeStrength: RelativeStrength;
 }
 
+// Split data types for lazy loading optimization
+
+export interface CoreTrainingData {
+	summary: Summary;
+	allTimePRs: AllTimePRs;
+	daysSinceLastPR: DaysSinceLastPR;
+	barTravel: BarTravel;
+	powerliftingTotals: PowerliftingTotals;
+	volumeTimeSeries: {
+		weekly: WeeklyTimeSeriesPoint[];
+		monthly: MonthlyTimeSeriesPoint[];
+		yearly: YearlyTimeSeriesPoint[];
+	};
+}
+
+export interface DeferredTrainingData {
+	volumeTimeSeriesDaily: TimeSeriesPoint[];
+	workoutCalendar: WorkoutCalendarDay[];
+	exerciseProgress: Record<string, ExerciseProgress>;
+	bigThreeE1RM: BigThreeE1RM;
+	bigThreeVolume: BigThreeVolume;
+	programs: Program[];
+	workoutsByDayOfWeek: DayOfWeekStats[];
+	notableWorkouts: NotableWorkout[];
+	milestones: Milestone[];
+	plateMilestones: PlateMilestones;
+	bodyWeight: BodyWeight;
+	relativeStrength: RelativeStrength;
+}
+
 // Unit system types
 export type UnitSystem = 'imperial' | 'metric';
 
