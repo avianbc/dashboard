@@ -8,11 +8,13 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// Using adapter-static for static site generation
+		paths: {
+			base: '/dashboard'
+		},
 		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
-			fallback: undefined,
+			pages: '../static/dashboard',
+			assets: '../static/dashboard',
+			fallback: 'index.html',
 			precompress: false,
 			strict: true
 		})

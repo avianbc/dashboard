@@ -1,11 +1,12 @@
 import type { PageLoad } from './$types';
 import type { TrainingData } from '$lib/types/training';
+import { base } from '$app/paths';
 
 export const prerender = true;
 
 export const load: PageLoad = async ({ fetch }) => {
 	try {
-		const response = await fetch('/data/training_data.json');
+		const response = await fetch(`${base}/data/training_data.json`);
 
 		if (!response.ok) {
 			console.error(`Failed to load training data: ${response.statusText}`);
