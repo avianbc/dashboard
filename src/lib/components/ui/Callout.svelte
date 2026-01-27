@@ -8,18 +8,10 @@
 		class?: string;
 	}
 
-	let {
-		variant = 'info',
-		icon,
-		borderAccent = false,
-		class: className = ''
-	}: Props = $props();
+	let { variant = 'info', icon, borderAccent = false, class: className = '' }: Props = $props();
 </script>
 
-<div
-	class="callout callout-{variant} {className}"
-	class:border-accent={borderAccent}
->
+<div class="callout callout-{variant} {className}" class:border-accent={borderAccent}>
 	{#if icon}
 		<svelte:component this={icon} class="callout-icon" />
 	{/if}
