@@ -244,7 +244,7 @@
 					preserveAspectRatio="xMinYMin meet"
 				>
 					<!-- Month labels -->
-					{#each grid.monthLabels as { month, weekIndex }}
+					{#each grid.monthLabels as { month, weekIndex } (weekIndex)}
 						<text
 							x={DAY_LABEL_WIDTH + weekIndex * (CELL_SIZE + CELL_GAP)}
 							y={12}
@@ -255,7 +255,7 @@
 					{/each}
 
 					<!-- Day labels (Mon, Wed, Fri) -->
-					{#each ['Mon', 'Wed', 'Fri'] as day, i}
+					{#each ['Mon', 'Wed', 'Fri'] as day, i (day)}
 						{@const dayIndex = i * 2 + 1}
 						<text
 							x={20}
@@ -267,8 +267,8 @@
 					{/each}
 
 					<!-- Grid cells -->
-					{#each grid.weeks as week, weekIndex}
-						{#each week.days as day, dayIndex}
+					{#each grid.weeks as week, weekIndex (weekIndex)}
+						{#each week.days as day, dayIndex (`${weekIndex}-${dayIndex}`)}
 							{#if day !== null}
 								<rect
 									x={DAY_LABEL_WIDTH + weekIndex * (CELL_SIZE + CELL_GAP)}

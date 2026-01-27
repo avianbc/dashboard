@@ -48,7 +48,7 @@
 <div class="recent-activity">
 	<h3 class="section-title">Notable Workouts</h3>
 	<div class="activity-list">
-		{#each recentWorkouts as workout}
+		{#each recentWorkouts as workout (workout.date)}
 			{@const IconComponent = getCategoryIcon(workout.category)}
 			<Card hover class="activity-item">
 				<div class="activity-icon" style="color: {getCategoryColor(workout.category)}">

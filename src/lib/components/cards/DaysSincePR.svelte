@@ -30,7 +30,7 @@
 <div class="days-since-pr">
 	<h3 class="section-title">Time Since Last PR</h3>
 	<div class="pr-grid">
-		{#each lifts as lift}
+		{#each lifts as lift (lift.key)}
 			{@const days = data[lift.key]}
 			{@const timeInfo = getTimeRange(days)}
 			<Card hover class="pr-card" style="--lift-color: {lift.color}; --status-color: {timeInfo.color}">

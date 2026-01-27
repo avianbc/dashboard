@@ -37,7 +37,7 @@
 	<p class="subtitle">Major milestones and volume thresholds reached</p>
 
 	<div class="timeline">
-		{#each sortedMilestones as milestone}
+		{#each sortedMilestones as milestone (milestone.date)}
 			{@const IconComponent = getIcon(milestone.milestone)}
 			<div class="timeline-item">
 				<div class="timeline-marker">

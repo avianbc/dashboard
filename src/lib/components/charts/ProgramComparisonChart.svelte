@@ -42,7 +42,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each topPrograms as program, index}
+				{#each topPrograms as program, index (program.name)}
 					<tr class:highlight={index < 3}>
 						<td class="program-name">
 							<div class="program-name-cell">

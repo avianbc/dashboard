@@ -45,18 +45,18 @@
 			<thead>
 				<tr>
 					<th>Lift</th>
-					{#each repRanges as reps}
+					{#each repRanges as reps (reps)}
 						<th>{reps}RM</th>
 					{/each}
 					<th>Best E1RM</th>
 				</tr>
 			</thead>
 			<tbody>
-				{#each lifts as lift}
+				{#each lifts as lift (lift.key)}
 					{@const liftData = data[lift.key]}
 					<tr style="--lift-color: {lift.color}">
 						<td class="lift-name">{lift.name}</td>
-						{#each repRanges as reps}
+						{#each repRanges as reps (reps)}
 							{@const prWeight = getPRForReps(liftData, reps)}
 							<td class="pr-value">
 								{displayWeight(prWeight)}

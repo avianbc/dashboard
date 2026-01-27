@@ -240,7 +240,7 @@
 		<div class="clubs">
 			<strong>Club Milestones Achieved:</strong>
 			<div class="club-badges">
-				{#each powerliftingTotals.clubs as club}
+				{#each powerliftingTotals.clubs as club (club.name)}
 					<Badge variant="accent">{club.name}</Badge>
 				{/each}
 			</div>
