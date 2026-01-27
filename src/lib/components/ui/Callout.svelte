@@ -1,22 +1,32 @@
 <script lang="ts">
 	import type { ComponentType } from 'svelte';
 
+	import type { Snippet } from 'svelte';
+
 	interface Props {
 		variant?: 'info' | 'success' | 'warning' | 'error';
 		icon?: ComponentType;
 		borderAccent?: boolean;
 		class?: string;
+		children?: Snippet;
 	}
 
-	let { variant = 'info', icon, borderAccent = false, class: className = '' }: Props = $props();
+	let {
+		variant = 'info',
+		icon,
+		borderAccent = false,
+		class: className = '',
+		children
+	}: Props = $props();
 </script>
 
 <div class="callout callout-{variant} {className}" class:border-accent={borderAccent}>
 	{#if icon}
-		<svelte:component this={icon} class="callout-icon" />
+		{@const Icon = icon}
+		<Icon class="callout-icon" />
 	{/if}
 	<div class="callout-content">
-		<slot />
+		{@render children?.()}
 	</div>
 </div>
 

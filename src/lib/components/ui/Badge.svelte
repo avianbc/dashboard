@@ -1,19 +1,22 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	interface Props {
 		variant?: 'status' | 'accent' | 'muted' | 'numbered';
 		color?: string; // For status badges with dynamic colors
 		size?: 'sm' | 'md';
 		class?: string;
+		children?: Snippet;
 	}
 
-	let { variant = 'accent', color, size = 'md', class: className = '' }: Props = $props();
+	let { variant = 'accent', color, size = 'md', class: className = '', children }: Props = $props();
 </script>
 
 <span
 	class="badge badge-{variant} badge-{size} {className}"
 	style:background={variant === 'status' && color ? color : undefined}
 >
-	<slot />
+	{@render children?.()}
 </span>
 
 <style>
