@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { clsx } from 'clsx';
+	import type { ComponentType } from 'svelte';
 	import { Inbox } from 'lucide-svelte';
 	import Button from './Button.svelte';
 
@@ -7,7 +8,7 @@
 		class?: string;
 		title?: string;
 		message?: string;
-		icon?: any;
+		icon?: ComponentType;
 		action?: {
 			label: string;
 			onclick: () => void;

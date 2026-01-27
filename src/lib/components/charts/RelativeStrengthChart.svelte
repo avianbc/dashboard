@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { echarts } from './echarts-setup';
+	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { RelativeStrength, BodyWeight } from '$lib/types/training';
 	import { theme } from '$lib/stores';
 	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
@@ -83,10 +84,11 @@
 			},
 			tooltip: {
 				...createTooltipConfig(chartColors),
-				formatter: (params: any) => {
-					const month = params[0].axisValue;
+				formatter: (params: CallbackDataParams | CallbackDataParams[]) => {
+					const paramsArray = Array.isArray(params) ? params : [params];
+					const month = paramsArray[0].axisValue;
 					let content = `<div style="padding: ${TOOLTIP_PADDING}px;"><div style="font-weight: bold; margin-bottom: 4px;">${month}</div>`;
-					params.forEach((param: any) => {
+					paramsArray.forEach((param) => {
 						content += `<div>${param.marker} ${param.seriesName}: ${param.value.toFixed(2)}× BW</div>`;
 					});
 					content += '</div>';

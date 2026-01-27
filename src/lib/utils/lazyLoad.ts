@@ -34,7 +34,7 @@ export function lazyLoad(node: HTMLElement, callback?: () => void) {
 /**
  * Debounce function to limit expensive operations
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
 	func: T,
 	wait: number
 ): (...args: Parameters<T>) => void {

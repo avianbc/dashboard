@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { echarts } from './echarts-setup';
+	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { PowerliftingTotals, BigThreeE1RM } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
@@ -119,8 +120,9 @@
 			backgroundColor: 'transparent',
 			tooltip: {
 				...createTooltipConfig(chartColors),
-				formatter: (params: any) => {
-					const data = params[0];
+				formatter: (params: CallbackDataParams) => {
+					const paramsArray = Array.isArray(params) ? params : [params];
+					const data = paramsArray[0];
 					const date = format(new Date(data.axisValue), 'MMM d, yyyy');
 					return `<div style="padding: ${TOOLTIP_PADDING}px;">
 						<div style="font-weight: bold; margin-bottom: 4px;">${date}</div>

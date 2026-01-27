@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import { lazyLoad } from '$lib/utils';
 	import Loading from './Loading.svelte';
 
 	let { children, minHeight = '400px' } = $props<{
-		children: any;
+		children: Snippet;
 		minHeight?: string;
 	}>();
 

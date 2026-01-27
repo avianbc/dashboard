@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { WorkoutCalendarDay } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber } from '$lib/utils';
@@ -80,7 +81,7 @@
 	}
 
 	// Generate year grid structure
-	function generateYearGrid(year: number, dataMap: Map<string, any>): YearGrid {
+	function generateYearGrid(year: number, dataMap: Map<string, { volumeLbs: number; volumeKg: number; count: number }>): YearGrid {
 		const weeks: WeekRow[] = [];
 		const monthLabels: { month: string; weekIndex: number }[] = [];
 

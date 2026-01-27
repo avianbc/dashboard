@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { echarts } from './echarts-setup';
+	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { VolumeTimeSeries } from '$lib/types/training';
 	import { theme } from '$lib/stores';
 	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
@@ -49,8 +50,9 @@
 			backgroundColor: 'transparent',
 			tooltip: {
 				...createTooltipConfig(chartColors),
-				formatter: (params: any) => {
-					const data = params[0];
+				formatter: (params: CallbackDataParams) => {
+					const paramsArray = Array.isArray(params) ? params : [params];
+					const data = paramsArray[0];
 					const week = data.axisValue;
 					const workouts = data.value;
 
@@ -117,7 +119,7 @@
 					}
 				},
 				min: 0,
-				max: (value: any) => Math.ceil(value.max * 1.1)
+				max: (value: { max: number }) => Math.ceil(value.max * 1.1)
 			},
 			series: [
 				{

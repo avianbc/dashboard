@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { echarts } from './echarts-setup';
+	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { VolumeTimeSeries } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber, formatDate, lbsToKg, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
@@ -93,10 +94,11 @@
 			backgroundColor: 'transparent',
 			tooltip: {
 				...createTooltipConfig(colors),
-				formatter: (params: any) => {
-					if (!params || params.length === 0) return '';
+				formatter: (params: CallbackDataParams | CallbackDataParams[]) => {
+					const paramsArray = Array.isArray(params) ? params : [params];
+					if (!paramsArray || paramsArray.length === 0) return '';
 
-					const point = params[0];
+					const point = paramsArray[0];
 					const dataIndex = point.dataIndex;
 					const item = chartData[dataIndex];
 

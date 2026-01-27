@@ -20,7 +20,12 @@
 	// Get common rep ranges we care about
 	const repRanges = [1, 3, 5, 8, 10];
 
-	function getPRForReps(liftData: any, reps: number) {
+	interface LiftData {
+		repPRs: Record<number, { weightLbs: number }>;
+		bestE1rm: { e1rmLbs: number };
+	}
+
+	function getPRForReps(liftData: LiftData, reps: number) {
 		// repPRs is an object with keys being the rep numbers
 		const pr = liftData.repPRs[reps];
 		return pr ? pr.weightLbs : null;

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { echarts } from './echarts-setup';
+	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { BigThreeE1RM, AllTimePRs } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber, formatDate, lbsToKg, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
@@ -188,11 +189,12 @@
 			backgroundColor: 'transparent',
 			tooltip: {
 				...createTooltipConfig(colors),
-				formatter: (params: any) => {
-					if (!params || params.length === 0) return '';
+				formatter: (params: CallbackDataParams | CallbackDataParams[]) => {
+					const paramsArray = Array.isArray(params) ? params : [params];
+					if (!paramsArray || paramsArray.length === 0) return '';
 
 					// Convert timestamp to date string for comparison
-					const timestamp = params[0].axisValue;
+					const timestamp = paramsArray[0].axisValue;
 					const dateObj = new Date(timestamp);
 					const dateString = dateObj.toISOString().split('T')[0];
 
@@ -201,7 +203,7 @@
 							${formatDate(dateString)}
 						</div>`;
 
-					params.forEach((param: any) => {
+					paramsArray.forEach((param) => {
 						if (param.seriesName) {
 							const liftName = param.seriesName.toLowerCase();
 							const liftKey = liftName === 'overhead press' ? 'ohp' : liftName === 'bench press' ? 'bench' : liftName;
@@ -356,7 +358,11 @@
 			updateChart();
 
 			// Handle legend selection to update visibility state
-			chartInstance.on('legendselectchanged', (params: any) => {
+			interface LegendSelectChangedParams {
+				name: string;
+				selected: Record<string, boolean>;
+			}
+			chartInstance.on('legendselectchanged', (params: LegendSelectChangedParams) => {
 				const liftMap: Record<string, keyof typeof visibleLifts> = {
 					'Squat': 'squat',
 					'Bench Press': 'bench',

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { echarts } from './echarts-setup';
+	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { DayOfWeekStats } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
@@ -75,8 +76,9 @@
 				axisPointer: {
 					type: 'shadow'
 				},
-				formatter: (params: any) => {
-					const data = params[0];
+				formatter: (params: CallbackDataParams) => {
+					const paramsArray = Array.isArray(params) ? params : [params];
+					const data = paramsArray[0];
 					const dayData = sortedData[data.dataIndex];
 					const volume = isMetric ? dayData.avgVolumeKg : dayData.avgVolumeLbs;
 					const unit = isMetric ? 'kg' : 'lbs';
@@ -130,7 +132,7 @@
 					type: 'bar',
 					data: sortedData.map((d) => d.count),
 					itemStyle: {
-						color: (params: any) => {
+						color: (params: CallbackDataParams) => {
 							const colors = [
 								'#c44536', // Monday - red
 								'#c9a227', // Tuesday - amber

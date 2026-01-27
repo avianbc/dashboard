@@ -3,6 +3,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import { unitSystem } from '$lib/stores';
+	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 	import { Callout } from '$lib/components/ui';
 	import type { ExerciseProgress } from '$lib/types/training';
@@ -113,7 +114,7 @@
 		const option: echarts.EChartsOption = {
 			tooltip: {
 				...createTooltipConfig(chartColors, { trigger: 'item' }),
-				formatter: (params: any) => {
+				formatter: (params: CallbackDataParams) => {
 					const percent = ((params.value / totalVolume) * 100).toFixed(1);
 					const volumeFormatted =
 						params.value >= 1000000
@@ -174,7 +175,7 @@
 							fontWeight: 'bold',
 							fontFamily: 'JetBrains Mono, monospace',
 							color: '#f5f2eb',
-							formatter: (params: any) => {
+							formatter: (params: CallbackDataParams) => {
 								const percent = ((params.value / totalVolume) * 100).toFixed(1);
 								return `${percent}%`;
 							}

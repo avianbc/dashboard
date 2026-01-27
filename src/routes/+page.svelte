@@ -69,10 +69,15 @@
 		}
 	);
 	// Transform powerliftingTotals.clubMilestones from object to clubs array
+	interface ClubMilestoneRaw {
+		totalLbs: number;
+		date: string;
+	}
+
 	const powerliftingTotals = $derived({
 		...(coreData.powerliftingTotals || { current: { totalLbs: 0 } }),
 		clubs: Object.entries(coreData.powerliftingTotals?.clubMilestones || {}).map(
-			([name, milestone]: [string, any]) => ({
+			([name, milestone]: [string, ClubMilestoneRaw]) => ({
 				name: `${name}lb Club`,
 				totalLbs: milestone?.totalLbs || 0,
 				dateAchieved: milestone?.date || ''
@@ -97,7 +102,7 @@
 	const notableWorkouts = $derived(deferredData?.notableWorkouts || []);
 	// Transform workoutsByDayOfWeek from object to array
 	const workoutsByDayOfWeek = $derived(
-		Object.entries(deferredData?.workoutsByDayOfWeek || {}).map(([day, stats]: [string, any]) => ({
+		Object.entries(deferredData?.workoutsByDayOfWeek || {}).map(([day, stats]: [string, Omit<import('$lib/types/training').DayOfWeekStats, 'day'>]) => ({
 			day,
 			count: stats?.count || 0,
 			avgVolumeLbs: stats?.avgVolumeLbs || 0,
