@@ -5,7 +5,8 @@
 	import type { PowerliftingTotals, BigThreeE1RM } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
-	import { Badge } from '$lib/components/ui';
+	import { Badge, Callout } from '$lib/components/ui';
+	import { Trophy } from 'lucide-svelte';
 	import { format } from 'date-fns';
 
 	interface Props {
@@ -234,7 +235,7 @@
 	<h3 class="section-title">Powerlifting Total Progress</h3>
 	<p class="section-subtitle">Squat + Bench + Deadlift (e1RM)</p>
 	<div bind:this={chartContainer} class="chart-container"></div>
-	<div class="chart-caption">
+	<Callout variant="info" icon={Trophy} borderAccent>
 		<div class="clubs">
 			<strong>Club Milestones Achieved:</strong>
 			<div class="club-badges">
@@ -243,7 +244,7 @@
 				{/each}
 			</div>
 		</div>
-	</div>
+	</Callout>
 </div>
 
 <style>
@@ -268,23 +269,17 @@
 	.chart-container {
 		width: 100%;
 		height: 400px;
+		margin-bottom: var(--space-4);
 	}
 
-	.chart-caption {
-		margin-top: var(--space-3);
-		padding-top: var(--space-3);
-		border-top: 1px solid var(--bg-card);
-	}
-
-	.clubs {
-		font-size: 0.875rem;
-		color: var(--text-secondary);
+	.clubs strong {
+		display: block;
+		margin-bottom: var(--space-2);
 	}
 
 	.club-badges {
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--space-2);
-		margin-top: var(--space-2);
 	}
 </style>

@@ -5,6 +5,8 @@
 	import type { DayOfWeekStats } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { Callout } from '$lib/components/ui';
+	import { Calendar } from 'lucide-svelte';
 
 	interface Props {
 		data: DayOfWeekStats[];
@@ -169,12 +171,12 @@
 <div class="chart-wrapper">
 	<h3 class="section-title">Training by Day of Week</h3>
 	<div bind:this={chartContainer} class="chart-container"></div>
-	<div class="chart-caption">
+	<Callout variant="info" icon={Calendar} borderAccent>
 		<p>
 			You're a Monday/Friday lifter! You've trained on Saturday exactly once and never on Sunday.
 			Clear training rhythm established throughout the week.
 		</p>
-	</div>
+	</Callout>
 </div>
 
 <style>
@@ -193,17 +195,6 @@
 	.chart-container {
 		width: 100%;
 		height: 350px;
-	}
-
-	.chart-caption {
-		margin-top: var(--space-3);
-		padding-top: var(--space-3);
-		border-top: 1px solid var(--bg-card);
-	}
-
-	.chart-caption p {
-		font-size: 0.875rem;
-		color: var(--text-secondary);
-		line-height: 1.5;
+		margin-bottom: var(--space-4);
 	}
 </style>

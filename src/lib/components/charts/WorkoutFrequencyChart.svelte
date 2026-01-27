@@ -5,6 +5,8 @@
 	import type { VolumeTimeSeries } from '$lib/types/training';
 	import { theme } from '$lib/stores';
 	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { Callout } from '$lib/components/ui';
+	import { Activity } from 'lucide-svelte';
 
 	interface Props {
 		data: VolumeTimeSeries;
@@ -146,12 +148,12 @@
 <div class="chart-wrapper">
 	<h3 class="section-title">Workout Frequency Over Time</h3>
 	<div bind:this={chartContainer} class="chart-container"></div>
-	<div class="chart-caption">
+	<Callout variant="info" icon={Activity} borderAccent>
 		<p>
 			Training frequency patterns over 6+ years showing consistency, gaps, and comeback periods.
 			Best weeks reached 6+ workouts during peak training phases.
 		</p>
-	</div>
+	</Callout>
 </div>
 
 <style>
@@ -170,17 +172,6 @@
 	.chart-container {
 		width: 100%;
 		height: 400px;
-	}
-
-	.chart-caption {
-		margin-top: var(--space-3);
-		padding-top: var(--space-3);
-		border-top: 1px solid var(--bg-card);
-	}
-
-	.chart-caption p {
-		font-size: 0.875rem;
-		color: var(--text-secondary);
-		line-height: 1.5;
+		margin-bottom: var(--space-4);
 	}
 </style>

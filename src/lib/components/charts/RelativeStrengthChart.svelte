@@ -5,6 +5,8 @@
 	import type { RelativeStrength } from '$lib/types/training';
 	import { theme } from '$lib/stores';
 	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { Callout } from '$lib/components/ui';
+	import { TrendingUp } from 'lucide-svelte';
 
 	interface Props {
 		relativeStrength: RelativeStrength;
@@ -197,7 +199,7 @@
 	<h3 class="section-title">Relative Strength Over Time</h3>
 	<p class="section-subtitle">Strength-to-bodyweight ratio (e1RM / BW)</p>
 	<div bind:this={chartContainer} class="chart-container"></div>
-	<div class="chart-caption">
+	<Callout variant="info" icon={TrendingUp} borderAccent>
 		<div class="stats">
 			<div class="stat-row">
 				<strong>Best Relative Strength:</strong>
@@ -212,7 +214,7 @@
 				>
 			</div>
 		</div>
-	</div>
+	</Callout>
 </div>
 
 <style>
@@ -237,17 +239,7 @@
 	.chart-container {
 		width: 100%;
 		height: 400px;
-	}
-
-	.chart-caption {
-		margin-top: var(--space-3);
-		padding-top: var(--space-3);
-		border-top: 1px solid var(--bg-card);
-	}
-
-	.stats {
-		font-size: 0.875rem;
-		color: var(--text-secondary);
+		margin-bottom: var(--space-4);
 	}
 
 	.stat-row {
@@ -261,5 +253,6 @@
 	.highlight {
 		color: var(--accent-copper);
 		font-weight: 600;
+		font-family: 'JetBrains Mono', monospace;
 	}
 </style>

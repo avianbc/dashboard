@@ -4,7 +4,6 @@
 	interface Props {
 		variant?: 'info' | 'success' | 'warning' | 'error';
 		icon?: ComponentType;
-		centered?: boolean;
 		borderAccent?: boolean;
 		class?: string;
 	}
@@ -12,7 +11,6 @@
 	let {
 		variant = 'info',
 		icon,
-		centered = false,
 		borderAccent = false,
 		class: className = ''
 	}: Props = $props();
@@ -20,7 +18,6 @@
 
 <div
 	class="callout callout-{variant} {className}"
-	class:centered
 	class:border-accent={borderAccent}
 >
 	{#if icon}
@@ -41,13 +38,6 @@
 		font-size: 0.875rem;
 		line-height: 1.6;
 		color: var(--text-secondary);
-	}
-
-	.callout.centered {
-		text-align: center;
-		justify-content: center;
-		flex-direction: column;
-		gap: var(--space-2);
 	}
 
 	.callout.border-accent {
@@ -88,10 +78,6 @@
 	/* Icon styling */
 	.callout :global(.callout-icon) {
 		flex-shrink: 0;
-	}
-
-	.callout.centered :global(.callout-icon) {
-		color: var(--accent-copper);
 	}
 
 	.callout-error :global(.callout-icon) {

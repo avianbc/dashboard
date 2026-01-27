@@ -299,7 +299,7 @@
 	</div>
 
 	<!-- Insights -->
-	<Callout variant="info" icon={BarChart3} centered>
+	<Callout variant="info" icon={BarChart3} borderAccent>
 		<p>
 			<strong>{aggregateStats.yearCount} years</strong> of training tracked. Best year:
 			{aggregateStats.bestYear.year} with {aggregateStats.bestYear.workouts} workouts.

@@ -180,7 +180,7 @@
 	<main id="main-content" class="container py-8" aria-labelledby="page-title">
 		<!-- Error Banner -->
 		{#if hasError}
-			<Callout variant="error" icon={AlertTriangle} centered>
+			<Callout variant="error" icon={AlertTriangle}>
 				<p>Error loading training data: {data.error}</p>
 			</Callout>
 		{/if}
