@@ -5,6 +5,7 @@
 	import { formatNumber } from '$lib/utils';
 	import { Callout } from '$lib/components/ui';
 	import { BarChart3 } from 'lucide-svelte';
+	import { SvelteMap, SvelteSet, SvelteDate } from 'svelte/reactivity';
 
 	interface Props {
 		data: WorkoutCalendarDay[] | Record<string, Omit<WorkoutCalendarDay, 'date'>>;
@@ -42,7 +43,7 @@
 
 	// Create a lookup map for quick access
 	const dataMap = $derived.by(() => {
-		const map = new Map<string, { volumeLbs: number; volumeKg: number; count: number }>();
+		const map = new SvelteMap<string, { volumeLbs: number; volumeKg: number; count: number }>();
 		dataArray.forEach((day) => {
 			map.set(day.date, {
 				volumeLbs: day.volumeLbs,
@@ -86,9 +87,9 @@
 		const monthLabels: { month: string; weekIndex: number }[] = [];
 
 		// Find first Sunday on or before Jan 1
-		const jan1 = new Date(year, 0, 1);
+		const jan1 = new SvelteDate(year, 0, 1);
 		const dayOfWeek = jan1.getDay();
-		const firstSunday = new Date(jan1);
+		const firstSunday = new SvelteDate(jan1);
 		firstSunday.setDate(jan1.getDate() - dayOfWeek);
 
 		// Generate 53 weeks (covers full year)
@@ -97,7 +98,7 @@
 			const days: (GridDay | null)[] = [];
 
 			for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
-				const date = new Date(firstSunday);
+				const date = new SvelteDate(firstSunday);
 				date.setDate(firstSunday.getDate() + weekIndex * 7 + dayIndex);
 
 				// Only include days in the current year
@@ -140,7 +141,7 @@
 
 	// Get all years and generate grids
 	const years = $derived.by(() => {
-		const uniqueYears = new Set<number>();
+		const uniqueYears = new SvelteSet<number>();
 		dataArray.forEach((day) => {
 			const year = new Date(day.date).getFullYear();
 			uniqueYears.add(year);
