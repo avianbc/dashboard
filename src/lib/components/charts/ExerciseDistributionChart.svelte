@@ -3,7 +3,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import { unitSystem } from '$lib/stores';
-	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 	import { Callout } from '$lib/components/ui';
 	import type { ExerciseProgress } from '$lib/types/training';
 

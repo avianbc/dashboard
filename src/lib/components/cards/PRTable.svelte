@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { AllTimePRs } from '$lib/types/training';
-	import { formatDate, lbsToKg } from '$lib/utils';
+	import { lbsToKg } from '$lib/utils';
 	import { unitSystem } from '$lib/stores';
 	import { LIFTS } from '$lib/config';
 

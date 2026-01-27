@@ -4,14 +4,13 @@
 	import type { RelativeStrength, BodyWeight } from '$lib/types/training';
 	import { theme } from '$lib/stores';
 	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
-	import { format } from 'date-fns';
 
 	interface Props {
 		relativeStrength: RelativeStrength;
 		bodyWeight: BodyWeight;
 	}
 
-	let { relativeStrength, bodyWeight }: Props = $props();
+	let { relativeStrength }: Props = $props();
 
 	let chartContainer: HTMLDivElement;
 	let chart: echarts.ECharts;

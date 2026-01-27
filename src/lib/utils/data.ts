@@ -1,5 +1,3 @@
-import type { TrainingData } from '$lib/types/training';
-
 /**
  * Simple memoization helper for expensive calculations
  */

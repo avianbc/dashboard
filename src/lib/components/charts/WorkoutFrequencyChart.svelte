@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { echarts } from './echarts-setup';
 	import type { VolumeTimeSeries } from '$lib/types/training';
-	import { unitSystem, theme } from '$lib/stores';
+	import { theme } from '$lib/stores';
 	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 
 	interface Props {

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { BarTravel } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
-	import { formatNumber } from '$lib/utils';
 	import { Mountain, Building2, Landmark } from 'lucide-svelte';
 
 	interface Props {

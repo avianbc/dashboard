@@ -147,7 +147,7 @@
 							return `${date.getMonth() + 1}/${date.getDate()}`;
 						} else if (granularity === 'weekly') {
 							// Format: YYYY-Www (e.g., 2019-W03)
-							const [year, week] = value.split('-W');
+							const [, week] = value.split('-W');
 							return `W${week}`;
 						} else {
 							// Format: YYYY-MM (e.g., 2019-01)

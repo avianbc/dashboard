@@ -205,8 +205,6 @@
 	const CELL_RADIUS = 2;
 	const DAY_LABEL_WIDTH = 30;
 	const MONTH_LABEL_HEIGHT = 20;
-	const YEAR_LABEL_HEIGHT = 30;
-	const YEAR_GAP = 40;
 
 	function getSvgDimensions(grid: YearGrid) {
 		const width = DAY_LABEL_WIDTH + grid.weeks.length * (CELL_SIZE + CELL_GAP);
@@ -234,7 +232,7 @@
 	</div>
 
 	<div class="heatmap-container">
-		{#each yearGrids as grid, yearIndex (grid.year)}
+		{#each yearGrids as grid (grid.year)}
 			{@const dims = getSvgDimensions(grid)}
 			<div class="year-section">
 				<div class="year-header">{grid.year}</div>
