@@ -31,7 +31,7 @@
 	{disabled}
 	{title}
 	aria-label={ariaLabel}
-	onclick={onclick}
+	{onclick}
 	class="btn btn-{variant} btn-{size} {className}"
 >
 	{@render children?.()}
@@ -60,7 +60,9 @@
 		/* Focus styles */
 		&:focus {
 			outline: none;
-			box-shadow: 0 0 0 3px var(--accent-copper), 0 0 0 5px rgba(193, 127, 89, 0.3);
+			box-shadow:
+				0 0 0 3px var(--accent-copper),
+				0 0 0 5px rgba(193, 127, 89, 0.3);
 		}
 
 		/* Disabled styles */

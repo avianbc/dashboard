@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { WorkoutCalendarDay } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber } from '$lib/utils';
@@ -82,7 +81,10 @@
 	}
 
 	// Generate year grid structure
-	function generateYearGrid(year: number, dataMap: Map<string, { volumeLbs: number; volumeKg: number; count: number }>): YearGrid {
+	function generateYearGrid(
+		year: number,
+		dataMap: Map<string, { volumeLbs: number; volumeKg: number; count: number }>
+	): YearGrid {
 		const weeks: WeekRow[] = [];
 		const monthLabels: { month: string; weekIndex: number }[] = [];
 
@@ -161,11 +163,13 @@
 			return { year, workouts };
 		});
 
-		const bestYear =
-			yearStats.reduce((best, current) => (current.workouts > best.workouts ? current : best), {
+		const bestYear = yearStats.reduce(
+			(best, current) => (current.workouts > best.workouts ? current : best),
+			{
 				year: 0,
 				workouts: 0
-			});
+			}
+		);
 
 		return { bestYear, yearCount: years.length };
 	});
@@ -280,7 +284,9 @@
 									class="heatmap-cell level-{day.level}"
 									role="button"
 									tabindex="0"
-									aria-label="{day.date.toLocaleDateString()}: {day.count} workout{day.count !== 1 ? 's' : ''}"
+									aria-label="{day.date.toLocaleDateString()}: {day.count} workout{day.count !== 1
+										? 's'
+										: ''}"
 									onmouseenter={(e) => showTooltip(e, day)}
 									onmouseleave={hideTooltip}
 								/>
@@ -303,10 +309,7 @@
 
 <!-- Tooltip -->
 {#if tooltip.visible}
-	<div
-		class="tooltip"
-		style="left: {tooltip.x}px; top: {tooltip.y}px;"
-	>
+	<div class="tooltip" style="left: {tooltip.x}px; top: {tooltip.y}px;">
 		<div class="tooltip-date">{tooltip.date}</div>
 		<div class="tooltip-data">
 			{tooltip.count} workout{tooltip.count !== 1 ? 's' : ''}

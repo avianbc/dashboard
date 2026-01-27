@@ -55,6 +55,8 @@
 
 <style>
 	div {
-		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+		transition:
+			transform var(--transition-normal),
+			box-shadow var(--transition-normal);
 	}
 </style>

@@ -227,7 +227,9 @@ body {
 	line-height: var(--line-height-normal);
 	color: var(--text-primary);
 	background-color: var(--bg-primary);
-	transition: background-color var(--transition-normal), color var(--transition-normal);
+	transition:
+		background-color var(--transition-normal),
+		color var(--transition-normal);
 }
 
 /* ============================================================================

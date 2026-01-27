@@ -2,7 +2,14 @@
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import type { DeferredTrainingData } from '$lib/types/training';
-	import { Card, Button, Callout, Loading, Error as ErrorComponent, LazyChart } from '$lib/components/ui';
+	import {
+		Card,
+		Button,
+		Callout,
+		Loading,
+		Error as ErrorComponent,
+		LazyChart
+	} from '$lib/components/ui';
 	import {
 		VolumeChart,
 		BigThreeChart,
@@ -24,7 +31,17 @@
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatCompactNumber, formatNumber, lbsToKg, milesToKm } from '$lib/utils';
 	import { loadDeferredData } from '$lib/utils/dataLoader';
-	import { Calendar, Dumbbell, Clock, Route, Repeat, Trophy, Moon, Sun, AlertTriangle } from 'lucide-svelte';
+	import {
+		Calendar,
+		Dumbbell,
+		Clock,
+		Route,
+		Repeat,
+		Trophy,
+		Moon,
+		Sun,
+		AlertTriangle
+	} from 'lucide-svelte';
 
 	// Get data from page load (core data only)
 	let { data }: { data: PageData } = $props();
@@ -102,12 +119,14 @@
 	const notableWorkouts = $derived(deferredData?.notableWorkouts || []);
 	// Transform workoutsByDayOfWeek from object to array
 	const workoutsByDayOfWeek = $derived(
-		Object.entries(deferredData?.workoutsByDayOfWeek || {}).map(([day, stats]: [string, Omit<import('$lib/types/training').DayOfWeekStats, 'day'>]) => ({
-			day,
-			count: stats?.count || 0,
-			avgVolumeLbs: stats?.avgVolumeLbs || 0,
-			avgVolumeKg: stats?.avgVolumeKg || 0
-		}))
+		Object.entries(deferredData?.workoutsByDayOfWeek || {}).map(
+			([day, stats]: [string, Omit<import('$lib/types/training').DayOfWeekStats, 'day'>]) => ({
+				day,
+				count: stats?.count || 0,
+				avgVolumeLbs: stats?.avgVolumeLbs || 0,
+				avgVolumeKg: stats?.avgVolumeKg || 0
+			})
+		)
 	);
 	const programs = $derived(deferredData?.programs || []);
 	const milestones = $derived(deferredData?.milestones || []);
@@ -171,7 +190,12 @@
 			<h2 class="visually-hidden">Training Summary Statistics</h2>
 			<div class="stats-grid" role="list">
 				<!-- Total Workouts -->
-				<Card hover class="stat-card" role="listitem" aria-label="Total workouts: {formatNumber(summary.totalWorkouts)}">
+				<Card
+					hover
+					class="stat-card"
+					role="listitem"
+					aria-label="Total workouts: {formatNumber(summary.totalWorkouts)}"
+				>
 					<div class="stat-icon" aria-hidden="true">
 						<Calendar size={24} />
 					</div>
@@ -183,52 +207,90 @@
 				</Card>
 
 				<!-- Total Volume -->
-				<Card hover class="stat-card" role="listitem" aria-label="Total volume: {formatCompactNumber(unitSystem.current === 'imperial' ? summary.totalVolumeLbs : lbsToKg(summary.totalVolumeLbs))} {unitSystem.current === 'imperial' ? 'pounds' : 'kilograms'}">
+				<Card
+					hover
+					class="stat-card"
+					role="listitem"
+					aria-label="Total volume: {formatCompactNumber(
+						unitSystem.current === 'imperial'
+							? summary.totalVolumeLbs
+							: lbsToKg(summary.totalVolumeLbs)
+					)} {unitSystem.current === 'imperial' ? 'pounds' : 'kilograms'}"
+				>
 					<div class="stat-icon" aria-hidden="true">
 						<Dumbbell size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Total Volume</div>
 						<div class="stat-value">
-						{formatCompactNumber(unitSystem.current === 'imperial' ? summary.totalVolumeLbs : lbsToKg(summary.totalVolumeLbs))}
-						<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
-					</div>
+							{formatCompactNumber(
+								unitSystem.current === 'imperial'
+									? summary.totalVolumeLbs
+									: lbsToKg(summary.totalVolumeLbs)
+							)}
+							<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
+						</div>
 						<div class="stat-subtitle">
-							{unitSystem.current === 'imperial' ? (summary.totalVolumeLbs / 2000).toFixed(0) : (lbsToKg(summary.totalVolumeLbs) / 1000).toFixed(0)}
+							{unitSystem.current === 'imperial'
+								? (summary.totalVolumeLbs / 2000).toFixed(0)
+								: (lbsToKg(summary.totalVolumeLbs) / 1000).toFixed(0)}
 							{unitSystem.current === 'imperial' ? 'tons' : 'tonnes'} lifted
 						</div>
 					</div>
 				</Card>
 
 				<!-- Time Training -->
-				<Card hover class="stat-card" role="listitem" aria-label="Time training: {formatNumber(summary.totalHours)} hours">
+				<Card
+					hover
+					class="stat-card"
+					role="listitem"
+					aria-label="Time training: {formatNumber(summary.totalHours)} hours"
+				>
 					<div class="stat-icon" aria-hidden="true">
 						<Clock size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Time Training</div>
 						<div class="stat-value">{formatNumber(summary.totalHours)}</div>
-						<div class="stat-subtitle">{(summary.totalHours / 24).toFixed(0)} days of your life</div>
+						<div class="stat-subtitle">
+							{(summary.totalHours / 24).toFixed(0)} days of your life
+						</div>
 					</div>
 				</Card>
 
 				<!-- Bar Travel -->
-				<Card hover class="stat-card" role="listitem" aria-label="Bar travel: {(unitSystem.current === 'imperial' ? barTravel.total.miles : milesToKm(barTravel.total.miles)).toFixed(1)} {unitSystem.current === 'imperial' ? 'miles' : 'kilometers'}">
+				<Card
+					hover
+					class="stat-card"
+					role="listitem"
+					aria-label="Bar travel: {(unitSystem.current === 'imperial'
+						? barTravel.total.miles
+						: milesToKm(barTravel.total.miles)
+					).toFixed(1)} {unitSystem.current === 'imperial' ? 'miles' : 'kilometers'}"
+				>
 					<div class="stat-icon" aria-hidden="true">
 						<Route size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Bar Travel</div>
 						<div class="stat-value">
-						{(unitSystem.current === 'imperial' ? barTravel.total.miles : milesToKm(barTravel.total.miles)).toFixed(1)}
-						<span class="unit-label">{unitSystem.current === 'imperial' ? 'mi' : 'km'}</span>
-					</div>
+							{(unitSystem.current === 'imperial'
+								? barTravel.total.miles
+								: milesToKm(barTravel.total.miles)
+							).toFixed(1)}
+							<span class="unit-label">{unitSystem.current === 'imperial' ? 'mi' : 'km'}</span>
+						</div>
 						<div class="stat-subtitle">{barTravel.landmarks.everestClimbs.toFixed(1)} Everests</div>
 					</div>
 				</Card>
 
 				<!-- Total Reps -->
-				<Card hover class="stat-card" role="listitem" aria-label="Total reps: {formatCompactNumber(summary.totalReps)}">
+				<Card
+					hover
+					class="stat-card"
+					role="listitem"
+					aria-label="Total reps: {formatCompactNumber(summary.totalReps)}"
+				>
 					<div class="stat-icon" aria-hidden="true">
 						<Repeat size={24} />
 					</div>
@@ -240,16 +302,29 @@
 				</Card>
 
 				<!-- Powerlifting Total -->
-				<Card hover class="stat-card" role="listitem" aria-label="Powerlifting total: {formatNumber(unitSystem.current === 'imperial' ? powerliftingTotals.current.totalLbs : lbsToKg(powerliftingTotals.current.totalLbs))} {unitSystem.current === 'imperial' ? 'pounds' : 'kilograms'}">
+				<Card
+					hover
+					class="stat-card"
+					role="listitem"
+					aria-label="Powerlifting total: {formatNumber(
+						unitSystem.current === 'imperial'
+							? powerliftingTotals.current.totalLbs
+							: lbsToKg(powerliftingTotals.current.totalLbs)
+					)} {unitSystem.current === 'imperial' ? 'pounds' : 'kilograms'}"
+				>
 					<div class="stat-icon" aria-hidden="true">
 						<Trophy size={24} />
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Powerlifting Total</div>
 						<div class="stat-value">
-						{formatNumber(unitSystem.current === 'imperial' ? powerliftingTotals.current.totalLbs : lbsToKg(powerliftingTotals.current.totalLbs))}
-						<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
-					</div>
+							{formatNumber(
+								unitSystem.current === 'imperial'
+									? powerliftingTotals.current.totalLbs
+									: lbsToKg(powerliftingTotals.current.totalLbs)
+							)}
+							<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
+						</div>
 						<div class="stat-subtitle">1200+ club member</div>
 					</div>
 				</Card>
@@ -269,7 +344,9 @@
 		<section class="mb-12" aria-label="Big Three and OHP Progression">
 			<Card padding="lg">
 				{#if deferredDataLoading}
-					<div style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
+					<div
+						style="min-height: 400px; display: flex; align-items: center; justify-content: center;"
+					>
 						<Loading size="lg" text="Loading strength progression data..." />
 					</div>
 				{:else if deferredDataError}
@@ -286,7 +363,9 @@
 		{#if deferredDataLoading}
 			<section class="mb-12">
 				<Card padding="lg">
-					<div style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+					<div
+						style="min-height: 300px; display: flex; align-items: center; justify-content: center;"
+					>
 						<Loading size="lg" text="Loading additional charts and analytics..." />
 					</div>
 				</Card>
@@ -338,7 +417,9 @@
 		{#if deferredDataLoading}
 			<section class="mb-12">
 				<Card padding="lg">
-					<div style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+					<div
+						style="min-height: 300px; display: flex; align-items: center; justify-content: center;"
+					>
 						<Loading size="lg" text="Loading workout analytics..." />
 					</div>
 				</Card>
@@ -350,72 +431,72 @@
 				</Card>
 			</section>
 		{:else}
-		<section class="mb-12">
-			<Card padding="lg">
-				<RecentActivity data={notableWorkouts} />
-			</Card>
-		</section>
+			<section class="mb-12">
+				<Card padding="lg">
+					<RecentActivity data={notableWorkouts} />
+				</Card>
+			</section>
 
-		<!-- Workout Frequency Analysis -->
-		<section class="mb-12">
-			<Card padding="lg">
-				<LazyChart minHeight="400px">
-					<WorkoutFrequencyChart data={volumeTimeSeries} />
-				</LazyChart>
-			</Card>
-		</section>
-
-		<!-- Two-column layout: Day of Week + Powerlifting Total -->
-		<div class="two-column-layout mb-12">
-			<section>
+			<!-- Workout Frequency Analysis -->
+			<section class="mb-12">
 				<Card padding="lg">
 					<LazyChart minHeight="400px">
-						<DayOfWeekChart data={workoutsByDayOfWeek} />
+						<WorkoutFrequencyChart data={volumeTimeSeries} />
 					</LazyChart>
 				</Card>
 			</section>
-			<section>
+
+			<!-- Two-column layout: Day of Week + Powerlifting Total -->
+			<div class="two-column-layout mb-12">
+				<section>
+					<Card padding="lg">
+						<LazyChart minHeight="400px">
+							<DayOfWeekChart data={workoutsByDayOfWeek} />
+						</LazyChart>
+					</Card>
+				</section>
+				<section>
+					<Card padding="lg">
+						<LazyChart minHeight="400px">
+							<PowerliftingTotalChart {powerliftingTotals} bigThreeData={bigThreeE1RM} />
+						</LazyChart>
+					</Card>
+				</section>
+			</div>
+
+			<!-- Two-column layout: Bar Travel + Relative Strength -->
+			<div class="two-column-layout mb-12">
+				<section>
+					<Card padding="lg">
+						<LazyChart minHeight="400px">
+							<BarTravelCard data={barTravel} />
+						</LazyChart>
+					</Card>
+				</section>
+				<section>
+					<Card padding="lg">
+						<LazyChart minHeight="400px">
+							<RelativeStrengthChart {relativeStrength} {bodyWeight} />
+						</LazyChart>
+					</Card>
+				</section>
+			</div>
+
+			<!-- Program Comparison -->
+			<section class="mb-12">
 				<Card padding="lg">
 					<LazyChart minHeight="400px">
-						<PowerliftingTotalChart powerliftingTotals={powerliftingTotals} bigThreeData={bigThreeE1RM} />
+						<ProgramComparisonChart data={programs} />
 					</LazyChart>
 				</Card>
 			</section>
-		</div>
 
-		<!-- Two-column layout: Bar Travel + Relative Strength -->
-		<div class="two-column-layout mb-12">
-			<section>
+			<!-- Milestones Timeline -->
+			<section class="mb-12">
 				<Card padding="lg">
-					<LazyChart minHeight="400px">
-						<BarTravelCard data={barTravel} />
-					</LazyChart>
+					<MilestonesTimeline data={milestones} />
 				</Card>
 			</section>
-			<section>
-				<Card padding="lg">
-					<LazyChart minHeight="400px">
-						<RelativeStrengthChart relativeStrength={relativeStrength} bodyWeight={bodyWeight} />
-					</LazyChart>
-				</Card>
-			</section>
-		</div>
-
-		<!-- Program Comparison -->
-		<section class="mb-12">
-			<Card padding="lg">
-				<LazyChart minHeight="400px">
-					<ProgramComparisonChart data={programs} />
-				</LazyChart>
-			</Card>
-		</section>
-
-		<!-- Milestones Timeline -->
-		<section class="mb-12">
-			<Card padding="lg">
-				<MilestonesTimeline data={milestones} />
-			</Card>
-		</section>
 		{/if}
 	</main>
 </div>
@@ -469,7 +550,9 @@
 		top: 0;
 		z-index: var(--z-sticky);
 		backdrop-filter: blur(8px);
-		transition: background-color var(--transition-normal), border-color var(--transition-normal);
+		transition:
+			background-color var(--transition-normal),
+			border-color var(--transition-normal);
 	}
 
 	@supports not (backdrop-filter: blur(8px)) {
@@ -504,7 +587,9 @@
 		position: relative;
 		overflow: hidden;
 		animation: fadeInUp 0.6s ease-out backwards;
-		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+		transition:
+			transform var(--transition-normal),
+			box-shadow var(--transition-normal);
 	}
 
 	:global(.stat-card:focus-within) {
@@ -689,8 +774,6 @@
 			grid-template-columns: 1fr;
 		}
 	}
-
-
 
 	@keyframes slideDown {
 		from {

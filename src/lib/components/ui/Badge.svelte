@@ -6,12 +6,7 @@
 		class?: string;
 	}
 
-	let {
-		variant = 'accent',
-		color,
-		size = 'md',
-		class: className = ''
-	}: Props = $props();
+	let { variant = 'accent', color, size = 'md', class: className = '' }: Props = $props();
 </script>
 
 <span

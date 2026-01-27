@@ -4,7 +4,14 @@
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { BigThreeE1RM, AllTimePRs } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
-	import { formatNumber, formatDate, lbsToKg, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import {
+		formatNumber,
+		formatDate,
+		lbsToKg,
+		getChartColors,
+		createTooltipConfig,
+		TOOLTIP_PADDING
+	} from '$lib/utils';
 	import { Loading, Error } from '$lib/components/ui';
 	import { Star } from 'lucide-svelte';
 	import { LIFT_COLORS, PLATE_MILESTONES } from '$lib/config';
@@ -73,25 +80,27 @@
 		const useMetric = unitSystem.current === 'metric';
 		const lifts = ['squat', 'bench', 'deadlift', 'ohp'] as const;
 
-		return lifts.map((lift) => {
-			const pr = allTimePRs[lift].bestE1rm;
-			const liftData = data[lift];
+		return lifts
+			.map((lift) => {
+				const pr = allTimePRs[lift].bestE1rm;
+				const liftData = data[lift];
 
-			// Find the PR point in the history
-			const prPoint = liftData.e1rmHistory.find(
-				(point) => point.date === pr.date || Math.abs(point.e1rmLbs - pr.e1rmLbs) < 0.1
-			);
+				// Find the PR point in the history
+				const prPoint = liftData.e1rmHistory.find(
+					(point) => point.date === pr.date || Math.abs(point.e1rmLbs - pr.e1rmLbs) < 0.1
+				);
 
-			if (!prPoint) return null;
+				if (!prPoint) return null;
 
-			return {
-				lift,
-				date: prPoint.date,
-				value: useMetric ? pr.e1rmKg : pr.e1rmLbs,
-				actualWeight: useMetric ? pr.actualWeightKg : pr.actualWeightLbs,
-				reps: pr.reps
-			};
-		}).filter(Boolean);
+				return {
+					lift,
+					date: prPoint.date,
+					value: useMetric ? pr.e1rmKg : pr.e1rmLbs,
+					actualWeight: useMetric ? pr.actualWeightKg : pr.actualWeightLbs,
+					reps: pr.reps
+				};
+			})
+			.filter(Boolean);
 	}
 
 	// Update chart with current data
@@ -130,7 +139,9 @@
 			// Add PR markers
 			markPoint: {
 				data: prPoints
-					.filter((pr) => pr!.lift === lift.name && visibleLifts[lift.name as keyof typeof visibleLifts])
+					.filter(
+						(pr) => pr!.lift === lift.name && visibleLifts[lift.name as keyof typeof visibleLifts]
+					)
 					.map((pr) => ({
 						name: 'PR',
 						coord: [pr!.date, pr!.value],
@@ -206,7 +217,12 @@
 					paramsArray.forEach((param) => {
 						if (param.seriesName) {
 							const liftName = param.seriesName.toLowerCase();
-							const liftKey = liftName === 'overhead press' ? 'ohp' : liftName === 'bench press' ? 'bench' : liftName;
+							const liftKey =
+								liftName === 'overhead press'
+									? 'ohp'
+									: liftName === 'bench press'
+										? 'bench'
+										: liftName;
 							const liftData = chartData.find((l) => l.name === liftKey);
 
 							if (liftData) {
@@ -364,9 +380,9 @@
 			}
 			chartInstance.on('legendselectchanged', (params: LegendSelectChangedParams) => {
 				const liftMap: Record<string, keyof typeof visibleLifts> = {
-					'Squat': 'squat',
+					Squat: 'squat',
 					'Bench Press': 'bench',
-					'Deadlift': 'deadlift',
+					Deadlift: 'deadlift',
 					'Overhead Press': 'ohp'
 				};
 
@@ -426,7 +442,9 @@
 		<!-- Legend -->
 		<div class="chart-legend">
 			<div class="legend-item">
-				<div class="legend-marker"><Star size={16} strokeWidth={2} fill="var(--accent-gold)" /></div>
+				<div class="legend-marker">
+					<Star size={16} strokeWidth={2} fill="var(--accent-gold)" />
+				</div>
 				<span>All-Time PR</span>
 			</div>
 			<div class="legend-item">

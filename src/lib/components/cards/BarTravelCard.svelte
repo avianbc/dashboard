@@ -29,14 +29,18 @@
 			<div class="lift-item">
 				<div class="lift-name">Bench Press</div>
 				<div class="lift-distance">
-					{isMetric ? data.byLift.bench.totalKm.toFixed(1) : data.byLift.bench.totalMiles.toFixed(1)}
+					{isMetric
+						? data.byLift.bench.totalKm.toFixed(1)
+						: data.byLift.bench.totalMiles.toFixed(1)}
 					{distanceUnit}
 				</div>
 			</div>
 			<div class="lift-item">
 				<div class="lift-name">Squat</div>
 				<div class="lift-distance">
-					{isMetric ? data.byLift.squat.totalKm.toFixed(1) : data.byLift.squat.totalMiles.toFixed(1)}
+					{isMetric
+						? data.byLift.squat.totalKm.toFixed(1)
+						: data.byLift.squat.totalMiles.toFixed(1)}
 					{distanceUnit}
 				</div>
 			</div>

@@ -12,7 +12,8 @@
 
 	// Use shared lift configuration
 	const lifts = LIFTS.map((lift) => ({
-		name: lift.name === 'Overhead Press' ? 'OHP' : lift.name === 'Bench Press' ? 'Bench' : lift.name,
+		name:
+			lift.name === 'Overhead Press' ? 'OHP' : lift.name === 'Bench Press' ? 'Bench' : lift.name,
 		key: lift.key,
 		color: lift.color
 	}));
@@ -70,7 +71,9 @@
 			</tbody>
 		</table>
 	</div>
-	<p class="table-note">All weights in {unitSystem.current === 'imperial' ? 'lbs' : 'kg'}. E1RM = Estimated 1 Rep Max</p>
+	<p class="table-note">
+		All weights in {unitSystem.current === 'imperial' ? 'lbs' : 'kg'}. E1RM = Estimated 1 Rep Max
+	</p>
 </div>
 
 <style>

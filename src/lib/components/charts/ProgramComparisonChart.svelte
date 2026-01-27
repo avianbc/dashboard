@@ -140,7 +140,6 @@
 		gap: var(--space-2);
 	}
 
-
 	.program-name {
 		text-align: left;
 		font-weight: 600;
@@ -171,7 +170,6 @@
 		color: var(--text-primary);
 		font-weight: 600;
 	}
-
 
 	@media (max-width: 768px) {
 		th,

@@ -148,8 +148,8 @@
 	<div bind:this={chartContainer} class="chart-container"></div>
 	<div class="chart-caption">
 		<p>
-			Training frequency patterns over 6+ years showing consistency, gaps, and comeback periods. Best
-			weeks reached 6+ workouts during peak training phases.
+			Training frequency patterns over 6+ years showing consistency, gaps, and comeback periods.
+			Best weeks reached 6+ workouts during peak training phases.
 		</p>
 	</div>
 </div>

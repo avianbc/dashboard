@@ -1,33 +1,33 @@
 import * as echarts from 'echarts/core';
 import { LineChart, BarChart, PieChart, HeatmapChart } from 'echarts/charts';
 import {
-  GridComponent,
-  TooltipComponent,
-  LegendComponent,
-  TitleComponent,
-  CalendarComponent,
-  VisualMapComponent,
-  DataZoomComponent,
-  MarkPointComponent,
-  MarkLineComponent
+	GridComponent,
+	TooltipComponent,
+	LegendComponent,
+	TitleComponent,
+	CalendarComponent,
+	VisualMapComponent,
+	DataZoomComponent,
+	MarkPointComponent,
+	MarkLineComponent
 } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use([
-  LineChart,
-  BarChart,
-  PieChart,
-  HeatmapChart,
-  GridComponent,
-  TooltipComponent,
-  LegendComponent,
-  TitleComponent,
-  CalendarComponent,
-  VisualMapComponent,
-  DataZoomComponent,
-  MarkPointComponent,
-  MarkLineComponent,
-  CanvasRenderer
+	LineChart,
+	BarChart,
+	PieChart,
+	HeatmapChart,
+	GridComponent,
+	TooltipComponent,
+	LegendComponent,
+	TitleComponent,
+	CalendarComponent,
+	VisualMapComponent,
+	DataZoomComponent,
+	MarkPointComponent,
+	MarkLineComponent,
+	CanvasRenderer
 ]);
 
 export { echarts };

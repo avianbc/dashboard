@@ -46,16 +46,15 @@ export function getPRStatusColor(days: number): 'recent' | 'aging' | 'overdue' {
  * Sort array by date (descending by default)
  * Memoized for performance
  */
-export const sortByDate = memoize(<T extends { date: string }>(
-	items: T[],
-	ascending: boolean = false
-): T[] => {
-	return [...items].sort((a, b) => {
-		const dateA = new Date(a.date).getTime();
-		const dateB = new Date(b.date).getTime();
-		return ascending ? dateA - dateB : dateB - dateA;
-	});
-});
+export const sortByDate = memoize(
+	<T extends { date: string }>(items: T[], ascending: boolean = false): T[] => {
+		return [...items].sort((a, b) => {
+			const dateA = new Date(a.date).getTime();
+			const dateB = new Date(b.date).getTime();
+			return ascending ? dateA - dateB : dateB - dateA;
+		});
+	}
+);
 
 /**
  * Find max value in an array

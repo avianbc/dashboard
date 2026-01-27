@@ -4,7 +4,14 @@
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { VolumeTimeSeries } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
-	import { formatNumber, formatDate, lbsToKg, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import {
+		formatNumber,
+		formatDate,
+		lbsToKg,
+		getChartColors,
+		createTooltipConfig,
+		TOOLTIP_PADDING
+	} from '$lib/utils';
 	import { Button, Loading, Error } from '$lib/components/ui';
 	import { Star } from 'lucide-svelte';
 
@@ -154,7 +161,20 @@
 						} else {
 							// Format: YYYY-MM (e.g., 2019-01)
 							const [year, month] = value.split('-');
-							const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+							const monthNames = [
+								'Jan',
+								'Feb',
+								'Mar',
+								'Apr',
+								'May',
+								'Jun',
+								'Jul',
+								'Aug',
+								'Sep',
+								'Oct',
+								'Nov',
+								'Dec'
+							];
 							return `${monthNames[parseInt(month) - 1]} '${year.slice(2)}`;
 						}
 					}
@@ -399,7 +419,9 @@
 				<span>Training Volume</span>
 			</div>
 			<div class="legend-item">
-				<div class="legend-marker"><Star size={16} strokeWidth={2} fill="var(--accent-gold)" /></div>
+				<div class="legend-marker">
+					<Star size={16} strokeWidth={2} fill="var(--accent-gold)" />
+				</div>
 				<span>Best Month Ever</span>
 			</div>
 		</div>

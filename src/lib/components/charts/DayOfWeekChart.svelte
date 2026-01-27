@@ -52,7 +52,10 @@
 
 	function updateChart() {
 		if (!chart || !data || !Array.isArray(data)) {
-			console.error('DayOfWeekChart: Invalid chart or data', { chart: !!chart, data: Array.isArray(data) });
+			console.error('DayOfWeekChart: Invalid chart or data', {
+				chart: !!chart,
+				data: Array.isArray(data)
+			});
 			return;
 		}
 
@@ -65,9 +68,7 @@
 
 		// Sort days in proper order (Monday first)
 		const dayOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-		const sortedData = [...data].sort(
-			(a, b) => dayOrder.indexOf(a.day) - dayOrder.indexOf(b.day)
-		);
+		const sortedData = [...data].sort((a, b) => dayOrder.indexOf(a.day) - dayOrder.indexOf(b.day));
 
 		const option: echarts.EChartsOption = {
 			backgroundColor: 'transparent',

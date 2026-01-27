@@ -2,13 +2,12 @@
 	import { onMount } from 'svelte';
 	import { echarts } from './echarts-setup';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
-	import type { RelativeStrength, BodyWeight } from '$lib/types/training';
+	import type { RelativeStrength } from '$lib/types/training';
 	import { theme } from '$lib/stores';
 	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 
 	interface Props {
 		relativeStrength: RelativeStrength;
-		bodyWeight: BodyWeight;
 	}
 
 	let { relativeStrength }: Props = $props();
@@ -202,9 +201,7 @@
 		<div class="stats">
 			<div class="stat-row">
 				<strong>Best Relative Strength:</strong>
-				<span class="highlight"
-					>{relativeStrength.squat.best.multiple.toFixed(2)}× BW Squat</span
-				>
+				<span class="highlight">{relativeStrength.squat.best.multiple.toFixed(2)}× BW Squat</span>
 			</div>
 			<div class="stat-row">
 				<strong>Current:</strong>

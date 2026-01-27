@@ -233,7 +233,6 @@
 		min-height: 400px;
 	}
 
-
 	.text-accent {
 		color: var(--accent-copper);
 		font-family: 'JetBrains Mono', monospace;

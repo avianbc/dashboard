@@ -33,14 +33,17 @@ dashboard/
 ### Regenerating Data (When You Get a New Database)
 
 1. **Drop your new database into the `data/` folder**
+
    ```bash
    cp /path/to/new/MyApp.db data/MyApp.db
    ```
 
 2. **Run the extraction script**
+
    ```bash
    npm run extract
    ```
+
    This generates three files in `static/data/`:
    - `training_core.json` - Core metrics, PRs, summary stats
    - `training_deferred.json` - Charts, calendar, detailed analytics
@@ -83,6 +86,7 @@ The dashboard implements several optimizations:
 ## Why Manual Data Generation?
 
 The data extraction is **intentionally not integrated into the build process** because:
+
 - The source database (`MyApp.db`) is updated infrequently (when you export from your phone)
 - No need to run expensive data extraction on every build
 - Gives you control over when data is regenerated

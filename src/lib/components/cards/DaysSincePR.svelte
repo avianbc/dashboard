@@ -11,7 +11,8 @@
 
 	// Use shared lift configuration
 	const lifts = LIFTS.map((lift) => ({
-		name: lift.name === 'Overhead Press' ? 'OHP' : lift.name === 'Bench Press' ? 'Bench' : lift.name,
+		name:
+			lift.name === 'Overhead Press' ? 'OHP' : lift.name === 'Bench Press' ? 'Bench' : lift.name,
 		key: lift.key,
 		color: lift.color
 	}));
@@ -33,7 +34,11 @@
 		{#each lifts as lift (lift.key)}
 			{@const days = data[lift.key]}
 			{@const timeInfo = getTimeRange(days)}
-			<Card hover class="pr-card" style="--lift-color: {lift.color}; --status-color: {timeInfo.color}">
+			<Card
+				hover
+				class="pr-card"
+				style="--lift-color: {lift.color}; --status-color: {timeInfo.color}"
+			>
 				<div class="pr-card-header">
 					<span class="lift-name">{lift.name}</span>
 				</div>
@@ -98,7 +103,6 @@
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 	}
-
 
 	@media (max-width: 768px) {
 		.pr-grid {

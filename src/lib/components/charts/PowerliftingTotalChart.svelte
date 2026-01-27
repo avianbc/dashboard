@@ -77,9 +77,7 @@
 
 		// Create a map of dates to e1rms for bench and deadlift
 		const benchMap = new Map(benchData.map((d) => [d.date, isMetric ? d.e1rmKg : d.e1rmLbs]));
-		const deadliftMap = new Map(
-			deadliftData.map((d) => [d.date, isMetric ? d.e1rmKg : d.e1rmLbs])
-		);
+		const deadliftMap = new Map(deadliftData.map((d) => [d.date, isMetric ? d.e1rmKg : d.e1rmLbs]));
 
 		// For each squat entry, find the closest bench and deadlift e1rms
 		const totalOverTime: { date: string; total: number }[] = [];
@@ -289,5 +287,4 @@
 		gap: var(--space-2);
 		margin-top: var(--space-2);
 	}
-
 </style>

@@ -1,11 +1,13 @@
 # Strength Training Dashboard
 
 ## Tech stack:
+
 - Frontend framework: Svelte(Kit), use TypeScript where it adds value. Use PNPM
 - Charting library: D3.js (or ECharts if D3.js is too complex)
 - Icons: Ignore the fact that `extract_data.py` mentions FontAwsome. Independently we will identify an appropriate icon set to use
 
 ## Requirements **IMPORTANT**
+
 - Visualize strength training progress over time
 - Analyze workout data for insights
 - Present data in an engaging dashboard format
@@ -19,6 +21,7 @@
 - Code should be well-documented and maintainable
 
 **Nice to haves**:
+
 - Support multiple data sources/formats in the future
 - Light and dark mode theme support
 - Locale aware date and number formatting
@@ -37,7 +40,7 @@
 ### Instructions
 
 1. I will provide a MyApp.db SQLite database file sourced via the `com.maxworkoutcoach.workouttrainer.workouttrainer` android app. File is sourced via "export database" feature in the app settings.
-    - **Optionally**: Pre-correct stronglifts dates via running `fix_stronglifts_dates.py` first, which outputs a corrected `MyApp.db` file.
+   - **Optionally**: Pre-correct stronglifts dates via running `fix_stronglifts_dates.py` first, which outputs a corrected `MyApp.db` file.
 2. Run `extract_data.py` to generate `training_data.json` from `MyApp.db`.
 3. The `training_data.json` file will be used for further analysis and visualization in the dashboard.
 

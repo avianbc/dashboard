@@ -115,11 +115,7 @@
 	.marker-line {
 		width: 2px;
 		height: 100%;
-		background: linear-gradient(
-			to bottom,
-			var(--accent-copper),
-			var(--bg-card)
-		);
+		background: linear-gradient(to bottom, var(--accent-copper), var(--bg-card));
 		position: absolute;
 		top: 40px;
 		left: 50%;

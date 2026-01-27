@@ -22,9 +22,6 @@
 	<p class="text-secondary text-center max-w-md">{message}</p>
 
 	{#if retry}
-		<Button variant="primary" onclick={retry} class="mt-4">
-			Try Again
-		</Button>
+		<Button variant="primary" onclick={retry} class="mt-4">Try Again</Button>
 	{/if}
 </div>
-
