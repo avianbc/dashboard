@@ -17,6 +17,10 @@
 	let chartContainer: HTMLDivElement;
 	let chart: echarts.ECharts | null = null;
 
+	function isMobile(): boolean {
+		return browser && window.innerWidth <= 768;
+	}
+
 	// React to unit system and theme changes
 	$effect(() => {
 		unitSystem.current;
@@ -141,14 +145,16 @@
 				}
 			},
 			legend: {
-				orient: 'vertical',
-				right: 10,
-				top: '10%',
+				orient: isMobile() ? 'horizontal' : 'vertical',
+				...(isMobile()
+					? { bottom: 10, left: 'center' }
+					: { left: '55%', top: 'center' }),
 				textStyle: {
 					color: chartColors.textPrimary,
 					fontFamily: 'Source Sans 3, sans-serif',
 					fontSize: 13
 				},
+				itemGap: isMobile() ? 10 : 14,
 				formatter: (name: string) => {
 					const item = chartData.find((d) => d.name === name);
 					if (!item) return name;
@@ -159,8 +165,8 @@
 			series: [
 				{
 					type: 'pie',
-					radius: ['45%', '70%'],
-					center: ['40%', '55%'],
+					radius: ['40%', '65%'],
+					center: isMobile() ? ['50%', '40%'] : ['27%', '50%'],
 					avoidLabelOverlap: true,
 					itemStyle: {
 						borderRadius: 4,
@@ -200,6 +206,7 @@
 	function handleResize() {
 		if (chart) {
 			chart.resize();
+			updateChart(); // Re-apply options for responsive layout
 		}
 	}
 </script>
