@@ -30,6 +30,7 @@
 	let chartContainer = $state<HTMLDivElement>();
 	let chartInstance: echarts.ECharts | null = null;
 	let granularity: 'daily' | 'weekly' | 'monthly' = $state('monthly');
+	let showAllTime = $state(true); // true = All Time (default), false = Last 2 Years
 
 	// React to unit system and theme changes
 	$effect(() => {
@@ -40,26 +41,56 @@
 		}
 	});
 
+	// Filter data to last 2 years if showAllTime is false
+	function filterByTimeRange<T>(items: T[], dateGetter: (item: T) => string): T[] {
+		if (showAllTime) return items;
+		
+		const twoYearsAgo = new Date();
+		twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+		
+		return items.filter(item => {
+			const dateStr = dateGetter(item);
+			if (!dateStr) return false;
+			
+			const year = parseInt(dateStr.substring(0, 4));
+			if (isNaN(year)) return false;
+			
+			// Handle ISO week format (YYYY-Wxx)
+			if (dateStr.includes('-W')) {
+				const weekNum = parseInt(dateStr.substring(6, 8) || '1');
+				// Approximate: week 1 = Jan 1, week 52 = Dec 31
+				const itemDate = new Date(year, 0, 1 + (weekNum - 1) * 7);
+				return itemDate >= twoYearsAgo;
+			}
+			
+			// Handle YYYY-MM-DD or YYYY-MM format
+			const month = parseInt(dateStr.substring(5, 7) || '1');
+			const day = parseInt(dateStr.substring(8, 10) || '1');
+			const itemDate = new Date(year, month - 1, day);
+			return itemDate >= twoYearsAgo;
+		});
+	}
+
 	// Get the appropriate data based on granularity
 	function getChartData() {
 		const useMetric = unitSystem.current === 'metric';
 
 		switch (granularity) {
 			case 'daily':
-				return data.daily.map((d) => ({
+				return filterByTimeRange(data.daily, d => d.date).map((d) => ({
 					date: d.date,
 					volume: useMetric ? lbsToKg(d.volumeLbs) : d.volumeLbs,
 					workouts: d.workouts
 				}));
 			case 'weekly':
-				return data.weekly.map((d) => ({
+				return filterByTimeRange(data.weekly, d => d.week).map((d) => ({
 					date: d.week,
 					volume: useMetric ? lbsToKg(d.volumeLbs) : d.volumeLbs,
 					workouts: d.workouts
 				}));
 			case 'monthly':
 			default:
-				return data.monthly.map((d) => ({
+				return filterByTimeRange(data.monthly, d => d.month).map((d) => ({
 					date: d.month,
 					volume: useMetric ? lbsToKg(d.volumeLbs) : d.volumeLbs,
 					workouts: d.workouts
@@ -353,9 +384,12 @@
 		}
 	});
 
-	// Update chart when granularity changes
+	// Update chart when granularity or time range changes
 	$effect(() => {
-		if (chartInstance && granularity) {
+		// Access reactive values to trigger on changes
+		const _granularity = granularity;
+		const _showAllTime = showAllTime;
+		if (chartInstance) {
 			updateChart();
 		}
 	});
@@ -381,7 +415,7 @@
 	<div class="volume-chart-wrapper">
 		<h3 class="section-title">Training Volume Over Time</h3>
 
-		<!-- Granularity Toggle -->
+		<!-- Chart Controls -->
 		<div class="chart-controls">
 			<div class="control-group">
 				<span class="control-label">Granularity:</span>
@@ -391,21 +425,41 @@
 						size="sm"
 						onclick={() => (granularity = 'daily')}
 					>
-						Daily ({data.daily.length})
+						Daily
 					</Button>
 					<Button
 						variant={granularity === 'weekly' ? 'primary' : 'outline'}
 						size="sm"
 						onclick={() => (granularity = 'weekly')}
 					>
-						Weekly ({data.weekly.length})
+						Weekly
 					</Button>
 					<Button
 						variant={granularity === 'monthly' ? 'primary' : 'outline'}
 						size="sm"
 						onclick={() => (granularity = 'monthly')}
 					>
-						Monthly ({data.monthly.length})
+						Monthly
+					</Button>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<span class="control-label">Time Range:</span>
+				<div class="button-group">
+					<Button
+						variant={!showAllTime ? 'primary' : 'outline'}
+						size="sm"
+						onclick={() => (showAllTime = false)}
+					>
+						Last 2 Years
+					</Button>
+					<Button
+						variant={showAllTime ? 'primary' : 'outline'}
+						size="sm"
+						onclick={() => (showAllTime = true)}
+					>
+						All Time
 					</Button>
 				</div>
 			</div>
@@ -441,6 +495,8 @@
 	.chart-controls {
 		display: flex;
 		justify-content: flex-end;
+		gap: var(--space-6);
+		flex-wrap: wrap;
 	}
 
 	.control-group {

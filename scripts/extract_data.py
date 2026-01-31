@@ -364,7 +364,14 @@ def get_exercise_progress(conn):
     return exercise_progress
 
 def calculate_e1rm(weight, reps):
-    """Calculate estimated 1RM using Epley formula."""
+    """Calculate estimated 1RM using Epley formula.
+
+    Note: E1RM formulas become increasingly inaccurate above 5-6 reps.
+    We cap calculations at 8 reps for reasonable accuracy.
+    - 1-5 reps: ±5% accuracy
+    - 6-8 reps: ±10% accuracy
+    - 9+ reps: Poor accuracy, not recommended
+    """
     if reps == 1:
         return weight
     # Epley formula: weight × (1 + reps/30)
@@ -436,8 +443,9 @@ def get_big_three_e1rm(conn):
             weight_kg = row['weightkg'] or 0
             reps = row['reps']
 
-            # Skip sets with more than 10 reps (e1RM formula less accurate)
-            if reps > 10:
+            # Skip sets with more than 8 reps (e1RM formula less accurate)
+            # E1RM accuracy degrades significantly above 6-8 reps
+            if reps > 8:
                 continue
 
             e1rm_lbs = calculate_e1rm(weight_lbs, reps)
@@ -833,7 +841,7 @@ def get_powerlifting_totals(conn):
             JOIN history h ON he.history_id = h.id
             JOIN exercises e ON he.exercise_id = e.id
             WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
-            AND he.reps > 0 AND he.reps <= 10
+            AND he.reps > 0 AND he.reps <= 8
             ORDER BY h.date
         """, name_list)
 
@@ -934,7 +942,7 @@ def get_all_time_prs(conn):
             FROM history_exercises he
             JOIN exercises e ON he.exercise_id = e.id
             WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
-            AND he.reps > 0 AND he.reps <= 10
+            AND he.reps > 0 AND he.reps <= 8
             GROUP BY he.reps
             ORDER BY he.reps
         """, name_list)
