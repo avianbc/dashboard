@@ -57,24 +57,28 @@
 	/* Info variant - neutral, default */
 	.callout-info {
 		background: var(--bg-elevated);
+		border: 1px solid var(--border-subtle);
 	}
 
 	/* Success variant - green tint */
 	.callout-success {
-		background: var(--status-pr);
-		color: var(--bg-deep);
+		background: var(--callout-success-bg, rgba(74, 140, 92, 0.15));
+		color: var(--callout-success-text, var(--text-primary));
+		border: 1px solid var(--callout-success-border, rgba(74, 140, 92, 0.3));
 	}
 
 	/* Warning variant - amber tint */
 	.callout-warning {
-		background: var(--status-aging);
-		color: var(--bg-deep);
+		background: var(--callout-warning-bg, rgba(201, 162, 39, 0.15));
+		color: var(--callout-warning-text, var(--text-primary));
+		border: 1px solid var(--callout-warning-border, rgba(201, 162, 39, 0.3));
 	}
 
 	/* Error variant - red background */
 	.callout-error {
-		background: var(--status-overdue);
+		background: var(--callout-error-bg, rgba(196, 69, 54, 0.15));
 		color: var(--text-primary);
+		border: 1px solid var(--callout-error-border, rgba(196, 69, 54, 0.3));
 	}
 
 	/* Icon styling */

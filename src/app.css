@@ -145,6 +145,16 @@
 	--chart-tooltip-bg: #2d2926;
 	--chart-tooltip-border: #4a4640;
 
+	/* Callout Colors */
+	--callout-success-bg: rgba(74, 140, 92, 0.2);
+	--callout-success-text: var(--text-primary);
+	--callout-success-border: rgba(74, 140, 92, 0.35);
+	--callout-warning-bg: rgba(201, 162, 39, 0.2);
+	--callout-warning-text: var(--text-primary);
+	--callout-warning-border: rgba(201, 162, 39, 0.35);
+	--callout-error-bg: rgba(196, 69, 54, 0.2);
+	--callout-error-border: rgba(196, 69, 54, 0.35);
+
 	/* Heatmap Colors - GitHub-style contribution graph */
 	--heatmap-level-0: #161b22;
 	--heatmap-level-1: #0e4429;
@@ -186,6 +196,16 @@
 	--chart-text: #4a4640;
 	--chart-tooltip-bg: #ffffff;
 	--chart-tooltip-border: #d4d0c8;
+
+	/* Callout Colors - subtle tints for light mode */
+	--callout-success-bg: rgba(74, 140, 92, 0.12);
+	--callout-success-text: #2d5a3a;
+	--callout-success-border: rgba(74, 140, 92, 0.25);
+	--callout-warning-bg: rgba(201, 162, 39, 0.12);
+	--callout-warning-text: #6b5a1a;
+	--callout-warning-border: rgba(201, 162, 39, 0.25);
+	--callout-error-bg: rgba(196, 69, 54, 0.1);
+	--callout-error-border: rgba(196, 69, 54, 0.2);
 
 	/* Heatmap Colors - GitHub-style contribution graph */
 	--heatmap-level-0: #ebedf0;
