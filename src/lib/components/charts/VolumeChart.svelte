@@ -3,7 +3,7 @@
 	import { echarts } from './echarts-setup';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { VolumeTimeSeries } from '$lib/types/training';
-	import { unitSystem } from '$lib/stores';
+	import { unitSystem, theme } from '$lib/stores';
 	import {
 		formatNumber,
 		formatDate,
@@ -31,9 +31,11 @@
 	let chartInstance: echarts.ECharts | null = null;
 	let granularity: 'daily' | 'weekly' | 'monthly' = $state('monthly');
 
-	// React to unit system changes
+	// React to unit system and theme changes
 	$effect(() => {
-		if (chartInstance && unitSystem.current) {
+		unitSystem.current;
+		theme.current;
+		if (chartInstance) {
 			updateChart();
 		}
 	});

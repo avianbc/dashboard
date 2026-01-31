@@ -3,7 +3,7 @@
 	import { echarts } from './echarts-setup';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { BigThreeE1RM, AllTimePRs } from '$lib/types/training';
-	import { unitSystem } from '$lib/stores';
+	import { unitSystem, theme } from '$lib/stores';
 	import {
 		formatNumber,
 		formatDate,
@@ -47,9 +47,11 @@
 	// Use shared plate milestones (only first 4 for chart)
 	const plateMilestones = PLATE_MILESTONES.slice(0, 4);
 
-	// React to unit system changes
+	// React to unit system and theme changes
 	$effect(() => {
-		if (chartInstance && unitSystem.current) {
+		unitSystem.current;
+		theme.current;
+		if (chartInstance) {
 			updateChart();
 		}
 	});

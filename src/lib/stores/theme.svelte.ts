@@ -44,8 +44,9 @@ class ThemeState {
 	}
 
 	toggle() {
-		this.current = this.current === 'dark' ? 'light' : 'dark';
-		applyTheme(this.current);
+		const newTheme = this.current === 'dark' ? 'light' : 'dark';
+		applyTheme(newTheme);
+		this.current = newTheme;
 	}
 
 	get isDark() {

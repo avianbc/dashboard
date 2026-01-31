@@ -2,7 +2,7 @@
 	import { echarts } from './echarts-setup';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
-	import { unitSystem } from '$lib/stores';
+	import { unitSystem, theme } from '$lib/stores';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
 	import { Callout } from '$lib/components/ui';
@@ -17,9 +17,11 @@
 	let chartContainer: HTMLDivElement;
 	let chart: echarts.ECharts | null = null;
 
-	// Subscribe to unit system changes
+	// React to unit system and theme changes
 	$effect(() => {
-		if (chart && browser && unitSystem.current) {
+		unitSystem.current;
+		theme.current;
+		if (chart && browser) {
 			updateChart();
 		}
 	});
@@ -143,7 +145,7 @@
 				right: 10,
 				top: '10%',
 				textStyle: {
-					color: '#f5f2eb',
+					color: chartColors.textPrimary,
 					fontFamily: 'Source Sans 3, sans-serif',
 					fontSize: 13
 				},
@@ -162,7 +164,7 @@
 					avoidLabelOverlap: true,
 					itemStyle: {
 						borderRadius: 4,
-						borderColor: '#0f0e0d',
+						borderColor: chartColors.chartTooltipBg,
 						borderWidth: 2
 					},
 					label: {
@@ -174,7 +176,7 @@
 							fontSize: 16,
 							fontWeight: 'bold',
 							fontFamily: 'JetBrains Mono, monospace',
-							color: '#f5f2eb',
+							color: chartColors.textPrimary,
 							formatter: (params: CallbackDataParams) => {
 								const percent = ((params.value / totalVolume) * 100).toFixed(1);
 								return `${percent}%`;
@@ -192,7 +194,7 @@
 			]
 		};
 
-		chart.setOption(option);
+		chart.setOption(option, { notMerge: true });
 	}
 
 	function handleResize() {

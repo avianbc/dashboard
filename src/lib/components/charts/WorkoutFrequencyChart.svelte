@@ -17,8 +17,10 @@
 	let chartContainer: HTMLDivElement;
 	let chart: echarts.ECharts;
 
+	// React to theme changes
 	$effect(() => {
-		if (chart && theme.current) {
+		theme.current;
+		if (chart) {
 			updateChart();
 		}
 	});
@@ -141,7 +143,7 @@
 			]
 		};
 
-		chart.setOption(option);
+		chart.setOption(option, { notMerge: true });
 	}
 </script>
 

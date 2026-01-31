@@ -3,6 +3,8 @@
  * Provides standardized tooltip config and color helpers for ECharts
  */
 
+import { theme } from '$lib/stores';
+
 export interface ChartColors {
 	// Accent colors
 	accentCopper: string;
@@ -37,29 +39,37 @@ export interface TooltipConfig {
  */
 export const TOOLTIP_PADDING = 8;
 
+// Color palettes for light and dark themes
+const DARK_COLORS: ChartColors = {
+	accentCopper: '#c17f59',
+	accentGold: '#c9a227',
+	accentSilver: '#a8a29e',
+	accentBronze: '#8b5a3c',
+	textPrimary: '#f5f2eb',
+	textSecondary: '#a09a91',
+	textMuted: '#6b6560',
+	chartTooltipBg: '#1a1816',
+	chartTooltipBorder: '#454238'
+};
+
+const LIGHT_COLORS: ChartColors = {
+	accentCopper: '#a86840',
+	accentGold: '#a8860d',
+	accentSilver: '#78716c',
+	accentBronze: '#6d4530',
+	textPrimary: '#1a1816',
+	textSecondary: '#57534e',
+	textMuted: '#7a756e',
+	chartTooltipBg: '#faf9f7',
+	chartTooltipBorder: '#d4d0c8'
+};
+
 /**
- * Get computed CSS color values for charts
- * Reads from CSS custom properties defined in app.css
+ * Get color values for charts based on current theme
+ * Uses direct color values instead of CSS variables for reliability
  */
 export function getChartColors(): ChartColors {
-	const computedStyle = getComputedStyle(document.documentElement);
-
-	return {
-		// Accent colors
-		accentCopper: computedStyle.getPropertyValue('--accent-copper').trim(),
-		accentGold: computedStyle.getPropertyValue('--accent-gold').trim(),
-		accentSilver: computedStyle.getPropertyValue('--accent-silver').trim(),
-		accentBronze: computedStyle.getPropertyValue('--accent-bronze').trim(),
-
-		// Text colors
-		textPrimary: computedStyle.getPropertyValue('--text-primary').trim(),
-		textSecondary: computedStyle.getPropertyValue('--text-secondary').trim(),
-		textMuted: computedStyle.getPropertyValue('--text-muted').trim(),
-
-		// Chart-specific colors
-		chartTooltipBg: computedStyle.getPropertyValue('--chart-tooltip-bg').trim(),
-		chartTooltipBorder: computedStyle.getPropertyValue('--chart-tooltip-border').trim()
-	};
+	return theme.current === 'dark' ? DARK_COLORS : LIGHT_COLORS;
 }
 
 /**
