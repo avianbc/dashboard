@@ -1,14 +1,23 @@
+node_modules
 
-.claude/settings.local.json
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
 
-# Node
-node_modules/
-package-lock.json
+# OS
+.DS_Store
+Thumbs.db
 
-# Python
-__pycache__/
-*.pyc
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
 
-# Generated files
-# training_data.json
-# MyApp.db
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

@@ -1,0 +1,48 @@
+<script lang="ts">
+	import { clsx } from 'clsx';
+	import type { ComponentType } from 'svelte';
+	import { Inbox } from 'lucide-svelte';
+	import Button from './Button.svelte';
+
+	interface Props {
+		class?: string;
+		title?: string;
+		message?: string;
+		icon?: ComponentType;
+		action?: {
+			label: string;
+			onclick: () => void;
+		};
+	}
+
+	let {
+		class: className = '',
+		title = 'No Data',
+		message = 'There is no data to display.',
+		icon: Icon = Inbox,
+		action
+	}: Props = $props();
+</script>
+
+<div class={clsx('flex flex-col items-center justify-center gap-4 p-8 text-center', className)}>
+	<div class="text-text-muted">
+		<Icon size={48} strokeWidth={1.5} />
+	</div>
+
+	<div class="space-y-2">
+		<h3 class="text-xl text-secondary">{title}</h3>
+		<p class="text-muted text-sm max-w-sm">{message}</p>
+	</div>
+
+	{#if action}
+		<Button variant="primary" onclick={action.onclick} class="mt-2">
+			{action.label}
+		</Button>
+	{/if}
+</div>
+
+<style>
+	.space-y-2 > * + * {
+		margin-top: var(--space-2);
+	}
+</style>
