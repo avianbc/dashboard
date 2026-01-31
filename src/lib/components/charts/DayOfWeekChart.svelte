@@ -4,7 +4,7 @@
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { DayOfWeekStats } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
-	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING, DAY_COLORS } from '$lib/utils';
 	import { Callout } from '$lib/components/ui';
 	import { Calendar } from 'lucide-svelte';
 
@@ -137,18 +137,7 @@
 					type: 'bar',
 					data: sortedData.map((d) => d.count),
 					itemStyle: {
-						color: (params: CallbackDataParams) => {
-							const colors = [
-								'#c44536', // Monday - red
-								'#c9a227', // Tuesday - amber
-								'#4a8c5c', // Wednesday - green
-								'#4a7c9b', // Thursday - blue
-								'#c17f59', // Friday - copper
-								'#a8a299', // Saturday - gray
-								'#6b6560' // Sunday - muted
-							];
-							return colors[params.dataIndex];
-						}
+						color: (params: CallbackDataParams) => DAY_COLORS[params.dataIndex]
 					},
 					emphasis: {
 						itemStyle: {

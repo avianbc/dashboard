@@ -4,7 +4,7 @@
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { RelativeStrength } from '$lib/types/training';
 	import { theme } from '$lib/stores';
-	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING, liftColors } from '$lib/utils';
 	import { Callout } from '$lib/components/ui';
 	import { TrendingUp } from 'lucide-svelte';
 
@@ -150,11 +150,11 @@
 					type: 'line',
 					data: squatData.map((d) => d.bwMultiple),
 					lineStyle: {
-						color: '#c44536',
+						color: liftColors.squat,
 						width: 2
 					},
 					itemStyle: {
-						color: '#c44536'
+						color: liftColors.squat
 					},
 					emphasis: {
 						focus: 'series'
@@ -165,11 +165,11 @@
 					type: 'line',
 					data: benchData.map((d) => d.bwMultiple),
 					lineStyle: {
-						color: '#4a7c9b',
+						color: liftColors.bench,
 						width: 2
 					},
 					itemStyle: {
-						color: '#4a7c9b'
+						color: liftColors.bench
 					},
 					emphasis: {
 						focus: 'series'
@@ -180,11 +180,11 @@
 					type: 'line',
 					data: deadliftData.map((d) => d.bwMultiple),
 					lineStyle: {
-						color: '#4a8c5c',
+						color: liftColors.deadlift,
 						width: 2
 					},
 					itemStyle: {
-						color: '#4a8c5c'
+						color: liftColors.deadlift
 					},
 					emphasis: {
 						focus: 'series'

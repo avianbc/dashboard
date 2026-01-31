@@ -4,6 +4,42 @@
  */
 
 import { theme } from '$lib/stores';
+import { LIFT_COLORS } from '$lib/config';
+
+// Re-export lift colors for convenient chart access
+export { LIFT_COLORS } from '$lib/config';
+
+/**
+ * Lift color configuration for charts
+ * Single source of truth - imported from $lib/config/lifts.ts
+ */
+export const liftColors = LIFT_COLORS;
+
+/**
+ * Day of week color palette
+ * Uses lift colors + accent colors for visual variety
+ * Intentionally reuses design tokens for consistency
+ */
+export const DAY_COLORS = [
+	LIFT_COLORS.squat,   // Monday - red
+	LIFT_COLORS.ohp,     // Tuesday - amber
+	LIFT_COLORS.deadlift, // Wednesday - green
+	LIFT_COLORS.bench,   // Thursday - blue
+	'#c17f59',           // Friday - copper (accent)
+	'#a8a299',           // Saturday - gray (neutral)
+	'#6b6560'            // Sunday - muted (neutral)
+] as const;
+
+/**
+ * Accent colors for charts (non-lift specific)
+ * Use these for secondary/tertiary data series
+ */
+export const accentColors = {
+	copper: '#c17f59',
+	gold: '#d4a84b',
+	silver: '#a8a299',
+	bronze: '#8b5a3c'
+} as const;
 
 export interface ChartColors {
 	// Accent colors

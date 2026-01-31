@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { PlateMilestones } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores/units.svelte';
-	import { Trophy, Lock } from 'lucide-svelte';
+	import { Trophy, Lock, Check } from 'lucide-svelte';
+	import { LIFTS as LIFT_CONFIG } from '$lib/config';
 
 	interface Props {
 		data: PlateMilestones;
@@ -18,12 +19,12 @@
 		{ num: 5, lbs: 495, kg: 225 }
 	];
 
-	// Lifts in display order
+	// Lifts in display order with colors from design tokens
 	const LIFTS = [
-		{ key: 'squat' as const, label: 'Squat', emoji: '🏋️' },
-		{ key: 'bench' as const, label: 'Bench', emoji: '💪' },
-		{ key: 'deadlift' as const, label: 'Deadlift', emoji: '🔥' },
-		{ key: 'ohp' as const, label: 'OHP', emoji: '🎯' }
+		{ key: 'squat' as const, label: 'Squat', color: LIFT_CONFIG[0].color },
+		{ key: 'bench' as const, label: 'Bench', color: LIFT_CONFIG[1].color },
+		{ key: 'deadlift' as const, label: 'Deadlift', color: LIFT_CONFIG[2].color },
+		{ key: 'ohp' as const, label: 'OHP', color: LIFT_CONFIG[3].color }
 	];
 
 	function formatDate(dateStr: string): string {
@@ -56,7 +57,7 @@
 			<div class="lift-label"></div>
 			{#each PLATES as plate}
 				<div class="plate-header">
-					<span class="plate-num">{plate.num}×🍽️</span>
+					<span class="plate-num">{plate.num}<span class="plate-suffix">pl</span></span>
 					<span class="plate-weight">{unitSystem.current === 'imperial' ? plate.lbs : plate.kg}{unitSystem.current === 'imperial' ? '' : 'kg'}</span>
 				</div>
 			{/each}
@@ -64,9 +65,9 @@
 
 		<!-- Lift rows -->
 		{#each LIFTS as lift}
-			<div class="grid-row">
+			<div class="grid-row" style="--lift-color: {lift.color}">
 				<div class="lift-label">
-					<span class="lift-emoji">{lift.emoji}</span>
+					<span class="lift-indicator" style="background-color: {lift.color}"></span>
 					<span class="lift-name">{lift.label}</span>
 				</div>
 				{#each PLATES as plate}
@@ -74,7 +75,7 @@
 					<div class="milestone-cell" class:achieved={milestone} class:locked={!milestone}>
 						{#if milestone}
 							<div class="achieved-content">
-								<span class="check">✓</span>
+								<Check size={18} strokeWidth={3} class="check-icon" />
 								<span class="date">{formatDate(milestone.date)}</span>
 							</div>
 						{:else}
@@ -89,7 +90,7 @@
 	</div>
 
 	<p class="legend">
-		<span class="legend-item"><span class="check">✓</span> Achieved</span>
+		<span class="legend-item"><Check size={12} strokeWidth={3} class="legend-check" /> Achieved</span>
 		<span class="legend-item"><Lock size={12} /> Locked</span>
 	</p>
 </div>
@@ -148,6 +149,13 @@
 		font-size: var(--text-sm);
 		font-weight: var(--font-weight-semibold);
 		color: var(--text-primary);
+		font-family: var(--font-mono);
+	}
+
+	.plate-suffix {
+		font-size: var(--text-xs);
+		color: var(--text-muted);
+		margin-left: 1px;
 	}
 
 	.plate-weight {
@@ -162,8 +170,11 @@
 		min-height: 40px;
 	}
 
-	.lift-emoji {
-		font-size: var(--text-lg);
+	.lift-indicator {
+		width: 10px;
+		height: 10px;
+		border-radius: var(--radius-full);
+		flex-shrink: 0;
 	}
 
 	.lift-name {
@@ -182,11 +193,11 @@
 	}
 
 	.milestone-cell.achieved {
-		background: linear-gradient(135deg, 
-			hsl(142 71% 45% / 0.15),
-			hsl(142 71% 45% / 0.08)
+		background: linear-gradient(135deg,
+			color-mix(in srgb, var(--lift-color) 20%, transparent),
+			color-mix(in srgb, var(--lift-color) 10%, transparent)
 		);
-		border: 1px solid hsl(142 71% 45% / 0.3);
+		border: 1px solid color-mix(in srgb, var(--lift-color) 40%, transparent);
 	}
 
 	.milestone-cell.locked {
@@ -201,10 +212,8 @@
 		gap: 2px;
 	}
 
-	.check {
-		font-size: var(--text-lg);
-		color: hsl(142 71% 45%);
-		font-weight: var(--font-weight-bold);
+	.achieved-content :global(.check-icon) {
+		color: var(--lift-color);
 	}
 
 	.date {
@@ -230,6 +239,10 @@
 		display: flex;
 		align-items: center;
 		gap: var(--space-1);
+	}
+
+	.legend-item :global(.legend-check) {
+		color: var(--status-recent);
 	}
 
 	/* Responsive adjustments */

@@ -4,7 +4,7 @@
 	import { browser } from '$app/environment';
 	import { unitSystem, theme } from '$lib/stores';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
-	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING } from '$lib/utils';
+	import { getChartColors, createTooltipConfig, TOOLTIP_PADDING, liftColors } from '$lib/utils';
 	import { Callout } from '$lib/components/ui';
 	import type { ExerciseProgress } from '$lib/types/training';
 
@@ -87,13 +87,13 @@
 
 	function getExerciseColor(name: string): string {
 		// Color mapping based on exercise type
-		// Using actual color values from design spec (PLAN.md)
+		// Uses centralized lift colors from design tokens
 		const nameLower = name.toLowerCase();
 
-		if (nameLower.includes('squat')) return '#c44536'; // Deep red
-		if (nameLower.includes('bench')) return '#4a7c9b'; // Steel blue
-		if (nameLower.includes('deadlift')) return '#4a8c5c'; // Forest green
-		if (nameLower.includes('overhead')) return '#c9a227'; // Amber
+		if (nameLower.includes('squat')) return liftColors.squat;
+		if (nameLower.includes('bench')) return liftColors.bench;
+		if (nameLower.includes('deadlift')) return liftColors.deadlift;
+		if (nameLower.includes('overhead')) return liftColors.ohp;
 		if (nameLower.includes('row')) return '#8b5a3c'; // Brown for rows
 		if (nameLower.includes('incline')) return '#5a8bb0'; // Lighter blue for incline
 		if (nameLower.includes('curl')) return '#6b4e71'; // Purple for curls
