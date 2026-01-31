@@ -12,7 +12,7 @@
 		createTooltipConfig,
 		TOOLTIP_PADDING
 	} from '$lib/utils';
-	import { Button, Loading, Error } from '$lib/components/ui';
+	import { Loading, Error, SegmentedControl } from '$lib/components/ui';
 	import { Star } from 'lucide-svelte';
 
 	// Props
@@ -413,54 +413,31 @@
 	</div>
 {:else}
 	<div class="volume-chart-wrapper">
-		<h3 class="section-title">Training Volume Over Time</h3>
-
-		<!-- Chart Controls -->
-		<div class="chart-controls">
-			<div class="control-group">
-				<span class="control-label">Granularity:</span>
-				<div class="button-group">
-					<Button
-						variant={granularity === 'daily' ? 'primary' : 'outline'}
+		<div class="section-header">
+			<div class="header-row">
+				<h3 class="section-title">Training Volume Over Time</h3>
+				<div class="chart-controls">
+					<SegmentedControl
+						options={[
+							{ value: 'daily', label: 'Daily' },
+							{ value: 'weekly', label: 'Weekly' },
+							{ value: 'monthly', label: 'Monthly' }
+						]}
+						value={granularity}
+						onchange={(v) => (granularity = v as 'daily' | 'weekly' | 'monthly')}
 						size="sm"
-						onclick={() => (granularity = 'daily')}
-					>
-						Daily
-					</Button>
-					<Button
-						variant={granularity === 'weekly' ? 'primary' : 'outline'}
+						aria-label="Select granularity"
+					/>
+					<SegmentedControl
+						options={[
+							{ value: 'recent', label: '2 Years' },
+							{ value: 'all', label: 'All Time' }
+						]}
+						value={showAllTime ? 'all' : 'recent'}
+						onchange={(v) => (showAllTime = v === 'all')}
 						size="sm"
-						onclick={() => (granularity = 'weekly')}
-					>
-						Weekly
-					</Button>
-					<Button
-						variant={granularity === 'monthly' ? 'primary' : 'outline'}
-						size="sm"
-						onclick={() => (granularity = 'monthly')}
-					>
-						Monthly
-					</Button>
-				</div>
-			</div>
-
-			<div class="control-group">
-				<span class="control-label">Time Range:</span>
-				<div class="button-group">
-					<Button
-						variant={!showAllTime ? 'primary' : 'outline'}
-						size="sm"
-						onclick={() => (showAllTime = false)}
-					>
-						Last 2 Years
-					</Button>
-					<Button
-						variant={showAllTime ? 'primary' : 'outline'}
-						size="sm"
-						onclick={() => (showAllTime = true)}
-					>
-						All Time
-					</Button>
+						aria-label="Select time range"
+					/>
 				</div>
 			</div>
 		</div>
@@ -492,28 +469,31 @@
 		gap: var(--space-4);
 	}
 
+	.section-header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.header-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--space-3);
+	}
+
+	.section-title {
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		letter-spacing: 0.03em;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
 	.chart-controls {
 		display: flex;
-		justify-content: flex-end;
-		gap: var(--space-6);
-		flex-wrap: wrap;
-	}
-
-	.control-group {
-		display: flex;
-		align-items: center;
 		gap: var(--space-3);
-		flex-wrap: wrap;
-	}
-
-	.control-label {
-		font-size: 0.875rem;
-		color: var(--text-secondary);
-	}
-
-	.button-group {
-		display: flex;
-		gap: var(--space-2);
 		flex-wrap: wrap;
 	}
 
@@ -549,38 +529,20 @@
 
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
-		.chart-controls {
-			justify-content: center;
-		}
-
-		.control-group {
+		.header-row {
 			flex-direction: column;
-			align-items: stretch;
+			align-items: flex-start;
+			gap: var(--space-3);
+		}
+
+		.chart-controls {
+			flex-direction: column;
 			gap: var(--space-2);
-		}
-
-		.control-label {
-			text-align: center;
-		}
-
-		.button-group {
-			justify-content: center;
 		}
 
 		.volume-chart-container {
 			height: 400px;
 			min-height: 300px;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.button-group {
-			flex-direction: column;
-			width: 100%;
-		}
-
-		.button-group :global(button) {
-			width: 100%;
 		}
 	}
 </style>

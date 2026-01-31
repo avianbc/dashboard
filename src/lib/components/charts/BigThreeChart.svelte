@@ -12,7 +12,7 @@
 		createTooltipConfig,
 		TOOLTIP_PADDING
 	} from '$lib/utils';
-	import { Loading, Error } from '$lib/components/ui';
+	import { Loading, Error, SegmentedControl } from '$lib/components/ui';
 	import { Star } from 'lucide-svelte';
 	import { LIFT_COLORS, PLATE_MILESTONES } from '$lib/config';
 
@@ -516,36 +516,18 @@
 					<h3 class="section-title">Strength Progression (E1RM)</h3>
 					<p class="section-subtitle">Big Three + OHP Estimated 1-Rep Max Over Time</p>
 				</div>
-				<div class="time-range-selectors">
-					<button
-						class="range-btn"
-						class:active={selectedTimeRange === '3M'}
-						onclick={() => setTimeRange('3M')}
-					>
-						3M
-					</button>
-					<button
-						class="range-btn"
-						class:active={selectedTimeRange === '6M'}
-						onclick={() => setTimeRange('6M')}
-					>
-						6M
-					</button>
-					<button
-						class="range-btn"
-						class:active={selectedTimeRange === '1Y'}
-						onclick={() => setTimeRange('1Y')}
-					>
-						1Y
-					</button>
-					<button
-						class="range-btn"
-						class:active={selectedTimeRange === 'ALL'}
-						onclick={() => setTimeRange('ALL')}
-					>
-						All
-					</button>
-				</div>
+				<SegmentedControl
+					options={[
+						{ value: '3M', label: '3M' },
+						{ value: '6M', label: '6M' },
+						{ value: '1Y', label: '1Y' },
+						{ value: 'ALL', label: 'All' }
+					]}
+					value={selectedTimeRange}
+					onchange={(v) => setTimeRange(v as '3M' | '6M' | '1Y' | 'ALL')}
+					size="sm"
+					aria-label="Select time range"
+				/>
 			</div>
 			<!-- Compact legend for special markers -->
 			<div class="compact-legend">
@@ -598,38 +580,6 @@
 		color: var(--text-secondary);
 	}
 
-	.time-range-selectors {
-		display: flex;
-		gap: var(--space-1);
-		background: var(--bg-secondary);
-		padding: 4px;
-		border-radius: var(--radius-md);
-	}
-
-	.range-btn {
-		padding: 6px 12px;
-		font-size: 0.75rem;
-		font-weight: 600;
-		font-family: 'JetBrains Mono', monospace;
-		color: var(--text-secondary);
-		background: transparent;
-		border: none;
-		border-radius: var(--radius-sm);
-		cursor: pointer;
-		transition: all 0.15s ease;
-	}
-
-	.range-btn:hover {
-		color: var(--text-primary);
-		background: var(--bg-tertiary);
-	}
-
-	.range-btn.active {
-		color: var(--text-primary);
-		background: var(--bg-primary);
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-	}
-
 	.compact-legend {
 		display: flex;
 		gap: var(--space-4);
@@ -663,10 +613,7 @@
 	@media (max-width: 768px) {
 		.header-row {
 			flex-direction: column;
-		}
-
-		.time-range-selectors {
-			align-self: flex-start;
+			align-items: flex-start;
 		}
 
 		.big-three-chart-container {

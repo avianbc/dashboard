@@ -12,9 +12,9 @@
 		Trophy,
 		BarChart3,
 		TrendingUp,
-		Calendar,
-		Filter
+		Calendar
 	} from 'lucide-svelte';
+	import { SegmentedControl } from '$lib/components/ui';
 
 	interface Props {
 		notableWorkouts: NotableWorkout[];
@@ -166,21 +166,18 @@
 		</div>
 	</div>
 
-	<!-- Filter chips -->
-	<div class="filters" role="group" aria-label="Filter timeline events">
-		{#each filterOptions as filter}
-			<button
-				class="filter-chip"
-				class:active={activeFilter === filter}
-				onclick={() => {
-					activeFilter = filter;
-					showAll = false;
-				}}
-				aria-pressed={activeFilter === filter}
-			>
-				{getCategoryLabel(filter)}
-			</button>
-		{/each}
+	<!-- Filter controls -->
+	<div class="filters">
+		<SegmentedControl
+			options={filterOptions.map(f => ({ value: f, label: getCategoryLabel(f) }))}
+			value={activeFilter}
+			onchange={(v) => {
+				activeFilter = v as EventCategory;
+				showAll = false;
+			}}
+			size="sm"
+			aria-label="Filter timeline events"
+		/>
 	</div>
 
 	<!-- Timeline -->
@@ -255,34 +252,7 @@
 	}
 
 	.filters {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-2);
 		margin-bottom: var(--space-6);
-	}
-
-	.filter-chip {
-		padding: var(--space-2) var(--space-3);
-		border-radius: var(--radius-full);
-		border: 1px solid var(--border-subtle);
-		background: var(--bg-card);
-		color: var(--text-secondary);
-		font-family: 'Source Sans 3', sans-serif;
-		font-size: 0.8125rem;
-		font-weight: 500;
-		cursor: pointer;
-		transition: all 0.15s ease;
-	}
-
-	.filter-chip:hover {
-		border-color: var(--accent-copper);
-		color: var(--text-primary);
-	}
-
-	.filter-chip.active {
-		background: var(--accent-copper);
-		border-color: var(--accent-copper);
-		color: var(--bg-primary);
 	}
 
 	.timeline {
@@ -406,15 +376,6 @@
 	}
 
 	@media (max-width: 640px) {
-		.filters {
-			gap: var(--space-1);
-		}
-
-		.filter-chip {
-			padding: var(--space-1) var(--space-2);
-			font-size: 0.75rem;
-		}
-
 		.marker-icon {
 			width: 32px;
 			height: 32px;

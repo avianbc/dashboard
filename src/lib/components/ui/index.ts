@@ -8,3 +8,4 @@ export { default as Error } from './Error.svelte';
 export { default as Empty } from './Empty.svelte';
 export { default as LazyChart } from './LazyChart.svelte';
 export { default as AnimatedNumber } from './AnimatedNumber.svelte';
+export { default as SegmentedControl } from './SegmentedControl.svelte';
