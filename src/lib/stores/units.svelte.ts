@@ -1,66 +1,46 @@
 import { browser } from '$app/environment';
 import type { UnitSystem } from '$lib/types/training';
 
-const STORAGE_KEY = 'training-dashboard-unit-system';
-const DEFAULT_UNIT: UnitSystem = 'imperial'; // Default based on data source
+// Countries that primarily use imperial units (USA, Liberia, Myanmar)
+const IMPERIAL_LOCALES = ['en-US', 'en-LR', 'my-MM'];
 
 /**
- * Load unit system preference from localStorage
+ * Detect user's preferred unit system based on their locale.
+ * Most of the world uses metric; only USA, Liberia, and Myanmar use imperial.
  */
-function loadUnitSystem(): UnitSystem {
-	if (!browser) return DEFAULT_UNIT;
+function detectUnitSystem(): UnitSystem {
+	if (!browser) return 'metric';
 
 	try {
-		const stored = localStorage.getItem(STORAGE_KEY);
-		if (stored === 'imperial' || stored === 'metric') {
-			return stored;
+		// Get user's locale from browser
+		const locale = navigator.language || navigator.languages?.[0];
+		if (locale) {
+			// Check if locale matches an imperial country
+			if (IMPERIAL_LOCALES.some((imp) => locale.startsWith(imp.split('-')[0]) && locale.includes(imp.split('-')[1]))) {
+				return 'imperial';
+			}
+			// Simpler check: if it's en-US specifically
+			if (locale === 'en-US' || locale.startsWith('en-US')) {
+				return 'imperial';
+			}
 		}
 	} catch (error) {
-		console.warn('Failed to load unit system from localStorage:', error);
+		console.warn('Failed to detect locale for unit system:', error);
 	}
 
-	return DEFAULT_UNIT;
-}
-
-/**
- * Save unit system preference to localStorage
- */
-function saveUnitSystem(unitSystem: UnitSystem): void {
-	if (!browser) return;
-
-	try {
-		localStorage.setItem(STORAGE_KEY, unitSystem);
-	} catch (error) {
-		console.warn('Failed to save unit system to localStorage:', error);
-	}
+	// Default to metric (used by ~95% of world population)
+	return 'metric';
 }
 
 /**
  * Reactive unit system state using Svelte 5 runes
+ * Auto-detects based on user's locale
  */
 class UnitSystemState {
-	current = $state<UnitSystem>(loadUnitSystem());
-
-	set(value: UnitSystem) {
-		this.current = value;
-		saveUnitSystem(value);
-	}
+	current = $state<UnitSystem>(detectUnitSystem());
 
 	toggle() {
-		const newValue = this.current === 'imperial' ? 'metric' : 'imperial';
-		this.set(newValue);
-	}
-
-	setImperial() {
-		this.set('imperial');
-	}
-
-	setMetric() {
-		this.set('metric');
-	}
-
-	reset() {
-		this.set(DEFAULT_UNIT);
+		this.current = this.current === 'imperial' ? 'metric' : 'imperial';
 	}
 
 	get isMetric() {

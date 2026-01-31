@@ -2,38 +2,12 @@ import { browser } from '$app/environment';
 
 export type Theme = 'dark' | 'light';
 
-const STORAGE_KEY = 'training-dashboard-theme';
-const DEFAULT_THEME: Theme = 'dark'; // "Iron Archive" dark mode as default
-
 /**
- * Load theme preference from localStorage
+ * Get the system's preferred color scheme
  */
-function loadTheme(): Theme {
-	if (!browser) return DEFAULT_THEME;
-
-	try {
-		const stored = localStorage.getItem(STORAGE_KEY);
-		if (stored === 'dark' || stored === 'light') {
-			return stored;
-		}
-	} catch (error) {
-		console.warn('Failed to load theme from localStorage:', error);
-	}
-
-	return DEFAULT_THEME;
-}
-
-/**
- * Save theme preference to localStorage
- */
-function saveTheme(theme: Theme): void {
-	if (!browser) return;
-
-	try {
-		localStorage.setItem(STORAGE_KEY, theme);
-	} catch (error) {
-		console.warn('Failed to save theme to localStorage:', error);
-	}
+function getSystemTheme(): Theme {
+	if (!browser) return 'dark';
+	return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
 /**
@@ -51,38 +25,27 @@ function applyTheme(theme: Theme): void {
 
 /**
  * Reactive theme state using Svelte 5 runes
+ * Always follows system preference
  */
 class ThemeState {
-	current = $state<Theme>(loadTheme());
+	current = $state<Theme>(getSystemTheme());
 
 	constructor() {
-		// Apply initial theme
 		if (browser) {
+			// Apply initial theme
 			applyTheme(this.current);
+
+			// Listen for system theme changes
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+				this.current = e.matches ? 'dark' : 'light';
+				applyTheme(this.current);
+			});
 		}
 	}
 
-	set(value: Theme) {
-		this.current = value;
-		saveTheme(value);
-		applyTheme(value);
-	}
-
 	toggle() {
-		const newValue = this.current === 'dark' ? 'light' : 'dark';
-		this.set(newValue);
-	}
-
-	setDark() {
-		this.set('dark');
-	}
-
-	setLight() {
-		this.set('light');
-	}
-
-	reset() {
-		this.set(DEFAULT_THEME);
+		this.current = this.current === 'dark' ? 'light' : 'dark';
+		applyTheme(this.current);
 	}
 
 	get isDark() {
