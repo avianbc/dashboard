@@ -29,7 +29,7 @@
 
 	function formatDate(dateStr: string): string {
 		const date = new Date(dateStr);
-		return date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+		return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 	}
 
 	function getMilestone(liftKey: keyof PlateMilestones, plateNum: number) {
@@ -57,8 +57,8 @@
 			<div class="lift-label"></div>
 			{#each PLATES as plate}
 				<div class="plate-header">
-					<span class="plate-num">{plate.num}<span class="plate-suffix">pl</span></span>
-					<span class="plate-weight">{unitSystem.current === 'imperial' ? plate.lbs : plate.kg}{unitSystem.current === 'imperial' ? '' : 'kg'}</span>
+					<span class="plate-num">{plate.num} <span class="plate-suffix">{plate.num === 1 ? 'plate' : 'plates'}</span></span>
+					<span class="plate-weight">{unitSystem.current === 'imperial' ? plate.lbs : plate.kg} {unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
 				</div>
 			{/each}
 		</div>

@@ -33,8 +33,8 @@
 <style>
 	.callout {
 		display: flex;
-		align-items: center;
-		gap: var(--space-2);
+		align-items: flex-start;
+		gap: var(--space-3);
 		padding: var(--space-4);
 		border-radius: var(--radius-md);
 		font-size: 0.875rem;
@@ -84,6 +84,9 @@
 	/* Icon styling */
 	.callout :global(.callout-icon) {
 		flex-shrink: 0;
+		width: 18px;
+		height: 18px;
+		margin-top: 2px;
 	}
 
 	.callout-error :global(.callout-icon) {
