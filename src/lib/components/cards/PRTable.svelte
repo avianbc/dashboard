@@ -19,7 +19,7 @@
 	}));
 
 	// Get common rep ranges we care about
-	const repRanges = [1, 3, 5, 8, 10];
+	const repRanges = [1, 3, 5, 8];
 
 	interface LiftData {
 		repPRs: Record<number, { weightLbs: number }>;
