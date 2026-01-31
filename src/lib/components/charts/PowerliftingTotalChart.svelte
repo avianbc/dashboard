@@ -285,4 +285,10 @@
 		flex-wrap: wrap;
 		gap: var(--space-2);
 	}
+
+	@media (max-width: 768px) {
+		.chart-container {
+			height: 300px;
+		}
+	}
 </style>

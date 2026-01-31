@@ -257,4 +257,19 @@
 		font-weight: 600;
 		font-family: 'JetBrains Mono', monospace;
 	}
+
+	@media (max-width: 768px) {
+		.chart-container {
+			height: 300px;
+		}
+
+		.stat-row {
+			flex-direction: column;
+			gap: var(--space-1);
+		}
+
+		.stat-row strong {
+			display: block;
+		}
+	}
 </style>

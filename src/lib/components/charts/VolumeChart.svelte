@@ -438,6 +438,29 @@
 		gap: var(--space-4);
 	}
 
+	.chart-controls {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.control-group {
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
+		flex-wrap: wrap;
+	}
+
+	.control-label {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+	}
+
+	.button-group {
+		display: flex;
+		gap: var(--space-2);
+		flex-wrap: wrap;
+	}
+
 	.volume-chart-container {
 		width: 100%;
 		height: 500px;
@@ -447,11 +470,61 @@
 		justify-content: center;
 	}
 
+	.chart-legend {
+		display: flex;
+		gap: var(--space-4);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+	}
+
+	.legend-color {
+		width: 12px;
+		height: 12px;
+		border-radius: 2px;
+	}
+
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
+		.chart-controls {
+			justify-content: center;
+		}
+
+		.control-group {
+			flex-direction: column;
+			align-items: stretch;
+			gap: var(--space-2);
+		}
+
+		.control-label {
+			text-align: center;
+		}
+
+		.button-group {
+			justify-content: center;
+		}
+
 		.volume-chart-container {
 			height: 400px;
 			min-height: 300px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.button-group {
+			flex-direction: column;
+			width: 100%;
+		}
+
+		.button-group :global(button) {
+			width: 100%;
 		}
 	}
 </style>

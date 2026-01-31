@@ -176,4 +176,10 @@
 		height: 400px;
 		margin-bottom: var(--space-4);
 	}
+
+	@media (max-width: 768px) {
+		.chart-container {
+			height: 300px;
+		}
+	}
 </style>
