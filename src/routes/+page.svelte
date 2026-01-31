@@ -251,7 +251,10 @@
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Time Training</div>
-						<div class="stat-value">{formatNumber(summary.totalHours)}</div>
+						<div class="stat-value">
+							{formatNumber(summary.totalHours)}
+							<span class="unit-label">hours</span>
+						</div>
 						<div class="stat-subtitle">
 							{(summary.totalHours / 24).toFixed(0)} days of your life
 						</div>
