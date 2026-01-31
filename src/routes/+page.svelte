@@ -369,14 +369,19 @@
 			</div>
 		</section>
 
-		<!-- Volume Over Time Chart -->
-		<section class="mb-12" aria-label="Volume Over Time">
-			<Card padding="lg">
-				<LazyChart minHeight="400px">
-					<VolumeChart data={volumeTimeSeries} />
-				</LazyChart>
-			</Card>
-		</section>
+		<!-- Personal Records (promoted - crown jewels of lifting data) -->
+		<div class="two-column-layout mb-12" aria-label="Personal Records">
+			<section>
+				<Card padding="lg">
+					<PRTable data={allTimePRs} />
+				</Card>
+			</section>
+			<section>
+				<Card padding="lg">
+					<DaysSincePR data={daysSinceLastPR} />
+				</Card>
+			</section>
+		</div>
 
 		<!-- Big Three + OHP Progression Chart -->
 		<section class="mb-12" aria-label="Big Three and OHP Progression">
@@ -397,7 +402,35 @@
 			</Card>
 		</section>
 
-		<!-- Show loading indicator or error for deferred data sections -->
+		<!-- Powerlifting Total Over Time (promoted - key progress metric) -->
+		<section class="mb-12" aria-label="Powerlifting Total Progress">
+			<Card padding="lg">
+				{#if deferredDataLoading}
+					<div
+						style="min-height: 400px; display: flex; align-items: center; justify-content: center;"
+					>
+						<Loading size="lg" text="Loading powerlifting total data..." />
+					</div>
+				{:else if deferredDataError}
+					<ErrorComponent title="Failed to Load Chart" message={deferredDataError} />
+				{:else}
+					<LazyChart minHeight="400px">
+						<PowerliftingTotalChart {powerliftingTotals} bigThreeData={bigThreeE1RM} />
+					</LazyChart>
+				{/if}
+			</Card>
+		</section>
+
+		<!-- Volume Over Time Chart -->
+		<section class="mb-12" aria-label="Volume Over Time">
+			<Card padding="lg">
+				<LazyChart minHeight="400px">
+					<VolumeChart data={volumeTimeSeries} />
+				</LazyChart>
+			</Card>
+		</section>
+
+		<!-- Deferred data sections -->
 		{#if deferredDataLoading}
 			<section class="mb-12">
 				<Card padding="lg">
@@ -415,6 +448,33 @@
 				</Card>
 			</section>
 		{:else}
+			<!-- Calendar Heatmap -->
+			<section class="mb-12" aria-label="Workout Calendar">
+				<Card padding="lg">
+					<LazyChart minHeight="300px">
+						<CalendarHeatmap data={workoutCalendar} />
+					</LazyChart>
+				</Card>
+			</section>
+
+			<!-- Workout Pattern Analysis (grouped) -->
+			<div class="two-column-layout mb-12">
+				<section aria-label="Workout Frequency">
+					<Card padding="lg">
+						<LazyChart minHeight="400px">
+							<WorkoutFrequencyChart data={volumeTimeSeries} />
+						</LazyChart>
+					</Card>
+				</section>
+				<section aria-label="Day of Week Distribution">
+					<Card padding="lg">
+						<LazyChart minHeight="400px">
+							<DayOfWeekChart data={workoutsByDayOfWeek} />
+						</LazyChart>
+					</Card>
+				</section>
+			</div>
+
 			<!-- Exercise Distribution Chart -->
 			<section class="mb-12" aria-label="Exercise Distribution">
 				<Card padding="lg">
@@ -424,104 +484,15 @@
 				</Card>
 			</section>
 
-			<!-- Calendar Heatmap -->
-			<section class="mb-12" aria-label="Workout Calendar">
-				<Card padding="lg">
-					<LazyChart minHeight="300px">
-						<CalendarHeatmap data={workoutCalendar} />
-					</LazyChart>
-				</Card>
-			</section>
-		{/if}
-
-		<!-- Phase 4: Personal Records & Recent Activity -->
-		<div class="two-column-layout mb-12">
-			<!-- Personal Records Section -->
-			<section>
-				<Card padding="lg">
-					<PRTable data={allTimePRs} />
-				</Card>
-			</section>
-
-			<!-- Days Since Last PR -->
-			<section>
-				<Card padding="lg">
-					<DaysSincePR data={daysSinceLastPR} />
-				</Card>
-			</section>
-		</div>
-
-		<!-- Recent Activity Section and remaining deferred data sections -->
-		{#if deferredDataLoading}
-			<section class="mb-12">
-				<Card padding="lg">
-					<div
-						style="min-height: 300px; display: flex; align-items: center; justify-content: center;"
-					>
-						<Loading size="lg" text="Loading workout analytics..." />
-					</div>
-				</Card>
-			</section>
-		{:else if deferredDataError}
-			<section class="mb-12">
-				<Card padding="lg">
-					<ErrorComponent title="Failed to Load Analytics" message={deferredDataError} />
-				</Card>
-			</section>
-		{:else}
-			<section class="mb-12">
+			<!-- Recent Activity -->
+			<section class="mb-12" aria-label="Recent Notable Workouts">
 				<Card padding="lg">
 					<RecentActivity data={notableWorkouts} />
 				</Card>
 			</section>
 
-			<!-- Workout Frequency Analysis -->
-			<section class="mb-12">
-				<Card padding="lg">
-					<LazyChart minHeight="400px">
-						<WorkoutFrequencyChart data={volumeTimeSeries} />
-					</LazyChart>
-				</Card>
-			</section>
-
-			<!-- Two-column layout: Day of Week + Powerlifting Total -->
-			<div class="two-column-layout mb-12">
-				<section>
-					<Card padding="lg">
-						<LazyChart minHeight="400px">
-							<DayOfWeekChart data={workoutsByDayOfWeek} />
-						</LazyChart>
-					</Card>
-				</section>
-				<section>
-					<Card padding="lg">
-						<LazyChart minHeight="400px">
-							<PowerliftingTotalChart {powerliftingTotals} bigThreeData={bigThreeE1RM} />
-						</LazyChart>
-					</Card>
-				</section>
-			</div>
-
-			<!-- Two-column layout: Bar Travel + Relative Strength -->
-			<div class="two-column-layout mb-12">
-				<section>
-					<Card padding="lg">
-						<LazyChart minHeight="400px">
-							<BarTravelCard data={barTravel} />
-						</LazyChart>
-					</Card>
-				</section>
-				<section>
-					<Card padding="lg">
-						<LazyChart minHeight="400px">
-							<RelativeStrengthChart {relativeStrength} />
-						</LazyChart>
-					</Card>
-				</section>
-			</div>
-
 			<!-- Program Comparison -->
-			<section class="mb-12">
+			<section class="mb-12" aria-label="Program Comparison">
 				<Card padding="lg">
 					<LazyChart minHeight="400px">
 						<ProgramComparisonChart data={programs} />
@@ -530,16 +501,34 @@
 			</section>
 
 			<!-- Milestones Timeline -->
-			<section class="mb-12">
+			<section class="mb-12" aria-label="Achievement Timeline">
 				<Card padding="lg">
 					<MilestonesTimeline data={milestones} />
 				</Card>
 			</section>
 
 			<!-- Plate Milestones Grid -->
-			<section class="mb-12">
+			<section class="mb-12" aria-label="Plate Milestones">
 				<Card padding="lg">
 					<PlateMilestonesGrid data={plateMilestones} />
+				</Card>
+			</section>
+
+			<!-- Fun Stats (demoted) -->
+			<section class="mb-12" aria-label="Bar Travel Statistics">
+				<Card padding="lg">
+					<LazyChart minHeight="400px">
+						<BarTravelCard data={barTravel} />
+					</LazyChart>
+				</Card>
+			</section>
+
+			<!-- Relative Strength (demoted - sparse bodyweight data) -->
+			<section class="mb-12" aria-label="Relative Strength">
+				<Card padding="lg">
+					<LazyChart minHeight="400px">
+						<RelativeStrengthChart {relativeStrength} />
+					</LazyChart>
 				</Card>
 			</section>
 		{/if}
