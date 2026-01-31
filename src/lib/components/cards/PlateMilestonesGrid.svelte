@@ -1,0 +1,255 @@
+<script lang="ts">
+	import type { PlateMilestones } from '$lib/types/training';
+	import { unitSystem } from '$lib/stores/units.svelte';
+	import { Trophy, Lock } from 'lucide-svelte';
+
+	interface Props {
+		data: PlateMilestones;
+	}
+
+	let { data }: Props = $props();
+
+	// Plate numbers and their weights
+	const PLATES = [
+		{ num: 1, lbs: 135, kg: 60 },
+		{ num: 2, lbs: 225, kg: 100 },
+		{ num: 3, lbs: 315, kg: 140 },
+		{ num: 4, lbs: 405, kg: 180 },
+		{ num: 5, lbs: 495, kg: 225 }
+	];
+
+	// Lifts in display order
+	const LIFTS = [
+		{ key: 'squat' as const, label: 'Squat', emoji: '🏋️' },
+		{ key: 'bench' as const, label: 'Bench', emoji: '💪' },
+		{ key: 'deadlift' as const, label: 'Deadlift', emoji: '🔥' },
+		{ key: 'ohp' as const, label: 'OHP', emoji: '🎯' }
+	];
+
+	function formatDate(dateStr: string): string {
+		const date = new Date(dateStr);
+		return date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+	}
+
+	function getMilestone(liftKey: keyof PlateMilestones, plateNum: number) {
+		const milestones = data[liftKey];
+		return milestones?.[plateNum.toString()] || null;
+	}
+
+	function getWeight(plateNum: number): string {
+		const plate = PLATES.find(p => p.num === plateNum);
+		if (!plate) return '';
+		return unitSystem.current === 'imperial' ? `${plate.lbs}` : `${plate.kg}`;
+	}
+</script>
+
+<div class="plate-milestones">
+	<div class="header">
+		<Trophy size={24} class="icon" />
+		<h3>Plate Milestones</h3>
+	</div>
+	<p class="subtitle">Working sets with standard plate loadings</p>
+
+	<div class="grid">
+		<!-- Header row with plate numbers -->
+		<div class="grid-header">
+			<div class="lift-label"></div>
+			{#each PLATES as plate}
+				<div class="plate-header">
+					<span class="plate-num">{plate.num}×🍽️</span>
+					<span class="plate-weight">{unitSystem.current === 'imperial' ? plate.lbs : plate.kg}{unitSystem.current === 'imperial' ? '' : 'kg'}</span>
+				</div>
+			{/each}
+		</div>
+
+		<!-- Lift rows -->
+		{#each LIFTS as lift}
+			<div class="grid-row">
+				<div class="lift-label">
+					<span class="lift-emoji">{lift.emoji}</span>
+					<span class="lift-name">{lift.label}</span>
+				</div>
+				{#each PLATES as plate}
+					{@const milestone = getMilestone(lift.key, plate.num)}
+					<div class="milestone-cell" class:achieved={milestone} class:locked={!milestone}>
+						{#if milestone}
+							<div class="achieved-content">
+								<span class="check">✓</span>
+								<span class="date">{formatDate(milestone.date)}</span>
+							</div>
+						{:else}
+							<div class="locked-content">
+								<Lock size={16} />
+							</div>
+						{/if}
+					</div>
+				{/each}
+			</div>
+		{/each}
+	</div>
+
+	<p class="legend">
+		<span class="legend-item"><span class="check">✓</span> Achieved</span>
+		<span class="legend-item"><Lock size={12} /> Locked</span>
+	</p>
+</div>
+
+<style>
+	.plate-milestones {
+		padding: var(--space-4);
+	}
+
+	.header {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		margin-bottom: var(--space-1);
+	}
+
+	.header :global(.icon) {
+		color: var(--accent-gold);
+	}
+
+	.header h3 {
+		margin: 0;
+		font-size: var(--text-xl);
+		font-weight: var(--font-weight-bold);
+		color: var(--text-primary);
+	}
+
+	.subtitle {
+		margin: 0 0 var(--space-6) 0;
+		color: var(--text-tertiary);
+		font-size: var(--text-sm);
+	}
+
+	.grid {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.grid-header,
+	.grid-row {
+		display: grid;
+		grid-template-columns: 100px repeat(5, 1fr);
+		gap: var(--space-2);
+		align-items: center;
+	}
+
+	.plate-header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2px;
+	}
+
+	.plate-num {
+		font-size: var(--text-sm);
+		font-weight: var(--font-weight-semibold);
+		color: var(--text-primary);
+	}
+
+	.plate-weight {
+		font-size: var(--text-xs);
+		color: var(--text-tertiary);
+	}
+
+	.lift-label {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		min-height: 40px;
+	}
+
+	.lift-emoji {
+		font-size: var(--text-lg);
+	}
+
+	.lift-name {
+		font-size: var(--text-sm);
+		font-weight: var(--font-weight-medium);
+		color: var(--text-primary);
+	}
+
+	.milestone-cell {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 56px;
+		border-radius: var(--radius-md);
+		transition: all var(--transition-fast);
+	}
+
+	.milestone-cell.achieved {
+		background: linear-gradient(135deg, 
+			hsl(142 71% 45% / 0.15),
+			hsl(142 71% 45% / 0.08)
+		);
+		border: 1px solid hsl(142 71% 45% / 0.3);
+	}
+
+	.milestone-cell.locked {
+		background: var(--bg-elevated);
+		border: 1px dashed var(--border-subtle);
+	}
+
+	.achieved-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2px;
+	}
+
+	.check {
+		font-size: var(--text-lg);
+		color: hsl(142 71% 45%);
+		font-weight: var(--font-weight-bold);
+	}
+
+	.date {
+		font-size: var(--text-xs);
+		color: var(--text-secondary);
+	}
+
+	.locked-content {
+		color: var(--text-tertiary);
+		opacity: 0.5;
+	}
+
+	.legend {
+		display: flex;
+		gap: var(--space-6);
+		justify-content: center;
+		margin-top: var(--space-4);
+		font-size: var(--text-xs);
+		color: var(--text-tertiary);
+	}
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+		gap: var(--space-1);
+	}
+
+	/* Responsive adjustments */
+	@media (max-width: 640px) {
+		.grid-header,
+		.grid-row {
+			grid-template-columns: 80px repeat(5, 1fr);
+			gap: var(--space-1);
+		}
+
+		.lift-name {
+			display: none;
+		}
+
+		.milestone-cell {
+			height: 48px;
+		}
+
+		.plate-num {
+			font-size: var(--text-xs);
+		}
+	}
+</style>

@@ -150,14 +150,19 @@ export interface Milestone {
 export interface PlateMilestone {
 	weightLbs: number;
 	weightKg: number;
+	actualWeightLbs: number;
+	actualWeightKg: number;
 	date: string;
 }
 
+/** Plate milestones keyed by plate number (1-5) */
+export type PlateMilestoneMap = Record<string, PlateMilestone>;
+
 export interface PlateMilestones {
-	squat: PlateMilestone[];
-	bench: PlateMilestone[];
-	deadlift: PlateMilestone[];
-	ohp: PlateMilestone[];
+	squat: PlateMilestoneMap;
+	bench: PlateMilestoneMap;
+	deadlift: PlateMilestoneMap;
+	ohp: PlateMilestoneMap;
 }
 
 export interface PowerliftingTotal {
