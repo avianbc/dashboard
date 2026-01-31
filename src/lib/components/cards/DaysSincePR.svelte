@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { DaysSinceLastPR } from '$lib/types/training';
-	import { Card, Badge } from '$lib/components/ui';
+	import { Card } from '$lib/components/ui';
 	import { LIFTS } from '$lib/config';
 
 	interface Props {
@@ -16,16 +16,6 @@
 		key: lift.key,
 		color: lift.color
 	}));
-
-	function getTimeRange(days: number): { range: string; color: string } {
-		if (days < 90) {
-			return { range: '< 3 months', color: 'var(--status-recent)' };
-		} else if (days < 180) {
-			return { range: '3-6 months', color: 'var(--status-aging)' };
-		} else {
-			return { range: '6+ months', color: 'var(--status-overdue)' };
-		}
-	}
 </script>
 
 <div class="days-since-pr">
@@ -33,20 +23,18 @@
 	<div class="pr-grid">
 		{#each lifts as lift (lift.key)}
 			{@const days = data[lift.key]}
-			{@const timeInfo = getTimeRange(days)}
 			<Card
 				hover
 				class="pr-card"
-				style="--lift-color: {lift.color}; --status-color: {timeInfo.color}"
+				style="--lift-color: {lift.color}"
 			>
 				<div class="pr-card-header">
 					<span class="lift-name">{lift.name}</span>
 				</div>
-				<div class="days-value">{days}</div>
-				<div class="days-label">days</div>
-				<Badge variant="status" color={timeInfo.color}>
-					{timeInfo.range}
-				</Badge>
+				<div class="days-display">
+					<span class="days-value">{days}</span>
+					<span class="days-label">days ago</span>
+				</div>
 			</Card>
 		{/each}
 	</div>
@@ -78,30 +66,33 @@
 	}
 
 	.lift-name {
-		font-family: 'Source Sans 3', sans-serif;
-		font-size: 0.875rem;
-		font-weight: 600;
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		font-weight: var(--font-weight-semibold);
 		color: var(--text-primary);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
+	}
+
+	.days-display {
+		display: flex;
+		align-items: baseline;
+		justify-content: center;
+		gap: var(--space-2);
 	}
 
 	.days-value {
-		font-family: 'JetBrains Mono', monospace;
-		font-size: 2.5rem;
-		font-weight: bold;
+		font-family: var(--font-mono);
+		font-size: var(--text-4xl);
+		font-weight: var(--font-weight-bold);
 		color: var(--text-primary);
 		line-height: 1;
-		margin-bottom: var(--space-1);
 	}
 
 	.days-label {
-		font-family: 'Source Sans 3', sans-serif;
-		font-size: 0.75rem;
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
 		color: var(--text-muted);
-		margin-bottom: var(--space-3);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
 	}
 
 	@media (max-width: 768px) {
@@ -110,7 +101,7 @@
 		}
 
 		.days-value {
-			font-size: 2rem;
+			font-size: var(--text-3xl);
 		}
 	}
 
