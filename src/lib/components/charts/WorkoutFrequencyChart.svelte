@@ -40,6 +40,68 @@
 		};
 	});
 
+	function aggregateToMonthly(weeklyData: Array<{ week: string; workouts: number }>) {
+		const monthlyMap = new Map<string, number>();
+
+		for (const week of weeklyData) {
+			// Parse ISO week format (e.g., "2019-W03")
+			const match = week.week.match(/(\d{4})-W(\d{2})/);
+			if (!match) continue;
+
+			const year = parseInt(match[1]);
+			const weekNum = parseInt(match[2]);
+
+			// Approximate month from week number (rough but effective)
+			const month = Math.min(11, Math.floor((weekNum - 1) / 4.33));
+			const monthKey = `${year}-${String(month + 1).padStart(2, '0')}`;
+
+			monthlyMap.set(monthKey, (monthlyMap.get(monthKey) || 0) + week.workouts);
+		}
+
+		// Get all month keys and find the range
+		const sortedKeys = Array.from(monthlyMap.keys()).sort();
+		if (sortedKeys.length === 0) return [];
+
+		const startKey = sortedKeys[0];
+		const endKey = sortedKeys[sortedKeys.length - 1];
+
+		// Generate all months from start to end, filling gaps with zeros
+		const result: Array<{ month: string; workouts: number }> = [];
+		let [currentYear, currentMonth] = startKey.split('-').map(Number);
+		const [endYear, endMonth] = endKey.split('-').map(Number);
+
+		while (currentYear < endYear || (currentYear === endYear && currentMonth <= endMonth)) {
+			const monthKey = `${currentYear}-${String(currentMonth).padStart(2, '0')}`;
+			result.push({
+				month: monthKey,
+				workouts: monthlyMap.get(monthKey) || 0
+			});
+
+			// Move to next month
+			currentMonth++;
+			if (currentMonth > 12) {
+				currentMonth = 1;
+				currentYear++;
+			}
+		}
+
+		return result;
+	}
+
+	function calculateMovingAverage(data: number[], windowSize: number): (number | null)[] {
+		return data.map((_, index) => {
+			if (index < windowSize - 1) return null;
+			const window = data.slice(index - windowSize + 1, index + 1);
+			return window.reduce((sum, val) => sum + val, 0) / windowSize;
+		});
+	}
+
+	function formatMonth(monthKey: string): string {
+		const [year, month] = monthKey.split('-');
+		const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		return `${monthNames[parseInt(month) - 1]} '${year.slice(2)}`;
+	}
+
 	function updateChart() {
 		const isDark = theme.current === 'dark';
 		const textColor = isDark ? '#f5f2eb' : '#1a1816';
@@ -47,59 +109,79 @@
 
 		const chartColors = getChartColors();
 
-		// Use weekly data for frequency analysis
-		const weeklyData = data.weekly;
+		// Aggregate weekly data to monthly for cleaner visualization
+		const monthlyData = aggregateToMonthly(data.weekly);
+		const workoutValues = monthlyData.map((d) => d.workouts);
+		const movingAvg = calculateMovingAverage(workoutValues, 3);
 
 		const option: EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
 				...createTooltipConfig(chartColors),
-				formatter: (params: CallbackDataParams) => {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'shadow'
+				},
+				formatter: (params: CallbackDataParams | CallbackDataParams[]) => {
 					const paramsArray = Array.isArray(params) ? params : [params];
-					const data = paramsArray[0];
-					const week = data.axisValue;
-					const workouts = data.value;
+					const monthData = paramsArray[0];
+					const avgData = paramsArray.find((p) => p.seriesName === '3-Month Avg');
 
-					// Parse ISO week format for display
-					const match = week.match(/(\d{4})-W(\d{2})/);
-					const displayWeek = match ? `Week ${match[2]}, ${match[1]}` : week;
+					const monthKey = (monthData as CallbackDataParams & { axisValue?: string }).axisValue || '';
+					const workouts = monthData.value as number;
+					const avg = avgData?.value as number | undefined;
 
 					return `<div style="padding: ${TOOLTIP_PADDING}px;">
-						<div style="font-weight: bold; margin-bottom: 4px;">${displayWeek}</div>
-						<div>${workouts} workout${workouts !== 1 ? 's' : ''}</div>
+						<div style="font-weight: bold; margin-bottom: 4px;">${formatMonth(monthKey)}</div>
+						<div style="display: flex; align-items: center; gap: 6px;">
+							<span style="display: inline-block; width: 10px; height: 10px; background: #c17f59; border-radius: 2px;"></span>
+							${workouts} workout${workouts !== 1 ? 's' : ''}
+						</div>
+						${avg !== undefined && avg !== null ? `<div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+							<span style="display: inline-block; width: 10px; height: 2px; background: #7c9885;"></span>
+							Avg: ${avg.toFixed(1)}/month
+						</div>` : ''}
 					</div>`;
 				}
+			},
+			legend: {
+				show: true,
+				top: 0,
+				right: 0,
+				textStyle: {
+					color: textColor
+				},
+				data: ['Workouts', '3-Month Avg']
 			},
 			grid: {
 				left: '3%',
 				right: '4%',
 				bottom: '3%',
-				top: '3%'
+				top: '10%',
+				containLabel: true
 			},
 			xAxis: {
 				type: 'category',
-				boundaryGap: false,
-				data: weeklyData.map((d) => d.week),
+				boundaryGap: true,
+				data: monthlyData.map((d) => d.month),
 				axisLabel: {
 					color: subtleColor,
-					interval: 'auto',
-					formatter: (value: string) => {
-						// Parse ISO week format (e.g., "2019-W03")
-						const match = value.match(/(\d{4})-W(\d{2})/);
-						if (!match) return value;
-
-						const year = match[1];
-						const weekNum = match[2];
-
-						// Show year change or first week, otherwise just show every few weeks
-						const showYear = weekNum === '01' || weekNum === '02';
-						return showYear ? `W${weekNum} '${year.slice(2)}` : `W${weekNum}`;
-					}
+					interval: (index: number) => {
+						// Show label every 3 months, and always on January
+						const month = monthlyData[index]?.month;
+						if (!month) return false;
+						const monthNum = parseInt(month.split('-')[1]);
+						return monthNum === 1 || monthNum === 7; // Jan and Jul
+					},
+					formatter: (value: string) => formatMonth(value)
 				},
 				axisLine: {
 					lineStyle: {
 						color: isDark ? '#454238' : '#d4d0c8'
 					}
+				},
+				axisTick: {
+					alignWithLabel: true
 				}
 			},
 			yAxis: {
@@ -129,16 +211,33 @@
 				{
 					name: 'Workouts',
 					type: 'bar',
-					data: weeklyData.map((d) => d.workouts),
+					data: workoutValues,
 					itemStyle: {
-						color: '#c17f59'
+						color: '#c17f59',
+						borderRadius: [2, 2, 0, 0]
 					},
 					emphasis: {
 						itemStyle: {
 							color: '#d4936d'
 						}
 					},
-					barWidth: '60%'
+					barMaxWidth: 20
+				},
+				{
+					name: '3-Month Avg',
+					type: 'line',
+					data: movingAvg,
+					smooth: true,
+					symbol: 'none',
+					lineStyle: {
+						color: '#7c9885',
+						width: 2
+					},
+					emphasis: {
+						lineStyle: {
+							width: 3
+						}
+					}
 				}
 			]
 		};
@@ -152,8 +251,8 @@
 	<div bind:this={chartContainer} class="chart-container"></div>
 	<Callout variant="info" icon={Activity} borderAccent>
 		<p>
-			Training frequency patterns over 6+ years showing consistency, gaps, and comeback periods.
-			Best weeks reached 6+ workouts during peak training phases.
+			Monthly training volume over 6+ years with a 3-month moving average trend line. Clear
+			visualization of consistency periods, gaps, and training intensity phases.
 		</p>
 	</Callout>
 </div>

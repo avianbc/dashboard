@@ -41,6 +41,53 @@
 		ohp: true
 	});
 
+	// Time range state for quick selectors
+	let selectedTimeRange = $state<'3M' | '6M' | '1Y' | 'ALL'>('ALL');
+
+	// Calculate date range based on selection
+	function getTimeRangePercentage(): { start: number; end: number } {
+		if (selectedTimeRange === 'ALL') return { start: 0, end: 100 };
+
+		// Get the full date range from data
+		const allDates = data.squat.e1rmHistory.map(p => new Date(p.date).getTime());
+		const minDate = Math.min(...allDates);
+		const maxDate = Math.max(...allDates);
+		const totalRange = maxDate - minDate;
+
+		const now = maxDate; // Use latest data point as "now"
+		let startDate: number;
+
+		switch (selectedTimeRange) {
+			case '3M':
+				startDate = now - (90 * 24 * 60 * 60 * 1000);
+				break;
+			case '6M':
+				startDate = now - (180 * 24 * 60 * 60 * 1000);
+				break;
+			case '1Y':
+				startDate = now - (365 * 24 * 60 * 60 * 1000);
+				break;
+			default:
+				return { start: 0, end: 100 };
+		}
+
+		const startPercent = Math.max(0, ((startDate - minDate) / totalRange) * 100);
+		return { start: startPercent, end: 100 };
+	}
+
+	// Handle time range button click
+	function setTimeRange(range: '3M' | '6M' | '1Y' | 'ALL') {
+		selectedTimeRange = range;
+		if (chartInstance) {
+			const { start, end } = getTimeRangePercentage();
+			chartInstance.dispatchAction({
+				type: 'dataZoom',
+				start,
+				end
+			});
+		}
+	}
+
 	// Use shared lift colors
 	const liftColors = LIFT_COLORS;
 
@@ -119,24 +166,52 @@
 		const { textPrimary, textSecondary, textMuted } = colors;
 
 		// Build series for each lift
-		const liftSeries = chartData.map((lift) => ({
+		const liftSeries = chartData.map((lift) => {
+			const color = liftColors[lift.name as keyof typeof liftColors];
+			const lastPoint = lift.data[lift.data.length - 1];
+
+			return {
 			name: lift.displayName,
 			type: 'line',
 			data: lift.data.map((d) => [d.date, d.value]),
 			smooth: true,
 			showSymbol: false,
 			lineStyle: {
-				color: liftColors[lift.name as keyof typeof liftColors],
-				width: 2
+				color: color,
+				width: 2.5
 			},
 			itemStyle: {
-				color: liftColors[lift.name as keyof typeof liftColors]
+				color: color
+			},
+			// Add subtle area fill
+			areaStyle: {
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 0,
+					y2: 1,
+					colorStops: [
+						{ offset: 0, color: color + '25' },
+						{ offset: 1, color: color + '05' }
+					]
+				}
 			},
 			emphasis: {
 				focus: 'series',
 				lineStyle: {
-					width: 3
+					width: 4
 				}
+			},
+			// End-of-line label with current value
+			endLabel: {
+				show: true,
+				formatter: () => `${formatNumber(lastPoint?.value ?? 0)}`,
+				color: color,
+				fontFamily: 'JetBrains Mono, monospace',
+				fontSize: 11,
+				fontWeight: 'bold',
+				offset: [5, 0]
 			},
 			// Add PR markers
 			markPoint: {
@@ -163,7 +238,7 @@
 						}
 					}))
 			}
-		}));
+		}});
 
 		// Add plate milestone lines as a series
 		const plateMilestoneSeries = {
@@ -273,9 +348,10 @@
 			},
 			grid: {
 				left: '3%',
-				right: '4%',
+				right: '8%',
 				bottom: '15%',
-				top: '15%'
+				top: '12%',
+				containLabel: true
 			},
 			xAxis: {
 				type: 'time',
@@ -435,26 +511,57 @@
 {:else}
 	<div class="big-three-chart-wrapper">
 		<div class="section-header">
-			<h3 class="section-title">Strength Progression (E1RM)</h3>
-			<p class="section-subtitle">Big Three + OHP Estimated 1-Rep Max Over Time</p>
+			<div class="header-row">
+				<div class="title-group">
+					<h3 class="section-title">Strength Progression (E1RM)</h3>
+					<p class="section-subtitle">Big Three + OHP Estimated 1-Rep Max Over Time</p>
+				</div>
+				<div class="time-range-selectors">
+					<button
+						class="range-btn"
+						class:active={selectedTimeRange === '3M'}
+						onclick={() => setTimeRange('3M')}
+					>
+						3M
+					</button>
+					<button
+						class="range-btn"
+						class:active={selectedTimeRange === '6M'}
+						onclick={() => setTimeRange('6M')}
+					>
+						6M
+					</button>
+					<button
+						class="range-btn"
+						class:active={selectedTimeRange === '1Y'}
+						onclick={() => setTimeRange('1Y')}
+					>
+						1Y
+					</button>
+					<button
+						class="range-btn"
+						class:active={selectedTimeRange === 'ALL'}
+						onclick={() => setTimeRange('ALL')}
+					>
+						All
+					</button>
+				</div>
+			</div>
+			<!-- Compact legend for special markers -->
+			<div class="compact-legend">
+				<span class="legend-item-inline">
+					<Star size={14} strokeWidth={2} fill="var(--accent-gold)" color="var(--accent-gold)" />
+					PR
+				</span>
+				<span class="legend-item-inline">
+					<span class="dashed-line"></span>
+					Plate Milestones
+				</span>
+			</div>
 		</div>
 
 		<!-- Chart Container -->
 		<div class="big-three-chart-container" bind:this={chartContainer}></div>
-
-		<!-- Legend -->
-		<div class="chart-legend">
-			<div class="legend-item">
-				<div class="legend-marker">
-					<Star size={16} strokeWidth={2} fill="var(--accent-gold)" />
-				</div>
-				<span>All-Time PR</span>
-			</div>
-			<div class="legend-item">
-				<div class="legend-dashed"></div>
-				<span>Plate Milestones</span>
-			</div>
-		</div>
 	</div>
 {/if}
 
@@ -463,10 +570,24 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-4);
+		gap: var(--space-3);
 	}
 
 	.section-header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.header-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		gap: var(--space-3);
+	}
+
+	.title-group {
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-1);
@@ -475,6 +596,58 @@
 	.section-subtitle {
 		font-size: 0.875rem;
 		color: var(--text-secondary);
+	}
+
+	.time-range-selectors {
+		display: flex;
+		gap: var(--space-1);
+		background: var(--bg-secondary);
+		padding: 4px;
+		border-radius: var(--radius-md);
+	}
+
+	.range-btn {
+		padding: 6px 12px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		font-family: 'JetBrains Mono', monospace;
+		color: var(--text-secondary);
+		background: transparent;
+		border: none;
+		border-radius: var(--radius-sm);
+		cursor: pointer;
+		transition: all 0.15s ease;
+	}
+
+	.range-btn:hover {
+		color: var(--text-primary);
+		background: var(--bg-tertiary);
+	}
+
+	.range-btn.active {
+		color: var(--text-primary);
+		background: var(--bg-primary);
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	}
+
+	.compact-legend {
+		display: flex;
+		gap: var(--space-4);
+		font-size: 0.75rem;
+		color: var(--text-muted);
+	}
+
+	.legend-item-inline {
+		display: flex;
+		align-items: center;
+		gap: var(--space-1);
+	}
+
+	.dashed-line {
+		width: 16px;
+		height: 0;
+		border-top: 2px dashed var(--text-muted);
+		opacity: 0.5;
 	}
 
 	.big-three-chart-container {
@@ -488,6 +661,14 @@
 
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
+		.header-row {
+			flex-direction: column;
+		}
+
+		.time-range-selectors {
+			align-self: flex-start;
+		}
+
 		.big-three-chart-container {
 			height: 500px;
 			min-height: 400px;

@@ -25,10 +25,9 @@
 	import {
 		PRTable,
 		DaysSincePR,
-		RecentActivity,
 		BarTravelCard,
-		MilestonesTimeline,
-		PlateMilestonesGrid
+		PlateMilestonesGrid,
+		TrainingJourney
 	} from '$lib/components/cards';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatCompactNumber, formatNumber, lbsToKg, milesToKm } from '$lib/utils';
@@ -484,10 +483,10 @@
 				</Card>
 			</section>
 
-			<!-- Recent Activity -->
-			<section class="mb-12" aria-label="Recent Notable Workouts">
+			<!-- Training Journey (unified timeline) -->
+			<section class="mb-12" aria-label="Training Journey">
 				<Card padding="lg">
-					<RecentActivity data={notableWorkouts} />
+					<TrainingJourney {notableWorkouts} {milestones} />
 				</Card>
 			</section>
 
@@ -497,13 +496,6 @@
 					<LazyChart minHeight="400px">
 						<ProgramComparisonChart data={programs} />
 					</LazyChart>
-				</Card>
-			</section>
-
-			<!-- Milestones Timeline -->
-			<section class="mb-12" aria-label="Achievement Timeline">
-				<Card padding="lg">
-					<MilestonesTimeline data={milestones} />
 				</Card>
 			</section>
 
