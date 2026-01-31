@@ -8,7 +8,8 @@
 		Callout,
 		Loading,
 		Error as ErrorComponent,
-		LazyChart
+		LazyChart,
+		AnimatedNumber
 	} from '$lib/components/ui';
 	import {
 		VolumeChart,
@@ -26,7 +27,8 @@
 		DaysSincePR,
 		RecentActivity,
 		BarTravelCard,
-		MilestonesTimeline
+		MilestonesTimeline,
+		PlateMilestonesGrid
 	} from '$lib/components/cards';
 	import { unitSystem, theme } from '$lib/stores';
 	import { formatCompactNumber, formatNumber, lbsToKg, milesToKm } from '$lib/utils';
@@ -130,6 +132,7 @@
 	);
 	const programs = $derived(deferredData?.programs || []);
 	const milestones = $derived(deferredData?.milestones || []);
+	const plateMilestones = $derived(deferredData?.plateMilestones || { squat: {}, bench: {}, deadlift: {}, ohp: {} });
 	const relativeStrength = $derived(deferredData?.relativeStrength || {});
 	const bodyWeight = $derived(deferredData?.bodyWeight || {});
 </script>
@@ -201,8 +204,10 @@
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Total Workouts</div>
-						<div class="stat-value">{formatNumber(summary.totalWorkouts)}</div>
-						<div class="stat-subtitle">Since Jan 2019</div>
+						<div class="stat-value">
+							<AnimatedNumber value={summary.totalWorkouts} format={(v) => formatNumber(Math.round(v))} />
+						</div>
+						<div class="stat-subtitle fun-comparison">6+ years of consistency</div>
 					</div>
 				</Card>
 
@@ -223,18 +228,16 @@
 					<div class="stat-content">
 						<div class="stat-label">Total Volume</div>
 						<div class="stat-value">
-							{formatCompactNumber(
-								unitSystem.current === 'imperial'
+							<AnimatedNumber
+								value={unitSystem.current === 'imperial'
 									? summary.totalVolumeLbs
-									: lbsToKg(summary.totalVolumeLbs)
-							)}
+									: lbsToKg(summary.totalVolumeLbs)}
+								format={(v) => formatCompactNumber(v)}
+							/>
 							<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
 						</div>
-						<div class="stat-subtitle">
-							{unitSystem.current === 'imperial'
-								? (summary.totalVolumeLbs / 2000).toFixed(0)
-								: (lbsToKg(summary.totalVolumeLbs) / 1000).toFixed(0)}
-							{unitSystem.current === 'imperial' ? 'tons' : 'tonnes'} lifted
+						<div class="stat-subtitle fun-comparison">
+							≈ {formatCompactNumber(Math.round(summary.totalVolumeLbs / 3000))} Honda Civics
 						</div>
 					</div>
 				</Card>
@@ -252,11 +255,11 @@
 					<div class="stat-content">
 						<div class="stat-label">Time Training</div>
 						<div class="stat-value">
-							{formatNumber(summary.totalHours)}
+							<AnimatedNumber value={summary.totalHours} format={(v) => formatNumber(Math.round(v))} />
 							<span class="unit-label">hours</span>
 						</div>
-						<div class="stat-subtitle">
-							{(summary.totalHours / 24).toFixed(0)} days of your life
+						<div class="stat-subtitle fun-comparison">
+							{(summary.totalHours / 24).toFixed(0)}+ days straight
 						</div>
 					</div>
 				</Card>
@@ -277,13 +280,15 @@
 					<div class="stat-content">
 						<div class="stat-label">Bar Travel</div>
 						<div class="stat-value">
-							{(unitSystem.current === 'imperial'
-								? barTravel.total.miles
-								: milesToKm(barTravel.total.miles)
-							).toFixed(1)}
+							<AnimatedNumber
+								value={unitSystem.current === 'imperial'
+									? barTravel.total.miles
+									: milesToKm(barTravel.total.miles)}
+								format={(v) => v.toFixed(1)}
+							/>
 							<span class="unit-label">{unitSystem.current === 'imperial' ? 'mi' : 'km'}</span>
 						</div>
-						<div class="stat-subtitle">{barTravel.landmarks.everestClimbs.toFixed(1)} Everests</div>
+						<div class="stat-subtitle fun-comparison">Climbed Everest {barTravel.landmarks.everestClimbs.toFixed(1)}x</div>
 					</div>
 				</Card>
 
@@ -299,8 +304,10 @@
 					</div>
 					<div class="stat-content">
 						<div class="stat-label">Total Reps</div>
-						<div class="stat-value">{formatCompactNumber(summary.totalReps)}</div>
-						<div class="stat-subtitle">{formatNumber(summary.totalSets)} total sets</div>
+						<div class="stat-value">
+							<AnimatedNumber value={summary.totalReps} format={(v) => formatCompactNumber(v)} />
+						</div>
+						<div class="stat-subtitle fun-comparison">{formatCompactNumber(summary.totalSets)} sets completed</div>
 					</div>
 				</Card>
 
@@ -321,14 +328,15 @@
 					<div class="stat-content">
 						<div class="stat-label">Powerlifting Total</div>
 						<div class="stat-value">
-							{formatNumber(
-								unitSystem.current === 'imperial'
+							<AnimatedNumber
+								value={unitSystem.current === 'imperial'
 									? powerliftingTotals.current.totalLbs
-									: lbsToKg(powerliftingTotals.current.totalLbs)
-							)}
+									: lbsToKg(powerliftingTotals.current.totalLbs)}
+								format={(v) => formatNumber(Math.round(v))}
+							/>
 							<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
 						</div>
-						<div class="stat-subtitle">1200+ club member</div>
+						<div class="stat-subtitle fun-comparison">1200+ club member</div>
 					</div>
 				</Card>
 			</div>
@@ -498,6 +506,13 @@
 			<section class="mb-12">
 				<Card padding="lg">
 					<MilestonesTimeline data={milestones} />
+				</Card>
+			</section>
+
+			<!-- Plate Milestones Grid -->
+			<section class="mb-12">
+				<Card padding="lg">
+					<PlateMilestonesGrid data={plateMilestones} />
 				</Card>
 			</section>
 		{/if}
@@ -689,6 +704,11 @@
 		font-family: 'Source Sans 3', sans-serif;
 		font-size: 0.75rem;
 		color: var(--text-secondary);
+	}
+
+	.stat-subtitle.fun-comparison {
+		font-style: italic;
+		color: var(--accent-copper);
 	}
 
 	/* Reduced motion preferences */
