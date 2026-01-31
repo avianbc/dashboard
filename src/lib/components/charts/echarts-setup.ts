@@ -31,4 +31,4 @@ echarts.use([
 ]);
 
 export { echarts };
-export type { EChartsOption } from 'echarts';
+export type { EChartsCoreOption as EChartsOption } from 'echarts/core';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { echarts } from './echarts-setup';
+	import { echarts, type EChartsOption } from './echarts-setup';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { DayOfWeekStats } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
@@ -74,7 +74,7 @@
 		const dayOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 		const sortedData = [...data].sort((a, b) => dayOrder.indexOf(a.day) - dayOrder.indexOf(b.day));
 
-		const option: echarts.EChartsOption = {
+		const option: EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
 				...createTooltipConfig(chartColors),

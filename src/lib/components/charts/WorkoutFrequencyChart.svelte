@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { echarts } from './echarts-setup';
+	import { echarts, type EChartsOption } from './echarts-setup';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { VolumeTimeSeries } from '$lib/types/training';
 	import { theme } from '$lib/stores';
@@ -50,7 +50,7 @@
 		// Use weekly data for frequency analysis
 		const weeklyData = data.weekly;
 
-		const option: echarts.EChartsOption = {
+		const option: EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
 				...createTooltipConfig(chartColors),

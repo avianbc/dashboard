@@ -93,15 +93,23 @@
 		date: string;
 	}
 
-	const powerliftingTotals = $derived({
-		...(coreData.powerliftingTotals || { current: { totalLbs: 0 } }),
-		clubs: Object.entries(coreData.powerliftingTotals?.clubMilestones || {}).map(
-			([name, milestone]: [string, ClubMilestoneRaw]) => ({
-				name: `${name}lb Club`,
-				totalLbs: milestone?.totalLbs || 0,
-				dateAchieved: milestone?.date || ''
-			})
-		)
+	// The raw data has clubMilestones as an object, but type definition has clubs array
+	const powerliftingTotals = $derived.by(() => {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const raw = coreData.powerliftingTotals as any;
+		return {
+			...(coreData.powerliftingTotals || { current: { totalLbs: 0 } }),
+			clubs: Object.entries(raw?.clubMilestones || {}).map(
+				([name, milestone]) => {
+					const m = milestone as ClubMilestoneRaw;
+					return {
+						name: `${name}lb Club`,
+						totalLbs: m?.totalLbs || 0,
+						dateAchieved: m?.date || ''
+					};
+				}
+			)
+		};
 	});
 	const allTimePRs = $derived(coreData.allTimePRs || {});
 	const daysSinceLastPR = $derived(coreData.daysSinceLastPR || {});
@@ -115,7 +123,14 @@
 	});
 
 	// Deferred data (loaded after initial render)
-	const bigThreeE1RM = $derived(deferredData?.bigThreeE1RM || {});
+	const bigThreeE1RM = $derived(
+		deferredData?.bigThreeE1RM || {
+			squat: { exerciseName: 'Squat', e1rmHistory: [] },
+			bench: { exerciseName: 'Bench Press', e1rmHistory: [] },
+			deadlift: { exerciseName: 'Deadlift', e1rmHistory: [] },
+			ohp: { exerciseName: 'Overhead Press', e1rmHistory: [] }
+		}
+	);
 	const exerciseProgress = $derived(deferredData?.exerciseProgress || {});
 	const workoutCalendar = $derived(deferredData?.workoutCalendar || {});
 	const notableWorkouts = $derived(deferredData?.notableWorkouts || []);
@@ -133,7 +148,19 @@
 	const programs = $derived(deferredData?.programs || []);
 	const milestones = $derived(deferredData?.milestones || []);
 	const plateMilestones = $derived(deferredData?.plateMilestones || { squat: {}, bench: {}, deadlift: {}, ohp: {} });
-	const relativeStrength = $derived(deferredData?.relativeStrength || {});
+	const defaultRelativeStrengthLift = {
+		best: { date: '', liftLbs: 0, liftKg: 0, bodyWeightLbs: 0, bodyWeightKg: 0, multiple: 0 },
+		current: { date: '', liftLbs: 0, liftKg: 0, bodyWeightLbs: 0, bodyWeightKg: 0, multiple: 0 },
+		monthlyProgression: []
+	};
+	const relativeStrength = $derived(
+		deferredData?.relativeStrength || {
+			squat: defaultRelativeStrengthLift,
+			bench: defaultRelativeStrengthLift,
+			deadlift: defaultRelativeStrengthLift,
+			ohp: defaultRelativeStrengthLift
+		}
+	);
 	const bodyWeight = $derived(deferredData?.bodyWeight || {});
 </script>
 
@@ -487,7 +514,7 @@
 				<section>
 					<Card padding="lg">
 						<LazyChart minHeight="400px">
-							<RelativeStrengthChart {relativeStrength} {bodyWeight} />
+							<RelativeStrengthChart {relativeStrength} />
 						</LazyChart>
 					</Card>
 				</section>

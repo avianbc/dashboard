@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { echarts } from './echarts-setup';
+	import { echarts, type EChartsOption } from './echarts-setup';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { VolumeTimeSeries } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
@@ -130,7 +130,7 @@
 		const colors = getChartColors();
 		const { accentCopper, textPrimary, textSecondary, textMuted } = colors;
 
-		const option: echarts.EChartsOption = {
+		const option: EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
 				...createTooltipConfig(colors),

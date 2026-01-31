@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { echarts } from './echarts-setup';
+	import { echarts, type EChartsOption } from './echarts-setup';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { RelativeStrength } from '$lib/types/training';
 	import { theme } from '$lib/stores';
@@ -76,7 +76,7 @@
 		// Use squat progression as the baseline (likely most complete)
 		const months = squatData.map((d) => d.month);
 
-		const option: echarts.EChartsOption = {
+		const option: EChartsOption = {
 			backgroundColor: 'transparent',
 			legend: {
 				data: ['Squat', 'Bench', 'Deadlift'],
@@ -89,10 +89,11 @@
 				...createTooltipConfig(chartColors),
 				formatter: (params: CallbackDataParams | CallbackDataParams[]) => {
 					const paramsArray = Array.isArray(params) ? params : [params];
-					const month = paramsArray[0].axisValue;
+					const month = (paramsArray[0] as CallbackDataParams & { axisValue?: string }).axisValue;
 					let content = `<div style="padding: ${TOOLTIP_PADDING}px;"><div style="font-weight: bold; margin-bottom: 4px;">${month}</div>`;
 					paramsArray.forEach((param) => {
-						content += `<div>${param.marker} ${param.seriesName}: ${param.value.toFixed(2)}× BW</div>`;
+						const val = param.value as number;
+						content += `<div>${param.marker} ${param.seriesName}: ${val?.toFixed(2) ?? 'N/A'}× BW</div>`;
 					});
 					content += '</div>';
 					return content;

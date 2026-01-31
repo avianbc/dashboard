@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { echarts } from './echarts-setup';
+	import { echarts, type EChartsOption } from './echarts-setup';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import { unitSystem, theme } from '$lib/stores';
@@ -117,17 +117,18 @@
 		const chartColors = getChartColors();
 		const colors = chartData.map((item) => getExerciseColor(item.name));
 
-		const option: echarts.EChartsOption = {
+		const option: EChartsOption = {
 			tooltip: {
 				...createTooltipConfig(chartColors, { trigger: 'item' }),
 				formatter: (params: CallbackDataParams) => {
-					const percent = ((params.value / totalVolume) * 100).toFixed(1);
+					const val = params.value as number;
+					const percent = ((val / totalVolume) * 100).toFixed(1);
 					const volumeFormatted =
-						params.value >= 1000000
-							? (params.value / 1000000).toFixed(2) + 'M'
-							: params.value >= 1000
-								? (params.value / 1000).toFixed(0) + 'K'
-								: params.value.toFixed(0);
+						val >= 1000000
+							? (val / 1000000).toFixed(2) + 'M'
+							: val >= 1000
+								? (val / 1000).toFixed(0) + 'K'
+								: val.toFixed(0);
 
 					return `
 						<div style="padding: ${TOOLTIP_PADDING}px;">
@@ -184,7 +185,8 @@
 							fontFamily: 'JetBrains Mono, monospace',
 							color: chartColors.textPrimary,
 							formatter: (params: CallbackDataParams) => {
-								const percent = ((params.value / totalVolume) * 100).toFixed(1);
+								const val = params.value as number;
+								const percent = ((val / totalVolume) * 100).toFixed(1);
 								return `${percent}%`;
 							}
 						},

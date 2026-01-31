@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { echarts } from './echarts-setup';
+	import { echarts, type EChartsOption } from './echarts-setup';
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { BigThreeE1RM, AllTimePRs } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
@@ -198,7 +198,7 @@
 		// Combine all series
 		const series = [...liftSeries, plateMilestoneSeries];
 
-		const option: echarts.EChartsOption = {
+		const option: EChartsOption = {
 			backgroundColor: 'transparent',
 			tooltip: {
 				...createTooltipConfig(colors),
@@ -207,8 +207,8 @@
 					if (!paramsArray || paramsArray.length === 0) return '';
 
 					// Convert timestamp to date string for comparison
-					const timestamp = paramsArray[0].axisValue;
-					const dateObj = new Date(timestamp);
+					const timestamp = (paramsArray[0] as CallbackDataParams & { axisValue?: string | number }).axisValue;
+					const dateObj = new Date(timestamp as string | number);
 					const dateString = dateObj.toISOString().split('T')[0];
 
 					let tooltipContent = `<div style="padding: ${TOOLTIP_PADDING}px;">
@@ -380,7 +380,8 @@
 				name: string;
 				selected: Record<string, boolean>;
 			}
-			chartInstance.on('legendselectchanged', (params: LegendSelectChangedParams) => {
+			chartInstance.on('legendselectchanged', (params: unknown) => {
+				const legendParams = params as LegendSelectChangedParams;
 				const liftMap: Record<string, keyof typeof visibleLifts> = {
 					Squat: 'squat',
 					'Bench Press': 'bench',
@@ -388,9 +389,9 @@
 					'Overhead Press': 'ohp'
 				};
 
-				const liftKey = liftMap[params.name];
+				const liftKey = liftMap[legendParams.name];
 				if (liftKey) {
-					visibleLifts[liftKey] = params.selected[params.name];
+					visibleLifts[liftKey] = legendParams.selected[legendParams.name];
 				}
 			});
 
