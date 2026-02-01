@@ -172,8 +172,8 @@
 		<div class="container">
 			<div class="header-content">
 				<div>
-					<h1 id="page-title">Iron Archive</h1>
-					<p class="text-secondary">6+ Years of Training Data</p>
+					<h1 id="page-title">Stronger Than Yesterday</h1>
+					<p class="text-secondary">A data-driven look at my strength training journey</p>
 				</div>
 				<nav class="header-controls" aria-label="Settings and preferences">
 					<Button
