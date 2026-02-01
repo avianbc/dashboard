@@ -546,6 +546,7 @@ def get_programs(conn):
         end_date = row['end_date']
 
         # Count unique PRs set during this program's date range (distinct exercise+rep combinations where weight increased)
+        # Only count reps 1-8 for consistency with E1RM accuracy standards
         cursor.execute("""
             SELECT COUNT(DISTINCT exercise_id || '-' || reps) as pr_count
             FROM (
@@ -561,7 +562,7 @@ def get_programs(conn):
                     ) as prev_max
                 FROM history_exercises he
                 JOIN history h ON he.history_id = h.id
-                WHERE he.reps > 0
+                WHERE he.reps > 0 AND he.reps <= 8
                 GROUP BY he.exercise_id, he.reps, h.date
             ) subq
             WHERE prev_max IS NOT NULL AND max_weight_day > prev_max

@@ -29944,7 +29944,7 @@
       "workouts": 52,
       "totalVolumeLbs": 420385.0,
       "totalVolumeKg": 190375.0,
-      "prsSet": 42
+      "prsSet": 36
     },
     {
       "name": "Madcow 5x5 Training Program - Overhead Press Version",
@@ -29962,7 +29962,7 @@
       "workouts": 87,
       "totalVolumeLbs": 707690.0,
       "totalVolumeKg": 321575.0,
-      "prsSet": 41
+      "prsSet": 33
     },
     {
       "name": "Madcow w/ Accessories",
@@ -29989,7 +29989,7 @@
       "workouts": 126,
       "totalVolumeLbs": 563585.0,
       "totalVolumeKg": 254352.5,
-      "prsSet": 55
+      "prsSet": 44
     },
     {
       "name": "Wendler 531 Base Program",
@@ -30007,7 +30007,7 @@
       "workouts": 62,
       "totalVolumeLbs": 470850.0,
       "totalVolumeKg": 213905.0,
-      "prsSet": 10
+      "prsSet": 6
     },
     {
       "name": "nSuns 531 LP 5 day version",
@@ -30016,7 +30016,7 @@
       "workouts": 275,
       "totalVolumeLbs": 1866695.0,
       "totalVolumeKg": 844325.0,
-      "prsSet": 39
+      "prsSet": 36
     },
     {
       "name": "nSuns 531 LP 4 day version",
@@ -30025,7 +30025,7 @@
       "workouts": 115,
       "totalVolumeLbs": 685980.0,
       "totalVolumeKg": 311022.5,
-      "prsSet": 15
+      "prsSet": 14
     },
     {
       "name": "nSuns 531 LP 5 day row variation",
@@ -30043,7 +30043,7 @@
       "workouts": 81,
       "totalVolumeLbs": 627405.0,
       "totalVolumeKg": 283415.0,
-      "prsSet": 5
+      "prsSet": 0
     },
     {
       "name": "Beginner 5/3/1 3 day program",
@@ -30052,7 +30052,7 @@
       "workouts": 15,
       "totalVolumeLbs": 136710.0,
       "totalVolumeKg": 61875.0,
-      "prsSet": 3
+      "prsSet": 0
     },
     {
       "name": "GZCLP",
@@ -30061,7 +30061,7 @@
       "workouts": 24,
       "totalVolumeLbs": 274285.0,
       "totalVolumeKg": 124332.5,
-      "prsSet": 3
+      "prsSet": 0
     },
     {
       "name": "Bodybuilder (from Blood and Chalk 8 and Wendler's Blog)",
@@ -30070,7 +30070,7 @@
       "workouts": 24,
       "totalVolumeLbs": 161145.0,
       "totalVolumeKg": 73137.5,
-      "prsSet": 2
+      "prsSet": 0
     }
   ],
   "workoutsByDayOfWeek": {
