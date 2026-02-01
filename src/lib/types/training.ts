@@ -192,6 +192,7 @@ export interface RepPR {
 	weightKg: number;
 	e1rmLbs: number;
 	e1rmKg: number;
+	date: string;
 }
 
 export interface RepPRs {

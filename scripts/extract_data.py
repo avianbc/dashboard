@@ -11,8 +11,11 @@ import os
 from datetime import datetime
 import sys
 
-DB_PATH = 'MyApp.db'
-OUTPUT_PATH = 'training_data.json'
+# Paths relative to the scripts folder
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(SCRIPT_DIR, '..', 'data', 'MyApp.db')
+OUTPUT_DIR = os.path.join(SCRIPT_DIR, '..', 'static', 'data')
+OUTPUT_PATH = os.path.join(OUTPUT_DIR, 'training_data.json')
 
 # Big 3 exercise name variations
 SQUAT_NAMES = ['Squat', 'Back Squat', 'Front Squat', 'Squats']
@@ -933,25 +936,34 @@ def get_all_time_prs(conn):
     all_time_prs = {}
 
     for canonical_name, name_list in [('squat', SQUAT_NAMES), ('bench', BENCH_NAMES), ('deadlift', DEADLIFT_NAMES), ('ohp', OHP_NAMES)]:
-        # Get max weight for each rep range
+        # Get max weight for each rep range with the date it was achieved
         cursor.execute(f"""
             SELECT
                 he.reps,
-                MAX(he.weightlb) as max_weight_lbs,
-                MAX(he.weightkg) as max_weight_kg
+                he.weightlb as weight_lbs,
+                he.weightkg as weight_kg,
+                date(h.date/1000, 'unixepoch') as pr_date
             FROM history_exercises he
+            JOIN history h ON he.history_id = h.id
             JOIN exercises e ON he.exercise_id = e.id
             WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
             AND he.reps > 0 AND he.reps <= 8
+            AND he.weightlb = (
+                SELECT MAX(he2.weightlb)
+                FROM history_exercises he2
+                JOIN exercises e2 ON he2.exercise_id = e2.id
+                WHERE LOWER(e2.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
+                AND he2.reps = he.reps
+            )
             GROUP BY he.reps
             ORDER BY he.reps
-        """, name_list)
+        """, name_list + name_list)
 
         rep_prs = {}
         for row in cursor.fetchall():
             reps = row['reps']
-            weight_lbs = row['max_weight_lbs'] or 0
-            weight_kg = row['max_weight_kg'] or 0
+            weight_lbs = row['weight_lbs'] or 0
+            weight_kg = row['weight_kg'] or 0
             e1rm_lbs = calculate_e1rm(weight_lbs, reps)
             e1rm_kg = calculate_e1rm(weight_kg, reps)
 
@@ -959,28 +971,45 @@ def get_all_time_prs(conn):
                 'weightLbs': round(weight_lbs, 2),
                 'weightKg': round(weight_kg, 2),
                 'e1rmLbs': round(e1rm_lbs, 2),
-                'e1rmKg': round(e1rm_kg, 2)
+                'e1rmKg': round(e1rm_kg, 2),
+                'date': row['pr_date']
             }
 
-        # Get absolute max weight ever lifted (any reps)
+        # Get absolute max weight ever lifted (any reps) with the date
         cursor.execute(f"""
             SELECT
-                MAX(he.weightlb) as max_weight_lbs,
-                MAX(he.weightkg) as max_weight_kg
+                he.weightlb as max_weight_lbs,
+                he.weightkg as max_weight_kg,
+                date(h.date/1000, 'unixepoch') as achieved_date
             FROM history_exercises he
+            JOIN history h ON he.history_id = h.id
             JOIN exercises e ON he.exercise_id = e.id
             WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
             AND he.reps > 0
+            ORDER BY he.weightlb DESC
+            LIMIT 1
         """, name_list)
 
         max_row = cursor.fetchone()
         max_ever = {
-            'weightLbs': round(max_row['max_weight_lbs'] or 0, 2),
-            'weightKg': round(max_row['max_weight_kg'] or 0, 2)
+            'weightLbs': round(max_row['max_weight_lbs'] or 0, 2) if max_row else 0,
+            'weightKg': round(max_row['max_weight_kg'] or 0, 2) if max_row else 0,
+            'date': max_row['achieved_date'] if max_row else None
         }
 
-        # Find best e1RM
-        best_e1rm = max(rep_prs.values(), key=lambda x: x['e1rmLbs']) if rep_prs else None
+        # Find best e1RM with full details for chart markers
+        best_e1rm = None
+        if rep_prs:
+            best_reps = max(rep_prs.keys(), key=lambda r: rep_prs[r]['e1rmLbs'])
+            best_pr = rep_prs[best_reps]
+            best_e1rm = {
+                'date': best_pr['date'],
+                'e1rmLbs': best_pr['e1rmLbs'],
+                'e1rmKg': best_pr['e1rmKg'],
+                'actualWeightLbs': best_pr['weightLbs'],
+                'actualWeightKg': best_pr['weightKg'],
+                'reps': best_reps
+            }
 
         all_time_prs[canonical_name] = {
             'repPRs': rep_prs,
@@ -1016,7 +1045,7 @@ def get_days_since_last_pr(conn):
                 JOIN history h ON he.history_id = h.id
                 JOIN exercises e ON he.exercise_id = e.id
                 WHERE LOWER(e.exercise_name) IN ({','.join(['LOWER(?)'] * len(name_list))})
-                AND he.reps > 0 AND he.reps <= 10
+                AND he.reps > 0 AND he.reps <= 8
             ) subq
             JOIN history h ON subq.date = h.date
             WHERE prev_max IS NULL OR weightlb > prev_max

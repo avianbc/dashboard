@@ -21,21 +21,31 @@
 	// Get common rep ranges we care about
 	const repRanges = [1, 3, 5, 8];
 
-	interface LiftData {
-		repPRs: Record<number, { weightLbs: number }>;
-		bestE1rm: { e1rmLbs: number };
+	interface RepPRData {
+		weightLbs: number;
+		date?: string;
 	}
 
-	function getPRForReps(liftData: LiftData, reps: number) {
-		// repPRs is an object with keys being the rep numbers
+	interface LiftData {
+		repPRs: Record<number, RepPRData>;
+		bestE1rm: { e1rmLbs: number; date?: string; reps?: number };
+	}
+
+	function getPRForReps(liftData: LiftData, reps: number): RepPRData | null {
 		const pr = liftData.repPRs[reps];
-		return pr ? pr.weightLbs : null;
+		return pr || null;
 	}
 
 	function displayWeight(weightLbs: number | null): string {
 		if (weightLbs === null) return '—';
 		const weight = unitSystem.current === 'imperial' ? weightLbs : lbsToKg(weightLbs);
 		return Math.round(weight).toString();
+	}
+
+	function formatDate(dateStr: string | undefined): string {
+		if (!dateStr) return '';
+		const date = new Date(dateStr);
+		return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 	}
 </script>
 
@@ -58,13 +68,13 @@
 					<tr style="--lift-color: {lift.color}">
 						<td class="lift-name">{lift.name}</td>
 						{#each repRanges as reps (reps)}
-							{@const prWeight = getPRForReps(liftData, reps)}
-							<td class="pr-value">
-								{displayWeight(prWeight)}
+							{@const pr = getPRForReps(liftData, reps)}
+							<td class="pr-value" title={pr?.date ? formatDate(pr.date) : ''}>
+								{displayWeight(pr?.weightLbs ?? null)}
 							</td>
 						{/each}
-						<td class="e1rm-value">
-							{displayWeight(liftData.bestE1rm.e1rmLbs)}
+						<td class="e1rm-value" title={liftData.bestE1rm?.date ? `${formatDate(liftData.bestE1rm.date)} (${liftData.bestE1rm.reps}RM)` : ''}>
+							{displayWeight(liftData.bestE1rm?.e1rmLbs ?? null)}
 						</td>
 					</tr>
 				{/each}

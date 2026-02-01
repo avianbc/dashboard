@@ -33,72 +33,71 @@
           "weightLbs": 380.0,
           "weightKg": 172.5,
           "e1rmLbs": 380.0,
-          "e1rmKg": 172.5
+          "e1rmKg": 172.5,
+          "date": "2023-10-03"
         },
         "2": {
           "weightLbs": 225.0,
           "weightKg": 102.5,
           "e1rmLbs": 240.0,
-          "e1rmKg": 109.33
+          "e1rmKg": 109.33,
+          "date": "2019-04-17"
         },
         "3": {
           "weightLbs": 400.0,
           "weightKg": 182.5,
           "e1rmLbs": 440.0,
-          "e1rmKg": 200.75
+          "e1rmKg": 200.75,
+          "date": "2022-11-15"
         },
         "4": {
           "weightLbs": 390.0,
           "weightKg": 177.5,
           "e1rmLbs": 442.0,
-          "e1rmKg": 201.17
+          "e1rmKg": 201.17,
+          "date": "2022-11-10"
         },
         "5": {
           "weightLbs": 360.0,
           "weightKg": 162.5,
           "e1rmLbs": 420.0,
-          "e1rmKg": 189.58
+          "e1rmKg": 189.58,
+          "date": "2020-03-27"
         },
         "6": {
           "weightLbs": 350.0,
           "weightKg": 157.5,
           "e1rmLbs": 420.0,
-          "e1rmKg": 189.0
+          "e1rmKg": 189.0,
+          "date": "2020-03-06"
         },
         "7": {
           "weightLbs": 330.0,
           "weightKg": 150.0,
           "e1rmLbs": 407.0,
-          "e1rmKg": 185.0
+          "e1rmKg": 185.0,
+          "date": "2020-06-12"
         },
         "8": {
           "weightLbs": 310.0,
           "weightKg": 140.0,
           "e1rmLbs": 392.67,
-          "e1rmKg": 177.33
-        },
-        "9": {
-          "weightLbs": 315.0,
-          "weightKg": 142.5,
-          "e1rmLbs": 409.5,
-          "e1rmKg": 185.25
-        },
-        "10": {
-          "weightLbs": 255.0,
-          "weightKg": 115.0,
-          "e1rmLbs": 340.0,
-          "e1rmKg": 153.33
+          "e1rmKg": 177.33,
+          "date": "2021-03-24"
         }
       },
       "maxEver": {
         "weightLbs": 400.0,
-        "weightKg": 182.5
+        "weightKg": 182.5,
+        "date": "2022-11-15"
       },
       "bestE1rm": {
-        "weightLbs": 390.0,
-        "weightKg": 177.5,
+        "date": "2022-11-10",
         "e1rmLbs": 442.0,
-        "e1rmKg": 201.17
+        "e1rmKg": 201.17,
+        "actualWeightLbs": 390.0,
+        "actualWeightKg": 177.5,
+        "reps": 4
       }
     },
     "bench": {
@@ -107,72 +106,71 @@
           "weightLbs": 215.0,
           "weightKg": 97.5,
           "e1rmLbs": 215.0,
-          "e1rmKg": 97.5
+          "e1rmKg": 97.5,
+          "date": "2019-11-21"
         },
         "2": {
           "weightLbs": 275.0,
           "weightKg": 125.0,
           "e1rmLbs": 293.33,
-          "e1rmKg": 133.33
+          "e1rmKg": 133.33,
+          "date": "2022-11-25"
         },
         "3": {
           "weightLbs": 275.0,
           "weightKg": 125.0,
           "e1rmLbs": 302.5,
-          "e1rmKg": 137.5
+          "e1rmKg": 137.5,
+          "date": "2022-11-04"
         },
         "4": {
           "weightLbs": 270.0,
           "weightKg": 122.5,
           "e1rmLbs": 306.0,
-          "e1rmKg": 138.83
+          "e1rmKg": 138.83,
+          "date": "2022-01-06"
         },
         "5": {
           "weightLbs": 275.0,
           "weightKg": 125.0,
           "e1rmLbs": 320.83,
-          "e1rmKg": 145.83
+          "e1rmKg": 145.83,
+          "date": "2022-12-09"
         },
         "6": {
           "weightLbs": 250.0,
           "weightKg": 112.5,
           "e1rmLbs": 300.0,
-          "e1rmKg": 135.0
+          "e1rmKg": 135.0,
+          "date": "2021-08-20"
         },
         "7": {
           "weightLbs": 250.0,
           "weightKg": 112.5,
           "e1rmLbs": 308.33,
-          "e1rmKg": 138.75
+          "e1rmKg": 138.75,
+          "date": "2021-09-03"
         },
         "8": {
           "weightLbs": 240.0,
           "weightKg": 110.0,
           "e1rmLbs": 304.0,
-          "e1rmKg": 139.33
-        },
-        "9": {
-          "weightLbs": 240.0,
-          "weightKg": 110.0,
-          "e1rmLbs": 312.0,
-          "e1rmKg": 143.0
-        },
-        "10": {
-          "weightLbs": 197.5,
-          "weightKg": 90.0,
-          "e1rmLbs": 263.33,
-          "e1rmKg": 120.0
+          "e1rmKg": 139.33,
+          "date": "2022-09-09"
         }
       },
       "maxEver": {
         "weightLbs": 275.0,
-        "weightKg": 125.0
+        "weightKg": 125.0,
+        "date": "2022-11-04"
       },
       "bestE1rm": {
-        "weightLbs": 275.0,
-        "weightKg": 125.0,
+        "date": "2022-12-09",
         "e1rmLbs": 320.83,
-        "e1rmKg": 145.83
+        "e1rmKg": 145.83,
+        "actualWeightLbs": 275.0,
+        "actualWeightKg": 125.0,
+        "reps": 5
       }
     },
     "deadlift": {
@@ -181,72 +179,71 @@
           "weightLbs": 465.0,
           "weightKg": 210.0,
           "e1rmLbs": 465.0,
-          "e1rmKg": 210.0
+          "e1rmKg": 210.0,
+          "date": "2021-08-19"
         },
         "2": {
           "weightLbs": 465.0,
           "weightKg": 210.0,
           "e1rmLbs": 496.0,
-          "e1rmKg": 224.0
+          "e1rmKg": 224.0,
+          "date": "2021-07-01"
         },
         "3": {
           "weightLbs": 460.0,
           "weightKg": 207.5,
           "e1rmLbs": 506.0,
-          "e1rmKg": 228.25
+          "e1rmKg": 228.25,
+          "date": "2021-06-24"
         },
         "4": {
           "weightLbs": 420.0,
           "weightKg": 190.0,
           "e1rmLbs": 476.0,
-          "e1rmKg": 215.33
+          "e1rmKg": 215.33,
+          "date": "2021-12-09"
         },
         "5": {
           "weightLbs": 440.0,
           "weightKg": 200.0,
           "e1rmLbs": 513.33,
-          "e1rmKg": 233.33
+          "e1rmKg": 233.33,
+          "date": "2021-05-27"
         },
         "6": {
           "weightLbs": 425.0,
           "weightKg": 192.5,
           "e1rmLbs": 510.0,
-          "e1rmKg": 231.0
+          "e1rmKg": 231.0,
+          "date": "2020-06-02"
         },
         "7": {
           "weightLbs": 360.0,
           "weightKg": 162.5,
           "e1rmLbs": 444.0,
-          "e1rmKg": 200.42
+          "e1rmKg": 200.42,
+          "date": "2019-09-11"
         },
         "8": {
           "weightLbs": 375.0,
           "weightKg": 170.0,
           "e1rmLbs": 475.0,
-          "e1rmKg": 215.33
-        },
-        "9": {
-          "weightLbs": 295.0,
-          "weightKg": 135.0,
-          "e1rmLbs": 383.5,
-          "e1rmKg": 175.5
-        },
-        "10": {
-          "weightLbs": 300.0,
-          "weightKg": 135.0,
-          "e1rmLbs": 400.0,
-          "e1rmKg": 180.0
+          "e1rmKg": 215.33,
+          "date": "2021-03-03"
         }
       },
       "maxEver": {
         "weightLbs": 465.0,
-        "weightKg": 210.0
+        "weightKg": 210.0,
+        "date": "2021-07-01"
       },
       "bestE1rm": {
-        "weightLbs": 440.0,
-        "weightKg": 200.0,
+        "date": "2021-05-27",
         "e1rmLbs": 513.33,
-        "e1rmKg": 233.33
+        "e1rmKg": 233.33,
+        "actualWeightLbs": 440.0,
+        "actualWeightKg": 200.0,
+        "reps": 5
       }
     },
     "ohp": {
@@ -255,80 +252,79 @@
           "weightLbs": 180.0,
           "weightKg": 82.5,
           "e1rmLbs": 180.0,
-          "e1rmKg": 82.5
+          "e1rmKg": 82.5,
+          "date": "2023-02-08"
         },
         "2": {
           "weightLbs": 165.0,
           "weightKg": 75.0,
           "e1rmLbs": 176.0,
-          "e1rmKg": 80.0
+          "e1rmKg": 80.0,
+          "date": "2021-07-21"
         },
         "3": {
           "weightLbs": 170.0,
           "weightKg": 77.5,
           "e1rmLbs": 187.0,
-          "e1rmKg": 85.25
+          "e1rmKg": 85.25,
+          "date": "2022-11-09"
         },
         "4": {
           "weightLbs": 170.0,
           "weightKg": 77.5,
           "e1rmLbs": 192.67,
-          "e1rmKg": 87.83
+          "e1rmKg": 87.83,
+          "date": "2022-11-02"
         },
         "5": {
           "weightLbs": 165.0,
           "weightKg": 75.0,
           "e1rmLbs": 192.5,
-          "e1rmKg": 87.5
+          "e1rmKg": 87.5,
+          "date": "2021-09-08"
         },
         "6": {
           "weightLbs": 150.0,
           "weightKg": 67.5,
           "e1rmLbs": 180.0,
-          "e1rmKg": 81.0
+          "e1rmKg": 81.0,
+          "date": "2020-06-01"
         },
         "7": {
           "weightLbs": 135.0,
           "weightKg": 60.0,
           "e1rmLbs": 166.5,
-          "e1rmKg": 74.0
+          "e1rmKg": 74.0,
+          "date": "2020-04-13"
         },
         "8": {
           "weightLbs": 145.0,
           "weightKg": 65.0,
           "e1rmLbs": 183.67,
-          "e1rmKg": 82.33
-        },
-        "9": {
-          "weightLbs": 135.0,
-          "weightKg": 60.0,
-          "e1rmLbs": 175.5,
-          "e1rmKg": 78.0
-        },
-        "10": {
-          "weightLbs": 110.0,
-          "weightKg": 50.0,
-          "e1rmLbs": 146.67,
-          "e1rmKg": 66.67
+          "e1rmKg": 82.33,
+          "date": "2021-04-21"
         }
       },
       "maxEver": {
         "weightLbs": 180.0,
-        "weightKg": 82.5
+        "weightKg": 82.5,
+        "date": "2023-02-08"
       },
       "bestE1rm": {
-        "weightLbs": 170.0,
-        "weightKg": 77.5,
+        "date": "2022-11-02",
         "e1rmLbs": 192.67,
-        "e1rmKg": 87.83
+        "e1rmKg": 87.83,
+        "actualWeightLbs": 170.0,
+        "actualWeightKg": 77.5,
+        "reps": 4
       }
     }
   },
   "daysSinceLastPR": {
-    "squat": 258,
-    "bench": 205,
-    "deadlift": 145,
-    "ohp": 256
+    "squat": 851,
+    "bench": 1149,
+    "deadlift": 1514,
+    "ohp": 1088
   },
   "barTravel": {
     "byLift": {
@@ -424,20 +420,20 @@
         "deadlift": 309.17
       },
       "1000": {
-        "date": "2019-05-17",
-        "totalLbs": 1007.5,
-        "totalKg": 457.17,
-        "squat": 377.0,
+        "date": "2019-08-02",
+        "totalLbs": 1015.83,
+        "totalKg": 460.08,
+        "squat": 373.33,
         "bench": 240.5,
-        "deadlift": 390.0
+        "deadlift": 402.0
       },
       "1100": {
-        "date": "2019-10-04",
-        "totalLbs": 1112.0,
-        "totalKg": 503.17,
-        "squat": 409.5,
+        "date": "2019-10-08",
+        "totalLbs": 1103.0,
+        "totalKg": 499.67,
+        "squat": 388.5,
         "bench": 240.5,
-        "deadlift": 462.0
+        "deadlift": 474.0
       },
       "1200": {
         "date": "2021-04-30",
