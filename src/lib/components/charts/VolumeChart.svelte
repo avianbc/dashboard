@@ -44,17 +44,17 @@
 	// Filter data to last 2 years if showAllTime is false
 	function filterByTimeRange<T>(items: T[], dateGetter: (item: T) => string): T[] {
 		if (showAllTime) return items;
-		
+
 		const twoYearsAgo = new Date();
 		twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
-		
-		return items.filter(item => {
+
+		return items.filter((item) => {
 			const dateStr = dateGetter(item);
 			if (!dateStr) return false;
-			
+
 			const year = parseInt(dateStr.substring(0, 4));
 			if (isNaN(year)) return false;
-			
+
 			// Handle ISO week format (YYYY-Wxx)
 			if (dateStr.includes('-W')) {
 				const weekNum = parseInt(dateStr.substring(6, 8) || '1');
@@ -62,7 +62,7 @@
 				const itemDate = new Date(year, 0, 1 + (weekNum - 1) * 7);
 				return itemDate >= twoYearsAgo;
 			}
-			
+
 			// Handle YYYY-MM-DD or YYYY-MM format
 			const month = parseInt(dateStr.substring(5, 7) || '1');
 			const day = parseInt(dateStr.substring(8, 10) || '1');
@@ -77,20 +77,20 @@
 
 		switch (granularity) {
 			case 'daily':
-				return filterByTimeRange(data.daily, d => d.date).map((d) => ({
+				return filterByTimeRange(data.daily, (d) => d.date).map((d) => ({
 					date: d.date,
 					volume: useMetric ? lbsToKg(d.volumeLbs) : d.volumeLbs,
 					workouts: d.workouts
 				}));
 			case 'weekly':
-				return filterByTimeRange(data.weekly, d => d.week).map((d) => ({
+				return filterByTimeRange(data.weekly, (d) => d.week).map((d) => ({
 					date: d.week,
 					volume: useMetric ? lbsToKg(d.volumeLbs) : d.volumeLbs,
 					workouts: d.workouts
 				}));
 			case 'monthly':
 			default:
-				return filterByTimeRange(data.monthly, d => d.month).map((d) => ({
+				return filterByTimeRange(data.monthly, (d) => d.month).map((d) => ({
 					date: d.month,
 					volume: useMetric ? lbsToKg(d.volumeLbs) : d.volumeLbs,
 					workouts: d.workouts

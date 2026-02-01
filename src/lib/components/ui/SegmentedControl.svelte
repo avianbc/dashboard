@@ -25,11 +25,7 @@
 	}: Props<string> = $props();
 </script>
 
-<div 
-	class="segmented-control size-{size} {className}" 
-	role="group" 
-	aria-label={ariaLabel}
->
+<div class="segmented-control size-{size} {className}" role="group" aria-label={ariaLabel}>
 	{#each options as option (option.value)}
 		<button
 			type="button"
@@ -73,7 +69,9 @@
 	.segment.active {
 		color: var(--text-primary);
 		background: var(--bg-primary);
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+		box-shadow:
+			0 1px 3px rgba(0, 0, 0, 0.12),
+			0 1px 2px rgba(0, 0, 0, 0.08);
 	}
 
 	/* Size variants */

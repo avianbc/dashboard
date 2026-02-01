@@ -98,16 +98,14 @@
 		const raw = coreData.powerliftingTotals as any;
 		return {
 			...(coreData.powerliftingTotals || { current: { totalLbs: 0 } }),
-			clubs: Object.entries(raw?.clubMilestones || {}).map(
-				([name, milestone]) => {
-					const m = milestone as ClubMilestoneRaw;
-					return {
-						name: `${name}lb Club`,
-						totalLbs: m?.totalLbs || 0,
-						dateAchieved: m?.date || ''
-					};
-				}
-			)
+			clubs: Object.entries(raw?.clubMilestones || {}).map(([name, milestone]) => {
+				const m = milestone as ClubMilestoneRaw;
+				return {
+					name: `${name}lb Club`,
+					totalLbs: m?.totalLbs || 0,
+					dateAchieved: m?.date || ''
+				};
+			})
 		};
 	});
 	const allTimePRs = $derived(coreData.allTimePRs || {});
@@ -146,7 +144,9 @@
 	);
 	const programs = $derived(deferredData?.programs || []);
 	const milestones = $derived(deferredData?.milestones || []);
-	const plateMilestones = $derived(deferredData?.plateMilestones || { squat: {}, bench: {}, deadlift: {}, ohp: {} });
+	const plateMilestones = $derived(
+		deferredData?.plateMilestones || { squat: {}, bench: {}, deadlift: {}, ohp: {} }
+	);
 	const defaultRelativeStrengthLift = {
 		best: { date: '', liftLbs: 0, liftKg: 0, bodyWeightLbs: 0, bodyWeightKg: 0, multiple: 0 },
 		current: { date: '', liftLbs: 0, liftKg: 0, bodyWeightLbs: 0, bodyWeightKg: 0, multiple: 0 },
@@ -231,7 +231,10 @@
 					<div class="stat-content">
 						<div class="stat-label">Total Workouts</div>
 						<div class="stat-value">
-							<AnimatedNumber value={summary.totalWorkouts} format={(v) => formatNumber(Math.round(v))} />
+							<AnimatedNumber
+								value={summary.totalWorkouts}
+								format={(v) => formatNumber(Math.round(v))}
+							/>
 						</div>
 						<div class="stat-subtitle fun-comparison">6+ years of consistency</div>
 					</div>
@@ -281,7 +284,10 @@
 					<div class="stat-content">
 						<div class="stat-label">Time Training</div>
 						<div class="stat-value">
-							<AnimatedNumber value={summary.totalHours} format={(v) => formatNumber(Math.round(v))} />
+							<AnimatedNumber
+								value={summary.totalHours}
+								format={(v) => formatNumber(Math.round(v))}
+							/>
 							<span class="unit-label">hours</span>
 						</div>
 						<div class="stat-subtitle fun-comparison">
@@ -314,7 +320,9 @@
 							/>
 							<span class="unit-label">{unitSystem.current === 'imperial' ? 'mi' : 'km'}</span>
 						</div>
-						<div class="stat-subtitle fun-comparison">Climbed Everest {barTravel.landmarks.everestClimbs.toFixed(1)}x</div>
+						<div class="stat-subtitle fun-comparison">
+							Climbed Everest {barTravel.landmarks.everestClimbs.toFixed(1)}x
+						</div>
 					</div>
 				</Card>
 
@@ -333,7 +341,9 @@
 						<div class="stat-value">
 							<AnimatedNumber value={summary.totalReps} format={(v) => formatCompactNumber(v)} />
 						</div>
-						<div class="stat-subtitle fun-comparison">{formatCompactNumber(summary.totalSets)} sets completed</div>
+						<div class="stat-subtitle fun-comparison">
+							{formatCompactNumber(summary.totalSets)} sets completed
+						</div>
 					</div>
 				</Card>
 

@@ -38,7 +38,7 @@
 	}
 
 	function getWeight(plateNum: number): string {
-		const plate = PLATES.find(p => p.num === plateNum);
+		const plate = PLATES.find((p) => p.num === plateNum);
 		if (!plate) return '';
 		return unitSystem.current === 'imperial' ? `${plate.lbs}` : `${plate.kg}`;
 	}
@@ -57,8 +57,14 @@
 			<div class="lift-label"></div>
 			{#each PLATES as plate}
 				<div class="plate-header">
-					<span class="plate-num">{plate.num} <span class="plate-suffix">{plate.num === 1 ? 'plate' : 'plates'}</span></span>
-					<span class="plate-weight">{unitSystem.current === 'imperial' ? plate.lbs : plate.kg} {unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
+					<span class="plate-num"
+						>{plate.num}
+						<span class="plate-suffix">{plate.num === 1 ? 'plate' : 'plates'}</span></span
+					>
+					<span class="plate-weight"
+						>{unitSystem.current === 'imperial' ? plate.lbs : plate.kg}
+						{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span
+					>
 				</div>
 			{/each}
 		</div>
@@ -90,7 +96,9 @@
 	</div>
 
 	<p class="legend">
-		<span class="legend-item"><Check size={12} strokeWidth={3} class="legend-check" /> Achieved</span>
+		<span class="legend-item"
+			><Check size={12} strokeWidth={3} class="legend-check" /> Achieved</span
+		>
 		<span class="legend-item"><Lock size={12} /> Locked</span>
 	</p>
 </div>
@@ -193,7 +201,8 @@
 	}
 
 	.milestone-cell.achieved {
-		background: linear-gradient(135deg,
+		background: linear-gradient(
+			135deg,
 			color-mix(in srgb, var(--lift-color) 20%, transparent),
 			color-mix(in srgb, var(--lift-color) 10%, transparent)
 		);

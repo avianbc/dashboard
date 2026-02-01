@@ -147,9 +147,7 @@
 			},
 			legend: {
 				orient: isMobile() ? 'horizontal' : 'vertical',
-				...(isMobile()
-					? { bottom: 10, left: 'center' }
-					: { left: '55%', top: 'center' }),
+				...(isMobile() ? { bottom: 10, left: 'center' } : { left: '55%', top: 'center' }),
 				textStyle: {
 					color: chartColors.textPrimary,
 					fontFamily: 'Source Sans 3, sans-serif',

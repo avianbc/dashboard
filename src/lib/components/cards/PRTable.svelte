@@ -73,7 +73,12 @@
 								{displayWeight(pr?.weightLbs ?? null)}
 							</td>
 						{/each}
-						<td class="e1rm-value" title={liftData.bestE1rm?.date ? `${formatDate(liftData.bestE1rm.date)} (${liftData.bestE1rm.reps}RM)` : ''}>
+						<td
+							class="e1rm-value"
+							title={liftData.bestE1rm?.date
+								? `${formatDate(liftData.bestE1rm.date)} (${liftData.bestE1rm.reps}RM)`
+								: ''}
+						>
 							{displayWeight(liftData.bestE1rm?.e1rmLbs ?? null)}
 						</td>
 					</tr>

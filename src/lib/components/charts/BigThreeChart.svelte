@@ -49,7 +49,7 @@
 		if (selectedTimeRange === 'ALL') return { start: 0, end: 100 };
 
 		// Get the full date range from data
-		const allDates = data.squat.e1rmHistory.map(p => new Date(p.date).getTime());
+		const allDates = data.squat.e1rmHistory.map((p) => new Date(p.date).getTime());
 		const minDate = Math.min(...allDates);
 		const maxDate = Math.max(...allDates);
 		const totalRange = maxDate - minDate;
@@ -59,13 +59,13 @@
 
 		switch (selectedTimeRange) {
 			case '3M':
-				startDate = now - (90 * 24 * 60 * 60 * 1000);
+				startDate = now - 90 * 24 * 60 * 60 * 1000;
 				break;
 			case '6M':
-				startDate = now - (180 * 24 * 60 * 60 * 1000);
+				startDate = now - 180 * 24 * 60 * 60 * 1000;
 				break;
 			case '1Y':
-				startDate = now - (365 * 24 * 60 * 60 * 1000);
+				startDate = now - 365 * 24 * 60 * 60 * 1000;
 				break;
 			default:
 				return { start: 0, end: 100 };
@@ -171,74 +171,75 @@
 			const lastPoint = lift.data[lift.data.length - 1];
 
 			return {
-			name: lift.displayName,
-			type: 'line',
-			data: lift.data.map((d) => [d.date, d.value]),
-			smooth: true,
-			showSymbol: false,
-			lineStyle: {
-				color: color,
-				width: 2.5
-			},
-			itemStyle: {
-				color: color
-			},
-			// Add subtle area fill
-			areaStyle: {
-				color: {
-					type: 'linear',
-					x: 0,
-					y: 0,
-					x2: 0,
-					y2: 1,
-					colorStops: [
-						{ offset: 0, color: color + '25' },
-						{ offset: 1, color: color + '05' }
-					]
-				}
-			},
-			emphasis: {
-				focus: 'series',
+				name: lift.displayName,
+				type: 'line',
+				data: lift.data.map((d) => [d.date, d.value]),
+				smooth: true,
+				showSymbol: false,
 				lineStyle: {
-					width: 4
+					color: color,
+					width: 2.5
+				},
+				itemStyle: {
+					color: color
+				},
+				// Add subtle area fill
+				areaStyle: {
+					color: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 0,
+						y2: 1,
+						colorStops: [
+							{ offset: 0, color: color + '25' },
+							{ offset: 1, color: color + '05' }
+						]
+					}
+				},
+				emphasis: {
+					focus: 'series',
+					lineStyle: {
+						width: 4
+					}
+				},
+				// End-of-line label with current value
+				endLabel: {
+					show: true,
+					formatter: () => `${formatNumber(lastPoint?.value ?? 0)}`,
+					color: color,
+					fontFamily: 'JetBrains Mono, monospace',
+					fontSize: 11,
+					fontWeight: 'bold',
+					offset: [5, 0]
+				},
+				// Add PR markers
+				markPoint: {
+					data: prPoints
+						.filter(
+							(pr) => pr!.lift === lift.name && visibleLifts[lift.name as keyof typeof visibleLifts]
+						)
+						.map((pr) => ({
+							name: 'PR',
+							coord: [pr!.date, pr!.value],
+							symbol: 'circle',
+							symbolSize: 30,
+							label: {
+								show: true,
+								formatter: '⭐',
+								fontSize: 18,
+								color: '#FFD700',
+								offset: [0, 0]
+							},
+							itemStyle: {
+								color: 'rgba(255, 215, 0, 0.2)',
+								borderColor: '#FFD700',
+								borderWidth: 2
+							}
+						}))
 				}
-			},
-			// End-of-line label with current value
-			endLabel: {
-				show: true,
-				formatter: () => `${formatNumber(lastPoint?.value ?? 0)}`,
-				color: color,
-				fontFamily: 'JetBrains Mono, monospace',
-				fontSize: 11,
-				fontWeight: 'bold',
-				offset: [5, 0]
-			},
-			// Add PR markers
-			markPoint: {
-				data: prPoints
-					.filter(
-						(pr) => pr!.lift === lift.name && visibleLifts[lift.name as keyof typeof visibleLifts]
-					)
-					.map((pr) => ({
-						name: 'PR',
-						coord: [pr!.date, pr!.value],
-						symbol: 'circle',
-						symbolSize: 30,
-						label: {
-							show: true,
-							formatter: '⭐',
-							fontSize: 18,
-							color: '#FFD700',
-							offset: [0, 0]
-						},
-						itemStyle: {
-							color: 'rgba(255, 215, 0, 0.2)',
-							borderColor: '#FFD700',
-							borderWidth: 2
-						}
-					}))
-			}
-		}});
+			};
+		});
 
 		// Add plate milestone lines as a series
 		const plateMilestoneSeries = {
@@ -282,7 +283,8 @@
 					if (!paramsArray || paramsArray.length === 0) return '';
 
 					// Convert timestamp to date string for comparison
-					const timestamp = (paramsArray[0] as CallbackDataParams & { axisValue?: string | number }).axisValue;
+					const timestamp = (paramsArray[0] as CallbackDataParams & { axisValue?: string | number })
+						.axisValue;
 					const dateObj = new Date(timestamp as string | number);
 					const dateString = dateObj.toISOString().split('T')[0];
 

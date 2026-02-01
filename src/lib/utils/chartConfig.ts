@@ -21,13 +21,13 @@ export const liftColors = LIFT_COLORS;
  * Intentionally reuses design tokens for consistency
  */
 export const DAY_COLORS = [
-	LIFT_COLORS.squat,   // Monday - red
-	LIFT_COLORS.ohp,     // Tuesday - amber
+	LIFT_COLORS.squat, // Monday - red
+	LIFT_COLORS.ohp, // Tuesday - amber
 	LIFT_COLORS.deadlift, // Wednesday - green
-	LIFT_COLORS.bench,   // Thursday - blue
-	'#c17f59',           // Friday - copper (accent)
-	'#a8a299',           // Saturday - gray (neutral)
-	'#6b6560'            // Sunday - muted (neutral)
+	LIFT_COLORS.bench, // Thursday - blue
+	'#c17f59', // Friday - copper (accent)
+	'#a8a299', // Saturday - gray (neutral)
+	'#6b6560' // Sunday - muted (neutral)
 ] as const;
 
 /**

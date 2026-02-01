@@ -98,7 +98,20 @@
 
 	function formatMonth(monthKey: string): string {
 		const [year, month] = monthKey.split('-');
-		const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		const monthNames = [
+			'Jan',
+			'Feb',
+			'Mar',
+			'Apr',
+			'May',
+			'Jun',
+			'Jul',
+			'Aug',
+			'Sep',
+			'Oct',
+			'Nov',
+			'Dec'
+		];
 		return `${monthNames[parseInt(month) - 1]} '${year.slice(2)}`;
 	}
 
@@ -127,7 +140,8 @@
 					const monthData = paramsArray[0];
 					const avgData = paramsArray.find((p) => p.seriesName === '3-Month Avg');
 
-					const monthKey = (monthData as CallbackDataParams & { axisValue?: string }).axisValue || '';
+					const monthKey =
+						(monthData as CallbackDataParams & { axisValue?: string }).axisValue || '';
 					const workouts = monthData.value as number;
 					const avg = avgData?.value as number | undefined;
 
@@ -137,10 +151,14 @@
 							<span style="display: inline-block; width: 10px; height: 10px; background: #c17f59; border-radius: 2px;"></span>
 							${workouts} workout${workouts !== 1 ? 's' : ''}
 						</div>
-						${avg !== undefined && avg !== null ? `<div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+						${
+							avg !== undefined && avg !== null
+								? `<div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
 							<span style="display: inline-block; width: 10px; height: 2px; background: #7c9885;"></span>
 							Avg: ${avg.toFixed(1)}/month
-						</div>` : ''}
+						</div>`
+								: ''
+						}
 					</div>`;
 				}
 			},

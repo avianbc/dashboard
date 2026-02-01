@@ -23,11 +23,7 @@
 	<div class="pr-grid">
 		{#each lifts as lift (lift.key)}
 			{@const days = data[lift.key]}
-			<Card
-				hover
-				class="pr-card"
-				style="--lift-color: {lift.color}"
-			>
+			<Card hover class="pr-card" style="--lift-color: {lift.color}">
 				<div class="pr-card-header">
 					<span class="lift-name">{lift.name}</span>
 				</div>

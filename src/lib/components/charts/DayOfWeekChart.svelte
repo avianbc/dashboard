@@ -4,7 +4,13 @@
 	import type { CallbackDataParams } from 'echarts/types/dist/shared';
 	import type { DayOfWeekStats } from '$lib/types/training';
 	import { unitSystem, theme } from '$lib/stores';
-	import { formatNumber, getChartColors, createTooltipConfig, TOOLTIP_PADDING, DAY_COLORS } from '$lib/utils';
+	import {
+		formatNumber,
+		getChartColors,
+		createTooltipConfig,
+		TOOLTIP_PADDING,
+		DAY_COLORS
+	} from '$lib/utils';
 	import { Callout } from '$lib/components/ui';
 	import { Calendar } from 'lucide-svelte';
 

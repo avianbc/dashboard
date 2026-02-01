@@ -5,15 +5,7 @@
 	import { format } from 'date-fns';
 	import { formatCompactNumber } from '$lib/utils';
 	import { Card } from '$lib/components/ui';
-	import {
-		Flame,
-		Dumbbell,
-		Star,
-		Trophy,
-		BarChart3,
-		TrendingUp,
-		Calendar
-	} from 'lucide-svelte';
+	import { Flame, Dumbbell, Star, Trophy, BarChart3, TrendingUp, Calendar } from 'lucide-svelte';
 	import { SegmentedControl } from '$lib/components/ui';
 
 	interface Props {
@@ -169,7 +161,7 @@
 	<!-- Filter controls -->
 	<div class="filters">
 		<SegmentedControl
-			options={filterOptions.map(f => ({ value: f, label: getCategoryLabel(f) }))}
+			options={filterOptions.map((f) => ({ value: f, label: getCategoryLabel(f) }))}
 			value={activeFilter}
 			onchange={(v) => {
 				activeFilter = v as EventCategory;

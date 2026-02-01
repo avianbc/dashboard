@@ -16,7 +16,11 @@ function detectUnitSystem(): UnitSystem {
 		const locale = navigator.language || navigator.languages?.[0];
 		if (locale) {
 			// Check if locale matches an imperial country
-			if (IMPERIAL_LOCALES.some((imp) => locale.startsWith(imp.split('-')[0]) && locale.includes(imp.split('-')[1]))) {
+			if (
+				IMPERIAL_LOCALES.some(
+					(imp) => locale.startsWith(imp.split('-')[0]) && locale.includes(imp.split('-')[1])
+				)
+			) {
 				return 'imperial';
 			}
 			// Simpler check: if it's en-US specifically
