@@ -17,7 +17,16 @@ const config = {
 			fallback: 'index.html',
 			precompress: true,
 			strict: true
-		})
+		}),
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				// Ignore 404s for external assets (served from Hugo site root)
+				if (path.startsWith('/images/') || path.startsWith('/site.webmanifest')) {
+					return;
+				}
+				throw new Error(message);
+			}
+		}
 	}
 };
 
