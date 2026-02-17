@@ -1,12 +1,12 @@
 {
   "summary": {
-    "totalWorkouts": 969,
-    "totalSets": 9620,
-    "totalVolumeLbs": 6833549.0,
-    "totalVolumeKg": 3094002.5,
-    "totalHours": 734.1,
-    "totalReps": 59036,
-    "totalTons": 3416.8,
+    "totalWorkouts": 987,
+    "totalSets": 9822,
+    "totalVolumeLbs": 6964209.0,
+    "totalVolumeKg": 3153150.0,
+    "totalHours": 750.6,
+    "totalReps": 60249,
+    "totalTons": 3482.1,
     "bestMonthEver": {
       "month": "2021-04",
       "volumeLbs": 213930.0,
@@ -19,11 +19,11 @@
       "workouts": 220
     },
     "firstWorkout": "2019-01-23",
-    "lastWorkout": "2025-10-24",
-    "avgWorkoutDuration": 45.5,
-    "avgVolumePerWorkoutLbs": 7052.17,
-    "avgVolumePerWorkoutKg": 3192.99,
-    "avgSetsPerWorkout": 9.9,
+    "lastWorkout": "2026-02-13",
+    "avgWorkoutDuration": 45.6,
+    "avgVolumePerWorkoutLbs": 7055.94,
+    "avgVolumePerWorkoutKg": 3194.68,
+    "avgSetsPerWorkout": 10.0,
     "workoutsPerWeekAvg": 2.7
   },
   "allTimePRs": {
@@ -321,62 +321,62 @@
     }
   },
   "daysSinceLastPR": {
-    "squat": 851,
-    "bench": 1149,
-    "deadlift": 1514,
-    "ohp": 1088
+    "squat": 867,
+    "bench": 1165,
+    "deadlift": 1530,
+    "ohp": 1104
   },
   "barTravel": {
     "byLift": {
       "squat": {
-        "totalReps": 10262,
+        "totalReps": 10579,
         "distancePerRepInches": 47,
-        "totalInches": 482314,
-        "totalFeet": 40192.83,
-        "totalMiles": 7.61,
-        "totalMeters": 12250.78,
-        "totalKm": 12.25
+        "totalInches": 497213,
+        "totalFeet": 41434.42,
+        "totalMiles": 7.85,
+        "totalMeters": 12629.21,
+        "totalKm": 12.63
       },
       "bench": {
-        "totalReps": 15653,
+        "totalReps": 15904,
         "distancePerRepInches": 38,
-        "totalInches": 594814,
-        "totalFeet": 49567.83,
-        "totalMiles": 9.39,
-        "totalMeters": 15108.28,
-        "totalKm": 15.11
+        "totalInches": 604352,
+        "totalFeet": 50362.67,
+        "totalMiles": 9.54,
+        "totalMeters": 15350.54,
+        "totalKm": 15.35
       },
       "deadlift": {
-        "totalReps": 6883,
+        "totalReps": 6957,
         "distancePerRepInches": 50.3,
-        "totalInches": 346214.9,
-        "totalFeet": 28851.24,
-        "totalMiles": 5.46,
-        "totalMeters": 8793.86,
-        "totalKm": 8.79
+        "totalInches": 349937.1,
+        "totalFeet": 29161.42,
+        "totalMiles": 5.52,
+        "totalMeters": 8888.4,
+        "totalKm": 8.89
       },
       "ohp": {
-        "totalReps": 9083,
+        "totalReps": 9304,
         "distancePerRepInches": 48,
-        "totalInches": 435984,
-        "totalFeet": 36332.0,
-        "totalMiles": 6.88,
-        "totalMeters": 11073.99,
-        "totalKm": 11.07
+        "totalInches": 446592,
+        "totalFeet": 37216.0,
+        "totalMiles": 7.05,
+        "totalMeters": 11343.44,
+        "totalKm": 11.34
       }
     },
     "total": {
-      "inches": 1859326.9,
-      "feet": 154943.91,
-      "miles": 29.35,
-      "meters": 47226.9,
-      "km": 47.23
+      "inches": 1898094.1,
+      "feet": 158174.51,
+      "miles": 29.96,
+      "meters": 48211.59,
+      "km": 48.21
     },
     "landmarks": {
-      "everestClimbs": 5.34,
-      "empireStateClimbs": 106.6,
-      "eiffelTowerClimbs": 143.1,
-      "statueOfLibertyClimbs": 508.0
+      "everestClimbs": 5.45,
+      "empireStateClimbs": 108.8,
+      "eiffelTowerClimbs": 146.1,
+      "statueOfLibertyClimbs": 518.6
     },
     "distancePerRepInches": {
       "squat": 47,
@@ -387,7 +387,7 @@
   },
   "powerliftingTotals": {
     "current": {
-      "date": "2025-10-24",
+      "date": "2026-02-13",
       "totalLbs": 1276.17,
       "totalKg": 580.33,
       "squatE1rm": 442.0,
@@ -404,7 +404,7 @@
     },
     "clubMilestones": {
       "500": {
-        "date": "2019-02-11",
+        "date": "2019-02-12",
         "totalLbs": 507.5,
         "totalKg": 230.42,
         "squat": 175.0,
@@ -412,7 +412,7 @@
         "deadlift": 180.83
       },
       "750": {
-        "date": "2019-03-15",
+        "date": "2019-03-16",
         "totalLbs": 758.33,
         "totalKg": 344.17,
         "squat": 256.67,
@@ -1970,6 +1970,48 @@
         "volumeLbs": 23815.0,
         "volumeKg": 10742.5,
         "workouts": 4
+      },
+      {
+        "week": "2025-W51",
+        "volumeLbs": 22915.0,
+        "volumeKg": 10357.5,
+        "workouts": 3
+      },
+      {
+        "week": "2025-W52",
+        "volumeLbs": 11425.0,
+        "volumeKg": 5170.0,
+        "workouts": 2
+      },
+      {
+        "week": "2026-W00",
+        "volumeLbs": 2815.0,
+        "volumeKg": 1275.0,
+        "workouts": 1
+      },
+      {
+        "week": "2026-W03",
+        "volumeLbs": 21860.0,
+        "volumeKg": 9857.5,
+        "workouts": 3
+      },
+      {
+        "week": "2026-W04",
+        "volumeLbs": 22645.0,
+        "volumeKg": 10227.5,
+        "workouts": 3
+      },
+      {
+        "week": "2026-W05",
+        "volumeLbs": 24345.0,
+        "volumeKg": 11022.5,
+        "workouts": 3
+      },
+      {
+        "week": "2026-W06",
+        "volumeLbs": 24655.0,
+        "volumeKg": 11237.5,
+        "workouts": 3
       }
     ],
     "monthly": [
@@ -2380,6 +2422,24 @@
         "volumeLbs": 23815.0,
         "volumeKg": 10742.5,
         "workouts": 4
+      },
+      {
+        "month": "2025-12",
+        "volumeLbs": 34340.0,
+        "volumeKg": 15527.5,
+        "workouts": 5
+      },
+      {
+        "month": "2026-01",
+        "volumeLbs": 47320.0,
+        "volumeKg": 21360.0,
+        "workouts": 7
+      },
+      {
+        "month": "2026-02",
+        "volumeLbs": 49000.0,
+        "volumeKg": 22260.0,
+        "workouts": 6
       }
     ],
     "yearly": [
@@ -2421,9 +2481,15 @@
       },
       {
         "year": 2025,
-        "volumeLbs": 1042837.5,
-        "volumeKg": 472112.5,
-        "workouts": 119
+        "volumeLbs": 1077177.5,
+        "volumeKg": 487640.0,
+        "workouts": 124
+      },
+      {
+        "year": 2026,
+        "volumeLbs": 96320.0,
+        "volumeKg": 43620.0,
+        "workouts": 13
       }
     ]
   }

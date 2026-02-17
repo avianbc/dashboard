@@ -1,220 +1,232 @@
 {
   "volumeTimeSeriesDaily": [
     {
-      "date": "2019-01-23",
+      "date": "2019-01-24",
       "volumeLbs": 4375.0,
       "volumeKg": 2000.0,
       "workouts": 1
     },
     {
-      "date": "2019-01-25",
+      "date": "2019-01-26",
       "volumeLbs": 4225.0,
       "volumeKg": 1900.0,
       "workouts": 1
     },
     {
-      "date": "2019-01-28",
+      "date": "2019-01-29",
       "volumeLbs": 7625.0,
       "volumeKg": 3437.5,
       "workouts": 1
     },
     {
-      "date": "2019-01-30",
+      "date": "2019-01-31",
       "volumeLbs": 5675.0,
       "volumeKg": 2550.0,
       "workouts": 1
     },
     {
-      "date": "2019-02-01",
+      "date": "2019-02-02",
       "volumeLbs": 9125.0,
       "volumeKg": 4125.0,
       "workouts": 1
     },
     {
-      "date": "2019-02-04",
+      "date": "2019-02-05",
       "volumeLbs": 5850.0,
       "volumeKg": 2637.5,
       "workouts": 1
     },
     {
-      "date": "2019-02-06",
+      "date": "2019-02-07",
       "volumeLbs": 9500.0,
       "volumeKg": 4312.5,
       "workouts": 1
     },
     {
-      "date": "2019-02-08",
+      "date": "2019-02-09",
       "volumeLbs": 6275.0,
       "volumeKg": 2850.0,
       "workouts": 1
     },
     {
-      "date": "2019-02-11",
+      "date": "2019-02-12",
       "volumeLbs": 11360.0,
       "volumeKg": 5162.5,
       "workouts": 1
     },
     {
-      "date": "2019-02-13",
+      "date": "2019-02-14",
       "volumeLbs": 6837.5,
       "volumeKg": 3112.5,
       "workouts": 1
     },
     {
-      "date": "2019-02-15",
+      "date": "2019-02-16",
       "volumeLbs": 11470.0,
       "volumeKg": 5132.5,
       "workouts": 1
     },
     {
-      "date": "2019-02-18",
+      "date": "2019-02-19",
       "volumeLbs": 7300.0,
       "volumeKg": 3287.5,
       "workouts": 1
     },
     {
-      "date": "2019-02-20",
+      "date": "2019-02-21",
       "volumeLbs": 11794.0,
       "volumeKg": 5302.5,
       "workouts": 1
     },
     {
-      "date": "2019-02-22",
+      "date": "2019-02-23",
       "volumeLbs": 7625.0,
       "volumeKg": 3450.0,
       "workouts": 1
     },
     {
-      "date": "2019-02-25",
+      "date": "2019-02-26",
       "volumeLbs": 11500.0,
       "volumeKg": 5187.5,
       "workouts": 1
     },
     {
-      "date": "2019-02-27",
+      "date": "2019-02-28",
       "volumeLbs": 7690.0,
       "volumeKg": 3502.5,
       "workouts": 1
     },
     {
-      "date": "2019-03-01",
+      "date": "2019-03-02",
       "volumeLbs": 12000.0,
       "volumeKg": 5375.0,
       "workouts": 1
     },
     {
-      "date": "2019-03-04",
+      "date": "2019-03-05",
       "volumeLbs": 8350.0,
       "volumeKg": 3737.5,
       "workouts": 1
     },
     {
-      "date": "2019-03-06",
+      "date": "2019-03-07",
       "volumeLbs": 12500.0,
       "volumeKg": 5625.0,
       "workouts": 1
     },
     {
-      "date": "2019-03-08",
+      "date": "2019-03-09",
       "volumeLbs": 8900.0,
       "volumeKg": 4012.5,
       "workouts": 1
     },
     {
-      "date": "2019-03-11",
+      "date": "2019-03-12",
       "volumeLbs": 13125.0,
       "volumeKg": 5937.5,
       "workouts": 1
     },
     {
-      "date": "2019-03-13",
+      "date": "2019-03-14",
       "volumeLbs": 9325.0,
       "volumeKg": 4225.0,
       "workouts": 1
     },
     {
-      "date": "2019-03-15",
+      "date": "2019-03-16",
       "volumeLbs": 11225.0,
       "volumeKg": 5100.0,
       "workouts": 1
     },
     {
-      "date": "2019-03-18",
+      "date": "2019-03-19",
       "volumeLbs": 9625.0,
       "volumeKg": 4375.0,
       "workouts": 1
     },
     {
-      "date": "2019-03-20",
+      "date": "2019-03-21",
       "volumeLbs": 12650.0,
       "volumeKg": 5775.0,
       "workouts": 1
     },
     {
-      "date": "2019-03-22",
+      "date": "2019-03-23",
       "volumeLbs": 10200.0,
       "volumeKg": 4662.5,
       "workouts": 1
     },
     {
-      "date": "2019-03-25",
+      "date": "2019-03-26",
       "volumeLbs": 14625.0,
       "volumeKg": 6687.5,
       "workouts": 1
     },
     {
-      "date": "2019-03-27",
+      "date": "2019-03-28",
       "volumeLbs": 10050.0,
       "volumeKg": 4550.0,
       "workouts": 1
     },
     {
-      "date": "2019-03-29",
+      "date": "2019-03-30",
       "volumeLbs": 13550.0,
       "volumeKg": 6125.0,
       "workouts": 1
     },
     {
-      "date": "2019-04-01",
+      "date": "2019-04-02",
       "volumeLbs": 11730.0,
       "volumeKg": 5317.5,
       "workouts": 1
     },
     {
-      "date": "2019-04-03",
+      "date": "2019-04-04",
       "volumeLbs": 13925.0,
       "volumeKg": 6312.5,
       "workouts": 1
     },
     {
-      "date": "2019-04-05",
+      "date": "2019-04-06",
       "volumeLbs": 12300.0,
       "volumeKg": 5597.5,
       "workouts": 1
     },
     {
-      "date": "2019-04-08",
+      "date": "2019-04-09",
       "volumeLbs": 14795.0,
       "volumeKg": 6725.0,
       "workouts": 1
     },
     {
-      "date": "2019-04-10",
+      "date": "2019-04-11",
       "volumeLbs": 10660.0,
       "volumeKg": 4872.5,
       "workouts": 1
     },
     {
       "date": "2019-04-12",
-      "volumeLbs": 23755.0,
-      "volumeKg": 10685.0,
-      "workouts": 2
+      "volumeLbs": 14605.0,
+      "volumeKg": 6560.0,
+      "workouts": 1
+    },
+    {
+      "date": "2019-04-13",
+      "volumeLbs": 9150.0,
+      "volumeKg": 4125.0,
+      "workouts": 1
     },
     {
       "date": "2019-04-15",
-      "volumeLbs": 9672.5,
-      "volumeKg": 4355.0,
-      "workouts": 2
+      "volumeLbs": 4925.0,
+      "volumeKg": 2230.0,
+      "workouts": 1
+    },
+    {
+      "date": "2019-04-16",
+      "volumeLbs": 4747.5,
+      "volumeKg": 2125.0,
+      "workouts": 1
     },
     {
       "date": "2019-04-17",
@@ -5783,188 +5795,306 @@
       "volumeLbs": 5400.0,
       "volumeKg": 2437.5,
       "workouts": 1
+    },
+    {
+      "date": "2025-12-22",
+      "volumeLbs": 7530.0,
+      "volumeKg": 3397.5,
+      "workouts": 1
+    },
+    {
+      "date": "2025-12-24",
+      "volumeLbs": 6865.0,
+      "volumeKg": 3105.0,
+      "workouts": 1
+    },
+    {
+      "date": "2025-12-26",
+      "volumeLbs": 8520.0,
+      "volumeKg": 3855.0,
+      "workouts": 1
+    },
+    {
+      "date": "2025-12-29",
+      "volumeLbs": 6890.0,
+      "volumeKg": 3142.5,
+      "workouts": 1
+    },
+    {
+      "date": "2025-12-31",
+      "volumeLbs": 4535.0,
+      "volumeKg": 2027.5,
+      "workouts": 1
+    },
+    {
+      "date": "2026-01-02",
+      "volumeLbs": 2815.0,
+      "volumeKg": 1275.0,
+      "workouts": 1
+    },
+    {
+      "date": "2026-01-19",
+      "volumeLbs": 8130.0,
+      "volumeKg": 3707.5,
+      "workouts": 1
+    },
+    {
+      "date": "2026-01-21",
+      "volumeLbs": 4945.0,
+      "volumeKg": 2212.5,
+      "workouts": 1
+    },
+    {
+      "date": "2026-01-23",
+      "volumeLbs": 8785.0,
+      "volumeKg": 3937.5,
+      "workouts": 1
+    },
+    {
+      "date": "2026-01-26",
+      "volumeLbs": 7970.0,
+      "volumeKg": 3620.0,
+      "workouts": 1
+    },
+    {
+      "date": "2026-01-28",
+      "volumeLbs": 7090.0,
+      "volumeKg": 3175.0,
+      "workouts": 1
+    },
+    {
+      "date": "2026-01-30",
+      "volumeLbs": 7585.0,
+      "volumeKg": 3432.5,
+      "workouts": 1
+    },
+    {
+      "date": "2026-02-02",
+      "volumeLbs": 9585.0,
+      "volumeKg": 4350.0,
+      "workouts": 1
+    },
+    {
+      "date": "2026-02-04",
+      "volumeLbs": 5455.0,
+      "volumeKg": 2487.5,
+      "workouts": 1
+    },
+    {
+      "date": "2026-02-06",
+      "volumeLbs": 9305.0,
+      "volumeKg": 4185.0,
+      "workouts": 1
+    },
+    {
+      "date": "2026-02-09",
+      "volumeLbs": 7977.5,
+      "volumeKg": 3625.0,
+      "workouts": 1
+    },
+    {
+      "date": "2026-02-11",
+      "volumeLbs": 8197.5,
+      "volumeKg": 3745.0,
+      "workouts": 1
+    },
+    {
+      "date": "2026-02-13",
+      "volumeLbs": 8480.0,
+      "volumeKg": 3867.5,
+      "workouts": 1
     }
   ],
   "workoutCalendar": {
-    "2019-01-23": {
+    "2019-01-24": {
       "count": 1,
       "volumeLbs": 4375.0,
       "volumeKg": 2000.0
     },
-    "2019-01-25": {
+    "2019-01-26": {
       "count": 1,
       "volumeLbs": 4225.0,
       "volumeKg": 1900.0
     },
-    "2019-01-28": {
+    "2019-01-29": {
       "count": 1,
       "volumeLbs": 7625.0,
       "volumeKg": 3437.5
     },
-    "2019-01-30": {
+    "2019-01-31": {
       "count": 1,
       "volumeLbs": 5675.0,
       "volumeKg": 2550.0
     },
-    "2019-02-01": {
+    "2019-02-02": {
       "count": 1,
       "volumeLbs": 9125.0,
       "volumeKg": 4125.0
     },
-    "2019-02-04": {
+    "2019-02-05": {
       "count": 1,
       "volumeLbs": 5850.0,
       "volumeKg": 2637.5
     },
-    "2019-02-06": {
+    "2019-02-07": {
       "count": 1,
       "volumeLbs": 9500.0,
       "volumeKg": 4312.5
     },
-    "2019-02-08": {
+    "2019-02-09": {
       "count": 1,
       "volumeLbs": 6275.0,
       "volumeKg": 2850.0
     },
-    "2019-02-11": {
+    "2019-02-12": {
       "count": 1,
       "volumeLbs": 11360.0,
       "volumeKg": 5162.5
     },
-    "2019-02-13": {
+    "2019-02-14": {
       "count": 1,
       "volumeLbs": 6837.5,
       "volumeKg": 3112.5
     },
-    "2019-02-15": {
+    "2019-02-16": {
       "count": 1,
       "volumeLbs": 11470.0,
       "volumeKg": 5132.5
     },
-    "2019-02-18": {
+    "2019-02-19": {
       "count": 1,
       "volumeLbs": 7300.0,
       "volumeKg": 3287.5
     },
-    "2019-02-20": {
+    "2019-02-21": {
       "count": 1,
       "volumeLbs": 11794.0,
       "volumeKg": 5302.5
     },
-    "2019-02-22": {
+    "2019-02-23": {
       "count": 1,
       "volumeLbs": 7625.0,
       "volumeKg": 3450.0
     },
-    "2019-02-25": {
+    "2019-02-26": {
       "count": 1,
       "volumeLbs": 11500.0,
       "volumeKg": 5187.5
     },
-    "2019-02-27": {
+    "2019-02-28": {
       "count": 1,
       "volumeLbs": 7690.0,
       "volumeKg": 3502.5
     },
-    "2019-03-01": {
+    "2019-03-02": {
       "count": 1,
       "volumeLbs": 12000.0,
       "volumeKg": 5375.0
     },
-    "2019-03-04": {
+    "2019-03-05": {
       "count": 1,
       "volumeLbs": 8350.0,
       "volumeKg": 3737.5
     },
-    "2019-03-06": {
+    "2019-03-07": {
       "count": 1,
       "volumeLbs": 12500.0,
       "volumeKg": 5625.0
     },
-    "2019-03-08": {
+    "2019-03-09": {
       "count": 1,
       "volumeLbs": 8900.0,
       "volumeKg": 4012.5
     },
-    "2019-03-11": {
+    "2019-03-12": {
       "count": 1,
       "volumeLbs": 13125.0,
       "volumeKg": 5937.5
     },
-    "2019-03-13": {
+    "2019-03-14": {
       "count": 1,
       "volumeLbs": 9325.0,
       "volumeKg": 4225.0
     },
-    "2019-03-15": {
+    "2019-03-16": {
       "count": 1,
       "volumeLbs": 11225.0,
       "volumeKg": 5100.0
     },
-    "2019-03-18": {
+    "2019-03-19": {
       "count": 1,
       "volumeLbs": 9625.0,
       "volumeKg": 4375.0
     },
-    "2019-03-20": {
+    "2019-03-21": {
       "count": 1,
       "volumeLbs": 12650.0,
       "volumeKg": 5775.0
     },
-    "2019-03-22": {
+    "2019-03-23": {
       "count": 1,
       "volumeLbs": 10200.0,
       "volumeKg": 4662.5
     },
-    "2019-03-25": {
+    "2019-03-26": {
       "count": 1,
       "volumeLbs": 14625.0,
       "volumeKg": 6687.5
     },
-    "2019-03-27": {
+    "2019-03-28": {
       "count": 1,
       "volumeLbs": 10050.0,
       "volumeKg": 4550.0
     },
-    "2019-03-29": {
+    "2019-03-30": {
       "count": 1,
       "volumeLbs": 13550.0,
       "volumeKg": 6125.0
     },
-    "2019-04-01": {
+    "2019-04-02": {
       "count": 1,
       "volumeLbs": 11730.0,
       "volumeKg": 5317.5
     },
-    "2019-04-03": {
+    "2019-04-04": {
       "count": 1,
       "volumeLbs": 13925.0,
       "volumeKg": 6312.5
     },
-    "2019-04-05": {
+    "2019-04-06": {
       "count": 1,
       "volumeLbs": 12300.0,
       "volumeKg": 5597.5
     },
-    "2019-04-08": {
+    "2019-04-09": {
       "count": 1,
       "volumeLbs": 14795.0,
       "volumeKg": 6725.0
     },
-    "2019-04-10": {
+    "2019-04-11": {
       "count": 1,
       "volumeLbs": 10660.0,
       "volumeKg": 4872.5
     },
     "2019-04-12": {
-      "count": 2,
-      "volumeLbs": 23755.0,
-      "volumeKg": 10685.0
+      "count": 1,
+      "volumeLbs": 14605.0,
+      "volumeKg": 6560.0
+    },
+    "2019-04-13": {
+      "count": 1,
+      "volumeLbs": 9150.0,
+      "volumeKg": 4125.0
     },
     "2019-04-15": {
-      "count": 2,
-      "volumeLbs": 9672.5,
-      "volumeKg": 4355.0
+      "count": 1,
+      "volumeLbs": 4925.0,
+      "volumeKg": 2230.0
+    },
+    "2019-04-16": {
+      "count": 1,
+      "volumeLbs": 4747.5,
+      "volumeKg": 2125.0
     },
     "2019-04-17": {
       "count": 1,
@@ -10605,14 +10735,104 @@
       "count": 1,
       "volumeLbs": 5400.0,
       "volumeKg": 2437.5
+    },
+    "2025-12-22": {
+      "count": 1,
+      "volumeLbs": 7530.0,
+      "volumeKg": 3397.5
+    },
+    "2025-12-24": {
+      "count": 1,
+      "volumeLbs": 6865.0,
+      "volumeKg": 3105.0
+    },
+    "2025-12-26": {
+      "count": 1,
+      "volumeLbs": 8520.0,
+      "volumeKg": 3855.0
+    },
+    "2025-12-29": {
+      "count": 1,
+      "volumeLbs": 6890.0,
+      "volumeKg": 3142.5
+    },
+    "2025-12-31": {
+      "count": 1,
+      "volumeLbs": 4535.0,
+      "volumeKg": 2027.5
+    },
+    "2026-01-02": {
+      "count": 1,
+      "volumeLbs": 2815.0,
+      "volumeKg": 1275.0
+    },
+    "2026-01-19": {
+      "count": 1,
+      "volumeLbs": 8130.0,
+      "volumeKg": 3707.5
+    },
+    "2026-01-21": {
+      "count": 1,
+      "volumeLbs": 4945.0,
+      "volumeKg": 2212.5
+    },
+    "2026-01-23": {
+      "count": 1,
+      "volumeLbs": 8785.0,
+      "volumeKg": 3937.5
+    },
+    "2026-01-26": {
+      "count": 1,
+      "volumeLbs": 7970.0,
+      "volumeKg": 3620.0
+    },
+    "2026-01-28": {
+      "count": 1,
+      "volumeLbs": 7090.0,
+      "volumeKg": 3175.0
+    },
+    "2026-01-30": {
+      "count": 1,
+      "volumeLbs": 7585.0,
+      "volumeKg": 3432.5
+    },
+    "2026-02-02": {
+      "count": 1,
+      "volumeLbs": 9585.0,
+      "volumeKg": 4350.0
+    },
+    "2026-02-04": {
+      "count": 1,
+      "volumeLbs": 5455.0,
+      "volumeKg": 2487.5
+    },
+    "2026-02-06": {
+      "count": 1,
+      "volumeLbs": 9305.0,
+      "volumeKg": 4185.0
+    },
+    "2026-02-09": {
+      "count": 1,
+      "volumeLbs": 7977.5,
+      "volumeKg": 3625.0
+    },
+    "2026-02-11": {
+      "count": 1,
+      "volumeLbs": 8197.5,
+      "volumeKg": 3745.0
+    },
+    "2026-02-13": {
+      "count": 1,
+      "volumeLbs": 8480.0,
+      "volumeKg": 3867.5
     }
   },
   "exerciseProgress": {
     "Bench Press": {
-      "totalVolumeLbs": 2182757.5,
-      "totalVolumeKg": 988680.0,
-      "firstPerformed": "2019-01-23",
-      "lastPerformed": "2025-10-23",
+      "totalVolumeLbs": 2212285.0,
+      "totalVolumeKg": 1001992.5,
+      "firstPerformed": "2019-01-24",
+      "lastPerformed": "2026-02-11",
       "prs": [
         {
           "date": "2019-11-21",
@@ -10683,10 +10903,10 @@
       ]
     },
     "Squat": {
-      "totalVolumeLbs": 1775785.0,
-      "totalVolumeKg": 802515.0,
-      "firstPerformed": "2019-01-23",
-      "lastPerformed": "2025-10-20",
+      "totalVolumeLbs": 1825715.0,
+      "totalVolumeKg": 825037.5,
+      "firstPerformed": "2019-01-24",
+      "lastPerformed": "2026-02-13",
       "prs": [
         {
           "date": "2019-04-17",
@@ -10757,10 +10977,10 @@
       ]
     },
     "Deadlift": {
-      "totalVolumeLbs": 1349725.0,
-      "totalVolumeKg": 610727.5,
-      "firstPerformed": "2019-01-25",
-      "lastPerformed": "2025-10-24",
+      "totalVolumeLbs": 1363320.0,
+      "totalVolumeKg": 616872.5,
+      "firstPerformed": "2019-01-26",
+      "lastPerformed": "2026-02-11",
       "prs": [
         {
           "date": "2019-09-11",
@@ -10831,10 +11051,10 @@
       ]
     },
     "Overhead Press": {
-      "totalVolumeLbs": 784427.5,
-      "totalVolumeKg": 355235.0,
-      "firstPerformed": "2019-01-25",
-      "lastPerformed": "2025-10-21",
+      "totalVolumeLbs": 804035.0,
+      "totalVolumeKg": 364177.5,
+      "firstPerformed": "2019-01-26",
+      "lastPerformed": "2026-02-13",
       "prs": [
         {
           "date": "2020-04-13",
@@ -10913,7 +11133,7 @@
     "Barbell Row": {
       "totalVolumeLbs": 162800.0,
       "totalVolumeKg": 73517.5,
-      "firstPerformed": "2019-01-23",
+      "firstPerformed": "2019-01-24",
       "lastPerformed": "2025-09-09",
       "prs": [
         {
@@ -11060,10 +11280,42 @@
         }
       ]
     },
+    "Curls": {
+      "totalVolumeLbs": 33100.0,
+      "totalVolumeKg": 15125.0,
+      "firstPerformed": "2019-08-30",
+      "lastPerformed": "2026-02-11",
+      "prs": [
+        {
+          "date": "2019-08-30",
+          "weightLbs": 0,
+          "weightKg": 0,
+          "reps": 5
+        },
+        {
+          "date": "2021-01-22",
+          "weightLbs": 25.0,
+          "weightKg": 12.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-08-18",
+          "weightLbs": 45.0,
+          "weightKg": 20.0,
+          "reps": 12
+        },
+        {
+          "date": "2026-02-11",
+          "weightLbs": 65.0,
+          "weightKg": 30.0,
+          "reps": 10
+        }
+      ]
+    },
     "Barbell Curls": {
       "totalVolumeLbs": 30285.0,
       "totalVolumeKg": 13845.0,
-      "firstPerformed": "2019-04-01",
+      "firstPerformed": "2019-04-02",
       "lastPerformed": "2021-12-02",
       "prs": [
         {
@@ -11190,35 +11442,53 @@
         }
       ]
     },
-    "Curls": {
-      "totalVolumeLbs": 23200.0,
-      "totalVolumeKg": 10625.0,
-      "firstPerformed": "2019-08-30",
-      "lastPerformed": "2025-09-29",
+    "Chinups": {
+      "totalVolumeLbs": 21605.0,
+      "totalVolumeKg": 9885.0,
+      "firstPerformed": "2019-04-15",
+      "lastPerformed": "2026-02-13",
       "prs": [
         {
-          "date": "2019-08-30",
+          "date": "2019-05-27",
           "weightLbs": 0,
           "weightKg": 0,
-          "reps": 5
+          "reps": 6
         },
         {
-          "date": "2021-01-22",
+          "date": "2019-05-27",
+          "weightLbs": 0,
+          "weightKg": 0,
+          "reps": 4
+        },
+        {
+          "date": "2019-07-29",
+          "weightLbs": 0,
+          "weightKg": 0,
+          "reps": 9
+        },
+        {
+          "date": "2019-08-08",
           "weightLbs": 25.0,
           "weightKg": 12.5,
           "reps": 8
         },
         {
-          "date": "2024-08-09",
-          "weightLbs": 45.0,
-          "weightKg": 20.0,
-          "reps": 10
+          "date": "2019-08-12",
+          "weightLbs": 25.0,
+          "weightKg": 12.5,
+          "reps": 5
         },
         {
-          "date": "2025-08-18",
+          "date": "2019-09-23",
           "weightLbs": 45.0,
           "weightKg": 20.0,
-          "reps": 12
+          "reps": 7
+        },
+        {
+          "date": "2026-02-04",
+          "weightLbs": 52.5,
+          "weightKg": 25.0,
+          "reps": 10
         }
       ]
     },
@@ -11285,56 +11555,6 @@
           "weightLbs": 95.0,
           "weightKg": 42.5,
           "reps": 12
-        }
-      ]
-    },
-    "Chinups": {
-      "totalVolumeLbs": 13505.0,
-      "totalVolumeKg": 6160.0,
-      "firstPerformed": "2019-04-15",
-      "lastPerformed": "2025-09-09",
-      "prs": [
-        {
-          "date": "2019-05-27",
-          "weightLbs": 0,
-          "weightKg": 0,
-          "reps": 6
-        },
-        {
-          "date": "2019-05-27",
-          "weightLbs": 0,
-          "weightKg": 0,
-          "reps": 4
-        },
-        {
-          "date": "2019-07-29",
-          "weightLbs": 0,
-          "weightKg": 0,
-          "reps": 9
-        },
-        {
-          "date": "2019-08-08",
-          "weightLbs": 25.0,
-          "weightKg": 12.5,
-          "reps": 8
-        },
-        {
-          "date": "2019-08-12",
-          "weightLbs": 25.0,
-          "weightKg": 12.5,
-          "reps": 5
-        },
-        {
-          "date": "2019-09-23",
-          "weightLbs": 45.0,
-          "weightKg": 20.0,
-          "reps": 7
-        },
-        {
-          "date": "2019-09-30",
-          "weightLbs": 45.0,
-          "weightKg": 20.0,
-          "reps": 10
         }
       ]
     },
@@ -11419,17 +11639,17 @@
     "Pull Ups": {
       "totalVolumeLbs": 9960.0,
       "totalVolumeKg": 4650.0,
-      "firstPerformed": "2019-02-08",
+      "firstPerformed": "2019-02-09",
       "lastPerformed": "2025-04-18",
       "prs": [
         {
-          "date": "2019-02-08",
+          "date": "2019-02-09",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 10
         },
         {
-          "date": "2019-02-22",
+          "date": "2019-02-23",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 5
@@ -11555,11 +11775,11 @@
     "Dips": {
       "totalVolumeLbs": 3680.0,
       "totalVolumeKg": 1730.0,
-      "firstPerformed": "2019-02-25",
+      "firstPerformed": "2019-02-26",
       "lastPerformed": "2025-09-25",
       "prs": [
         {
-          "date": "2019-02-25",
+          "date": "2019-02-26",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 10
@@ -11661,11 +11881,11 @@
     "Skullcrushers": {
       "totalVolumeLbs": 2624.0,
       "totalVolumeKg": 1160.0,
-      "firstPerformed": "2019-02-11",
-      "lastPerformed": "2019-02-20",
+      "firstPerformed": "2019-02-12",
+      "lastPerformed": "2019-02-21",
       "prs": [
         {
-          "date": "2019-02-11",
+          "date": "2019-02-12",
           "weightLbs": 85.0,
           "weightKg": 37.5,
           "reps": 8
@@ -11675,11 +11895,11 @@
     "Weighted Dips": {
       "totalVolumeLbs": 2100.0,
       "totalVolumeKg": 937.5,
-      "firstPerformed": "2019-03-20",
-      "lastPerformed": "2019-04-08",
+      "firstPerformed": "2019-03-21",
+      "lastPerformed": "2019-04-09",
       "prs": [
         {
-          "date": "2019-03-29",
+          "date": "2019-03-30",
           "weightLbs": 30.0,
           "weightKg": 12.5,
           "reps": 5
@@ -11737,11 +11957,11 @@
     "Weighted Pull Ups": {
       "totalVolumeLbs": 850.0,
       "totalVolumeKg": 387.5,
-      "firstPerformed": "2019-02-13",
-      "lastPerformed": "2019-04-15",
+      "firstPerformed": "2019-02-14",
+      "lastPerformed": "2019-04-16",
       "prs": [
         {
-          "date": "2019-03-22",
+          "date": "2019-03-23",
           "weightLbs": 10.0,
           "weightKg": 5.0,
           "reps": 5
@@ -11765,7 +11985,7 @@
     "Hanging Leg Raises": {
       "totalVolumeLbs": 395.0,
       "totalVolumeKg": 197.5,
-      "firstPerformed": "2019-02-15",
+      "firstPerformed": "2019-02-16",
       "lastPerformed": "2025-09-09",
       "prs": [
         {
@@ -11843,35 +12063,35 @@
     "Planks": {
       "totalVolumeLbs": 0,
       "totalVolumeKg": 0,
-      "firstPerformed": "2019-02-20",
-      "lastPerformed": "2019-04-03",
+      "firstPerformed": "2019-02-21",
+      "lastPerformed": "2019-04-04",
       "prs": [
         {
-          "date": "2019-02-20",
+          "date": "2019-02-21",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 30
         },
         {
-          "date": "2019-03-29",
+          "date": "2019-03-30",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 41
         },
         {
-          "date": "2019-03-29",
+          "date": "2019-03-30",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 37
         },
         {
-          "date": "2019-04-03",
+          "date": "2019-04-04",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 39
         },
         {
-          "date": "2019-04-03",
+          "date": "2019-04-04",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 32
@@ -11881,11 +12101,11 @@
     "Haning Leg Raises": {
       "totalVolumeLbs": 0,
       "totalVolumeKg": 0,
-      "firstPerformed": "2019-02-11",
-      "lastPerformed": "2019-02-11",
+      "firstPerformed": "2019-02-12",
+      "lastPerformed": "2019-02-12",
       "prs": [
         {
-          "date": "2019-02-11",
+          "date": "2019-02-12",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 8
@@ -11895,11 +12115,11 @@
     "Hanging Knee Raises": {
       "totalVolumeLbs": 0,
       "totalVolumeKg": 0,
-      "firstPerformed": "2019-02-08",
-      "lastPerformed": "2019-02-18",
+      "firstPerformed": "2019-02-09",
+      "lastPerformed": "2019-02-19",
       "prs": [
         {
-          "date": "2019-02-08",
+          "date": "2019-02-09",
           "weightLbs": 0,
           "weightKg": 0,
           "reps": 8
@@ -11966,7 +12186,7 @@
       "exerciseName": "Squat",
       "e1rmHistory": [
         {
-          "date": "2019-01-23",
+          "date": "2019-01-24",
           "e1rmLbs": 52.5,
           "e1rmKg": 23.33,
           "actualWeightLbs": 45.0,
@@ -11974,7 +12194,7 @@
           "reps": 5
         },
         {
-          "date": "2019-01-25",
+          "date": "2019-01-26",
           "e1rmLbs": 110.83,
           "e1rmKg": 49.58,
           "actualWeightLbs": 95.0,
@@ -11982,7 +12202,7 @@
           "reps": 5
         },
         {
-          "date": "2019-01-28",
+          "date": "2019-01-29",
           "e1rmLbs": 122.5,
           "e1rmKg": 55.42,
           "actualWeightLbs": 105.0,
@@ -11990,7 +12210,7 @@
           "reps": 5
         },
         {
-          "date": "2019-01-30",
+          "date": "2019-01-31",
           "e1rmLbs": 157.5,
           "e1rmKg": 70.0,
           "actualWeightLbs": 135.0,
@@ -11998,7 +12218,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-01",
+          "date": "2019-02-02",
           "e1rmLbs": 163.33,
           "e1rmKg": 72.92,
           "actualWeightLbs": 140.0,
@@ -12006,7 +12226,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-04",
+          "date": "2019-02-05",
           "e1rmLbs": 157.5,
           "e1rmKg": 70.0,
           "actualWeightLbs": 135.0,
@@ -12014,7 +12234,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-06",
+          "date": "2019-02-07",
           "e1rmLbs": 163.33,
           "e1rmKg": 72.92,
           "actualWeightLbs": 140.0,
@@ -12022,7 +12242,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-08",
+          "date": "2019-02-09",
           "e1rmLbs": 169.17,
           "e1rmKg": 75.83,
           "actualWeightLbs": 145.0,
@@ -12030,7 +12250,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-11",
+          "date": "2019-02-12",
           "e1rmLbs": 175.0,
           "e1rmKg": 78.75,
           "actualWeightLbs": 150.0,
@@ -12038,7 +12258,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-13",
+          "date": "2019-02-14",
           "e1rmLbs": 180.83,
           "e1rmKg": 81.67,
           "actualWeightLbs": 155.0,
@@ -12046,7 +12266,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-15",
+          "date": "2019-02-16",
           "e1rmLbs": 186.67,
           "e1rmKg": 84.58,
           "actualWeightLbs": 160.0,
@@ -12054,7 +12274,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-18",
+          "date": "2019-02-19",
           "e1rmLbs": 192.5,
           "e1rmKg": 87.5,
           "actualWeightLbs": 165.0,
@@ -12062,7 +12282,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-20",
+          "date": "2019-02-21",
           "e1rmLbs": 198.33,
           "e1rmKg": 90.42,
           "actualWeightLbs": 170.0,
@@ -12070,7 +12290,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-22",
+          "date": "2019-02-23",
           "e1rmLbs": 204.17,
           "e1rmKg": 93.33,
           "actualWeightLbs": 175.0,
@@ -12078,7 +12298,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-25",
+          "date": "2019-02-26",
           "e1rmLbs": 210.0,
           "e1rmKg": 96.25,
           "actualWeightLbs": 180.0,
@@ -12086,7 +12306,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-27",
+          "date": "2019-02-28",
           "e1rmLbs": 215.83,
           "e1rmKg": 99.17,
           "actualWeightLbs": 185.0,
@@ -12094,7 +12314,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-01",
+          "date": "2019-03-02",
           "e1rmLbs": 221.67,
           "e1rmKg": 99.17,
           "actualWeightLbs": 190.0,
@@ -12102,7 +12322,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-04",
+          "date": "2019-03-05",
           "e1rmLbs": 227.5,
           "e1rmKg": 102.08,
           "actualWeightLbs": 195.0,
@@ -12110,7 +12330,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-06",
+          "date": "2019-03-07",
           "e1rmLbs": 233.33,
           "e1rmKg": 105.0,
           "actualWeightLbs": 200.0,
@@ -12118,7 +12338,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-08",
+          "date": "2019-03-09",
           "e1rmLbs": 239.17,
           "e1rmKg": 107.92,
           "actualWeightLbs": 205.0,
@@ -12126,7 +12346,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-11",
+          "date": "2019-03-12",
           "e1rmLbs": 245.0,
           "e1rmKg": 110.83,
           "actualWeightLbs": 210.0,
@@ -12134,7 +12354,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-13",
+          "date": "2019-03-14",
           "e1rmLbs": 250.83,
           "e1rmKg": 113.75,
           "actualWeightLbs": 215.0,
@@ -12142,7 +12362,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-15",
+          "date": "2019-03-16",
           "e1rmLbs": 256.67,
           "e1rmKg": 116.67,
           "actualWeightLbs": 220.0,
@@ -12150,7 +12370,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-18",
+          "date": "2019-03-19",
           "e1rmLbs": 262.5,
           "e1rmKg": 119.58,
           "actualWeightLbs": 225.0,
@@ -12158,7 +12378,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-20",
+          "date": "2019-03-21",
           "e1rmLbs": 268.33,
           "e1rmKg": 122.5,
           "actualWeightLbs": 230.0,
@@ -12166,7 +12386,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-22",
+          "date": "2019-03-23",
           "e1rmLbs": 274.17,
           "e1rmKg": 125.42,
           "actualWeightLbs": 235.0,
@@ -12174,7 +12394,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-25",
+          "date": "2019-03-26",
           "e1rmLbs": 280.0,
           "e1rmKg": 128.33,
           "actualWeightLbs": 240.0,
@@ -12182,7 +12402,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-27",
+          "date": "2019-03-28",
           "e1rmLbs": 285.83,
           "e1rmKg": 128.33,
           "actualWeightLbs": 245.0,
@@ -12190,7 +12410,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-29",
+          "date": "2019-03-30",
           "e1rmLbs": 291.67,
           "e1rmKg": 131.25,
           "actualWeightLbs": 250.0,
@@ -12198,7 +12418,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-01",
+          "date": "2019-04-02",
           "e1rmLbs": 297.5,
           "e1rmKg": 134.17,
           "actualWeightLbs": 255.0,
@@ -12206,7 +12426,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-03",
+          "date": "2019-04-04",
           "e1rmLbs": 303.33,
           "e1rmKg": 137.08,
           "actualWeightLbs": 260.0,
@@ -12214,7 +12434,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-05",
+          "date": "2019-04-06",
           "e1rmLbs": 309.17,
           "e1rmKg": 140.0,
           "actualWeightLbs": 265.0,
@@ -12222,7 +12442,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-08",
+          "date": "2019-04-09",
           "e1rmLbs": 315.0,
           "e1rmKg": 142.92,
           "actualWeightLbs": 270.0,
@@ -12230,7 +12450,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-10",
+          "date": "2019-04-11",
           "e1rmLbs": 320.83,
           "e1rmKg": 145.83,
           "actualWeightLbs": 275.0,
@@ -12244,6 +12464,14 @@
           "actualWeightLbs": 265.0,
           "actualWeightKg": 120.0,
           "reps": 7
+        },
+        {
+          "date": "2019-04-13",
+          "e1rmLbs": 320.83,
+          "e1rmKg": 145.83,
+          "actualWeightLbs": 275.0,
+          "actualWeightKg": 125.0,
+          "reps": 5
         },
         {
           "date": "2019-04-17",
@@ -14452,6 +14680,94 @@
           "actualWeightLbs": 280.0,
           "actualWeightKg": 127.5,
           "reps": 3
+        },
+        {
+          "date": "2025-12-22",
+          "e1rmLbs": 234.33,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 8
+        },
+        {
+          "date": "2025-12-26",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
+        },
+        {
+          "date": "2025-12-29",
+          "e1rmLbs": 227.5,
+          "e1rmKg": 102.08,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 5
+        },
+        {
+          "date": "2026-01-19",
+          "e1rmLbs": 234.33,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 185.0,
+          "actualWeightKg": 85.0,
+          "reps": 8
+        },
+        {
+          "date": "2026-01-23",
+          "e1rmLbs": 240.67,
+          "e1rmKg": 107.67,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 8
+        },
+        {
+          "date": "2026-01-26",
+          "e1rmLbs": 227.5,
+          "e1rmKg": 102.08,
+          "actualWeightLbs": 195.0,
+          "actualWeightKg": 87.5,
+          "reps": 5
+        },
+        {
+          "date": "2026-01-30",
+          "e1rmLbs": 253.33,
+          "e1rmKg": 114.0,
+          "actualWeightLbs": 200.0,
+          "actualWeightKg": 90.0,
+          "reps": 8
+        },
+        {
+          "date": "2026-02-02",
+          "e1rmLbs": 259.67,
+          "e1rmKg": 117.17,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 8
+        },
+        {
+          "date": "2026-02-06",
+          "e1rmLbs": 266.0,
+          "e1rmKg": 120.33,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 8
+        },
+        {
+          "date": "2026-02-09",
+          "e1rmLbs": 272.33,
+          "e1rmKg": 123.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 8
+        },
+        {
+          "date": "2026-02-13",
+          "e1rmLbs": 278.67,
+          "e1rmKg": 126.67,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 8
         }
       ]
     },
@@ -14459,7 +14775,7 @@
       "exerciseName": "Bench Press",
       "e1rmHistory": [
         {
-          "date": "2019-01-23",
+          "date": "2019-01-24",
           "e1rmLbs": 75.83,
           "e1rmKg": 35.0,
           "actualWeightLbs": 65.0,
@@ -14467,7 +14783,7 @@
           "reps": 5
         },
         {
-          "date": "2019-01-28",
+          "date": "2019-01-29",
           "e1rmLbs": 122.5,
           "e1rmKg": 55.42,
           "actualWeightLbs": 105.0,
@@ -14475,7 +14791,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-01",
+          "date": "2019-02-02",
           "e1rmLbs": 134.17,
           "e1rmKg": 61.25,
           "actualWeightLbs": 115.0,
@@ -14483,7 +14799,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-06",
+          "date": "2019-02-07",
           "e1rmLbs": 145.83,
           "e1rmKg": 67.08,
           "actualWeightLbs": 125.0,
@@ -14491,7 +14807,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-11",
+          "date": "2019-02-12",
           "e1rmLbs": 151.67,
           "e1rmKg": 70.0,
           "actualWeightLbs": 130.0,
@@ -14499,7 +14815,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-15",
+          "date": "2019-02-16",
           "e1rmLbs": 157.5,
           "e1rmKg": 70.0,
           "actualWeightLbs": 135.0,
@@ -14507,7 +14823,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-20",
+          "date": "2019-02-21",
           "e1rmLbs": 163.33,
           "e1rmKg": 72.92,
           "actualWeightLbs": 140.0,
@@ -14515,7 +14831,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-25",
+          "date": "2019-02-26",
           "e1rmLbs": 157.5,
           "e1rmKg": 70.0,
           "actualWeightLbs": 135.0,
@@ -14523,7 +14839,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-01",
+          "date": "2019-03-02",
           "e1rmLbs": 163.33,
           "e1rmKg": 72.92,
           "actualWeightLbs": 140.0,
@@ -14531,7 +14847,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-06",
+          "date": "2019-03-07",
           "e1rmLbs": 175.0,
           "e1rmKg": 78.75,
           "actualWeightLbs": 150.0,
@@ -14539,7 +14855,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-11",
+          "date": "2019-03-12",
           "e1rmLbs": 186.67,
           "e1rmKg": 84.58,
           "actualWeightLbs": 160.0,
@@ -14547,7 +14863,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-15",
+          "date": "2019-03-16",
           "e1rmLbs": 192.5,
           "e1rmKg": 87.5,
           "actualWeightLbs": 165.0,
@@ -14555,7 +14871,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-20",
+          "date": "2019-03-21",
           "e1rmLbs": 192.5,
           "e1rmKg": 87.5,
           "actualWeightLbs": 165.0,
@@ -14563,7 +14879,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-25",
+          "date": "2019-03-26",
           "e1rmLbs": 198.33,
           "e1rmKg": 90.42,
           "actualWeightLbs": 170.0,
@@ -14571,7 +14887,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-29",
+          "date": "2019-03-30",
           "e1rmLbs": 204.17,
           "e1rmKg": 93.33,
           "actualWeightLbs": 175.0,
@@ -14579,7 +14895,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-03",
+          "date": "2019-04-04",
           "e1rmLbs": 210.0,
           "e1rmKg": 96.25,
           "actualWeightLbs": 180.0,
@@ -14587,7 +14903,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-08",
+          "date": "2019-04-09",
           "e1rmLbs": 215.83,
           "e1rmKg": 99.17,
           "actualWeightLbs": 185.0,
@@ -14601,6 +14917,14 @@
           "actualWeightLbs": 190.0,
           "actualWeightKg": 85.0,
           "reps": 6
+        },
+        {
+          "date": "2019-04-13",
+          "e1rmLbs": 221.67,
+          "e1rmKg": 99.17,
+          "actualWeightLbs": 190.0,
+          "actualWeightKg": 85.0,
+          "reps": 5
         },
         {
           "date": "2019-04-17",
@@ -17569,30 +17893,41 @@
           "actualWeightLbs": 200.0,
           "actualWeightKg": 90.0,
           "reps": 5
-        }
-      ]
-    },
-    "deadlift": {
-      "exerciseName": "Deadlift",
-      "e1rmHistory": [
-        {
-          "date": "2019-01-25",
-          "e1rmLbs": 110.83,
-          "e1rmKg": 49.58,
-          "actualWeightLbs": 95.0,
-          "actualWeightKg": 42.5,
-          "reps": 5
         },
         {
-          "date": "2019-01-30",
-          "e1rmLbs": 157.5,
-          "e1rmKg": 70.0,
+          "date": "2025-12-22",
+          "e1rmLbs": 162.0,
+          "e1rmKg": 72.0,
           "actualWeightLbs": 135.0,
           "actualWeightKg": 60.0,
+          "reps": 6
+        },
+        {
+          "date": "2025-12-26",
+          "e1rmLbs": 174.17,
+          "e1rmKg": 79.17,
+          "actualWeightLbs": 137.5,
+          "actualWeightKg": 62.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-12-31",
+          "e1rmLbs": 163.33,
+          "e1rmKg": 72.92,
+          "actualWeightLbs": 140.0,
+          "actualWeightKg": 62.5,
           "reps": 5
         },
         {
-          "date": "2019-02-04",
+          "date": "2026-01-19",
+          "e1rmLbs": 183.67,
+          "e1rmKg": 82.33,
+          "actualWeightLbs": 145.0,
+          "actualWeightKg": 65.0,
+          "reps": 8
+        },
+        {
+          "date": "2026-01-23",
           "e1rmLbs": 169.17,
           "e1rmKg": 75.83,
           "actualWeightLbs": 145.0,
@@ -17600,7 +17935,23 @@
           "reps": 5
         },
         {
-          "date": "2019-02-08",
+          "date": "2026-01-28",
+          "e1rmLbs": 190.0,
+          "e1rmKg": 85.5,
+          "actualWeightLbs": 150.0,
+          "actualWeightKg": 67.5,
+          "reps": 8
+        },
+        {
+          "date": "2026-02-02",
+          "e1rmLbs": 193.17,
+          "e1rmKg": 88.67,
+          "actualWeightLbs": 152.5,
+          "actualWeightKg": 70.0,
+          "reps": 8
+        },
+        {
+          "date": "2026-02-06",
           "e1rmLbs": 180.83,
           "e1rmKg": 81.67,
           "actualWeightLbs": 155.0,
@@ -17608,7 +17959,52 @@
           "reps": 5
         },
         {
-          "date": "2019-02-13",
+          "date": "2026-02-11",
+          "e1rmLbs": 194.25,
+          "e1rmKg": 89.42,
+          "actualWeightLbs": 157.5,
+          "actualWeightKg": 72.5,
+          "reps": 7
+        }
+      ]
+    },
+    "deadlift": {
+      "exerciseName": "Deadlift",
+      "e1rmHistory": [
+        {
+          "date": "2019-01-26",
+          "e1rmLbs": 110.83,
+          "e1rmKg": 49.58,
+          "actualWeightLbs": 95.0,
+          "actualWeightKg": 42.5,
+          "reps": 5
+        },
+        {
+          "date": "2019-01-31",
+          "e1rmLbs": 157.5,
+          "e1rmKg": 70.0,
+          "actualWeightLbs": 135.0,
+          "actualWeightKg": 60.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-05",
+          "e1rmLbs": 169.17,
+          "e1rmKg": 75.83,
+          "actualWeightLbs": 145.0,
+          "actualWeightKg": 65.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-09",
+          "e1rmLbs": 180.83,
+          "e1rmKg": 81.67,
+          "actualWeightLbs": 155.0,
+          "actualWeightKg": 70.0,
+          "reps": 5
+        },
+        {
+          "date": "2019-02-14",
           "e1rmLbs": 215.83,
           "e1rmKg": 99.17,
           "actualWeightLbs": 185.0,
@@ -17616,7 +18012,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-18",
+          "date": "2019-02-19",
           "e1rmLbs": 227.5,
           "e1rmKg": 102.08,
           "actualWeightLbs": 195.0,
@@ -17624,7 +18020,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-22",
+          "date": "2019-02-23",
           "e1rmLbs": 262.5,
           "e1rmKg": 119.58,
           "actualWeightLbs": 225.0,
@@ -17632,7 +18028,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-27",
+          "date": "2019-02-28",
           "e1rmLbs": 274.17,
           "e1rmKg": 125.42,
           "actualWeightLbs": 235.0,
@@ -17640,7 +18036,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-04",
+          "date": "2019-03-05",
           "e1rmLbs": 285.83,
           "e1rmKg": 128.33,
           "actualWeightLbs": 245.0,
@@ -17648,7 +18044,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-08",
+          "date": "2019-03-09",
           "e1rmLbs": 297.5,
           "e1rmKg": 134.17,
           "actualWeightLbs": 255.0,
@@ -17656,7 +18052,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-13",
+          "date": "2019-03-14",
           "e1rmLbs": 309.17,
           "e1rmKg": 140.0,
           "actualWeightLbs": 265.0,
@@ -17664,7 +18060,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-18",
+          "date": "2019-03-19",
           "e1rmLbs": 320.83,
           "e1rmKg": 145.83,
           "actualWeightLbs": 275.0,
@@ -17672,7 +18068,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-22",
+          "date": "2019-03-23",
           "e1rmLbs": 332.5,
           "e1rmKg": 151.67,
           "actualWeightLbs": 285.0,
@@ -17680,7 +18076,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-27",
+          "date": "2019-03-28",
           "e1rmLbs": 344.17,
           "e1rmKg": 157.5,
           "actualWeightLbs": 295.0,
@@ -17688,7 +18084,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-01",
+          "date": "2019-04-02",
           "e1rmLbs": 355.83,
           "e1rmKg": 160.42,
           "actualWeightLbs": 305.0,
@@ -17696,7 +18092,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-05",
+          "date": "2019-04-06",
           "e1rmLbs": 367.5,
           "e1rmKg": 166.25,
           "actualWeightLbs": 315.0,
@@ -17704,7 +18100,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-10",
+          "date": "2019-04-11",
           "e1rmLbs": 357.5,
           "e1rmKg": 162.25,
           "actualWeightLbs": 325.0,
@@ -17713,6 +18109,14 @@
         },
         {
           "date": "2019-04-15",
+          "e1rmLbs": 346.5,
+          "e1rmKg": 156.75,
+          "actualWeightLbs": 315.0,
+          "actualWeightKg": 142.5,
+          "reps": 3
+        },
+        {
+          "date": "2019-04-16",
           "e1rmLbs": 379.17,
           "e1rmKg": 172.08,
           "actualWeightLbs": 325.0,
@@ -19358,6 +19762,46 @@
           "actualWeightLbs": 275.0,
           "actualWeightKg": 125.0,
           "reps": 3
+        },
+        {
+          "date": "2025-12-24",
+          "e1rmLbs": 285.0,
+          "e1rmKg": 129.83,
+          "actualWeightLbs": 225.0,
+          "actualWeightKg": 102.5,
+          "reps": 8
+        },
+        {
+          "date": "2026-01-21",
+          "e1rmLbs": 252.83,
+          "e1rmKg": 114.08,
+          "actualWeightLbs": 205.0,
+          "actualWeightKg": 92.5,
+          "reps": 7
+        },
+        {
+          "date": "2026-01-28",
+          "e1rmLbs": 266.0,
+          "e1rmKg": 120.33,
+          "actualWeightLbs": 210.0,
+          "actualWeightKg": 95.0,
+          "reps": 8
+        },
+        {
+          "date": "2026-02-04",
+          "e1rmLbs": 272.33,
+          "e1rmKg": 123.5,
+          "actualWeightLbs": 215.0,
+          "actualWeightKg": 97.5,
+          "reps": 8
+        },
+        {
+          "date": "2026-02-11",
+          "e1rmLbs": 278.67,
+          "e1rmKg": 126.67,
+          "actualWeightLbs": 220.0,
+          "actualWeightKg": 100.0,
+          "reps": 8
         }
       ]
     },
@@ -19365,7 +19809,7 @@
       "exerciseName": "Overhead Press",
       "e1rmHistory": [
         {
-          "date": "2019-01-25",
+          "date": "2019-01-26",
           "e1rmLbs": 64.17,
           "e1rmKg": 29.17,
           "actualWeightLbs": 55.0,
@@ -19373,7 +19817,7 @@
           "reps": 5
         },
         {
-          "date": "2019-01-30",
+          "date": "2019-01-31",
           "e1rmLbs": 75.83,
           "e1rmKg": 35.0,
           "actualWeightLbs": 65.0,
@@ -19381,7 +19825,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-04",
+          "date": "2019-02-05",
           "e1rmLbs": 81.67,
           "e1rmKg": 37.92,
           "actualWeightLbs": 70.0,
@@ -19389,7 +19833,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-08",
+          "date": "2019-02-09",
           "e1rmLbs": 87.5,
           "e1rmKg": 40.83,
           "actualWeightLbs": 75.0,
@@ -19397,7 +19841,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-13",
+          "date": "2019-02-14",
           "e1rmLbs": 93.33,
           "e1rmKg": 43.75,
           "actualWeightLbs": 80.0,
@@ -19405,7 +19849,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-18",
+          "date": "2019-02-19",
           "e1rmLbs": 99.17,
           "e1rmKg": 43.75,
           "actualWeightLbs": 85.0,
@@ -19413,7 +19857,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-22",
+          "date": "2019-02-23",
           "e1rmLbs": 99.17,
           "e1rmKg": 43.75,
           "actualWeightLbs": 85.0,
@@ -19421,7 +19865,7 @@
           "reps": 5
         },
         {
-          "date": "2019-02-27",
+          "date": "2019-02-28",
           "e1rmLbs": 105.0,
           "e1rmKg": 46.67,
           "actualWeightLbs": 90.0,
@@ -19429,7 +19873,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-04",
+          "date": "2019-03-05",
           "e1rmLbs": 105.0,
           "e1rmKg": 46.67,
           "actualWeightLbs": 90.0,
@@ -19437,7 +19881,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-08",
+          "date": "2019-03-09",
           "e1rmLbs": 116.67,
           "e1rmKg": 52.5,
           "actualWeightLbs": 100.0,
@@ -19445,7 +19889,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-13",
+          "date": "2019-03-14",
           "e1rmLbs": 122.5,
           "e1rmKg": 55.42,
           "actualWeightLbs": 105.0,
@@ -19453,7 +19897,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-18",
+          "date": "2019-03-19",
           "e1rmLbs": 122.5,
           "e1rmKg": 55.42,
           "actualWeightLbs": 105.0,
@@ -19461,7 +19905,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-22",
+          "date": "2019-03-23",
           "e1rmLbs": 128.33,
           "e1rmKg": 58.33,
           "actualWeightLbs": 110.0,
@@ -19469,7 +19913,7 @@
           "reps": 5
         },
         {
-          "date": "2019-03-27",
+          "date": "2019-03-28",
           "e1rmLbs": 134.17,
           "e1rmKg": 61.25,
           "actualWeightLbs": 115.0,
@@ -19477,7 +19921,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-01",
+          "date": "2019-04-02",
           "e1rmLbs": 128.33,
           "e1rmKg": 58.33,
           "actualWeightLbs": 110.0,
@@ -19485,7 +19929,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-05",
+          "date": "2019-04-06",
           "e1rmLbs": 128.33,
           "e1rmKg": 58.33,
           "actualWeightLbs": 110.0,
@@ -19493,7 +19937,7 @@
           "reps": 5
         },
         {
-          "date": "2019-04-10",
+          "date": "2019-04-11",
           "e1rmLbs": 134.17,
           "e1rmKg": 61.25,
           "actualWeightLbs": 115.0,
@@ -19507,6 +19951,14 @@
           "actualWeightLbs": 115.0,
           "actualWeightKg": 52.5,
           "reps": 6
+        },
+        {
+          "date": "2019-04-16",
+          "e1rmLbs": 134.17,
+          "e1rmKg": 61.25,
+          "actualWeightLbs": 115.0,
+          "actualWeightKg": 52.5,
+          "reps": 5
         },
         {
           "date": "2019-04-19",
@@ -21643,6 +22095,78 @@
           "actualWeightLbs": 125.0,
           "actualWeightKg": 57.5,
           "reps": 3
+        },
+        {
+          "date": "2025-12-24",
+          "e1rmLbs": 133.0,
+          "e1rmKg": 60.17,
+          "actualWeightLbs": 105.0,
+          "actualWeightKg": 47.5,
+          "reps": 8
+        },
+        {
+          "date": "2025-12-29",
+          "e1rmLbs": 136.17,
+          "e1rmKg": 63.33,
+          "actualWeightLbs": 107.5,
+          "actualWeightKg": 50.0,
+          "reps": 8
+        },
+        {
+          "date": "2026-01-02",
+          "e1rmLbs": 128.33,
+          "e1rmKg": 58.33,
+          "actualWeightLbs": 110.0,
+          "actualWeightKg": 50.0,
+          "reps": 5
+        },
+        {
+          "date": "2026-01-21",
+          "e1rmLbs": 120.33,
+          "e1rmKg": 53.83,
+          "actualWeightLbs": 95.0,
+          "actualWeightKg": 42.5,
+          "reps": 8
+        },
+        {
+          "date": "2026-01-26",
+          "e1rmLbs": 113.75,
+          "e1rmKg": 52.5,
+          "actualWeightLbs": 97.5,
+          "actualWeightKg": 45.0,
+          "reps": 5
+        },
+        {
+          "date": "2026-01-30",
+          "e1rmLbs": 129.83,
+          "e1rmKg": 60.17,
+          "actualWeightLbs": 102.5,
+          "actualWeightKg": 47.5,
+          "reps": 8
+        },
+        {
+          "date": "2026-02-04",
+          "e1rmLbs": 129.5,
+          "e1rmKg": 58.58,
+          "actualWeightLbs": 105.0,
+          "actualWeightKg": 47.5,
+          "reps": 7
+        },
+        {
+          "date": "2026-02-09",
+          "e1rmLbs": 132.58,
+          "e1rmKg": 61.67,
+          "actualWeightLbs": 107.5,
+          "actualWeightKg": 50.0,
+          "reps": 7
+        },
+        {
+          "date": "2026-02-13",
+          "e1rmLbs": 128.33,
+          "e1rmKg": 58.33,
+          "actualWeightLbs": 110.0,
+          "actualWeightKg": 50.0,
+          "reps": 5
         }
       ]
     }
@@ -21652,179 +22176,184 @@
       "exerciseName": "Squat",
       "dailyVolume": [
         {
-          "date": "2019-01-23",
+          "date": "2019-01-24",
           "volumeLbs": 1125.0,
           "volumeKg": 500.0
         },
         {
-          "date": "2019-01-25",
+          "date": "2019-01-26",
           "volumeLbs": 2375.0,
           "volumeKg": 1062.5
         },
         {
-          "date": "2019-01-28",
+          "date": "2019-01-29",
           "volumeLbs": 2625.0,
           "volumeKg": 1187.5
         },
         {
-          "date": "2019-01-30",
+          "date": "2019-01-31",
           "volumeLbs": 3375.0,
           "volumeKg": 1500.0
         },
         {
-          "date": "2019-02-01",
+          "date": "2019-02-02",
           "volumeLbs": 3500.0,
           "volumeKg": 1562.5
         },
         {
-          "date": "2019-02-04",
+          "date": "2019-02-05",
           "volumeLbs": 3375.0,
           "volumeKg": 1500.0
         },
         {
-          "date": "2019-02-06",
+          "date": "2019-02-07",
           "volumeLbs": 3500.0,
           "volumeKg": 1562.5
         },
         {
-          "date": "2019-02-08",
+          "date": "2019-02-09",
           "volumeLbs": 3625.0,
           "volumeKg": 1625.0
         },
         {
-          "date": "2019-02-11",
+          "date": "2019-02-12",
           "volumeLbs": 3750.0,
           "volumeKg": 1687.5
         },
         {
-          "date": "2019-02-13",
+          "date": "2019-02-14",
           "volumeLbs": 3875.0,
           "volumeKg": 1750.0
         },
         {
-          "date": "2019-02-15",
+          "date": "2019-02-16",
           "volumeLbs": 4000.0,
           "volumeKg": 1812.5
         },
         {
-          "date": "2019-02-18",
+          "date": "2019-02-19",
           "volumeLbs": 4125.0,
           "volumeKg": 1875.0
         },
         {
-          "date": "2019-02-20",
+          "date": "2019-02-21",
           "volumeLbs": 4250.0,
           "volumeKg": 1937.5
         },
         {
-          "date": "2019-02-22",
+          "date": "2019-02-23",
           "volumeLbs": 4375.0,
           "volumeKg": 2000.0
         },
         {
-          "date": "2019-02-25",
+          "date": "2019-02-26",
           "volumeLbs": 4500.0,
           "volumeKg": 2062.5
         },
         {
-          "date": "2019-02-27",
+          "date": "2019-02-28",
           "volumeLbs": 4625.0,
           "volumeKg": 2125.0
         },
         {
-          "date": "2019-03-01",
+          "date": "2019-03-02",
           "volumeLbs": 4750.0,
           "volumeKg": 2125.0
         },
         {
-          "date": "2019-03-04",
+          "date": "2019-03-05",
           "volumeLbs": 4875.0,
           "volumeKg": 2187.5
         },
         {
-          "date": "2019-03-06",
+          "date": "2019-03-07",
           "volumeLbs": 5000.0,
           "volumeKg": 2250.0
         },
         {
-          "date": "2019-03-08",
+          "date": "2019-03-09",
           "volumeLbs": 5125.0,
           "volumeKg": 2312.5
         },
         {
-          "date": "2019-03-11",
+          "date": "2019-03-12",
           "volumeLbs": 5250.0,
           "volumeKg": 2375.0
         },
         {
-          "date": "2019-03-13",
+          "date": "2019-03-14",
           "volumeLbs": 5375.0,
           "volumeKg": 2437.5
         },
         {
-          "date": "2019-03-15",
+          "date": "2019-03-16",
           "volumeLbs": 5500.0,
           "volumeKg": 2500.0
         },
         {
-          "date": "2019-03-18",
+          "date": "2019-03-19",
           "volumeLbs": 5625.0,
           "volumeKg": 2562.5
         },
         {
-          "date": "2019-03-20",
+          "date": "2019-03-21",
           "volumeLbs": 5750.0,
           "volumeKg": 2625.0
         },
         {
-          "date": "2019-03-22",
+          "date": "2019-03-23",
           "volumeLbs": 5875.0,
           "volumeKg": 2687.5
         },
         {
-          "date": "2019-03-25",
+          "date": "2019-03-26",
           "volumeLbs": 6000.0,
           "volumeKg": 2750.0
         },
         {
-          "date": "2019-03-27",
+          "date": "2019-03-28",
           "volumeLbs": 6125.0,
           "volumeKg": 2750.0
         },
         {
-          "date": "2019-03-29",
+          "date": "2019-03-30",
           "volumeLbs": 6250.0,
           "volumeKg": 2812.5
         },
         {
-          "date": "2019-04-01",
+          "date": "2019-04-02",
           "volumeLbs": 6375.0,
           "volumeKg": 2875.0
         },
         {
-          "date": "2019-04-03",
+          "date": "2019-04-04",
           "volumeLbs": 6500.0,
           "volumeKg": 2937.5
         },
         {
-          "date": "2019-04-05",
+          "date": "2019-04-06",
           "volumeLbs": 6625.0,
           "volumeKg": 3000.0
         },
         {
-          "date": "2019-04-08",
+          "date": "2019-04-09",
           "volumeLbs": 6750.0,
           "volumeKg": 3062.5
         },
         {
-          "date": "2019-04-10",
+          "date": "2019-04-11",
           "volumeLbs": 5775.0,
           "volumeKg": 2625.0
         },
         {
           "date": "2019-04-12",
-          "volumeLbs": 9770.0,
-          "volumeKg": 4422.5
+          "volumeLbs": 5645.0,
+          "volumeKg": 2547.5
+        },
+        {
+          "date": "2019-04-13",
+          "volumeLbs": 4125.0,
+          "volumeKg": 1875.0
         },
         {
           "date": "2019-04-17",
@@ -23225,6 +23754,61 @@
           "date": "2025-10-20",
           "volumeLbs": 5385.0,
           "volumeKg": 2447.5
+        },
+        {
+          "date": "2025-12-22",
+          "volumeLbs": 3960.0,
+          "volumeKg": 1810.0
+        },
+        {
+          "date": "2025-12-26",
+          "volumeLbs": 4240.0,
+          "volumeKg": 1895.0
+        },
+        {
+          "date": "2025-12-29",
+          "volumeLbs": 3780.0,
+          "volumeKg": 1692.5
+        },
+        {
+          "date": "2026-01-19",
+          "volumeLbs": 3960.0,
+          "volumeKg": 1810.0
+        },
+        {
+          "date": "2026-01-23",
+          "volumeLbs": 4050.0,
+          "volumeKg": 1810.0
+        },
+        {
+          "date": "2026-01-26",
+          "volumeLbs": 4620.0,
+          "volumeKg": 2070.0
+        },
+        {
+          "date": "2026-01-30",
+          "volumeLbs": 4515.0,
+          "volumeKg": 2027.5
+        },
+        {
+          "date": "2026-02-02",
+          "volumeLbs": 5130.0,
+          "volumeKg": 2312.5
+        },
+        {
+          "date": "2026-02-06",
+          "volumeLbs": 5220.0,
+          "volumeKg": 2357.5
+        },
+        {
+          "date": "2026-02-09",
+          "volumeLbs": 5025.0,
+          "volumeKg": 2275.0
+        },
+        {
+          "date": "2026-02-13",
+          "volumeLbs": 5430.0,
+          "volumeKg": 2462.5
         }
       ]
     },
@@ -23232,94 +23816,99 @@
       "exerciseName": "Bench Press",
       "dailyVolume": [
         {
-          "date": "2019-01-23",
+          "date": "2019-01-24",
           "volumeLbs": 1625.0,
           "volumeKg": 750.0
         },
         {
-          "date": "2019-01-28",
+          "date": "2019-01-29",
           "volumeLbs": 2625.0,
           "volumeKg": 1187.5
         },
         {
-          "date": "2019-02-01",
+          "date": "2019-02-02",
           "volumeLbs": 2875.0,
           "volumeKg": 1312.5
         },
         {
-          "date": "2019-02-06",
+          "date": "2019-02-07",
           "volumeLbs": 3125.0,
           "volumeKg": 1437.5
         },
         {
-          "date": "2019-02-11",
+          "date": "2019-02-12",
           "volumeLbs": 3250.0,
           "volumeKg": 1500.0
         },
         {
-          "date": "2019-02-15",
+          "date": "2019-02-16",
           "volumeLbs": 3375.0,
           "volumeKg": 1500.0
         },
         {
-          "date": "2019-02-20",
+          "date": "2019-02-21",
           "volumeLbs": 3500.0,
           "volumeKg": 1562.5
         },
         {
-          "date": "2019-02-25",
+          "date": "2019-02-26",
           "volumeLbs": 3375.0,
           "volumeKg": 1500.0
         },
         {
-          "date": "2019-03-01",
+          "date": "2019-03-02",
           "volumeLbs": 3500.0,
           "volumeKg": 1562.5
         },
         {
-          "date": "2019-03-06",
+          "date": "2019-03-07",
           "volumeLbs": 3750.0,
           "volumeKg": 1687.5
         },
         {
-          "date": "2019-03-11",
+          "date": "2019-03-12",
           "volumeLbs": 4000.0,
           "volumeKg": 1812.5
         },
         {
-          "date": "2019-03-15",
+          "date": "2019-03-16",
           "volumeLbs": 4125.0,
           "volumeKg": 1875.0
         },
         {
-          "date": "2019-03-20",
+          "date": "2019-03-21",
           "volumeLbs": 4125.0,
           "volumeKg": 1875.0
         },
         {
-          "date": "2019-03-25",
+          "date": "2019-03-26",
           "volumeLbs": 4250.0,
           "volumeKg": 1937.5
         },
         {
-          "date": "2019-03-29",
+          "date": "2019-03-30",
           "volumeLbs": 4375.0,
           "volumeKg": 2000.0
         },
         {
-          "date": "2019-04-03",
+          "date": "2019-04-04",
           "volumeLbs": 4500.0,
           "volumeKg": 2062.5
         },
         {
-          "date": "2019-04-08",
+          "date": "2019-04-09",
           "volumeLbs": 4625.0,
           "volumeKg": 2125.0
         },
         {
           "date": "2019-04-12",
-          "volumeLbs": 7525.0,
-          "volumeKg": 3367.5
+          "volumeLbs": 4675.0,
+          "volumeKg": 2092.5
+        },
+        {
+          "date": "2019-04-13",
+          "volumeLbs": 2850.0,
+          "volumeKg": 1275.0
         },
         {
           "date": "2019-04-17",
@@ -25245,6 +25834,51 @@
           "date": "2025-10-23",
           "volumeLbs": 4315.0,
           "volumeKg": 1937.5
+        },
+        {
+          "date": "2025-12-22",
+          "volumeLbs": 2670.0,
+          "volumeKg": 1187.5
+        },
+        {
+          "date": "2025-12-26",
+          "volumeLbs": 3330.0,
+          "volumeKg": 1510.0
+        },
+        {
+          "date": "2025-12-31",
+          "volumeLbs": 3535.0,
+          "volumeKg": 1577.5
+        },
+        {
+          "date": "2026-01-19",
+          "volumeLbs": 3120.0,
+          "volumeKg": 1397.5
+        },
+        {
+          "date": "2026-01-23",
+          "volumeLbs": 3635.0,
+          "volumeKg": 1627.5
+        },
+        {
+          "date": "2026-01-28",
+          "volumeLbs": 3585.0,
+          "volumeKg": 1615.0
+        },
+        {
+          "date": "2026-02-02",
+          "volumeLbs": 3255.0,
+          "volumeKg": 1487.5
+        },
+        {
+          "date": "2026-02-06",
+          "volumeLbs": 2835.0,
+          "volumeKg": 1277.5
+        },
+        {
+          "date": "2026-02-11",
+          "volumeLbs": 3562.5,
+          "volumeKg": 1632.5
         }
       ]
     },
@@ -25252,94 +25886,99 @@
       "exerciseName": "Deadlift",
       "dailyVolume": [
         {
-          "date": "2019-01-25",
+          "date": "2019-01-26",
           "volumeLbs": 475.0,
           "volumeKg": 212.5
         },
         {
-          "date": "2019-01-30",
+          "date": "2019-01-31",
           "volumeLbs": 675.0,
           "volumeKg": 300.0
         },
         {
-          "date": "2019-02-04",
+          "date": "2019-02-05",
           "volumeLbs": 725.0,
           "volumeKg": 325.0
         },
         {
-          "date": "2019-02-08",
+          "date": "2019-02-09",
           "volumeLbs": 775.0,
           "volumeKg": 350.0
         },
         {
-          "date": "2019-02-13",
+          "date": "2019-02-14",
           "volumeLbs": 925.0,
           "volumeKg": 425.0
         },
         {
-          "date": "2019-02-18",
+          "date": "2019-02-19",
           "volumeLbs": 975.0,
           "volumeKg": 437.5
         },
         {
-          "date": "2019-02-22",
+          "date": "2019-02-23",
           "volumeLbs": 1125.0,
           "volumeKg": 512.5
         },
         {
-          "date": "2019-02-27",
+          "date": "2019-02-28",
           "volumeLbs": 1175.0,
           "volumeKg": 537.5
         },
         {
-          "date": "2019-03-04",
+          "date": "2019-03-05",
           "volumeLbs": 1225.0,
           "volumeKg": 550.0
         },
         {
-          "date": "2019-03-08",
+          "date": "2019-03-09",
           "volumeLbs": 1275.0,
           "volumeKg": 575.0
         },
         {
-          "date": "2019-03-13",
+          "date": "2019-03-14",
           "volumeLbs": 1325.0,
           "volumeKg": 600.0
         },
         {
-          "date": "2019-03-18",
+          "date": "2019-03-19",
           "volumeLbs": 1375.0,
           "volumeKg": 625.0
         },
         {
-          "date": "2019-03-22",
+          "date": "2019-03-23",
           "volumeLbs": 1425.0,
           "volumeKg": 650.0
         },
         {
-          "date": "2019-03-27",
+          "date": "2019-03-28",
           "volumeLbs": 1475.0,
           "volumeKg": 675.0
         },
         {
-          "date": "2019-04-01",
+          "date": "2019-04-02",
           "volumeLbs": 1525.0,
           "volumeKg": 687.5
         },
         {
-          "date": "2019-04-05",
+          "date": "2019-04-06",
           "volumeLbs": 1575.0,
           "volumeKg": 712.5
         },
         {
-          "date": "2019-04-10",
+          "date": "2019-04-11",
           "volumeLbs": 975.0,
           "volumeKg": 442.5
         },
         {
           "date": "2019-04-15",
-          "volumeLbs": 4010.0,
-          "volumeKg": 1810.0
+          "volumeLbs": 2385.0,
+          "volumeKg": 1072.5
+        },
+        {
+          "date": "2019-04-16",
+          "volumeLbs": 1625.0,
+          "volumeKg": 737.5
         },
         {
           "date": "2019-04-19",
@@ -26395,6 +27034,31 @@
           "date": "2025-10-24",
           "volumeLbs": 5400.0,
           "volumeKg": 2437.5
+        },
+        {
+          "date": "2025-12-24",
+          "volumeLbs": 3400.0,
+          "volumeKg": 1545.0
+        },
+        {
+          "date": "2026-01-21",
+          "volumeLbs": 2110.0,
+          "volumeKg": 947.5
+        },
+        {
+          "date": "2026-01-28",
+          "volumeLbs": 2355.0,
+          "volumeKg": 1060.0
+        },
+        {
+          "date": "2026-02-04",
+          "volumeLbs": 2395.0,
+          "volumeKg": 1080.0
+        },
+        {
+          "date": "2026-02-11",
+          "volumeLbs": 3335.0,
+          "volumeKg": 1512.5
         }
       ]
     },
@@ -26402,94 +27066,99 @@
       "exerciseName": "Overhead Press",
       "dailyVolume": [
         {
-          "date": "2019-01-25",
+          "date": "2019-01-26",
           "volumeLbs": 1375.0,
           "volumeKg": 625.0
         },
         {
-          "date": "2019-01-30",
+          "date": "2019-01-31",
           "volumeLbs": 1625.0,
           "volumeKg": 750.0
         },
         {
-          "date": "2019-02-04",
+          "date": "2019-02-05",
           "volumeLbs": 1750.0,
           "volumeKg": 812.5
         },
         {
-          "date": "2019-02-08",
+          "date": "2019-02-09",
           "volumeLbs": 1875.0,
           "volumeKg": 875.0
         },
         {
-          "date": "2019-02-13",
+          "date": "2019-02-14",
           "volumeLbs": 2000.0,
           "volumeKg": 937.5
         },
         {
-          "date": "2019-02-18",
+          "date": "2019-02-19",
           "volumeLbs": 2125.0,
           "volumeKg": 937.5
         },
         {
-          "date": "2019-02-22",
+          "date": "2019-02-23",
           "volumeLbs": 2125.0,
           "volumeKg": 937.5
         },
         {
-          "date": "2019-02-27",
+          "date": "2019-02-28",
           "volumeLbs": 1890.0,
           "volumeKg": 840.0
         },
         {
-          "date": "2019-03-04",
+          "date": "2019-03-05",
           "volumeLbs": 2250.0,
           "volumeKg": 1000.0
         },
         {
-          "date": "2019-03-08",
+          "date": "2019-03-09",
           "volumeLbs": 2500.0,
           "volumeKg": 1125.0
         },
         {
-          "date": "2019-03-13",
+          "date": "2019-03-14",
           "volumeLbs": 2625.0,
           "volumeKg": 1187.5
         },
         {
-          "date": "2019-03-18",
+          "date": "2019-03-19",
           "volumeLbs": 2625.0,
           "volumeKg": 1187.5
         },
         {
-          "date": "2019-03-22",
+          "date": "2019-03-23",
           "volumeLbs": 2750.0,
           "volumeKg": 1250.0
         },
         {
-          "date": "2019-03-27",
+          "date": "2019-03-28",
           "volumeLbs": 2300.0,
           "volumeKg": 1050.0
         },
         {
-          "date": "2019-04-01",
+          "date": "2019-04-02",
           "volumeLbs": 2640.0,
           "volumeKg": 1200.0
         },
         {
-          "date": "2019-04-05",
+          "date": "2019-04-06",
           "volumeLbs": 2750.0,
           "volumeKg": 1250.0
         },
         {
-          "date": "2019-04-10",
+          "date": "2019-04-11",
           "volumeLbs": 2530.0,
           "volumeKg": 1155.0
         },
         {
           "date": "2019-04-15",
-          "volumeLbs": 4240.0,
-          "volumeKg": 1932.5
+          "volumeLbs": 2515.0,
+          "volumeKg": 1145.0
+        },
+        {
+          "date": "2019-04-16",
+          "volumeLbs": 1725.0,
+          "volumeKg": 787.5
         },
         {
           "date": "2019-04-19",
@@ -27905,6 +28574,51 @@
           "date": "2025-10-21",
           "volumeLbs": 2100.0,
           "volumeKg": 962.5
+        },
+        {
+          "date": "2025-12-24",
+          "volumeLbs": 2565.0,
+          "volumeKg": 1160.0
+        },
+        {
+          "date": "2025-12-29",
+          "volumeLbs": 2160.0,
+          "volumeKg": 1000.0
+        },
+        {
+          "date": "2026-01-02",
+          "volumeLbs": 2315.0,
+          "volumeKg": 1050.0
+        },
+        {
+          "date": "2026-01-21",
+          "volumeLbs": 1935.0,
+          "volumeKg": 865.0
+        },
+        {
+          "date": "2026-01-26",
+          "volumeLbs": 2400.0,
+          "volumeKg": 1100.0
+        },
+        {
+          "date": "2026-01-30",
+          "volumeLbs": 2070.0,
+          "volumeKg": 955.0
+        },
+        {
+          "date": "2026-02-04",
+          "volumeLbs": 2010.0,
+          "volumeKg": 907.5
+        },
+        {
+          "date": "2026-02-09",
+          "volumeLbs": 2052.5,
+          "volumeKg": 950.0
+        },
+        {
+          "date": "2026-02-13",
+          "volumeLbs": 2100.0,
+          "volumeKg": 955.0
         }
       ]
     }
@@ -27912,8 +28626,8 @@
   "programs": [
     {
       "name": "StrongLifts 5x5",
-      "startDate": "2019-01-23",
-      "endDate": "2019-04-15",
+      "startDate": "2019-01-24",
+      "endDate": "2019-04-16",
       "workouts": 36,
       "totalVolumeLbs": 351659.0,
       "totalVolumeKg": 159212.5,
@@ -28030,10 +28744,10 @@
     {
       "name": "GreySkull LP with Arms",
       "startDate": "2024-07-22",
-      "endDate": "2025-07-11",
-      "workouts": 81,
-      "totalVolumeLbs": 627405.0,
-      "totalVolumeKg": 283415.0,
+      "endDate": "2026-02-13",
+      "workouts": 99,
+      "totalVolumeLbs": 758065.0,
+      "totalVolumeKg": 342562.5,
       "prsSet": 0
     },
     {
@@ -28066,37 +28780,53 @@
   ],
   "workoutsByDayOfWeek": {
     "Monday": {
-      "count": 245,
-      "avgVolumeLbs": 7461.24,
-      "avgVolumeKg": 3380.51
+      "count": 239,
+      "avgVolumeLbs": 7345.0,
+      "avgVolumeKg": 3328.24
     },
     "Tuesday": {
-      "count": 177,
-      "avgVolumeLbs": 6657.53,
-      "avgVolumeKg": 3012.9
+      "count": 189,
+      "avgVolumeLbs": 6873.1,
+      "avgVolumeKg": 3110.58
     },
     "Wednesday": {
-      "count": 141,
-      "avgVolumeLbs": 6716.96,
-      "avgVolumeKg": 3040.73
+      "count": 135,
+      "avgVolumeLbs": 6438.5,
+      "avgVolumeKg": 2913.74
     },
     "Thursday": {
-      "count": 179,
-      "avgVolumeLbs": 6476.15,
-      "avgVolumeKg": 2935.14
+      "count": 191,
+      "avgVolumeLbs": 6671.26,
+      "avgVolumeKg": 3023.72
     },
     "Friday": {
-      "count": 226,
-      "avgVolumeLbs": 7599.73,
-      "avgVolumeKg": 3437.33
+      "count": 220,
+      "avgVolumeLbs": 7486.3,
+      "avgVolumeKg": 3386.07
     },
     "Saturday": {
-      "count": 1,
-      "avgVolumeLbs": 3300.0,
-      "avgVolumeKg": 1525.0
+      "count": 13,
+      "avgVolumeLbs": 9180.38,
+      "avgVolumeKg": 4152.31
     }
   },
   "notableWorkouts": [
+    {
+      "date": "2026-01-19",
+      "reason": "Comeback (16 days off)",
+      "volumeLbs": 8130.0,
+      "volumeKg": 3707.5,
+      "details": "GreySkull LP with Arms",
+      "category": "comeback"
+    },
+    {
+      "date": "2025-12-22",
+      "reason": "Comeback (59 days off)",
+      "volumeLbs": 7530.0,
+      "volumeKg": 3397.5,
+      "details": "GreySkull LP with Arms",
+      "category": "comeback"
+    },
     {
       "date": "2025-10-20",
       "reason": "Comeback (21 days off)",
@@ -28119,22 +28849,6 @@
       "volumeLbs": 4052.5,
       "volumeKg": 1825.0,
       "details": "GreySkull LP with Arms",
-      "category": "comeback"
-    },
-    {
-      "date": "2024-07-22",
-      "reason": "Comeback (261 days off)",
-      "volumeLbs": 6390.0,
-      "volumeKg": 2835.0,
-      "details": "GreySkull LP with Arms",
-      "category": "comeback"
-    },
-    {
-      "date": "2023-07-10",
-      "reason": "Comeback (19 days off)",
-      "volumeLbs": 7835.0,
-      "volumeKg": 3527.5,
-      "details": "nSuns 531 LP 4 day version",
       "category": "comeback"
     },
     {
@@ -28220,13 +28934,13 @@
   ],
   "milestones": [
     {
-      "date": "2019-02-20",
+      "date": "2019-02-21",
       "milestone": "100,000 lbs total volume",
       "type": "volume",
       "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
     },
     {
-      "date": "2019-03-25",
+      "date": "2019-03-26",
       "milestone": "250,000 lbs total volume",
       "type": "volume",
       "icon": "<i class=\"fa-solid fa-chart-column\"></i>"
@@ -28319,14 +29033,14 @@
   "plateMilestones": {
     "squat": {
       "1": {
-        "date": "2019-01-30",
+        "date": "2019-01-31",
         "weightLbs": 135,
         "weightKg": 61.2,
         "actualWeightLbs": 135.0,
         "actualWeightKg": 60.0
       },
       "2": {
-        "date": "2019-03-18",
+        "date": "2019-03-19",
         "weightLbs": 225,
         "weightKg": 102.1,
         "actualWeightLbs": 225.0,
@@ -28342,7 +29056,7 @@
     },
     "bench": {
       "1": {
-        "date": "2019-02-15",
+        "date": "2019-02-16",
         "weightLbs": 135,
         "weightKg": 61.2,
         "actualWeightLbs": 135.0,
@@ -28358,21 +29072,21 @@
     },
     "deadlift": {
       "1": {
-        "date": "2019-01-30",
+        "date": "2019-01-31",
         "weightLbs": 135,
         "weightKg": 61.2,
         "actualWeightLbs": 135.0,
         "actualWeightKg": 60.0
       },
       "2": {
-        "date": "2019-02-22",
+        "date": "2019-02-23",
         "weightLbs": 225,
         "weightKg": 102.1,
         "actualWeightLbs": 225.0,
         "actualWeightKg": 102.5
       },
       "3": {
-        "date": "2019-04-05",
+        "date": "2019-04-06",
         "weightLbs": 315,
         "weightKg": 142.9,
         "actualWeightLbs": 315.0,
@@ -28400,7 +29114,7 @@
     "current": {
       "lbs": 205.0,
       "kg": 93.0,
-      "date": "2025-10-24"
+      "date": "2026-02-13"
     },
     "starting": {
       "lbs": 182.0,
@@ -28410,11 +29124,11 @@
     "stats": {
       "minLbs": 180.0,
       "maxLbs": 205.0,
-      "avgLbs": 183.8,
+      "avgLbs": 184.2,
       "minKg": 81.6,
       "maxKg": 93.0,
-      "avgKg": 83.4,
-      "totalEntries": 979
+      "avgKg": 83.5,
+      "totalEntries": 997
     },
     "monthlyTimeline": [
       {
@@ -29096,6 +29810,36 @@
         "maxKg": 93.0,
         "avgKg": 93.0,
         "entries": 4
+      },
+      {
+        "month": "2025-12",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 5
+      },
+      {
+        "month": "2026-01",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 7
+      },
+      {
+        "month": "2026-02",
+        "minLbs": 205.0,
+        "maxLbs": 205.0,
+        "avgLbs": 205.0,
+        "minKg": 93.0,
+        "maxKg": 93.0,
+        "avgKg": 93.0,
+        "entries": 6
       }
     ],
     "stalePeriods": [
@@ -29108,8 +29852,8 @@
       {
         "weightLbs": 205.0,
         "startDate": "2025-03-07",
-        "endDate": "2025-10-24",
-        "count": 99
+        "endDate": "2026-02-13",
+        "count": 117
       }
     ]
   },
@@ -29124,19 +29868,43 @@
         "multiple": 2.22
       },
       "current": {
-        "date": "2025-10-20",
-        "liftLbs": 280.0,
-        "liftKg": 127.5,
+        "date": "2026-02-13",
+        "liftLbs": 220.0,
+        "liftKg": 100.0,
         "bodyWeightLbs": 205.0,
         "bodyWeightKg": 93.0,
-        "multiple": 1.37
+        "multiple": 1.07
       },
       "monthlyProgression": [
+        {
+          "month": "2019-01",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 181.0,
+          "avgBwKg": 82.1,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2019-02",
+          "maxLiftLbs": 185.0,
+          "maxLiftKg": 85.0,
+          "avgBwLbs": 185.1,
+          "avgBwKg": 84.0,
+          "bwMultiple": 0.98
+        },
+        {
+          "month": "2019-03",
+          "maxLiftLbs": 250.0,
+          "maxLiftKg": 112.5,
+          "avgBwLbs": 192.1,
+          "avgBwKg": 87.1,
+          "bwMultiple": 1.28
+        },
         {
           "month": "2019-04",
           "maxLiftLbs": 275.0,
           "maxLiftKg": 125.0,
-          "avgBwLbs": 195.0,
+          "avgBwLbs": 194.9,
           "avgBwKg": 88.4,
           "bwMultiple": 1.43
         },
@@ -29643,6 +30411,30 @@
           "avgBwLbs": 205.0,
           "avgBwKg": 93.0,
           "bwMultiple": 1.37
+        },
+        {
+          "month": "2025-12",
+          "maxLiftLbs": 195.0,
+          "maxLiftKg": 87.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.95
+        },
+        {
+          "month": "2026-01",
+          "maxLiftLbs": 200.0,
+          "maxLiftKg": 90.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.98
+        },
+        {
+          "month": "2026-02",
+          "maxLiftLbs": 220.0,
+          "maxLiftKg": 100.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.07
         }
       ]
     },
@@ -29656,20 +30448,44 @@
         "multiple": 1.52
       },
       "current": {
-        "date": "2025-10-23",
-        "liftLbs": 200.0,
-        "liftKg": 90.0,
+        "date": "2026-02-11",
+        "liftLbs": 157.5,
+        "liftKg": 72.5,
         "bodyWeightLbs": 205.0,
         "bodyWeightKg": 93.0,
-        "multiple": 0.98
+        "multiple": 0.77
       },
       "monthlyProgression": [
+        {
+          "month": "2019-01",
+          "maxLiftLbs": 105.0,
+          "maxLiftKg": 47.5,
+          "avgBwLbs": 181.0,
+          "avgBwKg": 82.1,
+          "bwMultiple": 0.58
+        },
+        {
+          "month": "2019-02",
+          "maxLiftLbs": 140.0,
+          "maxLiftKg": 62.5,
+          "avgBwLbs": 184.4,
+          "avgBwKg": 83.6,
+          "bwMultiple": 0.74
+        },
+        {
+          "month": "2019-03",
+          "maxLiftLbs": 175.0,
+          "maxLiftKg": 80.0,
+          "avgBwLbs": 192.2,
+          "avgBwKg": 87.2,
+          "bwMultiple": 0.9
+        },
         {
           "month": "2019-04",
           "maxLiftLbs": 190.0,
           "maxLiftKg": 85.0,
-          "avgBwLbs": 194.2,
-          "avgBwKg": 88.1,
+          "avgBwLbs": 194.7,
+          "avgBwKg": 88.3,
           "bwMultiple": 0.99
         },
         {
@@ -30175,6 +30991,30 @@
           "avgBwLbs": 205.0,
           "avgBwKg": 93.0,
           "bwMultiple": 0.98
+        },
+        {
+          "month": "2025-12",
+          "maxLiftLbs": 140.0,
+          "maxLiftKg": 62.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.68
+        },
+        {
+          "month": "2026-01",
+          "maxLiftLbs": 150.0,
+          "maxLiftKg": 67.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.73
+        },
+        {
+          "month": "2026-02",
+          "maxLiftLbs": 157.5,
+          "maxLiftKg": 72.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.77
         }
       ]
     },
@@ -30188,20 +31028,44 @@
         "multiple": 2.58
       },
       "current": {
-        "date": "2025-10-24",
-        "liftLbs": 275.0,
-        "liftKg": 125.0,
+        "date": "2026-02-11",
+        "liftLbs": 220.0,
+        "liftKg": 100.0,
         "bodyWeightLbs": 205.0,
         "bodyWeightKg": 93.0,
-        "multiple": 1.34
+        "multiple": 1.07
       },
       "monthlyProgression": [
+        {
+          "month": "2019-01",
+          "maxLiftLbs": 135.0,
+          "maxLiftKg": 60.0,
+          "avgBwLbs": 181.0,
+          "avgBwKg": 82.1,
+          "bwMultiple": 0.75
+        },
+        {
+          "month": "2019-02",
+          "maxLiftLbs": 235.0,
+          "maxLiftKg": 107.5,
+          "avgBwLbs": 185.8,
+          "avgBwKg": 84.3,
+          "bwMultiple": 1.24
+        },
+        {
+          "month": "2019-03",
+          "maxLiftLbs": 295.0,
+          "maxLiftKg": 135.0,
+          "avgBwLbs": 192.1,
+          "avgBwKg": 87.1,
+          "bwMultiple": 1.52
+        },
         {
           "month": "2019-04",
           "maxLiftLbs": 325.0,
           "maxLiftKg": 147.5,
-          "avgBwLbs": 195.1,
-          "avgBwKg": 88.5,
+          "avgBwLbs": 194.7,
+          "avgBwKg": 88.3,
           "bwMultiple": 1.69
         },
         {
@@ -30699,6 +31563,30 @@
           "avgBwLbs": 205.0,
           "avgBwKg": 93.0,
           "bwMultiple": 1.34
+        },
+        {
+          "month": "2025-12",
+          "maxLiftLbs": 225.0,
+          "maxLiftKg": 102.5,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.1
+        },
+        {
+          "month": "2026-01",
+          "maxLiftLbs": 210.0,
+          "maxLiftKg": 95.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.02
+        },
+        {
+          "month": "2026-02",
+          "maxLiftLbs": 220.0,
+          "maxLiftKg": 100.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 1.07
         }
       ]
     },
@@ -30712,20 +31600,44 @@
         "multiple": 1.0
       },
       "current": {
-        "date": "2025-10-21",
-        "liftLbs": 125.0,
-        "liftKg": 57.5,
+        "date": "2026-02-13",
+        "liftLbs": 110.0,
+        "liftKg": 50.0,
         "bodyWeightLbs": 205.0,
         "bodyWeightKg": 93.0,
-        "multiple": 0.61
+        "multiple": 0.54
       },
       "monthlyProgression": [
+        {
+          "month": "2019-01",
+          "maxLiftLbs": 65.0,
+          "maxLiftKg": 30.0,
+          "avgBwLbs": 181.0,
+          "avgBwKg": 82.1,
+          "bwMultiple": 0.36
+        },
+        {
+          "month": "2019-02",
+          "maxLiftLbs": 90.0,
+          "maxLiftKg": 40.0,
+          "avgBwLbs": 185.8,
+          "avgBwKg": 84.3,
+          "bwMultiple": 0.48
+        },
+        {
+          "month": "2019-03",
+          "maxLiftLbs": 115.0,
+          "maxLiftKg": 52.5,
+          "avgBwLbs": 192.1,
+          "avgBwKg": 87.1,
+          "bwMultiple": 0.59
+        },
         {
           "month": "2019-04",
           "maxLiftLbs": 120.0,
           "maxLiftKg": 55.0,
-          "avgBwLbs": 195.7,
-          "avgBwKg": 88.8,
+          "avgBwLbs": 195.2,
+          "avgBwKg": 88.5,
           "bwMultiple": 0.61
         },
         {
@@ -31191,6 +32103,30 @@
           "avgBwLbs": 205.0,
           "avgBwKg": 93.0,
           "bwMultiple": 0.61
+        },
+        {
+          "month": "2025-12",
+          "maxLiftLbs": 107.5,
+          "maxLiftKg": 50.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.52
+        },
+        {
+          "month": "2026-01",
+          "maxLiftLbs": 110.0,
+          "maxLiftKg": 50.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.54
+        },
+        {
+          "month": "2026-02",
+          "maxLiftLbs": 110.0,
+          "maxLiftKg": 50.0,
+          "avgBwLbs": 205.0,
+          "avgBwKg": 93.0,
+          "bwMultiple": 0.54
         }
       ]
     },
