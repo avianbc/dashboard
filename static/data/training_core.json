@@ -321,10 +321,10 @@
     }
   },
   "daysSinceLastPR": {
-    "squat": 867,
-    "bench": 1165,
-    "deadlift": 1530,
-    "ohp": 1104
+    "squat": 878,
+    "bench": 1176,
+    "deadlift": 1541,
+    "ohp": 1115
   },
   "barTravel": {
     "byLift": {
@@ -2492,5 +2492,11 @@
         "workouts": 13
       }
     ]
+  },
+  "polarSummary": {
+    "totalCalories": 235890,
+    "totalSessions": 488,
+    "avgCaloriesPerSession": 483.4,
+    "totalHrMinutes": 57514
   }
 }

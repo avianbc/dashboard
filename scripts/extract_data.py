@@ -1447,6 +1447,225 @@ def get_relative_strength(conn):
 
     return relative_strength
 
+def parse_pt_seconds(duration_str):
+    """Parse ISO 8601 duration 'PT{n}S' (or 'PT{n}M{m}S') to fractional minutes."""
+    if not duration_str:
+        return 0.0
+    import re
+    # Handle PTnS or PTnHnMnS variants; we only care about total seconds
+    m = re.match(r'PT(?:(\d+(?:\.\d+)?)H)?(?:(\d+(?:\.\d+)?)M)?(?:(\d+(?:\.\d+)?)S)?', duration_str)
+    if not m:
+        return 0.0
+    hours = float(m.group(1) or 0)
+    minutes = float(m.group(2) or 0)
+    seconds = float(m.group(3) or 0)
+    total_seconds = hours * 3600 + minutes * 60 + seconds
+    return total_seconds / 60.0
+
+
+def get_polar_sessions():
+    """
+    Extract per-session aggregate data from Polar training-session JSON files.
+
+    Returns a tuple of:
+      - polar_calendar: dict keyed by date (YYYY-MM-DD) with aggregated polar data
+      - polar_summary: dict with total stats
+      - polar_monthly: list of monthly aggregate dicts
+      - polar_notable: list of notable cardio events (for milestones/notableWorkouts)
+    """
+    import glob as glob_module
+
+    polar_dir = os.path.join(SCRIPT_DIR, '..', 'data', 'polar-user-data')
+    pattern = os.path.join(polar_dir, 'training-session-*.json')
+    files = sorted(glob_module.glob(pattern))
+
+    # Per-session records keyed by date for aggregation
+    by_date = {}  # date -> list of session dicts
+
+    for filepath in files:
+        try:
+            with open(filepath, encoding='utf-8') as f:
+                d = json.load(f)
+        except Exception:
+            continue
+
+        start_time = d.get('startTime', '')
+        if not start_time:
+            continue
+        date_str = start_time[:10]  # YYYY-MM-DD
+
+        avg_hr = d.get('averageHeartRate') or 0
+        max_hr = d.get('maximumHeartRate') or 0
+        kcal = d.get('kiloCalories') or 0
+        duration_minutes = parse_pt_seconds(d.get('duration', ''))
+
+        # Extract exercise-level fields
+        exercises = d.get('exercises', [])
+        ex = exercises[0] if exercises else {}
+        min_hr = (ex.get('heartRate') or {}).get('min') or 0
+        sport = ex.get('sport', '') or d.get('name', 'UNKNOWN')
+
+        load_info = d.get('loadInformation') or ex.get('loadInformation') or {}
+        cardio_load = load_info.get('cardioLoad') or None
+        cardio_load_interp = load_info.get('cardioLoadInterpretation') or None
+
+        phys = d.get('physicalInformationSnapshot') or {}
+        vo2_max = phys.get('vo2Max') or None
+        resting_hr = phys.get('restingHeartRate') or None
+        weight_kg = phys.get('weight, kg') or None
+
+        session = {
+            'avgHr': avg_hr,
+            'maxHr': max_hr,
+            'minHr': min_hr,
+            'durationMinutes': duration_minutes,
+            'kiloCalories': kcal,
+            'sport': sport,
+            'cardioLoad': cardio_load,
+            'cardioLoadInterpretation': cardio_load_interp,
+            'vo2Max': vo2_max,
+            'restingHeartRate': resting_hr,
+            'weightKg': weight_kg,
+        }
+        by_date.setdefault(date_str, []).append(session)
+
+    # Aggregate multi-session days
+    polar_calendar = {}
+    for date_str, sessions in sorted(by_date.items()):
+        total_duration = sum(s['durationMinutes'] for s in sessions)
+        total_kcal = sum(s['kiloCalories'] for s in sessions)
+
+        # Weighted-average HR by duration
+        if total_duration > 0:
+            avg_hr = sum(s['avgHr'] * s['durationMinutes'] for s in sessions) / total_duration
+        else:
+            avg_hr = sessions[0]['avgHr'] if sessions else 0
+
+        max_hr = max(s['maxHr'] for s in sessions)
+        # Use minimum of non-zero minHR values
+        non_zero_min = [s['minHr'] for s in sessions if s['minHr'] > 0]
+        min_hr = min(non_zero_min) if non_zero_min else 0
+
+        # Sum cardio load; skip None entries
+        cardio_loads = [s['cardioLoad'] for s in sessions if s['cardioLoad'] is not None]
+        total_cardio_load = sum(cardio_loads) if cardio_loads else None
+
+        # Use the interpretation from the last session with a real value
+        cardio_interp = None
+        for s in reversed(sessions):
+            if s['cardioLoadInterpretation'] and s['cardioLoadInterpretation'] != 'NOT_AVAILABLE':
+                cardio_interp = s['cardioLoadInterpretation']
+                break
+
+        sports = ', '.join(dict.fromkeys(s['sport'] for s in sessions if s['sport']))
+
+        polar_calendar[date_str] = {
+            'avgHr': round(avg_hr, 1),
+            'maxHr': max_hr,
+            'minHr': min_hr,
+            'durationMinutes': round(total_duration, 1),
+            'kiloCalories': round(total_kcal, 1),
+            'cardioLoad': round(total_cardio_load, 2) if total_cardio_load is not None else None,
+            'cardioLoadInterpretation': cardio_interp,
+            'sport': sports,
+            'sessionCount': len(sessions),
+        }
+
+    # Build summary stats
+    all_sessions_flat = [s for sessions in by_date.values() for s in sessions]
+    total_kcal = sum(s['kiloCalories'] for s in all_sessions_flat)
+    total_sessions = len(all_sessions_flat)
+    avg_kcal = round(total_kcal / total_sessions, 1) if total_sessions > 0 else 0
+    total_hr_minutes = sum(s['durationMinutes'] for s in all_sessions_flat if s['avgHr'] > 0)
+
+    polar_summary = {
+        'totalCalories': round(total_kcal),
+        'totalSessions': total_sessions,
+        'avgCaloriesPerSession': avg_kcal,
+        'totalHrMinutes': round(total_hr_minutes),
+    }
+
+    # Build monthly aggregates
+    month_map = {}
+    for date_str, sessions in by_date.items():
+        month = date_str[:7]  # YYYY-MM
+        for s in sessions:
+            if month not in month_map:
+                month_map[month] = {'hr_x_dur': 0.0, 'total_dur': 0.0, 'max_hrs': [], 'kcal': 0.0, 'cardio_loads': [], 'count': 0}
+            m = month_map[month]
+            m['hr_x_dur'] += s['avgHr'] * s['durationMinutes']
+            m['total_dur'] += s['durationMinutes']
+            m['max_hrs'].append(s['maxHr'])
+            m['kcal'] += s['kiloCalories']
+            if s['cardioLoad'] is not None:
+                m['cardio_loads'].append(s['cardioLoad'])
+            m['count'] += 1
+
+    polar_monthly = []
+    for month in sorted(month_map.keys()):
+        m = month_map[month]
+        avg_hr = round(m['hr_x_dur'] / m['total_dur'], 1) if m['total_dur'] > 0 else 0
+        avg_max_hr = round(sum(m['max_hrs']) / len(m['max_hrs']), 1) if m['max_hrs'] else 0
+        avg_cardio = round(sum(m['cardio_loads']) / len(m['cardio_loads']), 1) if m['cardio_loads'] else None
+        polar_monthly.append({
+            'month': month,
+            'avgHr': avg_hr,
+            'avgMaxHr': avg_max_hr,
+            'totalCalories': round(m['kcal']),
+            'sessions': m['count'],
+            'avgCardioLoad': avg_cardio,
+        })
+
+    # Build notable cardio events
+    polar_notable = []
+
+    # Sort all days by calories for "highest calorie session"
+    sorted_by_kcal = sorted(polar_calendar.items(), key=lambda x: x[1]['kiloCalories'], reverse=True)
+    if sorted_by_kcal:
+        top_date, top_day = sorted_by_kcal[0]
+        polar_notable.append({
+            'date': top_date,
+            'reason': f"Highest calorie workout: {int(top_day['kiloCalories'])} kcal",
+            'volumeLbs': 0,
+            'volumeKg': 0,
+            'details': top_day['sport'],
+            'category': 'cardio',
+        })
+
+    # First 1000+ kcal session
+    running_kcal = 0.0
+    kcal_milestones = [100000, 250000, 500000]
+    milestone_idx = 0
+    first_1000_kcal_date = None
+    for date_str in sorted(polar_calendar.keys()):
+        day = polar_calendar[date_str]
+        running_kcal += day['kiloCalories']
+        if first_1000_kcal_date is None and day['kiloCalories'] >= 1000:
+            first_1000_kcal_date = date_str
+        while milestone_idx < len(kcal_milestones) and running_kcal >= kcal_milestones[milestone_idx]:
+            polar_notable.append({
+                'date': date_str,
+                'reason': f"{kcal_milestones[milestone_idx]:,} total kcal burned",
+                'volumeLbs': 0,
+                'volumeKg': 0,
+                'details': 'Cardio milestone',
+                'category': 'cardio',
+            })
+            milestone_idx += 1
+
+    if first_1000_kcal_date:
+        polar_notable.append({
+            'date': first_1000_kcal_date,
+            'reason': 'First 1,000+ kcal session',
+            'volumeLbs': 0,
+            'volumeKg': 0,
+            'details': polar_calendar[first_1000_kcal_date]['sport'],
+            'category': 'cardio',
+        })
+
+    return polar_calendar, polar_summary, polar_monthly, polar_notable
+
+
 def main():
     """Main execution function."""
     parser = argparse.ArgumentParser(description='Extract training data from SQLite DB and produce training_data.json')
@@ -1488,6 +1707,28 @@ def main():
 
     print("Calculating milestones...")
     milestones = get_milestones(conn, summary)
+
+    print("Extracting Polar heart rate data...")
+    polar_calendar, polar_summary, polar_monthly, polar_notable = get_polar_sessions()
+
+    # Merge Polar data into workout_calendar (overlay polar key, add cardio-only days)
+    for date_str, polar_day in polar_calendar.items():
+        if date_str in workout_calendar:
+            workout_calendar[date_str]['polar'] = polar_day
+        else:
+            # Cardio-only day — create a stub entry
+            workout_calendar[date_str] = {
+                'count': 0,
+                'volumeLbs': 0,
+                'volumeKg': 0,
+                'polar': polar_day,
+            }
+
+    # Merge polar notable events into existing lists
+    notable_workouts.extend(polar_notable)
+    notable_workouts.sort(key=lambda x: x['date'], reverse=True)
+    milestones.extend([n for n in polar_notable if 'kcal' in n['reason'] and 'Highest' not in n['reason']])
+    milestones.sort(key=lambda x: x['date'])
 
     print("Calculating plate milestones...")
     plate_milestones = get_plate_milestones(conn)
@@ -1532,7 +1773,9 @@ def main():
         'daysSinceLastPR': days_since_last_pr,
         'barTravel': bar_travel_stats,
         'bodyWeight': body_weight_data,
-        'relativeStrength': relative_strength
+        'relativeStrength': relative_strength,
+        'polarSummary': polar_summary,
+        'polarMonthly': polar_monthly,
     }
 
     output_path = args.output_path
@@ -1560,7 +1803,8 @@ def main():
             'weekly': volume_time_series['weekly'],
             'monthly': volume_time_series['monthly'],
             'yearly': volume_time_series['yearly']
-        }
+        },
+        'polarSummary': polar_summary,
     }
 
     core_path = os.path.join(output_dir, 'training_core.json')
@@ -1582,7 +1826,8 @@ def main():
         'milestones': milestones,
         'plateMilestones': plate_milestones,
         'bodyWeight': body_weight_data,
-        'relativeStrength': relative_strength
+        'relativeStrength': relative_strength,
+        'polarMonthly': polar_monthly,
     }
 
     deferred_path = os.path.join(output_dir, 'training_deferred.json')
@@ -1618,6 +1863,7 @@ def main():
         print(f"  - Best BW Multiples: S:{tm['squat']}× B:{tm['bench']}× D:{tm['deadlift']}× (Total: {tm['best']}×)")
     if relative_strength.get('wilks'):
         print(f"  - Best Wilks Score: {relative_strength['wilks']['best']}")
+    print(f"  - Polar Sessions: {polar_summary['totalSessions']} sessions, {polar_summary['totalCalories']:,} kcal total")
 
     conn.close()
 
