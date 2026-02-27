@@ -7,3 +7,4 @@ export { default as DayOfWeekChart } from './DayOfWeekChart.svelte';
 export { default as PowerliftingTotalChart } from './PowerliftingTotalChart.svelte';
 export { default as RelativeStrengthChart } from './RelativeStrengthChart.svelte';
 export { default as ProgramComparisonChart } from './ProgramComparisonChart.svelte';
+export { default as HeartRateChart } from './HeartRateChart.svelte';

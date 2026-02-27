@@ -20,7 +20,8 @@
 		DayOfWeekChart,
 		PowerliftingTotalChart,
 		RelativeStrengthChart,
-		ProgramComparisonChart
+		ProgramComparisonChart,
+		HeartRateChart
 	} from '$lib/components/charts';
 	import {
 		PRTable,
@@ -39,6 +40,7 @@
 		Route,
 		Repeat,
 		Trophy,
+		Flame,
 		Moon,
 		Sun,
 		AlertTriangle
@@ -161,6 +163,8 @@
 		}
 	);
 	const bodyWeight = $derived(deferredData?.bodyWeight || {});
+	const polarSummary = $derived(coreData.polarSummary || null);
+	const polarMonthly = $derived(deferredData?.polarMonthly || []);
 </script>
 
 <div class="dashboard">
@@ -375,6 +379,33 @@
 						<div class="stat-subtitle fun-comparison">1200+ club member</div>
 					</div>
 				</Card>
+
+				<!-- Total Calories (Polar) -->
+				{#if polarSummary}
+					<Card
+						hover
+						class="stat-card"
+						role="listitem"
+						aria-label="Total calories burned: {formatCompactNumber(polarSummary.totalCalories)} kcal"
+					>
+						<div class="stat-icon stat-icon--flame" aria-hidden="true">
+							<Flame size={24} />
+						</div>
+						<div class="stat-content">
+							<div class="stat-label">Calories Burned</div>
+							<div class="stat-value">
+								<AnimatedNumber
+									value={polarSummary.totalCalories}
+									format={(v) => formatCompactNumber(v)}
+								/>
+								<span class="unit-label">kcal</span>
+							</div>
+							<div class="stat-subtitle fun-comparison">
+								≈ {Math.round(polarSummary.totalCalories / 285)} slices of pizza
+							</div>
+						</div>
+					</Card>
+				{/if}
 			</div>
 		</section>
 
@@ -465,6 +496,17 @@
 					</LazyChart>
 				</Card>
 			</section>
+
+			<!-- Heart Rate Trends -->
+			{#if polarMonthly.length > 0}
+				<section class="mb-12" aria-label="Heart Rate Trends">
+					<Card padding="lg">
+						<LazyChart minHeight="400px">
+							<HeartRateChart data={polarMonthly} />
+						</LazyChart>
+					</Card>
+				</section>
+			{/if}
 
 			<!-- Workout Pattern Analysis (grouped) -->
 			<div class="two-column-layout mb-12">
