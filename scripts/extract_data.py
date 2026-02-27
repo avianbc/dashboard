@@ -1578,11 +1578,20 @@ def get_polar_sessions():
     avg_kcal = round(total_kcal / total_sessions, 1) if total_sessions > 0 else 0
     total_hr_minutes = sum(s['durationMinutes'] for s in all_sessions_flat if s['avgHr'] > 0)
 
+    # Weighted-average HR across all sessions (by duration)
+    hr_sessions = [s for s in all_sessions_flat if s['avgHr'] > 0]
+    overall_avg_hr = 0
+    if hr_sessions:
+        total_hr_x_dur = sum(s['avgHr'] * s['durationMinutes'] for s in hr_sessions)
+        total_hr_dur = sum(s['durationMinutes'] for s in hr_sessions)
+        overall_avg_hr = round(total_hr_x_dur / total_hr_dur) if total_hr_dur > 0 else 0
+
     polar_summary = {
         'totalCalories': round(total_kcal),
         'totalSessions': total_sessions,
         'avgCaloriesPerSession': avg_kcal,
         'totalHrMinutes': round(total_hr_minutes),
+        'overallAvgHr': overall_avg_hr,
     }
 
     # Build monthly aggregates

@@ -80,6 +80,7 @@ export interface PolarSummary {
 	totalSessions: number;
 	avgCaloriesPerSession: number;
 	totalHrMinutes: number;
+	overallAvgHr: number;
 }
 
 export interface PolarMonthlyPoint {

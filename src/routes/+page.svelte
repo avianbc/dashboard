@@ -41,6 +41,7 @@
 		Repeat,
 		Trophy,
 		Flame,
+		Activity,
 		Moon,
 		Sun,
 		AlertTriangle
@@ -176,8 +177,8 @@
 		<div class="container">
 			<div class="header-content">
 				<div>
-					<h1 id="page-title">Stronger Than Yesterday</h1>
-					<p class="text-secondary">A data-driven look at my strength training journey</p>
+					<h1 id="page-title">Proof Of Work</h1>
+					<p class="text-secondary">A data-driven look at my training journey</p>
 				</div>
 				<nav class="header-controls" aria-label="Settings and preferences">
 					<Button
@@ -222,6 +223,8 @@
 		<section class="mb-12" aria-label="Summary Statistics">
 			<h2 class="visually-hidden">Training Summary Statistics</h2>
 			<div class="stats-grid" role="list">
+				<!-- Row 1: The headline numbers -->
+
 				<!-- Total Workouts -->
 				<Card
 					hover
@@ -275,6 +278,64 @@
 					</div>
 				</Card>
 
+				<!-- Powerlifting Total -->
+				<Card
+					hover
+					class="stat-card"
+					role="listitem"
+					aria-label="Powerlifting total: {formatNumber(
+						unitSystem.current === 'imperial'
+							? powerliftingTotals.current.totalLbs
+							: lbsToKg(powerliftingTotals.current.totalLbs)
+					)} {unitSystem.current === 'imperial' ? 'pounds' : 'kilograms'}"
+				>
+					<div class="stat-icon" aria-hidden="true">
+						<Trophy size={24} />
+					</div>
+					<div class="stat-content">
+						<div class="stat-label">Powerlifting Total</div>
+						<div class="stat-value">
+							<AnimatedNumber
+								value={unitSystem.current === 'imperial'
+									? powerliftingTotals.current.totalLbs
+									: lbsToKg(powerliftingTotals.current.totalLbs)}
+								format={(v) => formatNumber(Math.round(v))}
+							/>
+							<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
+						</div>
+						<div class="stat-subtitle fun-comparison">1200+ club member</div>
+					</div>
+				</Card>
+
+				<!-- Calories Burned -->
+				{#if polarSummary}
+					<Card
+						hover
+						class="stat-card"
+						role="listitem"
+						aria-label="Total calories burned: {formatCompactNumber(polarSummary.totalCalories)} kcal"
+					>
+						<div class="stat-icon" aria-hidden="true">
+							<Flame size={24} />
+						</div>
+						<div class="stat-content">
+							<div class="stat-label">Calories Burned</div>
+							<div class="stat-value">
+								<AnimatedNumber
+									value={polarSummary.totalCalories}
+									format={(v) => formatCompactNumber(v)}
+								/>
+								<span class="unit-label">kcal</span>
+							</div>
+							<div class="stat-subtitle fun-comparison">
+								≈ {Math.round(polarSummary.totalCalories / 285)} slices of pizza
+							</div>
+						</div>
+					</Card>
+				{/if}
+
+				<!-- Row 2: Supporting texture -->
+
 				<!-- Time Training -->
 				<Card
 					hover
@@ -296,6 +357,27 @@
 						</div>
 						<div class="stat-subtitle fun-comparison">
 							{(summary.totalHours / 24).toFixed(0)}+ days straight
+						</div>
+					</div>
+				</Card>
+
+				<!-- Total Reps -->
+				<Card
+					hover
+					class="stat-card"
+					role="listitem"
+					aria-label="Total reps: {formatCompactNumber(summary.totalReps)}"
+				>
+					<div class="stat-icon" aria-hidden="true">
+						<Repeat size={24} />
+					</div>
+					<div class="stat-content">
+						<div class="stat-label">Total Reps</div>
+						<div class="stat-value">
+							<AnimatedNumber value={summary.totalReps} format={(v) => formatCompactNumber(v)} />
+						</div>
+						<div class="stat-subtitle fun-comparison">
+							{formatCompactNumber(summary.totalSets)} sets completed
 						</div>
 					</div>
 				</Card>
@@ -330,78 +412,28 @@
 					</div>
 				</Card>
 
-				<!-- Total Reps -->
-				<Card
-					hover
-					class="stat-card"
-					role="listitem"
-					aria-label="Total reps: {formatCompactNumber(summary.totalReps)}"
-				>
-					<div class="stat-icon" aria-hidden="true">
-						<Repeat size={24} />
-					</div>
-					<div class="stat-content">
-						<div class="stat-label">Total Reps</div>
-						<div class="stat-value">
-							<AnimatedNumber value={summary.totalReps} format={(v) => formatCompactNumber(v)} />
-						</div>
-						<div class="stat-subtitle fun-comparison">
-							{formatCompactNumber(summary.totalSets)} sets completed
-						</div>
-					</div>
-				</Card>
-
-				<!-- Powerlifting Total -->
-				<Card
-					hover
-					class="stat-card"
-					role="listitem"
-					aria-label="Powerlifting total: {formatNumber(
-						unitSystem.current === 'imperial'
-							? powerliftingTotals.current.totalLbs
-							: lbsToKg(powerliftingTotals.current.totalLbs)
-					)} {unitSystem.current === 'imperial' ? 'pounds' : 'kilograms'}"
-				>
-					<div class="stat-icon" aria-hidden="true">
-						<Trophy size={24} />
-					</div>
-					<div class="stat-content">
-						<div class="stat-label">Powerlifting Total</div>
-						<div class="stat-value">
-							<AnimatedNumber
-								value={unitSystem.current === 'imperial'
-									? powerliftingTotals.current.totalLbs
-									: lbsToKg(powerliftingTotals.current.totalLbs)}
-								format={(v) => formatNumber(Math.round(v))}
-							/>
-							<span class="unit-label">{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}</span>
-						</div>
-						<div class="stat-subtitle fun-comparison">1200+ club member</div>
-					</div>
-				</Card>
-
-				<!-- Total Calories (Polar) -->
+				<!-- Avg Workout HR -->
 				{#if polarSummary}
 					<Card
 						hover
 						class="stat-card"
 						role="listitem"
-						aria-label="Total calories burned: {formatCompactNumber(polarSummary.totalCalories)} kcal"
+						aria-label="Average workout heart rate: {polarSummary.overallAvgHr} bpm"
 					>
-						<div class="stat-icon stat-icon--flame" aria-hidden="true">
-							<Flame size={24} />
+						<div class="stat-icon" aria-hidden="true">
+							<Activity size={24} />
 						</div>
 						<div class="stat-content">
-							<div class="stat-label">Calories Burned</div>
+							<div class="stat-label">Avg Workout HR</div>
 							<div class="stat-value">
 								<AnimatedNumber
-									value={polarSummary.totalCalories}
-									format={(v) => formatCompactNumber(v)}
+									value={polarSummary.overallAvgHr}
+									format={(v) => formatNumber(Math.round(v))}
 								/>
-								<span class="unit-label">kcal</span>
+								<span class="unit-label">bpm</span>
 							</div>
 							<div class="stat-subtitle fun-comparison">
-								≈ {Math.round(polarSummary.totalCalories / 285)} slices of pizza
+								across {formatNumber(polarSummary.totalSessions)} sessions
 							</div>
 						</div>
 					</Card>
@@ -653,7 +685,7 @@
 
 	.stats-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(4, 1fr);
 		gap: var(--space-4);
 	}
 
@@ -693,6 +725,14 @@
 	}
 	:global(.stat-card:nth-child(6)) {
 		animation-delay: 0.6s;
+	}
+
+	:global(.stat-card:nth-child(7)) {
+		animation-delay: 0.7s;
+	}
+
+	:global(.stat-card:nth-child(8)) {
+		animation-delay: 0.8s;
 	}
 
 	@keyframes fadeInUp {
@@ -789,6 +829,12 @@
 	}
 
 	/* Responsive adjustments */
+	@media (max-width: 1024px) {
+		.stats-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
 	@media (max-width: 768px) {
 		.header-content {
 			flex-direction: column;
@@ -803,7 +849,6 @@
 		}
 
 		.stats-grid {
-			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 			gap: var(--space-3);
 		}
 

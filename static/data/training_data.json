@@ -40213,7 +40213,8 @@
     "totalCalories": 235890,
     "totalSessions": 488,
     "avgCaloriesPerSession": 483.4,
-    "totalHrMinutes": 57514
+    "totalHrMinutes": 57514,
+    "overallAvgHr": 116
   },
   "polarMonthly": [
     {
