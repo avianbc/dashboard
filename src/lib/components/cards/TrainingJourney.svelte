@@ -88,8 +88,8 @@
 		}
 	}
 
-	function categorizeMilestone(text: string): EventCategory {
-		const lower = text.toLowerCase();
+	function categorizeMilestone(text: string | undefined): EventCategory {
+		const lower = (text ?? '').toLowerCase();
 		if (lower.includes('pr') || lower.includes('record') || lower.includes('personal best')) {
 			return 'pr';
 		} else if (lower.includes('volume') || lower.includes('lbs') || lower.includes('kg')) {

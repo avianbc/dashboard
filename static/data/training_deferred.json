@@ -34551,19 +34551,15 @@
     },
     {
       "date": "2023-08-24",
-      "reason": "First 1,000+ kcal session",
+      "milestone": "First 1,000+ kcal session",
       "volumeLbs": 0,
-      "volumeKg": 0,
-      "details": "STRENGTH_TRAINING",
-      "category": "cardio"
+      "volumeKg": 0
     },
     {
       "date": "2024-08-21",
-      "reason": "100,000 total kcal burned",
+      "milestone": "100,000 total kcal burned",
       "volumeLbs": 0,
-      "volumeKg": 0,
-      "details": "Cardio milestone",
-      "category": "cardio"
+      "volumeKg": 0
     },
     {
       "date": "2025-03-14",

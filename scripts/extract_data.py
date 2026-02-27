@@ -1727,7 +1727,10 @@ def main():
     # Merge polar notable events into existing lists
     notable_workouts.extend(polar_notable)
     notable_workouts.sort(key=lambda x: x['date'], reverse=True)
-    milestones.extend([n for n in polar_notable if 'kcal' in n['reason'] and 'Highest' not in n['reason']])
+    milestones.extend([
+        {'date': n['date'], 'milestone': n['reason'], 'volumeLbs': 0, 'volumeKg': 0}
+        for n in polar_notable if 'kcal' in n['reason'] and 'Highest' not in n['reason']
+    ])
     milestones.sort(key=lambda x: x['date'])
 
     print("Calculating plate milestones...")
