@@ -543,26 +543,26 @@
 		stroke-width: 2;
 	}
 
-	/* Volume levels */
-	.level-0 { fill: var(--heatmap-level-0); }
-	.level-1 { fill: var(--heatmap-level-1); }
-	.level-2 { fill: var(--heatmap-level-2); }
-	.level-3 { fill: var(--heatmap-level-3); }
-	.level-4 { fill: var(--heatmap-level-4); }
+	/* Volume levels — fill for SVG rects, background-color for legend divs */
+	.level-0 { fill: var(--heatmap-level-0); background-color: var(--heatmap-level-0); }
+	.level-1 { fill: var(--heatmap-level-1); background-color: var(--heatmap-level-1); }
+	.level-2 { fill: var(--heatmap-level-2); background-color: var(--heatmap-level-2); }
+	.level-3 { fill: var(--heatmap-level-3); background-color: var(--heatmap-level-3); }
+	.level-4 { fill: var(--heatmap-level-4); background-color: var(--heatmap-level-4); }
 
 	/* HR levels */
-	.level-hr-0 { fill: var(--heatmap-hr-level-0); }
-	.level-hr-1 { fill: var(--heatmap-hr-level-1); }
-	.level-hr-2 { fill: var(--heatmap-hr-level-2); }
-	.level-hr-3 { fill: var(--heatmap-hr-level-3); }
-	.level-hr-4 { fill: var(--heatmap-hr-level-4); }
+	.level-hr-0 { fill: var(--heatmap-hr-level-0); background-color: var(--heatmap-hr-level-0); }
+	.level-hr-1 { fill: var(--heatmap-hr-level-1); background-color: var(--heatmap-hr-level-1); }
+	.level-hr-2 { fill: var(--heatmap-hr-level-2); background-color: var(--heatmap-hr-level-2); }
+	.level-hr-3 { fill: var(--heatmap-hr-level-3); background-color: var(--heatmap-hr-level-3); }
+	.level-hr-4 { fill: var(--heatmap-hr-level-4); background-color: var(--heatmap-hr-level-4); }
 
 	/* Calories levels */
-	.level-cal-0 { fill: var(--heatmap-cal-level-0); }
-	.level-cal-1 { fill: var(--heatmap-cal-level-1); }
-	.level-cal-2 { fill: var(--heatmap-cal-level-2); }
-	.level-cal-3 { fill: var(--heatmap-cal-level-3); }
-	.level-cal-4 { fill: var(--heatmap-cal-level-4); }
+	.level-cal-0 { fill: var(--heatmap-cal-level-0); background-color: var(--heatmap-cal-level-0); }
+	.level-cal-1 { fill: var(--heatmap-cal-level-1); background-color: var(--heatmap-cal-level-1); }
+	.level-cal-2 { fill: var(--heatmap-cal-level-2); background-color: var(--heatmap-cal-level-2); }
+	.level-cal-3 { fill: var(--heatmap-cal-level-3); background-color: var(--heatmap-cal-level-3); }
+	.level-cal-4 { fill: var(--heatmap-cal-level-4); background-color: var(--heatmap-cal-level-4); }
 
 	/* Legend */
 	.legend {
