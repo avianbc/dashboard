@@ -161,6 +161,20 @@
 	--heatmap-level-2: #006d32;
 	--heatmap-level-3: #26a641;
 	--heatmap-level-4: #39d353;
+
+	/* Heatmap HR mode (red scale) */
+	--heatmap-hr-level-0: #161b22;
+	--heatmap-hr-level-1: #3b1520;
+	--heatmap-hr-level-2: #6b2030;
+	--heatmap-hr-level-3: #a63030;
+	--heatmap-hr-level-4: #e04040;
+
+	/* Heatmap Calories mode (amber/orange scale) */
+	--heatmap-cal-level-0: #161b22;
+	--heatmap-cal-level-1: #3b2510;
+	--heatmap-cal-level-2: #6b4020;
+	--heatmap-cal-level-3: #a06020;
+	--heatmap-cal-level-4: #d88030;
 }
 
 /* ============================================================================
@@ -213,6 +227,20 @@
 	--heatmap-level-2: #40c463;
 	--heatmap-level-3: #30a14e;
 	--heatmap-level-4: #216e39;
+
+	/* Heatmap HR mode (red scale) */
+	--heatmap-hr-level-0: #ebedf0;
+	--heatmap-hr-level-1: #f8c4c4;
+	--heatmap-hr-level-2: #e88888;
+	--heatmap-hr-level-3: #d04545;
+	--heatmap-hr-level-4: #a02020;
+
+	/* Heatmap Calories mode (amber/orange scale) */
+	--heatmap-cal-level-0: #ebedf0;
+	--heatmap-cal-level-1: #fce5c0;
+	--heatmap-cal-level-2: #f0b860;
+	--heatmap-cal-level-3: #d08820;
+	--heatmap-cal-level-4: #8a5510;
 
 	/* Adjust shadows for light mode */
 	--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);

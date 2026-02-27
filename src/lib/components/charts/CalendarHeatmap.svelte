@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { WorkoutCalendarDay } from '$lib/types/training';
+	import type { WorkoutCalendarDay, PolarDayData } from '$lib/types/training';
 	import { unitSystem } from '$lib/stores';
 	import { formatNumber } from '$lib/utils';
-	import { Callout } from '$lib/components/ui';
+	import { Callout, SegmentedControl } from '$lib/components/ui';
 	import { BarChart3 } from 'lucide-svelte';
 	import { SvelteMap, SvelteSet, SvelteDate } from 'svelte/reactivity';
 
@@ -12,11 +12,21 @@
 
 	let { data }: Props = $props();
 
+	type ViewMode = 'volume' | 'hr' | 'calories';
+	let viewMode = $state<ViewMode>('volume');
+
+	const viewOptions = [
+		{ value: 'volume', label: 'Volume' },
+		{ value: 'hr', label: 'Heart Rate' },
+		{ value: 'calories', label: 'Calories' }
+	];
+
 	interface GridDay {
 		date: Date;
 		volume: number;
 		count: number;
 		level: number;
+		polar?: PolarDayData;
 	}
 
 	interface WeekRow {
@@ -42,19 +52,23 @@
 
 	// Create a lookup map for quick access
 	const dataMap = $derived.by(() => {
-		const map = new SvelteMap<string, { volumeLbs: number; volumeKg: number; count: number }>();
+		const map = new SvelteMap<
+			string,
+			{ volumeLbs: number; volumeKg: number; count: number; polar?: PolarDayData }
+		>();
 		dataArray.forEach((day) => {
 			map.set(day.date, {
 				volumeLbs: day.volumeLbs,
 				volumeKg: day.volumeKg,
-				count: day.count
+				count: day.count,
+				polar: day.polar
 			});
 		});
 		return map;
 	});
 
-	// Calculate dynamic thresholds based on quartiles
-	function calculateThresholds(data: WorkoutCalendarDay[]): number[] {
+	// Calculate dynamic thresholds based on quartiles for volume mode
+	function calculateVolumeThresholds(data: WorkoutCalendarDay[]): number[] {
 		const volumes = data
 			.map((d) => (unitSystem.current === 'imperial' ? d.volumeLbs : d.volumeKg))
 			.filter((v) => v > 0)
@@ -69,21 +83,78 @@
 		return [0, q25, q50, q75];
 	}
 
-	const thresholds = $derived(calculateThresholds(dataArray));
+	// Calculate dynamic thresholds for HR mode (avg HR values)
+	function calculateHrThresholds(data: WorkoutCalendarDay[]): number[] {
+		const hrs = data
+			.map((d) => d.polar?.avgHr ?? 0)
+			.filter((v) => v > 0)
+			.sort((a, b) => a - b);
 
-	// Get level (0-4) based on volume
-	function getLevel(volume: number, thresholds: number[]): number {
-		if (volume === 0) return 0;
-		if (volume <= thresholds[1]) return 1;
-		if (volume <= thresholds[2]) return 2;
-		if (volume <= thresholds[3]) return 3;
+		if (hrs.length === 0) return [0, 100, 130, 155];
+
+		const q25 = hrs[Math.floor(hrs.length * 0.25)];
+		const q50 = hrs[Math.floor(hrs.length * 0.5)];
+		const q75 = hrs[Math.floor(hrs.length * 0.75)];
+
+		return [0, q25, q50, q75];
+	}
+
+	// Calculate dynamic thresholds for calories mode
+	function calculateCalThresholds(data: WorkoutCalendarDay[]): number[] {
+		const cals = data
+			.map((d) => d.polar?.kiloCalories ?? 0)
+			.filter((v) => v > 0)
+			.sort((a, b) => a - b);
+
+		if (cals.length === 0) return [0, 200, 450, 700];
+
+		const q25 = cals[Math.floor(cals.length * 0.25)];
+		const q50 = cals[Math.floor(cals.length * 0.5)];
+		const q75 = cals[Math.floor(cals.length * 0.75)];
+
+		return [0, q25, q50, q75];
+	}
+
+	const volumeThresholds = $derived(calculateVolumeThresholds(dataArray));
+	const hrThresholds = $derived(calculateHrThresholds(dataArray));
+	const calThresholds = $derived(calculateCalThresholds(dataArray));
+
+	// Get level (0-4) based on value and thresholds
+	function getLevel(value: number, thresholds: number[]): number {
+		if (value === 0) return 0;
+		if (value <= thresholds[1]) return 1;
+		if (value <= thresholds[2]) return 2;
+		if (value <= thresholds[3]) return 3;
 		return 4;
+	}
+
+	function getLevelForDay(
+		dayData: { volumeLbs: number; volumeKg: number; count: number; polar?: PolarDayData } | undefined,
+		mode: ViewMode
+	): number {
+		if (!dayData) return 0;
+
+		if (mode === 'hr') {
+			const hr = dayData.polar?.avgHr ?? 0;
+			return getLevel(hr, hrThresholds);
+		} else if (mode === 'calories') {
+			const kcal = dayData.polar?.kiloCalories ?? 0;
+			return getLevel(kcal, calThresholds);
+		} else {
+			const vol =
+				unitSystem.current === 'imperial' ? dayData.volumeLbs : dayData.volumeKg;
+			return getLevel(vol, volumeThresholds);
+		}
 	}
 
 	// Generate year grid structure
 	function generateYearGrid(
 		year: number,
-		dataMap: Map<string, { volumeLbs: number; volumeKg: number; count: number }>
+		dataMap: Map<
+			string,
+			{ volumeLbs: number; volumeKg: number; count: number; polar?: PolarDayData }
+		>,
+		mode: ViewMode
 	): YearGrid {
 		const weeks: WeekRow[] = [];
 		const monthLabels: { month: string; weekIndex: number }[] = [];
@@ -114,9 +185,9 @@
 							: dayData.volumeKg
 						: 0;
 					const count = dayData?.count || 0;
-					const level = getLevel(volume, thresholds);
+					const level = getLevelForDay(dayData, mode);
 
-					days.push({ date, volume, count, level });
+					days.push({ date, volume, count, level, polar: dayData?.polar });
 
 					// Track month labels
 					const month = date.getMonth();
@@ -152,7 +223,7 @@
 	});
 
 	const yearGrids = $derived.by(() => {
-		return years.map((year) => generateYearGrid(year, dataMap));
+		return years.map((year) => generateYearGrid(year, dataMap, viewMode));
 	});
 
 	// Calculate aggregate stats
@@ -174,15 +245,42 @@
 		return { bestYear, yearCount: years.length };
 	});
 
+	// Legend labels per mode
+	const legendLabels = $derived.by(() => {
+		if (viewMode === 'hr') {
+			return ['No HR', 'Low', 'Moderate', 'High', 'Peak'];
+		} else if (viewMode === 'calories') {
+			return ['No data', 'Low', 'Moderate', 'High', 'Max'];
+		}
+		return ['Rest', 'Light', 'Moderate', 'Heavy', 'Max'];
+	});
+
+	// CSS class prefix per mode
+	const levelPrefix = $derived.by(() => {
+		if (viewMode === 'hr') return 'level-hr-';
+		if (viewMode === 'calories') return 'level-cal-';
+		return 'level-';
+	});
+
 	// Tooltip state
-	let tooltip = $state<{
+	interface TooltipState {
 		visible: boolean;
 		x: number;
 		y: number;
 		date: string;
 		count: number;
 		volume: number;
-	}>({ visible: false, x: 0, y: 0, date: '', count: 0, volume: 0 });
+		polar?: PolarDayData;
+	}
+
+	let tooltip = $state<TooltipState>({
+		visible: false,
+		x: 0,
+		y: 0,
+		date: '',
+		count: 0,
+		volume: 0
+	});
 
 	function showTooltip(event: MouseEvent, day: GridDay) {
 		const rect = (event.target as SVGElement).getBoundingClientRect();
@@ -197,12 +295,18 @@
 				year: 'numeric'
 			}),
 			count: day.count,
-			volume: day.volume
+			volume: day.volume,
+			polar: day.polar
 		};
 	}
 
 	function hideTooltip() {
 		tooltip.visible = false;
+	}
+
+	function formatCardioLoad(interp: string | null | undefined): string {
+		if (!interp || interp === 'NOT_AVAILABLE') return '';
+		return interp.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 	}
 
 	// SVG layout constants (will be adjusted via CSS for responsive)
@@ -223,17 +327,28 @@
 	<div class="header-row">
 		<h3 class="section-title">Workout Calendar</h3>
 
-		<!-- Legend -->
-		<div class="legend">
-			<span class="legend-label">Less</span>
-			<div class="legend-blocks">
-				<div class="legend-block level-0" title="No activity"></div>
-				<div class="legend-block level-1" title="Light"></div>
-				<div class="legend-block level-2" title="Medium"></div>
-				<div class="legend-block level-3" title="High"></div>
-				<div class="legend-block level-4" title="Max"></div>
+		<div class="header-controls">
+			<SegmentedControl
+				options={viewOptions}
+				value={viewMode}
+				onchange={(v) => (viewMode = v as ViewMode)}
+				size="sm"
+				aria-label="Calendar view mode"
+			/>
+
+			<!-- Legend -->
+			<div class="legend">
+				<span class="legend-label">Less</span>
+				<div class="legend-blocks">
+					{#each [0, 1, 2, 3, 4] as level (level)}
+						<div
+							class="legend-block {levelPrefix}{level}"
+							title={legendLabels[level]}
+						></div>
+					{/each}
+				</div>
+				<span class="legend-label">More</span>
 			</div>
-			<span class="legend-label">More</span>
 		</div>
 	</div>
 
@@ -281,7 +396,8 @@
 									width={CELL_SIZE}
 									height={CELL_SIZE}
 									rx={CELL_RADIUS}
-									class="heatmap-cell level-{day.level}"
+									class="heatmap-cell {levelPrefix}{day.level}"
+									class:has-hr={day.polar !== undefined}
 									role="button"
 									tabindex="0"
 									aria-label="{day.date.toLocaleDateString()}: {day.count} workout{day.count !== 1
@@ -311,13 +427,26 @@
 {#if tooltip.visible}
 	<div class="tooltip" style="left: {tooltip.x}px; top: {tooltip.y}px;">
 		<div class="tooltip-date">{tooltip.date}</div>
-		<div class="tooltip-data">
-			{tooltip.count} workout{tooltip.count !== 1 ? 's' : ''}
-		</div>
-		<div class="tooltip-data">
-			{formatNumber(tooltip.volume)}
-			{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}
-		</div>
+		{#if tooltip.count > 0}
+			<div class="tooltip-data">
+				{tooltip.count} workout{tooltip.count !== 1 ? 's' : ''}
+				· {formatNumber(tooltip.volume)}
+				{unitSystem.current === 'imperial' ? 'lbs' : 'kg'}
+			</div>
+		{/if}
+		{#if tooltip.polar}
+			<div class="tooltip-divider"></div>
+			<div class="tooltip-data tooltip-hr">
+				Avg HR {tooltip.polar.avgHr} · Max {tooltip.polar.maxHr} bpm
+			</div>
+			<div class="tooltip-data">
+				{Math.round(tooltip.polar.kiloCalories)} kcal
+				· {Math.round(tooltip.polar.durationMinutes)} min
+				{#if tooltip.polar.cardioLoadInterpretation && tooltip.polar.cardioLoadInterpretation !== 'NOT_AVAILABLE'}
+					· {formatCardioLoad(tooltip.polar.cardioLoadInterpretation)}
+				{/if}
+			</div>
+		{/if}
 	</div>
 {/if}
 
@@ -338,6 +467,13 @@
 
 	.header-row .section-title {
 		margin-bottom: 0;
+	}
+
+	.header-controls {
+		display: flex;
+		align-items: center;
+		gap: var(--space-4);
+		flex-wrap: wrap;
 	}
 
 	.heatmap-container {
@@ -396,25 +532,37 @@
 		stroke-width: 1.5;
 	}
 
-	.heatmap-cell.level-0 {
-		fill: var(--heatmap-level-0);
+	/* HR indicator ring — copper border on cells with Polar data */
+	.heatmap-cell.has-hr {
+		stroke: var(--accent-copper);
+		stroke-width: 1.5;
 	}
 
-	.heatmap-cell.level-1 {
-		fill: var(--heatmap-level-1);
+	.heatmap-cell.has-hr:hover {
+		stroke: var(--accent-copper-hover);
+		stroke-width: 2;
 	}
 
-	.heatmap-cell.level-2 {
-		fill: var(--heatmap-level-2);
-	}
+	/* Volume levels */
+	.level-0 { fill: var(--heatmap-level-0); }
+	.level-1 { fill: var(--heatmap-level-1); }
+	.level-2 { fill: var(--heatmap-level-2); }
+	.level-3 { fill: var(--heatmap-level-3); }
+	.level-4 { fill: var(--heatmap-level-4); }
 
-	.heatmap-cell.level-3 {
-		fill: var(--heatmap-level-3);
-	}
+	/* HR levels */
+	.level-hr-0 { fill: var(--heatmap-hr-level-0); }
+	.level-hr-1 { fill: var(--heatmap-hr-level-1); }
+	.level-hr-2 { fill: var(--heatmap-hr-level-2); }
+	.level-hr-3 { fill: var(--heatmap-hr-level-3); }
+	.level-hr-4 { fill: var(--heatmap-hr-level-4); }
 
-	.heatmap-cell.level-4 {
-		fill: var(--heatmap-level-4);
-	}
+	/* Calories levels */
+	.level-cal-0 { fill: var(--heatmap-cal-level-0); }
+	.level-cal-1 { fill: var(--heatmap-cal-level-1); }
+	.level-cal-2 { fill: var(--heatmap-cal-level-2); }
+	.level-cal-3 { fill: var(--heatmap-cal-level-3); }
+	.level-cal-4 { fill: var(--heatmap-cal-level-4); }
 
 	/* Legend */
 	.legend {
@@ -441,26 +589,6 @@
 		border: 1px solid var(--bg-primary);
 	}
 
-	.legend-block.level-0 {
-		background-color: var(--heatmap-level-0);
-	}
-
-	.legend-block.level-1 {
-		background-color: var(--heatmap-level-1);
-	}
-
-	.legend-block.level-2 {
-		background-color: var(--heatmap-level-2);
-	}
-
-	.legend-block.level-3 {
-		background-color: var(--heatmap-level-3);
-	}
-
-	.legend-block.level-4 {
-		background-color: var(--heatmap-level-4);
-	}
-
 	/* Tooltip */
 	.tooltip {
 		position: fixed;
@@ -476,6 +604,7 @@
 		z-index: var(--z-dropdown);
 		box-shadow: var(--shadow-lg);
 		white-space: nowrap;
+		min-width: 160px;
 	}
 
 	.tooltip-date {
@@ -486,11 +615,26 @@
 	.tooltip-data {
 		color: var(--text-secondary);
 		font-size: var(--text-xs);
+		line-height: 1.5;
+	}
+
+	.tooltip-divider {
+		border-top: 1px solid var(--chart-tooltip-border);
+		margin: var(--space-2) 0 var(--space-1);
+	}
+
+	.tooltip-hr {
+		color: var(--accent-copper);
 	}
 
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
 		.header-row {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.header-controls {
 			flex-direction: column;
 			align-items: flex-start;
 		}
