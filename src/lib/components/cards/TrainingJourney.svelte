@@ -15,7 +15,7 @@
 
 	let { notableWorkouts, milestones }: Props = $props();
 
-	type EventCategory = 'all' | 'pr' | 'milestone' | 'volume' | 'comeback';
+	type EventCategory = 'all' | 'pr' | 'milestone' | 'volume' | 'comeback' | 'cardio';
 
 	interface TimelineEvent {
 		date: string;
@@ -83,6 +83,8 @@
 				return 'pr';
 			case 'milestone':
 				return 'milestone';
+			case 'cardio':
+				return 'cardio';
 			default:
 				return 'volume';
 		}
@@ -110,6 +112,8 @@
 				return Star;
 			case 'milestone':
 				return Trophy;
+			case 'cardio':
+				return Flame;
 			default:
 				return BarChart3;
 		}
@@ -125,6 +129,8 @@
 				return 'var(--accent-gold)';
 			case 'milestone':
 				return 'var(--accent-copper)';
+			case 'cardio':
+				return '#e04040';
 			default:
 				return 'var(--text-secondary)';
 		}
@@ -142,12 +148,14 @@
 				return 'PRs';
 			case 'milestone':
 				return 'Milestones';
+			case 'cardio':
+				return 'Cardio';
 			default:
 				return 'All';
 		}
 	}
 
-	const filterOptions: EventCategory[] = ['all', 'milestone', 'volume', 'comeback'];
+	const filterOptions: EventCategory[] = ['all', 'milestone', 'volume', 'comeback', 'cardio'];
 </script>
 
 <div class="training-journey">
