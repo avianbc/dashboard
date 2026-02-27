@@ -1,0 +1,10 @@
+{
+  "name": "Proof Of Work",
+  "short_name": "Training",
+  "description": "A data-driven look at my training journey",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#161b22",
+  "theme_color": "#161b22",
+  "icons": []
+}
