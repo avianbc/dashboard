@@ -63,11 +63,40 @@ export interface VolumeTimeSeries {
 	yearly: YearlyTimeSeriesPoint[];
 }
 
+export interface PolarDayData {
+	avgHr: number;
+	maxHr: number;
+	minHr: number;
+	durationMinutes: number;
+	kiloCalories: number;
+	cardioLoad?: number | null;
+	cardioLoadInterpretation?: string | null;
+	sport: string;
+	sessionCount: number;
+}
+
+export interface PolarSummary {
+	totalCalories: number;
+	totalSessions: number;
+	avgCaloriesPerSession: number;
+	totalHrMinutes: number;
+}
+
+export interface PolarMonthlyPoint {
+	month: string;
+	avgHr: number;
+	avgMaxHr: number;
+	totalCalories: number;
+	sessions: number;
+	avgCardioLoad?: number | null;
+}
+
 export interface WorkoutCalendarDay {
 	date: string;
 	count: number;
 	volumeLbs: number;
 	volumeKg: number;
+	polar?: PolarDayData;
 }
 
 export interface PRRecord {
@@ -402,6 +431,7 @@ export interface CoreTrainingData {
 		monthly: MonthlyTimeSeriesPoint[];
 		yearly: YearlyTimeSeriesPoint[];
 	};
+	polarSummary?: PolarSummary;
 }
 
 export interface DeferredTrainingData {
@@ -417,6 +447,7 @@ export interface DeferredTrainingData {
 	plateMilestones: PlateMilestones;
 	bodyWeight: BodyWeight;
 	relativeStrength: RelativeStrength;
+	polarMonthly?: PolarMonthlyPoint[];
 }
 
 // Unit system types
