@@ -1,12 +1,12 @@
 {
   "summary": {
-    "totalWorkouts": 987,
-    "totalSets": 9822,
-    "totalVolumeLbs": 6964209.0,
-    "totalVolumeKg": 3153150.0,
-    "totalHours": 750.6,
-    "totalReps": 60249,
-    "totalTons": 3482.1,
+    "totalWorkouts": 1002,
+    "totalSets": 10015,
+    "totalVolumeLbs": 7104906.5,
+    "totalVolumeKg": 3216852.5,
+    "totalHours": 765.9,
+    "totalReps": 61334,
+    "totalTons": 3552.5,
     "bestMonthEver": {
       "month": "2021-04",
       "volumeLbs": 213930.0,
@@ -19,10 +19,10 @@
       "workouts": 220
     },
     "firstWorkout": "2019-01-23",
-    "lastWorkout": "2026-02-13",
-    "avgWorkoutDuration": 45.6,
-    "avgVolumePerWorkoutLbs": 7055.94,
-    "avgVolumePerWorkoutKg": 3194.68,
+    "lastWorkout": "2026-03-20",
+    "avgWorkoutDuration": 45.9,
+    "avgVolumePerWorkoutLbs": 7090.73,
+    "avgVolumePerWorkoutKg": 3210.43,
     "avgSetsPerWorkout": 10.0,
     "workoutsPerWeekAvg": 2.7
   },
@@ -321,62 +321,62 @@
     }
   },
   "daysSinceLastPR": {
-    "squat": 878,
-    "bench": 1176,
-    "deadlift": 1541,
-    "ohp": 1115
+    "squat": 901,
+    "bench": 1199,
+    "deadlift": 1564,
+    "ohp": 1138
   },
   "barTravel": {
     "byLift": {
       "squat": {
-        "totalReps": 10579,
+        "totalReps": 10866,
         "distancePerRepInches": 47,
-        "totalInches": 497213,
-        "totalFeet": 41434.42,
-        "totalMiles": 7.85,
-        "totalMeters": 12629.21,
-        "totalKm": 12.63
+        "totalInches": 510702,
+        "totalFeet": 42558.5,
+        "totalMiles": 8.06,
+        "totalMeters": 12971.83,
+        "totalKm": 12.97
       },
       "bench": {
-        "totalReps": 15904,
+        "totalReps": 16131,
         "distancePerRepInches": 38,
-        "totalInches": 604352,
-        "totalFeet": 50362.67,
-        "totalMiles": 9.54,
-        "totalMeters": 15350.54,
-        "totalKm": 15.35
+        "totalInches": 612978,
+        "totalFeet": 51081.5,
+        "totalMiles": 9.67,
+        "totalMeters": 15569.64,
+        "totalKm": 15.57
       },
       "deadlift": {
-        "totalReps": 6957,
+        "totalReps": 7053,
         "distancePerRepInches": 50.3,
-        "totalInches": 349937.1,
-        "totalFeet": 29161.42,
-        "totalMiles": 5.52,
-        "totalMeters": 8888.4,
-        "totalKm": 8.89
+        "totalInches": 354765.9,
+        "totalFeet": 29563.82,
+        "totalMiles": 5.6,
+        "totalMeters": 9011.05,
+        "totalKm": 9.01
       },
       "ohp": {
-        "totalReps": 9304,
+        "totalReps": 9474,
         "distancePerRepInches": 48,
-        "totalInches": 446592,
-        "totalFeet": 37216.0,
-        "totalMiles": 7.05,
-        "totalMeters": 11343.44,
-        "totalKm": 11.34
+        "totalInches": 454752,
+        "totalFeet": 37896.0,
+        "totalMiles": 7.18,
+        "totalMeters": 11550.7,
+        "totalKm": 11.55
       }
     },
     "total": {
-      "inches": 1898094.1,
-      "feet": 158174.51,
-      "miles": 29.96,
-      "meters": 48211.59,
-      "km": 48.21
+      "inches": 1933197.9,
+      "feet": 161099.82,
+      "miles": 30.51,
+      "meters": 49103.23,
+      "km": 49.1
     },
     "landmarks": {
-      "everestClimbs": 5.45,
-      "empireStateClimbs": 108.8,
-      "eiffelTowerClimbs": 146.1,
-      "statueOfLibertyClimbs": 518.6
+      "everestClimbs": 5.55,
+      "empireStateClimbs": 110.8,
+      "eiffelTowerClimbs": 148.8,
+      "statueOfLibertyClimbs": 528.2
     },
     "distancePerRepInches": {
       "squat": 47,
@@ -387,7 +387,7 @@
   },
   "powerliftingTotals": {
     "current": {
-      "date": "2026-02-13",
+      "date": "2026-03-20",
       "totalLbs": 1276.17,
       "totalKg": 580.33,
       "squatE1rm": 442.0,
@@ -2012,6 +2012,36 @@
         "volumeLbs": 24655.0,
         "volumeKg": 11237.5,
         "workouts": 3
+      },
+      {
+        "week": "2026-W07",
+        "volumeLbs": 27832.5,
+        "volumeKg": 12607.5,
+        "workouts": 3
+      },
+      {
+        "week": "2026-W08",
+        "volumeLbs": 26625.0,
+        "volumeKg": 12090.0,
+        "workouts": 3
+      },
+      {
+        "week": "2026-W09",
+        "volumeLbs": 29945.0,
+        "volumeKg": 13537.5,
+        "workouts": 3
+      },
+      {
+        "week": "2026-W10",
+        "volumeLbs": 26660.0,
+        "volumeKg": 12032.5,
+        "workouts": 3
+      },
+      {
+        "week": "2026-W11",
+        "volumeLbs": 29635.0,
+        "volumeKg": 13435.0,
+        "workouts": 3
       }
     ],
     "monthly": [
@@ -2437,9 +2467,15 @@
       },
       {
         "month": "2026-02",
-        "volumeLbs": 49000.0,
-        "volumeKg": 22260.0,
-        "workouts": 6
+        "volumeLbs": 103457.5,
+        "volumeKg": 46957.5,
+        "workouts": 12
+      },
+      {
+        "month": "2026-03",
+        "volumeLbs": 86240.0,
+        "volumeKg": 39005.0,
+        "workouts": 9
       }
     ],
     "yearly": [
@@ -2487,17 +2523,17 @@
       },
       {
         "year": 2026,
-        "volumeLbs": 96320.0,
-        "volumeKg": 43620.0,
-        "workouts": 13
+        "volumeLbs": 237017.5,
+        "volumeKg": 107322.5,
+        "workouts": 28
       }
     ]
   },
   "polarSummary": {
-    "totalCalories": 235890,
-    "totalSessions": 488,
-    "avgCaloriesPerSession": 483.4,
-    "totalHrMinutes": 57514,
-    "overallAvgHr": 116
+    "totalCalories": 0,
+    "totalSessions": 0,
+    "avgCaloriesPerSession": 0,
+    "totalHrMinutes": 0,
+    "overallAvgHr": 0
   }
 }
